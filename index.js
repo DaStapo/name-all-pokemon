@@ -28,8 +28,8 @@ app.get('/front.js', function(req , res){
 
 app.use('/sprites', express.static(spritesFolder));
 app.use('/silhouettes', express.static(silhouettesFolder));
-
-app.listen(80);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT);
 
 console.log('Server started!.');
 
