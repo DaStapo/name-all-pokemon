@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <title>Name 'em all - Pokémon Quiz</title>
   <style>
 	body {
-	background-color: #111111;
+	background-color: #DDD;
+	font-family: "Roboto";
+    font-size: 16px;
+	color: #333;
 	}
     .box {
 	border: 5px white;
@@ -12,10 +17,11 @@
 	margin: 10px;
 	padding: 10px 10px 10px 10px;
 	background: rgba(255, 255, 255, 0.85);
+	min-height: 30px;
+	line-height: 30px;
 	}
-	.inputbox {
-	width: 20%;
-	min-width: 220px;
+	.padded {
+	padding-left: 20px;
 	}
 	.centeredbox {
 	margin: 0 auto;
@@ -25,16 +31,45 @@
 	.sprite {
 	margin: -28px -20px 0px;
 	}
+	.recentsprite{
+	margin: -40px -10px 0px;
+	}
+	.column {
+	float: left;
+	}
+	.major {
+	width: 40%;
+	}
+	.minor {
+	width: 20%;
+	}
+	/* Clear floats after the columns */
+	.row:after {
+	content: "";
+	display: table;
+	clear: both;
+	}
   </style>
 </head>
 <body>
-test
 <div class="centeredbox">
-<div class="inputbox">
-<div class="box">
+<div class="row">
+<div class="column minor">
+<div class="box padded">
 	<form>
 	<input type="text" id="pokemon" maxlength="11">
 	</form>
+</div>
+</div>
+<div class="column minor">
+<div class="box padded">
+Most recent input: <img class="recentsprite" src="sprites/weedle.png">
+</div>
+</div>
+<div class="column major">
+<div class="box padded">
+You have named <b>144/898</b> Pokémon
+</div>
 </div>
 </div>
 
