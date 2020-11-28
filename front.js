@@ -101,13 +101,17 @@ function onload (fileNames) {
 let alreadyGuessedPokemon = [];
 
 let inputField = document.getElementById("pokemon");
+let recentSprite = document.getElementById("recentsprite");
+
 inputField.oninput = function () {
 	let inputText = inputField.value;
 	inputText = standardizeName(inputText);
 	
 	if(pokemonList.includes(inputText) && !alreadyGuessedPokemon.includes(inputText)){
+		
 		showSprite(inputText);
 		inputField.value = '';
+		recentSprite.src = spriteDictionary[inputText].src;
 	}
 	
 };
