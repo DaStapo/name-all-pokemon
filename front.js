@@ -78,8 +78,8 @@ function onload (fileNames) {
 		silhouette.src = silhouettePath;
 		silhouetteDictionary[pokemon] = silhouette;
 		
-		//showSilhouette(pokemon);
-		showSprite(pokemon);
+		showSilhouette(pokemon);
+		//showSprite(pokemon);
 	}
 	
 	//ordered appending
@@ -97,6 +97,21 @@ function onload (fileNames) {
 	}	
 	
 }
+
+let alreadyGuessedPokemon = [];
+
+let inputField = document.getElementById("pokemon");
+inputField.oninput = function () {
+	let inputText = inputField.value;
+	inputText = standardizeName(inputText);
+	
+	if(pokemonList.includes(inputText) && !alreadyGuessedPokemon.includes(inputText)){
+		showSprite(inputText);
+		inputField.value = '';
+	}
+	
+};
+
 
 
 
