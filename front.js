@@ -66,9 +66,12 @@ function onload (fileNames) {
 		showSprite(pokemonName);
 	}
 	
+	for (let i = 0; i<genLastPokemon.length; i++){
+		genLastPokemon[i] = standardizeName(genLastPokemon[i]);
+	}
+	
 	for (let i = 0; i<pokemonList.length; i++){
 		let pokemon = standardizeName(pokemonList[i]);
-		console.log(pokemon);
 		if(pokemon === 'nidoran'){
 			box.appendChild(spriteDictionary['nidoranm']);
 			box.appendChild(silhouetteDictionary['nidoranm']);
@@ -78,6 +81,11 @@ function onload (fileNames) {
 		}else{
 			box.appendChild(spriteDictionary[pokemon]);
 			box.appendChild(silhouetteDictionary[pokemon]);
+		}
+		
+		//add new line for new gen
+		if(genLastPokemon.includes(pokemon)){
+			box.appendChild(document.createElement("br"));
 		}
 	}	
 	
