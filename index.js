@@ -9,7 +9,6 @@ let spritesFolder = path.join(__dirname + '/sprites');
 let silhouettesFolder = path.join(__dirname + '/silhouettes');
 
 app.get('/', function(req , res){
-	console.log(indexLocation);
     res.sendFile(indexLocation);
 });
 
