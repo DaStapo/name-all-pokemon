@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Name 'em all - Pokémon Quiz</title>
+  <style>
+	body {
+	background-color: #111111;
+	}
+    .box {
+	border: 5px white;
+	border-radius: 5px;
+	margin: 10px;
+	padding: 10px 10px 10px 10px;
+	background: rgba(255, 255, 255, 0.85);
+	}
+	.inputbox {
+	width: 20%;
+	min-width: 220px;
+	}
+	.centeredbox {
+	margin: 0 auto;
+	/* max-width: 996px; */
+	max-width: 1476px;
+	}
+	.sprite {
+	margin: -28px -20px 0px;
+	}
+  </style>
+</head>
+<body>
+
+<div class="centeredbox">
+<div class="inputbox">
+<div class="box">
+	<form>
+	<input type="text" id="pokemon" maxlength="11">
+	</form>
+</div>
+</div>
+
+<div id="pokemon-box" class="box">
+</div>
+</div>
+<script src="front.js"></script>
+</body>
+</html>
