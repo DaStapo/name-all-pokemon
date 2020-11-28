@@ -6,8 +6,6 @@ for(let i = 1; i<=genCount; i++){
 	boxes.push(document.getElementById("pokemon-box-" + i));
 }
 
-let box = document.getElementById("pokemon-box");
-
 let spriteDictionary = {};
 let silhouetteDictionary = {};
 
@@ -23,28 +21,28 @@ function showSilhouette(name){
 }
 
 
-function standardizeName(filename){
+function standardizeName(input){
 	//remove extension
-	filename = filename.replace('.png', '');
-	filename = filename.replace('.jpg', '');
-	filename = filename.replace('.jpeg', '');
+	input = input.replace('.png', '');
+	input = input.replace('.jpg', '');
+	input = input.replace('.jpeg', '');
 	
 	//remove whitespaces
-	filename = filename.replaceAll(/\s/g,'');
+	input = input.replaceAll(/\s/g,'');
 	
 	//remove dashes
-	filename = filename.replaceAll('-', '');
+	input = input.replaceAll('-', '');
 	
-	//put to lowercase, just in case
-	filename = filename.toLowerCase();
+	//put to lowercase
+	input = input.toLowerCase();
 	
 	//flabebe
-	filename = filename.replaceAll('é', 'e');
+	input = input.replaceAll('é', 'e');
 	
 	//delete all special characters
-	filename = filename.replaceAll(/[^a-z0-9-_]/g, '');
+	input = input.replaceAll(/[^a-z0-9-_]/g, '');
 
-	return filename;
+	return input;
 }
 
 //standardize both lists
