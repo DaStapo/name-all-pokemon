@@ -5,6 +5,13 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <title>Name 'em all - Pokémon Quiz</title>
   <style>
+  
+  @keyframes zoomExample {
+		from {transform: scale(11,11);}
+		to {transform:scale(1,1);}
+	}
+  
+  
 	body {
 	background-color: #DDD;
 	font-family: "Roboto";
@@ -30,6 +37,8 @@
 	}
 	.sprite {
 	margin: -36px -22px -10px;
+	animation-name: zoomExample;
+	animation-duration:500ms;
 	}
 	.recentsprite{
 	margin: -40px -10px -10px;
