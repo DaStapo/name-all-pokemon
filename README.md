@@ -1,1 +1,1 @@
-pokequiz
+name-all-pokemon
