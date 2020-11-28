@@ -29,7 +29,7 @@ app.get('/front.js', function(req , res){
 app.use('/sprites', express.static(spritesFolder));
 app.use('/silhouettes', express.static(silhouettesFolder));
 
-app.listen(3000);
+app.listen(80);
 
 console.log('Server started!.');
 
