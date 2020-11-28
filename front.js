@@ -85,16 +85,16 @@ function onload (fileNames) {
 	}
 	
 	//ordered appending
-	let boxGen = 1;
+	let boxIndex = 0;
 	for (let i = 0; i<pokemonList.length; i++){
 		let pokemon = standardizeName(pokemonList[i]);
-		let box = boxes[boxGen];
+		let box = boxes[boxIndex];
 		box.appendChild(spriteDictionary[pokemon]);
 		box.appendChild(silhouetteDictionary[pokemon]);
 		
 		//add new line for new gen
 		if(genLastPokemon.includes(pokemon)){
-			boxGen++;
+			boxIndex++;
 		}
 	}	
 	
