@@ -31,5 +31,9 @@ app.use('/silhouettes', express.static(silhouettesFolder));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);
 
-console.log('Server started!.');
+
+
+console.log('Server started!!.');
+
+
 
