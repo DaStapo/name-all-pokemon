@@ -37,10 +37,13 @@
 	.column {
 	float: left;
 	}
-	.major {
-	width: 50%;
+	.eighth {
+	width: 12.5%;
 	}
-	.minor {
+	.sixth {
+	width: 16.66%;
+	}
+	.quarter {
 	width: 25%;
 	}
 	/* Clear floats after the columns */
@@ -54,48 +57,58 @@
 <body>
 <div class="centeredbox">
 <div class="row">
-<div class="column minor">
+<div class="column sixth">
 <div class="box padded">
 <input type="text" id="pokemon" maxlength="11">
 </div>
 </div>
-<div class="column minor">
+<div class="column sixth">
 <div class="box padded">
 Most recent input: <img id="recentsprite" class="recentsprite" src="">
 </div>
 </div>
-<div class="column minor">
+<div class="column quarter">
 <div class="box padded">
 <b>144</b>/898 Pokémon named
 </div>
 </div>
-<div class="column minor">
+<div class="column sixth">
 <div class="box padded">
 Timer: 00:00:00
+</div>
+</div>
+<div class="column quarter">
+<div class="box padded">
+	<form>
+	<input type="radio" id="pokeball" name="gamemode" value="pokeball">
+	<label for="pokeball">No silhouettes</label>
+	<input type="radio" id="silhouette" name="gamemode" value="silhouette">
+	<label for="silhouette">Silhouettes</label>
+	</form>
 </div>
 </div>
 </div>
 
 <div class="row">
-<div class="column minor">
+<div class="column quarter">
 <div id="pokemon-box-1" class="box">
 </div>
 <div id="pokemon-box-2" class="box">
 </div>
 </div>
-<div class="column minor">
+<div class="column quarter">
 <div id="pokemon-box-3" class="box">
 </div>
 <div id="pokemon-box-4" class="box">
 </div>
 </div>
-<div class="column minor">
+<div class="column quarter">
 <div id="pokemon-box-5" class="box">
 </div>
 <div id="pokemon-box-6" class="box">
 </div>
 </div>
-<div class="column minor">
+<div class="column quarter">
 <div id="pokemon-box-7" class="box">
 </div>
 <div id="pokemon-box-8" class="box">
