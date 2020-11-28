@@ -3,99 +3,116 @@ let genLastPokemon = ['Mew','Celebi','Deoxys','Arceus','Genesect','Volcanion','M
 let genCount = 8;
 let boxes = [];
 for(let i = 1; i<=genCount; i++){
-	boxes.push(document.getElementById("pokemon-box-" + i));
+    boxes.push(document.getElementById("pokemon-box-" + i));
 }
 
 let spriteDictionary = {};
 let silhouetteDictionary = {};
+let unguessedDictionary = {};
+
+let silhouetteArray = [];
+let pokeballArray = [];
 
 
 function showSprite(name){
-	spriteDictionary[name].style.display = "inline";
-	silhouetteDictionary[name].style.display = "none";
+    spriteDictionary[name].style.display = "inline";
+    unguessedDictionary[name].style.display = "none";
 }
 
-function showSilhouette(name){
-	spriteDictionary[name].style.display = "none";
-	silhouetteDictionary[name].style.display = "inline";
+function hideSprite(name){
+    spriteDictionary[name].style.display = "none";
+    unguessedDictionary[name].style.display = "inline";
 }
 
 
 function standardizeName(input){
-	//remove extension
-	input = input.replace('.png', '');
-	input = input.replace('.jpg', '');
-	input = input.replace('.jpeg', '');
-	
-	//remove whitespaces
-	input = input.replaceAll(/\s/g,'');
-	
-	//remove dashes
-	input = input.replaceAll('-', '');
-	
-	//put to lowercase
-	input = input.toLowerCase();
-	
-	//flabebe
-	input = input.replaceAll('é', 'e');
-	
-	//delete all special characters
-	input = input.replaceAll(/[^a-z0-9-_]/g, '');
+    //remove extension
+    input = input.replace('.png', '');
+    input = input.replace('.jpg', '');
+    input = input.replace('.jpeg', '');
 
-	return input;
+    //remove whitespaces
+    input = input.replaceAll(/\s/g,'');
+
+    //remove dashes
+    input = input.replaceAll('-', '');
+
+    //put to lowercase
+    input = input.toLowerCase();
+
+    //flabebe
+    input = input.replaceAll('é', 'e');
+
+    //delete all special characters
+    input = input.replaceAll(/[^a-z0-9-_]/g, '');
+
+    return input;
 }
 
 //standardize both lists
 for (let i = 0; i<pokemonList.length; i++){
-	pokemonList[i] = standardizeName(pokemonList[i]);
+    pokemonList[i] = standardizeName(pokemonList[i]);
 }
 for (let i = 0; i<genLastPokemon.length; i++){
-	genLastPokemon[i] = standardizeName(genLastPokemon[i]);
+    genLastPokemon[i] = standardizeName(genLastPokemon[i]);
 }
 
 function onload (fileNames) {
-	
-	//loop through filenames, not the pokemon list
-	//it's easier to get the standardized name from the filename than it is to get the filename from the standardized name
-	for (let i = 0; i < fileNames.length; i++){
-		let pokemon = standardizeName(fileNames[i]);
-		
-		//skip unnecessary sprites
-		if(!pokemonList.includes(pokemon)){
-			continue;
-		}
-		
-		let spritePath = '/sprites/' + fileNames[i];
-		let silhouettePath = '/silhouettes/' + fileNames[i];
-		
-		let sprite = document.createElement("img");
-		sprite.classList.add('sprite');
-		sprite.src = spritePath;
-		spriteDictionary[pokemon] = sprite;
-		
-		let silhouette = document.createElement("img");
-		silhouette.classList.add('sprite');
-		silhouette.src = silhouettePath;
-		silhouetteDictionary[pokemon] = silhouette;
-		
-		showSilhouette(pokemon);
-		//showSprite(pokemon);
-	}
-	
-	//ordered appending
-	let boxIndex = 0;
-	for (let i = 0; i<pokemonList.length; i++){
-		let pokemon = standardizeName(pokemonList[i]);
-		let box = boxes[boxIndex];
-		box.appendChild(spriteDictionary[pokemon]);
-		box.appendChild(silhouetteDictionary[pokemon]);
-		
-		//add new line for new gen
-		if(genLastPokemon.includes(pokemon)){
-			boxIndex++;
-		}
-	}	
-	
+
+    //loop through filenames, not the pokemon list
+    //it's easier to get the standardized name from the filename than it is to get the filename from the standardized name
+    for (let i = 0; i < fileNames.length; i++){
+        let pokemon = standardizeName(fileNames[i]);
+
+        //skip unnecessary sprites
+        if(!pokemonList.includes(pokemon)){
+            continue;
+        }
+
+        let spritePath = '/sprites/' + fileNames[i];
+        let silhouettePath = '/silhouettes/' + fileNames[i];
+
+        let sprite = document.createElement("img");
+        sprite.classList.add('sprite');
+        sprite.src = spritePath;
+        spriteDictionary[pokemon] = sprite;
+
+        let silhouette = document.createElement("img");
+        silhouette.classList.add('sprite');
+        silhouette.src = silhouettePath;
+        silhouette.style.display = "none";
+        silhouetteDictionary[pokemon] = silhouette;
+
+    }
+
+    //ordered appending
+    let boxIndex = 0;
+    for (let i = 0; i<pokemonList.length; i++){
+        let pokemon = standardizeName(pokemonList[i]);
+        let box = boxes[boxIndex];
+        let unguessed = document.createElement("div");
+
+        let pokeballImg = document.createElement("img");
+        pokeballImg.classList.add('sprite');
+        pokeballImg.src = '/sprites/unknown.png';
+
+        unguessedDictionary[pokemon] = unguessed;
+
+        pokeballArray.push(pokeballImg);
+        silhouetteArray.push(silhouetteDictionary[pokemon]);
+
+        unguessed.appendChild(silhouetteDictionary[pokemon])
+        unguessed.appendChild(pokeballImg)
+        box.appendChild(spriteDictionary[pokemon]);
+        box.appendChild(unguessed);
+
+        hideSprite(pokemon);
+        //add new line for new gen
+        if(genLastPokemon.includes(pokemon)){
+            boxIndex++;
+        }
+    }
+
 }
 
 let alreadyGuessedPokemon = [];
@@ -104,43 +121,58 @@ let inputField = document.getElementById("pokemon");
 let recentSprite = document.getElementById("recentsprite");
 
 inputField.oninput = function () {
-	let inputText = inputField.value;
-	inputText = standardizeName(inputText);
-	
-	if(pokemonList.includes(inputText) && !alreadyGuessedPokemon.includes(inputText)){
-		
-		showSprite(inputText);
-		inputField.value = '';
-		recentSprite.src = spriteDictionary[inputText].src;
-		alreadyGuessedPokemon.push(inputText);
-	}
-	
+    let inputText = inputField.value;
+    inputText = standardizeName(inputText);
+
+    if(pokemonList.includes(inputText) && !alreadyGuessedPokemon.includes(inputText)){
+
+        showSprite(inputText);
+        inputField.value = '';
+        recentSprite.src = spriteDictionary[inputText].src;
+        alreadyGuessedPokemon.push(inputText);
+    }
+
 };
 
+function useSilhouettes (){
+    for (let i = 0; i<silhouetteArray.length; i++){
+        silhouetteArray[i].style.display = "inline";
+        pokeballArray[i].style.display = "none";
+    }
+}
 
+function usePokeball (){
+    for (let i = 0; i<silhouetteArray.length; i++){
+        silhouetteArray[i].style.display = "none";
+        pokeballArray[i].style.display = "inline";
+    }
+}
+let radioPokeball = document.getElementById("pokeball");
+let radioSilhouette = document.getElementById("silhouette");
 
+radioPokeball.onclick = usePokeball;
+radioSilhouette.onclick = useSilhouettes;
 
-
-
+usePokeball();
 
 function loadNames (onSuccess){
-	let xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.open("GET", '/names', true);
 
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
             if (this.status === 200) {
-				onSuccess(JSON.parse(this.response));
+                onSuccess(JSON.parse(this.response));
             }else {
-				 console.log('error loading image list, retrying...');
-				 setTimeout(function (){
-					 loadNames(onSuccess);
-				 }, 2);
-			}
-				 
-         }
-     };
-	 xhttp.send();
+                console.log('error loading image list, retrying...');
+                setTimeout(function (){
+                    loadNames(onSuccess);
+                }, 2);
+            }
+
+        }
+    };
+    xhttp.send();
 }
 loadNames(onload);
 
