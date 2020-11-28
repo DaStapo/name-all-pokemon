@@ -112,6 +112,7 @@ inputField.oninput = function () {
 		showSprite(inputText);
 		inputField.value = '';
 		recentSprite.src = spriteDictionary[inputText].src;
+		alreadyGuessedPokemon.push(inputText);
 	}
 	
 };
