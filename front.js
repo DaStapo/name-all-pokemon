@@ -124,13 +124,21 @@ let recentSprite = document.getElementById("recentsprite");
 inputField.oninput = function () {
     let inputText = inputField.value;
     inputText = standardizeName(inputText);
+	tryGuessPokemon(inputText);
+	
+	if(inputText === standardizeName('nidoran')){
+		tryGuessPokemon('nidoranf');
+		tryGuessPokemon('nidoranm');
+	}
+};
 
-    if(pokemonList.includes(inputText) && !alreadyGuessedPokemon.includes(inputText)){
+function tryGuessPokemon(input){
+	    if(pokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)){
 
-        showSprite(inputText);
+        showSprite(input);
         inputField.value = '';
-        recentSprite.src = spriteDictionary[inputText].src;
-        alreadyGuessedPokemon.push(inputText);
+        recentSprite.src = spriteDictionary[input].src;
+        alreadyGuessedPokemon.push(input);
 		setCounter(alreadyGuessedPokemon.length);
 		if(!activeTimer){
 			startTimer();
@@ -139,8 +147,7 @@ inputField.oninput = function () {
 			clearInterval(activeTimer);
 		}
     }
-
-};
+}
 
 function useSilhouettes (){
     for (let i = 0; i<silhouetteArray.length; i++){
