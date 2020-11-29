@@ -216,7 +216,7 @@ giveUpBtn.onclick = function(){
 	let delay = 0;
 	for(let key in spriteDictionary){
 		let thisDelay = delay;
-		delay += 8;
+		delay += 100;
 		setTimeout(function(){
 			if (!(alreadyGuessedPokemon.includes(key))){
 				showSprite(key)
