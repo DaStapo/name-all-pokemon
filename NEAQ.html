@@ -47,6 +47,15 @@
 	}
 	.lime {
 	background: #8CC63F;
+	color: #fff;
+	}
+	.dark {
+	background: #444;
+	color: #fff;
+	}
+	.highlight {
+	font-weight: bold;
+	color: #333;
 	}
 	.padded {
 	padding-left: 20px;
@@ -62,7 +71,7 @@
 	margin-left: 5px;
 	margin-right: -5px;
 	box-sizing: border-box;
-	border: 2px solid #8CC63F;
+	border: 2px solid #444;
 	border-radius: 4px;
 	font-family: "Roboto";
     font-size: 16px;
@@ -71,7 +80,7 @@
 	}
 	input[type=text]:focus {
 	outline: none;
-	border: 2px solid #8CC63F;
+	border: 2px solid #444;
 	background-color: #EEE;
 	}
 	.sprite {
@@ -129,7 +138,7 @@
 	bottom: 0px;
 	}
 	.button {
-	background-color: #A00;
+	background-color: #999;
 	border: 5px #333;
 	color: white;
 	padding: 10px 10px 10px 10px;
@@ -205,23 +214,23 @@
 <div class="centeredbox">
 <div class="row header" id="header">
 <div class="column">
-<div class="box padded">
+<div class="box padded lime">
 Name all Pokémon: <input type="text" id="pokemon" maxlength="12" autocomplete="off">
 </div>
 </div>
 <div class="column wider">
-<div class="box padded">
+<div class="box padded lime">
 Most recent input: <img id="recentsprite" class="recentsprite" src="">
 </div>
 </div>
 <div class="column">
-<div class="box padded">
-<b><div id="counter">0</div></b>/<div id="total">0</div>
+<div class="box padded lime">
+<b><div id="counter" class="highlight">0</div></b>/<div id="total">0</div>
 </div>
 </div>
 <div class="column smol">
-<div class="box padded">
-Timer: <b><div id="timer">00:00:00</div></b>
+<div class="box padded lime">
+Timer: <div class="highlight" id="timer">00:00:00</div>
 </div>
 </div>
 </div>
@@ -336,7 +345,7 @@ Timer: <b><div id="timer">00:00:00</div></b>
 	<button id="surrender" class="button"><b>Give up</b></button>
 </div>
 <div class="column full">
-<div class="box padded">
+<div class="box padded dark">
 <p>Project by <a href="https://twitter.com/maniacCharon">Charon</a>, with functionality/Javascript by <a href="https://twitter.com/Stapoh">Stapo</a></p>
 <p>Resource for sprites <a href="https://msikma.github.io/pokesprite/overview/dex-gen8.html">Pokésprite Database project</a>. The sprite images belong to © Nintendo/Creatures Inc./GAME FREAK Inc.
 </div>
