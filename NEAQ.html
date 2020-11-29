@@ -170,6 +170,13 @@
 	.radio-item {
 	display: inline-block;
 	position: relative;
+	margin-right: 8px;
+	}
+	.first {
+	margin-left: 8px;
+	}
+	.last {
+	margin-right: 0px;
 	}
 	.radio-item input[type='radio'] {
 	display: none;
@@ -180,7 +187,7 @@
 	position: relative;
 	top: 3px;
 	margin-right: 0px;
-	margin-left: 4px;
+	margin-left: 0px;
 	width: 14px;
 	height: 14px;
 	border-radius: 5px;
@@ -194,7 +201,7 @@
 	height: 10px;
 	position: absolute;
 	top: 9px;
-	left: 8px;
+	left: 4px;
 	content: " ";
 	display: block;
 	background: #8CC63F;
@@ -276,7 +283,7 @@ Timer: <div class="highlight" id="timer">00:00:00</div>
 <div class="column wider">
 <div class="box roundedc padded">
 	<form>Generation:
-	<div class="radio-item">
+	<div class="radio-item first">
 	<input type="radio" id="all" name="gamevariant" value="all" checked="checked">
 	<label for="all">
 	All
@@ -324,7 +331,7 @@ Timer: <div class="highlight" id="timer">00:00:00</div>
 	VII
 	</label>
 	</div>
-	<div class="radio-item">
+	<div class="radio-item last">
 	<input type="radio" id="gen8" name="gamevariant" value="gen8">
 	<label for="gen8">
 	VIII
