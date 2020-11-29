@@ -37,6 +37,9 @@
 	min-height: 30px;
 	line-height: 30px;
 	}
+	.lime {
+	background: #8CC63F;
+	}
 	.padded {
 	padding-left: 20px;
 	padding-right: 20px;
@@ -45,6 +48,19 @@
 	margin: 0 auto;
 	/* max-width: 996px; */
 	max-width: 1408px;
+	}
+	input[type=text] {
+	padding: 2px;
+	box-sizing: border-box;
+	border: 2px solid white;
+	border-radius: 4px;
+	font-family: "Roboto";
+    font-size: 16px;
+	color: #333;
+	width: 180px;
+	}
+	input[type=text]:focus {
+	border: 2px solid #333;
 	}
 	.sprite {
 	margin: -36px -22px -10px;
@@ -138,8 +154,8 @@
 <body>
 <div class="centeredbox">
 <div class="row header" id="header">
-<div class="column decent">
-<div class="box padded">
+<div class="column">
+<div class="box padded lime">
 <input type="text" id="pokemon" maxlength="12" autocomplete="off">
 </div>
 </div>
