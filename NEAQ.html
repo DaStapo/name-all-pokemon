@@ -13,10 +13,12 @@
   
   
 	body {
-	background-color: #DDD;
+	background: linear-gradient(146deg, rgba(237,237,237,1) 0%, rgba(210,210,210,1) 100%);
+	background-repeat: no-repeat;
 	font-family: "Roboto";
     font-size: 16px;
 	color: #333;
+	padding-top: 60px;
 	}
 	p {
 	font-size: 0.8em;
@@ -90,6 +92,14 @@
 	.bottommargin {
 	margin-bottom: 20px;
 	}
+	.header {
+	position: fixed;
+	top: 0;
+	}
+	.footer {
+	position: fixed;
+	bottom: 0;
+	}
 	.button {
 	background-color: #A00;
 	border: 5px #333;
@@ -112,12 +122,22 @@
 	.quarter, .sixth, .eighth {
     width: 100%;
 	}
-}
+	}
+	@media only screen and (max-width: 960px) {
+	body {
+	padding-top: 130px;
+	}
+	}
+	@media only screen and (max-width: 520px) {
+	body {
+	padding-top: 200px;
+	}
+	}
   </style>
 </head>
 <body>
 <div class="centeredbox">
-<div class="row">
+<div class="row header" id="header">
 <div class="column decent">
 <div class="box padded">
 <input type="text" id="pokemon" maxlength="12" autocomplete="off">
