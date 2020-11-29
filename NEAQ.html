@@ -60,7 +60,7 @@
 	input[type=text] {
 	padding: 2px;
 	box-sizing: border-box;
-	border: 2px solid white;
+	border: 2px solid #8CC63F;
 	border-radius: 4px;
 	font-family: "Roboto";
     font-size: 16px;
@@ -68,7 +68,9 @@
 	width: 180px;
 	}
 	input[type=text]:focus {
-	border: 2px solid #333;
+	outline: none;
+	border: 2px solid #8CC63F;
+	background-color: #EEE;
 	}
 	.sprite {
 	margin: -36px -22px -10px;
@@ -198,7 +200,7 @@
 <div class="centeredbox">
 <div class="row header" id="header">
 <div class="column">
-<div class="box padded lime">
+<div class="box padded">
 <input type="text" id="pokemon" maxlength="12" autocomplete="off">
 </div>
 </div>
