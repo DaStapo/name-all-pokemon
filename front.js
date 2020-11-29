@@ -214,11 +214,11 @@ giveUpBtn.onclick = function(){
 	let delay = 0;
 	for(let key in spriteDictionary){
 		let thisDelay = delay;
-		delay += 8;
+		delay += 3;
 		setTimeout(function(){
 			if (!(alreadyGuessedPokemon.includes(key))){
 				showSprite(key)
-				spriteDictionary[key].classList.add('kekec');
+				spriteDictionary[key].classList.add('revealed');
 			}
 		}, thisDelay);
 	
