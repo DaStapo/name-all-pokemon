@@ -18,6 +18,9 @@
     font-size: 16px;
 	color: #333;
 	}
+	#counter,#total,#timer{
+		display:inline;
+	}
     .box {
 	border: 5px white;
 	border-radius: 5px;
@@ -81,12 +84,12 @@ Most recent input: <img id="recentsprite" class="recentsprite" src="">
 </div>
 <div class="column quarter">
 <div class="box padded">
-<b>144</b>/898 Pokémon named
+<b><div id="counter">0</div></b>/<div id="total">0</div> Pokémon named
 </div>
 </div>
 <div class="column sixth">
 <div class="box padded">
-Timer: 00:00:00
+Timer: <div id="timer">00:00:00</div>
 </div>
 </div>
 <div class="column quarter">

@@ -130,6 +130,10 @@ inputField.oninput = function () {
         inputField.value = '';
         recentSprite.src = spriteDictionary[inputText].src;
         alreadyGuessedPokemon.push(inputText);
+		setCounter(alreadyGuessedPokemon.length);
+		if(!activeTimer){
+			startTimer();
+		}
     }
 
 };
@@ -154,6 +158,45 @@ radioPokeball.onclick = usePokeball;
 radioSilhouette.onclick = useSilhouettes;
 
 usePokeball();
+
+let counterText = document.getElementById("counter");
+let totalText = document.getElementById("total");
+totalText.innerHTML = pokemonList.length;
+function setCounter(count){
+	counterText.innerHTML = count;
+}
+
+timerText = document.getElementById("timer");
+let activeTimer = false;
+function startTimer(){
+	let startTimestamp = Date.now();
+	
+	activeTimer = setInterval(function(){
+		let msDiff = Date.now()-startTimestamp;
+		timerText.innerHTML = msToTime(msDiff);
+	}, 100)
+	
+}
+
+function msToTime(s) {
+	let ms = s % 1000;
+	s = (s - ms) / 1000;
+	let secs = s % 60;
+	s = (s - secs) / 60;
+	let mins = s % 60;
+	let hrs = (s - mins) / 60;
+
+	if(hrs < 10){
+		hrs = '0' + hrs;
+	}
+	if(mins < 10){
+		mins = '0' + mins;
+	}
+	if(secs < 10){
+		secs = '0' + secs;
+	}
+  return hrs + ':' + mins + ':' + secs;
+}
 
 function loadNames (onSuccess){
     let xhttp = new XMLHttpRequest();
