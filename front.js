@@ -74,6 +74,7 @@ function onload (fileNames) {
 
         let sprite = document.createElement("img");
         sprite.classList.add('sprite');
+        sprite.classList.add('zoom');
         sprite.src = spritePath;
         spriteDictionary[pokemon] = sprite;
 
