@@ -214,13 +214,13 @@ giveUpBtn.onclick = function(){
 	let delay = 0;
 	for(let key in spriteDictionary){
 		let thisDelay = delay;
-		delay += 15;
-		//setTimeout(function(){
+		delay += 8;
+		setTimeout(function(){
 			if (!(alreadyGuessedPokemon.includes(key))){
 				showSprite(key)
 				spriteDictionary[key].classList.add('kekec');
 			}
-		//}, thisDelay);
+		}, thisDelay);
 	
 	}
 };
