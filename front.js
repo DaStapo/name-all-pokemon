@@ -135,6 +135,9 @@ inputField.oninput = function () {
 		if(!activeTimer){
 			startTimer();
 		}
+		if(alreadyGuessedPokemon.length === pokemonList.length){
+			clearInterval(activeTimer);
+		}
     }
 
 };
