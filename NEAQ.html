@@ -50,7 +50,7 @@
 	animation-name: zoomExample;
 	animation-duration:500ms;
 	}
-	.recentsprite{
+	.recentsprite {
 	margin: -40px -10px -10px;
 	}
 	.column {
@@ -65,6 +65,12 @@
 	.quarter {
 	width: 25%;
 	}
+	.decent {
+	width: 235px;
+	}
+	.wider {
+	width: 380px;
+	}
 	.full {
 	width: 100%;
 	}
@@ -77,32 +83,37 @@
 	.bottommargin {
 	margin-bottom: 20px;
 	}
+	@media only screen and (max-width: 768px) {
+	.quarter, .sixth, .eighth {
+    width: 100%;
+	}
+}
   </style>
 </head>
 <body>
 <div class="centeredbox">
 <div class="row">
-<div class="column sixth">
+<div class="column decent">
 <div class="box padded">
 <input type="text" id="pokemon" maxlength="11" autocomplete="off">
 </div>
 </div>
-<div class="column sixth">
+<div class="column decent">
 <div class="box padded">
 Most recent input: <img id="recentsprite" class="recentsprite" src="">
 </div>
 </div>
-<div class="column quarter">
+<div class="column decent">
 <div class="box padded">
-<b><div id="counter">0</div></b>/<div id="total">0</div> Pokémon named
+<b><div id="counter">0</div></b>/<div id="total">0</div> Pokémon&nbsp;named
 </div>
 </div>
-<div class="column sixth">
+<div class="column decent">
 <div class="box padded">
 Timer: <div id="timer">00:00:00</div>
 </div>
 </div>
-<div class="column quarter">
+<div class="column wider">
 <div class="box padded">
 	<form>
 	<input type="radio" id="pokeball" name="gamemode" value="pokeball" checked="checked">
