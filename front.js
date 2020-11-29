@@ -209,6 +209,23 @@ function msToTime(s) {
   return hrs + ':' + mins + ':' + secs;
 }
 
+giveUpBtn = document.getElementById("surrender");
+giveUpBtn.onclick = function(){
+	let delay = 0;
+	for(let key in spriteDictionary){
+		let thisDelay = delay;
+		delay += 15;
+		//setTimeout(function(){
+			if (!(alreadyGuessedPokemon.includes(key))){
+				showSprite(key)
+				spriteDictionary[key].classList.add('kekec');
+			}
+		//}, thisDelay);
+	
+	}
+};
+
+
 function loadNames (onSuccess){
     let xhttp = new XMLHttpRequest();
     xhttp.open("GET", '/names', true);
