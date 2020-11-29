@@ -37,6 +37,7 @@
 	}
 	.padded {
 	padding-left: 20px;
+	padding-right: 20px;
 	}
 	.centeredbox {
 	margin: 0 auto;
@@ -45,6 +46,9 @@
 	}
 	.sprite {
 	margin: -36px -22px -10px;
+	}
+	.revealed {
+	filter: drop-shadow(-1px -2px 0 #D00);
 	}
 	.zoom {
 	animation-name: zoomExample;
@@ -66,13 +70,13 @@
 	width: 25%;
 	}
 	.smol {
-	width: 170px;
+	width: 175px;
 	}
 	.decent {
 	width: 235px;
 	}
 	.wider {
-	width: 350px;
+	min-width: 250px;
 	}
 	.full {
 	width: 100%;
@@ -103,7 +107,7 @@
 	font-family: "Roboto";
     font-size: 16px;
 	}
-	.button:hover {background-color: #F00;}
+	.button:hover {background-color: #D00;}
 	@media only screen and (max-width: 768px) {
 	.quarter, .sixth, .eighth {
     width: 100%;
@@ -166,6 +170,48 @@ Timer: <b><div id="timer">00:00:00</div></b>
 <div class="row">
 <div class="column wider">
 <div class="box padded">
+	<form>Generation:
+	<label for="all">
+	<input type="radio" id="all" name="gamevariant" value="all" checked="checked">
+	All
+	</label>
+	<label for="gen1">
+	<input type="radio" id="gen1" name="gamevariant" value="gen1">
+	I
+	</label>
+	<label for="gen2">
+	<input type="radio" id="gen2" name="gamevariant" value="gen2">
+	II
+	</label>
+	<label for="gen3">
+	<input type="radio" id="gen3" name="gamevariant" value="gen3">
+	III
+	</label>
+	<label for="gen4">
+	<input type="radio" id="gen4" name="gamevariant" value="gen4">
+	IV
+	</label>
+	<label for="gen5">
+	<input type="radio" id="gen5" name="gamevariant" value="gen5">
+	V
+	</label>
+	<label for="gen6">
+	<input type="radio" id="gen6" name="gamevariant" value="gen6">
+	VI
+	</label>
+	<label for="gen7">
+	<input type="radio" id="gen7" name="gamevariant" value="gen7">
+	VII
+	</label>
+	<label for="gen8">
+	<input type="radio" id="gen8" name="gamevariant" value="gen8">
+	VIII
+	</label>
+	</form>
+</div>
+</div>
+<div class="column wider">
+<div class="box padded">
 	<form>
 	<label for="pokeball">
 	<input type="radio" id="pokeball" name="gamemode" value="pokeball" checked="checked">
@@ -188,8 +234,6 @@ Timer: <b><div id="timer">00:00:00</div></b>
 </div>
 </div>
 </div>
-
-
 </div>
 <script src="front.js"></script>
 </body>
