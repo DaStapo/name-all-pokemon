@@ -38,12 +38,20 @@
 	}
     .box {
 	border: 5px white;
-	border-radius: 5px;
 	margin: 10px;
-	padding: 10px 10px 10px 10px;
+	padding: 11px 10px 10px 10px;
 	background: rgba(255, 255, 255, 0.85);
 	min-height: 30px;
 	line-height: 30px;
+	}
+	.rounded {
+	border-radius: 20px;
+	}
+	.roundedb {
+	border-radius: 4px 20px;
+	}
+	.roundedc {
+	border-radius: 4px;
 	}
 	.lime {
 	background: #8CC63F;
@@ -75,7 +83,7 @@
 	margin-right: -5px;
 	box-sizing: border-box;
 	border: 2px solid #444;
-	border-radius: 4px;
+	border-radius: 4px 10px 4px 4px;
 	font-family: "Roboto";
     font-size: 16px;
 	color: #333;
@@ -151,7 +159,6 @@
 	margin: 10px;
 	cursor: pointer;
 	width: 100px;
-	border-radius: 5px;
 	min-height: 30px;
 	line-height: 30px;
 	font-family: "Roboto";
@@ -217,22 +224,22 @@
 <div class="centeredbox">
 <div class="row header" id="header">
 <div class="column">
-<div class="box padded lime">
+<div class="box roundedb padded lime">
 Name all Pokémon: <input type="text" id="pokemon" maxlength="12" autocomplete="off">
 </div>
 </div>
 <div class="column wider">
-<div class="box padded-left lime">
+<div class="box roundedb padded-left lime">
 Most recent input: <img id="recentsprite" class="recentsprite" src="">
 </div>
 </div>
 <div class="column">
-<div class="box padded lime">
+<div class="box roundedb padded lime">
 <b><div id="counter" class="highlight">0</div></b>/<div id="total">0</div>
 </div>
 </div>
 <div class="column smol">
-<div class="box padded lime">
+<div class="box roundedb padded lime">
 Timer: <div class="highlight" id="timer">00:00:00</div>
 </div>
 </div>
@@ -240,34 +247,34 @@ Timer: <div class="highlight" id="timer">00:00:00</div>
 
 <div class="row">
 <div class="column quarter">
-<div id="pokemon-box-1" class="box bottommargin">
+<div id="pokemon-box-1" class="box rounded bottommargin">
 </div>
-<div id="pokemon-box-2" class="box">
-</div>
-</div>
-<div class="column quarter">
-<div id="pokemon-box-3" class="box bottommargin">
-</div>
-<div id="pokemon-box-4" class="box">
+<div id="pokemon-box-2" class="box rounded">
 </div>
 </div>
 <div class="column quarter">
-<div id="pokemon-box-5" class="box bottommargin">
+<div id="pokemon-box-3" class="box rounded bottommargin">
 </div>
-<div id="pokemon-box-6" class="box">
+<div id="pokemon-box-4" class="box rounded">
 </div>
 </div>
 <div class="column quarter">
-<div id="pokemon-box-7" class="box bottommargin">
+<div id="pokemon-box-5" class="box rounded bottommargin">
 </div>
-<div id="pokemon-box-8" class="box">
+<div id="pokemon-box-6" class="box rounded">
+</div>
+</div>
+<div class="column quarter">
+<div id="pokemon-box-7" class="box rounded bottommargin">
+</div>
+<div id="pokemon-box-8" class="box rounded">
 </div>
 </div>
 </div>
 
 <div class="row">
 <div class="column wider">
-<div class="box padded">
+<div class="box roundedc padded">
 	<form>Generation:
 	<div class="radio-item">
 	<input type="radio" id="all" name="gamevariant" value="all" checked="checked">
@@ -327,7 +334,7 @@ Timer: <div class="highlight" id="timer">00:00:00</div>
 </div>
 </div>
 <div class="column">
-<div class="box padded">
+<div class="box roundedc padded">
 	<form>
 	<div class="radio-item hidden">
 	<input type="radio" id="pokeball" name="gamemode" value="pokeball" checked="checked">
@@ -345,10 +352,10 @@ Timer: <div class="highlight" id="timer">00:00:00</div>
 </div>
 </div>
 <div>
-	<button id="surrender" class="button"><b>Give up</b></button>
+	<button id="surrender" class="button roundedc"><b>Give up</b></button>
 </div>
 <div class="column full">
-<div class="box padded dark">
+<div class="box roundedc padded dark">
 <p>Project by <a href="https://twitter.com/maniacCharon">Charon</a>, with functionality/Javascript by <a href="https://twitter.com/Stapoh">Stapo</a></p>
 <p>Resource for sprites <a href="https://msikma.github.io/pokesprite/overview/dex-gen8.html">Pokésprite Database project</a>. The sprite images belong to © Nintendo/Creatures Inc./GAME FREAK Inc.
 </div>
