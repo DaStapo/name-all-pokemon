@@ -212,6 +212,7 @@ function msToTime(s) {
 giveUpBtn = document.getElementById("surrender");
 giveUpBtn.onclick = function(){
 	document.getElementById("pokemon").disabled = true;
+	clearInterval(activeTimer);
 	let delay = 0;
 	for(let key in spriteDictionary){
 		let thisDelay = delay;
