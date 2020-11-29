@@ -28,6 +28,11 @@
 	margin-block-start: 0em;
     margin-block-end: 0em;
 	}
+	a {
+	text-decoration: none;
+	color: #8CC63F;
+	font-weight: bold;
+	}
 	#counter,#total,#timer{
 		display:inline;
 	}
@@ -136,7 +141,42 @@
 	font-family: "Roboto";
     font-size: 16px;
 	}
-	.button:hover {background-color: #D00;}
+	.button:hover {
+	background-color: #D00;
+	}
+	.radio-item {
+	display: inline-block;
+	position: relative;
+	}
+	.radio-item input[type='radio'] {
+	display: none;
+	}
+	.radio-item label:before {
+	content: " ";
+	display: inline-block;
+	position: relative;
+	top: 3px;
+	margin-right: 0px;
+	margin-left: 4px;
+	width: 14px;
+	height: 14px;
+	border-radius: 5px;
+	border: 2px solid #8CC63F;
+	background-color: transparent;
+	cursor: pointer;
+	}
+	.radio-item input[type=radio]:checked + label:after {
+	border-radius: 3px;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 9px;
+	left: 8px;
+	content: " ";
+	display: block;
+	background: #8CC63F;
+	cursor: pointer;
+	}
 	@media only screen and (max-width: 768px) {
 	.quarter, .sixth, .eighth {
     width: 100%;
@@ -210,56 +250,78 @@ Timer: <b><div id="timer">00:00:00</div></b>
 <div class="column wider">
 <div class="box padded">
 	<form>Generation:
-	<label for="all">
+	<div class="radio-item">
 	<input type="radio" id="all" name="gamevariant" value="all" checked="checked">
+	<label for="all">
 	All
 	</label>
-	<label for="gen1">
+	</div>
+	<div class="radio-item">
 	<input type="radio" id="gen1" name="gamevariant" value="gen1">
+	<label for="gen1">
 	I
 	</label>
-	<label for="gen2">
+	</div>
+	<div class="radio-item">
 	<input type="radio" id="gen2" name="gamevariant" value="gen2">
+	<label for="gen2">
 	II
 	</label>
-	<label for="gen3">
+	</div>
+	<div class="radio-item">
 	<input type="radio" id="gen3" name="gamevariant" value="gen3">
+	<label for="gen3">
 	III
 	</label>
-	<label for="gen4">
+	</div>
+	<div class="radio-item">
 	<input type="radio" id="gen4" name="gamevariant" value="gen4">
+	<label for="gen4">
 	IV
 	</label>
-	<label for="gen5">
+	</div>
+	<div class="radio-item">
 	<input type="radio" id="gen5" name="gamevariant" value="gen5">
+	<label for="gen5">
 	V
 	</label>
-	<label for="gen6">
+	</div>
+	<div class="radio-item">
 	<input type="radio" id="gen6" name="gamevariant" value="gen6">
+	<label for="gen6">
 	VI
 	</label>
-	<label for="gen7">
+	</div>
+	<div class="radio-item">
 	<input type="radio" id="gen7" name="gamevariant" value="gen7">
+	<label for="gen7">
 	VII
 	</label>
-	<label for="gen8">
+	</div>
+	<div class="radio-item">
 	<input type="radio" id="gen8" name="gamevariant" value="gen8">
+	<label for="gen8">
 	VIII
 	</label>
+	</div>
 	</form>
 </div>
 </div>
 <div class="column wider">
 <div class="box padded">
 	<form>
-	<label for="pokeball">
+	<div class="radio-item">
 	<input type="radio" id="pokeball" name="gamemode" value="pokeball" checked="checked">
+	<label for="pokeball">
 	No silhouettes
 	</label>
-	<label for="silhouette">
+	</div>
+	<div class="radio-item">
 	<input type="radio" id="silhouette" name="gamemode" value="silhouette">
+	<label for="silhouette">
 	Silhouettes
 	</label>
+	</div>
 	</form>
 </div>
 </div>
@@ -268,7 +330,7 @@ Timer: <b><div id="timer">00:00:00</div></b>
 </div>
 <div class="column full">
 <div class="box padded">
-<p>Project by <a href="https://twitter.com/maniacCharon">Charon</a> with functionality/javascript-stuff by <a href="https://twitter.com/Stapoh">Stapo</a></p>
+<p>Project by <a href="https://twitter.com/maniacCharon">Charon</a>, with functionality/Javascript by <a href="https://twitter.com/Stapoh">Stapo</a></p>
 <p>Resource for sprites <a href="https://msikma.github.io/pokesprite/overview/dex-gen8.html">Pokésprite Database project</a>. The sprite images belong to © Nintendo/Creatures Inc./GAME FREAK Inc.
 </div>
 </div>
