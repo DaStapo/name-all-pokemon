@@ -229,6 +229,9 @@ inputField.oninput = function () {
 function play_single_sound() {
 	document.getElementById('soundeffect').play();
 }
+
+let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
+
 function tryGuessPokemon(input){
     if(currentPokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)){
 
@@ -245,7 +248,7 @@ function tryGuessPokemon(input){
             clearInterval(activeTimer);
             showCongrats();
         }
-		play_single_sound();
+		soundEffect.play();
     }
 }
 
