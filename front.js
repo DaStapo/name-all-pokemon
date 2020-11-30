@@ -181,8 +181,6 @@ let radioSilhouette = document.getElementById("silhouette");
 radioPokeball.onclick = usePokeball;
 radioSilhouette.onclick = useSilhouettes;
 
-usePokeball();
-
 let counterText = document.getElementById("counter");
 let totalText = document.getElementById("total");
 totalText.innerHTML = pokemonList.length;
@@ -197,9 +195,13 @@ function startTimer(){
 
     activeTimer = setInterval(function(){
         let msDiff = Date.now()-startTimestamp;
-        timerText.innerHTML = msToTime(msDiff);
+        updateTimer(msDiff);
     }, 100)
 
+}
+
+function updateTimer(msDiff){
+	timerText.innerHTML = msToTime(msDiff);
 }
 
 function msToTime(s) {
@@ -271,7 +273,7 @@ function onLoadingComplete(){
 	document.getElementById("silhouettebutton").style.opacity = "1";
 	document.getElementById("surrender").style.opacity = "1";
 	document.getElementById("surrender").disabled = false;
-	document.getElementById("loadbutton").style.display = "none";
+	document.getElementById("resetButton").disabled = false;
 }
 
 
@@ -283,4 +285,20 @@ function onSpriteLoad(){
 	}
 }
 
+function resetQuiz(){
+	alreadyGuessedPokemon = [];
+	clearInterval(activeTimer);
+	activeTimer = false;
+	usePokeball();
+	setCounter(0);
+	updateTimer(0);
+	document.getElementById("silhouette").checked = false;
+	for (let i = 0; i<pokemonList.length; i++){
+		hideSprite(pokemonList[i]);
+	 }
+}
 
+
+
+let resetBtn = document.getElementById("resetButton");
+resetBtn.onclick = resetQuiz;
