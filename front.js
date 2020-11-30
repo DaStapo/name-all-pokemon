@@ -240,7 +240,7 @@ function msToTime(s) {
 }
 
 giveUpBtn = document.getElementById("surrender");
-letRevealTimeouts = [];
+let revealTimeouts = [];
 giveUpBtn.onclick = function(){
     document.getElementById("pokemon").disabled = true;
     clearInterval(activeTimer);
@@ -258,6 +258,13 @@ giveUpBtn.onclick = function(){
 
     }
 };
+
+function stopReveal(){
+	for(let i = 0; i<revealTimeouts.length; i++){
+		clearInterval(revealTimeouts[i])
+	}
+	letRevealTimeouts = [];
+}
 
 let allGensEnabled = true;
 allGensButton.onclick = function (){
@@ -338,6 +345,7 @@ function resetQuiz(){
 	usePokeball();
 	setCounter(0);
 	updateTimer(0);
+	stopReveal();
 	document.getElementById("silhouette").checked = false;
 	for (let i = 0; i<pokemonList.length; i++){
 		hideSprite(pokemonList[i]);
