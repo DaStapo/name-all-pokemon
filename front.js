@@ -7,6 +7,7 @@ let genLastPokemon = ['Mew','Celebi','Deoxys','Arceus','Genesect','Volcanion','M
 let boxes = [];
 let currentPokemonList = [];
 let currentGen = 0; //0 means all
+let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
 
 for(let i = 0; i<=genLastPokemon.length; i++) {
 	if(i!== 0){
@@ -229,8 +230,6 @@ inputField.oninput = function () {
 function play_single_sound() {
 	document.getElementById('soundeffect').play();
 }
-
-let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
 
 function tryGuessPokemon(input){
     if(currentPokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)){
