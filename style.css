@@ -137,6 +137,12 @@
 	.quarter {
 	width: 25%;
 	}
+	.half {
+	width: 50%;
+	}
+	.two-thirds {
+	width: 66.6%;
+	}
 	.smol {
 	width: 175px;
 	}
