@@ -243,6 +243,9 @@ function tryGuessPokemon(input){
             clearInterval(activeTimer);
             showCongrats();
         }
+		function play_single_sound() {
+		document.getElementById('soundeffect').play();
+		}
     }
 }
 

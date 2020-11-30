@@ -8,6 +8,7 @@ let jsLocation = path.join(__dirname + '/front.js');
 let spritesFolder = path.join(__dirname + '/sprites');
 let silhouettesFolder = path.join(__dirname + '/silhouettes');
 let cssLocation = path.join(__dirname + '/style.css');
+let soundFolder = path.join(__dirname + '/sound-effects');
 app.get('/', function(req , res){
     res.sendFile(indexLocation);
 });
@@ -28,6 +29,8 @@ app.get('/front.js', function(req , res){
 app.get('/style.css', function(req , res){
     res.sendFile(cssLocation);
 });
+
+app.use('/sound-effects', express.static(soundFolder));
 
 app.use('/sprites', express.static(spritesFolder));
 app.use('/silhouettes', express.static(silhouettesFolder));
