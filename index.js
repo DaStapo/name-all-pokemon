@@ -3,7 +3,7 @@ let app = express();
 let path = require('path');
 let fs = require('fs');
 
-let indexLocation = path.join(__dirname + '/NEAQ.html');
+let indexLocation = path.join(__dirname + '/NameAllPokémonQuiz.html');
 let jsLocation = path.join(__dirname + '/front.js');
 let spritesFolder = path.join(__dirname + '/sprites');
 let silhouettesFolder = path.join(__dirname + '/silhouettes');
