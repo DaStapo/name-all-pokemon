@@ -11,6 +11,7 @@ for(let i = 1; i<=genLastPokemon.length; i++){
 			currentGen = i;
 		}
 		updateGenFilter();
+		resetQuiz();
 	}
 }
 let allGensButton = document.getElementById("all");
