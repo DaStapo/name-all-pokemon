@@ -253,7 +253,7 @@ loadNames(onload);
 function loading() {
   var elem = document.getElementById("loadbar");   
   var width = 1;
-  var id = setInterval(frame, 70);
+  var id = setInterval(frame, 200);
   function frame() {
     if (width >= 100) {
 	  document.getElementById("loadbox").style.display = "none";
