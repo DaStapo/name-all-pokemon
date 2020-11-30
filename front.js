@@ -223,7 +223,7 @@ function tryGuessPokemon(input){
 }
 
 function showCongrats(){
-	document.getElementById("congrats").style.display = "block";
+	document.getElementById("overlay").style.display = "block";
 	
 	let genText = ' ';
 	if(currentGen !== 0){
@@ -443,5 +443,5 @@ recentSprite.src = '/sprites/unknown.png'
 
 
 function off() {
-  document.getElementById("congrats").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
 }

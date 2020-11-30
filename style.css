@@ -185,6 +185,18 @@
 	.button:hover {
 	background-color: #D00;
 	}
+	.hovg {
+	background-color: #8CC63F;
+	}
+	.hovg:hover {
+	background-color: #444;
+	}
+	.hovr {
+	background-color: #8CC63F;
+	}
+	.hovr:hover {
+	background-color: #D00;
+	}
 	.button:focus {
 	outline: none;
 	}
@@ -252,7 +264,7 @@
 	.hidden {
 	display: none;
 	}
-	#congrats {
+	.overlay {
 	position: fixed;
 	display:none;
 	width: 100%;
@@ -265,7 +277,7 @@
 	z-index: 2;
 	cursor: pointer;
 	}
-	.overlay {
+	.prompt {
 	position: absolute;
 	top: 50%;
 	left: 50%;

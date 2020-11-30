@@ -188,8 +188,14 @@ Loading: <div class="bar">
 </div>
 </div>
 </div>
-<div id="congrats" onclick="off()">
-<div class="overlay bigbox lime"><h1 class="box roundedb whiteedge padded-tb">Well done!</h1><br /> You named every<div id="gen-name"></div>Pokémon in <div id="timer-score"></div>!<div id="trychallenge"><br /><p>Try naming them without silhouettes</p></div></div>
+<div id="overlay" class="overlay" onclick="off()">
+<div class="prompt bigbox lime"><h1 class="box roundedb whiteedge padded-tb">Well done!</h1><br /> You named every<div id="gen-name"></div>Pokémon in <div id="timer-score"></div>!<div id="trychallenge"><br /><p>Try naming them without silhouettes</p></div></div>
+</div>
+<div id="promptgen" class="overlay" style="display: block;">
+<div class="prompt">Switch generation?<br/><p>(switching mode resets the quiz)</p> <div class="button hovg roundedb">Switch</div> <div class="button hovg roundedb">Cancel</div></div>
+</div>
+<div id="promptsilhouette" class="overlay">
+<div class="prompt">Reveal silhouettes?<br/><p>(cannot hide once revealed)</p> <div class="button hovr roundedb">Reveal</div> <div class="button hovg roundedb">Cancel</div></div>
 </div>
 <script src="front.js"></script>
 </body>
