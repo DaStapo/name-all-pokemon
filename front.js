@@ -404,6 +404,7 @@ function resetQuiz(){
 	document.getElementById("silhouette").checked = false;
 	for (let i = 0; i<pokemonList.length; i++){
 		hideSprite(pokemonList[i]);
+		spriteDictionary[pokemonList[i]].classList.remove("revealed");
 	 }
 }
 
