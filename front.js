@@ -226,7 +226,9 @@ inputField.oninput = function () {
         tryGuessPokemon('nidoranm');
     }
 };
-
+function play_single_sound() {
+	document.getElementById('soundeffect').play();
+}
 function tryGuessPokemon(input){
     if(currentPokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)){
 
@@ -243,9 +245,7 @@ function tryGuessPokemon(input){
             clearInterval(activeTimer);
             showCongrats();
         }
-		function play_single_sound() {
-		document.getElementById('soundeffect').play();
-		}
+		play_single_sound();
     }
 }
 
