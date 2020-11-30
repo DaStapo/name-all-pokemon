@@ -75,19 +75,19 @@ function standardizeName(input){
     input = input.replace('.jpeg', '');
 
     //remove whitespaces
-    input = input.replaceAll(/\s/g,'');
+    input = input.replace(/\s/g,'');
 
     //remove dashes
-    input = input.replaceAll('-', '');
+    input = input.replace(/-/g, '');
 
     //put to lowercase
     input = input.toLowerCase();
 
     //flabebe
-    input = input.replaceAll('é', 'e');
+    input = input.replace(/é/g, 'e');
 
     //delete all special characters
-    input = input.replaceAll(/[^a-z0-9-_]/g, '');
+    input = input.replace(/[^a-z0-9-_]/g, '');
 
     return input;
 }
@@ -383,6 +383,7 @@ function updateGenFilter(){
             totalPokemonCount = pokemonList.length;
         }
 		for(let i = 0; i<pokecolumns.length;i++){
+			pokecolumns[i].classList.add('quarter');
 			pokecolumns[i].classList.add('quarter');
 			pokecolumns[i].classList.remove('half-fixed');
 		}
