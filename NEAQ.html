@@ -27,6 +27,10 @@
 	color: #333;
 	padding-top: 70px;
 	}
+	h1 {
+	font-size: 40px;
+	font-weight: bold;
+	}
 	p {
 	font-size: 0.8em;
 	margin-block-start: 0em;
@@ -47,6 +51,11 @@
 	background: rgba(255, 255, 255, 0.85);
 	min-height: 30px;
 	line-height: 30px;
+	}
+	.bigbox {
+	border: 20px;
+	padding: 50px;
+	border-radius: 10px 40px;
 	}
 	.rounded {
 	border-radius: 20px;
@@ -73,6 +82,11 @@
 	background: #D00;
 	color: #fff;
 	}
+	.whiteedge {
+	background-color: rgb(255,255,255,0.2);
+	margin-left: 30%;
+	margin-right: 30%;
+	}
 	.highlight {
 	font-weight: bold;
 	color: #333;
@@ -83,6 +97,10 @@
 	}
 	.padded-left {
 	padding-left: 20px;
+	}
+	.padded-tb {
+	padding-top: 40px;
+	padding-bottom: 40px;
 	}
 	.centeredbox {
 	margin: 0 auto;
@@ -241,6 +259,29 @@
 	}
 	.hidden {
 	display: none;
+	}
+	#congrats {
+	position: fixed;
+	display:none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.4);
+	z-index: 2;
+	cursor: pointer;
+	}
+	.overlay {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 30px;
+	text-align: center;
+	color: #fff;
+	transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
 	}
 	@media only screen and (max-width: 768px) {
 	.quarter, .sixth, .eighth {
@@ -411,6 +452,9 @@ Loading: <div class="bar">
 </div>
 </div>
 </div>
+</div>
+<div id="congrats" onclick="off()">
+<div class="overlay bigbox lime"><h1 class="box roundedb whiteedge padded-tb">Well done!</h1><br /> You named every (generation) Pokémon in (timer)!<div id="trychallenge"><br /><p>Try naming them without silhouettes</p></div></div>
 </div>
 <script src="front.js"></script>
 </body>
