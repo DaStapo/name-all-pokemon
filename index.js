@@ -7,7 +7,7 @@ let indexLocation = path.join(__dirname + '/NEAQ.html');
 let jsLocation = path.join(__dirname + '/front.js');
 let spritesFolder = path.join(__dirname + '/sprites');
 let silhouettesFolder = path.join(__dirname + '/silhouettes');
-
+let cssLocation = path.join(__dirname + '/style.css');
 app.get('/', function(req , res){
     res.sendFile(indexLocation);
 });
@@ -23,6 +23,10 @@ app.get('/names', function(req , res){
 
 app.get('/front.js', function(req , res){
     res.sendFile(jsLocation);
+});
+
+app.get('/style.css', function(req , res){
+    res.sendFile(cssLocation);
 });
 
 app.use('/sprites', express.static(spritesFolder));
