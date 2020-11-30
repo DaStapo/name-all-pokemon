@@ -385,6 +385,7 @@ function resetQuiz(){
 	updateTimer(0);
 	stopReveal();
 	onLoadingComplete();
+	recentSprite.src = '/sprites/unknown.png'
 	document.getElementById("silhouette").checked = false;
 	for (let i = 0; i<pokemonList.length; i++){
 		hideSprite(pokemonList[i]);
@@ -395,3 +396,5 @@ function resetQuiz(){
 
 let resetBtn = document.getElementById("resetButton");
 resetBtn.onclick = resetQuiz;
+
+resetQuiz();
