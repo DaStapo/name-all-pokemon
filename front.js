@@ -216,6 +216,7 @@ function tryGuessPokemon(input){
         }
         if(relevantList.length === currentPokemonList.length){
             clearInterval(activeTimer);
+			document.getElementById("congrats").style.display = "block";
         }
     }
 }
@@ -419,3 +420,7 @@ setCounter(0);
 updateTimer(0);
 recentSprite.src = '/sprites/unknown.png'
 
+
+function off() {
+  document.getElementById("congrats").style.display = "none";
+}
