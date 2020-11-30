@@ -8,6 +8,7 @@ let boxes = [];
 let currentPokemonList = [];
 let currentGen = 0; //0 means all
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
+let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
 
 for(let i = 0; i<=genLastPokemon.length; i++) {
 	if(i!== 0){
@@ -231,6 +232,10 @@ function play_single_sound() {
 	document.getElementById('soundeffect').play();
 }
 
+function play_single_sound2() {
+	document.getElementById('soundeffect2').play();
+}
+
 function tryGuessPokemon(input){
     if(currentPokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)){
 
@@ -253,6 +258,7 @@ function tryGuessPokemon(input){
 
 function showCongrats(){
     document.getElementById("overlay").style.display = "block";
+	soundEffect2.play();
 
     let genText = ' ';
     if(currentGen !== 0){

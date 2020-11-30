@@ -20,7 +20,9 @@
 	font-weight: bold;
 	}
 	h2 {
-	font-size: 28px;
+	font-size: 23px;
+	line-height: 50px;
+	font-weight: regular;
 	}
 	p {
 	font-size: 1em;
@@ -77,8 +79,9 @@
 	}
 	.whiteedge {
 	background-color: rgb(255,255,255,0.2);
-	margin-left: 30%;
-	margin-right: 30%;
+	margin-left: 5%;
+	margin-right: 5%;
+	border: 2px solid white;
 	}
 	.highlight {
 	font-weight: bold;
