@@ -245,17 +245,33 @@ giveUpBtn.onclick = function(){
     document.getElementById("pokemon").disabled = true;
     clearInterval(activeTimer);
     let delay = 0;
-    for(let key in spriteDictionary){
-        let thisDelay = delay;
-        delay += 100;
-        let timeout = setTimeout(function(){
-            if (!(alreadyGuessedPokemon.includes(key))){
-                showSprite(key)
-                spriteDictionary[key].classList.add('revealed');
-            }
-        }, thisDelay);
-		revealTimeouts.push(timeout);
 
+	let enabledGensCount = 0;
+	if(allGensEnabled){
+		enabledGensCount = genFlags.length;
+	}else{
+		for (let i = 0 ; i <genFlags.length; i++){
+			if(genFlags[i]){
+				enabledGensCount++;
+			}
+		}
+	}
+	//otherwise the reveal is too slow for filtered gens
+	delayFactor = (enabledGensCount/genFlags.length);
+	
+    for(let key in spriteDictionary){
+		if (!(alreadyGuessedPokemon.includes(key))){
+			let thisDelay = delay;
+		
+			delay += 100*delayFactor;
+			let timeout = setTimeout(function(){
+				if (!(alreadyGuessedPokemon.includes(key))){
+					showSprite(key)
+					spriteDictionary[key].classList.add('revealed');
+				}
+			}, thisDelay);
+		revealTimeouts.push(timeout);
+		}
     }
 };
 
