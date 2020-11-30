@@ -61,6 +61,10 @@
 	background: #444;
 	color: #fff;
 	}
+	.red {
+	background: #D00;
+	color: #fff;
+	}
 	.highlight {
 	font-weight: bold;
 	color: #333;
@@ -158,7 +162,7 @@
 	display: inline-block;
 	margin: 10px;
 	cursor: pointer;
-	width: 100px;
+	min-width: 100px;
 	min-height: 30px;
 	line-height: 30px;
 	font-family: "Roboto";
@@ -166,6 +170,9 @@
 	}
 	.button:hover {
 	background-color: #D00;
+	}
+	.button:focus {
+	outline: none;
 	}
 	.radio-item {
 	display: inline-block;
@@ -180,6 +187,9 @@
 	}
 	.radio-item input[type='radio'] {
 	display: none;
+	}
+	.blocked {
+	opacity: 0.3;
 	}
 	.radio-item label:before {
 	content: " ";
@@ -207,6 +217,20 @@
 	background: #8CC63F;
 	cursor: pointer;
 	}
+	.bar {
+	background-color: #fff;
+	display: inline-block;
+	width: 122px;
+	margin-left: 5px;
+	margin-right: -5px;
+	border: 2px solid #444;
+	border-radius: 4px 4px 4px 4px;
+	}
+	.load {
+	background-color: #999;
+	height: 10px;
+	width: 1px;
+	}
 	.hidden {
 	display: none;
 	}
@@ -232,7 +256,7 @@
 <div class="row header" id="header">
 <div class="column">
 <div class="box roundedb padded lime">
-Name all Pokémon: <input type="text" id="pokemon" maxlength="12" autocomplete="off">
+Name all Pokémon: <input type="text" id="pokemon" maxlength="12" autocomplete="off" disabled="disabled">
 </div>
 </div>
 <div class="column wider">
@@ -249,6 +273,17 @@ Most recent input: <img id="recentsprite" class="recentsprite" src="">
 <div class="box roundedb padded lime">
 Timer: <div class="highlight" id="timer">00:00:00</div>
 </div>
+</div>
+<div class="column wider" id="loadbox">
+<div class="box roundedb padded red">
+Loading: <div class="bar">
+<div id="loadbar" class="load">
+</div>
+</div>
+</div>
+</div>
+<div class="column">
+<button id="loadbutton" class="button roundedc" onclick="loading()"><b>Load sprites</b></button>
 </div>
 </div>
 
@@ -349,8 +384,8 @@ Timer: <div class="highlight" id="timer">00:00:00</div>
 	No silhouettes
 	</label>
 	</div>
-	<div class="radio-item">
-	<input type="radio" id="silhouette" name="gamemode" value="silhouette">
+	<div class="radio-item blocked" id="silhouettebutton">
+	<input type="radio" id="silhouette" name="gamemode" value="silhouette" disabled="disabled">
 	<label for="silhouette">
 	Reveal Silhouettes
 	</label>
@@ -359,7 +394,7 @@ Timer: <div class="highlight" id="timer">00:00:00</div>
 </div>
 </div>
 <div>
-	<button id="surrender" class="button roundedc"><b>Give up</b></button>
+	<button id="surrender" class="button roundedc blocked" disabled="disabled"><b>Give up</b></button>
 </div>
 <div class="column full">
 <div class="box roundedc padded dark">

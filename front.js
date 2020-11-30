@@ -249,3 +249,24 @@ function loadNames (onSuccess){
 }
 loadNames(onload);
 
+
+function loading() {
+  var elem = document.getElementById("loadbar");   
+  var width = 1;
+  var id = setInterval(frame, 70);
+  function frame() {
+    if (width >= 100) {
+	  document.getElementById("loadbox").style.display = "none";
+	  document.getElementById("pokemon").disabled = false;
+	  document.getElementById("silhouette").disabled = false;
+	  document.getElementById("silhouettebutton").style.opacity = "1";
+	  document.getElementById("surrender").style.opacity = "1";
+	  document.getElementById("surrender").disabled = false;
+	  document.getElementById("loadbutton").style.display = "none";
+      clearInterval(id);
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+    }
+  }
+}
