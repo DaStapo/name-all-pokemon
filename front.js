@@ -384,7 +384,7 @@ function resetQuiz(){
 	setCounter(0);
 	updateTimer(0);
 	stopReveal();
-	onLoadingComplete();
+	document.getElementById("pokemon").disabled = false;
 	recentSprite.src = '/sprites/unknown.png'
 	document.getElementById("silhouette").checked = false;
 	for (let i = 0; i<pokemonList.length; i++){
