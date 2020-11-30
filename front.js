@@ -217,12 +217,31 @@ function tryGuessPokemon(input){
         }
         if(relevantList.length === currentPokemonList.length){
             clearInterval(activeTimer);
-			document.getElementById("congrats").style.display = "block";
+			showCongrats();
         }
     }
 }
 
+function showCongrats(){
+	document.getElementById("congrats").style.display = "block";
+	
+	let genText = ' ';
+	if(currentGen !== 0){
+		genText = ' generation ' + currentGen + ' ';
+	}
+	document.getElementById("gen-name").innerHTML = genText
+	document.getElementById("timer-score").innerHTML = timerText.innerHTML;
+	if(silhouettesFlag){
+		document.getElementById("trychallenge").style.display = "block";
+	}else{
+		document.getElementById("trychallenge").style.display = "none";
+	}
+}
+
+let silhouettesFlag = false;
+
 function useSilhouettes (){
+	silhouettesFlag = true;
     for (let i = 0; i<silhouetteArray.length; i++){
         silhouetteArray[i].style.display = "inline";
         pokeballArray[i].style.display = "none";
@@ -230,6 +249,7 @@ function useSilhouettes (){
 }
 
 function usePokeball (){
+	silhouettesFlag = false;
     for (let i = 0; i<silhouetteArray.length; i++){
         silhouetteArray[i].style.display = "none";
         pokeballArray[i].style.display = "inline";

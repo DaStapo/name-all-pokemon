@@ -41,7 +41,7 @@
 	color: #8CC63F;
 	font-weight: bold;
 	}
-	#counter,#total,#timer{
+	#counter,#total,#timer,#gen-name,#timer-score{
 		display:inline;
 	}
     .box {
@@ -652,7 +652,7 @@ Loading: <div class="bar">
 </div>
 </div>
 <div id="congrats" onclick="off()">
-<div class="overlay bigbox lime"><h1 class="box roundedb whiteedge padded-tb">Well done!</h1><br /> You named every (generation) Pokémon in (timer)!<div id="trychallenge"><br /><p>Try naming them without silhouettes</p></div></div>
+<div class="overlay bigbox lime"><h1 class="box roundedb whiteedge padded-tb">Well done!</h1><br /> You named every<div id="gen-name"></div>Pokémon in <div id="timer-score"></div>!<div id="trychallenge"><br /><p>Try naming them without silhouettes</p></div></div>
 </div>
 <script src="front.js"></script>
 </body>
