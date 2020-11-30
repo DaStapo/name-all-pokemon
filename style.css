@@ -19,15 +19,20 @@
 	font-size: 40px;
 	font-weight: bold;
 	}
+	h2 {
+	font-size: 28px;
+	}
 	p {
-	font-size: 0.8em;
+	font-size: 1em;
 	margin-block-start: 0em;
     margin-block-end: 0em;
+	}
+	pp {
+	font-size: 0.7em;
 	}
 	a {
 	text-decoration: none;
 	color: #8CC63F;
-	font-weight: bold;
 	}
 	#counter,#total,#timer,#gen-name,#timer-score{
 		display:inline;
@@ -292,7 +297,6 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	font-size: 30px;
 	text-align: center;
 	color: #fff;
 	transform: translate(-50%,-50%);
