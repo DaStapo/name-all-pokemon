@@ -185,7 +185,7 @@
 	}
 	.footer {
 	bottom: 0px;
-	position: fixed;
+	position: relative;
 	width: 100%
 	}
 	.button {

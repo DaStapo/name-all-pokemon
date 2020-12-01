@@ -523,19 +523,19 @@ function off() {
 
 let main = document.getElementById("main");
 let footer = document.getElementById("footer");
-let entirePage = document.documentElement;
+let entirePage = window.innerHeight;
 
 function changeFooterPosition(){
 	console.log();
 	console.log('main height: ' + main.scrollHeight);
-	console.log('page-footer height: ' + (entirePage.scrollHeight - footer.scrollHeight));
+	console.log('page-footer height: ' + (entirePage - footer.scrollHeight));
 	
-	if(main.scrollHeight < entirePage.scrollHeight - footer.scrollHeight){
+	if(main.scrollHeight < entirePage - footer.scrollHeight){
 		console.log('main is smaller');
-		footer.style.position = 'relative';
+		footer.style.position = 'fixed';
 	}else{
 		console.log('main is bigger');
-		footer.style.position = 'fixed';
+		footer.style.position = 'relative';
 	}
 }
 
