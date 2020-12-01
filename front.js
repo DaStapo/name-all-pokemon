@@ -368,6 +368,7 @@ giveUpBtn.onclick = function(){
 			delay = delay + 100;
 			let timeout = setTimeout(function(){
                   spriteDictionary[pokemon].classList.add('revealed');
+                  spriteDictionary[pokemon].classList.remove('zoom');
 				  showSprite(pokemon);
             }, delay);
             revealTimeouts.push(timeout);
@@ -486,7 +487,9 @@ function resetQuiz(){
     document.getElementById("silhouette").checked = false;
     for (let i = 0; i<pokemonList.length; i++){
         hideSprite(pokemonList[i]);
+		spriteDictionary[pokemonList[i]].classList.add("zoom");
         spriteDictionary[pokemonList[i]].classList.remove("revealed");
+        
     }
 	changeFooterPosition();
 }

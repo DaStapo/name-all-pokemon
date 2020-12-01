@@ -2,6 +2,11 @@
 		from {transform: scale(7,7);}
 		to {transform:scale(1,1);}
 	}
+	
+	 @keyframes revealZoom {
+		from {transform: scale(2,2);}
+		to {transform:scale(1,1);}
+	}
   
 	html {
 	min-height: 100%;
@@ -137,12 +142,15 @@
 	margin: -24px -15px -3px;
 	}
 	.revealed {
-	opacity: 0.4;
+		opacity: 0.4;
+		animation-name: revealZoom;
+		animation-duration:750ms;
 	}
 	.zoom {
 	animation-name: zoomExample;
 	animation-duration:1500ms;
 	}
+
 	.recentsprite {
 	margin: -40px -10px -10px -5px;
 	}
