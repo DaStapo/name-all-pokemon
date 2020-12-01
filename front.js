@@ -520,3 +520,28 @@ recentSprite.src = '/sprites/unknown.png'
 function off() {
     document.getElementById("overlay").style.display = "none";
 }
+
+let main = document.getElementById("main");
+let footer = document.getElementById("footer");
+let entirePage = document.documentElement;
+
+function changeFooterPosition(){
+	console.log();
+	console.log('main height: ' + main.scrollHeight);
+	console.log('page-footer height: ' + (entirePage.scrollHeight - footer.scrollHeight));
+	
+	if(main.scrollHeight < entirePage.scrollHeight - footer.scrollHeight){
+		console.log('main is smaller');
+		footer.style.position = 'relative';
+	}else{
+		console.log('main is bigger');
+		footer.style.position = 'fixed';
+	}
+}
+
+window.addEventListener('resize', function () {
+	changeFooterPosition();
+}, false);
+window.addEventListener('orientationchange', function () {
+	changeFooterPosition();
+}, false);
