@@ -538,8 +538,8 @@ usePokeball();
 setCounter(0);
 updateTimer(0);
 recentSprite.src = '/sprites/unknown.png'
+//This accounts for all unknown.png's on the page
+recentSprite.addEventListener("load", function () {
+	changeFooterPosition();
+}, false)
 updateGenFilter();
-
-
-//initial call
-changeFooterPosition();
