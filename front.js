@@ -365,7 +365,7 @@ giveUpBtn.onclick = function(){
 		let pokemon = currentPokemonList[i];
 		if (!(alreadyGuessedPokemon.includes(pokemon))){
 			console.log(pokemon);
-			delay = delay + 100;
+			delay = delay + 35;
 			let timeout = setTimeout(function(){
                   spriteDictionary[pokemon].classList.add('revealed');
                   spriteDictionary[pokemon].classList.remove('zoom');
