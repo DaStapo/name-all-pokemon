@@ -418,7 +418,7 @@ function updateGenFilter(){
     updateCurrentPokemonList();
     setTotal(totalPokemonCount);
     setCounter(getAlreadyGuessedAndRelevantPokemon().length);
-
+	changeFooterPosition();
 
 }
 updateGenFilter();
@@ -484,6 +484,7 @@ function resetQuiz(){
         hideSprite(pokemonList[i]);
         spriteDictionary[pokemonList[i]].classList.remove("revealed");
     }
+	changeFooterPosition();
 }
 
 
@@ -523,18 +524,14 @@ function off() {
 
 let main = document.getElementById("main");
 let footer = document.getElementById("footer");
-let entirePage = window.innerHeight;
 
 function changeFooterPosition(){
-	console.log();
-	console.log('main height: ' + main.scrollHeight);
-	console.log('page-footer height: ' + (entirePage - footer.scrollHeight));
+
+	if(main.scrollHeight < window.innerHeight - footer.scrollHeight){
 	
-	if(main.scrollHeight < entirePage - footer.scrollHeight){
-		console.log('main is smaller');
 		footer.style.position = 'fixed';
 	}else{
-		console.log('main is bigger');
+
 		footer.style.position = 'relative';
 	}
 }
