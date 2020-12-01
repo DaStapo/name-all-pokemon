@@ -83,7 +83,51 @@ Loading: <div class="bar">
 
 <div class="footer" id="footer">
 <div class="row">
+<div class="column">
+	<button id="surrender" class="button roundedc blocked" disabled="disabled">Give up</button>
+</div>
+	<div class="column">
+	<button id="resetButton" class="button roundedc blocked" disabled="disabled" style="margin-left: 5px;">Reset</button>
+</div>
+<div class="column hidden">
+	<button id="pokeball" class="button roundedc blocked" style="margin-left: 5px;">No Shadows</button>
+</div>
+<div class="column">
+	<button id="silhouette" class="button roundedc blocked" disabled="disabled" style="margin-left: 5px;">Shadows</button>
+</div>
+</div>
+<div class="row">
 <div class="column wider">
+<div class="column">
+<div class="box roundedc padded">
+	<form>Timer ends:
+	<div class="radio-item first">
+	<input type="radio" id="timer0"  value="timer0" checked="checked">
+	<label for="timer0">
+	when all named
+	</label>
+	</div>
+	<div class="radio-item">
+	<input type="radio" id="timer1"  value="timer1">
+	<label for="timer1">
+	1 hour
+	</label>
+	</div>
+	<div class="radio-item">
+	<input type="radio" id="timer2" value="timer2">
+	<label for="timer2">
+	30 min
+	</label>
+	</div>
+	<div class="radio-item">
+	<input type="radio" id="timer3"  value="timer3">
+	<label for="timer3">
+	10 min
+	</label>
+	</div>
+	</form>
+</div>
+</div>
 <div class="column">
 <div class="box roundedc padded">
 	<form>Generation:
@@ -144,31 +188,10 @@ Loading: <div class="bar">
 	</form>
 </div>
 </div>
-<div class="column">
-<div class="box roundedc padded">
-	<form>
-	<div class="radio-item hidden">
-	<input type="radio" id="pokeball" name="gamemode" value="pokeball" checked="checked">
-	<label for="pokeball">
-	No silhouettes
-	</label>
-	</div>
-	<div class="radio-item blocked" id="silhouettebutton">
-	<input type="radio" id="silhouette" name="gamemode" value="silhouette" disabled="disabled">
-	<label for="silhouette">
-	Reveal Silhouettes
-	</label>
-	</div>
-	</form>
-</div>
-</div>
-<div class="column">
-	<button id="surrender" class="button roundedc blocked" disabled="disabled">Give up</button>
-	<button id="resetButton" class="button roundedc blocked" disabled="disabled" style="margin-left: 5px;">Reset</button>
-</div>
+
 </div>
 <div class="column centeredbox full">
-<div class="box roundedc padded dark">
+<div class="box roundedd padded dark">
 <div class="right">
 <!-- Sharingbutton Facebook -->
 <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=name-all-pokemon.herokuapp.com" target="_blank" rel="noopener" aria-label="">
@@ -208,7 +231,7 @@ Loading: <div class="bar">
 <div class="prompt"><h2>Switch Generation?</h2><p>Quiz and timer will reset</p><br /><div id="gen-yes" class="button hovg roundedb">Switch</div> <div id="gen-no" class="button hovg roundedb">Cancel</div></div>
 </div>
 <div id="promptsilhouette" class="overlay">
-<div class="prompt"><h2>Reveal silhouettes?</h2><div id="sil-yes" class="button hovr roundedb">Reveal</div> <div id="sil-no" class="button hovg roundedb">Cancel</div></div>
+<div class="prompt"><h2>Reveal shadows?</h2><div id="sil-yes" class="button hovr roundedb">Reveal</div> <div id="sil-no" class="button hovg roundedb">Cancel</div></div>
 </div>
 <div class="overlay" id="loadbox" style="display: block; cursor:progress;">
 <div class="prompt">

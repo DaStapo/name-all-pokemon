@@ -8,6 +8,7 @@ let boxes = [];
 let currentPokemonList = [];
 let currentGen = 0; //0 means all
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
+	soundEffect.volume = 0.5;
 let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
 	soundEffect2.volume = 0.3;
 
@@ -456,7 +457,7 @@ function onLoadingComplete(){
     document.getElementById("loadbox").style.display = "none";
     document.getElementById("pokemon").disabled = false;
     document.getElementById("silhouette").disabled = false;
-    document.getElementById("silhouettebutton").style.opacity = "1";
+    document.getElementById("silhouette").style.opacity = "1";
     document.getElementById("surrender").style.opacity = "1";
     document.getElementById("resetButton").style.opacity = "1";
     document.getElementById("surrender").disabled = false;
