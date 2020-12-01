@@ -9,6 +9,7 @@ let spritesFolder = path.join(__dirname + '/sprites');
 let silhouettesFolder = path.join(__dirname + '/silhouettes');
 let cssLocation = path.join(__dirname + '/style.css');
 let soundFolder = path.join(__dirname + '/sound-effects');
+let imageFolder = path.join(__dirname + '/images');
 app.get('/', function(req , res){
     res.sendFile(indexLocation);
 });
@@ -31,6 +32,7 @@ app.get('/style.css', function(req , res){
 });
 
 app.use('/sound-effects', express.static(soundFolder));
+app.use('/images', express.static(imageFolder));
 
 app.use('/sprites', express.static(spritesFolder));
 app.use('/silhouettes', express.static(silhouettesFolder));
