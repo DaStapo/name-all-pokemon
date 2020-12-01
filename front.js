@@ -56,6 +56,7 @@ let unguessedDictionary = {};
 
 let silhouetteArray = [];
 let pokeballArray = [];
+let allSpirtes = [];
 
 let loadedSpritesCount = 0;
 let totalSpritesCount = 0;
@@ -169,7 +170,8 @@ function onNamesLoad (fileNames) {
         }, false);
         totalSpritesCount++;
         spriteDictionary[pokemon] = sprite;
-
+		allSpirtes.push(sprite);
+		
         let silhouette = document.createElement("img");
         silhouette.classList.add('sprite');
         silhouette.src = silhouettePath;
@@ -181,6 +183,7 @@ function onNamesLoad (fileNames) {
         totalSpritesCount++;
 
         silhouetteDictionary[pokemon] = silhouette;
+		allSpirtes.push(silhouette);
 
     }
 
@@ -199,7 +202,9 @@ function onNamesLoad (fileNames) {
 
         pokeballArray.push(pokeballImg);
         silhouetteArray.push(silhouetteDictionary[pokemon]);
-
+		
+		allSpirtes.push(pokeballImg);
+		
         unguessed.appendChild(silhouetteDictionary[pokemon])
         unguessed.appendChild(pokeballImg)
         box.appendChild(spriteDictionary[pokemon]);
@@ -397,12 +402,10 @@ function updateGenFilter(){
 			pokecolumns[i].classList.add('quarter');
 			pokecolumns[i].classList.remove('fiveeighth');
 		}
-		let allSprites = document.getElementsByClassName('spritew');
-        for (let j = 0; j < allSprites.length; j++){
-			allSprites[j].classList.add('sprite');
-			allSprites[j].classList.remove('spritew');
-				
-        }
+		for(let i = 0; i<allSpirtes.length;i++){
+			allSpirtes[i].classList.add('sprite');
+			allSpirtes[i].classList.remove('spritew');
+		}
     }else{
         for(let i = 0; i<boxes.length; i++){
             if(i + 1 === currentGen){
@@ -416,14 +419,11 @@ function updateGenFilter(){
 				pokecolumns[i].classList.remove('quarter');
 				pokecolumns[i].classList.add('fiveeighth');
 			}
-			let allSprites = document.getElementsByClassName('sprite');
-            for (let j = 0; j < allSprites.length; j++){
-				allSprites[j].classList.add('spritew');
-				allSprites[j].classList.remove('sprite');
-				
-            }	
-			
         }
+		for(let i = 0; i<allSpirtes.length;i++){
+			allSpirtes[i].classList.add('spritew');
+			allSpirtes[i].classList.remove('sprite');
+		}
     }
     updateCurrentPokemonList();
     setTotal(totalPokemonCount);
