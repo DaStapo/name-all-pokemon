@@ -421,9 +421,6 @@ function updateGenFilter(){
 	changeFooterPosition();
 
 }
-updateGenFilter();
-
-
 
 
 function loadNames (onSuccess){
@@ -511,17 +508,6 @@ promptSilhNo.onclick = function (){
 
 }
 
-alreadyGuessedPokemon = [];
-usePokeball();
-setCounter(0);
-updateTimer(0);
-recentSprite.src = '/sprites/unknown.png'
-
-
-function off() {
-    document.getElementById("overlay").style.display = "none";
-}
-
 let main = document.getElementById("main");
 let footer = document.getElementById("footer");
 
@@ -542,6 +528,18 @@ window.addEventListener('resize', function () {
 window.addEventListener('orientationchange', function () {
 	changeFooterPosition();
 }, false);
+
+function off() {
+    document.getElementById("overlay").style.display = "none";
+}
+
+alreadyGuessedPokemon = [];
+usePokeball();
+setCounter(0);
+updateTimer(0);
+recentSprite.src = '/sprites/unknown.png'
+updateGenFilter();
+
 
 //initial call
 changeFooterPosition();
