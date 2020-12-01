@@ -513,7 +513,7 @@ let footer = document.getElementById("footer");
 
 function changeFooterPosition(){
 
-	if(main.scrollHeight < window.innerHeight - footer.scrollHeight){
+	if(main.scrollHeight < window.innerHeight - 69 - footer.scrollHeight){
 	
 		footer.style.position = 'fixed';
 	}else{
