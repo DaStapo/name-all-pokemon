@@ -385,7 +385,6 @@ for(let i = 0; i<4;i++){
 	pokecolumns.push(document.getElementById("pokecolumn"+(i+1)));
 }
 
-
 function updateGenFilter(){
 
     //all gens
@@ -396,8 +395,12 @@ function updateGenFilter(){
         }
 		for(let i = 0; i<pokecolumns.length;i++){
 			pokecolumns[i].classList.add('quarter');
-			pokecolumns[i].classList.add('quarter');
-			pokecolumns[i].classList.remove('half-fixed');
+			pokecolumns[i].classList.remove('fiveeighth');
+			let allSprites = document.getElementsByClassName('spritew');
+            for (let j = 0; j < allSprites.length; j++){
+				allSprites[j].classList.remove('spritew');
+				allSprites[j].classList.add('sprite');
+            }
 		}
     }else{
         for(let i = 0; i<boxes.length; i++){
@@ -410,7 +413,12 @@ function updateGenFilter(){
 			
 			for(let i = 0; i<pokecolumns.length;i++){
 				pokecolumns[i].classList.remove('quarter');
-				pokecolumns[i].classList.add('half-fixed');
+				pokecolumns[i].classList.add('fiveeighth');
+			let allSprites = document.getElementsByClassName('sprite');
+            for (let j = 0; j < allSprites.length; j++){
+				allSprites[j].classList.remove('sprite');
+				allSprites[j].classList.add('spritew');
+            }	
 			}
 			
         }

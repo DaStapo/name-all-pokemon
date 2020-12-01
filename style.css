@@ -127,6 +127,9 @@
 	.sprite {
 	margin: -36px -22px -10px;
 	}
+	.spritew {
+	margin: -24px -15px -3px;
+	}
 	.revealed {
 	opacity: 0.4;
 	}
@@ -155,8 +158,8 @@
 	.half-fixed {
 	width: 480px;	
 	}
-	.two-thirds {
-	width: 66.6%;
+	.fiveeighth {
+	width:54.2%
 	}
 	.smol {
 	width: 175px;
