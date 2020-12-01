@@ -9,6 +9,7 @@ let currentPokemonList = [];
 let currentGen = 0; //0 means all
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
 let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
+	soundEffect2.volume = 0.3;
 
 for(let i = 0; i<=genLastPokemon.length; i++) {
 	if(i!== 0){
