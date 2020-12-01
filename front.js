@@ -460,7 +460,7 @@ function onLoadingComplete(){
     document.getElementById("loadbox").style.display = "none";
     document.getElementById("pokemon").disabled = false;
     document.getElementById("silhouette").disabled = false;
-    document.getElementById("silhouettebutton").style.opacity = "1";
+    document.getElementById("silhouette").style.opacity = "1";
     document.getElementById("surrender").style.opacity = "1";
     document.getElementById("resetButton").style.opacity = "1";
     document.getElementById("surrender").disabled = false;

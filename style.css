@@ -46,7 +46,7 @@
 	}
     .box {
 	border: 5px white;
-	margin: 10px;
+	margin: 10px 10px 0px 10px;
 	padding: 11px 10px 10px 10px;
 	background: rgba(255, 255, 255, 0.85);
 	min-height: 30px;
@@ -65,6 +65,9 @@
 	}
 	.roundedc {
 	border-radius: 4px;
+	}
+	.roundedd {
+	border-radius: 4px 4px 0px 0px;
 	}
 	.lime {
 	background: #8CC63F;
@@ -195,14 +198,14 @@
 	width: 100%
 	}
 	.button {
-	background-color: #999;
-	border: 5px #333;
+	background-color: #777;
+	border: #444;
 	color: white;
 	padding: 10px 10px 10px 10px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	margin: 10px;
+	margin: 10px 10px 0px 10px;
 	cursor: pointer;
 	min-width: 100px;
 	min-height: 30px;
