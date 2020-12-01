@@ -545,3 +545,6 @@ window.addEventListener('resize', function () {
 window.addEventListener('orientationchange', function () {
 	changeFooterPosition();
 }, false);
+
+//initial call
+changeFooterPosition();
