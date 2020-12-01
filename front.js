@@ -359,23 +359,19 @@ giveUpBtn.onclick = function(){
     document.getElementById("pokemon").disabled = true;
     clearInterval(activeTimer);
     let delay = 0;
-    //otherwise the reveal is too slow for filtered gens
-    delayFactor = (currentPokemonList.length/pokemonList.length);
 
-    for(let key in spriteDictionary){
-        if (!(alreadyGuessedPokemon.includes(key))){
-            let thisDelay = delay;
-
-            delay += 100*delayFactor;
-            let timeout = setTimeout(function(){
-                if (!(alreadyGuessedPokemon.includes(key))){
-                    showSprite(key)
-                    spriteDictionary[key].classList.add('revealed');
-                }
-            }, thisDelay);
+	for(let i = 0; i < currentPokemonList.length; i++){
+		let pokemon = currentPokemonList[i];
+		if (!(alreadyGuessedPokemon.includes(pokemon))){
+			console.log(pokemon);
+			delay = delay + 100;
+			let timeout = setTimeout(function(){
+                  spriteDictionary[pokemon].classList.add('revealed');
+				  showSprite(pokemon);
+            }, delay);
             revealTimeouts.push(timeout);
-        }
-    }
+		}
+	}
 };
 
 function stopReveal(){
