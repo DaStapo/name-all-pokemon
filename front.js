@@ -552,4 +552,5 @@ recentSprite.src = '/sprites/unknown.png'
 recentSprite.addEventListener("load", function () {
 	changeFooterPosition();
 }, false)
+
 updateGenFilter();
