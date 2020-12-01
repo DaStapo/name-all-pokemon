@@ -327,7 +327,7 @@
 	-ms-transform: translate(-50%,-50%);
 	}
 	@media only screen and (max-width: 768px) {
-	.quarter, .sixth, .eighth, .half, .half-fixed, fiveeighth{
+	.quarter, .sixth, .eighth, .half, .half-fixed, .fiveeighth{
     width: 100%;
 	}
 	}
