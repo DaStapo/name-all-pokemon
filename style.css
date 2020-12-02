@@ -91,6 +91,12 @@
 	font-weight: bold;
 	color: #333;
 	}
+	.timerup {
+	display: block;
+	}
+	.timerdown {
+	display: none;
+	}
 	.padded {
 	padding-left: 20px;
 	padding-right: 20px;
