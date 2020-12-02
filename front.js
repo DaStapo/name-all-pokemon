@@ -320,11 +320,23 @@ function setTotal(count){
 
 timerText = document.getElementById("timer");
 let activeTimer = false;
+
 function startTimer(){
     let startTimestamp = Date.now();
 
     activeTimer = setInterval(function(){
         let msDiff = Date.now()-startTimestamp;
+        updateTimer(msDiff);
+    }, 100)
+
+}
+
+function startCountdown(minutes){
+	let countdownInMs = minutes * 60 * 1000;
+    let startTimestamp = countdownInMs + Date.now();
+
+    activeTimer = setInterval(function(){
+        let msDiff = startTimestamp - Date.now();
         updateTimer(msDiff);
     }, 100)
 
