@@ -337,6 +337,10 @@ function startCountdown(minutes){
 
     activeTimer = setInterval(function(){
         let msDiff = startTimestamp - Date.now();
+		
+		if(msDiff<=0){
+			//show end screen;
+		}
         updateTimer(msDiff);
     }, 100)
 
