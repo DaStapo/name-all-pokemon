@@ -116,7 +116,7 @@
 	font-family: "Roboto";
     font-size: 16px;
 	color: #333;
-	width: 180px;
+	width: 174px;
 	}
 	input[type=text]:focus {
 	outline: none;
@@ -371,22 +371,22 @@
 	}
 	@media only screen and (max-width: 918px) {
 	body {
-	padding-top: 120px;
+	padding-top: 121px;
 	}
 	}
 	@media only screen and (max-width: 536px) {
 	body {
-	padding-top: 180px;
+	padding-top: 182px;
 	}
 	}
-	@media only screen and (max-width: 382px) {
+	@media only screen and (max-width: 376px) {
 	body {
 	padding-top: 213px;
 	}	
 	}
-	@media only screen and (max-width: 296px) {
+	@media only screen and (max-width: 290px) {
 	body {
-	padding-top: 213px;
+	padding-top: 273px;
 	}
 	}
 	.resp-sharing-button__link,
