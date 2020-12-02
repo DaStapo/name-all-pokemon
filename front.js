@@ -256,7 +256,6 @@ function tryGuessPokemon(input){
             startTimer();
         }
         if(relevantList.length === currentPokemonList.length){
-            clearInterval(activeTimer);
             showCongrats();
         }
 		soundEffect.play();
@@ -264,6 +263,7 @@ function tryGuessPokemon(input){
 }
 
 function showCongrats(){
+	clearInterval(activeTimer);
     document.getElementById("overlay").style.display = "block";
 	soundEffect2.play();
 
