@@ -2,9 +2,11 @@ let express = require('express');
 let app = express();
 let path = require('path');
 let fs = require('fs');
+const compression = require('compression');
 
 let indexLocation = path.join(__dirname + '/NameAllPokémonQuiz.html');
 let jsLocation = path.join(__dirname + '/front.js');
+let encodedImgs = path.join(__dirname + '/encoded.js');
 let spritesFolder = path.join(__dirname + '/sprites');
 let silhouettesFolder = path.join(__dirname + '/silhouettes');
 let cssLocation = path.join(__dirname + '/style.css');
@@ -26,11 +28,13 @@ app.get('/names', function(req , res){
 app.get('/front.js', function(req , res){
     res.sendFile(jsLocation);
 });
-
+app.get('/encoded.js', function(req , res){
+    res.sendFile(encodedImgs);
+});
 app.get('/style.css', function(req , res){
     res.sendFile(cssLocation);
 });
-
+app.use(compression());
 app.use('/sound-effects', express.static(soundFolder));
 app.use('/images', express.static(imageFolder));
 

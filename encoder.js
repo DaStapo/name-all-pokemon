@@ -4,75 +4,6 @@ let alolaList = ['Rattata-Alola','Raticate-Alola','Raichu-Alola','Sandshrew-Alol
 let galarList = ['Meowth-Galar','Ponyta-Galar','Rapidash-Galar','Slowpoke-Galar','Slowbro-Galar','Farfetchd-Galar','Weezing-Galar','Mr-Mime-Galar','Articuno-Galar','Zapdos-Galar','Moltres-Galar','Slowking-Galar','Corsola-Galar','Zigzagoon-Galar','Linoone-Galar','Darumaka-Galar','Darmanitan-Galar','Yamask-Galar','Stunfisk-Galar'];
 let gmaxList = ['Venusaur-Gmax','Charizard-Gmax','Blastoise-Gmax','Butterfree-Gmax','Pikachu-Gmax','Meowth-Gmax','Machamp-Gmax','Gengar-Gmax','Kingler-Gmax','Lapras-Gmax','Eevee-Gmax','Snorlax-Gmax','Garbodor-Gmax','Melmetal-Gmax','Rillaboom-Gmax','Cinderace-Gmax','Inteleon-Gmax','Corviknight-Gmax','Orbeetle-Gmax','Drednaw-Gmax','Coalossal-Gmax','Flapple-Gmax','Sandaconda-Gmax','Toxtricity-Gmax','Centiskorch-Gmax','Hatterene-Gmax','Grimmsnarl-Gmax','Alcremie-Gmax','Copperajah-Gmax','Duraludon-Gmax','Urshifu-Rapid-Strike-Gmax','Urshifu-Single-Strike-Gmax'];
 let genLastPokemon = ['Mew','Celebi','Deoxys','Arceus','Genesect','Volcanion','Melmetal','Calyrex'];
-let boxes = [];
-let currentPokemonList = [];
-let currentGen = 0; //0 means all
-let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
-	soundEffect.volume = 0.5;
-let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
-	soundEffect2.volume = 0.3;
-
-let useEncoded = true;
-
-for(let i = 0; i<=genLastPokemon.length; i++) {
-	if(i!== 0){
-		boxes.push(document.getElementById("pokemon-box-" + i));
-	}
-    document.getElementById("gen" + i).onclick = function () {
-	
-        if (currentGen !== i) {
-			
-			let swapGen = function (){
-				currentGen = i;
-                promptGen.style.display = "none";
-                updateGenFilter();
-                resetQuiz();
-				for(let j = 0; j<=genLastPokemon.length; j++) {
-					if(j!==i){
-						document.getElementById("gen" + j).checked = false;
-					}
-				}
-			}
-			
-            promptGenYes.onclick = function () {
-					swapGen();
-			
-            }
-            promptGenNo.onclick = function () {
-                promptGen.style.display = "none";
-				document.getElementById("gen" + i).checked = false;
-            }
-			if(alreadyGuessedPokemon.length !==0){
-				promptGen.style.display = 'inline';
-			}else{
-				swapGen();
-			}
-		
-        }
-    }
-}
-
-
-let spriteDictionary = {};
-let silhouetteDictionary = {};
-let unguessedDictionary = {};
-
-let silhouetteArray = [];
-let pokeballArray = [];
-let allSpirtes = [];
-
-let loadedSpritesCount = 0;
-let totalSpritesCount = 0;
-
-function showSprite(name){
-    spriteDictionary[name].style.display = "inline";
-    unguessedDictionary[name].style.display = "none";
-}
-
-function hideSprite(name){
-    spriteDictionary[name].style.display = "none";
-    unguessedDictionary[name].style.display = "inline";
-}
 
 
 function standardizeName(input){
@@ -108,45 +39,6 @@ for (let i = 0; i<genLastPokemon.length; i++){
 }
 
 
-let genPokemonCounts = [];
-let currentGenIndex = 1;
-let currentCount = 0;
-let pokemonListsByGen = [];
-pokemonListsByGen.push(pokemonList);
-let currentGenList = [];
-for (let i = 0; i<pokemonList.length; i++){
-    let pokemon = pokemonList[i];
-
-    currentGenList.push(pokemon)
-
-    currentCount++;
-    if(genLastPokemon.includes(pokemon)){
-        genPokemonCounts[currentGenIndex] = currentCount;
-        pokemonListsByGen[currentGenIndex] = currentGenList;
-        currentGenList = [];
-        currentGenIndex++;
-        currentCount = 0;
-    }
-}
-
-function updateCurrentPokemonList(){
-    currentPokemonList = pokemonListsByGen[currentGen]
-}
-
-function getAlreadyGuessedAndRelevantPokemon(){
-    let filteredList = [];
-    for(let i = 0; i<alreadyGuessedPokemon.length; i++){
-        let pokemon = alreadyGuessedPokemon[i];
-        if(currentPokemonList.includes(pokemon)){
-            filteredList.push(pokemon);
-        }
-    }
-    return filteredList;
-}
-
-
-
-
 function onNamesLoad (fileNames) {
 
     //loop through filenames, not the pokemon list
@@ -164,298 +56,27 @@ function onNamesLoad (fileNames) {
 
 
         let sprite = document.createElement("img");
-        sprite.classList.add('sprite');
-        sprite.classList.add('zoom');
-		if(useEncoded){
-			sprite.src = encodedImages[spritePath];
-		}else{
-			sprite.src = spritePath
-		}
+        sprite.src = spritePath;
         sprite.addEventListener("load", function () {
             loadedSpritesCount++;
+			saveEncodedImg(spritePath,sprite);
             onSpriteLoad();
         }, false);
         totalSpritesCount++;
-        spriteDictionary[pokemon] = sprite;
-		allSpirtes.push(sprite);
-		
+
         let silhouette = document.createElement("img");
-        silhouette.classList.add('sprite');
-			if(useEncoded){
-			silhouette.src = encodedImages[silhouettePath];
-		}else{
-			silhouette.src = silhouettePath
-		}
-        silhouette.style.display = "none";
+        silhouette.src = silhouettePath;
         silhouette.addEventListener("load", function () {
             loadedSpritesCount++;
+			saveEncodedImg(silhouettePath,silhouette);
             onSpriteLoad();
         }, false);
         totalSpritesCount++;
-
-        silhouetteDictionary[pokemon] = silhouette;
-		allSpirtes.push(silhouette);
-
     }
 
-    //ordered appending
-    let boxIndex = 0;
-    for (let i = 0; i<pokemonList.length; i++){
-        let pokemon = standardizeName(pokemonList[i]);
-        let box = boxes[boxIndex];
-        let unguessed = document.createElement("div");
-
-        //not included to loading bar, all use the same single image
-        let pokeballImg = document.createElement("img");
-        pokeballImg.classList.add('sprite');
-        pokeballImg.src = '/sprites/unknown.png';
-        unguessedDictionary[pokemon] = unguessed;
-
-        pokeballArray.push(pokeballImg);
-        silhouetteArray.push(silhouetteDictionary[pokemon]);
-		
-		allSpirtes.push(pokeballImg);
-		
-        unguessed.appendChild(silhouetteDictionary[pokemon])
-        unguessed.appendChild(pokeballImg)
-        box.appendChild(spriteDictionary[pokemon]);
-        box.appendChild(unguessed);
-
-        hideSprite(pokemon);
-
-        if(genLastPokemon.includes(pokemon)){
-            boxIndex++;
-        }
-    }
+ 
 
 }
-
-let alreadyGuessedPokemon = [];
-
-let inputField = document.getElementById("pokemon");
-let recentSprite = document.getElementById("recentsprite");
-
-inputField.oninput = function () {
-    let inputText = inputField.value;
-    inputText = standardizeName(inputText);
-    tryGuessPokemon(inputText);
-
-    if(inputText === standardizeName('nidoran')){
-        tryGuessPokemon('nidoranf');
-        tryGuessPokemon('nidoranm');
-    }
-};
-function play_single_sound() {
-	document.getElementById('soundeffect').play();
-}
-
-function play_single_sound2() {
-	document.getElementById('soundeffect2').play();
-}
-
-function tryGuessPokemon(input){
-    if(currentPokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)){
-
-        showSprite(input);
-        inputField.value = '';
-        recentSprite.src = spriteDictionary[input].src;
-        alreadyGuessedPokemon.push(input);
-        let relevantList = getAlreadyGuessedAndRelevantPokemon();
-        setCounter(relevantList.length);
-        if(!activeTimer){
-            startTimer();
-        }
-        if(relevantList.length === currentPokemonList.length){
-            showCongrats();
-        }
-		soundEffect.play();
-    }
-}
-
-function showCongrats(){
-	clearInterval(activeTimer);
-    document.getElementById("overlay").style.display = "block";
-	soundEffect2.play();
-
-    let genText = ' ';
-    if(currentGen !== 0){
-        genText = ' generation ' + currentGen + ' ';
-    }
-    document.getElementById("gen-name").innerHTML = genText
-    document.getElementById("timer-score").innerHTML = timerText.innerHTML;
-    if(silhouettesFlag){
-        document.getElementById("trychallenge").style.display = "block";
-    }else{
-        document.getElementById("trychallenge").style.display = "none";
-    }
-}
-
-let silhouettesFlag = false;
-
-function useSilhouettes (){
-    silhouettesFlag = true;
-    for (let i = 0; i<silhouetteArray.length; i++){
-        silhouetteArray[i].style.display = "inline";
-        pokeballArray[i].style.display = "none";
-    }
-}
-
-function usePokeball (){
-    silhouettesFlag = false;
-    for (let i = 0; i<silhouetteArray.length; i++){
-        silhouetteArray[i].style.display = "none";
-        pokeballArray[i].style.display = "inline";
-    }
-}
-let radioPokeball = document.getElementById("pokeball");
-let radioSilhouette = document.getElementById("silhouette");
-
-radioPokeball.onclick = usePokeball;
-radioSilhouette.onclick = function(){
-    if(silhouettesFlag !== true){
-        promptSilh.style.display = "inline";
-    }
-};
-
-let counterText = document.getElementById("counter");
-let totalText = document.getElementById("total");
-
-function setCounter(count){
-    counterText.innerHTML = count;
-}
-
-function setTotal(count){
-    totalText.innerHTML = count;
-}
-
-timerText = document.getElementById("timer");
-let activeTimer = false;
-
-function startTimer(){
-    let startTimestamp = Date.now();
-
-    activeTimer = setInterval(function(){
-        let msDiff = Date.now()-startTimestamp;
-        updateTimer(msDiff);
-    }, 100)
-
-}
-
-function startCountdown(minutes){
-	let countdownInMs = minutes * 60 * 1000;
-    let startTimestamp = countdownInMs + Date.now();
-
-    activeTimer = setInterval(function(){
-        let msDiff = startTimestamp - Date.now();
-		
-		if(msDiff<=0){
-			//show end screen;
-		}
-        updateTimer(msDiff);
-    }, 100)
-
-}
-
-function updateTimer(msDiff){
-    timerText.innerHTML = msToTime(msDiff);
-}
-
-function msToTime(s) {
-    let ms = s % 1000;
-    s = (s - ms) / 1000;
-    let secs = s % 60;
-    s = (s - secs) / 60;
-    let mins = s % 60;
-    let hrs = (s - mins) / 60;
-
-    if(hrs < 10){
-        hrs = '0' + hrs;
-    }
-    if(mins < 10){
-        mins = '0' + mins;
-    }
-    if(secs < 10){
-        secs = '0' + secs;
-    }
-    return hrs + ':' + mins + ':' + secs;
-}
-
-giveUpBtn = document.getElementById("surrender");
-let revealTimeouts = [];
-giveUpBtn.onclick = function(){
-    document.getElementById("pokemon").disabled = true;
-    clearInterval(activeTimer);
-    let delay = 0;
-
-	for(let i = 0; i < currentPokemonList.length; i++){
-		let pokemon = currentPokemonList[i];
-		if (!(alreadyGuessedPokemon.includes(pokemon))){
-			console.log(pokemon);
-			delay = delay + 35;
-			let timeout = setTimeout(function(){
-                  spriteDictionary[pokemon].classList.add('revealed');
-                  spriteDictionary[pokemon].classList.remove('zoom');
-				  showSprite(pokemon);
-            }, delay);
-            revealTimeouts.push(timeout);
-		}
-	}
-};
-
-function stopReveal(){
-    for(let i = 0; i<revealTimeouts.length; i++){
-        clearInterval(revealTimeouts[i])
-    }
-    letRevealTimeouts = [];
-}
-
-let pokecolumns = [];
-for(let i = 0; i<4;i++){
-	pokecolumns.push(document.getElementById("pokecolumn"+(i+1)));
-}
-
-function updateGenFilter(){
-
-    //all gens
-    if(currentGen === 0){
-        for(let i = 0; i<boxes.length; i++){
-            boxes[i].style.display = "block";
-            totalPokemonCount = pokemonList.length;
-        }
-		for(let i = 0; i<pokecolumns.length;i++){
-			pokecolumns[i].classList.add('quarter');
-			pokecolumns[i].classList.remove('fiveeighth');
-		}
-		for(let i = 0; i<allSpirtes.length;i++){
-			allSpirtes[i].classList.add('sprite');
-			allSpirtes[i].classList.remove('spritew');
-		}
-    }else{
-        for(let i = 0; i<boxes.length; i++){
-            if(i + 1 === currentGen){
-                boxes[i].style.display = "block";
-                totalPokemonCount = pokemonListsByGen[i+1].length;
-            }else{
-                boxes[i].style.display = "none";
-            }
-			
-			for(let i = 0; i<pokecolumns.length;i++){
-				pokecolumns[i].classList.remove('quarter');
-				pokecolumns[i].classList.add('fiveeighth');
-			}
-        }
-		for(let i = 0; i<allSpirtes.length;i++){
-			allSpirtes[i].classList.add('spritew');
-			allSpirtes[i].classList.remove('sprite');
-		}
-    }
-    updateCurrentPokemonList();
-    setTotal(totalPokemonCount);
-    setCounter(getAlreadyGuessedAndRelevantPokemon().length);
-	changeFooterPosition();
-
-}
-
 
 function loadNames (onSuccess){
     let xhttp = new XMLHttpRequest();
@@ -488,8 +109,24 @@ function onLoadingComplete(){
     document.getElementById("surrender").style.opacity = "1";
     document.getElementById("resetButton").style.opacity = "1";
     document.getElementById("surrender").disabled = false;
-    document.getElementById("resetButton").disabled = false;	
+    document.getElementById("resetButton").disabled = false;
+		
+	console.log(JSON.stringify(encodedImgs));
 	
+	
+}
+
+
+function saveEncodedImg(path, img){
+		let c = document.createElement('canvas');
+		c.height = img.naturalHeight;
+		c.width = img.naturalWidth;
+		var ctx = c.getContext('2d');
+
+		ctx.drawImage(img, 0, 0, c.width, c.height);
+		var base64String = c.toDataURL();
+		
+		encodedImgs[path] = base64String;	
 }
 
 function onSpriteLoad(){
@@ -500,49 +137,6 @@ function onSpriteLoad(){
     }
 }
 
-function resetQuiz(){
-    alreadyGuessedPokemon = [];
-    clearInterval(activeTimer);
-    activeTimer = false;
-    usePokeball();
-    setCounter(0);
-    updateTimer(0);
-    stopReveal();
-    document.getElementById("pokemon").disabled = false;
-    recentSprite.src = '/sprites/unknown.png'
-    document.getElementById("silhouette").checked = false;
-    for (let i = 0; i<pokemonList.length; i++){
-        hideSprite(pokemonList[i]);
-		spriteDictionary[pokemonList[i]].classList.add("zoom");
-        spriteDictionary[pokemonList[i]].classList.remove("revealed");
-        
-    }
-	changeFooterPosition();
-}
-
-
-
-let resetBtn = document.getElementById("resetButton");
-resetBtn.onclick = resetQuiz;
-
-let promptSilh = document.getElementById("promptsilhouette");
-let promptGen = document.getElementById("promptgen");
-
-let promptSilhYes = document.getElementById("sil-yes");
-let promptSilhNo = document.getElementById("sil-no");
-let promptGenYes = document.getElementById("gen-yes");
-let promptGenNo = document.getElementById("gen-no");
-
-promptSilhYes.onclick = function (){
-    useSilhouettes();
-    promptSilh.style.display = "none";
-    radioSilhouette.checked = true;
-}
-promptSilhNo.onclick = function (){
-    promptSilh.style.display = "none";
-    radioSilhouette.checked = false;
-
-}
 
 let main = document.getElementById("main");
 let footer = document.getElementById("footer");
@@ -569,13 +163,7 @@ function off() {
     document.getElementById("overlay").style.display = "none";
 }
 
-alreadyGuessedPokemon = [];
-usePokeball();
-setCounter(0);
-updateTimer(0);
-recentSprite.src = '/sprites/unknown.png'
 //This accounts for all unknown.png's on the page
 recentSprite.addEventListener("load", function () {
 	changeFooterPosition();
 }, false)
-updateGenFilter();
