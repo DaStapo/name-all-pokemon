@@ -294,7 +294,7 @@
 	width: 10px;
 	height: 10px;
 	position: absolute;
-	top: 9px;
+	top: 10px;
 	left: 4px;
 	content: " ";
 	display: block;
@@ -333,6 +333,9 @@
 	}
 	.play {
 	display: none;
+	}
+	.playtext {
+	opacity: 0;
 	}
 	.hidden {
 	display: none;
