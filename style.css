@@ -145,11 +145,10 @@
 		to {transform:matrix(1,0,0,1,0,0);}
 	}
 	.revealed {
-		<!--filter: brightness(35%);-->
-		animation-name: revealZoom;
-		animation-duration:750ms;
-		z-index: 1;
-		}
+	/*filter: brightness(35%);*/
+	animation-name: revealZoom;
+	animation-duration:750ms;
+	}
 	.zoom {
 	animation-name: zoomExample;
 	animation-duration:1500ms;
@@ -294,7 +293,7 @@
 	width: 10px;
 	height: 10px;
 	position: absolute;
-	top: 10px;
+	top: 9px;
 	left: 4px;
 	content: " ";
 	display: block;
