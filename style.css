@@ -40,7 +40,7 @@
 	text-decoration: none;
 	color: #8CC63F;
 	}
-	#counter,#total,#timer,#gen-name,#timer-score{
+	#counter,#total,#timer,#gen-name,#timer-score,#currentcount{
 		display:inline;
 	}
     .box {
