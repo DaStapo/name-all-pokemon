@@ -391,6 +391,14 @@ function updateTimer(msDiff) {
     timerText.innerHTML = msToTime(msDiff);
 }
 
+function resetTimer(){
+	if (currentTimer === 0) {
+		updateTimer(0);
+	} else {
+		updateTimer(1000 * 60 * timerMinutes[currentTimer]);
+	}
+}
+
 function msToTime(s) {
     let ms = s % 1000;
     s = (s - ms) / 1000;
@@ -541,7 +549,7 @@ function resetQuiz() {
     activeTimer = false;
     usePokeball();
     setCounter(0);
-    updateTimer(0);
+    resetTimer();
     stopReveal();
     document.getElementById("pokemon").disabled = false;
     recentSprite.src = '/sprites/unknown.png'
@@ -590,12 +598,8 @@ for (let i = 0; i < 4; i++) {
 
         function applyNewTimer(){
             resetQuiz();
-            if (j === 0) {
-                updateTimer(0);
-            } else {
-                updateTimer(1000 * 60 * timerMinutes[j]);
-            }
             currentTimer = j;
+			resetTimer();
         }
 
         if(!activeTimer){
@@ -651,7 +655,7 @@ function off() {
 alreadyGuessedPokemon = [];
 usePokeball();
 setCounter(0);
-updateTimer(0);
+resetTimer()
 recentSprite.src = '/sprites/unknown.png'
 //This accounts for all unknown.png's on the page
 recentSprite.addEventListener("load", function () {
