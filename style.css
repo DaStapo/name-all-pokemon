@@ -145,7 +145,7 @@
 		to {transform:matrix(1,0,0,1,0,0);}
 	}
 	.revealed {
-	/*filter: brightness(35%);*/
+	filter: brightness(35%);
 	animation-name: revealZoom;
 	animation-duration:750ms;
 	}
