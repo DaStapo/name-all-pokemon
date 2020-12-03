@@ -506,9 +506,9 @@ var loadingBar = document.getElementById("loadbar");
 
 function onLoadingComplete() {
     //document.getElementById("loadbox").style.display = "none";
-	document.getElementById("loader").style.display = "none";
-	document.getElementById("play").style.display = "inline-block";
-	document.getElementById("playtext").style.opacity = "1";
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("play").style.display = "inline-block";
+    document.getElementById("playtext").style.opacity = "1";
     document.getElementById("pokemon").disabled = false;
     document.getElementById("silhouette").disabled = false;
     document.getElementById("silhouette").style.opacity = "1";
@@ -579,8 +579,8 @@ for (let i = 0; i < 4; i++) {
     let j = i;
 
     timer.onclick = function () {
-        document.getElementById("prompttimer").style.display = 'block'
-        document.getElementById("timer-yes").onclick = function () {
+
+        function applyNewTimer(){
             resetQuiz();
             if (j === 0) {
                 updateTimer(0);
@@ -588,19 +588,26 @@ for (let i = 0; i < 4; i++) {
                 updateTimer(1000 * 60 * timerMinutes[j]);
             }
             currentTimer = j;
-            document.getElementById("prompttimer").style.display = 'none';
         }
 
-        function cancel() {
-            timers[currentTimer].checked = true;
-            document.getElementById("prompttimer").style.display = 'none';
+        if(!activeTimer){
+            applyNewTimer()
+        }else{
+
+            document.getElementById("prompttimer").style.display = 'block'
+            document.getElementById("timer-yes").onclick = function () {
+                document.getElementById("prompttimer").style.display = 'none';
+                applyNewTimer();
+            }
+
+            function cancel() {
+                timers[currentTimer].checked = true;
+                document.getElementById("prompttimer").style.display = 'none';
+            }
+
+            document.getElementById("timer-no").onclick = cancel;
+            //document.getElementById("prompttimer").onclick = cancel;
         }
-
-        document.getElementById("timer-no").onclick = cancel;
-        //document.getElementById("prompttimer").onclick = cancel;
-
-        document.getElementById("prompttimer").style.display = 'block'
-
     }
 }
 timers[0].checked = true;
