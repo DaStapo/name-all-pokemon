@@ -263,7 +263,15 @@ function tryGuessPokemon(input){
         let relevantList = getAlreadyGuessedAndRelevantPokemon();
         setCounter(relevantList.length);
         if(!activeTimer){
-            startTimer();
+			if(currentTimer === 0){
+				startTimer();
+			}else if(currentTimer === 1){
+				startCountdown(60);
+			}else if(currentTimer === 2){
+				startCountdown(30);
+			}else{
+				startCountdown(10);
+			}
         }
         if(relevantList.length === currentPokemonList.length){
             showCongrats();
@@ -545,6 +553,43 @@ promptSilhNo.onclick = function (){
     radioSilhouette.checked = false;
 
 }
+let currentTimer = 0;
+timers = [];
+//4 timers
+for(let i = 0; i<4; i++) {
+	let timer = document.getElementById("timer" + i);
+	timers.push(timer);
+	let j = i;
+	
+	timer.onclick = function() {
+		document.getElementById("prompttimer").style.display = 'block'
+		document.getElementById("timer-yes").onclick = function (){
+			resetQuiz();
+			if(j === 0){
+				updateTimer(0);
+			}else if(j === 1){
+				updateTimer(1000*60*60);
+			}else if(j === 2){
+				updateTimer(1000*60*30);
+			}else{
+				updateTimer(1000*60*10);
+			}
+			currentTimer = j;
+			document.getElementById("prompttimer").style.display = 'none';
+		}
+		function cancel(){
+			timers[currentTimer].checked = true;
+			document.getElementById("prompttimer").style.display = 'none';
+		}
+		document.getElementById("timer-no").onclick = cancel;
+		//document.getElementById("prompttimer").onclick = cancel;
+		
+		document.getElementById("prompttimer").style.display = 'block'
+		
+	}
+}
+timers[0].checked = true;
+
 
 let main = document.getElementById("main");
 let footer = document.getElementById("footer");
