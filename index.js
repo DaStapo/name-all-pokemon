@@ -5,6 +5,7 @@ let fs = require('fs');
 const compression = require('compression');
 
 let indexLocation = path.join(__dirname + '/NameAllPokémonQuiz.html');
+let icon = path.join(__dirname + '/favicon.ico');
 let jsLocation = path.join(__dirname + '/front.js');
 let encodedImgs = path.join(__dirname + '/encoded.js');
 let spritesFolder = path.join(__dirname + '/sprites');
@@ -14,6 +15,10 @@ let soundFolder = path.join(__dirname + '/sound-effects');
 let imageFolder = path.join(__dirname + '/images');
 app.get('/', function(req , res){
     res.sendFile(indexLocation);
+});
+
+app.get('/favicon.ico', function(req , res){
+    res.sendFile(icon);
 });
 
 app.get('/names', function(req , res){
