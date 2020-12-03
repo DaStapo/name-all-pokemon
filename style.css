@@ -145,11 +145,11 @@
 		to {transform:matrix(1,0,0,1,0,0);}
 	}
 	.revealed {
-		transform:matrix(1,0,0,1,0,0);
-		filter: brightness(35%);
+		<!--filter: brightness(35%);-->
 		animation-name: revealZoom;
 		animation-duration:750ms;
-	}
+		z-index: 1;
+		}
 	.zoom {
 	animation-name: zoomExample;
 	animation-duration:1500ms;
@@ -245,6 +245,12 @@
 	.hovr:hover {
 	background-color: #D00;
 	}
+	.hovl {
+	background-color: #777;
+	}
+	.hovl:hover {
+	background-color: #bbb;
+	}
 	.button:focus {
 	outline: none;
 	}
@@ -313,6 +319,7 @@
 	background-color: #fff;
 	display: inline-block;
 	width: 60%;
+	margin: 0 auto 10px;
 	border: 2px solid #444;
 	border-radius: 4px;
 	}
@@ -370,8 +377,8 @@
 	left: 50%;
 	text-align: center;
 	color: #fff;
-	transform: translate(-50%,-50%);
-	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-70%);
+	-ms-transform: translate(-50%,-70%);
 	}
 	@media only screen and (max-width: 768px) {
 	.quarter, .sixth, .eighth, .half, .half-fixed, .fiveeighth{
