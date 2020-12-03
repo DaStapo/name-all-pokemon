@@ -239,13 +239,14 @@ Loading: <div class="bar">
 <div id="promptsilhouette" class="overlay">
 <div class="prompt"><h2>Reveal shadows?</h2><div id="sil-yes" class="button hovr roundedb">Reveal</div> <div id="sil-no" class="button hovg roundedb">Cancel</div></div>
 </div>
-<div class="overlay" id="loadbox" style="display: block; cursor:progress;">
+<div class="overlay" id="loadbox" style="display: block;" onclick="off()">
 <div class="prompt">
 <div style="min-width: 350px; width: 80%; margin: 0 auto;"><img src="images/logo.png" style="width: 100%;" alt=""></div>
-<h2>Loading Sprites</h2> <div class="bar2">
-<div id="loadbar" class="load2">
+<div class="loader" id="loader"><h2>Loading Sprites</h2> <div class="bar2">
+<div id="loadbar" class="load2"></div>
 </div>
 </div>
+<div id="play" class="play"><h2>Loading complete</h2><br /><p style="line-height: 30px;">Click anywhere, choose your mode and start typing.<br />Timer will activate as soon as you enter one name.<br />Enjoy!</p></div>
 </div>
 </div>
 <script src="encoded.js"></script>

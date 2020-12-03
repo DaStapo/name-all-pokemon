@@ -318,6 +318,12 @@
 	height: 20px;
 	width: 1px;
 	}
+	.loader {
+	display: block;
+	}
+	.play {
+	display: none;
+	}
 	.hidden {
 	display: none;
 	}
