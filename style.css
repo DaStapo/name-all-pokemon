@@ -382,6 +382,24 @@
 	transform: translate(-50%,-70%);
 	-ms-transform: translate(-50%,-70%);
 	}
+	.logo {
+	display: block;
+	width: 100%;
+	}
+	.logosq {
+	display: none;
+	width: 100%;
+	}
+	@media only screen and (max-width: 1280px) {
+		.logo {
+	display: none;
+	width: 100%;
+	}
+	.logosq {
+	display: block;
+	width: 100%;
+	}
+	}
 	@media only screen and (max-width: 768px) {
 	.quarter, .sixth, .eighth, .half, .half-fixed, .fiveeighth{
     width: 100%;
