@@ -294,7 +294,12 @@ function showCongrats() {
         timerScore = timerText.innerHTML;
         pokemonCount = ' every ';
     } else {
-        timerScore = timerMinutes[currentTimer] + ' minutes';
+		
+		if(lastDiff === 0){
+			timerScore = timerMinutes[currentTimer] + ' minutes';
+		}else{
+			timerScore = msToTime(timerMinutes[currentTimer]*60*1000 - lastDiff)
+		}
         pokemonCount = ' '+getAlreadyGuessedAndRelevantPokemon().length+' ';
     }
 
@@ -368,7 +373,7 @@ function startCountdown(minutes) {
 
     activeTimer = setInterval(function () {
         let msDiff = startTimestamp - Date.now();
-
+		updateTimer(msDiff);
         if (msDiff <= 0) {
             showCongrats();
         }
@@ -377,10 +382,13 @@ function startCountdown(minutes) {
 
 }
 
+let lastDiff;
 function updateTimer(msDiff) {
-    if (msDiff > 0) {
-        timerText.innerHTML = msToTime(msDiff);
-    }
+	if (msDiff<0){
+		msDiff = 0;
+	}
+	lastDiff = msDiff;
+    timerText.innerHTML = msToTime(msDiff);
 }
 
 function msToTime(s) {
