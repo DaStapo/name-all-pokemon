@@ -4,7 +4,10 @@ let alolaList = ['Rattata-Alola','Raticate-Alola','Raichu-Alola','Sandshrew-Alol
 let galarList = ['Meowth-Galar','Ponyta-Galar','Rapidash-Galar','Slowpoke-Galar','Slowbro-Galar','Farfetchd-Galar','Weezing-Galar','Mr-Mime-Galar','Articuno-Galar','Zapdos-Galar','Moltres-Galar','Slowking-Galar','Corsola-Galar','Zigzagoon-Galar','Linoone-Galar','Darumaka-Galar','Darmanitan-Galar','Yamask-Galar','Stunfisk-Galar'];
 let gmaxList = ['Venusaur-Gmax','Charizard-Gmax','Blastoise-Gmax','Butterfree-Gmax','Pikachu-Gmax','Meowth-Gmax','Machamp-Gmax','Gengar-Gmax','Kingler-Gmax','Lapras-Gmax','Eevee-Gmax','Snorlax-Gmax','Garbodor-Gmax','Melmetal-Gmax','Rillaboom-Gmax','Cinderace-Gmax','Inteleon-Gmax','Corviknight-Gmax','Orbeetle-Gmax','Drednaw-Gmax','Coalossal-Gmax','Flapple-Gmax','Sandaconda-Gmax','Toxtricity-Gmax','Centiskorch-Gmax','Hatterene-Gmax','Grimmsnarl-Gmax','Alcremie-Gmax','Copperajah-Gmax','Duraludon-Gmax','Urshifu-Rapid-Strike-Gmax','Urshifu-Single-Strike-Gmax'];
 let genLastPokemon = ['Mew','Celebi','Deoxys','Arceus','Genesect','Volcanion','Melmetal','Calyrex'];
+let loadedSpritesCount = 0;
+let totalSpritesCount = 0;
 
+let encodedImgs = {};
 
 function standardizeName(input){
     //remove extension
@@ -163,7 +166,3 @@ function off() {
     document.getElementById("overlay").style.display = "none";
 }
 
-//This accounts for all unknown.png's on the page
-recentSprite.addEventListener("load", function () {
-	changeFooterPosition();
-}, false)
