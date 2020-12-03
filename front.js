@@ -492,7 +492,7 @@ function onLoadingComplete(){
     //document.getElementById("loadbox").style.display = "none";
 	document.getElementById("loader").style.display = "none";
 	document.getElementById("play").style.display = "inline-block";
-	document.getElementById("playtext").style.display = "inline-block";
+	document.getElementById("playtext").style.opacity = "1";
     document.getElementById("pokemon").disabled = false;
     document.getElementById("silhouette").disabled = false;
     document.getElementById("silhouette").style.opacity = "1";
