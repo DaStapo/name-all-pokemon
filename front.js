@@ -649,7 +649,11 @@ window.addEventListener('orientationchange', function () {
 
 function off() {
     document.getElementById("overlay").style.display = "none";
+}
+
+function off2() {
     document.getElementById("loadbox").style.display = "none";
+	document.getElementById("inputbox").classList.add('attentionshake');
 }
 
 alreadyGuessedPokemon = [];
