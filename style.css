@@ -22,7 +22,7 @@
 	}
 	h2 {
 	font-size: 23px;
-	line-height: 50px;
+	line-height: 40px;
 	font-weight: regular;
 	}
 	p {
@@ -339,7 +339,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0,0,0,0.4);
+	background-color: rgba(0,0,0,0.7);
 	z-index: 4;
 	cursor: pointer;
 	}
