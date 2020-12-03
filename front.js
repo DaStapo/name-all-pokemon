@@ -565,6 +565,7 @@ window.addEventListener('orientationchange', function () {
 	changeFooterPosition();
 }, false);
 
+
 function off() {
     document.getElementById("overlay").style.display = "none";
 }
@@ -579,3 +580,4 @@ recentSprite.addEventListener("load", function () {
 	changeFooterPosition();
 }, false)
 updateGenFilter();
+changeFooterPosition();
