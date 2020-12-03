@@ -236,7 +236,7 @@
 	background-color: #8CC63F;
 	}
 	.hovg:hover {
-	background-color: #444;
+	background-color: #777;
 	}
 	.hovr {
 	background-color: #8CC63F;
@@ -317,7 +317,7 @@
 	.bar2 {
 	background-color: #fff;
 	display: inline-block;
-	width: 60%;
+	width: 40%;
 	margin: 0 auto 10px;
 	border: 2px solid #444;
 	border-radius: 4px;
