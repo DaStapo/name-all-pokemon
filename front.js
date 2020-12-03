@@ -489,7 +489,7 @@ function onLoadingComplete(){
     document.getElementById("resetButton").style.opacity = "1";
     document.getElementById("surrender").disabled = false;
     document.getElementById("resetButton").disabled = false;	
-	
+	changeFooterPosition();
 }
 
 function onSpriteLoad(){
