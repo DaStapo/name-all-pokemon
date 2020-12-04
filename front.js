@@ -375,6 +375,7 @@ function startCountdown(minutes) {
         let msDiff = startTimestamp - Date.now();
 		updateTimer(msDiff);
         if (msDiff <= 0) {
+			giveUp();
             showCongrats();
         }
         updateTimer(msDiff);
@@ -419,10 +420,8 @@ function msToTime(s) {
     return hrs + ':' + mins + ':' + secs;
 }
 
-giveUpBtn = document.getElementById("surrender");
-let revealTimeouts = [];
-giveUpBtn.onclick = function () {
-    document.getElementById("pokemon").disabled = true;
+function giveUp (){
+	document.getElementById("pokemon").disabled = true;
     clearInterval(activeTimer);
     let delay = 0;
 
@@ -439,7 +438,11 @@ giveUpBtn.onclick = function () {
             revealTimeouts.push(timeout);
         }
     }
-};
+}
+
+giveUpBtn = document.getElementById("surrender");
+let revealTimeouts = [];
+giveUpBtn.onclick = giveUp;
 
 function stopReveal() {
     for (let i = 0; i < revealTimeouts.length; i++) {
