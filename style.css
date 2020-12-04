@@ -108,6 +108,7 @@
 	.centeredbox {
 	margin: 0 auto;
 	max-width: 1474px;
+	overflow-x: hidden;
 	}
 	input[type=text] {
 	padding: 2px;
@@ -154,7 +155,7 @@
 	margin: -24px -15px -3px;
 	}
 	@keyframes zoomExample {
-		from {transform: matrix(7,0,0,7,0,0);}
+		from {transform: matrix(2,0,0,2,0,-10);}
 		to {transform:matrix(1,0,0,1,0,0);}
 	}
 	
