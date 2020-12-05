@@ -268,11 +268,13 @@ function tryGuessPokemon(input) {
             } else {
                 startCountdown(timerMinutes[currentTimer])
             }
+			logGen();
         }
         if (relevantList.length === currentPokemonList.length) {
             showCongrats();
         }
         soundEffect.play();
+		logNamed(input);
     }
 }
 
@@ -516,6 +518,21 @@ function loadNames(onSuccess) {
         }
     };
     xhttp.send();
+}
+function logNamed(pokemon) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", '/named', true);
+	xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify({name:pokemon}));
+
+}
+function logGen() {
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", '/gen', true);
+	xhttp.setRequestHeader("Content-Type", "application/json");
+	let genName = 'gen' + currentGen;
+    xhttp.send(JSON.stringify({gen:genName}));
+
 }
 
 loadNames(onNamesLoad);
