@@ -428,7 +428,6 @@ function giveUp (){
     for (let i = 0; i < currentPokemonList.length; i++) {
         let pokemon = currentPokemonList[i];
         if (!(alreadyGuessedPokemon.includes(pokemon))) {
-            console.log(pokemon);
             delay = delay + 35;
             let timeout = setTimeout(function () {
                 spriteDictionary[pokemon].classList.add('revealed');
