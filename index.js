@@ -19,8 +19,22 @@ let imageFolder = path.join(__dirname + '/images');
 let serverStart = new Date();
 let loadCount = 0;
 let namedCount = 0;
-let pokemonDict = {};
+let pokemonDict = JSON.parse(fs.readFileSync('namelogs.json'));
 let genDict = {};
+
+
+let lastTimeSaved = 0;
+function saveLogs(){
+	if(Date.now() - lastTimeSaved > 2000){
+		fs.writeFile('namelogs.json', JSON.stringify(pokemonDict), (err) => {
+			if (err){
+				console.log('Saving log failed.');
+			}else{
+				lastTimeSaved = Date.now();
+			}			
+		});
+	}
+}
 
 app.get('/', function(req , res){
 	loadCount++;
@@ -50,6 +64,22 @@ app.get('/style.css', function(req , res){
     res.sendFile(cssLocation);
 });
 
+app.get('/namelogs', function(req , res){
+	res.send(JSON.stringify(pokemonDict));
+});
+
+app.get('/namelogsfile', function(req , res){
+    fs.readFile('namelogs.json', (err, data) => {
+		let logs = JSON.parse(data);
+		res.send(logs);
+	});
+});
+
+app.get('/savelogs', function(req , res){
+	saveLogs();
+	res.send();
+});
+
 app.post('/named',jsonParser, function(req, res){
 	let pokemon = req.body.name
 	console.log(pokemon);
@@ -58,6 +88,7 @@ app.post('/named',jsonParser, function(req, res){
 	}
 	pokemonDict[pokemon]++;
 	namedCount++;
+	saveLogs();
 	res.status(200).end();
 });
 
@@ -72,7 +103,6 @@ app.post('/gen',jsonParser, function(req, res){
 });
 
 setInterval(function(){
-	console.log(pokemonDict);
 	console.log(genDict);
 	let hourDiff = (Date.now()-serverStart)/(1000*60*60);
 	console.log('Stats since ' + serverStart.toLocaleString() + ':');
@@ -91,8 +121,6 @@ app.use('/sprites', express.static(spritesFolder));
 app.use('/silhouettes', express.static(silhouettesFolder));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);
-
-
 
 console.log('Server started!!.');
 
