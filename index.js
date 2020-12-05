@@ -58,6 +58,7 @@ app.post('/named',jsonParser, function(req, res){
 	}
 	pokemonDict[pokemon]++;
 	namedCount++;
+	res.status(200).end();
 });
 
 app.post('/gen',jsonParser, function(req, res){
@@ -67,6 +68,7 @@ app.post('/gen',jsonParser, function(req, res){
 		genDict[gen] = 0;
 	}
 	genDict[gen]++;
+	res.status(200).end();
 });
 
 setInterval(function(){
