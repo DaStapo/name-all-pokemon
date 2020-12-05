@@ -20,13 +20,20 @@ let serverStart = new Date();
 let loadCount = 0;
 let namedCount = 0;
 let pokemonDict = JSON.parse(fs.readFileSync('namelogs.json'));
-let genDict = {};
-
+let genDict = JSON.parse(fs.readFileSync('genlogs.json'));
 
 let lastTimeSaved = 0;
 function saveLogs(){
 	if(Date.now() - lastTimeSaved > 2000){
 		fs.writeFile('namelogs.json', JSON.stringify(pokemonDict), (err) => {
+			if (err){
+				console.log('Saving log failed.');
+			}else{
+				lastTimeSaved = Date.now();
+			}			
+		});
+		
+		fs.writeFile('genlogs.json', JSON.stringify(genDict), (err) => {
 			if (err){
 				console.log('Saving log failed.');
 			}else{
@@ -67,12 +74,8 @@ app.get('/style.css', function(req , res){
 app.get('/namelogs', function(req , res){
 	res.send(JSON.stringify(pokemonDict));
 });
-
-app.get('/namelogsfile', function(req , res){
-    fs.readFile('namelogs.json', (err, data) => {
-		let logs = JSON.parse(data);
-		res.send(logs);
-	});
+app.get('/genlogs', function(req , res){
+	res.send(JSON.stringify(genDict));
 });
 
 app.get('/savelogs', function(req , res){
@@ -103,7 +106,6 @@ app.post('/gen',jsonParser, function(req, res){
 });
 
 setInterval(function(){
-	console.log(genDict);
 	let hourDiff = (Date.now()-serverStart)/(1000*60*60);
 	console.log('Stats since ' + serverStart.toLocaleString() + ':');
 	console.log('Site load count:' + loadCount);
