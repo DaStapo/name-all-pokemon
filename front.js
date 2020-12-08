@@ -160,6 +160,7 @@ function onNamesLoad(fileNames) {
 
         let spritePath = '/sprites/' + fileNames[i];
         let silhouettePath = '/silhouettes/' + fileNames[i];
+		let shinyPath = '/shiny/' + fileNames[i];
 
 
         let sprite = document.createElement("img");
