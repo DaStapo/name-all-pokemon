@@ -11,6 +11,7 @@ let icon = path.join(__dirname + '/favicon.ico');
 let jsLocation = path.join(__dirname + '/front.js');
 let encodedImgs = path.join(__dirname + '/encoded.js');
 let spritesFolder = path.join(__dirname + '/sprites');
+let shinyFolder = path.join(__dirname + '/shiny');
 let silhouettesFolder = path.join(__dirname + '/silhouettes');
 let cssLocation = path.join(__dirname + '/style.css');
 let soundFolder = path.join(__dirname + '/sound-effects');
@@ -120,6 +121,7 @@ app.use('/sound-effects', express.static(soundFolder));
 app.use('/images', express.static(imageFolder));
 
 app.use('/sprites', express.static(spritesFolder));
+app.use('/shiny', express.static(shinyFolder));
 app.use('/silhouettes', express.static(silhouettesFolder));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);

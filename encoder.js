@@ -56,13 +56,23 @@ function onNamesLoad (fileNames) {
 
         let spritePath = '/sprites/' + fileNames[i];
         let silhouettePath = '/silhouettes/' + fileNames[i];
-
+		let shinyPath = '/shiny/' + fileNames[i];
+		
 
         let sprite = document.createElement("img");
         sprite.src = spritePath;
         sprite.addEventListener("load", function () {
             loadedSpritesCount++;
 			saveEncodedImg(spritePath,sprite);
+            onSpriteLoad();
+        }, false);
+        totalSpritesCount++;
+		
+		let shiny = document.createElement("img");
+        shiny.src = shinyPath;
+        shiny.addEventListener("load", function () {
+            loadedSpritesCount++;
+			saveEncodedImg(shinyPath,shiny);
             onSpriteLoad();
         }, false);
         totalSpritesCount++;

@@ -57,6 +57,9 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
 let spriteDictionary = {};
 let silhouetteDictionary = {};
 let unguessedDictionary = {};
+let shinyPaths = {};
+let normalPaths = {};
+
 
 let silhouetteArray = [];
 let pokeballArray = [];
@@ -161,7 +164,8 @@ function onNamesLoad(fileNames) {
         let spritePath = '/sprites/' + fileNames[i];
         let silhouettePath = '/silhouettes/' + fileNames[i];
 		let shinyPath = '/shiny/' + fileNames[i];
-
+		shinyPaths[pokemon] = shinyPath;
+		normalPaths[pokemon] = spritePath;
 
         let sprite = document.createElement("img");
         sprite.classList.add('sprite');
@@ -178,6 +182,7 @@ function onNamesLoad(fileNames) {
         totalSpritesCount++;
         spriteDictionary[pokemon] = sprite;
         allSpirtes.push(sprite);
+
 
         let silhouette = document.createElement("img");
         silhouette.classList.add('sprite');
@@ -675,6 +680,22 @@ function off2() {
     document.getElementById("loadbox").style.display = "none";
 	document.getElementById("inputbox").classList.add('attentionshake');
 }
+
+function swapToShiny(){
+	for(let key in spriteDictionary){
+		spriteDictionary[key].src = encodedImages[shinyPaths[key]];
+	}
+}
+
+function swapToNormal(){
+	for(let key in spriteDictionary){
+		spriteDictionary[key].src = encodedImages[normalPaths[key]];
+	}
+}
+
+document.getElementById("shinyon").onclick = swapToShiny;
+document.getElementById("shinyoff").onclick = swapToNormal;
+
 
 alreadyGuessedPokemon = [];
 usePokeball();
