@@ -685,12 +685,16 @@ function swapToShiny(){
 	for(let key in spriteDictionary){
 		spriteDictionary[key].src = encodedImages[shinyPaths[key]];
 	}
+	document.getElementById("shinyon").classList.add('smolbuttonx');
+	document.getElementById("shinyoff").classList.remove('smolbuttonx');
 }
 
 function swapToNormal(){
 	for(let key in spriteDictionary){
 		spriteDictionary[key].src = encodedImages[normalPaths[key]];
 	}
+	document.getElementById("shinyoff").classList.add('smolbuttonx');
+	document.getElementById("shinyon").classList.remove('smolbuttonx');
 }
 
 document.getElementById("shinyon").onclick = swapToShiny;

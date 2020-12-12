@@ -282,12 +282,16 @@
 	text-decoration: none;
 	display: inline;
 	margin: 0px 0px 0px 5px;
-	padding: 3px;
+	padding: 3px 5px 3px 5px;
 	cursor: pointer;
 	font-family: "Roboto";
     font-size: 16px;
 	}
 	.smolbutton:hover {
+	background-color: #8CC63F;
+	color: #fff;
+	}
+	.smolbuttonx {
 	background-color: #8CC63F;
 	color: #fff;
 	}
