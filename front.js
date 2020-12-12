@@ -627,6 +627,10 @@ for (let i = 0; i < 4; i++) {
             resetQuiz();
             currentTimer = j;
 			resetTimer();
+							for (let m = 0; m < 4; m++) {
+					document.getElementById("timer" + m).classList.remove('smolbuttonx');
+				}
+				document.getElementById("timer" + j).classList.add('smolbuttonx');
         }
 
         if(!activeTimer){
@@ -637,6 +641,10 @@ for (let i = 0; i < 4; i++) {
             document.getElementById("timer-yes").onclick = function () {
                 document.getElementById("prompttimer").style.display = 'none';
                 applyNewTimer();
+				for (let k = 0; k < 4; k++) {
+					document.getElementById("timer" + k).classList.remove('smolbuttonx');
+				}
+				document.getElementById("timer" + j).classList.add('smolbuttonx');
             }
 
             function cancel() {
@@ -649,7 +657,6 @@ for (let i = 0; i < 4; i++) {
         }
     }
 }
-timers[0].checked = true;
 
 
 let main = document.getElementById("main");
