@@ -272,6 +272,25 @@
 	.button:focus {
 	outline: none;
 	}
+	.smolbutton {
+	background-color: #fff;
+	border: solid #8CC63F 2px;
+	border-radius: 5px;
+	color: #8CC63F;
+	padding: 0px;
+	text-align: center;
+	text-decoration: none;
+	display: inline;
+	margin: 0px 0px 0px 5px;
+	padding: 3px;
+	cursor: pointer;
+	font-family: "Roboto";
+    font-size: 16px;
+	}
+	.smolbutton:hover {
+	background-color: #8CC63F;
+	color: #fff;
+	}
 	.radio-item {
 	display: inline-block;
 	position: relative;
