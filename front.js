@@ -30,7 +30,8 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
                 resetQuiz();
                 for (let j = 0; j <= genLastPokemon.length; j++) {
                     if (j !== i) {
-                        document.getElementById("gen" + j).checked = false;
+                        document.getElementById("gen" + i).classList.add('smolbuttonx');
+						document.getElementById("gen" + j).classList.remove('smolbuttonx');
                     }
                 }
             }
@@ -41,7 +42,8 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
             }
             promptGenNo.onclick = function () {
                 promptGen.style.display = "none";
-                document.getElementById("gen" + i).checked = false;
+				document.getElementById("gen" + j).classList.add('smolbuttonx');
+				document.getElementById("gen" + i).classList.remove('smolbuttonx');
             }
             if (alreadyGuessedPokemon.length !== 0) {
                 promptGen.style.display = 'inline';
