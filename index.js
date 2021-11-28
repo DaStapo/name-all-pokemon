@@ -46,7 +46,7 @@ function saveLogs(){
 
 app.get('/', function(req , res){
 	loadCount++;
-    res.sendFile(indexLocation);
+    res.redirect('http://54.75.108.218');
 });
 
 app.get('/favicon.ico', function(req , res){
