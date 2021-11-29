@@ -46,7 +46,7 @@ function saveLogs(){
 
 app.get('/', function(req , res){
 	loadCount++;
-    res.redirect('http://54.75.108.218');
+    res.redirect('http://pkmnquiz.com');
 });
 
 app.get('/favicon.ico', function(req , res){
