@@ -95,7 +95,7 @@ disableLanguage = function(languageButton){
 }
 
 
-
+let test = 1
 for (key in language_map){
     let lang = document.createElement("div");
     lang.innerHTML += key
