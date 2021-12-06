@@ -117,7 +117,7 @@ function tryTranslate(input){
     for (let k = 0; k< enabledLanguages.length; k++){
         key = enabledLanguages[k]
         for(let i = 0; i<language_map[key].length;i++){
-            if (input == language_map[key][i].toLowerCase()){
+            if (input == standardizeName(language_map[key][i])){
                 console.log('translating:' + input + ' to ' +  pokemonList[i])
                 return pokemonList[i]
             }
@@ -339,10 +339,9 @@ inputField.oninput = function () {
 
 
     for (let i = 0; i < inputs.length; i++){
-        inputText = tryTranslate(inputs[i])
-        inputText = standardizeName(inputText);
-        
-        tryGuessPokemon(inputText);
+		inputText = standardizeName(inputs[i]);
+        inputText = tryTranslate(inputText)
+        tryGuessPokemon(standardizeName(inputText));
     }
 
 
