@@ -174,7 +174,7 @@ function standardizeName(input) {
     input = input.replace(/é/g, 'e');
 
     //delete all special characters
-    input = input.replace(/[^a-z0-9-_]/g, '');
+    input = input.replace(/[^ぁ-んァ-ン가-힣a-z0-9-_]/g, '');
 
     return input;
 }
