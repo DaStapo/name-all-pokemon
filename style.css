@@ -205,6 +205,9 @@
 	.wider {
 	min-width: 240px;
 	}
+	.namelist {
+	width: 200px;
+	}
 	.full {
 	width: 100%;
 	}
