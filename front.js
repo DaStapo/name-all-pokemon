@@ -605,6 +605,7 @@ function giveUp (){
                 spriteDictionary[pokemon].classList.remove('zoom');
 				unguessedDict[pokemon].style.display = 'block';
                 showSprite(pokemon);
+				changeFooterPosition()
             }, delay);
             revealTimeouts.push(timeout);
         }
