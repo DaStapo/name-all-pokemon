@@ -902,9 +902,10 @@ changeFooterPosition();
 
 
 document.getElementById("accordion").onclick = function (){
-	if (document.getElementById("panel").style.display == 'none'){
-		document.getElementById("panel").style.display = 'block';
+	if (document.getElementById("panel").style.display == 'block'){
+		console.log('here');
+		document.getElementById("panel").style.display = 'none';
 	}else{	
-		document.getElementById("panel").style.display = 'none'
+		document.getElementById("panel").style.display = 'block'
 	}
 }
