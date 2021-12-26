@@ -592,8 +592,9 @@ function giveUp (){
 	document.getElementById("pokemon").disabled = true;
 	
 	document.getElementById("missednames").style.display = "block";
-	
-	
+
+    footer.style.position = 'relative';
+
     clearInterval(activeTimer);
     let delay = 0;
 
