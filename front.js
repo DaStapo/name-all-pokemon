@@ -42,14 +42,6 @@ function createUnguessed(index){
 	
 }
 
-let formattedPokemonList = []
-for (let i = 0; i<pokemonList.length; i++){
-	formattedPokemonList.push(pokemonList[i]);
-		
-}
-
-
-
 
 for (let i = 0; i <= genLastPokemon.length; i++) {
 	
@@ -94,6 +86,60 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
         }
     }
 }
+
+let formatted_lang_map = {}
+for (key in language_map){
+	let copiedList = []
+	
+	for (let i = 0; i< language_map[key].length; i++){
+		copiedList.push(language_map[key][i]);
+	}
+	formatted_lang_map[key] = copiedList
+}
+
+
+
+let missingOptionsDiv = document.getElementById('missednames-options');
+let engMissingButton = '';
+
+let allMissingLangButtons = []
+
+for (key in formatted_lang_map){
+	let lang = document.createElement("div");
+	let currentKey = key;
+    lang.innerHTML += key
+    lang.classList.add('smolbutton')
+    lang.id = 'missing-'+ key
+	
+    lang.onclick = function () {
+		
+		for (let i = 0; i< allMissingLangButtons.length; i++){
+			if (allMissingLangButtons[i] != lang){
+				allMissingLangButtons[i].classList.remove('smolbuttonSwap')
+				allMissingLangButtons[i].classList.add('smolbutton')
+			}
+			lang.classList.remove('smolbutton');
+			lang.classList.add('smolbuttonSwap');
+		}
+		
+		for (let i = 0; i< formatted_lang_map[currentKey].length; i++){
+			unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i];
+		}
+		
+    }
+    if (currentKey == 'ENG'){
+        engMissingButton = lang;
+    }
+    missingOptionsDiv.appendChild(lang);
+	allMissingLangButtons.push(lang);
+	
+}
+
+
+
+
+
+
 
 
 
@@ -343,7 +389,8 @@ function onNamesLoad(fileNames) {
     }
 	createUnguessedContent();
 }
-unguessedDict = {}
+let unguessedDict = {}
+let unguessedDictTexts = {}
 function createUnguessedContent(){
 	
 	let genIndex = 0;
@@ -353,7 +400,7 @@ function createUnguessedContent(){
 		
 		let _elem = document.createElement("div");
 		let _img = document.createElement("img");
-		let _name = document.createTextNode(formattedPokemonList[i])
+		let _name = document.createTextNode('')
 		let _br = document.createElement("br");
 		_img.style.display = 'inline'
 		_img.src = spriteDictionary[pokemon].src
@@ -364,12 +411,14 @@ function createUnguessedContent(){
 		_elem.appendChild(_br)
 		
 		unguessedDict[pokemon] = _elem;
+		unguessedDictTexts[pokemon] = _name
 		unguessedContent.appendChild(_elem)
         if (genLastPokemon.includes(pokemon) && i !==  pokemonList.length-1) {
             genIndex++;
 			unguessedContent = createUnguessed(genIndex)
         }
     }
+	engMissingButton.click();
 }
 
 

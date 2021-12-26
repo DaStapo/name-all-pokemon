@@ -293,6 +293,24 @@
 	font-family: "Roboto";
     font-size: 16px;
 	}
+
+	.smolbuttonSwap {
+	background-color: #8CC63F;
+	border: solid #8CC63F 2px;
+	border-radius: 5px;
+	color: #fff;
+	padding: 0px;
+	text-align: center;
+	text-decoration: none;
+	display: inline;
+	margin: 0px 0px 0px 5px;
+	padding: 3px 5px 3px 5px;
+	cursor: pointer;
+	font-family: "Roboto";
+    font-size: 16px;
+	}
+	
+	
 	.smolbutton:hover {
 	background-color: #8CC63F;
 	color: #fff;
