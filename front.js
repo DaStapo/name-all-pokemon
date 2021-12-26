@@ -36,7 +36,7 @@ function createUnguessed(index){
 	unnamedContent.style.display = 'block';
 	
 	unnamedList.appendChild(unnamedContent)
-	document.getElementById("missednames").appendChild(unnamedList);
+	document.getElementById("panel").appendChild(unnamedList);
 	
 	return unnamedContent;
 	
@@ -357,7 +357,7 @@ function createUnguessedContent(){
 		let _br = document.createElement("br");
 		_img.style.display = 'inline'
 		_img.src = spriteDictionary[pokemon].src
-		_img.classList.add('spritew')
+		_img.classList.add('spritel')
 		_elem.style.display = 'none';
 		_elem.appendChild(_img)
 		_elem.appendChild(_name)
@@ -592,8 +592,7 @@ function giveUp (){
 	document.getElementById("pokemon").disabled = true;
 	
 	document.getElementById("missednames").style.display = "block";
-	
-	
+
     clearInterval(activeTimer);
     let delay = 0;
 
@@ -606,6 +605,7 @@ function giveUp (){
                 spriteDictionary[pokemon].classList.remove('zoom');
 				unguessedDict[pokemon].style.display = 'block';
                 showSprite(pokemon);
+				changeFooterPosition()
             }, delay);
             revealTimeouts.push(timeout);
         }
@@ -901,3 +901,13 @@ changeFooterPosition();
 
 
 
+document.getElementById("accordion").onclick = function (){
+	
+	if (document.getElementById("panel").style.display == 'block'){
+		console.log('here');
+		document.getElementById("panel").style.display = 'none';
+	}else{	
+		document.getElementById("panel").style.display = 'block'
+	}
+	changeFooterPosition()
+}

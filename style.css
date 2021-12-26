@@ -154,6 +154,9 @@
 	.spritew {
 	margin: -24px -15px -3px;
 	}
+	.spritel {
+	margin: -24px -6px -10px -15px;
+	}
 	@keyframes zoomExample {
 		from {transform: matrix(2,0,0,2,0,-10);}
 		to {transform:matrix(1,0,0,1,0,0);}
@@ -426,6 +429,13 @@
 	color: #fff;
 	transform: translate(-50%,-70%);
 	-ms-transform: translate(-50%,-70%);
+	}
+	.accordion {
+	
+	}
+	.panel {
+	display: none;
+	overflow: hidden;
 	}
 	.logo {
 	display: block;
