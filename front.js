@@ -36,7 +36,7 @@ function createUnguessed(index){
 	unnamedContent.style.display = 'block';
 	
 	unnamedList.appendChild(unnamedContent)
-	document.getElementById("missednames").appendChild(unnamedList);
+	document.getElementById("panel").appendChild(unnamedList);
 	
 	return unnamedContent;
 	
