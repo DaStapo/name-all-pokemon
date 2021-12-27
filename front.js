@@ -955,8 +955,10 @@ document.getElementById("accordion").onclick = function (){
 	if (document.getElementById("panel").style.display == 'block'){
 		console.log('here');
 		document.getElementById("panel").style.display = 'none';
+		document.getElementById("accordion").textContent = 'Show list';
 	}else{	
 		document.getElementById("panel").style.display = 'block'
+		document.getElementById("accordion").textContent = 'Hide list';
 	}
 	changeFooterPosition()
 }
