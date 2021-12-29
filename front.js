@@ -427,8 +427,8 @@ let alreadyGuessedPokemon = [];
 let inputField = document.getElementById("pokemon");
 let recentSprite = document.getElementById("recentsprite");
 
-inputField.oninput = function () {
-    let inputText = inputField.value;
+
+let parseInput = function (inputText) {
     inputText = inputText.toLowerCase()
 
     let inputs = [inputText]
@@ -454,11 +454,13 @@ inputField.oninput = function () {
         inputText = tryTranslate(inputText)
         tryGuessPokemon(standardizeName(inputText));
     }
-
-
-
-
 };
+
+inputField.oninput = function (){
+	parseInput(inputField.value);
+}
+
+
 
 function play_single_sound() {
     document.getElementById('soundeffect').play();
@@ -962,3 +964,40 @@ document.getElementById("accordion").onclick = function (){
 	}
 	changeFooterPosition()
 }
+
+
+let isTwitchOn = false;
+var client;
+document.getElementById("twitch-on").onclick = function (){
+	if (!isTwitchOn){
+		isTwitchOn = true;
+		let channelName =  document.getElementById("twitch-channel").value;
+		console.log('enable', channelName);
+		document.getElementById("twitch-channel").disabled = true;
+		document.getElementById("twitch-off").classList.remove('smolbuttonx');
+		document.getElementById("twitch-on").classList.add('smolbuttonx');
+		
+		client = new tmi.Client({
+			channels: [ document.getElementById("twitch-channel").value ]
+		});
+		
+		client.connect();
+		
+		client.on('message', (channel, tags, message, self) => {
+			console.log(`${tags['display-name']}: ${message}`);
+			parseInput(message);
+		});
+	}
+}
+
+document.getElementById("twitch-off").onclick = function (){
+	if (isTwitchOn){
+		isTwitchOn = false;
+		console.log('disable');
+		document.getElementById("twitch-channel").disabled = false;
+		document.getElementById("twitch-off").classList.add('smolbuttonx');
+		document.getElementById("twitch-on").classList.remove('smolbuttonx');
+		client.disconnect();
+	}
+}
+
