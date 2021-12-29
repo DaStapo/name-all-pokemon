@@ -388,6 +388,8 @@ function onNamesLoad(fileNames) {
         }
     }
 	createUnguessedContent();
+	spheal = new Image();
+	spheal.src = 'images/spheal.png';
 }
 let unguessedDict = {}
 let unguessedDictTexts = {}
@@ -470,6 +472,26 @@ inputField.oninput = function (){
 }
 
 
+	if (inputText === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
+        inputs.push('spheal')
+        ethan_roll();
+    }
+	if (inputText === "satan".toLowerCase()) {
+        inputs.push('whimsicott');
+    }
+	if (inputText === "wilbur".toLowerCase()) {
+        inputs.push('pidove');
+        inputs.push('tranquill');
+        inputs.push('unfezant');
+    }
+	if (inputText === "dennis".toLowerCase()) {
+        inputs.push('roggenrola');
+        inputs.push('boldore');
+        inputs.push('gigalith');
+    }
+	if (inputText === "fortuna".toLowerCase()) {
+        inputs.push('spheal');
+    }
 
 function play_single_sound() {
     document.getElementById('soundeffect').play();
@@ -980,6 +1002,74 @@ recentSprite.addEventListener("load", function () {
 updateGenFilter();
 changeFooterPosition();
 
+
+
+
+let randomIntFromInterval = function (min, max) { // min and max included 
+	return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+var spheal;
+let ethan_roll = function (){
+	
+	
+	let canvas = document.createElement('canvas');
+	canvas.style.position = 'absolute';
+	canvas.style.top = '0px';
+	canvas.style.left = '0px';
+	canvas.style['z-index'] = 3;
+	canvas.width = document.documentElement.clientWidth;
+	canvas.height = document.documentElement.clientHeight;
+	document.body.appendChild(canvas);
+	let ctx = canvas.getContext("2d");
+	
+	let sphealCount = 400;
+	
+	
+	let spheals = [];
+
+	for (let i = 0; i<sphealCount; i++){
+		
+		let x = randomIntFromInterval( -200,  document.documentElement.clientWidth + 200);
+		let y = randomIntFromInterval( -2000,  -450);
+		let speed = randomIntFromInterval(6000, 12000);
+		let size = randomIntFromInterval(128,  180);
+		let angle = randomIntFromInterval( 0,  360);
+		let angleIncrement = randomIntFromInterval(-2000, 2000);
+		
+		spheals.push([x,y, speed, size, angle, angleIncrement]);
+	}
+	
+	let fps = 60;
+	let animationDuration = 6;
+	let nrFrames = fps *  animationDuration;
+	
+	let delay = 1000/60;
+	let waitFor = 0;
+	for (let i = 0; i<nrFrames; i++){
+		let k = i;
+		setTimeout(() => {
+			ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
+			for (let j = 0; j<spheals.length; j++){
+				spheals[j][1]+= (spheals[j][2]/1000)
+				spheals[j][2]*=1.005;
+				ctx.save(); //saves the state of canvas
+				ctx.translate(spheals[j][0] ,spheals[j][1])
+				ctx.rotate(spheals[j][4] * (Math.PI / 180))
+				spheals[j][4]+=(spheals[j][5]/1000);
+				ctx.drawImage(spheal, -spheals[j][3]/ 2, -spheals[j][3] / 2, spheals[j][3], spheals[j][3]);
+				ctx.restore()
+			}
+			
+		}, waitFor);
+		waitFor+=delay;
+		
+	}
+	setTimeout(() => {
+		document.body.removeChild(canvas);
+	}, waitFor);
+	
+}
 
 
 document.getElementById("accordion").onclick = function (){
