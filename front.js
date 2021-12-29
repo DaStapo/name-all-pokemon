@@ -428,7 +428,7 @@ let inputField = document.getElementById("pokemon");
 let recentSprite = document.getElementById("recentsprite");
 
 
-let parseInput = function (inputText) {
+let parseInput = function (inputText, sendLog) {
     inputText = inputText.toLowerCase()
 
     let inputs = [inputText]
@@ -452,12 +452,12 @@ let parseInput = function (inputText) {
     for (let i = 0; i < inputs.length; i++){
 		inputText = standardizeName(inputs[i]);
         inputText = tryTranslate(inputText)
-        tryGuessPokemon(standardizeName(inputText));
+        tryGuessPokemon(standardizeName(inputText), sendLog);
     }
 };
 
 inputField.oninput = function (){
-	parseInput(inputField.value);
+	parseInput(inputField.value, true);
 }
 
 
@@ -470,7 +470,7 @@ function play_single_sound2() {
     document.getElementById('soundeffect2').play();
 }
 
-function tryGuessPokemon(input) {
+function tryGuessPokemon(input, sendLog) {
     if (currentPokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)) {
 
         showSprite(input);
@@ -491,7 +491,9 @@ function tryGuessPokemon(input) {
             showCongrats();
         }
         soundEffect.play();
-		logNamed(input);
+		if (sendLog){
+			logNamed(input);
+		}
     }
 }
 
@@ -985,7 +987,7 @@ document.getElementById("twitch-on").onclick = function (){
 		
 		client.on('message', (channel, tags, message, self) => {
 			console.log(`${tags['display-name']}: ${message}`);
-			parseInput(message);
+			parseInput(message, false);
 		});
 	}
 }
