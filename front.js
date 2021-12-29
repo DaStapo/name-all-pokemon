@@ -666,13 +666,23 @@ function giveUp (){
             let timeout = setTimeout(function () {
                 spriteDictionary[pokemon].classList.add('revealed');
                 spriteDictionary[pokemon].classList.remove('zoom');
-				unguessedDict[pokemon].style.display = 'block';
                 showSprite(pokemon);
 				changeFooterPosition()
             }, delay);
             revealTimeouts.push(timeout);
         }
     }
+	
+	//loop without delay
+	for (let i = 0; i < currentPokemonList.length; i++) {
+        let pokemon = currentPokemonList[i];
+        if (!(alreadyGuessedPokemon.includes(pokemon))) {
+			unguessedDict[pokemon].style.display = 'block';
+        }
+    }	
+	
+	
+	
 }
 
 giveUpBtn = document.getElementById("surrender");
