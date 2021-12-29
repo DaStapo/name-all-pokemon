@@ -1082,7 +1082,7 @@ document.getElementById("twitch-on").onclick = function (){
 					scoreDiv.classList.add('inlinetext')
 					scoreDiv.classList.add('rank')
 					scoreDiv.classList.add(rankVals[i])
-					let textNode = document.createTextNode('#' + (i+1) + sorted[i][0] + ' (' + sorted[i][1] + ')');
+					let textNode = document.createTextNode('#' + (i+1) +' '+ sorted[i][0] + ' (' + sorted[i][1] + ')');
 					scoreDiv.appendChild(textNode)
 					leaderboardDiv.appendChild(scoreDiv);
 					if (i >= 2){
