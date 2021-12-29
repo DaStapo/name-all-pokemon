@@ -1065,7 +1065,7 @@ document.getElementById("twitch-on").onclick = function (){
 				
 				let entries = Object.entries(twitchLeaderboard);
 	
-				let sorted = entries.sort((a, b) => a[1] - b[1]);
+				let sorted = entries.sort((a, b) => b[1] - a[1]);
 
 				
 				emptyLeaderboard();
