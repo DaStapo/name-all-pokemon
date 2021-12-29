@@ -1,0 +1,6 @@
+after exporting svg
+open svg with notepad+ or similar
+change width/height to >100%
+add
+>preserveAspectRatio="none"
+after them
