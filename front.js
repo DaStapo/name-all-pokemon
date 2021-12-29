@@ -449,11 +449,17 @@ let parseInput = function (inputText, sendLog) {
     }
 
 
+	let wasCorrect = false;
+	let guessResult = false;
     for (let i = 0; i < inputs.length; i++){
 		inputText = standardizeName(inputs[i]);
         inputText = tryTranslate(inputText)
-        tryGuessPokemon(standardizeName(inputText), sendLog);
+        let guessResult = tryGuessPokemon(standardizeName(inputText), sendLog);
+		if (!wasCorrect && guessResult){
+			wasCorrect = guessResult;
+		}
     }
+	return wasCorrect;
 };
 
 inputField.oninput = function (){
@@ -494,7 +500,9 @@ function tryGuessPokemon(input, sendLog) {
 		if (sendLog){
 			logNamed(input);
 		}
+		return true;
     }
+	return false;
 }
 
 function showCongrats() {
@@ -970,6 +978,9 @@ document.getElementById("accordion").onclick = function (){
 
 let isTwitchOn = false;
 var client;
+
+let twitchLeaderboard = {}
+
 document.getElementById("twitch-on").onclick = function (){
 	if (!isTwitchOn){
 		isTwitchOn = true;
@@ -987,7 +998,39 @@ document.getElementById("twitch-on").onclick = function (){
 		
 		client.on('message', (channel, tags, message, self) => {
 			console.log(`${tags['display-name']}: ${message}`);
-			parseInput(message, false);
+
+			let isCorrect = parseInput(message, false);
+			
+			if (isCorrect){
+				if (tags['display-name'] in twitchLeaderboard){
+					twitchLeaderboard[tags['display-name']] +=1;
+				}
+				else{
+					twitchLeaderboard[tags['display-name']] =1;
+				}
+				
+				
+				let entries = Object.entries(twitchLeaderboard);
+	
+				let sorted = entries.sort((a, b) => a[1] - b[1]);
+
+				//empty div
+				let leaderboardDiv = document.getElementById("leaderboard");
+				while(leaderboardDiv.firstChild){
+					leaderboardDiv.removeChild(leaderboardDiv.firstChild);
+				}
+
+				for (let i = 0; i<sorted.length; i++){
+					let scoreDiv = document.createElement('div');
+					let textNode = document.createTextNode(sorted[i][0] + ' : ' + sorted[i][1])
+					scoreDiv.appendChild(textNode)
+					leaderboardDiv.appendChild(scoreDiv);
+				}
+				
+				
+				
+			}
+			console.log(twitchLeaderboard);
 		});
 	}
 }
