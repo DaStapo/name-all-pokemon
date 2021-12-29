@@ -451,7 +451,27 @@ let parseInput = function (inputText, sendLog) {
 			inputs.push('니드런m')
 		}
 	
-	
+		if (inputText === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
+			inputs.push('spheal')
+			ethan_roll();
+		}
+		if (inputText === "satan".toLowerCase()) {
+			inputs.push('whimsicott');
+		}
+		if (inputText === "wilbur".toLowerCase()) {
+			inputs.push('pidove');
+			inputs.push('tranquill');
+			inputs.push('unfezant');
+		}
+		if (inputText === "dennis".toLowerCase()) {
+			inputs.push('roggenrola');
+			inputs.push('boldore');
+			inputs.push('gigalith');
+		}
+		if (inputText === "fortuna".toLowerCase()) {
+			inputs.push('spheal');
+		}
+		
 		let wasCorrect = false;
 		let guessResult = false;
 		for (let i = 0; i < inputs.length; i++){
@@ -471,27 +491,6 @@ inputField.oninput = function (){
 	parseInput(inputField.value, true);
 }
 
-
-	if (inputText === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
-        inputs.push('spheal')
-        ethan_roll();
-    }
-	if (inputText === "satan".toLowerCase()) {
-        inputs.push('whimsicott');
-    }
-	if (inputText === "wilbur".toLowerCase()) {
-        inputs.push('pidove');
-        inputs.push('tranquill');
-        inputs.push('unfezant');
-    }
-	if (inputText === "dennis".toLowerCase()) {
-        inputs.push('roggenrola');
-        inputs.push('boldore');
-        inputs.push('gigalith');
-    }
-	if (inputText === "fortuna".toLowerCase()) {
-        inputs.push('spheal');
-    }
 
 function play_single_sound() {
     document.getElementById('soundeffect').play();
@@ -858,6 +857,7 @@ function resetQuiz() {
 	}
 	emptyLeaderboard();
 	twitchLeaderboard = {};
+	document.getElementById("ranking").style.display = 'none';
 	
 }
 
