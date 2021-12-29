@@ -816,6 +816,8 @@ function resetQuiz() {
 	for (key in unguessedDict){
 		unguessedDict[key].style.display = 'none';
 	}
+	emptyLeaderboard();
+	twitchLeaderboard = {};
 	
 }
 
@@ -976,10 +978,19 @@ document.getElementById("accordion").onclick = function (){
 }
 
 
+let emptyLeaderboard = function (){
+	let leaderboardDiv = document.getElementById("leaderboard");
+	while(leaderboardDiv.firstChild){
+		leaderboardDiv.removeChild(leaderboardDiv.firstChild);
+	}
+}
+
+
 let isTwitchOn = false;
 var client;
 
 let twitchLeaderboard = {}
+
 
 document.getElementById("twitch-on").onclick = function (){
 	if (!isTwitchOn){
@@ -1014,11 +1025,8 @@ document.getElementById("twitch-on").onclick = function (){
 	
 				let sorted = entries.sort((a, b) => a[1] - b[1]);
 
-				//empty div
-				let leaderboardDiv = document.getElementById("leaderboard");
-				while(leaderboardDiv.firstChild){
-					leaderboardDiv.removeChild(leaderboardDiv.firstChild);
-				}
+				
+				emptyLeaderboard();
 
 				for (let i = 0; i<sorted.length; i++){
 					let scoreDiv = document.createElement('div');
