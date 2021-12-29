@@ -825,6 +825,10 @@ function resetQuiz() {
 
     }
     changeFooterPosition();
+	if (document.getElementById("panel").style.display == 'block'){
+		//close and reset accordion
+		document.getElementById("accordion").click();
+	}
 	document.getElementById("missednames").style.display = "none";
 	for (key in unguessedDict){
 		unguessedDict[key].style.display = 'none';
@@ -983,9 +987,34 @@ document.getElementById("accordion").onclick = function (){
 		console.log('here');
 		document.getElementById("panel").style.display = 'none';
 		document.getElementById("accordion").textContent = 'Show list';
+		
+		let childNodes = document.getElementById("panel").childNodes;
+		
+		for (let i = 0; i<childNodes.length; i++){
+			childNodes[i].style.display = 'block';
+		}	
+		
 	}else{	
 		document.getElementById("panel").style.display = 'block'
 		document.getElementById("accordion").textContent = 'Hide list';
+		
+		let childNodes = document.getElementById("panel").childNodes;
+		
+		for (let i = 0; i<childNodes.length; i++){
+			let childElements = childNodes[i].childNodes[0].childNodes;
+			let hasContent = false;
+			for (let j = 0; j<childElements.length; j++){
+				if (childElements[i].style.display != 'none'){
+					hasContent = true;
+					break;
+				}
+			}
+			if (!hasContent){
+				childNodes[i].style.display = 'none';
+			}	
+		}
+		
+		
 	}
 	changeFooterPosition()
 }
