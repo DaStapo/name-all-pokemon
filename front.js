@@ -892,7 +892,7 @@ let ethan_roll = function (){
 				spheals[j][2]*=1.005;
 				ctx.save(); //saves the state of canvas
 				ctx.translate(spheals[j][0] ,spheals[j][1])
-				ctx.rotate(Math.PI / 180 * (spheals[j][4]))
+				ctx.rotate(spheals[j][4] * (Math.PI / 180))
 				spheals[j][4]+=(spheals[j][5]/1000);
 				ctx.drawImage(spheal, -spheals[j][3]/ 2, -spheals[j][3] / 2, spheals[j][3], spheals[j][3]);
 				ctx.restore()
