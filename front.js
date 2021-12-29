@@ -1034,6 +1034,11 @@ var client;
 let twitchLeaderboard = {}
 
 
+let rankVals = [
+	'rankone',
+	'ranktwo',
+	'rankthree'
+]
 document.getElementById("twitch-on").onclick = function (){
 	if (!isTwitchOn){
 		isTwitchOn = true;
@@ -1072,9 +1077,15 @@ document.getElementById("twitch-on").onclick = function (){
 				let leaderboardDiv = document.getElementById("leaderboard");
 				for (let i = 0; i<sorted.length; i++){
 					let scoreDiv = document.createElement('div');
-					let textNode = document.createTextNode(sorted[i][0] + ' : ' + sorted[i][1])
+					scoreDiv.classList.add('inlinetext')
+					scoreDiv.classList.add('rank')
+					scoreDiv.classList.add(rankVals[i])
+					let textNode = document.createTextNode('#' + (i+1) + sorted[i][0] + ' (' + sorted[i][1] + ')');
 					scoreDiv.appendChild(textNode)
 					leaderboardDiv.appendChild(scoreDiv);
+					if (i >= 2){
+						break;
+					}
 				}
 				
 				
@@ -1082,6 +1093,7 @@ document.getElementById("twitch-on").onclick = function (){
 			}
 			console.log(twitchLeaderboard);
 		});
+		document.getElementById("ranking").style.display = 'block';
 	}
 }
 
@@ -1093,6 +1105,7 @@ document.getElementById("twitch-off").onclick = function (){
 		document.getElementById("twitch-off").classList.add('smolbuttonx');
 		document.getElementById("twitch-on").classList.remove('smolbuttonx');
 		client.disconnect();
+		document.getElementById("ranking").style.display = 'none';
 	}
 }
 
