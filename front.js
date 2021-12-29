@@ -25,8 +25,8 @@ let useEncoded = true;
 
 function createUnguessed(index){
 	let unnamedList = document.createElement("div");
-	unnamedList.classList.add('column');
-	unnamedList.classList.add('namelist');
+/*	unnamedList.classList.add('column');*/
+/*	unnamedList.classList.add('namelist');*/
 	
 	let unnamedContent = document.createElement("div");
 	unnamedContent.classList.add('box');
@@ -401,14 +401,14 @@ function createUnguessedContent(){
 		let _elem = document.createElement("div");
 		let _img = document.createElement("img");
 		let _name = document.createTextNode('')
-		let _br = document.createElement("br");
-		_img.style.display = 'inline'
+/*		let _br = document.createElement("br");*/
+		_img.style.display = 'inline';
 		_img.src = spriteDictionary[pokemon].src
 		_img.classList.add('spritel')
 		_elem.style.display = 'none';
 		_elem.appendChild(_img)
 		_elem.appendChild(_name)
-		_elem.appendChild(_br)
+/*		_elem.appendChild(_br)*/
 		
 		unguessedDict[pokemon] = _elem;
 		unguessedDictTexts[pokemon] = _name
@@ -677,7 +677,8 @@ function giveUp (){
 	for (let i = 0; i < currentPokemonList.length; i++) {
         let pokemon = currentPokemonList[i];
         if (!(alreadyGuessedPokemon.includes(pokemon))) {
-			unguessedDict[pokemon].style.display = 'block';
+			unguessedDict[pokemon].style.display = 'inline-block';
+			unguessedDict[pokemon].classList.add('fixed-width');
         }
     }	
 	
