@@ -1027,7 +1027,7 @@ document.getElementById("twitch-on").onclick = function (){
 
 				
 				emptyLeaderboard();
-
+				let leaderboardDiv = document.getElementById("leaderboard");
 				for (let i = 0; i<sorted.length; i++){
 					let scoreDiv = document.createElement('div');
 					let textNode = document.createTextNode(sorted[i][0] + ' : ' + sorted[i][1])
