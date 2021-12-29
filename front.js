@@ -462,6 +462,7 @@ let parseInput = function (inputText, sendLog) {
 		}
 		return wasCorrect;
 	}
+	return false;
 };
 
 inputField.oninput = function (){
@@ -1060,6 +1061,7 @@ document.getElementById("twitch-on").onclick = function (){
 			let isCorrect = parseInput(message, false);
 			
 			if (isCorrect){
+				document.getElementById("ranking").style.display = 'block';
 				if (tags['display-name'] in twitchLeaderboard){
 					twitchLeaderboard[tags['display-name']] +=1;
 				}
@@ -1093,7 +1095,7 @@ document.getElementById("twitch-on").onclick = function (){
 			}
 			console.log(twitchLeaderboard);
 		});
-		document.getElementById("ranking").style.display = 'block';
+		
 	}
 }
 
