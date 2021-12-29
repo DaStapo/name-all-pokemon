@@ -352,6 +352,29 @@
 	float:right;
 	display: inline-block;
 	}
+	.inlinetext {
+	display: inline-block;
+	margin-left: 10px;
+	}
+	.rank {
+	padding: 0px 4px;
+	margin-top: -2px;
+	margin-bottom: -2px;
+	border-radius: 4px 12px;
+	border: 2px solid;
+	}
+	.rankone{
+	background-color: #fce63a;
+	border-color: #b8a300;
+	}
+	.ranktwo{
+	background-color: #e8eded;
+	border-color: #9ea8a8;
+	}
+	.rankthree{
+	background-color: #f5b942;
+	border-color: #d4920f;
+	}
 	.radio-item input[type='radio'] {
 	display: none;
 	}
