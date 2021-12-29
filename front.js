@@ -429,37 +429,39 @@ let recentSprite = document.getElementById("recentsprite");
 
 
 let parseInput = function (inputText, sendLog) {
-    inputText = inputText.toLowerCase()
-
-    let inputs = [inputText]
-
-    if (inputText=== 'nidoran') {
-        inputs.push('nidoranf')
-        inputs.push('nidoranm')
-    }
-    
-    if (inputText === 'ニドラン'.toLowerCase() ) {
-        inputs.push('ニドランf')
-        inputs.push('ニドランm')
-    }
-
-    if (inputText === '니드런'.toLowerCase() ) {
-        inputs.push('니드런f')
-        inputs.push('니드런m')
-    }
-
-
-	let wasCorrect = false;
-	let guessResult = false;
-    for (let i = 0; i < inputs.length; i++){
-		inputText = standardizeName(inputs[i]);
-        inputText = tryTranslate(inputText)
-        let guessResult = tryGuessPokemon(standardizeName(inputText), sendLog);
-		if (!wasCorrect && guessResult){
-			wasCorrect = guessResult;
+	if (!document.getElementById("pokemon").disabled){
+		inputText = inputText.toLowerCase()
+	
+		let inputs = [inputText]
+	
+		if (inputText=== 'nidoran') {
+			inputs.push('nidoranf')
+			inputs.push('nidoranm')
 		}
-    }
-	return wasCorrect;
+		
+		if (inputText === 'ニドラン'.toLowerCase() ) {
+			inputs.push('ニドランf')
+			inputs.push('ニドランm')
+		}
+	
+		if (inputText === '니드런'.toLowerCase() ) {
+			inputs.push('니드런f')
+			inputs.push('니드런m')
+		}
+	
+	
+		let wasCorrect = false;
+		let guessResult = false;
+		for (let i = 0; i < inputs.length; i++){
+			inputText = standardizeName(inputs[i]);
+			inputText = tryTranslate(inputText)
+			let guessResult = tryGuessPokemon(standardizeName(inputText), sendLog);
+			if (!wasCorrect && guessResult){
+				wasCorrect = guessResult;
+			}
+		}
+		return wasCorrect;
+	}
 };
 
 inputField.oninput = function (){
