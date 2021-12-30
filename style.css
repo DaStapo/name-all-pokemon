@@ -247,6 +247,7 @@
 	.header {
 	position: fixed;
 	top: 0px;
+	z-index: 2;
 	}
 	.footer {
 	bottom: 0px;
