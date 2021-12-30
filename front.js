@@ -1075,7 +1075,6 @@ let ethan_roll = function (){
 document.getElementById("accordion").onclick = function (){
 	
 	if (document.getElementById("panel").style.display == 'block'){
-		console.log('here');
 		document.getElementById("panel").style.display = 'none';
 		document.getElementById("accordion").textContent = 'Show list';
 		
@@ -1094,15 +1093,20 @@ document.getElementById("accordion").onclick = function (){
 		for (let i = 0; i<childNodes.length; i++){
 			let childElements = childNodes[i].childNodes[0].childNodes;
 			let hasContent = false;
+
 			for (let j = 0; j<childElements.length; j++){
-				if (childElements[i].style.display != 'none'){
+				if (childElements[j].style.display != 'none'){
+	
 					hasContent = true;
 					break;
 				}
 			}
+
 			if (!hasContent){
 				childNodes[i].style.display = 'none';
-			}	
+			}else{
+				childNodes[i].style.display = 'block';
+			}
 		}
 		
 		
@@ -1183,7 +1187,7 @@ document.getElementById("twitch-on").onclick = function (){
 				
 				
 			}
-			console.log(twitchLeaderboard);
+
 		});
 		
 	}
