@@ -1019,7 +1019,7 @@ let ethan_roll = function (){
 	canvas.style.left = '0px';
 	canvas.style['z-index'] = 3;
 	canvas.width = document.documentElement.clientWidth;
-	canvas.height = document.documentElement.clientHeight;
+	canvas.height = document.documentElement.clientHeight + 500;
 	document.body.appendChild(canvas);
 	let ctx = canvas.getContext("2d");
 	
@@ -1134,6 +1134,9 @@ let rankVals = [
 	'ranktwo',
 	'rankthree'
 ]
+
+let twitchInputBlacklist = ["ethan_from_chicago's favorite pokemon", "satan", "wilbur", "dennis", "fortuna"];
+
 document.getElementById("twitch-on").onclick = function (){
 	if (!isTwitchOn){
 		isTwitchOn = true;
@@ -1151,6 +1154,16 @@ document.getElementById("twitch-on").onclick = function (){
 		
 		client.on('message', (channel, tags, message, self) => {
 			console.log(`${tags['display-name']}: ${message}`);
+
+
+			if (channelName.toLowerCase() != 'ethan_from_chicago' && channelName.toLowerCase() != 'adeptcharon'){
+				for (let k = 0; k < twitchInputBlacklist.length; k++){
+					if (message.toLowerCase() == twitchInputBlacklist[k]){
+						return;
+					}
+				}
+
+			}
 
 			let isCorrect = parseInput(message, false);
 			
