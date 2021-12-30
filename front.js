@@ -62,10 +62,10 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
                 resetQuiz();
                 for (let j = 0; j <= genLastPokemon.length; j++) {
                     if (j !== i) {
-                        document.getElementById("gen" + i).classList.add('smolbuttonx');
 						document.getElementById("gen" + j).classList.remove('smolbuttonx');
                     }
                 }
+				document.getElementById("gen" + i).classList.add('smolbuttonx');
             }
 
             promptGenYes.onclick = function () {
@@ -74,7 +74,7 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
             }
             promptGenNo.onclick = function () {
                 promptGen.style.display = "none";
-				document.getElementById("gen" + j).classList.add('smolbuttonx');
+				//document.getElementById("gen" + j).classList.add('smolbuttonx');
 				document.getElementById("gen" + i).classList.remove('smolbuttonx');
             }
             if (alreadyGuessedPokemon.length !== 0) {
