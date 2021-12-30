@@ -502,7 +502,7 @@ function play_single_sound2() {
 
 function tryGuessPokemon(input, sendLog) {
     if (currentPokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)) {
-
+		
         showSprite(input);
         inputField.value = '';
         recentSprite.src = spriteDictionary[input].src;
@@ -524,6 +524,7 @@ function tryGuessPokemon(input, sendLog) {
 		if (sendLog){
 			logNamed(input);
 		}
+		animateInput(input);
 		return true;
     }
 	return false;
@@ -689,6 +690,7 @@ function giveUp (){
                 spriteDictionary[pokemon].classList.add('revealed');
                 spriteDictionary[pokemon].classList.remove('zoom');
                 showSprite(pokemon);
+				animateInput(pokemon)
 				changeFooterPosition()
             }, delay);
             revealTimeouts.push(timeout);
@@ -1070,6 +1072,80 @@ let ethan_roll = function (){
 	}, waitFor);
 	
 }
+
+
+let animationCanvas = null;
+let animationCanvasTimeout = null;
+let animationCanvasInterval = null;
+
+let animationCanvasWidth = 600;
+let animationCanvasDuration = 6000;
+
+let animationWidth = 272;
+let animationHeight = 224;
+
+let ongoingAnimations = [];
+
+let refreshAnimationCanvas = function (){
+	if (animationCanvasTimeout !== null){
+		clearInterval(animationCanvasTimeout);
+	}
+	if (animationCanvas === null){
+		
+		animationCanvas = document.createElement('canvas');
+		animationCanvas.style.position = 'absolute';
+		animationCanvas.style.top = '0px';
+		animationCanvas.style.left =  '' + (document.documentElement.clientWidth - animationCanvasWidth) + 'px';
+		animationCanvas.style['z-index'] = 3;
+		animationCanvas.width = animationCanvasWidth;
+		animationCanvas.height = document.documentElement.clientHeight + 500;
+		document.body.appendChild(animationCanvas);
+		
+		animationCanvasInterval = setInterval(()=>{
+			let ctx = animationCanvas.getContext("2d");
+			ctx.clearRect(0, 0, animationCanvas.width, animationCanvas.height);
+			for (let j = 0; j< ongoingAnimations.length; j++){
+				if (ongoingAnimations[j][1] < (animationCanvas.height + 500)){
+					ongoingAnimations[j][1]+= (ongoingAnimations[j][2]/1000)
+					ongoingAnimations[j][2]*=1.005;
+					ctx.save(); //saves the state of canvas
+					ctx.translate(ongoingAnimations[j][0] ,ongoingAnimations[j][1])
+					ctx.rotate(ongoingAnimations[j][3] * (Math.PI / 180))
+					ongoingAnimations[j][3]+=(ongoingAnimations[j][4]/1000);
+					ctx.drawImage(ongoingAnimations[j][5], -animationWidth/ 2, -animationHeight / 2, animationWidth, animationHeight);
+					ctx.restore()
+				}
+			}
+			
+		}, 1000/60)
+	}
+	
+	animationCanvasTimeout = setTimeout(() => {
+		animationCanvas = null;
+		animationCanvasTimeout = null;
+		ongoingAnimations = [];
+		if (animationCanvasInterval !== null){
+			clearInterval(animationCanvasInterval);
+		}
+	}, animationCanvasDuration);
+	
+	
+}
+
+
+let animateInput = function(pokemonName){
+	refreshAnimationCanvas();
+
+	let x = randomIntFromInterval( animationWidth / 2,  animationCanvasWidth - (animationWidth/2));
+	let y = -animationWidth*1.5//randomIntFromInterval( -500,  -animationWidth*1.5);
+	let speed = randomIntFromInterval(5000, 10000);
+	let angle = randomIntFromInterval( 0,  360);
+	let angleIncrement = randomIntFromInterval(-2000, 2000);
+	ongoingAnimations.push([x,y, speed, angle, angleIncrement, spriteDictionary[pokemonName]]);
+		
+}
+
+
 
 
 document.getElementById("accordion").onclick = function (){
