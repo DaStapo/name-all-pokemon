@@ -451,27 +451,6 @@ let parseInput = function (inputText, sendLog) {
 			inputs.push('니드런m')
 		}
 	
-		if (inputText === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
-			inputs.push('spheal')
-			ethan_roll();
-		}
-		if (inputText === "satan".toLowerCase()) {
-			inputs.push('whimsicott');
-		}
-		if (inputText === "wilbur".toLowerCase()) {
-			inputs.push('pidove');
-			inputs.push('tranquill');
-			inputs.push('unfezant');
-		}
-		if (inputText === "dennis".toLowerCase()) {
-			inputs.push('roggenrola');
-			inputs.push('boldore');
-			inputs.push('gigalith');
-		}
-		if (inputText === "fortuna".toLowerCase()) {
-			inputs.push('spheal');
-		}
-		
 		let wasCorrect = false;
 		let guessResult = false;
 		for (let i = 0; i < inputs.length; i++){
@@ -1135,8 +1114,6 @@ let rankVals = [
 	'rankthree'
 ]
 
-let twitchInputBlacklist = ["ethan_from_chicago's favorite pokemon", "satan", "wilbur", "dennis", "fortuna"];
-
 document.getElementById("twitch-on").onclick = function (){
 	if (!isTwitchOn){
 		isTwitchOn = true;
@@ -1156,14 +1133,29 @@ document.getElementById("twitch-on").onclick = function (){
 			console.log(`${tags['display-name']}: ${message}`);
 
 
-			if (channelName.toLowerCase() != 'ethan_from_chicago' && channelName.toLowerCase() != 'adeptcharon'){
-				for (let k = 0; k < twitchInputBlacklist.length; k++){
-					if (message.toLowerCase() == twitchInputBlacklist[k]){
-						return;
-					}
+			if (channelName.toLowerCase() == 'ethan_from_chicago'){
+				if (message === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
+					message = 'spheal';
+					ethan_roll();
 				}
-
+				if (message === "satan".toLowerCase()) {
+					message = 'whimsicott';
+				}
+				if (message === "wilbur".toLowerCase()) {
+					message = 'pidove';
+					parseInput('tranquill', false);
+					parseInput('unfezant', false);
+				}
+				if (message === "dennis".toLowerCase()) {
+					message = 'roggenrola';
+					parseInput('boldore', false);
+					parseInput('gigalith', false);
+				}
+				if (message === "fortuna".toLowerCase()) {
+					message = 'spheal';
+				}
 			}
+			
 
 			let isCorrect = parseInput(message, false);
 			
