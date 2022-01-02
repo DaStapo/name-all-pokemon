@@ -208,6 +208,9 @@
 	.quarter {
 	width: 25%;
 	}
+	.third {
+	width: 33.33%
+	}
 	.half {
 	width: 50%;
 	}
@@ -358,10 +361,12 @@
 	margin-left: 10px;
 	}
 	.region {
-    text-align: center;
     margin-bottom: 3px;    
 	margin-top: -4px;
     font-weight: bold;
+	}
+	.center {
+	text-align: center;
 	}
 	.rank {
 	padding: 0px 4px;
