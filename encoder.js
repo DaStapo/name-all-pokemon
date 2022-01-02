@@ -52,9 +52,9 @@ function onNamesLoad (fileNames) {
         let pokemon = standardizeName(fileNames[i]);
 
         //skip unnecessary sprites
-        if(!pokemonList.includes(pokemon)){
-            continue;
-        }
+        //if(!pokemonList.includes(pokemon)){
+        //    continue;
+        //}
 
         let spritePath = '/sprites/' + fileNames[i];
         let silhouettePath = '/silhouettes/' + fileNames[i];
@@ -68,6 +68,10 @@ function onNamesLoad (fileNames) {
 			saveEncodedImg(encodedSprites,pokemon,sprite);
             onSpriteLoad();
         }, false);
+        sprite.addEventListener("error", function () {
+            totalSpritesCount--;
+            onSpriteLoad();
+        }, false);
         totalSpritesCount++;
 		
 		let shiny = document.createElement("img");
@@ -77,6 +81,10 @@ function onNamesLoad (fileNames) {
 			saveEncodedImg(encodedShinies,pokemon,shiny);
             onSpriteLoad();
         }, false);
+        shiny.addEventListener("error", function () {
+            totalSpritesCount--;
+            onSpriteLoad();
+        }, false);
         totalSpritesCount++;
 
         let silhouette = document.createElement("img");
@@ -84,6 +92,10 @@ function onNamesLoad (fileNames) {
         silhouette.addEventListener("load", function () {
             loadedSpritesCount++;
 			saveEncodedImg(encodedSilhouettes,pokemon,silhouette);
+            onSpriteLoad();
+        }, false);
+        silhouette.addEventListener("error", function () {
+            totalSpritesCount--;
             onSpriteLoad();
         }, false);
         totalSpritesCount++;

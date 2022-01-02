@@ -45,6 +45,7 @@ let extraPokemon = {
 	'Regidrago':['Articuno-Galar', 'Zapdos-Galar', 'Moltres-Galar'],
 }
 
+
 function createUnguessed(index){
 	let unnamedList = document.createElement("div");
 /*	unnamedList.classList.add('column');*/
@@ -325,31 +326,31 @@ function getAlreadyGuessedAndRelevantPokemon() {
 }
 
 
+
+let fullSpriteList = []
 function loadSprites() {
 
-    //loop through filenames, not the pokemon list
-    //it's easier to get the standardized name from the filename than it is to get the filename from the standardized name
-    for (let i = 0; i < pokemonList.length; i++) {
-        let pokemon = standardizeName(pokemonList[i]);
 
+    let loadPkmn = function(pokemonName){
+        
         let sprite = document.createElement("img");
         sprite.classList.add('sprite');
         sprite.classList.add('zoom');
 
-        sprite.src = encodedImages['sprite'][pokemon];
+        sprite.src = encodedImages['sprite'][pokemonName];
         sprite.addEventListener("load", function () {
             loadedSpritesCount++;
             onSpriteLoad();
         }, false);
         totalSpritesCount++;
-        spriteDictionary[pokemon] = sprite;
+        spriteDictionary[pokemonName] = sprite;
         allSpirtes.push(sprite);
 
 
         let silhouette = document.createElement("img");
         silhouette.classList.add('sprite');
 
-        silhouette.src = encodedImages['silhouette'][pokemon];
+        silhouette.src = encodedImages['silhouette'][pokemonName];
 
         silhouette.style.display = "none";
         silhouette.addEventListener("load", function () {
@@ -358,15 +359,58 @@ function loadSprites() {
         }, false);
         totalSpritesCount++;
 
-        silhouetteDictionary[pokemon] = silhouette;
+        silhouetteDictionary[pokemonName] = silhouette;
         allSpirtes.push(silhouette);
-
     }
+
+
+    //loop through filenames, not the pokemon list
+    //it's easier to get the standardized name from the filename than it is to get the filename from the standardized name
+    for (let i = 0; i < pokemonList.length; i++) {
+        let pokemon = standardizeName(pokemonList[i]);
+        loadPkmn(pokemon);
+    }
+    for (let i = 0; i < megaList.length; i++) {
+        let pokemon = standardizeName(megaList[i]);
+        loadPkmn(pokemon);
+    }
+    for (let i = 0; i < alolaList.length; i++) {
+        let pokemon = standardizeName(alolaList[i]);
+        loadPkmn(pokemon);
+    }
+    for (let i = 0; i < galarList.length; i++) {
+        let pokemon = standardizeName(galarList[i]);
+        loadPkmn(pokemon);
+    }
+    for (let i = 0; i < gmaxList.length; i++) {
+        let pokemon = standardizeName(gmaxList[i]);
+        loadPkmn(pokemon);
+    }
+
+
+    for (let key in extraPokemon){
+        let pokemon = standardizeName(key);
+        if (pokemon != key){
+            extraPokemon[pokemon] = extraPokemon[key]
+        }
+    }
+    
+    for (let i = 0; i < pokemonList.length; i++) {
+        let pokemon = standardizeName(pokemonList[i]);
+        fullSpriteList.push(pokemon)
+        if (pokemon in extraPokemon){
+            for (let j = 0; j<extraPokemon[pokemon].length; j++){
+                fullSpriteList.push(standardizeName(extraPokemon[pokemon][j]))
+            }
+        }
+        
+    }
+
 
     //ordered appending
     let boxIndex = 0;
-    for (let i = 0; i < pokemonList.length; i++) {
-        let pokemon = standardizeName(pokemonList[i]);
+    for (let i = 0; i < fullSpriteList.length; i++) {
+        let pokemon = standardizeName(fullSpriteList[i]);
         let box = boxes[boxIndex];
         let unguessed = document.createElement("div");
 
