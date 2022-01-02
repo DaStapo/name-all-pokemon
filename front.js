@@ -10,7 +10,7 @@ let language_map = {'ENG':pokemonList, 'JPN': ja_pokemonList, 'KOR':ko_pokemonLi
 let megaList = ['Venusaur-Mega', 'Charizard-Mega-X', 'Charizard-Mega-Y', 'Blastoise-Mega', 'Beedrill-Mega', 'Pidgeot-Mega', 'Alakazam-Mega', 'Slowbro-Mega', 'Gengar-Mega', 'Kangaskhan-Mega', 'Pinsir-Mega', 'Gyarados-Mega', 'Aerodactyl-Mega', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Ampharos-Mega', 'Steelix-Mega', 'Scizor-Mega', 'Heracross-Mega', 'Houndoom-Mega', 'Tyranitar-Mega', 'Sceptile-Mega', 'Blaziken-Mega', 'Swampert-Mega', 'Gardevoir-Mega', 'Sableye-Mega', 'Mawile-Mega', 'Aggron-Mega', 'Medicham-Mega', 'Manectric-Mega', 'Sharpedo-Mega', 'Camerupt-Mega', 'Altaria-Mega', 'Banette-Mega', 'Absol-Mega', 'Glalie-Mega', 'Salamence-Mega', 'Metagross-Mega', 'Latias-Mega', 'Latios-Mega', 'Kyogre-Primal', 'Groudon-Primal', 'Rayquaza-Mega', 'Lopunny-Mega', 'Garchomp-Mega', 'Lucario-Mega', 'Abomasnow-Mega', 'Gallade-Mega', 'Audino-Mega', 'Diancie-Mega'];
 let alolaList = ['Rattata-Alola', 'Raticate-Alola', 'Raichu-Alola', 'Sandshrew-Alola', 'Sandslash-Alola', 'Vulpix-Alola', 'Ninetales-Alola', 'Diglett-Alola', 'Dugtrio-Alola', 'Meowth-Alola', 'Persian-Alola', 'Geodude-Alola', 'Graveler-Alola', 'Golem-Alola', 'Grimer-Alola', 'Muk-Alola', 'Exeggutor-Alola', 'Marowak-Alola'];
 let galarList = ['Meowth-Galar', 'Ponyta-Galar', 'Rapidash-Galar', 'Slowpoke-Galar', 'Slowbro-Galar', 'Farfetchd-Galar', 'Weezing-Galar', 'Mr-Mime-Galar', 'Articuno-Galar', 'Zapdos-Galar', 'Moltres-Galar', 'Slowking-Galar', 'Corsola-Galar', 'Zigzagoon-Galar', 'Linoone-Galar', 'Darumaka-Galar', 'Darmanitan-Galar', 'Yamask-Galar', 'Stunfisk-Galar'];
-let gmaxList = ['Venusaur-Gmax', 'Charizard-Gmax', 'Blastoise-Gmax', 'Butterfree-Gmax', 'Pikachu-Gmax', 'Meowth-Gmax', 'Machamp-Gmax', 'Gengar-Gmax', 'Kingler-Gmax', 'Lapras-Gmax', 'Eevee-Gmax', 'Snorlax-Gmax', 'Garbodor-Gmax', 'Melmetal-Gmax', 'Rillaboom-Gmax', 'Cinderace-Gmax', 'Inteleon-Gmax', 'Corviknight-Gmax', 'Orbeetle-Gmax', 'Drednaw-Gmax', 'Coalossal-Gmax', 'Flapple-Gmax', 'Sandaconda-Gmax', 'Toxtricity-Gmax', 'Centiskorch-Gmax', 'Hatterene-Gmax', 'Grimmsnarl-Gmax', 'Alcremie-Gmax', 'Copperajah-Gmax', 'Duraludon-Gmax', 'Urshifu-Rapid-Strike-Gmax', 'Urshifu-Single-Strike-Gmax'];
+let gmaxList = ['Venusaur-Gmax', 'Charizard-Gmax', 'Blastoise-Gmax', 'Butterfree-Gmax', 'Pikachu-Gmax', 'Meowth-Gmax', 'Machamp-Gmax', 'Gengar-Gmax', 'Kingler-Gmax', 'Lapras-Gmax', 'Eevee-Gmax', 'Snorlax-Gmax', 'Garbodor-Gmax', 'Melmetal-Gmax', 'Rillaboom-Gmax', 'Cinderace-Gmax', 'Inteleon-Gmax', 'Corviknight-Gmax', 'Orbeetle-Gmax', 'Drednaw-Gmax', 'Coalossal-Gmax', 'Flapple-Gmax', 'Sandaconda-Gmax', 'Toxtricity-Gmax', 'Centiskorch-Gmax', 'Hatterene-Gmax', 'Grimmsnarl-Gmax', 'Alcremie-Gmax', 'Copperajah-Gmax', 'Duraludon-Gmax', 'Urshifu-Gmax'];
 let genLastPokemon = ['Mew', 'Celebi', 'Deoxys', 'Arceus', 'Genesect', 'Volcanion', 'Melmetal', 'Calyrex'];
 let boxes = [];
 let currentPokemonList = [];
@@ -22,6 +22,28 @@ soundEffect2.volume = 0.3;
 
 let useEncoded = true;
 
+let extraPokemon = {
+	// Alolan forms added to Gen7 in official Aloladex-order
+    'gumshoos':['Rattata-Alola', 'Raticate-Alola', 'Raichu-Alola'],
+    'vikavolt':['Meowth-Alola', 'Persian-Alola', 'Grimer-Alola', 'Muk-Alola'],
+	'crabominable':['Diglett-Alola', 'Dugtrio-Alola'],
+	'salazzle':['Marowak-Alola'],
+	'togedemaru':['Geodude-Alola', 'Graveler-Alola', 'Golem-Alola'],
+	'drampa':['Sandshrew-Alola', 'Sandslash-Alola', 'Vulpix-Alola', 'Ninetales-Alola'],
+	'dhelmise':['Exeggutor-Alola'],
+	// Galarian forms mixed into Gen8 (made-up order for NAtdex order due to Galardex order deviation)
+	'appletun':['Stunfisk-Galar'],
+	'grapploct':['Ponyta-Galar', 'Rapidash-Galar'],
+	'grimmsnarl':['Weezing-Galar', 'Zigzagoon-Galar', 'Linoone-Galar'],
+	'obstagoon':['Meowth-Galar'],
+	'perrserker':['Corsola-Galar'],
+	'cursola':['Farfetchd-Galar'],
+	'sirfetchd':['Mr-Mime-Galar'],
+	'mrrime':['Yamask-Galar'],
+	'frosmoth':['Darumaka-Galar', 'Darmanitan-Galar'],
+	'eternatus':['Slowpoke-Galar', 'Slowbro-Galar', 'Slowking-Galar'],
+	'regidrago':['Articuno-Galar', 'Zapdos-Galar', 'Moltres-Galar'],
+}
 
 function createUnguessed(index){
 	let unnamedList = document.createElement("div");
