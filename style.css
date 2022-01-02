@@ -358,10 +358,9 @@
 	margin-left: 10px;
 	}
 	.region {
-	line-height: 15px;
     text-align: center;
-    padding-bottom: 5px;    
-	margin-top: -3px;
+    margin-bottom: 3px;    
+	margin-top: -4px;
     font-weight: bold;
 	}
 	.rank {
