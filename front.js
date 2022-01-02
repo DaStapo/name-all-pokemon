@@ -718,8 +718,8 @@ function updateGenFilter() {
             totalPokemonCount = pokemonList.length;
         }
         for (let i = 0; i < pokecolumns.length; i++) {
-            pokecolumns[i].classList.add('quarter');
-            pokecolumns[i].classList.remove('fiveeighth');
+            pokecolumns[i].classList.add('third');
+            pokecolumns[i].classList.remove('twothirds');
         }
         for (let i = 0; i < allSpirtes.length; i++) {
             allSpirtes[i].classList.add('sprite');
@@ -735,8 +735,8 @@ function updateGenFilter() {
             }
 
             for (let i = 0; i < pokecolumns.length; i++) {
-                pokecolumns[i].classList.remove('quarter');
-                pokecolumns[i].classList.add('fiveeighth');
+                pokecolumns[i].classList.remove('third');
+                pokecolumns[i].classList.add('twothirds');
             }
         }
         for (let i = 0; i < allSpirtes.length; i++) {
