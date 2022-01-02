@@ -7,7 +7,9 @@ let genLastPokemon = ['Mew','Celebi','Deoxys','Arceus','Genesect','Volcanion','M
 let loadedSpritesCount = 0;
 let totalSpritesCount = 0;
 
-let encodedImgs = {};
+let encodedSprites = {};
+let encodedSilhouettes = {};
+let encodedShinies = {};
 
 function standardizeName(input){
     //remove extension
@@ -63,7 +65,7 @@ function onNamesLoad (fileNames) {
         sprite.src = spritePath;
         sprite.addEventListener("load", function () {
             loadedSpritesCount++;
-			saveEncodedImg(spritePath,sprite);
+			saveEncodedImg(encodedSprites,pokemon,sprite);
             onSpriteLoad();
         }, false);
         totalSpritesCount++;
@@ -72,7 +74,7 @@ function onNamesLoad (fileNames) {
         shiny.src = shinyPath;
         shiny.addEventListener("load", function () {
             loadedSpritesCount++;
-			saveEncodedImg(shinyPath,shiny);
+			saveEncodedImg(encodedShinies,pokemon,shiny);
             onSpriteLoad();
         }, false);
         totalSpritesCount++;
@@ -81,7 +83,7 @@ function onNamesLoad (fileNames) {
         silhouette.src = silhouettePath;
         silhouette.addEventListener("load", function () {
             loadedSpritesCount++;
-			saveEncodedImg(silhouettePath,silhouette);
+			saveEncodedImg(encodedSilhouettes,pokemon,silhouette);
             onSpriteLoad();
         }, false);
         totalSpritesCount++;
@@ -123,14 +125,19 @@ function onLoadingComplete(){
     document.getElementById("resetButton").style.opacity = "1";
     document.getElementById("surrender").disabled = false;
     document.getElementById("resetButton").disabled = false;
-		
-	console.log(JSON.stringify(encodedImgs));
+	
+	let encodedImages = {}
+	encodedImages['sprite'] = encodedSprites;
+	encodedImages['shiny'] = encodedShinies;
+	encodedImages['silhouette'] = encodedSilhouettes;
+	
+	console.log(JSON.stringify(encodedImages));
 	
 	
 }
 
 
-function saveEncodedImg(path, img){
+function saveEncodedImg(targetDict, name, img){
 		let c = document.createElement('canvas');
 		c.height = img.naturalHeight;
 		c.width = img.naturalWidth;
@@ -139,7 +146,7 @@ function saveEncodedImg(path, img){
 		ctx.drawImage(img, 0, 0, c.width, c.height);
 		var base64String = c.toDataURL();
 		
-		encodedImgs[path] = base64String;	
+		targetDict[name] = base64String;	
 }
 
 function onSpriteLoad(){

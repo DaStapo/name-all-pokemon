@@ -325,32 +325,18 @@ function getAlreadyGuessedAndRelevantPokemon() {
 }
 
 
-function onNamesLoad(fileNames) {
+function loadSprites() {
 
     //loop through filenames, not the pokemon list
     //it's easier to get the standardized name from the filename than it is to get the filename from the standardized name
-    for (let i = 0; i < fileNames.length; i++) {
-        let pokemon = standardizeName(fileNames[i]);
-
-        //skip unnecessary sprites
-        if (!pokemonList.includes(pokemon)) {
-            continue;
-        }
-
-        let spritePath = '/sprites/' + fileNames[i];
-        let silhouettePath = '/silhouettes/' + fileNames[i];
-		let shinyPath = '/shiny/' + fileNames[i];
-		shinyPaths[pokemon] = shinyPath;
-		normalPaths[pokemon] = spritePath;
+    for (let i = 0; i < pokemonList.length; i++) {
+        let pokemon = standardizeName(pokemonList[i]);
 
         let sprite = document.createElement("img");
         sprite.classList.add('sprite');
         sprite.classList.add('zoom');
-        if (useEncoded) {
-            sprite.src = encodedImages[spritePath];
-        } else {
-            sprite.src = spritePath
-        }
+
+        sprite.src = encodedImages['sprite'][pokemon];
         sprite.addEventListener("load", function () {
             loadedSpritesCount++;
             onSpriteLoad();
@@ -362,11 +348,9 @@ function onNamesLoad(fileNames) {
 
         let silhouette = document.createElement("img");
         silhouette.classList.add('sprite');
-        if (useEncoded) {
-            silhouette.src = encodedImages[silhouettePath];
-        } else {
-            silhouette.src = silhouettePath
-        }
+
+        silhouette.src = encodedImages['silhouette'][pokemon];
+
         silhouette.style.display = "none";
         silhouette.addEventListener("load", function () {
             loadedSpritesCount++;
@@ -803,7 +787,7 @@ function logGen() {
 
 }
 
-loadNames(onNamesLoad);
+
 
 var loadingBar = document.getElementById("loadbar");
 
@@ -964,26 +948,26 @@ function off2() {
 
 function swapToShiny(){
 	for(let key in spriteDictionary){
-		spriteDictionary[key].src = encodedImages[shinyPaths[key]];
+		spriteDictionary[key].src = encodedImages['shiny'][key];
 	}
 	document.getElementById("shinyon").classList.add('smolbuttonx');
 	document.getElementById("shinyoff").classList.remove('smolbuttonx');
 	
 	for (key in unguessedDict){
 
-		unguessedDict[key].getElementsByTagName('img')[0].src = encodedImages[shinyPaths[key]]
+		unguessedDict[key].getElementsByTagName('img')[0].src = encodedImages['shiny'][key]
 	}
 }
 
 function swapToNormal(){
 	for(let key in spriteDictionary){
-		spriteDictionary[key].src = encodedImages[normalPaths[key]];
+		spriteDictionary[key].src = encodedImages['sprite'][key];
 	}
 	document.getElementById("shinyoff").classList.add('smolbuttonx');
 	document.getElementById("shinyon").classList.remove('smolbuttonx');
 	for (key in unguessedDict){
 
-		unguessedDict[key].getElementsByTagName('img')[0].src = encodedImages[normalPaths[key]]
+		unguessedDict[key].getElementsByTagName('img')[0].src = encodedImages['sprite'][key];
 	}
 }
 
@@ -1232,3 +1216,5 @@ document.getElementById("twitch-off").onclick = function (){
 	}
 }
 
+
+loadSprites()
