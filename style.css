@@ -357,6 +357,13 @@
 	display: inline-block;
 	margin-left: 10px;
 	}
+	.region {
+	line-height: 15px;
+    text-align: center;
+    padding-bottom: 5px;    
+	margin-top: -3px;
+    font-weight: bold;
+	}
 	.rank {
 	padding: 0px 4px;
 	margin-top: -2px;
