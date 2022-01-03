@@ -10,7 +10,7 @@ let language_map = {'ENG':pokemonList, 'JPN': ja_pokemonList, 'KOR':ko_pokemonLi
 let megaList = ['Venusaur-Mega', 'Charizard-Mega-X', 'Charizard-Mega-Y', 'Blastoise-Mega', 'Beedrill-Mega', 'Pidgeot-Mega', 'Alakazam-Mega', 'Slowbro-Mega', 'Gengar-Mega', 'Kangaskhan-Mega', 'Pinsir-Mega', 'Gyarados-Mega', 'Aerodactyl-Mega', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Ampharos-Mega', 'Steelix-Mega', 'Scizor-Mega', 'Heracross-Mega', 'Houndoom-Mega', 'Tyranitar-Mega', 'Sceptile-Mega', 'Blaziken-Mega', 'Swampert-Mega', 'Gardevoir-Mega', 'Sableye-Mega', 'Mawile-Mega', 'Aggron-Mega', 'Medicham-Mega', 'Manectric-Mega', 'Sharpedo-Mega', 'Camerupt-Mega', 'Altaria-Mega', 'Banette-Mega', 'Absol-Mega', 'Glalie-Mega', 'Salamence-Mega', 'Metagross-Mega', 'Latias-Mega', 'Latios-Mega', 'Kyogre-Primal', 'Groudon-Primal', 'Rayquaza-Mega', 'Lopunny-Mega', 'Garchomp-Mega', 'Lucario-Mega', 'Abomasnow-Mega', 'Gallade-Mega', 'Audino-Mega', 'Diancie-Mega'];
 let alolaList = ['Rattata-Alola', 'Raticate-Alola', 'Raichu-Alola', 'Sandshrew-Alola', 'Sandslash-Alola', 'Vulpix-Alola', 'Ninetales-Alola', 'Diglett-Alola', 'Dugtrio-Alola', 'Meowth-Alola', 'Persian-Alola', 'Geodude-Alola', 'Graveler-Alola', 'Golem-Alola', 'Grimer-Alola', 'Muk-Alola', 'Exeggutor-Alola', 'Marowak-Alola'];
 let galarList = ['Meowth-Galar', 'Ponyta-Galar', 'Rapidash-Galar', 'Slowpoke-Galar', 'Slowbro-Galar', "Farfetch'd-Galar", 'Weezing-Galar', "Mr. Mime-Galar", 'Articuno-Galar', 'Zapdos-Galar', 'Moltres-Galar', 'Slowking-Galar', 'Corsola-Galar', 'Zigzagoon-Galar', 'Linoone-Galar', 'Darumaka-Galar', 'Darmanitan-Galar', 'Yamask-Galar', 'Stunfisk-Galar'];
-let gmaxList = ['Venusaur-Gmax', 'Charizard-Gmax', 'Blastoise-Gmax', 'Butterfree-Gmax', 'Pikachu-Gmax', 'Meowth-Gmax', 'Machamp-Gmax', 'Gengar-Gmax', 'Kingler-Gmax', 'Lapras-Gmax', 'Eevee-Gmax', 'Snorlax-Gmax', 'Garbodor-Gmax', 'Melmetal-Gmax', 'Rillaboom-Gmax', 'Cinderace-Gmax', 'Inteleon-Gmax', 'Corviknight-Gmax', 'Orbeetle-Gmax', 'Drednaw-Gmax', 'Coalossal-Gmax', 'Flapple-Gmax', 'Sandaconda-Gmax', 'Toxtricity-Gmax', 'Centiskorch-Gmax', 'Hatterene-Gmax', 'Grimmsnarl-Gmax', 'Alcremie-Gmax', 'Copperajah-Gmax', 'Duraludon-Gmax', 'Urshifu-Gmax', 'Eternatus-Eternamax'];
+let gmaxList = ['Venusaur-Gmax', 'Charizard-Gmax', 'Blastoise-Gmax', 'Butterfree-Gmax', 'Pikachu-Gmax', 'Meowth-Gmax', 'Machamp-Gmax', 'Gengar-Gmax', 'Kingler-Gmax', 'Lapras-Gmax', 'Eevee-Gmax', 'Snorlax-Gmax', 'Garbodor-Gmax', 'Melmetal-Gmax', 'Rillaboom-Gmax', 'Cinderace-Gmax', 'Inteleon-Gmax', 'Corviknight-Gmax', 'Orbeetle-Gmax', 'Drednaw-Gmax', 'Coalossal-Gmax', 'Flapple-Gmax', 'Sandaconda-Gmax', 'Toxtricity-Gmax', 'Centiskorch-Gmax', 'Hatterene-Gmax', 'Grimmsnarl-Gmax', 'Alcremie-Gmax', 'Copperajah-Gmax', 'Duraludon-Gmax', 'Urshifu-Gmax', 'Urshifu-rapid-strike-Gmax', 'Eternatus-Eternamax'];
 let genLastPokemon = ['Mew', 'Celebi', 'Deoxys', 'Arceus', 'Genesect', 'Volcanion', 'Melmetal', 'Calyrex'];
 let boxes = [];
 let currentPokemonList = [];
@@ -645,9 +645,13 @@ let parseInput = function (inputText, sendLog) {
         else if (inputText == "kyogre" || inputText == "groudon"){
             inputs.push(inputText + 'primal')
             inputs.push(inputText + 'primal')
-        }else if (inputText == "eternatus"){
+        }
+		else if (inputText == "eternatus"){
             inputs.push(inputText + 'eternamax')
         }
+		else if (inputText == "urshifu"){
+			inputs.push(inputText + 'rapidstrikegmax')
+		}
         
 		let wasCorrect = false;
 		let guessResult = false;
