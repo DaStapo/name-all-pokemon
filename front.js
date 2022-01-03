@@ -174,7 +174,7 @@ for (key in formatted_lang_map){
                 unguessedDictTexts[standardizeName(pokemonList[i])+'megax'].nodeValue = formatted_lang_map[currentKey][i]  + ' X';
             }
             if (standardizeName(pokemonList[i])+'primal' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'primal'].nodeValue = formatted_lang_map[currentKey][i]  + ' X';
+                unguessedDictTexts[standardizeName(pokemonList[i])+'primal'].nodeValue = formatted_lang_map[currentKey][i];
             }
 		}
 		
