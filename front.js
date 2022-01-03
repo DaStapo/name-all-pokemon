@@ -64,7 +64,6 @@ function createUnguessed(index){
 	unnamedContent.classList.add('box');
 	unnamedContent.classList.add('rounded');
 	unnamedContent.classList.add('bottommargin');
-	unnamedContent.id = 'unguessed-' + index;
 	unnamedContent.style.display = 'block';
 	
 	unnamedList.appendChild(unnamedContent)
@@ -76,6 +75,7 @@ function createUnguessed(index){
 
 let megaBox = document.getElementById("pokemon-box-mega")
 let gmaxBox = document.getElementById("pokemon-box-gmax")
+let gen7half = document.getElementById("pokemon-box-7-5")
 
 for (let i = 0; i <= genLastPokemon.length; i++) {
 	
@@ -542,7 +542,12 @@ function loadSprites() {
     for (let i = 0; i < fullSpriteList.length; i++) {
         let pokemon = standardizeName(fullSpriteList[i]);
         let box = boxes[boxIndex];
-        addToBox(pokemon, box)
+        if (pokemon == "meltan" || pokemon == "melmetal"){
+            addToBox(pokemon, gen7half)
+        }else{
+            addToBox(pokemon, box)
+        }
+        
         if (genLastPokemon.includes(pokemon)) {
             boxIndex++;
         }
@@ -589,7 +594,7 @@ function createUnguessedContent(){
 		unguessedDict[pokemon] = _elem;
 		unguessedDictTexts[pokemon] = _name
 		unguessedContent.appendChild(_elem)
-        if (genLastPokemon.includes(pokemon) && i !==  fullSpriteList.length-1) {
+        if ((genLastPokemon.includes(pokemon) || pokemon == "zeraora") && i !==  fullSpriteList.length-1) {
             genIndex++;
 			unguessedContent = createUnguessed(genIndex)
         }
@@ -910,8 +915,10 @@ function updateGenFilter() {
     
     megaBox.style.display = "none";
     gmaxBox.style.display = "none";
+    gen7half.style.display = "none";
     //all gens
     if (currentGen === 0) {
+        gen7half.style.display = "block";
         for (let i = 0; i < boxes.length; i++) {
             boxes[i].style.display = "block";
             totalPokemonCount = pokemonList.length;
@@ -931,7 +938,10 @@ function updateGenFilter() {
                 if (i + 1 === 6){
                     megaBox.style.display = "block";
                 }
-                if (i + 1 === 8){
+                else if(i + 1 === 7){
+                    gen7half.style.display = "block";
+                }
+                else if (i + 1 === 8){
                     gmaxBox.style.display = "block";
                 }
                 totalPokemonCount = pokemonListsByGen[i + 1].length;
