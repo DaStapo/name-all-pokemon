@@ -75,6 +75,7 @@ function createUnguessed(index){
 }
 
 let megaBox = document.getElementById("pokemon-box-mega")
+let gmaxBox = document.getElementById("pokemon-box-gmax")
 
 for (let i = 0; i <= genLastPokemon.length; i++) {
 	
@@ -175,6 +176,12 @@ for (key in formatted_lang_map){
             }
             if (standardizeName(pokemonList[i])+'primal' in  unguessedDictTexts){
                 unguessedDictTexts[standardizeName(pokemonList[i])+'primal'].nodeValue = formatted_lang_map[currentKey][i];
+            }
+            if (standardizeName(pokemonList[i])+'gmax' in  unguessedDictTexts){
+                unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i];
+            }
+            if (standardizeName(pokemonList[i])+'eternamax' in  unguessedDictTexts){
+                unguessedDictTexts[standardizeName(pokemonList[i])+'eternamax'].nodeValue = formatted_lang_map[currentKey][i];
             }
 		}
 		
@@ -322,7 +329,7 @@ let currentGenList = [];
 let currentGenRevealList = [];
 
 
-let suffixes = ["mega", "megax", "megay", "primal", "galar", "alola"]
+let suffixes = ["mega", "megax", "megay", "primal", "galar", "alola", "gmax", "eternamax"]
 // we kinda rely on normal versions being added first
 let pokemonAlreadyIncluded = function (name, list){
     for (let i = 0; i < suffixes.length; i++){
@@ -370,6 +377,14 @@ for (let i = 0; i < pokemonList.length; i++) {
         if (currentGenIndex === 6){
             for (let j = 0; j<megaList.length; j++){
                 let subPokemon = standardizeName(megaList[j])
+                currentGenRevealList.push(subPokemon)
+                if (!pokemonAlreadyIncluded(subPokemon, currentGenList)){
+                    currentGenList.push(subPokemon);
+                }
+            }
+        }else if (currentGenIndex === 8){
+            for (let j = 0; j<gmaxList.length; j++){
+                let subPokemon = standardizeName(gmaxList[j])
                 currentGenRevealList.push(subPokemon)
                 if (!pokemonAlreadyIncluded(subPokemon, currentGenList)){
                     currentGenList.push(subPokemon);
@@ -539,7 +554,11 @@ function loadSprites() {
         fullSpriteList.push(pokemon)
         addToBox(pokemon, megaBox);
     }
-
+    for (let i = 0; i < gmaxList.length; i++) {
+        let pokemon = standardizeName(gmaxList[i]);
+        fullSpriteList.push(pokemon)
+        addToBox(pokemon, gmaxBox);
+    }
 
     
 	createUnguessedContent();
@@ -612,14 +631,18 @@ let parseInput = function (inputText, sendLog) {
         inputs.push(inputText + 'galar')
         inputs.push(inputText + 'alola')
         inputs.push(inputText + 'mega')
+        inputs.push(inputText + 'gmax')
         if (inputText == "charizard" || inputText == "mewtwo"){
             inputs.push(inputText + 'megax')
             inputs.push(inputText + 'megay')
         }
-        if (inputText == "kyogre" || inputText == "groudon"){
+        else if (inputText == "kyogre" || inputText == "groudon"){
             inputs.push(inputText + 'primal')
             inputs.push(inputText + 'primal')
+        }else if (inputText == "eternatus"){
+            inputs.push(inputText + 'eternamax')
         }
+        
 		let wasCorrect = false;
 		let guessResult = false;
 		for (let i = 0; i < inputs.length; i++){
@@ -884,9 +907,9 @@ for (let i = 0; i < 3; i++) {
 
 function updateGenFilter() {
 
-    if (megaBox)
+    
     megaBox.style.display = "none";
-
+    gmaxBox.style.display = "none";
     //all gens
     if (currentGen === 0) {
         for (let i = 0; i < boxes.length; i++) {
@@ -907,6 +930,9 @@ function updateGenFilter() {
                 boxes[i].style.display = "block";
                 if (i + 1 === 6){
                     megaBox.style.display = "block";
+                }
+                if (i + 1 === 8){
+                    gmaxBox.style.display = "block";
                 }
                 totalPokemonCount = pokemonListsByGen[i + 1].length;
             } else {
