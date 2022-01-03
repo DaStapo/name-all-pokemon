@@ -111,7 +111,11 @@
 	}
 	.centeredbox {
 	margin: 0 auto;
-	max-width: 1474px;
+	/*max-width: 1474px;*/
+	max-width: 1529px;
+	/*max-width: 1613px;*/
+	/*max-width: 1697px;*/
+	/*max-width: 1781px;*/
 	overflow-x: hidden;
 	}
 	input[type=text] {
@@ -218,7 +222,10 @@
 	width: 480px;	
 	}
 	.fiveeighth {
-	width:54%
+	width:62.5%;
+	}
+	.twothirds {
+	width: 67.02%;
 	}
 	.smol {
 	width: 175px;
@@ -527,7 +534,7 @@
 	}
 	}
 	@media only screen and (max-width: 768px) {
-	.quarter, .sixth, .eighth, .half, .half-fixed, .fiveeighth{
+	.quarter, .sixth, .eighth, .third, .half, .half-fixed, .fiveeighth{
     width: 100%;
 	}
 	}
