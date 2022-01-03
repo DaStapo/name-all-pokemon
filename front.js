@@ -74,6 +74,7 @@ function createUnguessed(index){
 	
 }
 
+let megaBox = document.getElementById("pokemon-box-mega")
 
 for (let i = 0; i <= genLastPokemon.length; i++) {
 	
@@ -165,6 +166,15 @@ for (key in formatted_lang_map){
             }
             if (standardizeName(pokemonList[i])+'mega' in  unguessedDictTexts){
                 unguessedDictTexts[standardizeName(pokemonList[i])+'mega'].nodeValue = formatted_lang_map[currentKey][i]; // + '-Mega';
+            }
+            if (standardizeName(pokemonList[i])+'megay' in  unguessedDictTexts){
+                unguessedDictTexts[standardizeName(pokemonList[i])+'megay'].nodeValue = formatted_lang_map[currentKey][i]  + ' Y';
+            }
+            if (standardizeName(pokemonList[i])+'megax' in  unguessedDictTexts){
+                unguessedDictTexts[standardizeName(pokemonList[i])+'megax'].nodeValue = formatted_lang_map[currentKey][i]  + ' X';
+            }
+            if (standardizeName(pokemonList[i])+'primal' in  unguessedDictTexts){
+                unguessedDictTexts[standardizeName(pokemonList[i])+'primal'].nodeValue = formatted_lang_map[currentKey][i]  + ' X';
             }
 		}
 		
@@ -321,6 +331,13 @@ for (let i = 0; i < pokemonList.length; i++) {
 
     currentCount++;
     if (genLastPokemon.includes(pokemon)) {
+
+        if (currentGenIndex === 6){
+            for (let j = 0; j<megaList.length; j++){
+                currentGenList.push(standardizeName(megaList[j]));
+            }
+        }
+
         genPokemonCounts[currentGenIndex] = currentCount;
         pokemonListsByGen[currentGenIndex] = currentGenList;
         currentGenList = [];
@@ -423,36 +440,47 @@ function loadSprites() {
     }
 
 
-    //ordered appending
-    let boxIndex = 0;
-    for (let i = 0; i < fullSpriteList.length; i++) {
-        let pokemon = standardizeName(fullSpriteList[i]);
-        let box = boxes[boxIndex];
-        let unguessed = document.createElement("div");
 
+
+
+    let addToBox = function(pokemon, box){
+        let unguessed = document.createElement("div");
         //not included to loading bar, all use the same single image
         let pokeballImg = document.createElement("img");
         pokeballImg.classList.add('sprite');
         pokeballImg.src = '/sprites/unknown.png';
         unguessedDictionary[pokemon] = unguessed;
-
         pokeballArray.push(pokeballImg);
         silhouetteArray.push(silhouetteDictionary[pokemon]);
-
         allSpirtes.push(pokeballImg);
-
         unguessed.appendChild(silhouetteDictionary[pokemon])
         unguessed.appendChild(pokeballImg)
         box.appendChild(spriteDictionary[pokemon]);
-
         box.appendChild(unguessed);
-
         hideSprite(pokemon);
+    }
 
+
+    //ordered appending
+    let boxIndex = 0;
+    for (let i = 0; i < fullSpriteList.length; i++) {
+        let pokemon = standardizeName(fullSpriteList[i]);
+        let box = boxes[boxIndex];
+        addToBox(pokemon, box)
         if (genLastPokemon.includes(pokemon)) {
             boxIndex++;
         }
     }
+
+
+    for (let i = 0; i < megaList.length; i++) {
+        let pokemon = standardizeName(megaList[i]);
+        fullSpriteList.push(pokemon)
+        addToBox(pokemon, megaBox);
+    }
+
+
+    
 	createUnguessedContent();
 	spheal = new Image();
 	spheal.src = 'images/spheal.png';
@@ -523,7 +551,14 @@ let parseInput = function (inputText, sendLog) {
         inputs.push(inputText + 'galar')
         inputs.push(inputText + 'alola')
         inputs.push(inputText + 'mega')
-
+        if (inputText == "charizard" || inputText == "mewtwo"){
+            inputs.push(inputText + 'megax')
+            inputs.push(inputText + 'megay')
+        }
+        if (inputText == "kyogre" || inputText == "groudon"){
+            inputs.push(inputText + 'primal')
+            inputs.push(inputText + 'primal')
+        }
 		let wasCorrect = false;
 		let guessResult = false;
 		for (let i = 0; i < inputs.length; i++){
@@ -739,23 +774,24 @@ function giveUp (){
     let delay = 0;
 
     let revealList = []
-    for (let i = 0; i < pokemonList.length; i++) { 
-        let pokemon = pokemonList[i];
+    for (let i = 0; i < currentPokemonList.length; i++) { 
+        let pokemon = currentPokemonList[i];
         if (!isSpriteHidden(pokemon)){
             continue
         }
-        if (currentPokemonList.includes(pokemon)){
-            revealList.push(pokemon)
-            if (pokemon in extraPokemon){
-                for (let j = 0; j <extraPokemon[pokemon].length; j++){
-                    let subPokemon = standardizeName(extraPokemon[pokemon][j])
-                    if (isSpriteHidden(subPokemon)){
+
+        revealList.push(pokemon)
+        if (pokemon in extraPokemon){
+            for (let j = 0; j <extraPokemon[pokemon].length; j++){
+                let subPokemon = standardizeName(extraPokemon[pokemon][j])
+                if (isSpriteHidden(subPokemon)){
+                    if (!revealList.includes(subPokemon)){
                         revealList.push(subPokemon)
                     }
                 }
             }
         }
-       
+        
     }
 
     for (let i = 0; i < revealList.length; i++) {
@@ -799,6 +835,9 @@ for (let i = 0; i < 3; i++) {
 
 function updateGenFilter() {
 
+    if (megaBox)
+    megaBox.style.display = "none";
+
     //all gens
     if (currentGen === 0) {
         for (let i = 0; i < boxes.length; i++) {
@@ -817,6 +856,9 @@ function updateGenFilter() {
         for (let i = 0; i < boxes.length; i++) {
             if (i + 1 === currentGen) {
                 boxes[i].style.display = "block";
+                if (i + 1 === 6){
+                    megaBox.style.display = "block";
+                }
                 totalPokemonCount = pokemonListsByGen[i + 1].length;
             } else {
                 boxes[i].style.display = "none";
