@@ -158,13 +158,13 @@ for (key in formatted_lang_map){
 		for (let i = 0; i< formatted_lang_map[currentKey].length; i++){
 			unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i];
             if (standardizeName(pokemonList[i])+'galar' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'galar'].nodeValue = formatted_lang_map[currentKey][i] + '-Galar';
+                unguessedDictTexts[standardizeName(pokemonList[i])+'galar'].nodeValue = formatted_lang_map[currentKey][i]; //+ '-Galar';
             }
             if (standardizeName(pokemonList[i])+'alola' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'alola'].nodeValue = formatted_lang_map[currentKey][i] + '-Aloa';
+                unguessedDictTexts[standardizeName(pokemonList[i])+'alola'].nodeValue = formatted_lang_map[currentKey][i]; // + '-Aloa';
             }
             if (standardizeName(pokemonList[i])+'mega' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'mega'].nodeValue = formatted_lang_map[currentKey][i] + '-Mega';
+                unguessedDictTexts[standardizeName(pokemonList[i])+'mega'].nodeValue = formatted_lang_map[currentKey][i]; // + '-Mega';
             }
 		}
 		
@@ -264,6 +264,9 @@ function hideSprite(name) {
     unguessedDictionary[name].style.display = "inline";
 }
 
+function isSpriteHidden(name){
+    return spriteDictionary[name].style.display == "none";
+}
 
 function standardizeName(input) {
     //remove extension
@@ -738,7 +741,7 @@ function giveUp (){
     let revealList = []
     for (let i = 0; i < pokemonList.length; i++) { 
         let pokemon = pokemonList[i];
-        if (alreadyGuessedPokemon.includes(pokemon)){
+        if (!isSpriteHidden(pokemon)){
             continue
         }
         if (currentPokemonList.includes(pokemon)){
@@ -746,7 +749,7 @@ function giveUp (){
             if (pokemon in extraPokemon){
                 for (let j = 0; j <extraPokemon[pokemon].length; j++){
                     let subPokemon = standardizeName(extraPokemon[pokemon][j])
-                    if (!alreadyGuessedPokemon.includes(subPokemon)){
+                    if (isSpriteHidden(subPokemon)){
                         revealList.push(subPokemon)
                     }
                 }
