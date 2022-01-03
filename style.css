@@ -397,6 +397,33 @@
 	background-color: #f5b942;
 	border-color: #d4920f;
 	}
+	/*dark mode classes*/
+	/*add class to body*/
+	.bodydark {
+	background-image: url(/images/background-dark.svg) !important;
+	color: #fff !important;
+	}
+	/*add class to elements with class .box, etc*/
+	.boxdark {
+	background: rgb(18, 18, 18, 0.90) !important;
+	}
+	.smolbuttondark {
+	background-color: #333 !important;
+	}
+	.smolbuttonxdark {
+	color: #333 !important;
+	}
+	.buttondark {
+	background-color:#222 !important;
+	}
+	.darkdark {
+	background-color: #111 !important;
+	}
+	.limelightdark {
+	color: #fff !important;
+	background: #2c381b !important;
+	}
+	/*dark mode classes end*/
 	.radio-item input[type='radio'] {
 	display: none;
 	}
