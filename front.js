@@ -334,25 +334,7 @@ for (let i = 0; i < pokemonList.length; i++) {
 
         if (currentGenIndex === 6){
             for (let j = 0; j<megaList.length; j++){
-                let name = standardizeName(megaList[j])
-                
-                let standardName = name.replace("megay","");
-                standardName = standardName.replace("megax","");
-                standardName = standardName.replace("mega","");
-
-                let potentialNames = [name, standardName, standardName +'mega', standardName +'megay', standardName +'megax']
-
-
-                let alreadyExists = false;
-                for (let k = 0; k < potentialNames.length; k++){
-                    if (currentGenList.includes(potentialNames[k])){
-                        alreadyExists = true;
-                        break;
-                    }
-                }
-                if (!alreadyExists){
-                    currentGenList.push(standardizeName(megaList[j]));
-                }
+                currentGenList.push(standardizeName(megaList[j]));
             }
         }
 
@@ -798,9 +780,7 @@ function giveUp (){
             continue
         }
 
-        if (!revealList.includes(pokemon)){
-            revealList.push(pokemon)
-        }
+        revealList.push(pokemon)
         if (pokemon in extraPokemon){
             for (let j = 0; j <extraPokemon[pokemon].length; j++){
                 let subPokemon = standardizeName(extraPokemon[pokemon][j])
@@ -815,7 +795,6 @@ function giveUp (){
     }
 
     for (let i = 0; i < revealList.length; i++) {
-        
         let pokemon = revealList[i];
         delay = delay + 35;
         let timeout = setTimeout(function () {
