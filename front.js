@@ -315,39 +315,100 @@ let genPokemonCounts = [];
 let currentGenIndex = 1;
 let currentCount = 0;
 let pokemonListsByGen = [];
+let pokemonRevealListsByGen = [];
+pokemonRevealListsByGen.push([])
 pokemonListsByGen.push(pokemonList);
 let currentGenList = [];
+let currentGenRevealList = [];
+
+
+let suffixes = ["mega", "megax", "megay", "primal", "galar", "alola"]
+// we kinda rely on normal versions being added first
+let pokemonAlreadyIncluded = function (name, list){
+    for (let i = 0; i < suffixes.length; i++){
+        if (name.endsWith(suffixes[i])){
+            console.log(name.substring(0, name.length- suffixes[i].length ))
+            if (list.includes(name.substring(0, name.length- suffixes[i].length ))){
+                return true;
+            }
+        }
+    }
+    if (name.endsWith("megax")){
+        let ypkmn = name.substring(0, name.length- "megax".length ) + 'megay'
+        if (list.includes(ypkmn)){
+            return true;
+        }
+    }else if (name.endsWith("megay")){
+        let xpkmn = name.substring(0, name.length- "megay".length ) + 'megax'
+        if (list.includes(xpkmn)){
+            return true;
+        }
+    }
+
+    return false;
+}
 
 for (let i = 0; i < pokemonList.length; i++) {
     let pokemon = pokemonList[i];
 
     currentGenList.push(pokemon)
-
+    currentGenRevealList.push(pokemon)
+    pokemonRevealListsByGen[0].push(pokemon)
     if (standardizeName(pokemon) in extraPokemon){
         for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
-            currentGenList.push(standardizeName(extraPokemon[standardizeName(pokemon)][j]))
+            let subPokemon = standardizeName(extraPokemon[standardizeName(pokemon)][j])
+            currentGenRevealList.push(subPokemon)
+            pokemonRevealListsByGen[0].push(subPokemon)
+            if (!pokemonAlreadyIncluded(subPokemon, currentGenList)){
+                currentGenList.push(subPokemon)
+            }
         }
     }
 
     currentCount++;
     if (genLastPokemon.includes(pokemon)) {
-
         if (currentGenIndex === 6){
             for (let j = 0; j<megaList.length; j++){
-                currentGenList.push(standardizeName(megaList[j]));
+                let subPokemon = standardizeName(megaList[j])
+                currentGenRevealList.push(subPokemon)
+                if (!pokemonAlreadyIncluded(subPokemon, currentGenList)){
+                    currentGenList.push(subPokemon);
+                }
             }
         }
 
         genPokemonCounts[currentGenIndex] = currentCount;
         pokemonListsByGen[currentGenIndex] = currentGenList;
+        pokemonRevealListsByGen[currentGenIndex] = currentGenRevealList;
         currentGenList = [];
+        currentGenRevealList = [];
         currentGenIndex++;
         currentCount = 0;
     }
 }
 
+//https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
+function remove_duplicates_safe(arr) {
+    var seen = {};
+    var ret_arr = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (!(arr[i] in seen)) {
+            ret_arr.push(arr[i]);
+            seen[arr[i]] = true;
+        }
+    }
+    return ret_arr;
+}
+
+for (let i = 0; i < pokemonListsByGen.length; i++){
+    pokemonListsByGen[i] = remove_duplicates_safe(pokemonListsByGen[i])
+    pokemonRevealListsByGen[i] = remove_duplicates_safe(pokemonRevealListsByGen[i])
+}
+
+
 function updateCurrentPokemonList() {
     currentPokemonList = pokemonListsByGen[currentGen]
+    currentRevealList = pokemonRevealListsByGen[currentGen]
 }
 
 function getAlreadyGuessedAndRelevantPokemon() {
@@ -774,24 +835,12 @@ function giveUp (){
     let delay = 0;
 
     let revealList = []
-    for (let i = 0; i < currentPokemonList.length; i++) { 
-        let pokemon = currentPokemonList[i];
+    for (let i = 0; i < currentRevealList.length; i++) { 
+        let pokemon = currentRevealList[i];
         if (!isSpriteHidden(pokemon)){
             continue
         }
-
         revealList.push(pokemon)
-        if (pokemon in extraPokemon){
-            for (let j = 0; j <extraPokemon[pokemon].length; j++){
-                let subPokemon = standardizeName(extraPokemon[pokemon][j])
-                if (isSpriteHidden(subPokemon)){
-                    if (!revealList.includes(subPokemon)){
-                        revealList.push(subPokemon)
-                    }
-                }
-            }
-        }
-        
     }
 
     for (let i = 0; i < revealList.length; i++) {
