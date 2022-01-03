@@ -227,6 +227,9 @@
 	.twothirds {
 	width: 67.02%;
 	}
+	.unknownbox {
+	width: 100px !important;
+	}
 	.smol {
 	width: 175px;
 	}
