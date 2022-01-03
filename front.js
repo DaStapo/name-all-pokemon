@@ -45,6 +45,15 @@ let extraPokemon = {
 	'Regidrago':['Articuno-Galar', 'Zapdos-Galar', 'Moltres-Galar'],
 }
 
+//standardize keys
+for (let key in extraPokemon){
+    let pokemon = standardizeName(key);
+    if (pokemon != key){
+        extraPokemon[pokemon] = extraPokemon[key]
+        delete extraPokemon[key]
+    }
+}
+
 
 function createUnguessed(index){
 	let unnamedList = document.createElement("div");
@@ -68,12 +77,12 @@ function createUnguessed(index){
 
 for (let i = 0; i <= genLastPokemon.length; i++) {
 	
-
-	
-	
+    //create box references/variables
     if (i !== 0) {
         boxes.push(document.getElementById("pokemon-box-" + i));
     }
+
+    //calling functions, popup and changing button CSS
     document.getElementById("gen" + i).onclick = function () {
 
         if (currentGen !== i) {
@@ -110,6 +119,7 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
     }
 }
 
+//good looking names for missing list
 let formatted_lang_map = {}
 for (key in language_map){
 	let copiedList = []
@@ -147,6 +157,15 @@ for (key in formatted_lang_map){
 		
 		for (let i = 0; i< formatted_lang_map[currentKey].length; i++){
 			unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i];
+            if (standardizeName(pokemonList[i])+'galar' in  unguessedDictTexts){
+                unguessedDictTexts[standardizeName(pokemonList[i])+'galar'].nodeValue = formatted_lang_map[currentKey][i] + '-Galar';
+            }
+            if (standardizeName(pokemonList[i])+'alola' in  unguessedDictTexts){
+                unguessedDictTexts[standardizeName(pokemonList[i])+'alola'].nodeValue = formatted_lang_map[currentKey][i] + '-Aloa';
+            }
+            if (standardizeName(pokemonList[i])+'mega' in  unguessedDictTexts){
+                unguessedDictTexts[standardizeName(pokemonList[i])+'mega'].nodeValue = formatted_lang_map[currentKey][i] + '-Mega';
+            }
 		}
 		
     }
@@ -160,12 +179,6 @@ for (key in formatted_lang_map){
 
 
 
-
-
-
-
-
-
 language_box = document.getElementById('lang_box')
 
 enabledLanguages = []
@@ -173,7 +186,6 @@ enabledLanguages = []
 let disableLanguage = function() { return; };
 
 let enableLanguage = function(languageButton){
-    console.log(enabledLanguages)
     enabledLanguages.push(languageButton.id)
     languageButton.classList.add('smolbuttonx')
     languageButton.onclick = function () {
@@ -187,7 +199,6 @@ disableLanguage = function(languageButton){
         if (index > -1) {
             enabledLanguages.splice(index, 1);
         }
-        console.log(enabledLanguages)
         languageButton.classList.remove('smolbuttonx')
         languageButton.onclick = function () {
             enableLanguage(languageButton)
@@ -197,7 +208,7 @@ disableLanguage = function(languageButton){
 
 
 
-for (key in language_map){
+for (let key in language_map){
     let lang = document.createElement("div");
     lang.innerHTML += key
     lang.classList.add('smolbutton')
@@ -234,16 +245,14 @@ function tryTranslate(input){
 let spriteDictionary = {};
 let silhouetteDictionary = {};
 let unguessedDictionary = {};
-let shinyPaths = {};
-let normalPaths = {};
+
 
 
 let silhouetteArray = [];
 let pokeballArray = [];
 let allSpirtes = [];
 
-let loadedSpritesCount = 0;
-let totalSpritesCount = 0;
+
 
 function showSprite(name) {
     spriteDictionary[name].style.display = "inline";
@@ -295,10 +304,17 @@ let currentCount = 0;
 let pokemonListsByGen = [];
 pokemonListsByGen.push(pokemonList);
 let currentGenList = [];
+
 for (let i = 0; i < pokemonList.length; i++) {
     let pokemon = pokemonList[i];
 
     currentGenList.push(pokemon)
+
+    if (standardizeName(pokemon) in extraPokemon){
+        for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
+            currentGenList.push(standardizeName(extraPokemon[standardizeName(pokemon)][j]))
+        }
+    }
 
     currentCount++;
     if (genLastPokemon.includes(pokemon)) {
@@ -326,6 +342,8 @@ function getAlreadyGuessedAndRelevantPokemon() {
 }
 
 
+let loadedSpritesCount = 0;
+let totalSpritesCount = 0;
 
 let fullSpriteList = []
 function loadSprites() {
@@ -388,12 +406,7 @@ function loadSprites() {
     }
 
 
-    for (let key in extraPokemon){
-        let pokemon = standardizeName(key);
-        if (pokemon != key){
-            extraPokemon[pokemon] = extraPokemon[key]
-        }
-    }
+
     
     for (let i = 0; i < pokemonList.length; i++) {
         let pokemon = standardizeName(pokemonList[i]);
@@ -447,8 +460,8 @@ function createUnguessedContent(){
 	
 	let genIndex = 0;
 	unguessedContent = createUnguessed(genIndex)
-    for (let i = 0; i < pokemonList.length; i++) {
-        let pokemon = standardizeName(pokemonList[i]);
+    for (let i = 0; i < fullSpriteList.length; i++) {
+        let pokemon = standardizeName(fullSpriteList[i]);
 		
 		let _elem = document.createElement("div");
 		let _img = document.createElement("img");
@@ -465,7 +478,7 @@ function createUnguessedContent(){
 		unguessedDict[pokemon] = _elem;
 		unguessedDictTexts[pokemon] = _name
 		unguessedContent.appendChild(_elem)
-        if (genLastPokemon.includes(pokemon) && i !==  pokemonList.length-1) {
+        if (genLastPokemon.includes(pokemon) && i !==  fullSpriteList.length-1) {
             genIndex++;
 			unguessedContent = createUnguessed(genIndex)
         }
@@ -484,6 +497,9 @@ let parseInput = function (inputText, sendLog) {
 	if (!document.getElementById("pokemon").disabled){
 		inputText = inputText.toLowerCase()
 	
+        inputText = standardizeName(inputText)
+        inputText = tryTranslate(inputText)
+
 		let inputs = [inputText]
 	
 		if (inputText=== 'nidoran') {
@@ -501,12 +517,16 @@ let parseInput = function (inputText, sendLog) {
 			inputs.push('니드런m')
 		}
 	
+        inputs.push(inputText + 'galar')
+        inputs.push(inputText + 'alola')
+        inputs.push(inputText + 'mega')
+
 		let wasCorrect = false;
 		let guessResult = false;
 		for (let i = 0; i < inputs.length; i++){
-			inputText = standardizeName(inputs[i]);
-			inputText = tryTranslate(inputText)
-			let guessResult = tryGuessPokemon(standardizeName(inputText), sendLog);
+			//inputText = standardizeName(inputs[i]);
+			//inputText = tryTranslate(inputText)
+			let guessResult = tryGuessPokemon(standardizeName(inputs[i]), sendLog);
 			if (!wasCorrect && guessResult){
 				wasCorrect = guessResult;
 			}
@@ -530,9 +550,14 @@ function play_single_sound2() {
 }
 
 function tryGuessPokemon(input, sendLog) {
+    try{
+        showSprite(input);
+    }catch(err){
+
+    }
     if (currentPokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)) {
 
-        showSprite(input);
+        //showSprite(input);
         inputField.value = '';
         recentSprite.src = spriteDictionary[input].src;
         alreadyGuessedPokemon.push(input);
@@ -710,27 +735,43 @@ function giveUp (){
     clearInterval(activeTimer);
     let delay = 0;
 
-    for (let i = 0; i < currentPokemonList.length; i++) {
-        let pokemon = currentPokemonList[i];
-        if (!(alreadyGuessedPokemon.includes(pokemon))) {
-            delay = delay + 35;
-            let timeout = setTimeout(function () {
-                spriteDictionary[pokemon].classList.add('revealed');
-                spriteDictionary[pokemon].classList.remove('zoom');
-                showSprite(pokemon);
-				changeFooterPosition()
-            }, delay);
-            revealTimeouts.push(timeout);
+    let revealList = []
+    for (let i = 0; i < pokemonList.length; i++) { 
+        let pokemon = pokemonList[i];
+        if (alreadyGuessedPokemon.includes(pokemon)){
+            continue
         }
+        if (currentPokemonList.includes(pokemon)){
+            revealList.push(pokemon)
+            if (pokemon in extraPokemon){
+                for (let j = 0; j <extraPokemon[pokemon].length; j++){
+                    let subPokemon = standardizeName(extraPokemon[pokemon][j])
+                    if (!alreadyGuessedPokemon.includes(subPokemon)){
+                        revealList.push(subPokemon)
+                    }
+                }
+            }
+        }
+       
+    }
+
+    for (let i = 0; i < revealList.length; i++) {
+        let pokemon = revealList[i];
+        delay = delay + 35;
+        let timeout = setTimeout(function () {
+            spriteDictionary[pokemon].classList.add('revealed');
+            spriteDictionary[pokemon].classList.remove('zoom');
+            showSprite(pokemon);
+			changeFooterPosition()
+        }, delay);
+        revealTimeouts.push(timeout);
     }
 	
 	//loop without delay
-	for (let i = 0; i < currentPokemonList.length; i++) {
-        let pokemon = currentPokemonList[i];
-        if (!(alreadyGuessedPokemon.includes(pokemon))) {
-			unguessedDict[pokemon].style.display = 'inline-block';
-			unguessedDict[pokemon].classList.add('fixed-width');
-        }
+	for (let i = 0; i < revealList.length; i++) {
+        let pokemon = revealList[i];
+		unguessedDict[pokemon].style.display = 'inline-block';
+		unguessedDict[pokemon].classList.add('fixed-width');
     }	
 	
 	
@@ -869,10 +910,10 @@ function resetQuiz() {
     document.getElementById("pokemon").disabled = false;
     recentSprite.src = '/sprites/unknown.png'
     document.getElementById("silhouette").checked = false;
-    for (let i = 0; i < pokemonList.length; i++) {
-        hideSprite(pokemonList[i]);
-        spriteDictionary[pokemonList[i]].classList.add("zoom");
-        spriteDictionary[pokemonList[i]].classList.remove("revealed");
+    for (let i = 0; i < fullSpriteList.length; i++) {
+        hideSprite(fullSpriteList[i]);
+        spriteDictionary[fullSpriteList[i]].classList.add("zoom");
+        spriteDictionary[fullSpriteList[i]].classList.remove("revealed");
 
     }
     changeFooterPosition();
