@@ -455,6 +455,8 @@
 	.limelightdark {
 	color: #fff;
 	background: #111;
+	border: 2px solid #639422;
+	border-bottom: none;
 	}
 	/*dark mode classes end*/
 	.radio-item input[type='radio'] {
