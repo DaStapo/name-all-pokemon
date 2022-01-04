@@ -134,8 +134,8 @@
 	.centeredbox {
 	margin: 0 auto;
 	/*max-width: 1474px;*/
-	max-width: 1529px;
-	/*max-width: 1613px;*/
+	/*max-width: 1529px;*/
+	max-width: 1613px;
 	/*max-width: 1697px;*/
 	/*max-width: 1781px;*/
 	overflow-x: hidden;
@@ -396,8 +396,7 @@
 	margin-left: 10px;
 	}
 	.region {
-    margin-bottom: 3px;    
-	margin-top: -4px;
+    margin-top: -4px;
 	padding-left: 4px;
 	display: inline-block;
     min-width: 76px;
@@ -438,7 +437,7 @@
 	}
 	/*add class to elements with class .box, etc*/
 	.boxdark {
-	background: rgb(22, 22, 22, 0.90);
+	background: rgb(13, 13, 13, 0.75);
 	}
 	.smolbuttondark {
 	background-color: #333;

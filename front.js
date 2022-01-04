@@ -946,13 +946,13 @@ for (let i = 0; i < 3; i++) {
 
 
 let regionToSingle = function (regionElement){
-    regionElement.classList.add('region');
-    regionElement.classList.remove('regionb');
+    regionElement.classList.remove('region');
+    regionElement.classList.add('regionb');
 }
 
 let regionToAll = function (regionElement){
-    regionElement.classList.remove('region');
-    regionElement.classList.add('regionb');
+    regionElement.classList.add('region');
+    regionElement.classList.remove('regionb');
 }
 
 function updateGenFilter() {
@@ -972,7 +972,7 @@ function updateGenFilter() {
         regionToAll(document.getElementById("regionmega"));
         regionToAll(document.getElementById("regiongmax"));
         regionToAll(document.getElementById("region7-5"));
-        document.getElementById("pokemon-box-7-5").classList.add('unknownbox');
+        document.getElementById("pokemon-box-7-5").classList.remove('unknownbox');
 
         for (let i = 0; i < pokecolumns.length; i++) {
             pokecolumns[i].classList.add('third');
@@ -989,7 +989,7 @@ function updateGenFilter() {
                 regionToSingle(document.getElementById("regionmega"));
                 regionToSingle(document.getElementById("regiongmax"));
                 regionToSingle(document.getElementById("region7-5"));
-                document.getElementById("pokemon-box-7-5").classList.remove('unknownbox');
+                document.getElementById("pokemon-box-7-5").classList.add('unknownbox');
                 boxes[i].style.display = "block";
                 if (i + 1 === 6){
                     megaBox.style.display = "block";
