@@ -19,7 +19,7 @@ let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
 soundEffect.volume = 0.5;
 let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
 soundEffect2.volume = 0.3;
-
+let darkMode = false;
 let useEncoded = true;
 
 let extraPokemon = {
@@ -235,6 +235,7 @@ disableLanguage = function(languageButton){
         if (index > -1) {
             enabledLanguages.splice(index, 1);
         }
+        console.log('here')
         visualizeButtonUnclick(languageButton);
         languageButton.onclick = function () {
             enableLanguage(languageButton)
@@ -1516,7 +1517,7 @@ document.getElementById("twitch-off").onclick = function (){
 	}
 }
 
-let darkMode = false
+
 document.getElementById("darkon").onclick = function (){
     if(!darkMode){
         darkMode = !darkMode
