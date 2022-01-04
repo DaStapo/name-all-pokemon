@@ -211,7 +211,7 @@
 	width: 143px;
 	}
 	.revealed {
-	filter: brightness(35%);
+	filter: brightness(45%);
 	animation-name: revealZoom;
 	animation-duration:750ms;
 	}
@@ -437,17 +437,17 @@
 	}
 	/*add class to elements with class .box, etc*/
 	.boxdark {
-	background: rgb(13, 13, 13, 0.75);
+	background: rgb(17, 17, 17, 0.90);
 	}
 	.smolbuttondark {
-	background-color: #333;
+	background-color: #111;
 	}
 	.smolbuttonxdark {
 	color: #fff;
 	background-color: #8CC63F;
 	}
 	.buttondark {
-	background-color:#222;
+	background-color:#111;
 	}
 	.greyerdark {
 	background-color: #111;
