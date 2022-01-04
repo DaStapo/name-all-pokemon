@@ -75,8 +75,8 @@
 	border-radius: 0px 0px 4px 4px;
 	}
 	.lime {
-	background: #8CC63F;
-	color: #fff;
+	background: #8CC63F !important;
+	color: #fff !important;
 	}
 	.limelight {
 	background: #BEE08F;
@@ -84,7 +84,7 @@
 	border: 2px solid #8CC63F;
 	border-bottom: none;
 	}
-	.dark {
+	.greyer {
 	background: #444;
 	color: #fff;
 	}
@@ -391,7 +391,6 @@
 	.region {
     margin-bottom: 3px;    
 	margin-top: -4px;
-    font-weight: bold;
 	padding-left: 4px;
 	display: inline-block;
     min-width: 76px;
@@ -399,7 +398,6 @@
 	.regionb {
     margin-bottom: 3px;    
 	margin-top: -4px;
-    font-weight: bold;
 	padding-left: 7px;
 	display: block;
 	}
@@ -428,28 +426,28 @@
 	/*dark mode classes*/
 	/*add class to body*/
 	.bodydark {
-	background-image: url(/images/background-dark.svg) !important;
+	background-image: url(/images/background-dark.svg);
 	color: #fff !important;
 	}
 	/*add class to elements with class .box, etc*/
 	.boxdark {
-	background: rgb(18, 18, 18, 0.90) !important;
+	background: rgb(18, 18, 18, 0.90);
 	}
 	.smolbuttondark {
-	background-color: #333 !important;
+	background-color: #333;
 	}
 	.smolbuttonxdark {
-	color: #333 !important;
+	color: #fff;
 	}
 	.buttondark {
-	background-color:#222 !important;
+	background-color:#222;
 	}
-	.darkdark {
-	background-color: #111 !important;
+	.greyerdark {
+	background-color: #111;
 	}
 	.limelightdark {
-	color: #fff !important;
-	background: #2c381b !important;
+	color: #fff;
+	background: #2c381b;
 	}
 	/*dark mode classes end*/
 	.radio-item input[type='radio'] {

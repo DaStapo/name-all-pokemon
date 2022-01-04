@@ -1548,7 +1548,18 @@ document.getElementById("darkon").onclick = function (){
         for (let i = 0; i < buttonsX.length; i++){
             buttonsX[i].classList.add("smolbuttonxdark")
         }
+		
+		let limelights = document.getElementsByClassName("limelight")
 
+        for (let i = 0; i < limelights.length; i++){
+            limelights[i].classList.add("limelightdark")
+        }
+		
+		let greyers = document.getElementsByClassName("greyer")
+
+        for (let i = 0; i < greyers.length; i++){
+            greyers[i].classList.add("greyerdark")
+        }
 
         for (let i = 0; i < pokeballArray.length; i++){
             pokeballArray[i].src = '/sprites/unknown-2.png';
@@ -1586,6 +1597,19 @@ document.getElementById("darkoff").onclick = function (){
         for (let i = 0; i < buttonsX.length; i++){
             buttonsX[i].classList.remove("smolbuttonxdark")
         }
+		
+        let limelights = document.getElementsByClassName("limelight")
+
+        for (let i = 0; i < limelights.length; i++){
+            limelights[i].classList.remove("limelightdark")
+        }
+		
+        let greyers = document.getElementsByClassName("greyer")
+
+        for (let i = 0; i < greyers.length; i++){
+            greyers[i].classList.remove("greyersdark")
+        }
+		
         for (let i = 0; i < pokeballArray.length; i++){
             pokeballArray[i].src = '/sprites/unknown.png';
         }
