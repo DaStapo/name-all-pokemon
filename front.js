@@ -1071,7 +1071,10 @@ function resetQuiz() {
     resetTimer();
     stopReveal();
     document.getElementById("pokemon").disabled = false;
-    recentSprite.src = '/sprites/unknown.png'
+    if (!darkMode)
+        recentSprite.src = '/sprites/unknown.png'
+    else
+        recentSprite.src = '/sprites/unknown-2.png'
     document.getElementById("silhouette").checked = false;
     for (let i = 0; i < fullSpriteList.length; i++) {
         hideSprite(fullSpriteList[i]);
@@ -1549,6 +1552,7 @@ document.getElementById("darkon").onclick = function (){
         for (let i = 0; i < pokeballArray.length; i++){
             pokeballArray[i].src = '/sprites/unknown-2.png';
         }
+        recentSprite.src = '/sprites/unknown-2.png'
     }
 }
 document.getElementById("darkoff").onclick = function (){
@@ -1584,6 +1588,7 @@ document.getElementById("darkoff").onclick = function (){
         for (let i = 0; i < pokeballArray.length; i++){
             pokeballArray[i].src = '/sprites/unknown.png';
         }
+        recentSprite.src = '/sprites/unknown.png'
     }
 }
 
