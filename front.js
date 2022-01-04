@@ -944,6 +944,17 @@ for (let i = 0; i < 3; i++) {
     pokecolumns.push(document.getElementById("pokecolumn" + (i + 1)));
 }
 
+
+let regionToSingle = function (regionElement){
+    regionElement.classList.add('region');
+    regionElement.classList.remove('regionb');
+}
+
+let regionToAll = function (regionElement){
+    regionElement.classList.remove('region');
+    regionElement.classList.add('regionb');
+}
+
 function updateGenFilter() {
 
     
@@ -956,7 +967,13 @@ function updateGenFilter() {
         for (let i = 0; i < boxes.length; i++) {
             boxes[i].style.display = "block";
             totalPokemonCount = pokemonList.length;
+            regionToAll(document.getElementById("region" + (i+1)));
         }
+        regionToAll(document.getElementById("regionmega"));
+        regionToAll(document.getElementById("regiongmax"));
+        regionToAll(document.getElementById("region7-5"));
+        document.getElementById("pokemon-box-7-5").classList.add('unknownbox');
+
         for (let i = 0; i < pokecolumns.length; i++) {
             pokecolumns[i].classList.add('third');
             pokecolumns[i].classList.remove('twothirds');
@@ -968,6 +985,11 @@ function updateGenFilter() {
     } else {
         for (let i = 0; i < boxes.length; i++) {
             if (i + 1 === currentGen) {
+                regionToSingle(document.getElementById("region" + (i+1)));
+                regionToSingle(document.getElementById("regionmega"));
+                regionToSingle(document.getElementById("regiongmax"));
+                regionToSingle(document.getElementById("region7-5"));
+                document.getElementById("pokemon-box-7-5").classList.remove('unknownbox');
                 boxes[i].style.display = "block";
                 if (i + 1 === 6){
                     megaBox.style.display = "block";
