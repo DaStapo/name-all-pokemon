@@ -429,6 +429,11 @@
 	background-color: #f5b942;
 	border-color: #d4920f;
 	}
+	.board{
+	min-width: 275px;
+	float: left;
+	padding-left: 10px;
+	}
 	/*dark mode classes*/
 	/*add class to body*/
 	.bodydark {
@@ -443,7 +448,7 @@
 	background-color: #111;
 	}
 	.smolbuttonxdark {
-	color: #fff;
+	color: #111;
 	background-color: #8CC63F;
 	}
 	.buttondark {

@@ -1410,7 +1410,10 @@ var client;
 
 let twitchLeaderboard = {
     "StapoTV":5,
-    "adeptcharon":3
+    "adeptcharon":3,
+	"somedude":3,
+	"ethan_from_chicago":2,
+	"ethan_from_chicago":2
 }
 
 
@@ -1521,21 +1524,23 @@ document.getElementById("twitch-off").onclick = function (){
 
 let updateFullLeaderboard = function (){
     let leaderboardDiv = document.getElementById("leaderboard2");
+	leaderboardDiv.classList.add('box');
+	leaderboardDiv.classList.add('roundedf');
+	leaderboardDiv.classList.add('topedge');
     while (leaderboardDiv.firstChild) {
         leaderboardDiv.firstChild.remove()
     }
     if (Object.keys(twitchLeaderboard).length > 0){
         let sorted = sortDictionaryByValue(twitchLeaderboard);
         leaderboardDiv.style.display = 'block'
+		
 		for (let i = 0; i<sorted.length; i++){
 			let scoreDiv = document.createElement('div');
-			scoreDiv.classList.add('inlinetext')
-			scoreDiv.classList.add('rank')
-			scoreDiv.classList.add(rankVals[i])
+			scoreDiv.classList.add('board')
 			let textNode = document.createTextNode('#' + (i+1) +' '+ sorted[i][0] + ' (' + sorted[i][1] + ')');
 			scoreDiv.appendChild(textNode)
 			leaderboardDiv.appendChild(scoreDiv);
-			if (i >= 2){
+			if (i >= 10){
 				break;
 			}
 		}
