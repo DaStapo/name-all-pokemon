@@ -282,6 +282,10 @@
 	.bottommargin {
 	margin-bottom: 10px;
 	}
+	.bottomless {
+	padding: 11px 10px 0px 10px !important;
+	margin-bottom: 10px;
+	}
 	.header {
 	position: fixed;
 	top: 0px;
@@ -369,7 +373,8 @@
 	
 	
 	.smolbutton:hover {
-	background-color: #639422;
+	background-color: #7eb238;
+	border-color: #7eb238;
 	color: #fff;
 	}
 	.smolbuttonx {
@@ -430,9 +435,13 @@
 	border-color: #d4920f;
 	}
 	.board{
-	min-width: 275px;
+	/*min-width: 275px;*/
 	float: left;
-	padding-left: 10px;
+	background-color: #deefc7;
+	border-radius: 4px 16px 4px 16px;
+	padding: 6px 12px;
+	margin-right: 10px;
+	margin-bottom: 10px;
 	}
 	/*dark mode classes*/
 	/*add class to body*/
@@ -462,6 +471,9 @@
 	background: #111;
 	border: 2px solid #639422;
 	border-bottom: none;
+	}
+	.boarddark {
+	background-color: #8CC63F;
 	}
 	/*dark mode classes end*/
 	.radio-item input[type='radio'] {

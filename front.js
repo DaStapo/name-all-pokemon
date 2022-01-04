@@ -1413,7 +1413,10 @@ let twitchLeaderboard = {
     "adeptcharon":3,
 	"somedude":3,
 	"ethan_from_chicago":2,
-	"ethan_from_chicago":2
+	"ethan_from_blaguš":2,
+	"ethan_from_ženik":2,
+	"ethan_from_grabonoš":2,
+	"ethan_from_pešnčko":2
 }
 
 
@@ -1527,6 +1530,7 @@ let updateFullLeaderboard = function (){
 	leaderboardDiv.classList.add('box');
 	leaderboardDiv.classList.add('roundedf');
 	leaderboardDiv.classList.add('topedge');
+	leaderboardDiv.classList.add('bottomless');
     while (leaderboardDiv.firstChild) {
         leaderboardDiv.firstChild.remove()
     }
@@ -1540,9 +1544,6 @@ let updateFullLeaderboard = function (){
 			let textNode = document.createTextNode('#' + (i+1) +' '+ sorted[i][0] + ' (' + sorted[i][1] + ')');
 			scoreDiv.appendChild(textNode)
 			leaderboardDiv.appendChild(scoreDiv);
-			if (i >= 10){
-				break;
-			}
 		}
     }
 }
@@ -1591,6 +1592,12 @@ document.getElementById("darkon").onclick = function (){
             greyers[i].classList.add("greyerdark")
         }
 
+		let boarders = document.getElementsByClassName("board")
+
+        for (let i = 0; i < boarders.length; i++){
+            boarders[i].classList.add("boarddark")
+        }
+		
         for (let i = 0; i < pokeballArray.length; i++){
             pokeballArray[i].src = '/sprites/unknown-2.png';
         }
@@ -1638,6 +1645,12 @@ document.getElementById("darkoff").onclick = function (){
 
         for (let i = 0; i < greyers.length; i++){
             greyers[i].classList.remove("greyersdark")
+        }
+		
+        let boarders = document.getElementsByClassName("board")
+
+        for (let i = 0; i < boarders.length; i++){
+            boarders[i].classList.remove("boarddark")
         }
 		
         for (let i = 0; i < pokeballArray.length; i++){
