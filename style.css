@@ -116,6 +116,13 @@
 	.padded-left2 {
 	padding-left: 10px;
 	}
+	.padright {
+	padding-right: 14px;
+	}
+	.slightpad {
+	padding-left: 14px;
+	padding-right: 14px;
+	}
 	.padded-tb {
 	padding-top: 40px;
 	padding-bottom: 40px;
@@ -362,7 +369,7 @@
 	
 	
 	.smolbutton:hover {
-	background-color: #8CC63F;
+	background-color: #639422;
 	color: #fff;
 	}
 	.smolbuttonx {
@@ -431,13 +438,14 @@
 	}
 	/*add class to elements with class .box, etc*/
 	.boxdark {
-	background: rgb(18, 18, 18, 0.90);
+	background: rgb(22, 22, 22, 0.90);
 	}
 	.smolbuttondark {
 	background-color: #333;
 	}
 	.smolbuttonxdark {
 	color: #fff;
+	background-color: #8CC63F;
 	}
 	.buttondark {
 	background-color:#222;
@@ -447,7 +455,7 @@
 	}
 	.limelightdark {
 	color: #fff;
-	background: #2c381b;
+	background: #111;
 	}
 	/*dark mode classes end*/
 	.radio-item input[type='radio'] {
