@@ -57,7 +57,7 @@
 	border-radius: 10px 40px;
 	}
 	.rounded {
-	border-radius: 20px;
+	border-radius: 4px 20px 20px 20px;
 	}
 	.roundedb {
 	border-radius: 4px 20px;
@@ -68,6 +68,12 @@
 	.roundedd {
 	border-radius: 4px 4px 0px 0px;
 	}
+	.roundede {
+	border-radius: 20px 20px 0px 0px;	
+	}
+	.roundedf {
+	border-radius: 0px 0px 4px 4px;
+	}
 	.lime {
 	background: #8CC63F;
 	color: #fff;
@@ -75,6 +81,8 @@
 	.limelight {
 	background: #BEE08F;
 	color: #000;
+	border: 2px solid #8CC63F;
+	border-bottom: none;
 	}
 	.dark {
 	background: #444;
@@ -105,9 +113,16 @@
 	.padded-left {
 	padding-left: 20px;
 	}
+	.padded-left2 {
+	padding-left: 10px;
+	}
 	.padded-tb {
 	padding-top: 40px;
 	padding-bottom: 40px;
+	}
+	.topedge {
+	margin-top: 0px;
+	border-top: 2px solid #8CC63F;
 	}
 	.centeredbox {
 	margin: 0 auto;
@@ -228,7 +243,7 @@
 	width: 67.02%;
 	}
 	.unknownbox {
-	width: 100px !important;
+	max-width: 82px;
 	}
 	.smol {
 	width: 175px;
@@ -241,6 +256,9 @@
 	}
 	.namelist {
 	width: 183px;
+	}
+	.wide {
+	width: 90%;
 	}
 	.full {
 	width: 100%;
@@ -374,6 +392,16 @@
     margin-bottom: 3px;    
 	margin-top: -4px;
     font-weight: bold;
+	padding-left: 4px;
+	display: inline-block;
+    min-width: 76px;
+	}
+	.regionb {
+    margin-bottom: 3px;    
+	margin-top: -4px;
+    font-weight: bold;
+	padding-left: 7px;
+	display: block;
 	}
 	.center {
 	text-align: center;

@@ -62,8 +62,8 @@ function createUnguessed(index){
 	
 	let unnamedContent = document.createElement("div");
 	unnamedContent.classList.add('box');
-	unnamedContent.classList.add('rounded');
-	unnamedContent.classList.add('bottommargin');
+	unnamedContent.classList.add('roundedf');
+	unnamedContent.classList.add('topedge');
 	unnamedContent.style.display = 'block';
 	
 	unnamedList.appendChild(unnamedContent)
@@ -110,7 +110,7 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
                 promptGen.style.display = "none";
 				//document.getElementById("gen" + j).classList.add('smolbuttonx');
 				document.getElementById("gen" + i).classList.remove('smolbuttonx');
-            }
+			}
             if (alreadyGuessedPokemon.length !== 0) {
                 promptGen.style.display = 'inline';
             } else {
@@ -863,6 +863,7 @@ function giveUp (){
 	document.getElementById("pokemon").disabled = true;
 	
 	document.getElementById("missednames").style.display = "block";
+	document.getElementById("ranking2").style.display = "block";
 
     clearInterval(activeTimer);
     let delay = 0;
@@ -1057,6 +1058,11 @@ function resetQuiz() {
 		document.getElementById("accordion").click();
 	}
 	document.getElementById("missednames").style.display = "none";
+	if (document.getElementById("leaderboard2").style.display == 'block'){
+		//close and reset accordion
+		document.getElementById("accordion2").click();
+	}
+	document.getElementById("ranking2").style.display = "none";
 	for (key in unguessedDict){
 		unguessedDict[key].style.display = 'none';
 	}
@@ -1294,6 +1300,48 @@ document.getElementById("accordion").onclick = function (){
 		document.getElementById("accordion").textContent = 'Hide list';
 		
 		let childNodes = document.getElementById("panel").childNodes;
+		
+		for (let i = 0; i<childNodes.length; i++){
+			let childElements = childNodes[i].childNodes[0].childNodes;
+			let hasContent = false;
+
+			for (let j = 0; j<childElements.length; j++){
+				if (childElements[j].style.display != 'none'){
+	
+					hasContent = true;
+					break;
+				}
+			}
+
+			if (!hasContent){
+				childNodes[i].style.display = 'none';
+			}else{
+				childNodes[i].style.display = 'block';
+			}
+		}
+		
+		
+	}
+	changeFooterPosition()
+}
+
+document.getElementById("accordion2").onclick = function (){
+	
+	if (document.getElementById("leaderboard2").style.display == 'block'){
+		document.getElementById("leaderboard2").style.display = 'none';
+		document.getElementById("accordion2").textContent = 'Show list';
+		
+		let childNodes = document.getElementById("leaderboard2").childNodes;
+		
+		for (let i = 0; i<childNodes.length; i++){
+			childNodes[i].style.display = 'block';
+		}	
+		
+	}else{	
+		document.getElementById("leaderboard2").style.display = 'block'
+		document.getElementById("accordion2").textContent = 'Hide list';
+		
+		let childNodes = document.getElementById("leaderboard2").childNodes;
 		
 		for (let i = 0; i<childNodes.length; i++){
 			let childElements = childNodes[i].childNodes[0].childNodes;
