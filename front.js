@@ -1385,36 +1385,11 @@ document.getElementById("accordion2").onclick = function (){
 		document.getElementById("leaderboard2").style.display = 'none';
 		document.getElementById("accordion2").textContent = 'Show list';
 		
-		let childNodes = document.getElementById("leaderboard2").childNodes;
-		
-		for (let i = 0; i<childNodes.length; i++){
-			childNodes[i].style.display = 'block';
-		}	
 		
 	}else{	
 		document.getElementById("leaderboard2").style.display = 'block'
 		document.getElementById("accordion2").textContent = 'Hide list';
-		
-		let childNodes = document.getElementById("leaderboard2").childNodes;
-		
-		for (let i = 0; i<childNodes.length; i++){
-			let childElements = childNodes[i].childNodes[0].childNodes;
-			let hasContent = false;
-
-			for (let j = 0; j<childElements.length; j++){
-				if (childElements[j].style.display != 'none'){
-	
-					hasContent = true;
-					break;
-				}
-			}
-
-			if (!hasContent){
-				childNodes[i].style.display = 'none';
-			}else{
-				childNodes[i].style.display = 'block';
-			}
-		}
+		updateFullLeaderboard();
 		
 		
 	}
@@ -1433,7 +1408,10 @@ let emptyLeaderboard = function (){
 let isTwitchOn = false;
 var client;
 
-let twitchLeaderboard = {}
+let twitchLeaderboard = {
+    "StapoTV":5,
+    "adeptcharon":3
+}
 
 
 let rankVals = [
@@ -1441,6 +1419,12 @@ let rankVals = [
 	'ranktwo',
 	'rankthree'
 ]
+
+
+let sortDictionaryByValue = function(dictionary){
+    let entries = Object.entries(dictionary);
+    return sorted = entries.sort((a, b) => b[1] - a[1]);
+}
 
 document.getElementById("twitch-on").onclick = function (){
 	if (!isTwitchOn){
@@ -1498,11 +1482,7 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 				
 				
-				let entries = Object.entries(twitchLeaderboard);
-	
-				let sorted = entries.sort((a, b) => b[1] - a[1]);
-
-				
+				let sorted = sortDictionaryByValue(twitchLeaderboard);
 				emptyLeaderboard();
 				let leaderboardDiv = document.getElementById("leaderboard");
 				for (let i = 0; i<sorted.length; i++){
@@ -1537,6 +1517,29 @@ document.getElementById("twitch-off").onclick = function (){
 		client.disconnect();
 		document.getElementById("ranking").style.display = 'none';
 	}
+}
+
+let updateFullLeaderboard = function (){
+    let leaderboardDiv = document.getElementById("leaderboard2");
+    while (leaderboardDiv.firstChild) {
+        leaderboardDiv.firstChild.remove()
+    }
+    if (Object.keys(twitchLeaderboard).length > 0){
+        let sorted = sortDictionaryByValue(twitchLeaderboard);
+        leaderboardDiv.style.display = 'block'
+		for (let i = 0; i<sorted.length; i++){
+			let scoreDiv = document.createElement('div');
+			scoreDiv.classList.add('inlinetext')
+			scoreDiv.classList.add('rank')
+			scoreDiv.classList.add(rankVals[i])
+			let textNode = document.createTextNode('#' + (i+1) +' '+ sorted[i][0] + ' (' + sorted[i][1] + ')');
+			scoreDiv.appendChild(textNode)
+			leaderboardDiv.appendChild(scoreDiv);
+			if (i >= 2){
+				break;
+			}
+		}
+    }
 }
 
 
