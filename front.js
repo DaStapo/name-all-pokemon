@@ -55,6 +55,19 @@ for (let key in extraPokemon){
 }
 
 
+let visualizeButtonClick = function(elem){
+    elem.classList.add("smolbuttonx")
+    if (darkMode){
+        elem.classList.add("smolbuttonxdark")
+    }
+}
+let visualizeButtonUnclick = function(elem){
+    elem.classList.remove("smolbuttonx")
+    elem.classList.remove("smolbuttonxdark")
+}
+
+
+
 function createUnguessed(index){
 	let unnamedList = document.createElement("div");
 /*	unnamedList.classList.add('column');*/
@@ -96,10 +109,10 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
                 resetQuiz();
                 for (let j = 0; j <= genLastPokemon.length; j++) {
                     if (j !== i) {
-						document.getElementById("gen" + j).classList.remove('smolbuttonx');
+                        visualizeButtonUnclick(document.getElementById("gen" + j));
                     }
                 }
-				document.getElementById("gen" + i).classList.add('smolbuttonx');
+                visualizeButtonClick(document.getElementById("gen" + i))
             }
 
             promptGenYes.onclick = function () {
@@ -108,8 +121,8 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
             }
             promptGenNo.onclick = function () {
                 promptGen.style.display = "none";
-				//document.getElementById("gen" + j).classList.add('smolbuttonx');
-				document.getElementById("gen" + i).classList.remove('smolbuttonx');
+                visualizeButtonUnclick(document.getElementById("gen" + i))
+				
 			}
             if (alreadyGuessedPokemon.length !== 0) {
                 promptGen.style.display = 'inline';
@@ -134,10 +147,12 @@ for (key in language_map){
 
 
 
+
 let missingOptionsDiv = document.getElementById('missednames-options');
 let engMissingButton = '';
 
 let allMissingLangButtons = []
+
 
 for (key in formatted_lang_map){
 	let lang = document.createElement("div");
@@ -152,8 +167,12 @@ for (key in formatted_lang_map){
 			if (allMissingLangButtons[i] != lang){
 				allMissingLangButtons[i].classList.remove('smolbuttonSwap')
 				allMissingLangButtons[i].classList.add('smolbutton')
+                if (darkMode){
+                    allMissingLangButtons[i].classList.add('smolbuttondark')
+                }
 			}
 			lang.classList.remove('smolbutton');
+            lang.classList.remove('smolbuttondark');
 			lang.classList.add('smolbuttonSwap');
 		}
 		
@@ -204,7 +223,7 @@ let disableLanguage = function() { return; };
 
 let enableLanguage = function(languageButton){
     enabledLanguages.push(languageButton.id)
-    languageButton.classList.add('smolbuttonx')
+    visualizeButtonClick(languageButton);
     languageButton.onclick = function () {
         disableLanguage(languageButton)
     }
@@ -216,7 +235,7 @@ disableLanguage = function(languageButton){
         if (index > -1) {
             enabledLanguages.splice(index, 1);
         }
-        languageButton.classList.remove('smolbuttonx')
+        visualizeButtonUnclick(languageButton);
         languageButton.onclick = function () {
             enableLanguage(languageButton)
         }
@@ -334,7 +353,6 @@ let suffixes = ["mega", "megax", "megay", "primal", "galar", "alola", "gmax", "e
 let pokemonAlreadyIncluded = function (name, list){
     for (let i = 0; i < suffixes.length; i++){
         if (name.endsWith(suffixes[i])){
-            console.log(name.substring(0, name.length- suffixes[i].length ))
             if (list.includes(name.substring(0, name.length- suffixes[i].length ))){
                 return true;
             }
@@ -567,8 +585,17 @@ function loadSprites() {
 
     
 	createUnguessedContent();
+
+    //preload other images
 	spheal = new Image();
 	spheal.src = 'images/spheal.png';
+
+    darkmodebg = new Image();
+	darkmodebg.src = 'images/background-dark.svg';
+
+    unknownDark = new Image();
+	unknownDark.src = '/sprites/unknown-2.png';
+
 }
 let unguessedDict = {}
 let unguessedDictTexts = {}
@@ -1110,9 +1137,10 @@ for (let i = 0; i < 4; i++) {
             currentTimer = j;
 			resetTimer();
 				for (let m = 0; m < 4; m++) {
-					document.getElementById("timer" + m).classList.remove('smolbuttonx');
+                    visualizeButtonUnclick(document.getElementById("timer" + m));
 				}
-				document.getElementById("timer" + j).classList.add('smolbuttonx');
+                visualizeButtonClick(document.getElementById("timer" + j));
+
         }
 
         if(!activeTimer){
@@ -1124,9 +1152,9 @@ for (let i = 0; i < 4; i++) {
                 document.getElementById("prompttimer").style.display = 'none';
                 applyNewTimer();
 				for (let k = 0; k < 4; k++) {
-					document.getElementById("timer" + k).classList.remove('smolbuttonx');
+                    visualizeButtonUnclick(document.getElementById("timer" + k));
 				}
-				document.getElementById("timer" + j).classList.add('smolbuttonx');
+                visualizeButtonClick(document.getElementById("timer" + j))
             }
 
             function cancel() {
@@ -1176,8 +1204,8 @@ function swapToShiny(){
 	for(let key in spriteDictionary){
 		spriteDictionary[key].src = encodedImages['shiny'][key];
 	}
-	document.getElementById("shinyon").classList.add('smolbuttonx');
-	document.getElementById("shinyoff").classList.remove('smolbuttonx');
+    visualizeButtonClick(document.getElementById("shinyon"))
+    visualizeButtonUnclick(document.getElementById("shinyoff"))
 	
 	for (key in unguessedDict){
 
@@ -1189,8 +1217,8 @@ function swapToNormal(){
 	for(let key in spriteDictionary){
 		spriteDictionary[key].src = encodedImages['sprite'][key];
 	}
-	document.getElementById("shinyoff").classList.add('smolbuttonx');
-	document.getElementById("shinyon").classList.remove('smolbuttonx');
+    visualizeButtonClick(document.getElementById("shinyoff"))
+    visualizeButtonUnclick(document.getElementById("shinyon"))
 	for (key in unguessedDict){
 
 		unguessedDict[key].getElementsByTagName('img')[0].src = encodedImages['sprite'][key];
@@ -1394,8 +1422,9 @@ document.getElementById("twitch-on").onclick = function (){
 		let channelName =  document.getElementById("twitch-channel").value;
 		console.log('enable', channelName);
 		document.getElementById("twitch-channel").disabled = true;
-		document.getElementById("twitch-off").classList.remove('smolbuttonx');
-		document.getElementById("twitch-on").classList.add('smolbuttonx');
+
+        visualizeButtonUnclick(document.getElementById("twitch-off"))
+        visualizeButtonClick(document.getElementById("twitch-on"))
 		
 		client = new tmi.Client({
 			channels: [ document.getElementById("twitch-channel").value ]
@@ -1477,12 +1506,85 @@ document.getElementById("twitch-off").onclick = function (){
 		isTwitchOn = false;
 		console.log('disable');
 		document.getElementById("twitch-channel").disabled = false;
-		document.getElementById("twitch-off").classList.add('smolbuttonx');
-		document.getElementById("twitch-on").classList.remove('smolbuttonx');
+        visualizeButtonUnclick(document.getElementById("twitch-on"))
+        visualizeButtonClick(document.getElementById("twitch-off"))
 		client.disconnect();
 		document.getElementById("ranking").style.display = 'none';
 	}
 }
 
+let darkMode = false
+document.getElementById("darkon").onclick = function (){
+    if(!darkMode){
+        darkMode = !darkMode
+        visualizeButtonUnclick(document.getElementById("darkoff"))
+        visualizeButtonClick(document.getElementById("darkon"))
+
+        document.getElementById("body").classList.add("bodydark");
+
+        let boxes = document.getElementsByClassName("box")
+
+        for (let i = 0; i < boxes.length; i++){
+            boxes[i].classList.add("boxdark")
+        }
+
+        let buttons = document.getElementsByClassName("button")
+        for (let i = 0; i < buttons.length; i++){
+            buttons[i].classList.add("buttondark")
+        }
+
+
+        let smolButtons = document.getElementsByClassName("smolbutton")
+        for (let i = 0; i < smolButtons.length; i++){
+            smolButtons[i].classList.add("smolbuttondark")
+        }
+
+        let buttonsX = document.getElementsByClassName("smolbuttonx")
+
+        for (let i = 0; i < buttonsX.length; i++){
+            buttonsX[i].classList.add("smolbuttonxdark")
+        }
+
+
+        for (let i = 0; i < pokeballArray.length; i++){
+            pokeballArray[i].src = '/sprites/unknown-2.png';
+        }
+    }
+}
+document.getElementById("darkoff").onclick = function (){
+    if(darkMode){
+        darkMode = !darkMode
+        visualizeButtonUnclick(document.getElementById("darkon"))
+        visualizeButtonClick(document.getElementById("darkoff"))
+
+        document.getElementById("body").classList.remove("bodydark");
+
+        let boxes = document.getElementsByClassName("box")
+
+        for (let i = 0; i < boxes.length; i++){
+            boxes[i].classList.remove("boxdark")
+        }
+
+        let buttons = document.getElementsByClassName("button")
+        for (let i = 0; i < buttons.length; i++){
+            buttons[i].classList.remove("buttondark")
+        }
+
+
+        let smolButtons = document.getElementsByClassName("smolbutton")
+        for (let i = 0; i < smolButtons.length; i++){
+            smolButtons[i].classList.remove("smolbuttondark")
+        }
+
+        let buttonsX = document.getElementsByClassName("smolbuttonx")
+
+        for (let i = 0; i < buttonsX.length; i++){
+            buttonsX[i].classList.remove("smolbuttonxdark")
+        }
+        for (let i = 0; i < pokeballArray.length; i++){
+            pokeballArray[i].src = '/sprites/unknown.png';
+        }
+    }
+}
 
 loadSprites()
