@@ -1700,4 +1700,18 @@ for (let i = 0; i<genLastPokemon.length; i++){
 }
 
 
+
+let images = ["/sprites/unknown.png", "/sprites/unknown-2.png"]
+let currentImageIndex = 0
+setInterval(() => {
+    
+    let imgElement = document.getElementById("recentsprite");
+    imgElement.src = images[currentImageIndex];
+    currentImageIndex+=1
+    if (currentImageIndex == images.length){
+        currentImageIndex = 0;
+    }
+
+}, 500);
+
 loadSprites()
