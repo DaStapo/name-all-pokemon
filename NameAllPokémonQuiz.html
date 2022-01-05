@@ -264,7 +264,7 @@ off</div>
 <div id="promptsilhouette" class="overlay">
 <div class="prompt"><h2>Reveal shadows?</h2><div id="sil-yes" class="button hovr roundedb">Reveal</div> <div id="sil-no" class="button hovg roundedb">Cancel</div></div>
 </div>
-<div class="overlay" id="loadbox" style="display: block;" onclick="off2()">
+<div class="overlay" id="loadbox" style="display: block;">
 <div class="prompt">
 <div style="min-width: 350px; width: 80%; margin: 0 auto;"><img src="images/logo.png" class="logo" alt=""><img src="images/logo-square.png" class="logosq" alt=""></div>
 <div class="loader" id="loader"><h2>Loading Sprites</h2></div>
@@ -272,8 +272,19 @@ off</div>
 <div class="row"><div class="bar2">
 <div id="loadbar" class="load2"></div></div>
 </div>
-<div class="button roundedc hovl playtext" id="playtext">Click anywhere to continue
-</div></div>
+<div class="playtext" id="playtext">
+<div class="button roundedb hovli" id="play0" onclick="off2()">Full quiz</div>
+<div class="row"><p class="center">Generation:</p></div>
+<div class="button-s roundedb hovli" id="play1" onclick="off2()">1</div>
+<div class="button-s roundedb hovli" id="play2" onclick="off2()">2</div>
+<div class="button-s roundedb hovli" id="play3" onclick="off2()">3</div>
+<div class="button-s roundedb hovli" id="play4" onclick="off2()">4</div>
+<div class="button-s roundedb hovli" id="play5" onclick="off2()">5</div>
+<div class="button-s roundedb hovli" id="play6" onclick="off2()">6</div>
+<div class="button-s roundedb hovli" id="play7" onclick="off2()">7</div>
+<div class="button-s roundedb hovli" id="play8" onclick="off2()">8</div>
+</div>
+</div>
 </div>
 <script src="tmi.min.js"></script>
 <script src="encoded.js"></script>

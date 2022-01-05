@@ -324,6 +324,20 @@
 	font-family: "Roboto";
     font-size: 16px;
 	}
+	.button-s {
+	color: white;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 10px 0px 0px 10px;
+	cursor: pointer;
+	min-width: 30px;
+	min-height: 30px;
+	line-height: 30px;
+	font-family: "Roboto";
+    font-size: 16px;
+	}
 	.button:hover {
 	background-color: #D00;
 	}
@@ -331,7 +345,7 @@
 	background-color: #8CC63F;
 	}
 	.hovg:hover {
-	background-color: #777;
+	background-color: #7eb238;
 	}
 	.hovr {
 	background-color: #8CC63F;
@@ -344,6 +358,12 @@
 	}
 	.hovl:hover {
 	background-color: #bbb;
+	}
+	.hovli{
+	background-color: #a7d567;
+	}
+	.hovli:hover {
+	background-color: #8CC63F;
 	}
 	.button:focus {
 	outline: none;
