@@ -23,7 +23,8 @@
 	h2 {
 	font-size: 23px;
 	line-height: 40px;
-	font-weight: regular;
+	font-weight: normal;
+	margin-bottom: 5px;
 	}
 	p {
 	font-size: 1em;
@@ -35,6 +36,11 @@
 	}
 	ppp {
 	line-height: 30px;
+	}
+	.p2 {
+	font-size: 1em;
+	text-align: center;
+	padding: 20px 0px 10px;
 	}
 	a {
 	text-decoration: none;
@@ -73,6 +79,12 @@
 	}
 	.roundedf {
 	border-radius: 0px 0px 4px 20px;
+	}
+	.roundedg {
+	border-radius: 4px 20px 4px 4px;
+	}
+	.roundedh {
+	border-radius: 4px 4px 4px 20px;
 	}
 	.lime {
 	background: #8CC63F !important;
@@ -288,6 +300,12 @@
 	.row {
 	margin-right: 10px;
 	}
+	/* Clear floats after the columns */
+	.row2:after {
+	content: "";
+	display: table;
+	clear: both;
+	}
 	.bottommargin {
 	margin-bottom: 10px;
 	}
@@ -326,17 +344,16 @@
 	}
 	.button-s {
 	color: white;
-	padding: 10px 10px 10px 10px;
+	padding: 10px 20px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	margin: 10px 0px 0px 10px;
+	margin: 3px 1px;
 	cursor: pointer;
-	min-width: 30px;
 	min-height: 30px;
 	line-height: 30px;
 	font-family: "Roboto";
-    font-size: 16px;
+    font-size: 18px;
 	}
 	.button:hover {
 	background-color: #D00;
@@ -583,7 +600,7 @@
 	border-radius: 4px;
 	}
 	.load2 {
-	background-color: #8CC63F;
+	background-color: #64aa09;
 	height: 20px;
 	width: 1px;
 	}
@@ -608,7 +625,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0,0,0,0.7);
+	background-color: rgba(26,29,22,0.8);
 	z-index: 4;
 	}
 	.pointer {
