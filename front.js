@@ -1413,10 +1413,10 @@ let twitchLeaderboard = {
     "adeptcharon":3,
 	"somedude":3,
 	"ethan_from_chicago":2,
-	"ethan_from_blaguš":2,
-	"ethan_from_ženik":2,
-	"ethan_from_grabonoš":2,
-	"ethan_from_pešnčko":2
+	"ethan_from_canadia":2,
+	"ethan_from_america":2,
+	"ethan_from_downtown":2,
+	"ethan_from_spheal":2
 }
 
 
@@ -1527,10 +1527,7 @@ document.getElementById("twitch-off").onclick = function (){
 
 let updateFullLeaderboard = function (){
     let leaderboardDiv = document.getElementById("leaderboard2");
-	leaderboardDiv.classList.add('box');
-	leaderboardDiv.classList.add('roundedf');
-	leaderboardDiv.classList.add('topedge');
-	leaderboardDiv.classList.add('bottomless');
+	leaderboardDiv.classList.add('box','roundedf','topedge','bottomless');
     while (leaderboardDiv.firstChild) {
         leaderboardDiv.firstChild.remove()
     }
@@ -1540,10 +1537,24 @@ let updateFullLeaderboard = function (){
 		
 		for (let i = 0; i<sorted.length; i++){
 			let scoreDiv = document.createElement('div');
+			let placeDiv = document.createElement('div');
+			let usernameDiv = document.createElement('div');
+			let nrGuessedDiv = document.createElement('div');
+			let ballImg = document.createElement("img");
+			ballImg.classList.add('spriteb');
+			ballImg.src = '/sprites/unknown-1.png';
 			scoreDiv.classList.add('board')
-			let textNode = document.createTextNode('#' + (i+1) +' '+ sorted[i][0] + ' (' + sorted[i][1] + ')');
-			scoreDiv.appendChild(textNode)
-			leaderboardDiv.appendChild(scoreDiv);
+			placeDiv.classList.add('place','inlinebox')
+			usernameDiv.classList.add('twitchname','inlinebox')
+			nrGuessedDiv.classList.add('number','inlinebox')
+			let textNode = document.createTextNode('#' + (i+1));
+			placeDiv.appendChild(textNode)
+			let textNode2 = document.createTextNode(sorted[i][0]);
+			usernameDiv.appendChild(textNode2)
+			let textNode3 = document.createTextNode(' ' + sorted[i][1]);
+			nrGuessedDiv.append(ballImg,textNode3)
+			scoreDiv.append(placeDiv,usernameDiv,nrGuessedDiv)
+			leaderboardDiv.append(scoreDiv);
 		}
     }
 }
@@ -1592,10 +1603,10 @@ document.getElementById("darkon").onclick = function (){
             greyers[i].classList.add("greyerdark")
         }
 
-		let boarders = document.getElementsByClassName("board")
+		let boarders = document.getElementsByClassName("inlinebox")
 
         for (let i = 0; i < boarders.length; i++){
-            boarders[i].classList.add("boarddark")
+            boarders[i].classList.add("inlineboxdark")
         }
 		
         for (let i = 0; i < pokeballArray.length; i++){
@@ -1644,13 +1655,13 @@ document.getElementById("darkoff").onclick = function (){
         let greyers = document.getElementsByClassName("greyer")
 
         for (let i = 0; i < greyers.length; i++){
-            greyers[i].classList.remove("greyersdark")
+            greyers[i].classList.remove("greyerdark")
         }
 		
-        let boarders = document.getElementsByClassName("board")
+        let boarders = document.getElementsByClassName("inlinebox")
 
         for (let i = 0; i < boarders.length; i++){
-            boarders[i].classList.remove("boarddark")
+            boarders[i].classList.remove("inlineboxdark")
         }
 		
         for (let i = 0; i < pokeballArray.length; i++){

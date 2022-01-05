@@ -69,10 +69,10 @@
 	border-radius: 4px 4px 0px 0px;
 	}
 	.roundede {
-	border-radius: 20px 20px 0px 0px;	
+	border-radius: 6px 20px 0px 0px;	
 	}
 	.roundedf {
-	border-radius: 0px 0px 4px 4px;
+	border-radius: 0px 0px 4px 20px;
 	}
 	.lime {
 	background: #8CC63F !important;
@@ -82,7 +82,7 @@
 	background: #BEE08F;
 	color: #000;
 	border: 2px solid #8CC63F;
-	border-bottom: none;
+	border-bottom: 2px dotted #8CC63F;
 	}
 	.greyer {
 	background: #444;
@@ -128,8 +128,8 @@
 	padding-bottom: 40px;
 	}
 	.topedge {
-	margin-top: 0px;
-	border-top: 2px solid #8CC63F;
+	margin-top: -2px;
+	border-top: 2px dotted #8CC63F;
 	}
 	.centeredbox {
 	margin: 0 auto;
@@ -198,6 +198,9 @@
 	.spritel {
 	margin: -26px -11px -6px -15px;
 	}
+	.spriteb {
+	margin: -30px -20px -9px -22px;
+	}
 	@keyframes zoomExample {
 		from {transform: matrix(2,0,0,2,0,-10);}
 		to {transform:matrix(1,0,0,1,0,0);}
@@ -243,6 +246,12 @@
 	.half-fixed {
 	width: 480px;	
 	}
+	.threefifths {
+	width: 60%;	
+	}
+	.twofifths {
+	width: 40%;
+	}
 	.fiveeighth {
 	width:62.5%;
 	}
@@ -283,7 +292,7 @@
 	margin-bottom: 10px;
 	}
 	.bottomless {
-	padding: 11px 10px 0px 10px !important;
+	padding: 11px 10px 5px 10px !important;
 	margin-bottom: 10px;
 	}
 	.header {
@@ -392,9 +401,13 @@
 	.last {
 	margin-right: 0px;
 	}
-	.right {
+	.langright {
 	float:right;
 	display: inline-block;
+	}
+	.right {
+	float:right;
+	display: inline-block;	
 	}
 	.inlinetext {
 	display: inline-block;
@@ -436,13 +449,31 @@
 	border-color: #d4920f;
 	}
 	.board{
-	/*min-width: 275px;*/
-	float: left;
+	margin: 0px auto 6px;
+	}
+	.inlinebox {
+	display: inline-block;
 	background-color: #deefc7;
-	border-radius: 4px 16px 4px 16px;
-	padding: 6px 12px;
-	margin-right: 10px;
-	margin-bottom: 10px;
+	padding: 6px 6px;
+	margin: 0px 3px;
+	}
+	.place {
+	width: 42px;
+	border-radius: 4px 4px 4px 16px;
+	text-align: right;
+	padding-right: 10px;
+	}
+	.twitchname {
+	width: calc(100% - 172px);
+	border-radius: 4px 4px 4px 4px;
+	text-align: left;
+	padding-left: 10px;
+	}
+	.number {
+	width: 64px;
+	border-radius: 4px 16px 4px 4px;
+	text-align: left;
+	padding-left: 10px;
 	}
 	/*dark mode classes*/
 	/*add class to body*/
@@ -471,9 +502,9 @@
 	color: #fff;
 	background: #111;
 	border: 2px solid #639422;
-	border-bottom: none;
+	border-bottom: 2px dotted #639422;
 	}
-	.boarddark {
+	.inlineboxdark {
 	background-color: #8CC63F;
 	}
 	/*dark mode classes end*/
@@ -607,7 +638,7 @@
 	width: 100%;
 	}
 	@media only screen and (max-width: 1280px) {
-		.logo {
+	.logo {
 	display: none;
 	width: 100%;
 	}
@@ -625,10 +656,18 @@
 	body {
 	padding-top: 121px;
 	}
+	.threefifths, .twofifths {
+	width: 100%;
+	}
 	}
 	@media only screen and (max-width: 536px) {
 	body {
 	padding-top: 182px;
+	}
+	.langright {
+	float: none;
+	display: block;
+	padding: 10px 0px 0px 0px !important;
 	}
 	}
 	@media only screen and (max-width: 376px) {
