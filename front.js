@@ -1701,17 +1701,29 @@ for (let i = 0; i<genLastPokemon.length; i++){
 
 
 
+//images to loop through
 let images = ["/sprites/unknown.png", "/sprites/unknown-2.png"]
+
+//variable for current image index
 let currentImageIndex = 0
+
+//starts a repeating function 
 setInterval(() => {
     
+    //select specific <img>
     let imgElement = document.getElementById("recentsprite");
+
+    //its src path gets changed to the current image index
     imgElement.src = images[currentImageIndex];
+
+    //move to the next image index
     currentImageIndex+=1
+
+    //if we reach the final image index, reset back to 0
     if (currentImageIndex == images.length){
         currentImageIndex = 0;
     }
 
-}, 500);
+}, 500); //500ms (can be changed ofc)
 
 loadSprites()
