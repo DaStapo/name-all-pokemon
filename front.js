@@ -1535,7 +1535,7 @@ document.getElementById("twitch-off").onclick = function (){
 
 let updateFullLeaderboard = function (){
     let leaderboardDiv = document.getElementById("leaderboard2");
-	leaderboardDiv.classList.add('box','roundedf','topedge','bottomless');
+    
     while (leaderboardDiv.firstChild) {
         leaderboardDiv.firstChild.remove()
     }
@@ -1555,6 +1555,12 @@ let updateFullLeaderboard = function (){
 			placeDiv.classList.add('place','inlinebox')
 			usernameDiv.classList.add('twitchname','inlinebox')
 			nrGuessedDiv.classList.add('number','inlinebox')
+            if (darkMode){
+                placeDiv.classList.add('inlineboxdark')
+                usernameDiv.classList.add('inlineboxdark')
+                nrGuessedDiv.classList.add('inlineboxdark')  
+            }
+
 			let textNode = document.createTextNode('#' + (i+1));
 			placeDiv.appendChild(textNode)
 			let textNode2 = document.createTextNode(sorted[i][0]);
