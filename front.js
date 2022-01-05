@@ -1704,7 +1704,7 @@ for (let i = 0; i<genLastPokemon.length; i++){
 //images to loop through
 let images = [
     [encodedImages['sprite']['bulbasaur'], encodedImages['sprite']['charmander'],encodedImages['sprite']['squirtle']],
-    [encodedImages['sprite']['chikorita'], encodedImages['sprite']['cyndaquil'],encodedImages['sprite']['totodile']]
+    [encodedImages['sprite']['chikorita'], encodedImages['sprite']['cyndaquil'],encodedImages['sprite']['totodile']], 
 ]
 
 //variable for current image index
@@ -1730,7 +1730,7 @@ setInterval(() => {
     currentImageIndex+=1
 
     //if we reach the final image index, reset back to 0
-    if (currentImageIndex == images.length){
+    if (currentImageIndex == images[0].length){
         currentImageIndex = 0;
     }
 
