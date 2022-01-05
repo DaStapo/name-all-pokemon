@@ -136,11 +136,18 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
 
 //good looking names for missing list
 let formatted_lang_map = {}
+let nidoranfIndex = pokemonList.indexOf('Nidoranf')
+let nidoranmIndex = pokemonList.indexOf('Nidoranm')
 for (key in language_map){
 	let copiedList = []
 	
 	for (let i = 0; i< language_map[key].length; i++){
 		copiedList.push(language_map[key][i]);
+        if (i == nidoranfIndex){
+            copiedList[i] = copiedList[i].substring(0, copiedList[i].length - 1) + '♀';
+        }else if (i == nidoranmIndex){
+            copiedList[i] = copiedList[i].substring(0, copiedList[i].length - 1) + '♂';
+        }
 	}
 	formatted_lang_map[key] = copiedList
 }
@@ -202,6 +209,7 @@ for (key in formatted_lang_map){
             if (standardizeName(pokemonList[i])+'eternamax' in  unguessedDictTexts){
                 unguessedDictTexts[standardizeName(pokemonList[i])+'eternamax'].nodeValue = formatted_lang_map[currentKey][i];
             }
+            
 		}
 		
     }
