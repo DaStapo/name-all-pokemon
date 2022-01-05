@@ -1704,13 +1704,13 @@ for (let i = 0; i<genLastPokemon.length; i++){
 //images to loop through
 let images = [
     [encodedImages['sprite']['bulbasaur'], encodedImages['sprite']['charmander'],encodedImages['sprite']['squirtle']],
-    [encodedImages['sprite']['chikorita'], encodedImages['sprite']['cyndaquil'],encodedImages['sprite']['totodile']],
-	[encodedImages['sprite']['treecko'], encodedImages['sprite']['torchic'],encodedImages['sprite']['mudkip']],
+    [encodedImages['sprite']['cyndaquil'],encodedImages['sprite']['totodile'], encodedImages['sprite']['chikorita']],
+	[encodedImages['sprite']['mudkip'], encodedImages['sprite']['treecko'], encodedImages['sprite']['torchic']],
 	[encodedImages['sprite']['turtwig'], encodedImages['sprite']['chimchar'],encodedImages['sprite']['piplup']],
-	[encodedImages['sprite']['snivy'], encodedImages['sprite']['tepig'],encodedImages['sprite']['oshawott']],
-	[encodedImages['sprite']['chespin'], encodedImages['sprite']['fennekin'],encodedImages['sprite']['froakie']],
+	[encodedImages['sprite']['tepig'],encodedImages['sprite']['oshawott'], encodedImages['sprite']['snivy']],
+	[encodedImages['sprite']['froakie'], encodedImages['sprite']['chespin'], encodedImages['sprite']['fennekin']],
 	[encodedImages['sprite']['rowlet'], encodedImages['sprite']['litten'],encodedImages['sprite']['popplio']],
-	[encodedImages['sprite']['grookey'], encodedImages['sprite']['scorbunny'],encodedImages['sprite']['sobble']]
+	[encodedImages['sprite']['scorbunny'],encodedImages['sprite']['sobble'], encodedImages['sprite']['grookey']]
 ]
 
 //variable for current image index
