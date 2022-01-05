@@ -1740,6 +1740,6 @@ setInterval(() => {
         currentImageIndex = 0;
     }
 
-}, 1000); //500ms (can be changed ofc)
+}, 2000); //500ms (can be changed ofc)
 
 loadSprites()
