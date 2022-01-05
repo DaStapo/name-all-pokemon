@@ -1718,7 +1718,7 @@ setInterval(() => {
         //select specific <img>
         let imgElement = document.getElementById("gen"+(i+1)+"img");
         //its src path gets changed to the current image index
-        imgElement.src = images[currentImageIndex];
+        imgElement.src = images[i][currentImageIndex];
     }
 
 
