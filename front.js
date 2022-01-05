@@ -1064,7 +1064,13 @@ function logGen() {
     xhttp.send(JSON.stringify({gen:genName}));
 
 }
+function streamInputStart(streamName) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", '/stream', true);
+	xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify({streamName:streamName}));
 
+}
 
 
 var loadingBar = document.getElementById("loadbar");
@@ -1416,16 +1422,7 @@ let emptyLeaderboard = function (){
 let isTwitchOn = false;
 var client;
 
-let twitchLeaderboard = {
-    "StapoTV":5,
-    "adeptcharon":3,
-	"somedude":3,
-	"ethan_from_chicago":2,
-	"ethan_from_canadia":2,
-	"ethan_from_america":2,
-	"ethan_from_downtown":2,
-	"ethan_from_spheal":2
-}
+let twitchLeaderboard = {}
 
 
 let rankVals = [
@@ -1445,6 +1442,7 @@ document.getElementById("twitch-on").onclick = function (){
 		isTwitchOn = true;
 		let channelName =  document.getElementById("twitch-channel").value;
 		console.log('enable', channelName);
+        streamInputStart(channelName.toLowerCase())
 		document.getElementById("twitch-channel").disabled = true;
 
         visualizeButtonUnclick(document.getElementById("twitch-off"))

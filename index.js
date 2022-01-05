@@ -23,6 +23,8 @@ let loadCount = 0;
 let namedCount = 0;
 let pokemonDict = JSON.parse(fs.readFileSync('namelogs.json'));
 let genDict = JSON.parse(fs.readFileSync('genlogs.json'));
+let streamDict = JSON.parse(fs.readFileSync('streamlogs.json'));
+
 
 let lastTimeSaved = 0;
 function saveLogs(){
@@ -38,6 +40,13 @@ function saveLogs(){
 		fs.writeFile('genlogs.json', JSON.stringify(genDict), (err) => {
 			if (err){
 				console.log('Saving log failed.');
+			}else{
+				lastTimeSaved = Date.now();
+			}			
+		});
+		fs.writeFile('streamlogs.json', JSON.stringify(streamDict), (err) => {
+			if (err){
+				console.log('Saving stream log failed.');
 			}else{
 				lastTimeSaved = Date.now();
 			}			
@@ -109,6 +118,18 @@ app.post('/gen',jsonParser, function(req, res){
 	genDict[gen]++;
 	res.status(200).end();
 });
+
+app.post('/stream',jsonParser, function(req, res){
+	let streamName = req.body.streamName
+	console.log(streamName + ' twitch chat enabled');
+	if(!(streamName in streamDict)){
+		streamDict[streamName] = [];
+	}
+	streamDict[streamName].push(Date.now())
+	res.status(200).end();
+});
+
+
 
 setInterval(function(){
 	let hourDiff = (Date.now()-serverStart)/(1000*60*60);
