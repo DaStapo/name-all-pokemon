@@ -1714,11 +1714,11 @@ let currentImageIndex = 0
 setInterval(() => {
     
     for (let i = 0; i<genLastPokemon.length; i++){
-        
+
         //select specific <img>
         let imgElement = document.getElementById("gen"+(i+1)+"img");
         //its src path gets changed to the current image index
-        imgElement.src = gen1images[currentImageIndex];
+        imgElement.src = images[currentImageIndex];
     }
 
 
@@ -1730,7 +1730,7 @@ setInterval(() => {
     currentImageIndex+=1
 
     //if we reach the final image index, reset back to 0
-    if (currentImageIndex == gen1images.length){
+    if (currentImageIndex == images.length){
         currentImageIndex = 0;
     }
 
