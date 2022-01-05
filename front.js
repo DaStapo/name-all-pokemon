@@ -1713,7 +1713,7 @@ let currentImageIndex = 0
 //starts a repeating function 
 setInterval(() => {
     
-    for (let i = 0; i<genLastPokemon.length; i++){
+    for (let i = 0; i<images.length; i++){
 
         //select specific <img>
         let imgElement = document.getElementById("gen"+(i+1)+"img");
