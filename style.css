@@ -646,6 +646,9 @@
 	display: block;
 	width: 100%;
 	}
+	.twothirds {
+	width: 100%;
+	}
 	}
 	@media only screen and (max-width: 768px) {
 	.quarter, .sixth, .eighth, .third, .half, .half-fixed, .fiveeighth{
