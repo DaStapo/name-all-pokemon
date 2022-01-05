@@ -267,7 +267,7 @@ function tryTranslate(input){
         key = enabledLanguages[k]
         for(let i = 0; i<language_map[key].length;i++){
             if (input == standardizeName(language_map[key][i])){
-                console.log('translating:' + input + ' to ' +  pokemonList[i])
+                //console.log('translating:' + input + ' to ' +  pokemonList[i])
                 return pokemonList[i]
             }
         }
@@ -780,6 +780,10 @@ function showCongrats() {
     } else {
         document.getElementById("trychallenge").style.display = "none";
     }
+
+    if (Object.keys(twitchLeaderboard).length > 0){
+	    document.getElementById("ranking2").style.display = "block";
+    }
 }
 
 let silhouettesFlag = false;
@@ -891,7 +895,10 @@ function giveUp (){
 	document.getElementById("pokemon").disabled = true;
 	
 	document.getElementById("missednames").style.display = "block";
-	document.getElementById("ranking2").style.display = "block";
+
+    if (Object.keys(twitchLeaderboard).length > 0){
+	    document.getElementById("ranking2").style.display = "block";
+    }
 
     clearInterval(activeTimer);
     let delay = 0;
@@ -1116,6 +1123,7 @@ function resetQuiz() {
 		document.getElementById("accordion2").click();
 	}
 	document.getElementById("ranking2").style.display = "none";
+
 	for (key in unguessedDict){
 		unguessedDict[key].style.display = 'none';
 	}
