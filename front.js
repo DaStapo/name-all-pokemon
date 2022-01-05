@@ -1702,7 +1702,8 @@ for (let i = 0; i<genLastPokemon.length; i++){
 
 
 //images to loop through
-let images = ["/sprites/unknown.png", "/sprites/unknown-2.png"]
+let gen1images = [encodedImages['sprite']['bulbasaur'], encodedImages['sprite']['charmander'],encodedImages['sprite']['squirtle']]
+let gen2images = [encodedImages['sprite']['chikorita'], encodedImages['sprite']['cyndaquil'],encodedImages['sprite']['totodile']]
 
 //variable for current image index
 let currentImageIndex = 0
@@ -1711,19 +1712,20 @@ let currentImageIndex = 0
 setInterval(() => {
     
     //select specific <img>
-    let imgElement = document.getElementById("recentsprite");
+    let imgElement = document.getElementById("gen1img");
+	let imgElement = document.getElementById("gen2img");
 
     //its src path gets changed to the current image index
-    imgElement.src = images[currentImageIndex];
+    imgElement.src = gen1images[currentImageIndex];
 
     //move to the next image index
     currentImageIndex+=1
 
     //if we reach the final image index, reset back to 0
-    if (currentImageIndex == images.length){
+    if (currentImageIndex == gen1images.length){
         currentImageIndex = 0;
     }
 
-}, 500); //500ms (can be changed ofc)
+}, 1000); //500ms (can be changed ofc)
 
 loadSprites()
