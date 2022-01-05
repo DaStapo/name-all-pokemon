@@ -1691,4 +1691,13 @@ document.getElementById("darkoff").onclick = function (){
     }
 }
 
+
+for (let i = 0; i<genLastPokemon.length; i++){
+    document.getElementById("play"+ (i+1)).onclick = function () {
+        document.getElementById("gen"+ (i+1)).click();
+        off2();
+    }
+}
+
+
 loadSprites()
