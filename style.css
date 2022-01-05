@@ -211,7 +211,7 @@
 		to {transform:matrix(1,0,0,1,0,0);}
 	}
 	.fixed-width {
-	width: 143px;
+	width: 154px;
 	}
 	.revealed {
 	filter: brightness(45%);
