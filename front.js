@@ -1702,8 +1702,10 @@ for (let i = 0; i<genLastPokemon.length; i++){
 
 
 //images to loop through
-let gen1images = [encodedImages['sprite']['bulbasaur'], encodedImages['sprite']['charmander'],encodedImages['sprite']['squirtle']]
-let gen2images = [encodedImages['sprite']['chikorita'], encodedImages['sprite']['cyndaquil'],encodedImages['sprite']['totodile']]
+let images = [
+    [encodedImages['sprite']['bulbasaur'], encodedImages['sprite']['charmander'],encodedImages['sprite']['squirtle']],
+    [encodedImages['sprite']['chikorita'], encodedImages['sprite']['cyndaquil'],encodedImages['sprite']['totodile']]
+]
 
 //variable for current image index
 let currentImageIndex = 0
@@ -1711,12 +1713,18 @@ let currentImageIndex = 0
 //starts a repeating function 
 setInterval(() => {
     
-    //select specific <img>
-    let imgElement = document.getElementById("gen1img");
-	let imgElement = document.getElementById("gen2img");
+    for (let i = 0; i<genLastPokemon.length; i++){
+        
+        //select specific <img>
+        let imgElement = document.getElementById("gen"+(i+1)+"img");
+        //its src path gets changed to the current image index
+        imgElement.src = gen1images[currentImageIndex];
+    }
+
+
 
     //its src path gets changed to the current image index
-    imgElement.src = gen1images[currentImageIndex];
+
 
     //move to the next image index
     currentImageIndex+=1
