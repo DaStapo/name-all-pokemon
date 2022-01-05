@@ -1438,7 +1438,7 @@ let sortDictionaryByValue = function(dictionary){
 }
 
 document.getElementById("twitch-on").onclick = function (){
-	if (!isTwitchOn){
+	if (!isTwitchOn && document.getElementById("twitch-channel").value != ""){
 		isTwitchOn = true;
 		let channelName =  document.getElementById("twitch-channel").value;
 		console.log('enable', channelName);
