@@ -122,6 +122,9 @@
 	padding-left: 18px;
 	padding-right: 18px;
 	}
+	.padded2 {
+	padding: 0px 22px;
+	}
 	.padded-left {
 	padding-left: 20px;
 	}
@@ -212,6 +215,10 @@
 	}
 	.spriteb {
 	margin: -30px -20px -9px -22px;
+	}
+	.spritec {
+	margin: -22px -10px -5px 0px;
+	padding-right: 2px;
 	}
 	@keyframes zoomExample {
 		from {transform: matrix(2,0,0,2,0,-10);}
@@ -344,7 +351,7 @@
 	}
 	.button-s {
 	color: white;
-	padding: 10px 20px;
+	padding: 14px 20px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -416,8 +423,6 @@
 	font-family: "Roboto";
     font-size: 16px;
 	}
-	
-	
 	.smolbutton:hover {
 	background-color: #7eb238;
 	border-color: #7eb238;
@@ -663,6 +668,12 @@
 	}
 	.accordion {
 		
+	}
+	.cropped {
+	width: 30px;
+	height: 30px;
+	object-fit: none;
+	object-position: 50% 100%;
 	}
 	.panel {
 	display: none;
