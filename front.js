@@ -688,6 +688,9 @@ let parseInput = function (inputText, sendLog) {
 		else if (inputText == "urshifu"){
 			inputs.push(inputText + 'rapidstrikegmax')
 		}
+		else if (inputText == "appletun"){
+			inputs.push('flapplegmax')
+		}
         
 		let wasCorrect = false;
 		let guessResult = false;
