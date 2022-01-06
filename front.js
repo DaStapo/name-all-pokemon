@@ -1239,13 +1239,10 @@ window.addEventListener('orientationchange', function () {
 }, false);
 
 
-function off() {
-    document.getElementById("overlay").style.display = "none";
-}
-
 function off2() {
     document.getElementById("loadbox").style.display = "none";
 	document.getElementById("inputbox").classList.add('attentionshake');
+    clearInterval(spriteIntervalId);
 }
 
 function swapToShiny(){
@@ -1717,8 +1714,7 @@ let images = [
 let currentImageIndex = 0
 
 //starts a repeating function 
-setInterval(() => {
-    
+let spriteIntervalId = setInterval(() => {
     for (let i = 0; i<images.length; i++){
 
         //select specific <img>
