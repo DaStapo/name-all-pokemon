@@ -1078,7 +1078,6 @@ let animationCanvas = null;
 let animationCanvasTimeout = null;
 let animationCanvasInterval = null;
 
-let animationCanvasWidth = 600;
 let animationCanvasDuration = 6000;
 
 let animationWidth = 272;
@@ -1095,7 +1094,7 @@ let refreshAnimationCanvas = function (){
 		animationCanvas = document.createElement('canvas');
 		animationCanvas.style.position = 'absolute';
 		animationCanvas.style.top = '0px';
-		animationCanvas.style.left =  '' + (document.documentElement.clientWidth - animationCanvasWidth) + 'px';
+		animationCanvas.style.left =  '0px';
 		animationCanvas.style['z-index'] = 3;
 		animationCanvas.width = animationCanvasWidth;
 		animationCanvas.height = document.documentElement.clientHeight + 500;
