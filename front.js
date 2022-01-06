@@ -928,12 +928,11 @@ function giveUp (){
     clearInterval(activeTimer);
     let delay = 0;
 
-    let rainList = []
+
     let revealList = []
     for (let i = 0; i < currentRevealList.length; i++) { 
         let pokemon = currentRevealList[i];
         if (!isSpriteHidden(pokemon)){
-            rainList.push(pokemon)
             continue
         }
         revealList.push(pokemon)
@@ -957,10 +956,6 @@ function giveUp (){
 		unguessedDict[pokemon].style.display = 'inline-block';
 		unguessedDict[pokemon].classList.add('fixed-width');
     }	
-	
-	for (let i = 0; i<rainList.length;i++){
-        animateInput(rainList[i])
-    }
 	
 }
 
