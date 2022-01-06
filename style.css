@@ -692,6 +692,12 @@
 	display: none;
 	width: 100%;
 	}
+	.mshow {
+	display: none;
+	}
+	.mhide {
+	display: inline-block;
+	}
 	@media only screen and (max-width: 1280px) {
 	.logo {
 	display: none;
@@ -708,6 +714,15 @@
 	@media only screen and (max-width: 768px) {
 	.quarter, .sixth, .eighth, .third, .half, .half-fixed, .fiveeighth{
     width: 100%;
+	}
+	.mshow {
+	display: inline-block;
+	}
+	.mhide {
+	display: none;
+	}
+	.button-s {
+	min-width: 1px;
 	}
 	}
 	@media only screen and (max-width: 918px) {
