@@ -746,7 +746,7 @@ function tryGuessPokemon(input, sendLog) {
 		if (sendLog){
 			logNamed(input);
 		}
-		animateInput(input);
+		//animateInput(input);
 		return true;
     }
 	return false;
@@ -793,6 +793,16 @@ function showCongrats() {
     if (Object.keys(twitchLeaderboard).length > 0){
 	    document.getElementById("ranking2").style.display = "block";
     }
+
+    
+    for (let i = 0; i < currentRevealList.length; i++) { 
+        let pokemon = currentRevealList[i];
+        if (!isSpriteHidden(pokemon)){
+            animateInput(pokemon)
+        }
+    }
+
+
 }
 
 let silhouettesFlag = false;
@@ -912,10 +922,12 @@ function giveUp (){
     clearInterval(activeTimer);
     let delay = 0;
 
+    let rainList = []
     let revealList = []
     for (let i = 0; i < currentRevealList.length; i++) { 
         let pokemon = currentRevealList[i];
         if (!isSpriteHidden(pokemon)){
+            rainList.push(pokemon)
             continue
         }
         revealList.push(pokemon)
@@ -940,7 +952,9 @@ function giveUp (){
 		unguessedDict[pokemon].classList.add('fixed-width');
     }	
 	
-	
+	for (let i = 0; i<rainList.length;i++){
+        animateInput(rainList[i])
+    }
 	
 }
 
@@ -1367,7 +1381,7 @@ let animationWidth = 272;
 let animationHeight = 224;
 
 let ongoingAnimations = [];
-
+let animationCanvasWidth;
 let refreshAnimationCanvas = function (){
 	if (animationCanvasTimeout !== null){
 		clearInterval(animationCanvasTimeout);
@@ -1379,6 +1393,7 @@ let refreshAnimationCanvas = function (){
 		animationCanvas.style.top = '0px';
 		animationCanvas.style.left =  '0px';
 		animationCanvas.style['z-index'] = 3;
+        animationCanvasWidth = document.documentElement.clientWidth;
 		animationCanvas.width = animationCanvasWidth;
 		animationCanvas.height = document.documentElement.clientHeight + 500;
 		document.body.appendChild(animationCanvas);
@@ -1403,6 +1418,7 @@ let refreshAnimationCanvas = function (){
 	}
 	
 	animationCanvasTimeout = setTimeout(() => {
+        animationCanvas.remove()
 		animationCanvas = null;
 		animationCanvasTimeout = null;
 		ongoingAnimations = [];
@@ -1419,8 +1435,8 @@ let animateInput = function(pokemonName){
 	refreshAnimationCanvas();
 
 	let x = randomIntFromInterval( animationWidth / 2,  animationCanvasWidth - (animationWidth/2));
-	let y = -animationWidth*1.5//randomIntFromInterval( -500,  -animationWidth*1.5);
-	let speed = randomIntFromInterval(5000, 10000);
+	let y = randomIntFromInterval( -3500,  -animationWidth*1.5);
+	let speed = randomIntFromInterval(4000, 7500);
 	let angle = randomIntFromInterval( 0,  360);
 	let angleIncrement = randomIntFromInterval(-2000, 2000);
 	ongoingAnimations.push([x,y, speed, angle, angleIncrement, spriteDictionary[pokemonName]]);
