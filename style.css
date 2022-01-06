@@ -60,7 +60,7 @@
 	.bigbox {
 	border: 20px;
 	padding: 50px;
-	border-radius: 10px 40px;
+	border-radius: 4px 40px;
 	}
 	.rounded {
 	border-radius: 4px 20px 20px 20px;
@@ -664,7 +664,7 @@
 	}
 	.prompt {
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	left: 50%;
 	text-align: center;
 	color: #fff;
