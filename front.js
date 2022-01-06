@@ -204,7 +204,13 @@ for (key in formatted_lang_map){
                 unguessedDictTexts[standardizeName(pokemonList[i])+'primal'].nodeValue = formatted_lang_map[currentKey][i];
             }
             if (standardizeName(pokemonList[i])+'gmax' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i];
+                if (pokemonList[i] == 'urshifu'){
+                    unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i] + ' SS';
+                    unguessedDictTexts[standardizeName(pokemonList[i])+'rapidstrikegmax'].nodeValue = formatted_lang_map[currentKey][i] + ' RS';
+                }
+                else{
+                    unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i];
+                }
             }
             if (standardizeName(pokemonList[i])+'eternamax' in  unguessedDictTexts){
                 unguessedDictTexts[standardizeName(pokemonList[i])+'eternamax'].nodeValue = formatted_lang_map[currentKey][i];
@@ -357,7 +363,7 @@ let currentGenList = [];
 let currentGenRevealList = [];
 
 
-let suffixes = ["mega", "megax", "megay", "primal", "galar", "alola", "gmax", "eternamax"]
+let suffixes = ["mega", "megax", "megay", "primal", "galar", "alola", "gmax", "rapidstrikegmax", "eternamax"]
 // we kinda rely on normal versions being added first
 let pokemonAlreadyIncluded = function (name, list){
     for (let i = 0; i < suffixes.length; i++){
