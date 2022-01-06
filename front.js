@@ -749,6 +749,7 @@ function tryGuessPokemon(input, sendLog) {
 		if (sendLog){
 			logNamed(input);
 		}
+		//animateInput(input);
 		return true;
     }
 	return false;
@@ -795,6 +796,16 @@ function showCongrats() {
     if (Object.keys(twitchLeaderboard).length > 0){
 	    document.getElementById("ranking2").style.display = "block";
     }
+
+    
+    for (let i = 0; i < currentRevealList.length; i++) { 
+        let pokemon = currentRevealList[i];
+        if (!isSpriteHidden(pokemon)){
+            animateInput(pokemon)
+        }
+    }
+
+
 }
 
 let silhouettesFlag = false;
@@ -914,10 +925,12 @@ function giveUp (){
     clearInterval(activeTimer);
     let delay = 0;
 
+    let rainList = []
     let revealList = []
     for (let i = 0; i < currentRevealList.length; i++) { 
         let pokemon = currentRevealList[i];
         if (!isSpriteHidden(pokemon)){
+            rainList.push(pokemon)
             continue
         }
         revealList.push(pokemon)
@@ -942,7 +955,9 @@ function giveUp (){
 		unguessedDict[pokemon].classList.add('fixed-width');
     }	
 	
-	
+	for (let i = 0; i<rainList.length;i++){
+        animateInput(rainList[i])
+    }
 	
 }
 
@@ -1249,6 +1264,7 @@ function off() {
 function off2() {
     document.getElementById("loadbox").style.display = "none";
 	document.getElementById("inputbox").classList.add('attentionshake');
+    clearInterval(spriteIntervalId);
 }
 
 function swapToShiny(){
@@ -1360,6 +1376,81 @@ let ethan_roll = function (){
 	}, waitFor);
 	
 }
+
+
+let animationCanvas = null;
+let animationCanvasTimeout = null;
+let animationCanvasInterval = null;
+
+let animationCanvasDuration = 6000;
+
+let animationWidth = 272;
+let animationHeight = 224;
+
+let ongoingAnimations = [];
+let animationCanvasWidth;
+let refreshAnimationCanvas = function (){
+	if (animationCanvasTimeout !== null){
+		clearInterval(animationCanvasTimeout);
+	}
+	if (animationCanvas === null){
+		
+		animationCanvas = document.createElement('canvas');
+		animationCanvas.style.position = 'absolute';
+		animationCanvas.style.top = '0px';
+		animationCanvas.style.left =  '0px';
+		animationCanvas.style['z-index'] = 3;
+        animationCanvasWidth = document.documentElement.clientWidth;
+		animationCanvas.width = animationCanvasWidth;
+		animationCanvas.height = document.documentElement.clientHeight + 500;
+		document.body.appendChild(animationCanvas);
+		
+		animationCanvasInterval = setInterval(()=>{
+			let ctx = animationCanvas.getContext("2d");
+			ctx.clearRect(0, 0, animationCanvas.width, animationCanvas.height);
+			for (let j = 0; j< ongoingAnimations.length; j++){
+				if (ongoingAnimations[j][1] < (animationCanvas.height + 500)){
+					ongoingAnimations[j][1]+= (ongoingAnimations[j][2]/1000)
+					ongoingAnimations[j][2]*=1.005;
+					ctx.save(); //saves the state of canvas
+					ctx.translate(ongoingAnimations[j][0] ,ongoingAnimations[j][1])
+					ctx.rotate(ongoingAnimations[j][3] * (Math.PI / 180))
+					ongoingAnimations[j][3]+=(ongoingAnimations[j][4]/1000);
+					ctx.drawImage(ongoingAnimations[j][5], -animationWidth/ 2, -animationHeight / 2, animationWidth, animationHeight);
+					ctx.restore()
+				}
+			}
+			
+		}, 1000/60)
+	}
+	
+	animationCanvasTimeout = setTimeout(() => {
+        animationCanvas.remove()
+		animationCanvas = null;
+		animationCanvasTimeout = null;
+		ongoingAnimations = [];
+		if (animationCanvasInterval !== null){
+			clearInterval(animationCanvasInterval);
+		}
+	}, animationCanvasDuration);
+	
+	
+}
+
+
+let animateInput = function(pokemonName){
+	refreshAnimationCanvas();
+
+	let x = randomIntFromInterval( animationWidth / 2,  animationCanvasWidth - (animationWidth/2));
+	let y = randomIntFromInterval( -3500,  -animationWidth*1.5);
+	let speed = randomIntFromInterval(4000, 7500);
+	let angle = randomIntFromInterval( 0,  360);
+	let angleIncrement = randomIntFromInterval(-2000, 2000);
+	ongoingAnimations.push([x,y, speed, angle, angleIncrement, spriteDictionary[pokemonName]]);
+		
+}
+
+
 
 
 document.getElementById("accordion").onclick = function (){
@@ -1720,8 +1811,7 @@ let images = [
 let currentImageIndex = 0
 
 //starts a repeating function 
-setInterval(() => {
-    
+let spriteIntervalId = setInterval(() => {
     for (let i = 0; i<images.length; i++){
 
         //select specific <img>
