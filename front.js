@@ -1872,7 +1872,6 @@ let startMissingno = function (){
 
     let originalSrc = visibleSprites[randomIndex].src
     visibleSprites[randomIndex].src = 'images/missingno.png';
-    console.log('changed',  visibleSprites[randomIndex])
     setTimeout(()=>{
         visibleSprites[randomIndex].src  = originalSrc
         startMissingno();
