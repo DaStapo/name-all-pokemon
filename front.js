@@ -611,6 +611,9 @@ function loadSprites() {
     unknownDark = new Image();
 	unknownDark.src = '/sprites/unknown-2.png';
 
+    missingno = new Image();
+	missingno.src = 'images/missingno.png';
+
 }
 let unguessedDict = {}
 let unguessedDictTexts = {}
@@ -652,6 +655,7 @@ let recentSprite = document.getElementById("recentsprite");
 
 
 let parseInput = function (inputText, sendLog) {
+
 	if (!document.getElementById("pokemon").disabled){
 		inputText = inputText.toLowerCase()
 	
@@ -670,6 +674,17 @@ let parseInput = function (inputText, sendLog) {
 			inputs.push('니드런f')
 			inputs.push('니드런m')
 		}
+
+
+        if (inputText == "missingno" || inputText == "けつばん"){
+            if (!missingnoEnabled){
+                missingnoEnabled = true;
+                startMissingno()
+                inputField.value = '';
+                soundEffect.play();
+            }
+
+        }
 
         inputText = standardizeName(inputText)
         inputText = tryTranslate(inputText)
@@ -1123,6 +1138,7 @@ function onSpriteLoad() {
 }
 
 function resetQuiz() {
+    missingnoEnabled = false;
     alreadyGuessedPokemon = [];
     clearInterval(activeTimer);
     activeTimer = false;
@@ -1832,5 +1848,28 @@ let spriteIntervalId = setInterval(() => {
     }
 
 }, 2000); //500ms (can be changed ofc)
+
+
+let missingnoEnabled = false;
+let startMissingno = function (){
+
+    if (!missingnoEnabled){
+        return
+    }
+
+    let randomIndex = randomIntFromInterval(0, allSpirtes.length)
+
+    let originalSrc = allSpirtes[randomIndex].src
+    allSpirtes[randomIndex].src = 'images/missingno.png';
+    console.log('changed',  allSpirtes[randomIndex])
+    setTimeout(()=>{
+        allSpirtes[randomIndex].src  = originalSrc
+        startMissingno();
+    }, randomIntFromInterval(300, 3000))
+}
+
+
+
+
 
 loadSprites()
