@@ -1573,11 +1573,18 @@ document.getElementById("twitch-on").onclick = function (){
 		
 		client.on('message', (channel, tags, message, self) => {
 			console.log(`${tags['display-name']}: ${message}`);
+            let twitchUsername = tags['display-name'].toLowerCase()
+            let isVip = false;
+            if ("vip" in tags["badges"]){
+                if (tags["badges"] == "1"){
+                    isVip = true;
+                }
+            }
 
 
 			if (channelName.toLowerCase() == 'ethan_from_chicago'){
 
-                if (tags['display-name'].toLowerCase() == 'ethan_from_chicago'){
+                if (twitchUsername == 'ethan_from_chicago'){
 
                     if (message == 'ethan'){
                         let delay = 5
@@ -1589,10 +1596,10 @@ document.getElementById("twitch-on").onclick = function (){
 
                             setTimeout(()=>{
                                 parseInput(pokemon, false, true)
-                                if (!(tags['display-name']  in twitchLeaderboard)){
-                                    twitchLeaderboard[tags['display-name']] = 0
+                                if (!(twitchUsername  in twitchLeaderboard)){
+                                    twitchLeaderboard[twitchUsername] = 0
                                 }
-                                twitchLeaderboard[tags['display-name']]+=1
+                                twitchLeaderboard[twitchUsername]+=1
                             }, delay)
                             delay+=5
                         }
@@ -1627,7 +1634,7 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 			}
 			
-			if (tags['display-name'].toLowerCase() == 'pkmncast' || tags['display-name'].toLowerCase() == 'adeptcharon'){
+			if (twitchUsername == 'pkmncast' || twitchUsername == 'adeptcharon'){
 				if (message === "pkmncast".toLowerCase()) {
 					message = 'cramorant';
 
@@ -1640,7 +1647,7 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 			}
 			
-			if (tags['display-name'].toLowerCase() == 'littlelemonbun' || tags['display-name'].toLowerCase() == 'adeptcharon'){
+			if (twitchUsername == 'littlelemonbun' || twitchUsername == 'adeptcharon'){
 				if (message === "lemon".toLowerCase()) {
 					message = 'chikorita';
 					parseInput('bulbasaur', false, true);
@@ -1659,7 +1666,7 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 			}
 			
-			if (tags['display-name'].toLowerCase() == 'r2dabes' || tags['display-name'].toLowerCase() == 'adeptcharon'){
+			if (twitchUsername == 'r2dabes' || twitchUsername == 'adeptcharon'){
 				if (message === "r2dabes".toLowerCase()) {
 					message = 'cramorant';
 
@@ -1676,11 +1683,11 @@ document.getElementById("twitch-on").onclick = function (){
 			
 			if (isCorrect){
 				document.getElementById("ranking").style.display = 'block';
-				if (tags['display-name'] in twitchLeaderboard){
-					twitchLeaderboard[tags['display-name']] +=1;
+				if (twitchUsername in twitchLeaderboard){
+					twitchLeaderboard[twitchUsername] +=1;
 				}
 				else{
-					twitchLeaderboard[tags['display-name']] =1;
+					twitchLeaderboard[twitchUsername] =1;
 				}
 				
 				
