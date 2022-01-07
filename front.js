@@ -1613,7 +1613,7 @@ document.getElementById("twitch-on").onclick = function (){
 			
 				}
 				if (message === "satan".toLowerCase()) {
-					message = 'whimsicott';
+					twitchInput(twitchUsername, 'whimsicott', true)
 				}
 				if (message === "wilbur".toLowerCase()) {
                     twitchInput(twitchUsername, 'pidove', true)
@@ -1675,7 +1675,7 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 			}			
 
-            twitchInput(message, true)
+            twitchInput(twitchUsername, message, true)
 		});
 		
 	}
