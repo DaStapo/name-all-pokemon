@@ -435,7 +435,8 @@
 	.ppbutton {
 	border: solid #8CC63F 1px;
 	border-radius: 4px;
-	color: #8CC63F;
+	background-color: #8CC63F;
+	color: #fff;
 	padding: 0px;
 	text-align: center;
 	text-decoration: none;
