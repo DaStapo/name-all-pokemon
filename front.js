@@ -2033,6 +2033,13 @@ let startMissingno = function (){
     }
     visibleSprites[randomIndex].src = missingnoPath;
     setTimeout(()=>{
+        if ((originalSrc.indexOf('/unknown') !== -1)){
+            if (darkMode){
+                originalSrc = '/sprites/unknown-2.png';
+            }else{
+                originalSrc = '/sprites/unknown.png';
+            }
+        }
         visibleSprites[randomIndex].src  = originalSrc
         startMissingno();
     }, randomIntFromInterval(300, 3000))
