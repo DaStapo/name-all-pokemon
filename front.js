@@ -1857,13 +1857,22 @@ let startMissingno = function (){
         return
     }
 
-    let randomIndex = randomIntFromInterval(0, allSpirtes.length)
 
-    let originalSrc = allSpirtes[randomIndex].src
-    allSpirtes[randomIndex].src = 'images/missingno.png';
-    console.log('changed',  allSpirtes[randomIndex])
+    let visibleSprites = []
+    for (let i = 0; i< allSpirtes.length; i++){
+        if (allSpirtes[i].style.display != "none" && allSpirtes[i].parentElement.style.display != "none" && allSpirtes[i].parentElement.parentElement.style.display != "none"){
+            visibleSprites.push(allSpirtes[i])
+        }
+    }
+    
+
+    let randomIndex = randomIntFromInterval(0, visibleSprites.length)
+
+    let originalSrc = visibleSprites[randomIndex].src
+    visibleSprites[randomIndex].src = 'images/missingno.png';
+    console.log('changed',  visibleSprites[randomIndex])
     setTimeout(()=>{
-        allSpirtes[randomIndex].src  = originalSrc
+        visibleSprites[randomIndex].src  = originalSrc
         startMissingno();
     }, randomIntFromInterval(300, 3000))
 }
