@@ -617,6 +617,9 @@ function loadSprites() {
     missingno = new Image();
 	missingno.src = 'images/missingno2.png';
 
+    missingno = new Image();
+	missingno.src = 'images/missingno3.png';
+
 }
 let unguessedDict = {}
 let unguessedDictTexts = {}
@@ -1875,11 +1878,15 @@ let startMissingno = function (){
 
     let originalSrc = visibleSprites[randomIndex].src
     let missingnoPath;
-    if (randomIntFromInterval(0, 1) == 1){
+    let randNr = randomIntFromInterval(0, 100);
+    if (randNr < 70){
         missingnoPath = 'images/missingno.png';
     }
-    else{
+    else if (randNr < 90){
         missingnoPath = 'images/missingno2.png';
+    }
+    else{
+        missingnoPath = 'images/missingno3.png';
     }
     visibleSprites[randomIndex].src = missingnoPath;
     setTimeout(()=>{
