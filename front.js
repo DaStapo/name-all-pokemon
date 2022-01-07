@@ -1595,11 +1595,7 @@ document.getElementById("twitch-on").onclick = function (){
                             }
 
                             setTimeout(()=>{
-                                parseInput(pokemon, false, true)
-                                if (!(twitchUsername  in twitchLeaderboard)){
-                                    twitchLeaderboard[twitchUsername] = 0
-                                }
-                                twitchLeaderboard[twitchUsername]+=1
+                                twitchInput(twitchUsername, message, true)
                             }, delay)
                             delay+=5
                         }
@@ -1620,17 +1616,17 @@ document.getElementById("twitch-on").onclick = function (){
 					message = 'whimsicott';
 				}
 				if (message === "wilbur".toLowerCase()) {
-					message = 'pidove';
-					parseInput('tranquill', false, true);
-					parseInput('unfezant', false, true);
+                    twitchInput(twitchUsername, 'pidove', true)
+                    twitchInput(twitchUsername, 'tranquill', true)
+                    twitchInput(twitchUsername, 'unfezant', true)
 				}
 				if (message === "dennis".toLowerCase()) {
-					message = 'roggenrola';
-					parseInput('boldore', false, true);
-					parseInput('gigalith', false, true);
+                    twitchInput(twitchUsername, 'roggenrola', true)
+                    twitchInput(twitchUsername, 'boldore', true)
+                    twitchInput(twitchUsername, 'gigalith', true)
 				}
 				if (message === "fortuna".toLowerCase()) {
-					message = 'spheal';
+					twitchInput(twitchUsername, 'spheal', true)
 				}
 			}
 			
@@ -1679,42 +1675,43 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 			}			
 
-			let isCorrect = parseInput(message, false, true);
-			
-			if (isCorrect){
-				document.getElementById("ranking").style.display = 'block';
-				if (twitchUsername in twitchLeaderboard){
-					twitchLeaderboard[twitchUsername] +=1;
-				}
-				else{
-					twitchLeaderboard[twitchUsername] =1;
-				}
-				
-				
-				let sorted = sortDictionaryByValue(twitchLeaderboard);
-				emptyLeaderboard();
-				let leaderboardDiv = document.getElementById("leaderboard");
-				for (let i = 0; i<sorted.length; i++){
-					let scoreDiv = document.createElement('div');
-					scoreDiv.classList.add('inlinetext')
-					scoreDiv.classList.add('rank')
-					scoreDiv.classList.add(rankVals[i])
-					let textNode = document.createTextNode('#' + (i+1) +' '+ sorted[i][0] + ' (' + sorted[i][1] + ')');
-					scoreDiv.appendChild(textNode)
-					leaderboardDiv.appendChild(scoreDiv);
-					if (i >= 2){
-						break;
-					}
-				}
-				
-				
-				
-			}
-
+            twitchInput(message, true)
 		});
 		
 	}
 }
+
+let twitchInput = function (twitchUsername, input, shouldCount){
+    let isCorrect = parseInput(input, false, true);
+			
+    if (isCorrect && shouldCount){
+        document.getElementById("ranking").style.display = 'block';
+        if (twitchUsername in twitchLeaderboard){
+            twitchLeaderboard[twitchUsername] +=1;
+        }
+        else{
+            twitchLeaderboard[twitchUsername] =1;
+        }
+        
+        
+        let sorted = sortDictionaryByValue(twitchLeaderboard);
+        emptyLeaderboard();
+        let leaderboardDiv = document.getElementById("leaderboard");
+        for (let i = 0; i<sorted.length; i++){
+            let scoreDiv = document.createElement('div');
+            scoreDiv.classList.add('inlinetext')
+            scoreDiv.classList.add('rank')
+            scoreDiv.classList.add(rankVals[i])
+            let textNode = document.createTextNode('#' + (i+1) +' '+ sorted[i][0] + ' (' + sorted[i][1] + ')');
+            scoreDiv.appendChild(textNode)
+            leaderboardDiv.appendChild(scoreDiv);
+            if (i >= 2){
+                break;
+            }
+        }
+    }
+}
+
 
 document.getElementById("twitch-off").onclick = function (){
 	if (isTwitchOn){
