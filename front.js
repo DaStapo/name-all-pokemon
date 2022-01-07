@@ -1632,7 +1632,7 @@ document.getElementById("twitch-on").onclick = function (){
 			
 			if (twitchUsername == 'pkmncast' || twitchUsername == 'adeptcharon'){
 				if (message === "pkmncast".toLowerCase()) {
-					message = 'cramorant';
+					twitchInput(twitchUsername, 'cramorant', true)
 
 	                image = new Image();
 	                image.src = 'images/cramorant.png';
@@ -1643,19 +1643,81 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 			}
 			
-			if (twitchUsername == 'littlelemonbun' || twitchUsername == 'adeptcharon'){
-				if (message === "lemon".toLowerCase()) {
-					message = 'chikorita';
-					parseInput('bulbasaur', false, true);
-					parseInput('rowlet', false, true);
-					parseInput('grookey', false, true);
-					parseInput('treecko', false, true);
-					parseInput('snivy', false, true);
-					parseInput('chespin', false, true);
-					parseInput('turtwig', false, true);
+			if (channelName.toLowerCase() == 'littlelemonbun' && twitchUsername == 'littlelemonbun'){
+				if (message === "besttype".toLowerCase()) {
+					twitchInput(twitchUsername, 'bulbasaur', true)
+					twitchInput(twitchUsername, 'oddish', true)
+					twitchInput(twitchUsername, 'paras', true)
+					twitchInput(twitchUsername, 'bellsprout', true)
+					twitchInput(twitchUsername, 'exeggcute', true)
+					twitchInput(twitchUsername, 'tangela', true)
+					twitchInput(twitchUsername, 'chikorita', true)
+					twitchInput(twitchUsername, 'hoppip', true)
+					twitchInput(twitchUsername, 'sunkern', true)
+					twitchInput(twitchUsername, 'treecko', true)
+					twitchInput(twitchUsername, 'lotad', true)
+					twitchInput(twitchUsername, 'seedot', true)
+					twitchInput(twitchUsername, 'shroomish', true)
+					twitchInput(twitchUsername, 'cacnea', true)
+					twitchInput(twitchUsername, 'lileep', true)
+					twitchInput(twitchUsername, 'tropius', true)
+					twitchInput(twitchUsername, 'turtwig', true)
+					twitchInput(twitchUsername, 'budew', true)
+					twitchInput(twitchUsername, 'cherubi', true)
+					twitchInput(twitchUsername, 'carnivine', true)
+					twitchInput(twitchUsername, 'snover', true)
+					twitchInput(twitchUsername, 'leafeon', true)
+					twitchInput(twitchUsername, 'snivy', true)
+					twitchInput(twitchUsername, 'pansage', true)
+					twitchInput(twitchUsername, 'sewaddle', true)
+					twitchInput(twitchUsername, 'cottonee', true)
+					twitchInput(twitchUsername, 'petilil', true)
+					twitchInput(twitchUsername, 'maractus', true)
+					twitchInput(twitchUsername, 'deerling', true)
+					twitchInput(twitchUsername, 'foongus', true)
+					twitchInput(twitchUsername, 'ferroseed', true)
+					twitchInput(twitchUsername, 'chespin', true)
+					twitchInput(twitchUsername, 'phantump', true)
+					twitchInput(twitchUsername, 'pumpkaboo', true)
+					twitchInput(twitchUsername, 'rowlet', true)
+					twitchInput(twitchUsername, 'fomantis', true)
+					twitchInput(twitchUsername, 'morelull', true)
+					twitchInput(twitchUsername, 'bounsweet', true)
+					twitchInput(twitchUsername, 'dhelmise', true)
+					twitchInput(twitchUsername, 'grookey', true)
+					twitchInput(twitchUsername, 'gossifleur', true)
+					twitchInput(twitchUsername, 'applin', true)
+				}
+			}
+			if (twitchUsername == 'littlelemonbun' || twitchUsername == 'adeptcharon' || (channelName.toLowerCase() == 'littlelemonbun' && isVip)){
+				if (message === "lemonbun".toLowerCase()) {
 
 	                image = new Image();
 	                image.src = 'images/chikorita.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 300);
+                    }, false);			
+				}
+				if (message === "lemonmonke".toLowerCase()) {
+
+	                image = new Image();
+	                image.src = 'images/grookey.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 300);
+                    }, false);			
+				}
+				if (message === "lemonbulb".toLowerCase()) {
+
+	                image = new Image();
+	                image.src = 'images/bulbasaur.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 200);
+                    }, false);			
+				}
+				if (message === "lemonowl".toLowerCase()) {
+
+	                image = new Image();
+	                image.src = 'images/rowlet.png';
                     image.addEventListener("load", function () {
                         imageRain(image, 50, 300);
                     }, false);			
@@ -1664,16 +1726,27 @@ document.getElementById("twitch-on").onclick = function (){
 			
 			if (twitchUsername == 'r2dabes' || twitchUsername == 'adeptcharon'){
 				if (message === "r2dabes".toLowerCase()) {
-					message = 'cramorant';
 
 	                image = new Image();
-	                image.src = 'images/cramorant.png';
+	                image.src = 'images/flapple.png';
                     image.addEventListener("load", function () {
                         imageRain(image, 50, 300);
                     }, false);
 			
 				}
 			}			
+			
+			if (twitchUsername == 'adeptcharon'){
+				if (message === "bestpkmn".toLowerCase()) {
+
+	                image = new Image();
+	                image.src = 'images/crabominable.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 300);
+                    }, false);
+			
+				}
+			}	
 
             twitchInput(twitchUsername, message, true)
 		});
