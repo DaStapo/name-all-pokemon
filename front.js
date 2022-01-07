@@ -1868,7 +1868,7 @@ let startMissingno = function (){
     }
     
 
-    let randomIndex = randomIntFromInterval(0, visibleSprites.length)
+    let randomIndex = randomIntFromInterval(0, visibleSprites.length-1)
 
     let originalSrc = visibleSprites[randomIndex].src
     visibleSprites[randomIndex].src = 'images/missingno.png';
