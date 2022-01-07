@@ -654,7 +654,7 @@ let inputField = document.getElementById("pokemon");
 let recentSprite = document.getElementById("recentsprite");
 
 
-let parseInput = function (inputText, sendLog) {
+let parseInput = function (inputText, sendLog, isTwitchChat) {
 
 	if (!document.getElementById("pokemon").disabled){
 		inputText = inputText.toLowerCase()
@@ -715,7 +715,7 @@ let parseInput = function (inputText, sendLog) {
 		for (let i = 0; i < inputs.length; i++){
 			//inputText = standardizeName(inputs[i]);
 			//inputText = tryTranslate(inputText)
-			let guessResult = tryGuessPokemon(standardizeName(inputs[i]), sendLog);
+			let guessResult = tryGuessPokemon(standardizeName(inputs[i]), sendLog, isTwitchChat);
 			if (!wasCorrect && guessResult){
 				wasCorrect = guessResult;
 			}
@@ -726,7 +726,7 @@ let parseInput = function (inputText, sendLog) {
 };
 
 inputField.oninput = function (){
-	parseInput(inputField.value, true);
+	parseInput(inputField.value, true, false);
 }
 
 
@@ -738,7 +738,7 @@ function play_single_sound2() {
     document.getElementById('soundeffect2').play();
 }
 
-function tryGuessPokemon(input, sendLog) {
+function tryGuessPokemon(input, sendLog,isTwitchChat) {
     try{
         showSprite(input);
     }catch(err){
@@ -747,7 +747,9 @@ function tryGuessPokemon(input, sendLog) {
     if (currentPokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)) {
 
         //showSprite(input);
-        inputField.value = '';
+        if (!isTwitchChat){
+            inputField.value = '';
+        }
         recentSprite.src = spriteDictionary[input].src;
         alreadyGuessedPokemon.push(input);
         let relevantList = getAlreadyGuessedAndRelevantPokemon();
@@ -1584,13 +1586,13 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 				if (message === "wilbur".toLowerCase()) {
 					message = 'pidove';
-					parseInput('tranquill', false);
-					parseInput('unfezant', false);
+					parseInput('tranquill', false, true);
+					parseInput('unfezant', false, true);
 				}
 				if (message === "dennis".toLowerCase()) {
 					message = 'roggenrola';
-					parseInput('boldore', false);
-					parseInput('gigalith', false);
+					parseInput('boldore', false, true);
+					parseInput('gigalith', false, true);
 				}
 				if (message === "fortuna".toLowerCase()) {
 					message = 'spheal';
@@ -1598,7 +1600,7 @@ document.getElementById("twitch-on").onclick = function (){
 			}
 			
 
-			let isCorrect = parseInput(message, false);
+			let isCorrect = parseInput(message, false, true);
 			
 			if (isCorrect){
 				document.getElementById("ranking").style.display = 'block';
