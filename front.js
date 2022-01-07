@@ -1343,7 +1343,7 @@ let imageRain = function(image, imageCount, avgSize){
 	canvas.style.left = '0px';
 	canvas.style['z-index'] = 3;
 	canvas.width = document.documentElement.clientWidth;
-	canvas.height = document.documentElement.clientHeight;
+	canvas.height = document.documentElement.scrollHeight;
 	document.body.appendChild(canvas);
 	let ctx = canvas.getContext("2d");
 	
@@ -1604,6 +1604,50 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 			}
 			
+			if (tags['display-name'].toLowerCase() == 'pkmncast' || tags['display-name'].toLowerCase() == 'adeptcharon'){
+				if (message === "pkmncast".toLowerCase()) {
+					message = 'cramorant';
+
+	                image = new Image();
+	                image.src = 'images/cramorant.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 300);
+                    }, false);
+			
+				}
+			}
+			
+			if (tags['display-name'].toLowerCase() == 'littlelemonbun' || tags['display-name'].toLowerCase() == 'adeptcharon'){
+				if (message === "lemon".toLowerCase()) {
+					message = 'chikorita';
+					parseInput('bulbasaur', false, true);
+					parseInput('rowlet', false, true);
+					parseInput('grookey', false, true);
+					parseInput('treecko', false, true);
+					parseInput('snivy', false, true);
+					parseInput('chespin', false, true);
+					parseInput('turtwig', false, true);
+
+	                image = new Image();
+	                image.src = 'images/chikorita.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 300);
+                    }, false);			
+				}
+			}
+			
+			if (tags['display-name'].toLowerCase() == 'r2dabes' || tags['display-name'].toLowerCase() == 'adeptcharon'){
+				if (message === "r2dabes".toLowerCase()) {
+					message = 'cramorant';
+
+	                image = new Image();
+	                image.src = 'images/cramorant.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 300);
+                    }, false);
+			
+				}
+			}			
 
 			let isCorrect = parseInput(message, false, true);
 			
