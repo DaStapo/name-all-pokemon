@@ -1576,6 +1576,29 @@ document.getElementById("twitch-on").onclick = function (){
 
 
 			if (channelName.toLowerCase() == 'ethan_from_chicago'){
+
+                if (tags['display-name'].toLowerCase() == 'ethan_from_chicago'){
+
+                    if (message == 'ethan'){
+                        let delay = 5
+                        for (let i = 0; i < currentRevealList.length; i++) { 
+                            let pokemon = currentRevealList[i];
+                            if (!isSpriteHidden(pokemon)){
+                                continue
+                            }
+
+                            setTimeout(()=>{
+                                parseInput(pokemon, false, true)
+                                if (!(tags['display-name']  in twitchLeaderboard)){
+                                    twitchLeaderboard[tags['display-name']] = 0
+                                }
+                                twitchLeaderboard[tags['display-name']]+=1
+                            }, delay)
+                            delay+=5
+                        }
+                    }
+                }
+
 				if (message === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
 					message = 'spheal';
 
