@@ -1583,7 +1583,6 @@ document.getElementById("twitch-on").onclick = function (){
 	                image.src = 'images/spheal.png';
                     image.addEventListener("load", function () {
                         imageRain(image, 400, 160);
-                        onSpriteLoad();
                     }, false);
 			
 				}
