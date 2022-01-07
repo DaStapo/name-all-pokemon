@@ -433,22 +433,22 @@
 	color: #fff;
 	}
 	.ppbutton {
-	border: solid #8CC63F 1px;
+	border: solid #7eb238 1px;
 	border-radius: 4px;
-	background-color: #8CC63F;
+	background-color: #7eb238;
 	color: #fff;
 	padding: 0px;
 	text-align: center;
 	text-decoration: none;
 	display: inline;
 	padding: 0px 2px;
-	margin: 0px 2px;
+	margin: 0px 2px 0px 1px;
 	cursor: pointer;
 	font-family: "Roboto";
 	}
 	.ppbutton:hover {
-	background-color: #7eb238;
-	border-color: #7eb238;
+	background-color: #8CC63F;
+	border-color: #8CC63F;
 	color: #fff;
 	}
 	.radio-item {
