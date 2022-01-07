@@ -16,6 +16,8 @@ let boxes = [];
 let currentPokemonList = [];
 let currentGen = 0; //0 means all
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
+let soundEffectMissingno = new Audio('/sound-effects/032.wav');
+soundEffectMissingno.volume = 0.1;
 soundEffect.volume = 0.5;
 let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
 soundEffect2.volume = 0.3;
@@ -687,7 +689,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
                 missingnoEnabled = true;
                 startMissingno()
                 inputField.value = '';
-                soundEffect.play();
+                soundEffectMissingno.play();
             }
 
         }
