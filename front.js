@@ -1742,7 +1742,7 @@ document.getElementById("twitch-on").onclick = function (){
 	                image = new Image();
 	                image.src = 'images/crabominable.png';
                     image.addEventListener("load", function () {
-                        imageRain(image, 50, 300);
+                        imageRain(image, 50, 340);
                     }, false);
 			
 				}
