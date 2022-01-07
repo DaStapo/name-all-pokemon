@@ -1614,16 +1614,6 @@ document.getElementById("twitch-on").onclick = function (){
                     }
                 }
 
-				if (message === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
-					message = 'spheal';
-
-	                image = new Image();
-	                image.src = 'images/spheal.png';
-                    image.addEventListener("load", function () {
-                        imageRain(image, 400, 160);
-                    }, false);
-			
-				}
 				if (message === "satan".toLowerCase()) {
 					twitchInput(twitchUsername, 'whimsicott', true)
 				}
@@ -1639,6 +1629,18 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 				if (message === "fortuna".toLowerCase()) {
 					twitchInput(twitchUsername, 'spheal', true)
+				}
+			}
+			
+			if (twitchUsername == 'ethan_from_chicago' || channelName.toLowerCase() == 'ethan_from_chicago'){
+				if (message === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
+					twitchInput(twitchUsername, 'spheal', true)
+				
+	                image = new Image();
+	                image.src = 'images/spheal.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 400, 160);
+                    }, false);
 				}
 			}
 			
