@@ -1380,10 +1380,10 @@ let animationCanvas = null;
 let animationCanvasTimeout = null;
 let animationCanvasInterval = null;
 
-let animationCanvasDuration = 6000;
+let animationCanvasDuration = 5750;
 
-let animationWidth = 272;
-let animationHeight = 224;
+let animationWidth = 204;
+let animationHeight = 168;
 
 let ongoingAnimations = [];
 let animationCanvasWidth;
@@ -1397,17 +1397,17 @@ let refreshAnimationCanvas = function (){
 		animationCanvas.style.position = 'absolute';
 		animationCanvas.style.top = '0px';
 		animationCanvas.style.left =  '0px';
-		animationCanvas.style['z-index'] = 3;
+		animationCanvas.style['z-index'] = 5;
         animationCanvasWidth = document.documentElement.clientWidth;
 		animationCanvas.width = animationCanvasWidth;
-		animationCanvas.height = document.documentElement.clientHeight + 500;
+		animationCanvas.height = document.documentElement.clientHeight;
 		document.body.appendChild(animationCanvas);
 		
 		animationCanvasInterval = setInterval(()=>{
 			let ctx = animationCanvas.getContext("2d");
 			ctx.clearRect(0, 0, animationCanvas.width, animationCanvas.height);
 			for (let j = 0; j< ongoingAnimations.length; j++){
-				if (ongoingAnimations[j][1] < (animationCanvas.height + 500)){
+				if (ongoingAnimations[j][1] < (animationCanvas.height)){
 					ongoingAnimations[j][1]+= (ongoingAnimations[j][2]/1000)
 					ongoingAnimations[j][2]*=1.005;
 					ctx.save(); //saves the state of canvas

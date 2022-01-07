@@ -58,9 +58,8 @@
 	line-height: 30px;
 	}
 	.bigbox {
-	border: 20px;
-	padding: 50px;
-	border-radius: 4px 40px;
+	padding: 30px;
+	width: 100%;
 	}
 	.rounded {
 	border-radius: 4px 20px 20px 20px;
@@ -108,11 +107,12 @@
 	background: #D00;
 	color: #fff;
 	}
-	.whiteedge {
+	.winbutton {
 	background-color: rgb(255,255,255,0.2);
-	margin-left: 5%;
-	margin-right: 5%;
-	border: 2px solid white;
+	padding: 40px;
+	width: 50%;
+	margin: 0 auto;
+	border-radius: 20px 120px;
 	}
 	.highlight {
 	font-weight: bold;
@@ -137,10 +137,6 @@
 	.slightpad {
 	padding-left: 14px;
 	padding-right: 14px;
-	}
-	.padded-tb {
-	padding-top: 40px;
-	padding-bottom: 40px;
 	}
 	.topedge {
 	margin-top: -2px;
@@ -234,7 +230,7 @@
 	width: 154px;
 	}
 	.revealed {
-	filter: brightness(45%);
+	filter: brightness(50%);
 	animation-name: revealZoom;
 	animation-duration:750ms;
 	}
@@ -538,6 +534,7 @@
 	}
 	.buttondark {
 	background-color:#111;
+	border: 2px solid #8CC63F;
 	}
 	.greyerdark {
 	background-color: #111;
