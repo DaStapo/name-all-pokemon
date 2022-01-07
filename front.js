@@ -603,10 +603,6 @@ function loadSprites() {
     
 	createUnguessedContent();
 
-    //preload other images
-	spheal = new Image();
-	spheal.src = 'images/spheal.png';
-
     darkmodebg = new Image();
 	darkmodebg.src = 'images/background-dark.svg';
 
@@ -1339,55 +1335,50 @@ let randomIntFromInterval = function (min, max) { // min and max included
 	return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-var spheal;
-let ethan_roll = function (){
-	
-	
+let imageRain = function(image, imageCount, avgSize){
+
 	let canvas = document.createElement('canvas');
 	canvas.style.position = 'absolute';
 	canvas.style.top = '0px';
 	canvas.style.left = '0px';
 	canvas.style['z-index'] = 3;
 	canvas.width = document.documentElement.clientWidth;
-	canvas.height = document.documentElement.clientHeight + 500;
+	canvas.height = document.documentElement.clientHeight;
 	document.body.appendChild(canvas);
 	let ctx = canvas.getContext("2d");
 	
-	let sphealCount = 400;
-	
-	
-	let spheals = [];
+	let imageList = [];
 
-	for (let i = 0; i<sphealCount; i++){
+	for (let i = 0; i<imageCount; i++){
 		
 		let x = randomIntFromInterval( -200,  document.documentElement.clientWidth + 200);
 		let y = randomIntFromInterval( -2000,  -450);
 		let speed = randomIntFromInterval(6000, 12000);
-		let size = randomIntFromInterval(128,  180);
+		let size = randomIntFromInterval(Math.round(avgSize*0.8),  Math.round(avgSize*1.2));
 		let angle = randomIntFromInterval( 0,  360);
 		let angleIncrement = randomIntFromInterval(-2000, 2000);
 		
-		spheals.push([x,y, speed, size, angle, angleIncrement]);
+		imageList.push([x,y, speed, size, angle, angleIncrement]);
 	}
 	
 	let fps = 60;
 	let animationDuration = 6;
 	let nrFrames = fps *  animationDuration;
 	
-	let delay = 1000/60;
+	let delay = 1000/fps;
 	let waitFor = 0;
 	for (let i = 0; i<nrFrames; i++){
 		let k = i;
 		setTimeout(() => {
 			ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
-			for (let j = 0; j<spheals.length; j++){
-				spheals[j][1]+= (spheals[j][2]/1000)
-				spheals[j][2]*=1.005;
+			for (let j = 0; j<imageList.length; j++){
+				imageList[j][1]+= (imageList[j][2]/1000)
+				imageList[j][2]*=1.005;
 				ctx.save(); //saves the state of canvas
-				ctx.translate(spheals[j][0] ,spheals[j][1])
-				ctx.rotate(spheals[j][4] * (Math.PI / 180))
-				spheals[j][4]+=(spheals[j][5]/1000);
-				ctx.drawImage(spheal, -spheals[j][3]/ 2, -spheals[j][3] / 2, spheals[j][3], spheals[j][3]);
+				ctx.translate(imageList[j][0] ,imageList[j][1])
+				ctx.rotate(imageList[j][4] * (Math.PI / 180))
+				imageList[j][4]+=(imageList[j][5]/1000);
+				ctx.drawImage(image, -imageList[j][3]/ 2, -imageList[j][3] / 2, imageList[j][3], imageList[j][3]);
 				ctx.restore()
 			}
 			
@@ -1399,7 +1390,7 @@ let ethan_roll = function (){
 		document.body.removeChild(canvas);
 	}, waitFor);
 	
-}
+} 
 
 
 let animationCanvas = null;
@@ -1587,7 +1578,14 @@ document.getElementById("twitch-on").onclick = function (){
 			if (channelName.toLowerCase() == 'ethan_from_chicago'){
 				if (message === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
 					message = 'spheal';
-					ethan_roll();
+
+	                image = new Image();
+	                image.src = 'images/spheal.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 400, 160);
+                        onSpriteLoad();
+                    }, false);
+			
 				}
 				if (message === "satan".toLowerCase()) {
 					message = 'whimsicott';
