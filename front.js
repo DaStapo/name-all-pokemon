@@ -1575,12 +1575,24 @@ document.getElementById("twitch-on").onclick = function (){
 			console.log(`${tags['display-name']}: ${message}`);
             let twitchUsername = tags['display-name'].toLowerCase()
             let isVip = false;
-            if ("vip" in tags["badges"]){
-                if (tags["badges"] == "1"){
-                    isVip = true;
+
+            if ("badges" in tags &&tags["badges"] != null ){
+                if ("vip" in tags["badges"]){
+                    if (tags["badges"]["vip"] == "1"){
+                        isVip = true;
+                    }
+                }
+                if ("moderator" in tags["badges"]){
+                    if (tags["badges"]["moderator"] == "1"){
+                        isVip = true;
+                    }
+                }
+                if ("broadcaster" in tags["badges"]){
+                    if (tags["badges"]["broadcaster"] == "1"){
+                        isVip = true;
+                    }
                 }
             }
-
 
 			if (channelName.toLowerCase() == 'ethan_from_chicago'){
 
