@@ -1607,7 +1607,7 @@ document.getElementById("twitch-on").onclick = function (){
                             }
 
                             setTimeout(()=>{
-                                twitchInput(twitchUsername, message, true)
+                                twitchInput(twitchUsername, pokemon, true)
                             }, delay)
                             delay+=5
                         }
