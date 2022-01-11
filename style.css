@@ -98,6 +98,8 @@
 	border: 2px solid #8CC63F;
 	border-bottom: 2px dotted #8CC63F;
 	}
+	.outline {
+	outline: 1px dotted #8CC63F;}
 	.greyer {
 	background: #444;
 	color: #fff;
