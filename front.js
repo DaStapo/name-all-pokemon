@@ -1635,7 +1635,13 @@ document.getElementById("twitch-on").onclick = function (){
                     }
                 }
             }
-
+            if (isVip){
+                if (standardizeName(message) === "scrolldown".toLowerCase()) {
+                    window.scrollBy(0, 35);
+                }else if (standardizeName(message) === "scrollup".toLowerCase()) {
+                    window.scrollBy(0, -35);
+                }
+            }
             
             if (standardizeName(message) === "darkoff".toLowerCase()) {
                 if (Date.now() - swapLimit > lastDarkSwap ){
@@ -1921,6 +1927,7 @@ let updateFullLeaderboard = function (){
 
 
 document.getElementById("darkon").onclick = function (){
+    
     if(!darkMode){
         darkMode = !darkMode
         visualizeButtonUnclick(document.getElementById("darkoff"))
