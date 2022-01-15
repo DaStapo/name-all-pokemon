@@ -1631,6 +1631,16 @@ document.getElementById("twitch-on").onclick = function (){
                 }
             }
 
+            
+            if (standardizeName(message) === "darkoff".toLowerCase()) {
+                document.getElementById("darkoff").click()
+            }else if (standardizeName(message) === "darkon".toLowerCase()) {
+                document.getElementById("darkon").click()
+            }else if (standardizeName(message) === "shinyon".toLowerCase()) {
+                document.getElementById("shinyon").click()
+            }else if (standardizeName(message) === "shinoff".toLowerCase()) {
+                document.getElementById("shinoff").click()
+            }
 			if (channelName.toLowerCase() == 'ethan_from_chicago'){
 
                 if (twitchUsername == 'ethan_from_chicago'){
