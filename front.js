@@ -1591,6 +1591,11 @@ let sortDictionaryByValue = function(dictionary){
     return sorted = entries.sort((a, b) => b[1] - a[1]);
 }
 
+
+let lastDarkSwap = 0
+let lastShinySwap = 0
+let swapLimit = 10000
+
 document.getElementById("twitch-on").onclick = function (){
 	if (!isTwitchOn && document.getElementById("twitch-channel").value != ""){
 		isTwitchOn = true;
@@ -1633,13 +1638,28 @@ document.getElementById("twitch-on").onclick = function (){
 
             
             if (standardizeName(message) === "darkoff".toLowerCase()) {
-                document.getElementById("darkoff").click()
+                if (Date.now() - swapLimit > lastDarkSwap ){
+                    document.getElementById("darkoff").click()
+                    lastDarkSwap = Date.now();
+                }
             }else if (standardizeName(message) === "darkon".toLowerCase()) {
-                document.getElementById("darkon").click()
+                if (Date.now() - swapLimit > lastDarkSwap ){
+                    document.getElementById("darkon").click()
+                    lastDarkSwap = Date.now();
+                }
             }else if (standardizeName(message) === "shinyon".toLowerCase()) {
-                document.getElementById("shinyon").click()
-            }else if (standardizeName(message) === "shinoff".toLowerCase()) {
-                document.getElementById("shinoff").click()
+                if (Date.now() - swapLimit > lastShinySwap ){
+                    document.getElementById("shinyon").click()
+                    lastShinySwap = Date.now();
+                }
+            }else if (standardizeName(message) === "shinyoff".toLowerCase()) {
+                if (Date.now() - swapLimit > lastShinySwap ){
+                    document.getElementById("shinyoff").click()
+                    lastShinySwap = Date.now();
+                }
+            }
+            else if (standardizeName(message) === "shinyoff".toLowerCase()) {
+                document.getElementById("shinyoff").click()
             }
 			if (channelName.toLowerCase() == 'ethan_from_chicago'){
 
