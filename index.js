@@ -98,6 +98,7 @@ app.get('/savelogs', function(req , res){
 });
 
 app.post('/named',jsonParser, function(req, res){
+	return;
 	let pokemon = req.body.name
 	console.log(pokemon);
 	if(!(pokemon in pokemonDict)){
@@ -110,6 +111,7 @@ app.post('/named',jsonParser, function(req, res){
 });
 
 app.post('/gen',jsonParser, function(req, res){
+	return;
 	let gen = req.body.gen
 	console.log(gen + ' started');
 	if(!(gen in genDict)){
@@ -120,6 +122,7 @@ app.post('/gen',jsonParser, function(req, res){
 });
 
 app.post('/stream',jsonParser, function(req, res){
+	return;
 	let streamName = req.body.streamName
 	console.log(streamName + ' twitch chat enabled');
 	if(!(streamName in streamDict)){
