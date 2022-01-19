@@ -240,6 +240,50 @@
 		</div>
       </div>
     </div>
+
+	    
+	<div class="overlay" id="genselection" style="display: block;">
+      <div class="prompt">
+		<div id="loadbox">
+        <div style="min-width: 350px; width: 80%; margin: 0 auto;">
+          <img src="images/logo.png" class="logo" alt="">
+          <img src="images/logo-square.png" class="logosq" alt="">
+        </div>
+        <div class="loader" id="loader">
+          <h2>Loading Quiz</h2>
+        </div>
+        <div id="play" class="play">
+          <h2>Loading complete</h2>
+        </div>
+        <div class="row2">
+          <div class="bar2">
+            <div id="loadbar" class="load2"></div>
+          </div>
+        </div>
+		</div>
+        <div class="playtext" id="playtext">
+          <div class="button-s roundedb hovg" id="gen0" ><div class="padded2">Full quiz</div></div>
+          <div class="p2">Quiz by generation:</div>
+          <div class="row2">
+            <div class="button-s roundedh hovg" id="gen1" ><div class="mshow">1</div><div class="mhide">Kanto</div><img id="gen1img" src=sprites/squirtle.png class="spritec cropped"></div>
+            <div class="button-s roundedc hovg" id="gen2" ><div class="mshow">2</div><div class="mhide">Johto</div><img id="gen2img" src=sprites/chikorita.png class="spritec cropped"></div>
+            <div class="button-s roundedg hovg" id="gen3" ><div class="mshow">3</div><div class="mhide">Hoenn</div><img id="gen3img" src=sprites/torchic.png class="spritec cropped"></div>
+          </div>
+		  <div class="row2">
+            <div class="button-s roundedh hovg" id="gen4" ><div class="mshow">4</div><div class="mhide">Sinnoh</div><img id="gen4img" src=sprites/piplup.png class="spritec cropped"></div>          
+            <div class="button-s roundedc hovg" id="gen5" ><div class="mshow">5</div><div class="mhide">Unova</div><img id="gen5img" src=sprites/snivy.png class="spritec cropped"></div>
+            <div class="button-s roundedg hovg" id="gen6" ><div class="mshow">6</div><div class="mhide">Kalos</div><img id="gen6img" src=sprites/fennekin.png class="spritec cropped"></div>
+          </div>
+		  <div class="row2">
+            <div class="button-s roundedh hovg" id="gen7" ><div class="mshow">7</div><div class="mhide">Alola</div><img id="gen7img" src=sprites/popplio.png class="spritec cropped"></div>
+            <div class="button-s roundedg hovg" id="gen8" ><div class="mshow">8</div><div class="mhide">Galar</div><img id="gen8img" src=sprites/grookey.png class="spritec cropped"></div>
+			<div class="button-s roundedg hovg playtext cursor" id="gen9"><div class="mshow">9</div><div class="mhide">Gen9</div><img id="gen9img" src=sprites/unknown.png class="spritec cropped"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div id="prompttimer" class="overlay">
       <div class="prompt">
         <h2>Change timer?</h2>
@@ -264,50 +308,7 @@
         <div id="sil-yes" class="button hovr roundedb">Reveal</div>
         <div id="sil-no" class="button hovg roundedb">Cancel</div>
       </div>
-    </div>
-	
-	    
-	<div class="overlay" id="genselection" style="display: block;">
-      <div class="prompt">
-		<div id="loadbox">
-        <div style="min-width: 350px; width: 80%; margin: 0 auto;">
-          <img src="images/logo.png" class="logo" alt="">
-          <img src="images/logo-square.png" class="logosq" alt="">
-        </div>
-        <div class="loader" id="loader">
-          <h2>Loading Quiz</h2>
-        </div>
-        <div id="play" class="play">
-          <h2>Loading complete</h2>
-        </div>
-        <div class="row2">
-          <div class="bar2">
-            <div id="loadbar" class="load2"></div>
-          </div>
-        </div>
-		</div>
-        <div class="playtext" id="playtext">
-          <div class="button-s roundedb hovg" id="gen0" onclick="off2()"><div class="padded2">Full quiz</div></div>
-          <div class="p2">Quiz by generation:</div>
-          <div class="row2">
-            <div class="button-s roundedh hovg" id="gen1" onclick="off2()"><div class="mshow">1</div><div class="mhide">Kanto</div><img id="gen1img" src=sprites/squirtle.png class="spritec cropped"></div>
-            <div class="button-s roundedc hovg" id="gen2" onclick="off2()"><div class="mshow">2</div><div class="mhide">Johto</div><img id="gen2img" src=sprites/chikorita.png class="spritec cropped"></div>
-            <div class="button-s roundedg hovg" id="gen3" onclick="off2()"><div class="mshow">3</div><div class="mhide">Hoenn</div><img id="gen3img" src=sprites/torchic.png class="spritec cropped"></div>
-          </div>
-		  <div class="row2">
-            <div class="button-s roundedh hovg" id="gen4" onclick="off2()"><div class="mshow">4</div><div class="mhide">Sinnoh</div><img id="gen4img" src=sprites/piplup.png class="spritec cropped"></div>          
-            <div class="button-s roundedc hovg" id="gen5" onclick="off2()"><div class="mshow">5</div><div class="mhide">Unova</div><img id="gen5img" src=sprites/snivy.png class="spritec cropped"></div>
-            <div class="button-s roundedg hovg" id="gen6" onclick="off2()"><div class="mshow">6</div><div class="mhide">Kalos</div><img id="gen6img" src=sprites/fennekin.png class="spritec cropped"></div>
-          </div>
-		  <div class="row2">
-            <div class="button-s roundedh hovg" id="gen7" onclick="off2()"><div class="mshow">7</div><div class="mhide">Alola</div><img id="gen7img" src=sprites/popplio.png class="spritec cropped"></div>
-            <div class="button-s roundedg hovg" id="gen8" onclick="off2()"><div class="mshow">8</div><div class="mhide">Galar</div><img id="gen8img" src=sprites/grookey.png class="spritec cropped"></div>
-			<div class="button-s roundedg hovg playtext cursor" id="gen9"><div class="mshow">9</div><div class="mhide">Gen9</div><img id="gen9img" src=sprites/unknown.png class="spritec cropped"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-	
+    </div>	
 	
     <script src="tmi.min.js"></script>
     <script src="encoded.js"></script>
