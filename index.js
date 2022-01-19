@@ -25,32 +25,37 @@ let pokemonDict = JSON.parse(fs.readFileSync('namelogs.json'));
 let genDict = JSON.parse(fs.readFileSync('genlogs.json'));
 let streamDict = JSON.parse(fs.readFileSync('streamlogs.json'));
 
+const PORT = process.env.PORT || 3000;
 
 let lastTimeSaved = 0;
 function saveLogs(){
-	if(Date.now() - lastTimeSaved > 2000){
-		fs.writeFile('namelogs.json', JSON.stringify(pokemonDict), (err) => {
-			if (err){
-				console.log('Saving log failed.');
-			}else{
-				lastTimeSaved = Date.now();
-			}			
-		});
-		
-		fs.writeFile('genlogs.json', JSON.stringify(genDict), (err) => {
-			if (err){
-				console.log('Saving log failed.');
-			}else{
-				lastTimeSaved = Date.now();
-			}			
-		});
-		fs.writeFile('streamlogs.json', JSON.stringify(streamDict), (err) => {
-			if (err){
-				console.log('Saving stream log failed.');
-			}else{
-				lastTimeSaved = Date.now();
-			}			
-		});
+
+	if (PORT !== 3000){
+
+		if(Date.now() - lastTimeSaved > 2000){
+			fs.writeFile('namelogs.json', JSON.stringify(pokemonDict), (err) => {
+				if (err){
+					console.log('Saving log failed.');
+				}else{
+					lastTimeSaved = Date.now();
+				}			
+			});
+
+			fs.writeFile('genlogs.json', JSON.stringify(genDict), (err) => {
+				if (err){
+					console.log('Saving log failed.');
+				}else{
+					lastTimeSaved = Date.now();
+				}			
+			});
+			fs.writeFile('streamlogs.json', JSON.stringify(streamDict), (err) => {
+				if (err){
+					console.log('Saving stream log failed.');
+				}else{
+					lastTimeSaved = Date.now();
+				}			
+			});
+		}
 	}
 }
 
@@ -98,7 +103,7 @@ app.get('/savelogs', function(req , res){
 });
 
 app.post('/named',jsonParser, function(req, res){
-	return;
+
 	let pokemon = req.body.name
 	console.log(pokemon);
 	if(!(pokemon in pokemonDict)){
@@ -111,7 +116,7 @@ app.post('/named',jsonParser, function(req, res){
 });
 
 app.post('/gen',jsonParser, function(req, res){
-	return;
+
 	let gen = req.body.gen
 	console.log(gen + ' started');
 	if(!(gen in genDict)){
@@ -122,7 +127,7 @@ app.post('/gen',jsonParser, function(req, res){
 });
 
 app.post('/stream',jsonParser, function(req, res){
-	return;
+	
 	let streamName = req.body.streamName
 	console.log(streamName + ' twitch chat enabled');
 	if(!(streamName in streamDict)){
@@ -151,7 +156,7 @@ app.use('/images', express.static(imageFolder));
 app.use('/sprites', express.static(spritesFolder));
 app.use('/shiny', express.static(shinyFolder));
 app.use('/silhouettes', express.static(silhouettesFolder));
-const PORT = process.env.PORT || 3000;
+
 app.listen(PORT);
 
 console.log('Server started!!.');
