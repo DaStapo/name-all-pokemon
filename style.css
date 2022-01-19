@@ -88,6 +88,9 @@
 	.roundedh {
 	border-radius: 4px 4px 4px 20px;
 	}
+	.roundedi {
+	border-radius: 35px 5px 15px 35px;
+	}
 	.lime {
 	background: #8CC63F !important;
 	color: #fff !important;
@@ -371,8 +374,8 @@
 	.hovg {
 	background-color: #8CC63F;
 	}
-	.hovg:hover {
-	background-color: #7eb238;
+	.hovg:hover, .hovn:hover {
+	outline: 2px solid #fff;
 	}
 	.hovr {
 	background-color: #8CC63F;
@@ -689,7 +692,9 @@
 	text-align: center;
 	color: #fff;
 	transform: translate(-50%,-70%);
-	-ms-transform: translate(-50%,-70%);
+	}
+	.fullwidth {
+	width: 100%;
 	}
 	.accordion {
 		
@@ -723,7 +728,10 @@
 	}
 	.thide {
 	display: inline-block;
-	min-width: 72px;
+	min-width: 65px;
+	padding: 5px 0px 5px 15px;
+	margin: 0px -5px 0px 0px;
+	vertical-align: top;
 	}
 	@media only screen and (max-width: 1280px) {
 	.logo {
@@ -750,15 +758,20 @@
 	.mhide {
 	display: none;
 	}
-	.tshow {
-	display: inline-block;
-	min-width: 40px;
-	}
-	.thide {
-	display: none;
-	}
 	.button-s {
 	min-width: 1px;
+	}
+	.tshow {
+	display:none;
+	}
+	}
+	@media only screen and (min-width: 769px) and (max-width: 918px) {
+	.tshow {
+	display: inline-block;
+	min-width: 1px;
+	padding: 5px 0px 5px 15px;
+	margin: 0px -5px 0px 0px;
+	vertical-align: top;
 	}
 	}
 	@media only screen and (max-width: 918px) {
@@ -767,6 +780,9 @@
 	}
 	.threefifths, .twofifths {
 	width: 100%;
+	}
+	.thide {
+	display: none;
 	}
 	}
 	@media only screen and (max-width: 536px) {
@@ -844,12 +860,10 @@
 	background-color: #EC8FE6;
 	}
 	.symbol {
-	width: 35px;
-	margin: -5px 0px -10px -10px;
+	width: 42px;
+	margin: 0px -5px -10px -5px;
+	/*margin: -5px 0px -10px -10px;*/
 	filter: brightness(0) invert(1);
-	}
-	.hovn:hover {
-	filter: brightness(0.9);
 	}
 	.resp-sharing-button__link,
 .resp-sharing-button__icon {
