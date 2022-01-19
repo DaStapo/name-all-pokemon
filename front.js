@@ -105,6 +105,7 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
         if (currentGen !== i) {
 
             let swapGen = function () {
+                document.getElementById("genselection").onclick = off2;
                 currentGen = i;
                 promptGen.style.display = "none";
                 updateGenFilter();
