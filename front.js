@@ -119,6 +119,7 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
 
             promptGenYes.onclick = function () {
                 swapGen();
+				off2();
 
             }
             promptGenNo.onclick = function () {
@@ -130,6 +131,7 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
                 promptGen.style.display = 'inline';
             } else {
                 swapGen();
+				off2();
             }
 
         }
