@@ -1320,12 +1320,17 @@ function off() {
 function off2() {
     document.getElementById("loadbox").style.display = "none";
 	document.getElementById("genselection").style.display = "none";
+	document.getElementById("typeselection").style.display = "none";
 	document.getElementById("inputbox").classList.add('attentionshake');
     clearInterval(spriteIntervalId);
 }
 
 function genselectmenu() {
 	document.getElementById("genselection").style.display = "block";
+}
+
+function typeselectmenu() {
+	document.getElementById("typeselection").style.display = "block";
 }
 
 function swapToShiny(){

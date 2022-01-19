@@ -718,6 +718,13 @@
 	.mhide {
 	display: inline-block;
 	}
+	.tshow {
+	display: none;
+	}
+	.thide {
+	display: inline-block;
+	min-width: 72px;
+	}
 	@media only screen and (max-width: 1280px) {
 	.logo {
 	display: none;
@@ -741,6 +748,13 @@
 	display: inline-block;
 	}
 	.mhide {
+	display: none;
+	}
+	.tshow {
+	display: inline-block;
+	min-width: 40px;
+	}
+	.thide {
 	display: none;
 	}
 	.button-s {

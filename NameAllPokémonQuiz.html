@@ -140,19 +140,8 @@
               <div class="box roundedc slightpad">
 				<form>Select mode by:
 				  <div class="smolbutton" id="genselect" onclick="genselectmenu()">Gen.</div>
-				  <div class="smolbutton" id="typeselect">Type</div>
+				  <div class="smolbutton" id="typeselect" onclick="typeselectmenu()">Type</div>
 				</form>
-                <!--<form style="display: none;">Generation:
-				  <div class="smolbutton smolbuttonx" id="gen0" value="all" checked="checked"> All</div>
-                  <div class="smolbutton" id="gen1" value="gen1"> 1</div>
-                  <div class="smolbutton" id="gen2" value="gen2"> 2</div>
-                  <div class="smolbutton" id="gen3" value="gen3"> 3</div>
-                  <div class="smolbutton" id="gen4" value="gen4"> 4</div>
-                  <div class="smolbutton" id="gen5" value="gen5"> 5</div>
-                  <div class="smolbutton" id="gen6" value="gen6"> 6</div>
-                  <div class="smolbutton" id="gen7" value="gen7"> 7</div>
-                  <div class="smolbutton" id="gen8" value="gen8"> 8</div>
-                </form>-->
               </div>
             </div>
             <div class="column">
@@ -240,9 +229,7 @@
 		</div>
       </div>
     </div>
-
-	    
-	<div class="overlay" id="genselection" style="display: block;">
+ 	<div class="overlay" id="genselection" style="display: block;">
       <div class="prompt">
 		<div id="loadbox">
         <div style="min-width: 350px; width: 80%; margin: 0 auto;">
@@ -280,6 +267,44 @@
 			<div class="button-s roundedg hovg playtext cursor" id="gen9"><div class="mshow">9</div><div class="mhide">Gen9</div><img id="gen9img" src=sprites/unknown.png class="spritec cropped"></div>
           </div>
         </div>
+      </div>
+    </div>
+	
+	
+	
+ 	<div class="overlay" id="typeselection" onclick="off2()">
+      <div class="prompt">
+          <div class="p2">Quiz by type:</div>
+          <div class="row2">
+            <div class="button-s roundedh hovg" id="b-wtr" ><div class="tshow">WTR</div><div class="thide">Water</div><img src=images/types/water.png class="spritec cropped"></div>
+            <div class="button-s roundedc hovg" id="b-nrm" ><div class="tshow">NRM</div><div class="thide">Normal</div><img src=images/types/normal.png class="spritec cropped"></div>
+            <div class="button-s roundedg hovg" id="b-grs" ><div class="tshow">GRS</div><div class="thide">Grass</div><img src=images/types/grass.png class="spritec cropped"></div>
+          </div>
+		  <div class="row2">
+            <div class="button-s roundedh hovg" id="b-fly" ><div class="tshow">FLY</div><div class="thide">Flying</div><img src=images/types/flying.png class="spritec cropped"></div>
+            <div class="button-s roundedc hovg" id="b-psy" ><div class="tshow">PSY</div><div class="thide">Psychic</div><img src=images/types/psychic.png class="spritec cropped"></div>
+            <div class="button-s roundedg hovg" id="b-bug" ><div class="tshow">BUG</div><div class="thide">Bug</div><img src=images/types/bug.png class="spritec cropped"></div>
+          </div>
+          <div class="row2">
+            <div class="button-s roundedh hovg" id="b-fir" ><div class="tshow">FIR</div><div class="thide">Fire</div><img src=images/types/fire.png class="spritec cropped"></div>
+            <div class="button-s roundedc hovg" id="b-grd" ><div class="tshow">GRD</div><div class="thide">Ground</div><img src=images/types/ground.png class="spritec cropped"></div>
+            <div class="button-s roundedg hovg" id="b-psn" ><div class="tshow">PSN</div><div class="thide">Poison</div><img src=images/types/poison.png class="spritec cropped"></div>
+          </div>
+          <div class="row2">
+            <div class="button-s roundedh hovg" id="b-rck" ><div class="tshow">RCK</div><div class="thide">Rock</div><img src=images/types/rock.png class="spritec cropped"></div>
+            <div class="button-s roundedc hovg" id="b-stl" ><div class="tshow">STL</div><div class="thide">Steel</div><img src=images/types/steel.png class="spritec cropped"></div>
+            <div class="button-s roundedg hovg" id="b-drk" ><div class="tshow">DRK</div><div class="thide">Dark</div><img src=images/types/dark.png class="spritec cropped"></div>
+          </div>
+          <div class="row2">
+            <div class="button-s roundedh hovg" id="b-fgt" ><div class="tshow">FGT</div><div class="thide">Fighting</div><img src=images/types/fighting.png class="spritec cropped"></div>
+            <div class="button-s roundedc hovg" id="b-elc" ><div class="tshow">ELC</div><div class="thide">Electric</div><img src=images/types/electric.png class="spritec cropped"></div>
+            <div class="button-s roundedg hovg" id="b-drg" ><div class="tshow">DRG</div><div class="thide">Dragon</div><img src=images/types/dragon.png class="spritec cropped"></div>
+          </div>
+          <div class="row2">
+            <div class="button-s roundedh hovg" id="b-fry" ><div class="tshow">FRY</div><div class="thide">Fairy</div><img src=images/types/fairy.png class="spritec cropped"></div>
+            <div class="button-s roundedc hovg" id="b-ght" ><div class="tshow">GHT</div><div class="thide">Ghost</div><img src=images/types/ghost.png class="spritec cropped"></div>
+            <div class="button-s roundedg hovg" id="b-ice" ><div class="tshow">ICE</div><div class="thide">Ice</div><img src=images/types/ice.png class="spritec cropped"></div>
+          </div>
       </div>
     </div>
 
