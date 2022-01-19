@@ -1320,8 +1320,13 @@ function off() {
 
 function off2() {
     document.getElementById("loadbox").style.display = "none";
+	document.getElementById("genselection").style.display = "none";
 	document.getElementById("inputbox").classList.add('attentionshake');
     clearInterval(spriteIntervalId);
+}
+
+function genselectmenu() {
+	document.getElementById("genselection").style.display = "block";
 }
 
 function swapToShiny(){
@@ -2038,13 +2043,6 @@ document.getElementById("darkoff").onclick = function (){
     }
 }
 
-
-for (let i = 0; i<genLastPokemon.length; i++){
-    document.getElementById("play"+ (i+1)).onclick = function () {
-        document.getElementById("gen"+ (i+1)).click();
-        off2();
-    }
-}
 
 
 
