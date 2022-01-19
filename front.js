@@ -102,8 +102,6 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
     //calling functions, popup and changing button CSS
     document.getElementById("gen" + i).onclick = function () {
 
-        if (currentGen !== i) {
-
             let swapGen = function () {
                 document.getElementById("genselection").onclick = off2;
                 currentGen = i;
@@ -134,8 +132,6 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
                 swapGen();
 				off2();
             }
-
-        }
     }
 }
 
