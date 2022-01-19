@@ -789,6 +789,68 @@
 	padding-top: 273px;
 	}
 	}
+	.nrm {
+	background-color: #9099A1;
+	}
+	.fir {
+	background-color: #FF9C54;
+	}
+	.wtr {
+	background-color: #4D90D5;
+	}
+	.grs {
+	background-color: #63BB5B;
+	}
+	.elc {
+	background-color: #F3D23B;
+	}
+	.ice {
+	background-color: #74CEC0;
+	}
+	.fgt {
+	background-color: #CE4069;
+	}
+	.psn {
+	background-color: #AB6AC8;
+	}
+	.grd {
+	background-color: #D97746;
+	}
+	.fly {
+	background-color: #8FA8DD;
+	}
+	.psy {
+	background-color: #F97176;
+	}
+	.bug {
+	background-color: #90C12C;
+	}
+	.rck {
+	background-color: #C7B78B;
+	}
+	.ght {
+	background-color: #5269AC;
+	}
+	.drg {
+	background-color: #0A6DC4;
+	}
+	.drk {
+	background-color: #5A5366;
+	}
+	.stl {
+	background-color: #5A8EA1;
+	}
+	.fry {
+	background-color: #EC8FE6;
+	}
+	.symbol {
+	width: 35px;
+	margin: -5px 0px -10px -10px;
+	filter: brightness(0) invert(1);
+	}
+	.hovn:hover {
+	filter: brightness(0.9);
+	}
 	.resp-sharing-button__link,
 .resp-sharing-button__icon {
   display: inline-block
