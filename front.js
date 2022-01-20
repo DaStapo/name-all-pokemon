@@ -125,8 +125,9 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
                 document.getElementById("genselection").onclick = off2;
                 currentGen = i;
                 promptGen.style.display = "none";
-                updateGenFilter();
                 resetQuiz();
+                updateGenFilter();
+                
             }
 
             promptGenYes.onclick = function () {
@@ -503,12 +504,15 @@ for (let i = 0; i < pokemonList.length; i++) {
     currentGenRevealList.push(pokemon)
     pokemonRevealListsByGen[0].push(pokemon)
     if (standardizeName(pokemon) in extraPokemon){
-        for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
-            let subPokemon = standardizeName(extraPokemon[standardizeName(pokemon)][j])
-            currentGenRevealList.push(subPokemon)
-            pokemonRevealListsByGen[0].push(subPokemon)
-            if (!pokemonAlreadyIncluded(subPokemon, currentGenList)){
-                currentGenList.push(subPokemon)
+        if (extraPokemon[standardizeName(pokemon)].length < 6){
+
+            for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
+                let subPokemon = standardizeName(extraPokemon[standardizeName(pokemon)][j])
+                currentGenRevealList.push(subPokemon)
+                pokemonRevealListsByGen[0].push(subPokemon)
+                if (!pokemonAlreadyIncluded(subPokemon, currentGenList)){
+                    currentGenList.push(subPokemon)
+                }
             }
         }
     }
@@ -1167,10 +1171,21 @@ function updateTypeFilter(type){
 
 function updateGenFilter() {
 
-    //to undo type filters
-    for (let pokemon in unguessedDict){
-        unguessedDictionary[pokemon].style.display = "inline"
+    updateCurrentPokemonList();
+
+    for (let key in unguessedDictionary){
+        unguessedDictionary[key].style.display = "none"
     }
+    for (let i = 0; i< currentRevealList.length; i++){
+        unguessedDictionary[currentRevealList[i]].style.display = "inline"
+    }
+
+
+
+    ////to undo type filters
+    //for (let pokemon in unguessedDict){
+    //    unguessedDictionary[pokemon].style.display = "inline"
+    //}
 
     megaBox.style.display = "none";
     gmaxBox.style.display = "none";
@@ -1229,7 +1244,7 @@ function updateGenFilter() {
             allSpirtes[i].classList.remove('sprite');
         }
     }
-    updateCurrentPokemonList();
+
     setTotal(totalPokemonCount);
     setCounter(getAlreadyGuessedAndRelevantPokemon().length);
     changeFooterPosition();
@@ -1504,8 +1519,7 @@ recentSprite.src = '/sprites/unknown.png'
 recentSprite.addEventListener("load", function () {
     changeFooterPosition();
 }, false)
-updateGenFilter();
-changeFooterPosition();
+
 
 
 
@@ -2302,3 +2316,5 @@ for (let i = 0; i < typeList.length; i++){
 
 
 loadSprites()
+updateGenFilter();
+changeFooterPosition();
