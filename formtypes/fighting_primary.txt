@@ -2,9 +2,8 @@
 'Medicham-Mega'
 'Lucario-Mega'
 'Zamazenta-Crowned'
-'Urshifu-RS'
-'Urshifu-RS-Gmax'
-'Urshifu-SS-Gmax'
+'urshifu-rapid-strike-gmax'
+'urshifu-gmax'
 "Farfetch'd-Galar"
 'Zapdos-Galar'
 'Arceus-Fighting'
