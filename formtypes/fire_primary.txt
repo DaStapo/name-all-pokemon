@@ -1,4 +1,5 @@
 'Charizard-Mega-Y'
+'Charizard-Mega-X'
 'Charizard-Gmax'
 'Blaziken-Mega'
 'Camerupt-Mega'

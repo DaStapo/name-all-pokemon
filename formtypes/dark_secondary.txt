@@ -1,6 +1,6 @@
 'Tyranitar-Mega'
 'Sharpedo-Mega'
-'Urshifu-SS-Gmax'
+'urshifu-gmax'
 'Grimer-Alola'
 'Muk-Alola'
 'Gyarados-Mega'
