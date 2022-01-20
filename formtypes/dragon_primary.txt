@@ -1,0 +1,8 @@
+'Altaria-Mega'
+'Salamence-Mega'
+'Latios-Mega'
+'Latias-Mega'
+'Rayquaza-Mega'
+'Garchomp-Mega'
+'Arceus-Dragon'
+'Silvally-Dragon'
