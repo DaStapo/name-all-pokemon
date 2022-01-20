@@ -1468,6 +1468,7 @@ function off() {
 
 function off2() {
     document.getElementById("loadbox").style.display = "none";
+	document.getElementById("startfull").style.display = "none";
 	document.getElementById("genselection").style.display = "none";
 	document.getElementById("typeselection").style.display = "none";
 	document.getElementById("inputbox").classList.add('attentionshake');
@@ -1480,6 +1481,10 @@ function genselectmenu() {
 
 function typeselectmenu() {
 	document.getElementById("typeselection").style.display = "block";
+}
+
+function gen0click() {
+	document.getElementById("gen0").click();
 }
 
 function swapToShiny(){

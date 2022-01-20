@@ -66,7 +66,7 @@
               <div id="region6" class="region">Kalos</div>
             </div>
             <div id="pokemon-box-mega" class="box rounded bottommargin">
-              <div id="regionmega" class="region">Mega Evolution / Primal Reversion</div>
+              <div id="regionmega" class="region">Mega Evolution</div>
             </div>
           </div>
           <div class="column third" id="pokecolumn3">
@@ -138,8 +138,9 @@
             </div>
             <div class="column">
               <div class="box roundedc slightpad">
-				<form>Select mode by:
-				  <div class="smolbutton" id="genselect" onclick="genselectmenu()">Gen.</div>
+				<form>Select Quiz:
+				  <div class="smolbutton" onclick="gen0click()">Full</div>
+				  <div class="smolbutton" id="genselect" onclick="genselectmenu()">Generation</div>
 				  <div class="smolbutton" id="typeselect" onclick="typeselectmenu()">Type</div>
 				</form>
               </div>
@@ -249,8 +250,10 @@
         </div>
 		</div>
         <div class="playtext" id="playtext">
-          <div class="button-s roundedb hovg" id="gen0" ><div class="padded2">Full quiz</div></div>
-          <div class="p2">Quiz by generation:</div>
+		  <div id="startfull">
+            <div class="button-s roundedb hovg" id="gen0" ><div class="padded2">Full quiz</div></div>
+            <div class="p2">Quiz by generation:</div>
+		  </div>
           <div class="row2">
             <div class="button-s roundedh hovg" id="gen1" ><div class="mshow">1</div><div class="mhide">Kanto</div><img id="gen1img" src=sprites/squirtle.png class="spritec cropped"></div>
             <div class="button-s roundedc hovg" id="gen2" ><div class="mshow">2</div><div class="mhide">Johto</div><img id="gen2img" src=sprites/chikorita.png class="spritec cropped"></div>
