@@ -381,6 +381,7 @@ for (let i = 0; i < pokemonList.length; i++) {
 }
 for (let i = 0; i < genLastPokemon.length; i++) {
     genLastPokemon[i] = standardizeName(genLastPokemon[i]);
+    genLastSprite[i] = standardizeName(genLastSprite[i]);
 }
 
 
@@ -693,7 +694,7 @@ function loadSprites() {
             addToBox(pokemon, box)
         }
         
-        if ((genLastPokemon.includes(pokemon) && pokemon !== "calyrex") || pokemon === "calyrexshadowrider") {
+        if (genLastSprite.includes(pokemon)) {
             boxIndex++;
         }
     }
