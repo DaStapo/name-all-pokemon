@@ -1,0 +1,12 @@
+'Glalie-Mega'
+'Sandshrew-Alola'
+'Sandslash-Alola'
+'Vulpix-Alola'
+'Ninetales-Alola'
+"Mr. Mime-Galar"
+'Castform-Snowy'
+'Arceus-Ice'
+'Darumaka-Galar'
+'Darmanitan-Galar'
+'Darmanitan-Galar-Zen'
+'Silvally-Ice'

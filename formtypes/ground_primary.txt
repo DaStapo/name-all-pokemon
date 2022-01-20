@@ -1,0 +1,8 @@
+'Diglett-Alola'
+'Dugtrio-Alola'
+'Groudon-Primal'
+'Stunfisk-Galar'
+'Sandaconda-Gmax'
+'Arceus-Ground'
+'Silvally-Ground'
+'Yamask-Galar'

@@ -1,0 +1,5 @@
+'Steelix-Mega'
+'Swampert-Mega'
+'Camerupt-Mega'
+'Garchomp-Mega'
+'Wormadam-Sandy'

@@ -1,0 +1,11 @@
+'Machamp-Gmax'
+'Medicham-Mega'
+'Lucario-Mega'
+'Zamazenta-Crowned'
+'Urshifu-RS'
+'Urshifu-RS-Gmax'
+'Urshifu-SS-Gmax'
+"Farfetch'd-Galar"
+'Zapdos-Galar'
+'Arceus-Fighting'
+'Silvally-Fighting'

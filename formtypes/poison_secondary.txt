@@ -1,0 +1,6 @@
+'Venusaur-Mega'
+'Venusaur-Gmax'
+'Beedrill-Mega'
+'Gengar-Mega'
+'Gengar-Gmax'
+'Toxtricity-Gmax'

@@ -1,0 +1,8 @@
+'Pidgeot-Mega'
+'Meowth-Gmax'
+'Kangaskhan-Mega'
+'Eevee-Gmax'
+'Snorlax-Gmax'
+'Lopunny-Mega'
+'Audino-Mega'
+'Meloetta-Pirouette'

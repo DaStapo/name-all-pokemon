@@ -1,0 +1,4 @@
+'Rattata-Alola'
+'Raticate-Alola'
+'Zigzagoon-Galar'
+'Linoone-Galar'
