@@ -1173,12 +1173,7 @@ function updateGenFilter() {
 
     updateCurrentPokemonList();
 
-    for (let key in unguessedDictionary){
-        unguessedDictionary[key].style.display = "none"
-    }
-    for (let i = 0; i< currentRevealList.length; i++){
-        unguessedDictionary[currentRevealList[i]].style.display = "inline"
-    }
+
 
 
 
@@ -1365,6 +1360,12 @@ function resetQuiz() {
         outlinedBoxes[i].classList.remove("outline")
     }
 
+    for (let key in unguessedDictionary){
+        unguessedDictionary[key].style.display = "none"
+    }
+    for (let i = 0; i< currentRevealList.length; i++){
+        unguessedDictionary[currentRevealList[i]].style.display = "inline"
+    }
 
 
 }
