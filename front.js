@@ -411,7 +411,7 @@ let currentGenList = [];
 let currentGenRevealList = [];
 
 
-let suffixes = ["mega", "megax", "megay", "primal", "galar", "alola", "gmax", "rapidstrikegmax", "eternamax"]
+let suffixes = ["alola", "galar", "mega", "megax", "megay", "primal", "gmax", "eternamax", "rapidstrikegmax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen", "pirouette", "unbound", "pompom", "pau", "sensu", "dusk", "dawn", "ultra", "crowned", "icerider", "shadowrider"]
 // we kinda rely on normal versions being added first
 let pokemonAlreadyIncluded = function (name, list){
 
