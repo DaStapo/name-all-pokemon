@@ -25,6 +25,7 @@ let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
 soundEffect2.volume = 0.3;
 let darkMode = false;
 let useEncoded = true;
+let suffixes = ["alola", "galar", "mega", "megax", "megay", "primal", "gmax", "eternamax", "rapidstrikegmax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen", "pirouette", "unbound", "pompom", "pau", "sensu", "dusk", "dawn", "ultra", "crowned", "icerider", "shadowrider"]
 
 let extraPokemon = {
 	// Alolan forms added to Gen7 in official Aloladex-order
@@ -125,12 +126,6 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
                 promptGen.style.display = "none";
                 updateGenFilter();
                 resetQuiz();
-                for (let j = 0; j <= genLastPokemon.length; j++) {
-                    if (j !== i) {
-                        visualizeButtonUnclick(document.getElementById("gen" + j));
-                    }
-                }
-                visualizeButtonClick(document.getElementById("gen" + i))
             }
 
             promptGenYes.onclick = function () {
@@ -139,9 +134,7 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
 
             }
             promptGenNo.onclick = function () {
-                promptGen.style.display = "none";
-                visualizeButtonUnclick(document.getElementById("gen" + i))
-				
+                promptGen.style.display = "none";				
 			}
             if (alreadyGuessedPokemon.length !== 0) {
                 promptGen.style.display = 'inline';
@@ -203,37 +196,28 @@ for (key in formatted_lang_map){
 		
 		for (let i = 0; i< formatted_lang_map[currentKey].length; i++){
 			unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i];
-            if (standardizeName(pokemonList[i])+'galar' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'galar'].nodeValue = formatted_lang_map[currentKey][i]; //+ '-Galar';
-            }
-            if (standardizeName(pokemonList[i])+'alola' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'alola'].nodeValue = formatted_lang_map[currentKey][i]; // + '-Aloa';
-            }
-            if (standardizeName(pokemonList[i])+'mega' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'mega'].nodeValue = formatted_lang_map[currentKey][i]; // + '-Mega';
-            }
-            if (standardizeName(pokemonList[i])+'megay' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'megay'].nodeValue = formatted_lang_map[currentKey][i]  + ' Y';
-            }
-            if (standardizeName(pokemonList[i])+'megax' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'megax'].nodeValue = formatted_lang_map[currentKey][i]  + ' X';
-            }
-            if (standardizeName(pokemonList[i])+'primal' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'primal'].nodeValue = formatted_lang_map[currentKey][i];
-            }
-            if (standardizeName(pokemonList[i])+'gmax' in  unguessedDictTexts){
-                if (pokemonList[i] == 'urshifu'){
-                    unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i] + ' SS';
-                    unguessedDictTexts[standardizeName(pokemonList[i])+'rapidstrikegmax'].nodeValue = formatted_lang_map[currentKey][i] + ' RS';
-                }
-                else{
-                    unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i];
+
+            for (let j  = 0; j<suffixes.length; j++){
+                if (standardizeName(pokemonList[i])+suffixes[j] in  unguessedDictTexts){
+                    if(suffixes[j] === "megay"){
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'megay'].nodeValue = formatted_lang_map[currentKey][i]  + ' Y';
+                    
+                    }else if(suffixes[j] === "megax"){
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'megay'].nodeValue = formatted_lang_map[currentKey][i]  + ' X';
+                    }else if(suffixes[j] === 'gmax'){
+                        if (pokemonList[i] == 'urshifu'){
+                            unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i] + ' SS';
+                            unguessedDictTexts[standardizeName(pokemonList[i])+'rapidstrikegmax'].nodeValue = formatted_lang_map[currentKey][i] + ' RS';
+                        }
+                        else{
+                            unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i];
+                        }
+                    }
+                    else{
+                        unguessedDictTexts[standardizeName(pokemonList[i])+suffixes[j]].nodeValue = formatted_lang_map[currentKey][i];
+                    }
                 }
             }
-            if (standardizeName(pokemonList[i])+'eternamax' in  unguessedDictTexts){
-                unguessedDictTexts[standardizeName(pokemonList[i])+'eternamax'].nodeValue = formatted_lang_map[currentKey][i];
-            }
-            
 		}
 		
     }
@@ -267,7 +251,6 @@ disableLanguage = function(languageButton){
         if (index > -1) {
             enabledLanguages.splice(index, 1);
         }
-        console.log('here')
         visualizeButtonUnclick(languageButton);
         languageButton.onclick = function () {
             enableLanguage(languageButton)
@@ -411,7 +394,6 @@ let currentGenList = [];
 let currentGenRevealList = [];
 
 
-let suffixes = ["alola", "galar", "mega", "megax", "megay", "primal", "gmax", "eternamax", "rapidstrikegmax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen", "pirouette", "unbound", "pompom", "pau", "sensu", "dusk", "dawn", "ultra", "crowned", "icerider", "shadowrider"]
 // we kinda rely on normal versions being added first
 let pokemonAlreadyIncluded = function (name, list){
 
@@ -422,6 +404,7 @@ let pokemonAlreadyIncluded = function (name, list){
             }
         }
     }
+
     if (name.endsWith("megax")){
         let ypkmn = name.substring(0, name.length- "megax".length ) + 'megay'
         if (list.includes(ypkmn)){
@@ -457,6 +440,14 @@ let combinedList = pokemonList.concat(megaList).concat(gmaxList)
 for (let i = 0; i < combinedList.length; i++) {
     let pokemon = standardizeName(combinedList[i]);
 
+    if (pokemon === 'urshifu'){
+        pokemonListByType["dark"].push(pokemon)
+        pokemonListByType["fighting"].push(pokemon)
+        pokemonListByType["water"].push(pokemon)
+        continue
+    }
+    
+ //for future update testing
     if (!(pokemon in typeDict)){
         console.log('missing pokemon', pokemon)
         continue
@@ -466,6 +457,7 @@ for (let i = 0; i < combinedList.length; i++) {
         console.log('missing primary', pokemon)
         continue
     }
+
     pokemonRevealListByType[types["primary"]].push(pokemon)
     if ("secondary" in types){
         pokemonRevealListByType[types["secondary"]].push(pokemon)
@@ -478,20 +470,18 @@ for (let i = 0; i < combinedList.length; i++) {
             pokemonListByType[types["secondary"]].push(pokemon)
         }
     }
- 
+
+
     if (standardizeName(pokemon) in extraPokemon){
         for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
             let subPokemon = standardizeName(extraPokemon[standardizeName(pokemon)][j])
-
+            types = typeDict[subPokemon]
             pokemonRevealListByType[types["primary"]].push(subPokemon)
+
             if ("secondary" in types){
                 pokemonRevealListByType[types["secondary"]].push(subPokemon)
             }
 
-            pokemonRevealListByType[types["primary"]].push(subPokemon)
-            if ("secondary" in types){
-                pokemonRevealListByType[types["secondary"]].push(subPokemon)
-            }
             if (!pokemonAlreadyIncluded(subPokemon, pokemonListByType[types["primary"]])){
                 pokemonListByType[types["primary"]].push(subPokemon)
             }
@@ -598,7 +588,6 @@ function loadSprites() {
         if (pokemonName in loadedPokemonDict){
             return;
         }
-        console.log('loaded', pokemonName)
         loadedPokemonDict[pokemonName] = 1
         let sprite = document.createElement("img");
         sprite.classList.add('sprite');
@@ -683,7 +672,7 @@ function loadSprites() {
         pokeballArray.push(pokeballImg);
         silhouetteArray.push(silhouetteDictionary[pokemon]);
         allSpirtes.push(pokeballImg);
-        console.log(pokemon, spriteDictionary[pokemon])
+
         unguessed.appendChild(silhouetteDictionary[pokemon])
         unguessed.appendChild(pokeballImg)
         box.appendChild(spriteDictionary[pokemon]);
@@ -1128,7 +1117,7 @@ let regionToAll = function (regionElement){
 }
 
 
-function updateTypefilter(type){
+function updateTypeFilter(type){
 
     currentPokemonList = pokemonListByType[type]
     currentRevealList = pokemonRevealListByType[type]
@@ -1137,10 +1126,6 @@ function updateTypefilter(type){
     megaBox.style.display = "none";
     gmaxBox.style.display = "none";
     gen7half.style.display = "none";
-
-    //all gens
-
-    gen7half.style.display = "block";
 
     totalPokemonCount = pokemonListByType[type].length;
     for (let i = 0; i < boxes.length; i++) {
@@ -1162,13 +1147,15 @@ function updateTypefilter(type){
     }
 
     for (let pokemon in unguessedDict){
-        unguessedDictionary[pokemon].style.display = "none"
+        unguessedDictionary[pokemon].style.display = "none";
+        spriteDictionary[pokemon].style.display = "none";
+        silhouetteDictionary[pokemon].style.display = "none";
     }
     for (let i = 0; i<currentRevealList.length; i++){
         unguessedDictionary[currentRevealList[i]].parentElement.style.display = "block"
         unguessedDictionary[currentRevealList[i]].style.display = "inline"
     }
-    console.log(currentRevealList)
+    
     setTotal(totalPokemonCount);
     setCounter(getAlreadyGuessedAndRelevantPokemon().length);
     changeFooterPosition();
@@ -1466,7 +1453,7 @@ function off2() {
 	document.getElementById("genselection").style.display = "none";
 	document.getElementById("typeselection").style.display = "none";
 	document.getElementById("inputbox").classList.add('attentionshake');
-    clearInterval(spriteIntervalId);
+    //clearInterval(spriteIntervalId);
 }
 
 function genselectmenu() {
@@ -2282,9 +2269,30 @@ let startMissingno = function (){
 
 for (let i = 0; i < typeList.length; i++){
     let currentIndex = i;
-    console.log('b-' + typeList[i])
     document.getElementById('b-' + typeList[i]).onclick = function (){
-        updateTypefilter(typeList[currentIndex])
+        let swapGen = function () {
+            document.getElementById("typeselection").onclick = off2;
+            promptGen.style.display = "none";
+            resetQuiz();
+            updateTypeFilter(typeList[currentIndex])
+            
+        }
+
+        promptGenYes.onclick = function () {
+            swapGen();
+            off2();
+
+        }
+        promptGenNo.onclick = function () {
+            promptGen.style.display = "none";				
+        }
+        if (alreadyGuessedPokemon.length !== 0) {
+            promptGen.style.display = 'inline';
+        } else {
+            swapGen();
+            off2();
+        }
+        
     }
 }
 
