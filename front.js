@@ -1136,11 +1136,11 @@ function updateTypeFilter(type){
     totalPokemonCount = pokemonListByType[type].length;
     for (let i = 0; i < boxes.length; i++) {
         boxes[i].style.display = "none";
-        regionToAll(document.getElementById("region" + (i+1)));
+        regionToSingle(document.getElementById("region" + (i+1)));
     }
-    regionToAll(document.getElementById("regionmega"));
-    regionToAll(document.getElementById("regiongmax"));
-    regionToAll(document.getElementById("region7-5"));
+    regionToSingle(document.getElementById("regionmega"));
+    regionToSingle(document.getElementById("regiongmax"));
+    regionToSingle(document.getElementById("region7-5"));
     document.getElementById("pokemon-box-7-5").classList.remove('unknownbox');
 
     for (let i = 0; i < pokecolumns.length; i++) {
