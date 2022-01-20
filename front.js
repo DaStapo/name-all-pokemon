@@ -102,8 +102,6 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
     //calling functions, popup and changing button CSS
     document.getElementById("gen" + i).onclick = function () {
 
-        if (currentGen !== i) {
-
             let swapGen = function () {
                 document.getElementById("genselection").onclick = off2;
                 currentGen = i;
@@ -134,8 +132,6 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
                 swapGen();
 				off2();
             }
-
-        }
     }
 }
 
@@ -1324,12 +1320,17 @@ function off() {
 function off2() {
     document.getElementById("loadbox").style.display = "none";
 	document.getElementById("genselection").style.display = "none";
+	document.getElementById("typeselection").style.display = "none";
 	document.getElementById("inputbox").classList.add('attentionshake');
     clearInterval(spriteIntervalId);
 }
 
 function genselectmenu() {
 	document.getElementById("genselection").style.display = "block";
+}
+
+function typeselectmenu() {
+	document.getElementById("typeselection").style.display = "block";
 }
 
 function swapToShiny(){

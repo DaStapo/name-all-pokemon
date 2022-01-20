@@ -88,6 +88,9 @@
 	.roundedh {
 	border-radius: 4px 4px 4px 20px;
 	}
+	.roundedi {
+	border-radius: 35px 5px 15px 35px;
+	}
 	.lime {
 	background: #8CC63F !important;
 	color: #fff !important;
@@ -371,8 +374,8 @@
 	.hovg {
 	background-color: #8CC63F;
 	}
-	.hovg:hover {
-	background-color: #7eb238;
+	.hovg:hover, .hovn:hover {
+	outline: 2px solid #fff;
 	}
 	.hovr {
 	background-color: #8CC63F;
@@ -689,7 +692,9 @@
 	text-align: center;
 	color: #fff;
 	transform: translate(-50%,-70%);
-	-ms-transform: translate(-50%,-70%);
+	}
+	.fullwidth {
+	width: 100%;
 	}
 	.accordion {
 		
@@ -717,6 +722,16 @@
 	}
 	.mhide {
 	display: inline-block;
+	}
+	.tshow {
+	display: none;
+	}
+	.thide {
+	display: inline-block;
+	min-width: 65px;
+	padding: 5px 0px 5px 15px;
+	margin: 0px -5px 0px 0px;
+	vertical-align: top;
 	}
 	@media only screen and (max-width: 1280px) {
 	.logo {
@@ -746,6 +761,18 @@
 	.button-s {
 	min-width: 1px;
 	}
+	.tshow {
+	display:none;
+	}
+	}
+	@media only screen and (min-width: 769px) and (max-width: 918px) {
+	.tshow {
+	display: inline-block;
+	min-width: 1px;
+	padding: 5px 0px 5px 15px;
+	margin: 0px -5px 0px 0px;
+	vertical-align: top;
+	}
 	}
 	@media only screen and (max-width: 918px) {
 	body {
@@ -753,6 +780,9 @@
 	}
 	.threefifths, .twofifths {
 	width: 100%;
+	}
+	.thide {
+	display: none;
 	}
 	}
 	@media only screen and (max-width: 536px) {
@@ -774,6 +804,66 @@
 	body {
 	padding-top: 273px;
 	}
+	}
+	.nrm {
+	background-color: #9099A1;
+	}
+	.fir {
+	background-color: #FF9C54;
+	}
+	.wtr {
+	background-color: #4D90D5;
+	}
+	.grs {
+	background-color: #63BB5B;
+	}
+	.elc {
+	background-color: #F3D23B;
+	}
+	.ice {
+	background-color: #74CEC0;
+	}
+	.fgt {
+	background-color: #CE4069;
+	}
+	.psn {
+	background-color: #AB6AC8;
+	}
+	.grd {
+	background-color: #D97746;
+	}
+	.fly {
+	background-color: #8FA8DD;
+	}
+	.psy {
+	background-color: #F97176;
+	}
+	.bug {
+	background-color: #90C12C;
+	}
+	.rck {
+	background-color: #C7B78B;
+	}
+	.ght {
+	background-color: #5269AC;
+	}
+	.drg {
+	background-color: #0A6DC4;
+	}
+	.drk {
+	background-color: #5A5366;
+	}
+	.stl {
+	background-color: #5A8EA1;
+	}
+	.fry {
+	background-color: #EC8FE6;
+	}
+	.symbol {
+	width: 42px;
+	margin: 0px -5px -10px -5px;
+	/*margin: -5px 0px -10px -10px;*/
+	filter: brightness(0) invert(1);
 	}
 	.resp-sharing-button__link,
 .resp-sharing-button__icon {
