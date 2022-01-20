@@ -46,7 +46,7 @@ convert_dict["urshifu"] = "urshifu-single-strike"
 
 from dataclasses import replace
 import pickle
-
+import json
 
 with open("pokemonDB.p", "rb") as r:
     pokemon_db = pickle.load(r)
@@ -59,5 +59,56 @@ for pokemon in pokemonList:
         pokemon_name = convert_dict[pokemon_name]
     if pokemon_name not in pokemon_db:
         print(pokemon_name)
+
+
+type_dict = {}
+
+for pokemon in pokemonList:
+    original_name = pokemon.lower()
+    pokemon_name = pokemon.lower()
+    if pokemon_name in convert_dict:
+        pokemon_name = convert_dict[pokemon_name]
+    
+    pokemon_data = pokemon_db[pokemon_name].json()
+    type_dict[original_name] = {}
+    for type in pokemon_data["types"]:
+        if type['slot'] == 1:
+            type_dict[original_name]["primary"] = type["type"]["name"]
+        else:
+            type_dict[original_name]["secondary"] = type["type"]["name"]
+    
+    print(original_name, type_dict[original_name] )
+typeList = ["normal", "fire", "water", "grass", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy"]
+
+extra_dict = {}
+
+for _type in typeList:
+    for slot in ["primary", "secondary"]:
+        with open("formtypes/" + _type + '_' + slot + '.txt', 'r') as r:
+            lines = r.readlines()
+
+            for line in lines:
+                if len(line) > 2:
+                    name = line.replace("\n", "").replace("'", "").lower()
+                    if name not in extra_dict:
+                        extra_dict[name] = {}
+                    extra_dict[name][slot] = _type
+
+print(extra_dict)
+
+for key in extra_dict:
+    type_dict[key] = extra_dict[key]
+                    
+
+
+
+with open("types.json", "w") as w :
+    json.dump(type_dict, w)
+
+
+
+
+    
+
 
 
