@@ -593,9 +593,13 @@ let totalSpritesCount = 0;
 let fullSpriteList = []
 function loadSprites() {
 
-
+    let loadedPokemonDict = {}
     let loadPkmn = function(pokemonName){
-        
+        if (pokemonName in loadedPokemonDict){
+            return;
+        }
+        console.log('loaded', pokemonName)
+        loadedPokemonDict[pokemonName] = 1
         let sprite = document.createElement("img");
         sprite.classList.add('sprite');
         sprite.classList.add('zoom');
@@ -659,6 +663,7 @@ function loadSprites() {
         if (pokemon in extraPokemon){
             for (let j = 0; j<extraPokemon[pokemon].length; j++){
                 fullSpriteList.push(standardizeName(extraPokemon[pokemon][j]))
+                loadPkmn(standardizeName(extraPokemon[pokemon][j]));
             }
         }
         
@@ -678,6 +683,7 @@ function loadSprites() {
         pokeballArray.push(pokeballImg);
         silhouetteArray.push(silhouetteDictionary[pokemon]);
         allSpirtes.push(pokeballImg);
+        console.log(pokemon, spriteDictionary[pokemon])
         unguessed.appendChild(silhouetteDictionary[pokemon])
         unguessed.appendChild(pokeballImg)
         box.appendChild(spriteDictionary[pokemon]);
@@ -697,7 +703,7 @@ function loadSprites() {
             addToBox(pokemon, box)
         }
         
-        if (genLastPokemon.includes(pokemon)) {
+        if ((genLastPokemon.includes(pokemon) && pokemon !== "calyrex") || pokemon === "calyrexshadowrider") {
             boxIndex++;
         }
     }
