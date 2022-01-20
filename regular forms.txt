@@ -1,59 +1,15 @@
-'Castform-Rainy'
-'Rotom-Wash'
-'Arceus-Water'
-'Silvally-Water'
-'Rotom-Mow'
-'Arceus-Grass'
-'Silvally-Grass'
-'Castform-Sunny'
-'Rotom-Heat'
-'Arceus-Fire'
-'Silvally-Fire'
-'Arceus-Electric'
-'Oricorio-Pom-Pom'
-'Silvally-Electric'
-'Castform-Snowy'
-'Rotom-Frost'
-'Arceus-Ice'
-'Silvally-Ice'
-'Calyrex-Ice-Rider'
-'Wormadam-Sandy'
-'Arceus-Ground'
-'Silvally-Ground'
-'Rotom-Fan'
-'Shaymin-Sky'
-'Arceus-Flying'
-'Silvally-Flying'
-'Arceus-Fighting'
-'Meloetta-Pirouette'
-'Silvally-Fighting'
-'Arceus-Poison'
-'Silvally-Poison'
-'Arceus-Psychic'
-'Darmanitan-Zen'
-'Darmanitan-Galar-Zen'
-'Oricorio-Pau'
-'Silvally-Psychic'
-'Arceus-Dark'
-'Hoopa-Unbound'
-'Silvally-Dark'
-'Arceus-Bug'
-'Silvally-Bug'
-'Arceus-Rock'
-'Silvally-Rock'
-'Arceus-Ghost'
-'Oricorio-Sensu'
-'Silvally-Ghost'
-'Necrozma-Dawn'
-'Calyrex-Shadow-Rider'
-'Wormadam-Trash'
-'Arceus-Steel'
-'Silvally-Steel'
-'Necrozma-Dusk'
-'Zacian-Crowned'
-'Zamazenta-Crowned'
-'Arceus-Dragon'
-'Silvally-Dragon'
-'Necrozma-Ultra'
-'Arceus-Fairy'
-'Silvally-Fairy'
+'Castform':['Castform-Sunny', 'Castform-Rainy', 'Castform-Snowy']
+'Wormadam':['Wormadam-Sandy', 'Wormadam-Trash']
+'Rotom':['Rotom-Heat', 'Rotom-Wash', 'Rotom-Mow', 'Rotom-Frost', 'Rotom-Fan']
+'Shaymin':['Shaymin-Sky']
+'Arceus':['Arceus-Water', 'Arceus-Grass', 'Arceus-Fire', 'Arceus-Electric', 'Arceus-Ice', 'Arceus-Ground', 'Arceus-Flying', 'Arceus-Fighting', 'Arceus-Poison', 'Arceus-Psychic', 'Arceus-Dark', 'Arceus-Bug', 'Arceus-Rock', 'Arceus-Ghost', 'Arceus-Steel', 'Arceus-Dragon', 'Arceus-Fairy']
+'Darmanitan':['Darmanitan-Zen']
+//'Darmanitan-Galar':['Darmanitan-Galar-Zen']
+'Meloetta':['Meloetta-Pirouette']
+'Hoopa':['Hoopa-Unbound']
+'Oricorio':['Oricorio-Pom-Pom', 'Oricorio-Pau', 'Oricorio-Sensu']
+'Silvally':['Silvally-Water', 'Silvally-Grass', 'Silvally-Fire', 'Silvally-Electric', 'Silvally-Ice', 'Silvally-Ground', 'Silvally-Flying', 'Silvally-Fighting', 'Silvally-Poison', 'Silvally-Psychic', 'Silvally-Dark', 'Silvally-Bug', 'Silvally-Rock', 'Silvally-Ghost', 'Silvally-Steel', 'Silvally-Dragon', 'Silvally-Fairy']
+'Necrozma':['Necrozma-Dusk', 'Necrozma-Dawn', 'Necrozma-Ultra']
+'Zacian':['Zacian-Crowned']
+'Zamazenta':['Zamazenta-Crowned']
+'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider']
