@@ -44,9 +44,24 @@ let extraPokemon = {
 	'Cursola':["Farfetch'd-Galar"],
 	"Sirfetch'd":["Mr. Mime-Galar"],
 	"Mr. Rime":['Yamask-Galar'],
-	'Frosmoth':['Darumaka-Galar', 'Darmanitan-Galar'],
+	'Frosmoth':['Darumaka-Galar', 'Darmanitan-Galar', 'Darmanitan-Galar-Zen'],
 	'Eternatus':['Slowpoke-Galar', 'Slowbro-Galar', 'Slowking-Galar'],
 	'Regidrago':['Articuno-Galar', 'Zapdos-Galar', 'Moltres-Galar'],
+	//regular forms added after their base forms
+	'Castform':['Castform-Sunny', 'Castform-Rainy', 'Castform-Snowy'],
+	'Wormadam':['Wormadam-Sandy', 'Wormadam-Trash'],
+	'Rotom':['Rotom-Heat', 'Rotom-Wash', 'Rotom-Mow', 'Rotom-Frost', 'Rotom-Fan'],
+	'Shaymin':['Shaymin-Sky'],
+	'Arceus':['Arceus-Water', 'Arceus-Grass', 'Arceus-Fire', 'Arceus-Electric', 'Arceus-Ice', 'Arceus-Ground', 'Arceus-Flying', 'Arceus-Fighting', 'Arceus-Poison', 'Arceus-Psychic', 'Arceus-Dark', 'Arceus-Bug', 'Arceus-Rock', 'Arceus-Ghost', 'Arceus-Steel', 'Arceus-Dragon', 'Arceus-Fairy'],
+	'Darmanitan':['Darmanitan-Zen'],
+	'Meloetta':['Meloetta-Pirouette'],
+	'Hoopa':['Hoopa-Unbound'],
+	'Oricorio':['Oricorio-Pom-Pom', 'Oricorio-Pau', 'Oricorio-Sensu'],
+	'Silvally':['Silvally-Water', 'Silvally-Grass', 'Silvally-Fire', 'Silvally-Electric', 'Silvally-Ice', 'Silvally-Ground', 'Silvally-Flying', 'Silvally-Fighting', 'Silvally-Poison', 'Silvally-Psychic', 'Silvally-Dark', 'Silvally-Bug', 'Silvally-Rock', 'Silvally-Ghost', 'Silvally-Steel', 'Silvally-Dragon', 'Silvally-Fairy'],
+	'Necrozma':['Necrozma-Dusk', 'Necrozma-Dawn', 'Necrozma-Ultra'],
+	'Zacian':['Zacian-Crowned'],
+	'Zamazenta':['Zamazenta-Crowned'],
+	'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider'],
 }
 
 //standardize keys
