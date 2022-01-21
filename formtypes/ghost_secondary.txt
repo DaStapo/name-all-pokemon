@@ -1,5 +1,5 @@
 'Sableye-Mega'
 'Yamask-Galar'
 'Marowak-Alola'
-'Necrozma-Dawn'
+'Necrozma-Dawn-Wings'
 'Calyrex-Shadow-Rider'

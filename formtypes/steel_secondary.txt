@@ -7,6 +7,6 @@
 'Dugtrio-Alola'
 'Wormadam-Trash'
 'Stunfisk-Galar'
-'Necrozma-Dusk'
+'Necrozma-Dusk-Mane'
 'Zacian-Crowned'
 'Zamazenta-Crowned'
