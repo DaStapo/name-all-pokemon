@@ -13,4 +13,3 @@
 'Silvally-Electric'
 'Thundurus-Therian'
 'Toxtricity-Low-Key'
-'Toxtricity-Low-Key-Gmax'

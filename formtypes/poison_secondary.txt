@@ -5,4 +5,3 @@
 'Gengar-Gmax'
 'Toxtricity-Gmax'
 'Toxtricity-Low-Key'
-'Toxtricity-Low-Key-Gmax'
