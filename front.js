@@ -501,7 +501,7 @@ let unguessedDictionary = {};
 
 let silhouetteArray = [];
 let pokeballArray = [];
-let allSpirtes = [];
+let allSprites = [];
 
 
 
@@ -796,7 +796,7 @@ function loadSprites() {
         }, false);
         totalSpritesCount++;
         spriteDictionary[pokemonName] = sprite;
-        allSpirtes.push(sprite);
+        allSprites.push(sprite);
 
 
         let silhouette = document.createElement("img");
@@ -812,7 +812,7 @@ function loadSprites() {
         totalSpritesCount++;
 
         silhouetteDictionary[pokemonName] = silhouette;
-        allSpirtes.push(silhouette);
+        allSprites.push(silhouette);
     }
 
 
@@ -867,7 +867,7 @@ function loadSprites() {
         unguessedDictionary[pokemon] = unguessed;
         pokeballArray.push(pokeballImg);
         silhouetteArray.push(silhouetteDictionary[pokemon]);
-        allSpirtes.push(pokeballImg);
+        allSprites.push(pokeballImg);
 
         unguessed.appendChild(silhouetteDictionary[pokemon])
         unguessed.appendChild(pokeballImg)
@@ -1365,9 +1365,10 @@ function updateTypeFilter(type){
         pokecolumns[i].classList.add('third');
         pokecolumns[i].classList.remove('twothirds');
     }
-    for (let i = 0; i < allSpirtes.length; i++) {
-        allSpirtes[i].classList.add('sprite');
-        allSpirtes[i].classList.remove('spritew');
+    for (let i = 0; i < allSprites.length; i++) {
+        allSprites[i].classList.add('spritet');
+        allSprites[i].classList.remove('spritew');
+		allSprites[i].classList.remove('sprite');
     }
 
     for (let pokemon in unguessedDict){
@@ -1428,9 +1429,10 @@ function updateGenFilter() {
             pokecolumns[i].classList.add('third');
             pokecolumns[i].classList.remove('twothirds');
         }
-        for (let i = 0; i < allSpirtes.length; i++) {
-            allSpirtes[i].classList.add('sprite');
-            allSpirtes[i].classList.remove('spritew');
+        for (let i = 0; i < allSprites.length; i++) {
+            allSprites[i].classList.add('sprite');
+            allSprites[i].classList.remove('spritew');
+			allSprites[i].classList.remove('spritet');
         }
     } else {
 
@@ -1468,9 +1470,10 @@ function updateGenFilter() {
                 pokecolumns[i].classList.add('twothirds');
             }
         }
-        for (let i = 0; i < allSpirtes.length; i++) {
-            allSpirtes[i].classList.add('spritew');
-            allSpirtes[i].classList.remove('sprite');
+        for (let i = 0; i < allSprites.length; i++) {
+            allSprites[i].classList.add('spritew');
+            allSprites[i].classList.remove('sprite');
+			allSprites[i].classList.remove('spritet');
         }
     }
 
@@ -1611,7 +1614,7 @@ let resetBtn = document.getElementById("resetButton");
 resetBtn.onclick = resetQuiz;
 
 let promptSilh = document.getElementById("promptsilhouette");
-let promptGen = document.getElementById("promptgen");
+let promptGen = document.getElementById("promptswitch");
 
 let promptSilhYes = document.getElementById("sil-yes");
 let promptSilhNo = document.getElementById("sil-no");
@@ -2491,9 +2494,9 @@ let startMissingno = function (){
 
 
     let visibleSprites = []
-    for (let i = 0; i< allSpirtes.length; i++){
-        if (allSpirtes[i].style.display != "none" && allSpirtes[i].parentElement.style.display != "none" && allSpirtes[i].parentElement.parentElement.style.display != "none"){
-            visibleSprites.push(allSpirtes[i])
+    for (let i = 0; i< allSprites.length; i++){
+        if (allSprites[i].style.display != "none" && allSprites[i].parentElement.style.display != "none" && allSprites[i].parentElement.parentElement.style.display != "none"){
+            visibleSprites.push(allSprites[i])
         }
     }
     
