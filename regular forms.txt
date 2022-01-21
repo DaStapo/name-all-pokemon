@@ -9,7 +9,7 @@
 'Hoopa':['Hoopa-Unbound']
 'Oricorio':['Oricorio-Pom-Pom', 'Oricorio-Pau', 'Oricorio-Sensu']
 'Silvally':['Silvally-Water', 'Silvally-Grass', 'Silvally-Fire', 'Silvally-Electric', 'Silvally-Ice', 'Silvally-Ground', 'Silvally-Flying', 'Silvally-Fighting', 'Silvally-Poison', 'Silvally-Psychic', 'Silvally-Dark', 'Silvally-Bug', 'Silvally-Rock', 'Silvally-Ghost', 'Silvally-Steel', 'Silvally-Dragon', 'Silvally-Fairy']
-'Necrozma':['Necrozma-Dusk', 'Necrozma-Dawn', 'Necrozma-Ultra']
+'Necrozma':['Necrozma-Dusk-Mane', 'Necrozma-Dawn-Wings', 'Necrozma-Ultra']
 'Zacian':['Zacian-Crowned']
 'Zamazenta':['Zamazenta-Crowned']
 'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider']
@@ -30,4 +30,3 @@
 	'Yveltal':['Zygarde-10'],
 	'Zygarde':['Zygarde-Complete'],
 	'Toxtricity':['Toxtricity-Low-Key']
-	'Toxtricity-Gmax':['Toxtricity-Low-Key-Gmax'],

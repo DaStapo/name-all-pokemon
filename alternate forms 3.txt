@@ -27,7 +27,6 @@
 'Lycanroc-Midnight'
 'Lycanroc-Dusk'
 'Toxtricity-Low-Key'
-'Toxtricity-Low-Key-Gmax'
 'Indeedee-Female'
 
 -temporary-ability-visual
