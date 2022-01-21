@@ -236,10 +236,10 @@ for (key in formatted_lang_map){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " H"
             }
 			else if(pokemonList[i] === "indeedee"){
-                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " M"
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + "♂"
             }
 			else if(pokemonList[i] === "meowstic"){
-                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " M"
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + "♂"
             }
 			else if(pokemonList[i] === "basculin"){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " R"
@@ -353,67 +353,16 @@ for (key in formatted_lang_map){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'crowned'].nodeValue = formatted_lang_map[currentKey][i]  + ' C';
                     }
 					else if(suffixes[j] === "icerider"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'icerider'].nodeValue = formatted_lang_map[currentKey][i]  + ' IR';
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'icerider'].nodeValue = 'I ' + formatted_lang_map[currentKey][i];
                     }
 					else if(suffixes[j] === "shadowrider"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'shadowrider'].nodeValue = formatted_lang_map[currentKey][i]  + ' SR';
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'shadowrider'].nodeValue = 'S ' + formatted_lang_map[currentKey][i];
                     }
 					else if(suffixes[j] === "eternamax"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'eternamax'].nodeValue = formatted_lang_map[currentKey][i]  + ' E';
                     }
-					else if(suffixes[j] === "grass"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'grass'].nodeValue = formatted_lang_map[currentKey][i]  + ' Grs';
-                    }
-					else if(suffixes[j] === "water"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'water'].nodeValue = formatted_lang_map[currentKey][i]  + ' Wtr';
-                    }
-					else if(suffixes[j] === "fire"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'fire'].nodeValue = formatted_lang_map[currentKey][i]  + ' Fir';
-                    }
-					else if(suffixes[j] === "electric"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'electric'].nodeValue = formatted_lang_map[currentKey][i]  + ' Elc';
-                    }
-					else if(suffixes[j] === "ice"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'ice'].nodeValue = formatted_lang_map[currentKey][i]  + ' Ice';
-                    }
-					else if(suffixes[j] === "ground"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'ground'].nodeValue = formatted_lang_map[currentKey][i]  + ' Grd';
-                    }
-					else if(suffixes[j] === "flying"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'flying'].nodeValue = formatted_lang_map[currentKey][i]  + ' Fly';
-                    }
-					else if(suffixes[j] === "poison"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'poison'].nodeValue = formatted_lang_map[currentKey][i]  + ' Psn';
-                    }
-					else if(suffixes[j] === "fighting"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'fighting'].nodeValue = formatted_lang_map[currentKey][i]  + ' Fgt';
-                    }
-					else if(suffixes[j] === "psychic"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'psychic'].nodeValue = formatted_lang_map[currentKey][i]  + ' Psy';
-                    }
-					else if(suffixes[j] === "dark"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'dark'].nodeValue = formatted_lang_map[currentKey][i]  + ' Drk';
-                    }
-					else if(suffixes[j] === "bug"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'bug'].nodeValue = formatted_lang_map[currentKey][i]  + ' Bug';
-                    }
-					else if(suffixes[j] === "rock"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'rock'].nodeValue = formatted_lang_map[currentKey][i]  + ' Rck';
-                    }
-					else if(suffixes[j] === "ghost"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'ghost'].nodeValue = formatted_lang_map[currentKey][i]  + ' Ght';
-                    }
-					else if(suffixes[j] === "dragon"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'dragon'].nodeValue = formatted_lang_map[currentKey][i]  + ' Drg';
-                    }
-					else if(suffixes[j] === "steel"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'steel'].nodeValue = formatted_lang_map[currentKey][i]  + ' Stl';
-                    }
-					else if(suffixes[j] === "fairy"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'fairy'].nodeValue = formatted_lang_map[currentKey][i]  + ' Fry';
-                    }
 					else if(suffixes[j] === "f"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'f'].nodeValue = formatted_lang_map[currentKey][i]  + ' F';
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'f'].nodeValue = formatted_lang_map[currentKey][i]  + '♀';
                     }
 					else if(suffixes[j] === "dusk"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'dusk'].nodeValue = formatted_lang_map[currentKey][i]  + ' D';
