@@ -1387,6 +1387,13 @@ function updateTypeFilter(type){
     currentGen = 0;
     updateGenFilter();
 
+    document.getElementById("fullQuizButton").classList.remove('smolbuttonSwap')
+    document.getElementById("fullQuizButton").classList.add('smolbutton')
+    if (darkMode){
+        document.getElementById("fullQuizButton").classList.add('smolbuttondark')
+    }
+    
+
     currentPokemonList = pokemonListByType[type]
     currentRevealList = pokemonRevealListByType[type]
 
@@ -1452,6 +1459,11 @@ function updateGenFilter() {
     gen7half.style.display = "none";
     //all gens
     if (currentGen === 0) {
+
+        document.getElementById("fullQuizButton").classList.remove('smolbutton');
+        document.getElementById("fullQuizButton").classList.remove('smolbuttondark');
+        document.getElementById("fullQuizButton").classList.add('smolbuttonSwap');
+
         gen7half.style.display = "block";
         for (let i = 0; i < boxes.length; i++) {
             boxes[i].style.display = "block";
@@ -1472,6 +1484,14 @@ function updateGenFilter() {
             allSpirtes[i].classList.remove('spritew');
         }
     } else {
+
+        document.getElementById("fullQuizButton").classList.remove('smolbuttonSwap')
+        document.getElementById("fullQuizButton").classList.add('smolbutton')
+        if (darkMode){
+            document.getElementById("fullQuizButton").classList.add('smolbuttondark')
+        }
+
+
         for (let i = 0; i < boxes.length; i++) {
             if (i + 1 === currentGen) {
                 regionToSingle(document.getElementById("region" + (i+1)));
@@ -1751,7 +1771,9 @@ function typeselectmenu() {
 }
 
 function gen0click() {
-	document.getElementById("gen0").click();
+    if (currentGen !== 0){
+	    document.getElementById("gen0").click();
+    }
 }
 
 function swapToShiny(){
