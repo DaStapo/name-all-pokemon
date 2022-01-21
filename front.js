@@ -204,9 +204,11 @@ for (key in formatted_lang_map){
                     if(suffixes[j] === "megay"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'megay'].nodeValue = formatted_lang_map[currentKey][i]  + ' Y';
                     
-                    }else if(suffixes[j] === "megax"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'megay'].nodeValue = formatted_lang_map[currentKey][i]  + ' X';
-                    }else if(suffixes[j] === 'gmax'){
+                    }
+                    else if(suffixes[j] === "megax"){
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'megax'].nodeValue = formatted_lang_map[currentKey][i]  + ' X';
+                    }
+                    else if(suffixes[j] === 'gmax'){
                         if (pokemonList[i] == 'urshifu'){
                             unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i] + ' SS';
                             unguessedDictTexts[standardizeName(pokemonList[i])+'rapidstrikegmax'].nodeValue = formatted_lang_map[currentKey][i] + ' RS';
