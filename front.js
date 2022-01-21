@@ -18,6 +18,7 @@ let typeList = ["normal", "fire", "water", "grass", "electric", "ice", "ground",
 let boxes = [];
 let currentPokemonList = [];
 let currentGen = 0; //0 means all
+let currentType = ""
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
 let soundEffectMissingno = new Audio('/sound-effects/032.wav');
 soundEffectMissingno.volume = 0.2;
@@ -1053,6 +1054,10 @@ function showCongrats() {
     let genText = ' ';
     if (currentGen !== 0) {
         genText = ' generation ' + currentGen + ' ';
+    }else{
+        if(currentType !== ""){
+            genText = " " + currentType.charAt(0).toUpperCase() + currentType.slice(1) + " type "
+        }
     }
 
     document.getElementById("gen-name").innerHTML = genText
@@ -1321,11 +1326,13 @@ function updateTypeFilter(type){
     changeFooterPosition();
  
     logActions = false;
+    currentType = type
 }
 
 
 function updateGenFilter() {
     logActions = true;
+    currentType = ""
     updateCurrentPokemonList();
 
 
