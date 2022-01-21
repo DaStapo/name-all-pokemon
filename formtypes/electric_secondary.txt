@@ -1,4 +1,3 @@
-'Lapras-Gmax'
-'Abomasnow-Mega'
-'Rotom-Frost'
-'Calyrex-Ice-Rider'
+'Geodude-Alola'
+'Graveler-Alola'
+'Golem-Alola'
