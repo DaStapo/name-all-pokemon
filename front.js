@@ -493,7 +493,6 @@ function showSprite(name) {
         for (let i = 0; i < currentRevealList.length; i++){
             if (unguessedDictionary[currentRevealList[i]].parentElement == boxElem){
                 if (unguessedDictionary[currentRevealList[i]].style.display != 'none'){
-                    conosle.log(currentRevealList[i], )
                     allRevealed= false;
                     break
                 }
@@ -1343,6 +1342,7 @@ function updateTypeFilter(type){
         silhouetteDictionary[pokemon].style.display = "none";
     }
     for (let i = 0; i<currentRevealList.length; i++){
+        
         unguessedDictionary[currentRevealList[i]].parentElement.style.display = "block"
         unguessedDictionary[currentRevealList[i]].style.display = "inline"
     }
