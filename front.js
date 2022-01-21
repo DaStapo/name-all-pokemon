@@ -26,7 +26,7 @@ let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
 soundEffect2.volume = 0.3;
 let darkMode = false;
 let useEncoded = true;
-let suffixes = ["alola", "galar", "mega", "megax", "megay", "primal", "gmax", "eternamax", "rapidstrikegmax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen", "pirouette", "unbound", "pompom", "pau", "sensu", "dusk", "dawn", "ultra", "crowned", "icerider", "shadowrider"]
+let suffixes = ["alola", "galar", "mega", "megax", "megay", "primal", "gmax", "eternamax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen", "pirouette", "unbound", "pompom", "pau", "sensu", "dusk", "dawn", "ultra", "crowned", "icerider", "shadowrider"]
 let logActions = true;
 let extraPokemon = {
 	// Alolan forms added to Gen7 in official Aloladex-order
