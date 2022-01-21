@@ -197,7 +197,12 @@ for (key in formatted_lang_map){
 		}
 		
 		for (let i = 0; i< formatted_lang_map[currentKey].length; i++){
-			unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i];
+            if(pokemonList[i] === "ditto"){
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " potato"
+            }
+            else{
+			    unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i];
+            }
 
             for (let j  = 0; j<suffixes.length; j++){
                 if (standardizeName(pokemonList[i])+suffixes[j] in  unguessedDictTexts){
