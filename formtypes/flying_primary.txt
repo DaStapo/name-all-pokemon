@@ -1,3 +1,4 @@
 'Corviknight-Gmax'
 'Arceus-Flying'
 'Silvally-Flying'
+'Tornadus-Therian'

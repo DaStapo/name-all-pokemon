@@ -9,3 +9,4 @@
 'Appletun-Gmax'
 'Arceus-Grass'
 'Silvally-Grass'
+'Cherrim-Sunshine'

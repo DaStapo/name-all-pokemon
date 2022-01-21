@@ -17,3 +17,5 @@
 'Arceus-Psychic'
 'Oricorio-Pau'
 'Silvally-Psychic'
+'Meowstic-F'
+'Indeedee-F'

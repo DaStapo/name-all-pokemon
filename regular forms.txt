@@ -13,3 +13,21 @@
 'Zacian':['Zacian-Crowned']
 'Zamazenta':['Zamazenta-Crowned']
 'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider']
+
+	//minor forms (fucntionally identical and always next to original)
+	'Basculin':['Basculin-Blue-Striped'],
+	'Lycanroc':['lycanroc-Midnight', 'Lycanroc-Dusk'],
+	'Meowstic':['Meowstic-F'],
+	'Indeedee':['Indeedee-F'],
+	'Cherrim':['Cherrim-Sunshine'],
+	'Wishiwashi':['Wishiwashi-School'],
+	'Giratina':['Giratina-Origin'],
+	'Tornadus':['Tornadus-Therian'],
+	'Thundurus':['Thundurus-Therian'],
+	'Landorus':['Landorus-Therian'],
+	'Kyurem':['Kyurem-Black', 'Kyurem-White'],
+	'Keldeo':['Keldeo-Resolute'],
+	'Yveltal':['Zygarde-10'],
+	'Zygarde':['Zygarde-Complete'],
+	'Toxtricity':['Toxtricity-Low-Key']
+	'Toxtricity-Gmax':['Toxtricity-Low-Key-Gmax'],

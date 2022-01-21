@@ -7,3 +7,4 @@
 'Ampharos-Mega'
 'Sceptile-Mega'
 'Necrozma-Ultra'
+'Giratina-Origin'

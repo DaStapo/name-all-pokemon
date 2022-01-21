@@ -4,3 +4,4 @@
 'Mewtwo-Mega-X'
 'Lopunny-Mega'
 'Meloetta-Pirouette'
+'Keldeo-Resolute'

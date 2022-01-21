@@ -6,3 +6,7 @@
 'Garchomp-Mega'
 'Arceus-Dragon'
 'Silvally-Dragon'
+'Kyurem-Black'
+'Kyurem-White'
+'Zygarde-10'
+'Zygarde-Complete'

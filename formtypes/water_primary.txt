@@ -12,3 +12,6 @@
 'Castform-Rainy'
 'Arceus-Water'
 'Silvally-Water'
+'Basculin-Blue-Striped'
+'Wishiwashi-School'
+'Keldeo-Resolute'

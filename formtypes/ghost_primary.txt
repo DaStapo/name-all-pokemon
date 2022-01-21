@@ -5,3 +5,4 @@
 'Arceus-Ghost'
 'Oricorio-Sensu'
 'Silvally-Ghost'
+'Giratina-Origin'

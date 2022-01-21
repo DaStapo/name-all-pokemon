@@ -2,3 +2,4 @@
 'Raticate-Alola'
 'Zigzagoon-Galar'
 'Linoone-Galar'
+'Indeedee-F'

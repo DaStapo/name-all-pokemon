@@ -6,3 +6,4 @@
 'Arceus-Ground'
 'Silvally-Ground'
 'Yamask-Galar'
+'Landorus-Therian'

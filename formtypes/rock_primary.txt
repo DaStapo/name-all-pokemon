@@ -7,3 +7,5 @@
 'Coalossal-Gmax'
 'Arceus-Rock'
 'Silvally-Rock'
+'Lycanroc-Midnight'
+'Lycanroc-Dusk'

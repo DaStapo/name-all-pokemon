@@ -2,3 +2,5 @@
 'Abomasnow-Mega'
 'Rotom-Frost'
 'Calyrex-Ice-Rider'
+'Kyurem-Black'
+'Kyurem-White'

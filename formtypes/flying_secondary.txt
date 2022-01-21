@@ -13,3 +13,5 @@
 'Pinsir-Mega'
 'Rotom-Fan'
 'Shaymin-Sky'
+'Thundurus-Therian'
+'Landorus-Therian'

@@ -3,3 +3,5 @@
 'Camerupt-Mega'
 'Garchomp-Mega'
 'Wormadam-Sandy'
+'Zygarde-10'
+'Zygarde-Complete'
