@@ -1134,6 +1134,9 @@ let regionToAll = function (regionElement){
 
 function updateTypeFilter(type){
 
+    currentGen = 0;
+    updateGenFilter();
+
     currentPokemonList = pokemonListByType[type]
     currentRevealList = pokemonRevealListByType[type]
 
