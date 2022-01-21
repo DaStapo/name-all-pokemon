@@ -27,7 +27,7 @@ soundEffect2.volume = 0.3;
 let darkMode = false;
 let useEncoded = true;
 let suffixes = ["alola", "galar", "mega", "megax", "megay", "primal", "gmax", "eternamax", "rapidstrikegmax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen", "pirouette", "unbound", "pompom", "pau", "sensu", "dusk", "dawn", "ultra", "crowned", "icerider", "shadowrider"]
-
+let logActions = true;
 let extraPokemon = {
 	// Alolan forms added to Gen7 in official Aloladex-order
     'Gumshoos':['Rattata-Alola', 'Raticate-Alola', 'Raichu-Alola'],
@@ -1178,11 +1178,12 @@ function updateTypeFilter(type){
     setCounter(getAlreadyGuessedAndRelevantPokemon().length);
     changeFooterPosition();
  
+    logActions = false;
 }
 
 
 function updateGenFilter() {
-
+    logActions = true;
     updateCurrentPokemonList();
 
 
@@ -1280,10 +1281,12 @@ function loadNames(onSuccess) {
     xhttp.send();
 }
 function logNamed(pokemon) {
-    let xhttp = new XMLHttpRequest();
-    xhttp.open("POST", '/named', true);
-	xhttp.setRequestHeader("Content-Type", "application/json");
-    xhttp.send(JSON.stringify({name:pokemon}));
+    if (logActions){
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("POST", '/named', true);
+	    xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.send(JSON.stringify({name:pokemon}));
+    }
 
 }
 function logGen() {
