@@ -719,6 +719,7 @@ for (let i = 0; i < combinedList.length; i++) {
         for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
             let subPokemon = standardizeName(extraPokemon[standardizeName(pokemon)][j])
             types = typeDict[subPokemon]
+            
             pokemonRevealListByType[types["primary"]].push(subPokemon)
 
             if ("secondary" in types){
