@@ -775,6 +775,15 @@ let inputField = document.getElementById("pokemon");
 let recentSprite = document.getElementById("recentsprite");
 
 
+//filter some obvious ones
+let subSuffixes = []
+for (let i = 0; i < suffixes.length; i++){
+    if (suffixes[i] == "megax" || suffixes[i] == "megay" || suffixes[i] == "primal"|| suffixes[i] == "eternamax" ||suffixes[i] == "rapidstrikegmax"){
+        continue
+    }
+    subSuffixes.push(suffixes[i])
+}
+
 let parseInput = function (inputText, sendLog, isTwitchChat) {
 
 	if (!document.getElementById("pokemon").disabled){
@@ -812,10 +821,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
 
 		inputs.push(inputText);
 		
-        inputs.push(inputText + 'galar')
-        inputs.push(inputText + 'alola')
-        inputs.push(inputText + 'mega')
-        inputs.push(inputText + 'gmax')
+
         if (inputText == "charizard" || inputText == "mewtwo"){
             inputs.push(inputText + 'megax')
             inputs.push(inputText + 'megay')
@@ -830,13 +836,19 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
 		else if (inputText == "urshifu"){
 			inputs.push(inputText + 'rapidstrikegmax')
 		}
+
+
+        for (let i = 0; i < subSuffixes.length; i++){
+            inputs.push(inputText + subSuffixes[i])
+        }
+
         
 		let wasCorrect = false;
 		let guessResult = false;
 		for (let i = 0; i < inputs.length; i++){
 			//inputText = standardizeName(inputs[i]);
 			//inputText = tryTranslate(inputText)
-			let guessResult = tryGuessPokemon(standardizeName(inputs[i]), sendLog, isTwitchChat);
+			guessResult = tryGuessPokemon(standardizeName(inputs[i]), sendLog, isTwitchChat);
 			if (!wasCorrect && guessResult){
 				wasCorrect = guessResult;
 			}
@@ -861,7 +873,9 @@ function play_single_sound2() {
 
 function tryGuessPokemon(input, sendLog,isTwitchChat) {
     try{
-        showSprite(input);
+        if (currentRevealList.includes(input)){
+            showSprite(input);
+        }
     }catch(err){
 
     }
@@ -1176,10 +1190,11 @@ function updateGenFilter() {
     updateCurrentPokemonList();
 
 
-
-
-
     ////to undo type filters
+    for (let i = 0; i<currentRevealList.length; i++){
+
+        unguessedDictionary[currentRevealList[i]].style.display = "inline"
+    }
     //for (let pokemon in unguessedDict){
     //    unguessedDictionary[pokemon].style.display = "inline"
     //}
