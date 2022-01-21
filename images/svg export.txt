@@ -1,6 +1,7 @@
-after exporting svg
-open svg with notepad+ or similar
-change width/height to >100%
-add
->preserveAspectRatio="none"
-after them
+illustrator CS6
+save as
+SVG
+open svg with notepad+
+change width/height to 100%
+add preserveAspectRatio="none" after them
+viewbox 0 0 500 500

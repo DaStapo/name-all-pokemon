@@ -577,6 +577,10 @@
 	.inlineboxdark {
 	background-color: #8CC63F;
 	}
+	.blenddark {
+	background-image: url(/images/background-dark-grey.svg);
+	background-blend-mode: hard-light !important;
+	}
 	/*dark mode classes end*/
 	.radio-item input[type='radio'] {
 	display: none;
@@ -861,6 +865,10 @@
 	}
 	.fry {
 	background-color: #EC8FE6;
+	}
+	.blend {
+	background-image: url(/images/background-50-grey.svg);
+	background-blend-mode: hard-light;
 	}
 	.symbol {
 	width: 42px;
