@@ -1437,17 +1437,15 @@ function updateTypeFilter(type){
 function updateGenFilter() {
     logActions = true;
     currentType = ""
+
+    for (let pokemon in unguessedDict){
+        unguessedDictionary[pokemon].style.display = "none"
+    }
+
     updateCurrentPokemonList();
-
-
-    ////to undo type filters
     for (let i = 0; i<currentRevealList.length; i++){
-
         unguessedDictionary[currentRevealList[i]].style.display = "inline"
     }
-    //for (let pokemon in unguessedDict){
-    //    unguessedDictionary[pokemon].style.display = "inline"
-    //}
 
     megaBox.style.display = "none";
     gmaxBox.style.display = "none";
