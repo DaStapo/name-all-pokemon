@@ -231,6 +231,9 @@ for (key in formatted_lang_map){
                     else if(suffixes[j] === "megax"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'megax'].nodeValue = formatted_lang_map[currentKey][i]  + ' X';
                     }
+					else if(suffixes[j] === "primal"){
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'primal'].nodeValue = 'P ' + formatted_lang_map[currentKey][i];
+                    }
                     else if(suffixes[j] === "sunny"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'sunny'].nodeValue = formatted_lang_map[currentKey][i]  + ' S';
                     }
@@ -267,6 +270,9 @@ for (key in formatted_lang_map){
 					else if(suffixes[j] === "zen"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'zen'].nodeValue = formatted_lang_map[currentKey][i]  + ' Z';
                     }
+					else if(suffixes[j] === "galarzen"){
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'galarzen'].nodeValue = formatted_lang_map[currentKey][i]  + ' Z';
+                    }
 					else if(suffixes[j] === "pirouette"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'pirouette'].nodeValue = formatted_lang_map[currentKey][i]  + ' P';
                     }
@@ -299,6 +305,9 @@ for (key in formatted_lang_map){
                     }
 					else if(suffixes[j] === "shadowrider"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'shadowrider'].nodeValue = formatted_lang_map[currentKey][i]  + ' SR';
+                    }
+					else if(suffixes[j] === "eternamax"){
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'eternamax'].nodeValue = formatted_lang_map[currentKey][i]  + ' E';
                     }
 					else if(suffixes[j] === "grass"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'grass'].nodeValue = formatted_lang_map[currentKey][i]  + ' Grs';
