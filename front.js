@@ -80,7 +80,7 @@ let extraPokemon = {
 	'Keldeo':['Keldeo-Resolute'],
 	'Yveltal':['Zygarde-10'],
 	'Zygarde':['Zygarde-Complete'],
-	'Toxtricity':['Toxtricity-Low-Key']
+	'Toxtricity':['Toxtricity-Low-Key'],
 	'Toxtricity-Gmax':['Toxtricity-Low-Key-Gmax'],
 }
 
