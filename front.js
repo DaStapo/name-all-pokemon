@@ -506,7 +506,7 @@ for (let i = 0; i < pokemonList.length; i++) {
     currentGenRevealList.push(pokemon)
     pokemonRevealListsByGen[0].push(pokemon)
     if (standardizeName(pokemon) in extraPokemon){
-        if (extraPokemon[standardizeName(pokemon)].length < 6){
+        if (extraPokemon[standardizeName(pokemon)].length < 15){
 
             for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
                 let subPokemon = standardizeName(extraPokemon[standardizeName(pokemon)][j])
