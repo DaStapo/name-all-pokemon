@@ -315,29 +315,22 @@ function showSprite(name) {
     unguessedDictionary[name].style.display = "none";
 
     if (currentGen === 0){
+        
+        
+        
         let boxElem = spriteDictionary[name].parentElement;
 
-        let spriteElems = []
-        for (let i = 0; i < boxElem.childNodes.length; i++) {
-            if ('classList' in boxElem.childNodes[i]){
-        
-                if (  boxElem.childNodes[i].classList.contains("sprite") &&  boxElem.childNodes[i].classList.contains("zoom") ) {
-                    spriteElems.push(boxElem.childNodes[i]);
+        let allRevealed = true;
+        for (let i = 0; i < currentRevealList.length; i++){
+            if (unguessedDictionary[currentRevealList[i]].parentElement == boxElem){
+                if (unguessedDictionary[currentRevealList[i]].style.display != 'none'){
+                    conosle.log(currentRevealList[i], )
+                    allRevealed= false;
+                    break
                 }
             }
-
         }
-
-        //let spriteElems = boxElem.getElementsByClassName('sprite zoom')
-        let allRevealed = true;
-        for (let i = 0; i<spriteElems.length; i++){
-
-            if (spriteElems[i].style.display == 'none'){
-
-                allRevealed = false;
-                break
-            }
-        }
+        
 
         if (allRevealed){
             boxElem.classList.add('outline')
@@ -760,7 +753,7 @@ function createUnguessedContent(){
 		unguessedDict[pokemon] = _elem;
 		unguessedDictTexts[pokemon] = _name
 		unguessedContent.appendChild(_elem)
-        if ((genLastPokemon.includes(pokemon) || pokemon == "zeraora") && i !==  fullSpriteList.length-1) {
+        if ((genLastSprite.includes(pokemon) || pokemon == "zeraora") && i !==  fullSpriteList.length-1) {
             genIndex++;
 			unguessedContent = createUnguessed(genIndex)
         }
