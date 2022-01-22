@@ -1416,7 +1416,7 @@ function updateTypeFilter(type){
         if (typeName=="dark"){
             typeName = "evil"
         }
-        let allElements = document.getElementsByClassName(currentClass);
+        let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
         for (let j = 0; j<allElements.length; j++){
             allElements[j].classList.add(currentClass.replace("type", typeName))
         }
@@ -1455,7 +1455,7 @@ function updateGenFilter() {
             if (typeName=="dark"){
                 typeName = "evil"
             }
-            let allElements = document.getElementsByClassName(currentClass);
+            let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
             for (let j = 0; j<allElements.length; j++){
                 allElements[j].classList.remove(currentClass.replace("type", typeName))
             }
@@ -2482,7 +2482,7 @@ document.getElementById("darkon").onclick = function (){
                 if (typeName=="dark"){
                     typeName = "evil"
                 }
-                let allElements = document.getElementsByClassName(currentClass);
+                let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
                 for (let j = 0; j<allElements.length; j++){
                     allElements[j].classList.add(currentClass.replace("type", typeName))
                 }
@@ -2562,7 +2562,7 @@ document.getElementById("darkoff").onclick = function (){
                 if (typeName=="dark"){
                     typeName = "evil"
                 }
-                let allElements = document.getElementsByClassName(currentClass);
+                let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
                 for (let j = 0; j<allElements.length; j++){
                     allElements[j].classList.remove(currentClass.replace("type", typeName))
                 }
