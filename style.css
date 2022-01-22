@@ -812,60 +812,1414 @@
 	padding-top: 273px;
 	}
 	}
-	.normal {
-	background-color: #9099A1;
-	}
-	.fire {
-	background-color: #FF9C54;
-	}
-	.water {
-	background-color: #4D90D5;
-	}
-	.grass {
-	background-color: #63BB5B;
-	}
-	.electric {
-	background-color: #F3D23B;
-	}
-	.ice {
-	background-color: #74CEC0;
-	}
-	.fighting {
-	background-color: #CE4069;
-	}
-	.poison {
-	background-color: #AB6AC8;
-	}
-	.ground {
-	background-color: #D97746;
-	}
-	.flying {
-	background-color: #8FA8DD;
-	}
-	.psychic {
-	background-color: #F97176;
-	}
-	.bug {
-	background-color: #90C12C;
-	}
-	.rock {
-	background-color: #C7B78B;
-	}
-	.ghost {
-	background-color: #5269AC;
-	}
-	.dragon {
-	background-color: #0A6DC4;
-	}
-	.evil {
-	background-color: #5A5366;
-	}
-	.steel {
-	background-color: #5A8EA1;
-	}
-	.fairy {
-	background-color: #EC8FE6;
-	}
+	/*type-color-changing classes*/
+.anormal {
+color: #9099A1
+;
+}
+.limenormal {
+background: #9099A1
+!important;
+color: #fff !important;
+}
+.limelightnormal {
+background: #b9c1c7
+;
+color: #000;
+border-color: #9099A1
+!important;
+}
+.outlinenormal {
+outline-color: #9099A1
+;}
+.topedgenormal {
+border-top-color: #9099A1
+;
+}
+.input-twitchnormal {
+border-color: #9099A1
+;
+}
+.input-twitchnormal:disabled {
+background-color: #9099A1
+;
+}
+.hovgnormal {
+background-color: #9099A1
+;
+}
+.hovrnormal {
+background-color: #9099A1
+;
+}
+.smolbuttonnormal {
+background-color: #fff;
+border-color: #9099A1
+;
+color: #9099A1
+;
+}
+.smolbuttonSwapnormal {
+background-color: #9099A1
+;
+border-color: #9099A1
+;
+}
+.smolbuttonnormal:hover {
+background-color: #868d94;
+border-color: #868d94;
+color: #fff;
+}
+.smolbuttonxnormal {
+background-color: #9099A1
+;
+color: #fff;
+}
+.ppbuttonnormal {
+border-color: #868d94;
+background-color: #868d94;
+color: #fff;
+}
+.ppbuttonnormal:hover {
+background-color: #9099A1
+;
+border-color: #9099A1
+;
+color: #fff;
+}   
+.inlineboxnormal {
+background-color: #dde5ec;
+}
+.smolbuttonxdarknormal {
+color: #111;
+background-color: #9099A1
+;
+}
+.buttondarknormal {
+border-color: #9099A1
+;
+}
+.limelightdarknormal {
+border-color: #6e7881;
+border-bottom-color: #6e7881;
+}
+.inlineboxdarknormal {
+background-color: #9099A1
+;
+}
+.afire {
+color: #FF9C54;
+}
+.limefire {
+background: #FF9C54 !important;
+color: #fff !important;
+}
+.limelightfire {
+background: #ffb885;
+color: #000;
+border-color: #FF9C54 !important;
+}
+.outlinefire {
+outline-color: #FF9C54;}
+.topedgefire {
+border-top-color: #FF9C54;
+}
+.input-twitchfire {
+border-color: #FF9C54;
+}
+.input-twitchfire:disabled {
+background-color: #FF9C54;
+}
+.hovgfire {
+background-color: #FF9C54;
+}
+.hovrfire {
+background-color: #FF9C54;
+}
+.smolbuttonfire {
+background-color: #fff;
+border-color: #FF9C54;
+color: #FF9C54;
+}
+.smolbuttonSwapfire {
+background-color: #FF9C54;
+border-color: #FF9C54;
+}
+.smolbuttonfire:hover {
+background-color: #f88f44;
+border-color: #f88f44;
+color: #fff;
+}
+.smolbuttonxfire {
+background-color: #FF9C54;
+color: #fff;
+}
+.ppbuttonfire {
+border-color: #f88f44;
+background-color: #f88f44;
+color: #fff;
+}
+.ppbuttonfire:hover {
+background-color: #FF9C54;
+border-color: #FF9C54;
+color: #fff;
+}   
+.inlineboxfire {
+background-color: #ffe6d4;
+}
+.smolbuttonxdarkfire {
+color: #111;
+background-color: #FF9C54;
+}
+.buttondarkfire {
+border-color: #FF9C54;
+}
+.limelightdarkfire {
+border-color: #dd752b;
+border-bottom-color: #dd752b;
+}
+.inlineboxdarkfire {
+background-color: #FF9C54;
+}
+.awater {
+color: #4D90D5;
+}
+.limewater {
+background: #4D90D5 !important;
+color: #fff !important;
+}
+.limelightwater {
+background: #7db7f1;
+color: #000;
+border-color: #4D90D5 !important;
+}
+.outlinewater {
+outline-color: #4D90D5;}
+.topedgewater {
+border-top-color: #4D90D5;
+}
+.input-twitchwater {
+border-color: #4D90D5;
+}
+.input-twitchwater:disabled {
+background-color: #4D90D5;
+}
+.hovgwater {
+background-color: #4D90D5;
+}
+.hovrwater {
+background-color: #4D90D5;
+}
+.smolbuttonwater {
+background-color: #fff;
+border-color: #4D90D5;
+color: #4D90D5;
+}
+.smolbuttonSwapwater {
+background-color: #4D90D5;
+border-color: #4D90D5;
+}
+.smolbuttonwater:hover {
+background-color: #3684d1;
+border-color: #3684d1;
+color: #fff;
+}
+.smolbuttonxwater {
+background-color: #4D90D5;
+color: #fff;
+}
+.ppbuttonwater {
+border-color: #3684d1;
+background-color: #3684d1;
+color: #fff;
+}
+.ppbuttonwater:hover {
+background-color: #4D90D5;
+border-color: #4D90D5;
+color: #fff;
+}   
+.inlineboxwater {
+background-color: #dde5ee;
+}
+.smolbuttonxdarkwater {
+color: #111;
+background-color: #4D90D5;
+}
+.buttondarkwater {
+border-color: #4D90D5;
+}
+.limelightdarkwater {
+border-color: #1462af;
+border-bottom-color: #1462af;
+}
+.inlineboxdarkwater {
+background-color: #4D90D5;
+}
+.agrass {
+color: #63BB5B;
+}
+.limegrass {
+background: #63BB5B !important;
+color: #fff !important;
+}
+.limelightgrass {
+background: #99ca94;
+color: #000;
+border-color: #63BB5B !important;
+}
+.outlinegrass {
+outline-color: #63BB5B;}
+.topedgegrass {
+border-top-color: #63BB5B;
+}
+.input-twitchgrass {
+border-color: #63BB5B;
+}
+.input-twitchgrass:disabled {
+background-color: #63BB5B;
+}
+.hovggrass {
+background-color: #63BB5B;
+}
+.hovrgrass {
+background-color: #63BB5B;
+}
+.smolbuttongrass {
+background-color: #fff;
+border-color: #63BB5B;
+color: #63BB5B;
+}
+.smolbuttonSwapgrass {
+background-color: #63BB5B;
+border-color: #63BB5B;
+}
+.smolbuttongrass:hover {
+background-color: #4eb145;
+border-color: #4eb145;
+color: #fff;
+}
+.smolbuttonxgrass {
+background-color: #63BB5B;
+color: #fff;
+}
+.ppbuttongrass {
+border-color: #4eb145;
+background-color: #4eb145;
+color: #fff;
+}
+.ppbuttongrass:hover {
+background-color: #63BB5B;
+border-color: #63BB5B;
+color: #fff;
+}   
+.inlineboxgrass {
+background-color: #cfe7cd;
+}
+.smolbuttonxdarkgrass {
+color: #111;
+background-color: #63BB5B;
+}
+.buttondarkgrass {
+border-color: #63BB5B;
+}
+.limelightdarkgrass {
+border-color: #378830;
+border-bottom-color: #378830;
+}
+.inlineboxdarkgrass {
+background-color: #63BB5B;
+}
+.aelectric {
+color: #F3D23B;
+}
+.limeelectric {
+background: #F3D23B !important;
+color: #fff !important;
+}
+.limelightelectric {
+background: #f7e288;
+color: #000;
+border-color: #F3D23B !important;
+}
+.outlineelectric {
+outline-color: #F3D23B;}
+.topedgeelectric {
+border-top-color: #F3D23B;
+}
+.input-twitchelectric {
+border-color: #F3D23B;
+}
+.input-twitchelectric:disabled {
+background-color: #F3D23B;
+}
+.hovgelectric {
+background-color: #F3D23B;
+}
+.hovrelectric {
+background-color: #F3D23B;
+}
+.smolbuttonelectric {
+background-color: #fff;
+border-color: #F3D23B;
+color: #F3D23B;
+}
+.smolbuttonSwapelectric {
+background-color: #F3D23B;
+border-color: #F3D23B;
+}
+.smolbuttonelectric:hover {
+background-color: #e6c120;
+border-color: #e6c120;
+color: #fff;
+}
+.smolbuttonxelectric {
+background-color: #F3D23B;
+color: #fff;
+}
+.ppbuttonelectric {
+border-color: #e6c120;
+background-color: #e6c120;
+color: #fff;
+}
+.ppbuttonelectric:hover {
+background-color: #F3D23B;
+border-color: #F3D23B;
+color: #fff;
+}   
+.inlineboxelectric {
+background-color: #e0ded3;
+}
+.smolbuttonxdarkelectric {
+color: #111;
+background-color: #F3D23B;
+}
+.buttondarkelectric {
+border-color: #F3D23B;
+}
+.limelightdarkelectric {
+border-color: #d4af06;
+border-bottom-color: #d4af06;
+}
+.inlineboxdarkelectric {
+background-color: #F3D23B;
+}
+.aice {
+color: #74cec0;
+}
+.limeice {
+background: #74cec0 !important;
+color: #fff !important;
+}
+.limelightice {
+background: #afe0d9;
+color: #000;
+border-color: #74cec0 !important;
+}
+.outlineice {
+outline-color: #74cec0;}
+.topedgeice {
+border-top-color: #74cec0;
+}
+.input-twitchice {
+border-color: #74cec0;
+}
+.input-twitchice:disabled {
+background-color: #74cec0;
+}
+.hovgice {
+background-color: #74cec0;
+}
+.hovrice {
+background-color: #74cec0;
+}
+.smolbuttonice {
+background-color: #fff;
+border-color: #74cec0;
+color: #74cec0;
+}
+.smolbuttonSwapice {
+background-color: #74cec0;
+border-color: #74cec0;
+}
+.smolbuttonice:hover {
+background-color: #55c5b4;
+border-color: #55c5b4;
+color: #fff;
+}
+.smolbuttonxice {
+background-color: #74cec0;
+color: #fff;
+}
+.ppbuttonice {
+border-color: #55c5b4;
+background-color: #55c5b4;
+color: #fff;
+}
+.ppbuttonice:hover {
+background-color: #74cec0;
+border-color: #74cec0;
+color: #fff;
+}   
+.inlineboxice {
+background-color: #e2eeec;
+}
+.smolbuttonxdarkice {
+color: #111;
+background-color: #74cec0;
+}
+.buttondarkice {
+border-color: #74cec0;
+}
+.limelightdarkice {
+border-color: #38b9a6;
+border-bottom-color: #38b9a6;
+}
+.inlineboxdarkice {
+background-color: #74cec0;
+}
+.afighting {
+color: #CE4069;
+}
+.limefighting {
+background: #CE4069 !important;
+color: #fff !important;
+}
+.limelightfighting {
+background: #c4768c;
+color: #000;
+border-color: #CE4069 !important;
+}
+.outlinefighting {
+outline-color: #CE4069;}
+.topedgefighting {
+border-top-color: #CE4069;
+}
+.input-twitchfighting {
+border-color: #CE4069;
+}
+.input-twitchfighting:disabled {
+background-color: #CE4069;
+}
+.hovgfighting {
+background-color: #CE4069;
+}
+.hovrfighting {
+background-color: #CE4069;
+}
+.smolbuttonfighting {
+background-color: #fff;
+border-color: #CE4069;
+color: #CE4069;
+}
+.smolbuttonSwapfighting {
+background-color: #CE4069;
+border-color: #CE4069;
+}
+.smolbuttonfighting:hover {
+background-color: #bd2752;
+border-color: #bd2752;
+color: #fff;
+}
+.smolbuttonxfighting {
+background-color: #CE4069;
+color: #fff;
+}
+.ppbuttonfighting {
+border-color: #bd2752;
+background-color: #bd2752;
+color: #fff;
+}
+.ppbuttonfighting:hover {
+background-color: #CE4069;
+border-color: #CE4069;
+color: #fff;
+}   
+.inlineboxfighting {
+background-color: #e9e0e3;
+}
+.smolbuttonxdarkfighting {
+color: #111;
+background-color: #CE4069;
+}
+.buttondarkfighting {
+border-color: #CE4069;
+}
+.limelightdarkfighting {
+border-color: #ac294e;
+border-bottom-color: #ac294e;
+}
+.inlineboxdarkfighting {
+background-color: #CE4069;
+}
+.apoison {
+color: #AB6AC8;
+}
+.limepoison {
+background: #AB6AC8 !important;
+color: #fff !important;
+}
+.limelightpoison {
+background: #c3a0d3;
+color: #000;
+border-color: #AB6AC8 !important;
+}
+.outlinepoison {
+outline-color: #AB6AC8;}
+.topedgepoison {
+border-top-color: #AB6AC8;
+}
+.input-twitchpoison {
+border-color: #AB6AC8;
+}
+.input-twitchpoison:disabled {
+background-color: #AB6AC8;
+}
+.hovgpoison {
+background-color: #AB6AC8;
+}
+.hovrpoison {
+background-color: #AB6AC8;
+}
+.smolbuttonpoison {
+background-color: #fff;
+border-color: #AB6AC8;
+color: #AB6AC8;
+}
+.smolbuttonSwappoison {
+background-color: #AB6AC8;
+border-color: #AB6AC8;
+}
+.smolbuttonpoison:hover {
+background-color: #9951bb;
+border-color: #9951bb;
+color: #fff;
+}
+.smolbuttonxpoison {
+background-color: #AB6AC8;
+color: #fff;
+}
+.ppbuttonpoison {
+border-color: #9951bb;
+background-color: #9951bb;
+color: #fff;
+}
+.ppbuttonpoison:hover {
+background-color: #AB6AC8;
+border-color: #AB6AC8;
+color: #fff;
+}   
+.inlineboxpoison {
+background-color: #dcd1e0;
+}
+.smolbuttonxdarkpoison {
+color: #111;
+background-color: #AB6AC8;
+}
+.buttondarkpoison {
+border-color: #AB6AC8;
+}
+.limelightdarkpoison {
+border-color: #923cb9;
+border-bottom-color: #923cb9;
+}
+.inlineboxdarkpoison {
+background-color: #AB6AC8;
+}		
+.aground {
+color: #D97746;
+}
+.limeground {
+background: #D97746 !important;
+color: #fff !important;
+}
+.limelightground {
+background: #d69e82;
+color: #000;
+border-color: #D97746 !important;
+}
+.outlineground {
+outline-color: #D97746;}
+.topedgeground {
+border-top-color: #D97746;
+}
+.input-twitchground {
+border-color: #D97746;
+}
+.input-twitchground:disabled {
+background-color: #D97746;
+}
+.hovgground {
+background-color: #D97746;
+}
+.hovrground {
+background-color: #D97746;
+}
+.smolbuttonground {
+background-color: #fff;
+border-color: #D97746;
+color: #D97746;
+}
+.smolbuttonSwapground {
+background-color: #D97746;
+border-color: #D97746;
+}
+.smolbuttonground:hover {
+background-color: #c56a3d;
+border-color: #c56a3d;
+color: #fff;
+}
+.smolbuttonxground {
+background-color: #D97746;
+color: #fff;
+}
+.ppbuttonground {
+border-color: #c56a3d;
+background-color: #c56a3d;
+color: #fff;
+}
+.ppbuttonground:hover {
+background-color: #D97746;
+border-color: #D97746;
+color: #fff;
+}   
+.inlineboxground {
+background-color: #e4dcd8;
+}
+.smolbuttonxdarkground {
+color: #111;
+background-color: #D97746;
+}
+.buttondarkground {
+border-color: #D97746;
+}
+.limelightdarkground {
+border-color: #b15527;
+border-bottom-color: #b15527;
+}
+.inlineboxdarkground {
+background-color: #D97746;
+}
+.aflying {
+color: #8fa8dd;
+}
+.limeflying {
+background: #8fa8dd !important;
+color: #fff !important;
+}
+.limelightflying {
+background: #b3c3e6;
+color: #000;
+border-color: #8fa8dd !important;
+}
+.outlineflying {
+outline-color: #8fa8dd;}
+.topedgeflying {
+border-top-color: #8fa8dd;
+}
+.input-twitchflying {
+border-color: #8fa8dd;
+}
+.input-twitchflying:disabled {
+background-color: #8fa8dd;
+}
+.hovgflying {
+background-color: #8fa8dd;
+}
+.hovrflying {
+background-color: #8fa8dd;
+}
+.smolbuttonflying {
+background-color: #fff;
+border-color: #8fa8dd;
+color: #8fa8dd;
+}
+.smolbuttonSwapflying {
+background-color: #8fa8dd;
+border-color: #8fa8dd;
+}
+.smolbuttonflying:hover {
+background-color: #7691ca;
+border-color: #7691ca;
+color: #fff;
+}
+.smolbuttonxflying {
+background-color: #8fa8dd;
+color: #fff;
+}
+.ppbuttonflying {
+border-color: #7691ca;
+background-color: #7691ca;
+color: #fff;
+}
+.ppbuttonflying:hover {
+background-color: #8fa8dd;
+border-color: #8fa8dd;
+color: #fff;
+}   
+.inlineboxflying {
+background-color: #d4d8e0;
+}
+.smolbuttonxdarkflying {
+color: #111;
+background-color: #8fa8dd;
+}
+.buttondarkflying {
+border-color: #8fa8dd;
+}
+.limelightdarkflying {
+border-color: #5f79af;
+border-bottom-color: #5f79af;
+}
+.inlineboxdarkflying {
+background-color: #8fa8dd;
+}
+.apsychic {
+color: #F97176;
+}
+.limepsychic {
+background: #F97176 !important;
+color: #fff !important;
+}
+.limelightpsychic {
+background: #e0989a;
+color: #000;
+border-color: #F97176 !important;
+}
+.outlinepsychic {
+outline-color: #F97176;}
+.topedgepsychic {
+border-top-color: #F97176;
+}
+.input-twitchpsychic {
+border-color: #F97176;
+}
+.input-twitchpsychic:disabled {
+background-color: #F97176;
+}
+.hovgpsychic {
+background-color: #F97176;
+}
+.hovrpsychic {
+background-color: #F97176;
+}
+.smolbuttonpsychic {
+background-color: #fff;
+border-color: #F97176;
+color: #F97176;
+}
+.smolbuttonSwappsychic {
+background-color: #F97176;
+border-color: #F97176;
+}
+.smolbuttonpsychic:hover {
+background-color: #ec575c;
+border-color: #ec575c;
+color: #fff;
+}
+.smolbuttonxpsychic {
+background-color: #F97176;
+color: #fff;
+}
+.ppbuttonpsychic {
+border-color: #ec575c;
+background-color: #ec575c;
+color: #fff;
+}
+.ppbuttonpsychic:hover {
+background-color: #F97176;
+border-color: #F97176;
+color: #fff;
+}   
+.inlineboxpsychic {
+background-color: #f7d2d3;
+}
+.smolbuttonxdarkpsychic {
+color: #111;
+background-color: #F97176;
+}
+.buttondarkpsychic {
+border-color: #F97176;
+}
+.limelightdarkpsychic {
+border-color: #cf3e43;
+border-bottom-color: #cf3e43;
+}
+.inlineboxdarkpsychic {
+background-color: #F97176;
+}
+.abug {
+color: #90C12C;
+}
+.limebug {
+background: #90C12C !important;
+color: #fff !important;
+}
+.limelightbug {
+background: #bce961;
+color: #000;
+border-color: #90C12C !important;
+}
+.outlinebug {
+outline-color: #90C12C;}
+.topedgebug {
+border-top-color: #90C12C;
+}
+.input-twitchbug {
+border-color: #90C12C;
+}
+.input-twitchbug:disabled {
+background-color: #90C12C;
+}
+.hovgbug {
+background-color: #90C12C;
+}
+.hovrbug {
+background-color: #90C12C;
+}
+.smolbuttonbug {
+background-color: #fff;
+border-color: #90C12C;
+color: #90C12C;
+}
+.smolbuttonSwapbug {
+background-color: #90C12C;
+border-color: #90C12C;
+}
+.smolbuttonbug:hover {
+background-color: #80b11f;
+border-color: #80b11f;
+color: #fff;
+}
+.smolbuttonxbug {
+background-color: #90C12C;
+color: #fff;
+}
+.ppbuttonbug {
+border-color: #80b11f;
+background-color: #80b11f;
+color: #fff;
+}
+.ppbuttonbug:hover {
+background-color: #90C12C;
+border-color: #90C12C;
+color: #fff;
+}   
+.inlineboxbug {
+background-color: #e9f1d7;
+}
+.smolbuttonxdarkbug {
+color: #111;
+background-color: #90C12C;
+}
+.buttondarkbug {
+border-color: #90C12C;
+}
+.limelightdarkbug {
+border-color: #6f991a;
+border-bottom-color: #6f991a;
+}
+.inlineboxdarkbug {
+background-color: #90C12C;
+}
+.arock {
+color: #C7B78B;
+}
+.limerock {
+background: #C7B78B !important;
+color: #fff !important;
+}
+.limelightrock {
+background: #d4cbb3;
+color: #000;
+border-color: #C7B78B !important;
+}
+.outlinerock {
+outline-color: #C7B78B;}
+.topedgerock {
+border-top-color: #C7B78B;
+}
+.input-twitchrock {
+border-color: #C7B78B;
+}
+.input-twitchrock:disabled {
+background-color: #C7B78B;
+}
+.hovgrock {
+background-color: #C7B78B;
+}
+.hovrrock {
+background-color: #C7B78B;
+}
+.smolbuttonrock {
+background-color: #fff;
+border-color: #C7B78B;
+color: #C7B78B;
+}
+.smolbuttonSwaprock {
+background-color: #C7B78B;
+border-color: #C7B78B;
+}
+.smolbuttonrock:hover {
+background-color: #b4a16b;
+border-color: #b4a16b;
+color: #fff;
+}
+.smolbuttonxrock {
+background-color: #C7B78B;
+color: #fff;
+}
+.ppbuttonrock {
+border-color: #b4a16b;
+background-color: #b4a16b;
+color: #fff;
+}
+.ppbuttonrock:hover {
+background-color: #C7B78B;
+border-color: #C7B78B;
+color: #fff;
+}   
+.inlineboxrock {
+background-color: #e4e0d6;
+}
+.smolbuttonxdarkrock {
+color: #111;
+background-color: #C7B78B;
+}
+.buttondarkrock {
+border-color: #C7B78B;
+}
+.limelightdarkrock {
+border-color: #96875e;
+border-bottom-color: #96875e;
+}
+.inlineboxdarkrock {
+background-color: #C7B78B;
+}
+.aghost {
+color: #5269AC;
+}
+.limeghost {
+background: #5269AC !important;
+color: #fff !important;
+}
+.limelightghost {
+background: #8492bb;
+color: #000;
+border-color: #5269AC !important;
+}
+.outlineghost {
+outline-color: #5269AC;}
+.topedgeghost {
+border-top-color: #5269AC;
+}
+.input-twitchghost {
+border-color: #5269AC;
+}
+.input-twitchghost:disabled {
+background-color: #5269AC;
+}
+.hovgghost {
+background-color: #5269AC;
+}
+.hovrghost {
+background-color: #5269AC;
+}
+.smolbuttonghost {
+background-color: #fff;
+border-color: #5269AC;
+color: #5269AC;
+}
+.smolbuttonSwapghost {
+background-color: #5269AC;
+border-color: #5269AC;
+}
+.smolbuttonghost:hover {
+background-color: #445ba3;
+border-color: #445ba3;
+color: #fff;
+}
+.smolbuttonxghost {
+background-color: #5269AC;
+color: #fff;
+}
+.ppbuttonghost {
+border-color: #445ba3;
+background-color: #445ba3;
+color: #fff;
+}
+.ppbuttonghost:hover {
+background-color: #5269AC;
+border-color: #5269AC;
+color: #fff;
+}   
+.inlineboxghost {
+background-color: #c8cad1;
+}
+.smolbuttonxdarkghost {
+color: #111;
+background-color: #5269AC;
+}
+.buttondarkghost {
+border-color: #5269AC;
+}
+.limelightdarkghost {
+border-color: #374c8b;
+border-bottom-color: #374c8b;
+}
+.inlineboxdarkghost {
+background-color: #5269AC;
+}
+.adragon {
+color: #0A6DC4;
+}
+.limedragon {
+background: #0A6DC4 !important;
+color: #fff !important;
+}
+.limelightdragon {
+background: #5491c7;
+color: #000;
+border-color: #0A6DC4 !important;
+}
+.outlinedragon {
+outline-color: #0A6DC4;}
+.topedgedragon {
+border-top-color: #0A6DC4;
+}
+.input-twitchdragon {
+border-color: #0A6DC4;
+}
+.input-twitchdragon:disabled {
+background-color: #0A6DC4;
+}
+.hovgdragon {
+background-color: #0A6DC4;
+}
+.hovrdragon {
+background-color: #0A6DC4;
+}
+.smolbuttondragon {
+background-color: #fff;
+border-color: #0A6DC4;
+color: #0A6DC4;
+}
+.smolbuttonSwapdragon {
+background-color: #0A6DC4;
+border-color: #0A6DC4;
+}
+.smolbuttondragon:hover {
+background-color: #0f5ea3;
+border-color: #0f5ea3;
+color: #fff;
+}
+.smolbuttonxdragon {
+background-color: #0A6DC4;
+color: #fff;
+}
+.ppbuttondragon {
+border-color: #0f5ea3;
+background-color: #0f5ea3;
+color: #fff;
+}
+.ppbuttondragon:hover {
+background-color: #0A6DC4;
+border-color: #0A6DC4;
+color: #fff;
+}   
+.inlineboxdragon {
+background-color: #dae0e6;
+}
+.smolbuttonxdarkdragon {
+color: #111;
+background-color: #0A6DC4;
+}
+.buttondarkdragon {
+border-color: #0A6DC4;
+}
+.limelightdarkdragon {
+border-color: #0b5aa0;
+border-bottom-color: #0b5aa0;
+}
+.inlineboxdarkdragon {
+background-color: #0A6DC4;
+}
+.aevil {
+color: #5A5366;
+}
+.limeevil {
+background: #5A5366 !important;
+color: #fff !important;
+}
+.limelightevil {
+background: #857a97;
+color: #000;
+border-color: #5A5366 !important;
+}
+.outlineevil {
+outline-color: #5A5366;}
+.topedgeevil {
+border-top-color: #5A5366;
+}
+.input-twitchevil {
+border-color: #5A5366;
+}
+.input-twitchevil:disabled {
+background-color: #5A5366;
+}
+.hovgevil {
+background-color: #5A5366;
+}
+.hovrevil {
+background-color: #5A5366;
+}
+.smolbuttonevil {
+background-color: #fff;
+border-color: #5A5366;
+color: #5A5366;
+}
+.smolbuttonSwapevil {
+background-color: #5A5366;
+border-color: #5A5366;
+}
+.smolbuttonevil:hover {
+background-color: #474250;
+border-color: #474250;
+color: #fff;
+}
+.smolbuttonxevil {
+background-color: #5A5366;
+color: #fff;
+}
+.ppbuttonevil {
+border-color: #474250;
+background-color: #474250;
+color: #fff;
+}
+.ppbuttonevil:hover {
+background-color: #5A5366;
+border-color: #5A5366;
+color: #fff;
+}   
+.inlineboxevil {
+background-color: #dfdce4;
+}
+.smolbuttonxdarkevil {
+color: #111;
+background-color: #5A5366;
+}
+.buttondarkevil {
+border-color: #5A5366;
+}
+.limelightdarkevil {
+border-color: #3c3744;
+border-bottom-color: #3c3744;
+}
+.inlineboxdarkevil {
+background-color: #5A5366;
+}
+.asteel {
+color: #5A8EA1;
+}
+.limesteel {
+background: #5A8EA1 !important;
+color: #fff !important;
+}
+.limelightsteel {
+background: #84afbe;
+color: #000;
+border-color: #5A8EA1 !important;
+}
+.outlinesteel {
+outline-color: #5A8EA1;}
+.topedgesteel {
+border-top-color: #5A8EA1;
+}
+.input-twitchsteel {
+border-color: #5A8EA1;
+}
+.input-twitchsteel:disabled {
+background-color: #5A8EA1;
+}
+.hovgsteel {
+background-color: #5A8EA1;
+}
+.hovrsteel {
+background-color: #5A8EA1;
+}
+.smolbuttonsteel {
+background-color: #fff;
+border-color: #5A8EA1;
+color: #5A8EA1;
+}
+.smolbuttonSwapsteel {
+background-color: #5A8EA1;
+border-color: #5A8EA1;
+}
+.smolbuttonsteel:hover {
+background-color: #477788;
+border-color: #477788;
+color: #fff;
+}
+.smolbuttonxsteel {
+background-color: #5A8EA1;
+color: #fff;
+}
+.ppbuttonsteel {
+border-color: #477788;
+background-color: #477788;
+color: #fff;
+}
+.ppbuttonsteel:hover {
+background-color: #5A8EA1;
+border-color: #5A8EA1;
+color: #fff;
+}   
+.inlineboxsteel {
+background-color: #d6dfe2;
+}
+.smolbuttonxdarksteel {
+color: #111;
+background-color: #5A8EA1;
+}
+.buttondarksteel {
+border-color: #5A8EA1;
+}
+.limelightdarksteel {
+border-color: #3e6474;
+border-bottom-color: #3e6474;
+}
+.inlineboxdarksteel {
+background-color: #5A8EA1;
+}
+.afairy {
+color: #EC8FE6;
+}
+.limefairy {
+background: #EC8FE6 !important;
+color: #fff !important;
+}
+.limelightfairy {
+background: #f0b2ec;
+color: #000;
+border-color: #EC8FE6 !important;
+}
+.outlinefairy {
+outline-color: #EC8FE6;}
+.topedgefairy {
+border-top-color: #EC8FE6;
+}
+.input-twitchfairy {
+border-color: #EC8FE6;
+}
+.input-twitchfairy:disabled {
+background-color: #EC8FE6;
+}
+.hovgfairy {
+background-color: #EC8FE6;
+}
+.hovrfairy {
+background-color: #EC8FE6;
+}
+.smolbuttonfairy {
+background-color: #fff;
+border-color: #EC8FE6;
+color: #EC8FE6;
+}
+.smolbuttonSwapfairy {
+background-color: #EC8FE6;
+border-color: #EC8FE6;
+}
+.smolbuttonfairy:hover {
+background-color: #d87ad2;
+border-color: #d87ad2;
+color: #fff;
+}
+.smolbuttonxfairy {
+background-color: #EC8FE6;
+color: #fff;
+}
+.ppbuttonfairy {
+border-color: #d87ad2;
+background-color: #d87ad2;
+color: #fff;
+}
+.ppbuttonfairy:hover {
+background-color: #EC8FE6;
+border-color: #EC8FE6;
+color: #fff;
+}   
+.inlineboxfairy {
+background-color: #f3e3f2;
+}
+.smolbuttonxdarkfairy {
+color: #111;
+background-color: #EC8FE6;
+}
+.buttondarkfairy {
+border-color: #EC8FE6;
+}
+.limelightdarkfairy {
+border-color: #be58b8;
+border-bottom-color: #be58b8;
+}
+.inlineboxdarkfairy {
+background-color: #EC8FE6;
+}
+	/*end of type-color-changing classes*/
+.normal {
+background-color: #9099A1;
+}
+.fire {
+background-color: #FF9C54;
+}
+.water {
+background-color: #4D90D5;
+}
+.grass {
+background-color: #63BB5B;
+}
+.electric {
+background-color: #F3D23B;
+}
+.ice {
+background-color: #74CEC0;
+}
+.fighting {
+background-color: #CE4069;
+}
+.poison {
+background-color: #AB6AC8;
+}
+.ground {
+background-color: #D97746;
+}
+.flying {
+background-color: #8FA8DD;
+}
+.psychic {
+background-color: #F97176;
+}
+.bug {
+background-color: #90C12C;
+}
+.rock {
+background-color: #C7B78B;
+}
+.ghost {
+background-color: #5269AC;
+}
+.dragon {
+background-color: #0A6DC4;
+}
+.evil {
+background-color: #5A5366;
+}
+.steel {
+background-color: #5A8EA1;
+}
+.fairy {
+background-color: #EC8FE6;
+}
 	.blend {
 	background-image: url(/images/background-50-grey.svg);
 	background-blend-mode: hard-light;

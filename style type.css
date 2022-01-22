@@ -1,80 +1,74 @@
 .atype {
-color: #8CC63F;
+color: #COLOR1;
 }
 .limetype {
-background: #8CC63F !important;
+background: #COLOR1 !important;
 color: #fff !important;
 }
 .limelighttype {
-background: #BEE08F;
+background: #COLOR2;
 color: #000;
-border-color: #8CC63F !important;
+border-color: #COLOR1 !important;
 }
 .outlinetype {
-outline-color: #8CC63F;}
+outline-color: #COLOR1;}
 .topedgetype {
-border-top-color: #8CC63F;
+border-top-color: #COLOR1;
 }
 .input-twitchtype {
-border-color: #8CC63F;
+border-color: #COLOR1;
 }
 .input-twitchtype:disabled {
-background-color: #8CC63F;
+background-color: #COLOR1;
 }
 .hovgtype {
-background-color: #8CC63F;
+background-color: #COLOR1;
 }
 .hovrtype {
-background-color: #8CC63F;
-}
-.hovlitype {
-background-color: #a7d567;
-}
-.hovlitype:hover {
-background-color: #8CC63F;
+background-color: #COLOR1;
 }
 .smolbuttontype {
 background-color: #fff;
-border-color: #8CC63F;
-color: #8CC63F;
+border-color: #COLOR1;
+color: #COLOR1;
 }
 .smolbuttonSwaptype {
-background-color: #8CC63F;
-border-color: #8CC63F;
+background-color: #COLOR1;
+border-color: #COLOR1;
 }
 .smolbuttontype:hover {
-background-color: #7eb238;
-border-color: #7eb238;
+background-color: #COLOR3;
+border-color: #COLOR3;
 color: #fff;
 }
 .smolbuttonxtype {
-background-color: #8CC63F;
+background-color: #COLOR1;
 color: #fff;
 }
 .ppbuttontype {
-border-color: #7eb238;
-background-color: #7eb238;
+border-color: #COLOR3;
+background-color: #COLOR3;
 color: #fff;
 }
 .ppbuttontype:hover {
-background-color: #8CC63F;
-border-color: #8CC63F;
+background-color: #COLOR1;
+border-color: #COLOR1;
 color: #fff;
 }   
 .inlineboxtype {
-background-color: #deefc7;
+background-color: #COLOR5;
 }
 .smolbuttonxdarktype {
 color: #111;
-background-color: #8CC63F;
+background-color: #COLOR1;
 }
 .buttondarktype {
-border-color: #8CC63F;
+border-color: #COLOR1;
 }
 .limelightdarktype {
-border-color: #639422;
-border-bottom-color: #639422;
+border-color: #COLOR4;
+border-bottom-color: #COLOR4;
 }
 .inlineboxdarktype {
-background-color: #8CC63F;
+background-color: #COLOR1;
 }
