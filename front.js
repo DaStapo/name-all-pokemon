@@ -1371,6 +1371,18 @@ function updateTypeFilter(type){
 		allSprites[i].classList.remove('sprite');
     }
 
+    
+    document.getElementById("body").classList.add(type);
+    if(darkMode){
+        document.getElementById("body").classList.add("blenddark")
+    }
+    else{
+        document.getElementById("body").classList.add("blend")
+    }
+    
+
+
+
     for (let pokemon in unguessedDict){
         unguessedDictionary[pokemon].style.display = "none";
         spriteDictionary[pokemon].style.display = "none";
@@ -1393,6 +1405,10 @@ function updateTypeFilter(type){
 
 function updateGenFilter() {
     logActions = true;
+    if(currentType !== ""){
+        document.getElementById("body").classList.remove(currentType);
+
+    }
     currentType = ""
 
     for (let pokemon in unguessedDict){
@@ -1476,6 +1492,9 @@ function updateGenFilter() {
 			allSprites[i].classList.remove('spritet');
         }
     }
+
+    document.getElementById("body").classList.remove("blend")
+    document.getElementById("body").classList.remove("blenddark")
 
     setTotal(totalPokemonCount);
     setCounter(getAlreadyGuessedAndRelevantPokemon().length);
@@ -1723,7 +1742,7 @@ function typeselectmenu() {
 }
 
 function gen0click() {
-    if (currentGen !== 0){
+    if (currentType !== "" || currentGen !== 0){
 	    document.getElementById("gen0").click();
     }
 }
@@ -2383,6 +2402,13 @@ document.getElementById("darkon").onclick = function (){
             pokeballArray[i].src = '/sprites/unknown-2.png';
         }
         recentSprite.src = '/sprites/unknown-2.png'
+
+
+        if(currentType !== ""){
+            document.getElementById("body").classList.add("blenddark")
+            document.getElementById("body").classList.remove("blend")
+        }
+    
     }
 }
 document.getElementById("darkoff").onclick = function (){
@@ -2438,6 +2464,11 @@ document.getElementById("darkoff").onclick = function (){
             pokeballArray[i].src = '/sprites/unknown.png';
         }
         recentSprite.src = '/sprites/unknown.png'
+
+        if(currentType !== ""){
+            document.getElementById("body").classList.remove("blenddark")
+            document.getElementById("body").classList.add("blend")
+        }
     }
 }
 
