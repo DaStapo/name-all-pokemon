@@ -1331,6 +1331,32 @@ let regionToAll = function (regionElement){
 }
 
 
+
+let typeClasses = [
+    "limetype",
+    "limelighttype",
+    "outlinetype",
+    "topedgetype",
+    "input-twitchtype",
+    "input-twitchtype:disabled",
+    "hovgtype",
+    "hovrtype",
+    "hovlitype",
+    "hovlitype:hover",
+    "smolbuttontype",
+    "smolbuttonSwaptype",
+    "smolbuttontype:hover",
+    "smolbuttonxtype",
+    "ppbuttontype",
+    "ppbuttontype:hover",
+    "inlineboxtype",
+    "smolbuttonxdarktype",
+    "buttondarktype",
+    "limelightdarktype",
+    "inlineboxdarktype" ,
+
+]
+
 function updateTypeFilter(type){
 
     currentGen = 0;
@@ -1380,6 +1406,22 @@ function updateTypeFilter(type){
         document.getElementById("body").classList.add("blend")
     }
     
+    for (let i = 0; i< typeClasses.length; i++){
+        let currentClass = typeClasses[i];
+        if(currentClass.includes('dark') && !darkMode){
+            continue;
+        }
+
+        let typeName = type;
+        if (typeName=="dark"){
+            typeName = "evil"
+        }
+        let allElements = document.getElementsByClassName(currentClass);
+        for (let j = 0; j<allElements.length; j++){
+            allElements[j].classList.add(currentClass.replace("type", typeName))
+        }
+
+    }
 
 
 
@@ -1407,6 +1449,18 @@ function updateGenFilter() {
     logActions = true;
     if(currentType !== ""){
         document.getElementById("body").classList.remove(currentType);
+        for (let i = 0; i< typeClasses.length; i++){
+            let currentClass = typeClasses[i];
+            let typeName = currentType;
+            if (typeName=="dark"){
+                typeName = "evil"
+            }
+            let allElements = document.getElementsByClassName(currentClass);
+            for (let j = 0; j<allElements.length; j++){
+                allElements[j].classList.remove(currentClass.replace("type", typeName))
+            }
+    
+        }
 
     }
     currentType = ""
@@ -2416,6 +2470,25 @@ document.getElementById("darkon").onclick = function (){
         if(currentType !== ""){
             document.getElementById("body").classList.add("blenddark")
             document.getElementById("body").classList.remove("blend")
+
+
+            for (let i = 0; i< typeClasses.length; i++){
+                let currentClass = typeClasses[i];
+                if(!currentClass.includes('dark')){
+                    continue;
+                }
+        
+                let typeName = currentType;
+                if (typeName=="dark"){
+                    typeName = "evil"
+                }
+                let allElements = document.getElementsByClassName(currentClass);
+                for (let j = 0; j<allElements.length; j++){
+                    allElements[j].classList.add(currentClass.replace("type", typeName))
+                }
+        
+            }
+        
         }
     
     }
@@ -2477,6 +2550,26 @@ document.getElementById("darkoff").onclick = function (){
         if(currentType !== ""){
             document.getElementById("body").classList.remove("blenddark")
             document.getElementById("body").classList.add("blend")
+
+
+            for (let i = 0; i< typeClasses.length; i++){
+                let currentClass = typeClasses[i];
+                if(!currentClass.includes('dark')){
+                    continue;
+                }
+        
+                let typeName = currentType;
+                if (typeName=="dark"){
+                    typeName = "evil"
+                }
+                let allElements = document.getElementsByClassName(currentClass);
+                for (let j = 0; j<allElements.length; j++){
+                    allElements[j].classList.remove(currentClass.replace("type", typeName))
+                }
+        
+            }
+
+
         }
     }
 }
