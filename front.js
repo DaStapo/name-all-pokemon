@@ -2127,6 +2127,15 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 			}
 			
+            if (twitchUsername === 'stapotv'){
+                if (message === "party on"){
+                    enableTypeParty()
+                }
+                else if (message === "party off"){
+                    disableTypeParty()
+                }
+            }
+
 			if (twitchUsername == 'ethan_from_chicago' || channelName.toLowerCase() == 'ethan_from_chicago'){
 				if (message === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
 					twitchInput(twitchUsername, 'spheal', true)
@@ -2590,6 +2599,58 @@ for (let i = 0; i < typeList.length; i++){
     }
 }
 
+
+let typePartyIntevalId = null;
+let enableTypeParty = function(){
+
+    let currentPartyIndex = 0
+
+    if (currentType !== ""){
+        document.getElementById("body").classList.remove(currentType);
+    }
+
+    typePartyIntevalId = setInterval(() => {
+
+        document.getElementById("body").classList.remove(typeList[currentPartyIndex]);
+        currentPartyIndex+=1
+        if (currentPartyIndex == typeList.length){
+            currentPartyIndex = 0
+        }
+        document.getElementById("body").classList.add(typeList[currentPartyIndex]);
+        if(darkMode){
+            document.getElementById("body").classList.add("blenddark")
+        }
+        else{
+            document.getElementById("body").classList.add("blend")
+        }
+
+    }, 150);
+
+}
+
+let disableTypeParty = function (){
+
+    if (typePartyIntevalId !== null){
+        clearInterval(typePartyIntevalId);
+    }
+    for (let i = 0; i < typeList.length; i++){
+        document.getElementById("body").classList.remove(typeList[i])
+    }
+
+    if (currentType === ""){
+        document.getElementById("body").classList.remove("blend")
+        document.getElementById("body").classList.remove("blenddark")
+    }else{
+        if(darkMode){
+            document.getElementById("body").classList.add("blenddark")
+        }
+        else{
+            document.getElementById("body").classList.add("blend")
+        }
+        document.getElementById("body").classList.add(currentType);
+    }
+
+}
 
 
 
