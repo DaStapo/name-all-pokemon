@@ -1385,11 +1385,7 @@ let typeClasses = [
     "smolbuttontype",
     "smolbuttonSwaptype",
     "smolbuttontype:hover",
-    
-    "ppbuttontype",
-    "ppbuttontype:hover",
     "inlineboxtype",
-
     "buttondarktype",
     "limelightdarktype",
     "inlineboxdarktype" ,
