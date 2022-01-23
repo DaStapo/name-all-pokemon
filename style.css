@@ -830,7 +830,7 @@ border-color: #9099A1
 !important;
 }
 .outlinenormal {
-outline-color: #9099A1
+outline: 2px solid #9099A1
 ;}
 .topedgenormal {
 border-top-color: #9099A1
@@ -920,7 +920,7 @@ color: #000;
 border-color: #FF9C54 !important;
 }
 .outlinefire {
-outline-color: #FF9C54;}
+outline: 2px solid #FF9C54;}
 .topedgefire {
 border-top-color: #FF9C54;
 }
@@ -994,7 +994,7 @@ color: #000;
 border-color: #4D90D5 !important;
 }
 .outlinewater {
-outline-color: #4D90D5;}
+outline: 2px solid #4D90D5;}
 .topedgewater {
 border-top-color: #4D90D5;
 }
@@ -1068,7 +1068,7 @@ color: #000;
 border-color: #63BB5B !important;
 }
 .outlinegrass {
-outline-color: #63BB5B;}
+outline: 2px solid #63BB5B;}
 .topedgegrass {
 border-top-color: #63BB5B;
 }
@@ -1130,7 +1130,7 @@ border-bottom-color: #378830;
 background-color: #63BB5B;
 }
 .aelectric {
-color: #F3D23B;
+color: #F3D23B !important;
 }
 .limeelectric {
 background: #F3D23B !important;
@@ -1142,7 +1142,7 @@ color: #000;
 border-color: #F3D23B !important;
 }
 .outlineelectric {
-outline-color: #F3D23B;}
+outline: 2px solid #F3D23B;}
 .topedgeelectric {
 border-top-color: #F3D23B;
 }
@@ -1216,7 +1216,7 @@ color: #000;
 border-color: #74cec0 !important;
 }
 .outlineice {
-outline-color: #74cec0;}
+outline: 2px solid #74cec0;}
 .topedgeice {
 border-top-color: #74cec0;
 }
@@ -1290,7 +1290,7 @@ color: #000;
 border-color: #CE4069 !important;
 }
 .outlinefighting {
-outline-color: #CE4069;}
+outline: 2px solid #CE4069;}
 .topedgefighting {
 border-top-color: #CE4069;
 }
@@ -1364,7 +1364,7 @@ color: #000;
 border-color: #AB6AC8 !important;
 }
 .outlinepoison {
-outline-color: #AB6AC8;}
+outline: 2px solid #AB6AC8;}
 .topedgepoison {
 border-top-color: #AB6AC8;
 }
@@ -1438,7 +1438,7 @@ color: #000;
 border-color: #D97746 !important;
 }
 .outlineground {
-outline-color: #D97746;}
+outline: 2px solid #D97746;}
 .topedgeground {
 border-top-color: #D97746;
 }
@@ -1512,7 +1512,7 @@ color: #000;
 border-color: #8fa8dd !important;
 }
 .outlineflying {
-outline-color: #8fa8dd;}
+outline: 2px solid #8fa8dd;}
 .topedgeflying {
 border-top-color: #8fa8dd;
 }
@@ -1586,7 +1586,7 @@ color: #000;
 border-color: #F97176 !important;
 }
 .outlinepsychic {
-outline-color: #F97176;}
+outline: 2px solid #F97176;}
 .topedgepsychic {
 border-top-color: #F97176;
 }
@@ -1660,7 +1660,7 @@ color: #000;
 border-color: #90C12C !important;
 }
 .outlinebug {
-outline-color: #90C12C;}
+outline: 2px solid #90C12C;}
 .topedgebug {
 border-top-color: #90C12C;
 }
@@ -1734,7 +1734,7 @@ color: #000;
 border-color: #C7B78B !important;
 }
 .outlinerock {
-outline-color: #C7B78B;}
+outline: 2px solid #C7B78B;}
 .topedgerock {
 border-top-color: #C7B78B;
 }
@@ -1808,7 +1808,7 @@ color: #000;
 border-color: #5269AC !important;
 }
 .outlineghost {
-outline-color: #5269AC;}
+outline: 2px solid #5269AC;}
 .topedgeghost {
 border-top-color: #5269AC;
 }
@@ -1882,7 +1882,7 @@ color: #000;
 border-color: #0A6DC4 !important;
 }
 .outlinedragon {
-outline-color: #0A6DC4;}
+outline: 2px solid #0A6DC4;}
 .topedgedragon {
 border-top-color: #0A6DC4;
 }
@@ -1956,7 +1956,7 @@ color: #000;
 border-color: #5A5366 !important;
 }
 .outlineevil {
-outline-color: #5A5366;}
+outline: 2px solid #5A5366;}
 .topedgeevil {
 border-top-color: #5A5366;
 }
@@ -2030,7 +2030,7 @@ color: #000;
 border-color: #5A8EA1 !important;
 }
 .outlinesteel {
-outline-color: #5A8EA1;}
+outline: 2px solid #5A8EA1;}
 .topedgesteel {
 border-top-color: #5A8EA1;
 }
@@ -2104,7 +2104,7 @@ color: #000;
 border-color: #EC8FE6 !important;
 }
 .outlinefairy {
-outline-color: #EC8FE6;}
+outline: 2px solid #EC8FE6;}
 .topedgefairy {
 border-top-color: #EC8FE6;
 }
