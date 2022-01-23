@@ -27,7 +27,7 @@ let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
 soundEffect2.volume = 0.3;
 let darkMode = false;
 let useEncoded = true;
-let suffixes = ["alola", "galar", "mega", "megax", "megay", "primal", "gmax", "eternamax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen","galarzen", "pirouette", "unbound", "pompom", "pau", "sensu", "duskmane", "dawnwings", "ultra", "crowned", "icerider", "shadowrider", "f", "dusk", "midnight", "bluestriped", "sunshine", "school", "origin", "therian", "white", "black", "resolute", "10", "complete", "lowkey"]
+let suffixes = ["alola", "galar", "mega", "megax", "megay", "primal", "gmax","rapidstrikegmax", "eternamax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen","galarzen", "pirouette", "unbound", "pompom", "pau", "sensu", "duskmane", "dawnwings", "ultra", "crowned", "icerider", "shadowrider", "f", "dusk", "midnight", "bluestriped", "sunshine", "school", "origin", "therian", "white", "black", "resolute", "10", "complete", "lowkey"]
 let logActions = true;
 let extraPokemon = {
 	// Alolan forms added to Gen7 in official Aloladex-order
@@ -660,17 +660,19 @@ for (key in typeDict){
     delete typeDict[key]
     typeDict[standardizeName(key)] = temp
 }
-
+typeDict["urshifu"]["primary"] = "fighting"
+typeDict["urshifu"]["secondary"] = "dark"
 let combinedList = pokemonList.concat(megaList).concat(gmaxList)
 for (let i = 0; i < combinedList.length; i++) {
     let pokemon = standardizeName(combinedList[i]);
-
+    /*
     if (pokemon === 'urshifu'){
         pokemonListByType["dark"].push(pokemon)
+        pokemonRevealListByType["dark"].push(pokemon)
         pokemonListByType["fighting"].push(pokemon)
-        pokemonListByType["water"].push(pokemon)
+        pokemonRevealListByType["fighting"].push(pokemon)
         continue
-    }
+    }*/
     
  //for future update testing
     if (!(pokemon in typeDict)){
