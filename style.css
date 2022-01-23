@@ -97,7 +97,7 @@
 	}
 	.limelight {
 	background: #BEE08F;
-	color: #000;
+	color: #333;
 	border: 2px solid #8CC63F;
 	border-bottom: 2px dotted #8CC63F;
 	}
@@ -503,7 +503,7 @@
 	margin-bottom: -2px;
 	border-radius: 4px 12px;
 	border: 2px solid;
-	color: #000 !important;
+	color: #333 !important;
 	}
 	.rankone{
 	background-color: #fce63a;
@@ -716,6 +716,11 @@
 	display: none;
 	overflow: hidden;
 	}
+	.titlecard {
+	display: block;
+	width: 100%;
+	height: 100%;
+	}
 	.logo {
 	display: block;
 	width: 100%;
@@ -825,7 +830,7 @@ color: #fff !important;
 .limelightnormal {
 background: #b9c1c7
 ;
-color: #000;
+color: #111;
 border-color: #9099A1
 !important;
 }
@@ -874,18 +879,6 @@ background-color: #9099A1
 ;
 color: #fff;
 }
-.ppbuttonnormal {
-border-color: #868d94;
-background-color: #868d94;
-color: #fff;
-}
-.ppbuttonnormal:hover {
-background-color: #9099A1
-;
-border-color: #9099A1
-;
-color: #fff;
-}   
 .inlineboxnormal {
 background-color: #dde5ec;
 }
@@ -915,7 +908,7 @@ color: #fff !important;
 }
 .limelightfire {
 background: #ffb885;
-color: #000;
+color: #111;
 border-color: #FF9C54 !important;
 }
 .outlinefire {
@@ -952,16 +945,6 @@ color: #fff;
 background-color: #FF9C54;
 color: #fff;
 }
-.ppbuttonfire {
-border-color: #f88f44;
-background-color: #f88f44;
-color: #fff;
-}
-.ppbuttonfire:hover {
-background-color: #FF9C54;
-border-color: #FF9C54;
-color: #fff;
-}   
 .inlineboxfire {
 background-color: #ffe6d4;
 }
@@ -988,7 +971,7 @@ color: #fff !important;
 }
 .limelightwater {
 background: #7db7f1;
-color: #000;
+color: #111;
 border-color: #4D90D5 !important;
 }
 .outlinewater {
@@ -1025,16 +1008,6 @@ color: #fff;
 background-color: #4D90D5;
 color: #fff;
 }
-.ppbuttonwater {
-border-color: #3684d1;
-background-color: #3684d1;
-color: #fff;
-}
-.ppbuttonwater:hover {
-background-color: #4D90D5;
-border-color: #4D90D5;
-color: #fff;
-}   
 .inlineboxwater {
 background-color: #dde5ee;
 }
@@ -1061,7 +1034,7 @@ color: #fff !important;
 }
 .limelightgrass {
 background: #99ca94;
-color: #000;
+color: #111;
 border-color: #63BB5B !important;
 }
 .outlinegrass {
@@ -1098,16 +1071,6 @@ color: #fff;
 background-color: #63BB5B;
 color: #fff;
 }
-.ppbuttongrass {
-border-color: #4eb145;
-background-color: #4eb145;
-color: #fff;
-}
-.ppbuttongrass:hover {
-background-color: #63BB5B;
-border-color: #63BB5B;
-color: #fff;
-}   
 .inlineboxgrass {
 background-color: #cfe7cd;
 }
@@ -1130,11 +1093,11 @@ color: #F3D23B !important;
 }
 .limeelectric {
 background: #F3D23B !important;
-color: #fff !important;
+color: #333 !important;
 }
 .limelightelectric {
 background: #f7e288;
-color: #000;
+color: #111;
 border-color: #F3D23B !important;
 }
 .outlineelectric {
@@ -1156,7 +1119,7 @@ background-color: #F3D23B;
 }
 .smolbuttonelectric {
 border-color: #F3D23B;
-color: #F3D23B;
+color: #888;
 }
 .smolbuttonSwapelectric {
 background-color: #F3D23B;
@@ -1169,18 +1132,8 @@ color: #fff;
 }
 .smolbuttonxelectric {
 background-color: #F3D23B;
-color: #fff;
+color: #333;
 }
-.ppbuttonelectric {
-border-color: #e6c120;
-background-color: #e6c120;
-color: #fff;
-}
-.ppbuttonelectric:hover {
-background-color: #F3D23B;
-border-color: #F3D23B;
-color: #fff;
-}   
 .inlineboxelectric {
 background-color: #e0ded3;
 }
@@ -1207,7 +1160,7 @@ color: #fff !important;
 }
 .limelightice {
 background: #afe0d9;
-color: #000;
+color: #111;
 border-color: #74cec0 !important;
 }
 .outlineice {
@@ -1244,16 +1197,6 @@ color: #fff;
 background-color: #74cec0;
 color: #fff;
 }
-.ppbuttonice {
-border-color: #55c5b4;
-background-color: #55c5b4;
-color: #fff;
-}
-.ppbuttonice:hover {
-background-color: #74cec0;
-border-color: #74cec0;
-color: #fff;
-}   
 .inlineboxice {
 background-color: #e2eeec;
 }
@@ -1280,7 +1223,7 @@ color: #fff !important;
 }
 .limelightfighting {
 background: #c4768c;
-color: #000;
+color: #111;
 border-color: #CE4069 !important;
 }
 .outlinefighting {
@@ -1317,16 +1260,6 @@ color: #fff;
 background-color: #CE4069;
 color: #fff;
 }
-.ppbuttonfighting {
-border-color: #bd2752;
-background-color: #bd2752;
-color: #fff;
-}
-.ppbuttonfighting:hover {
-background-color: #CE4069;
-border-color: #CE4069;
-color: #fff;
-}   
 .inlineboxfighting {
 background-color: #e9e0e3;
 }
@@ -1353,7 +1286,7 @@ color: #fff !important;
 }
 .limelightpoison {
 background: #c3a0d3;
-color: #000;
+color: #111;
 border-color: #AB6AC8 !important;
 }
 .outlinepoison {
@@ -1390,16 +1323,6 @@ color: #fff;
 background-color: #AB6AC8;
 color: #fff;
 }
-.ppbuttonpoison {
-border-color: #9951bb;
-background-color: #9951bb;
-color: #fff;
-}
-.ppbuttonpoison:hover {
-background-color: #AB6AC8;
-border-color: #AB6AC8;
-color: #fff;
-}   
 .inlineboxpoison {
 background-color: #dcd1e0;
 }
@@ -1426,7 +1349,7 @@ color: #fff !important;
 }
 .limelightground {
 background: #d69e82;
-color: #000;
+color: #111;
 border-color: #D97746 !important;
 }
 .outlineground {
@@ -1463,16 +1386,6 @@ color: #fff;
 background-color: #D97746;
 color: #fff;
 }
-.ppbuttonground {
-border-color: #c56a3d;
-background-color: #c56a3d;
-color: #fff;
-}
-.ppbuttonground:hover {
-background-color: #D97746;
-border-color: #D97746;
-color: #fff;
-}   
 .inlineboxground {
 background-color: #e4dcd8;
 }
@@ -1499,7 +1412,7 @@ color: #fff !important;
 }
 .limelightflying {
 background: #b3c3e6;
-color: #000;
+color: #111;
 border-color: #8fa8dd !important;
 }
 .outlineflying {
@@ -1536,16 +1449,6 @@ color: #fff;
 background-color: #8fa8dd;
 color: #fff;
 }
-.ppbuttonflying {
-border-color: #7691ca;
-background-color: #7691ca;
-color: #fff;
-}
-.ppbuttonflying:hover {
-background-color: #8fa8dd;
-border-color: #8fa8dd;
-color: #fff;
-}   
 .inlineboxflying {
 background-color: #d4d8e0;
 }
@@ -1572,7 +1475,7 @@ color: #fff !important;
 }
 .limelightpsychic {
 background: #e0989a;
-color: #000;
+color: #111;
 border-color: #F97176 !important;
 }
 .outlinepsychic {
@@ -1609,16 +1512,6 @@ color: #fff;
 background-color: #F97176;
 color: #fff;
 }
-.ppbuttonpsychic {
-border-color: #ec575c;
-background-color: #ec575c;
-color: #fff;
-}
-.ppbuttonpsychic:hover {
-background-color: #F97176;
-border-color: #F97176;
-color: #fff;
-}   
 .inlineboxpsychic {
 background-color: #f7d2d3;
 }
@@ -1645,7 +1538,7 @@ color: #fff !important;
 }
 .limelightbug {
 background: #bce961;
-color: #000;
+color: #111;
 border-color: #90C12C !important;
 }
 .outlinebug {
@@ -1682,16 +1575,6 @@ color: #fff;
 background-color: #90C12C;
 color: #fff;
 }
-.ppbuttonbug {
-border-color: #80b11f;
-background-color: #80b11f;
-color: #fff;
-}
-.ppbuttonbug:hover {
-background-color: #90C12C;
-border-color: #90C12C;
-color: #fff;
-}   
 .inlineboxbug {
 background-color: #e9f1d7;
 }
@@ -1718,7 +1601,7 @@ color: #fff !important;
 }
 .limelightrock {
 background: #d4cbb3;
-color: #000;
+color: #111;
 border-color: #C7B78B !important;
 }
 .outlinerock {
@@ -1755,16 +1638,6 @@ color: #fff;
 background-color: #C7B78B;
 color: #fff;
 }
-.ppbuttonrock {
-border-color: #b4a16b;
-background-color: #b4a16b;
-color: #fff;
-}
-.ppbuttonrock:hover {
-background-color: #C7B78B;
-border-color: #C7B78B;
-color: #fff;
-}   
 .inlineboxrock {
 background-color: #e4e0d6;
 }
@@ -1791,7 +1664,7 @@ color: #fff !important;
 }
 .limelightghost {
 background: #8492bb;
-color: #000;
+color: #111;
 border-color: #5269AC !important;
 }
 .outlineghost {
@@ -1828,16 +1701,6 @@ color: #fff;
 background-color: #5269AC;
 color: #fff;
 }
-.ppbuttonghost {
-border-color: #445ba3;
-background-color: #445ba3;
-color: #fff;
-}
-.ppbuttonghost:hover {
-background-color: #5269AC;
-border-color: #5269AC;
-color: #fff;
-}   
 .inlineboxghost {
 background-color: #c8cad1;
 }
@@ -1864,7 +1727,7 @@ color: #fff !important;
 }
 .limelightdragon {
 background: #5491c7;
-color: #000;
+color: #111;
 border-color: #0A6DC4 !important;
 }
 .outlinedragon {
@@ -1901,16 +1764,6 @@ color: #fff;
 background-color: #0A6DC4;
 color: #fff;
 }
-.ppbuttondragon {
-border-color: #0f5ea3;
-background-color: #0f5ea3;
-color: #fff;
-}
-.ppbuttondragon:hover {
-background-color: #0A6DC4;
-border-color: #0A6DC4;
-color: #fff;
-}   
 .inlineboxdragon {
 background-color: #dae0e6;
 }
@@ -1937,7 +1790,7 @@ color: #fff !important;
 }
 .limelightevil {
 background: #857a97;
-color: #000;
+color: #111;
 border-color: #5A5366 !important;
 }
 .outlineevil {
@@ -1974,16 +1827,6 @@ color: #fff;
 background-color: #5A5366;
 color: #fff;
 }
-.ppbuttonevil {
-border-color: #474250;
-background-color: #474250;
-color: #fff;
-}
-.ppbuttonevil:hover {
-background-color: #5A5366;
-border-color: #5A5366;
-color: #fff;
-}   
 .inlineboxevil {
 background-color: #dfdce4;
 }
@@ -2010,7 +1853,7 @@ color: #fff !important;
 }
 .limelightsteel {
 background: #84afbe;
-color: #000;
+color: #111;
 border-color: #5A8EA1 !important;
 }
 .outlinesteel {
@@ -2047,16 +1890,6 @@ color: #fff;
 background-color: #5A8EA1;
 color: #fff;
 }
-.ppbuttonsteel {
-border-color: #477788;
-background-color: #477788;
-color: #fff;
-}
-.ppbuttonsteel:hover {
-background-color: #5A8EA1;
-border-color: #5A8EA1;
-color: #fff;
-}   
 .inlineboxsteel {
 background-color: #d6dfe2;
 }
@@ -2083,7 +1916,7 @@ color: #fff !important;
 }
 .limelightfairy {
 background: #f0b2ec;
-color: #000;
+color: #111;
 border-color: #EC8FE6 !important;
 }
 .outlinefairy {
@@ -2120,16 +1953,6 @@ color: #fff;
 background-color: #EC8FE6;
 color: #fff;
 }
-.ppbuttonfairy {
-border-color: #d87ad2;
-background-color: #d87ad2;
-color: #fff;
-}
-.ppbuttonfairy:hover {
-background-color: #EC8FE6;
-border-color: #EC8FE6;
-color: #fff;
-}   
 .inlineboxfairy {
 background-color: #f3e3f2;
 }
