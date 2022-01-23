@@ -1711,6 +1711,7 @@ function resetQuiz() {
     let outlinedBoxes = document.querySelectorAll(".outline");
     for (let i = 0; i< outlinedBoxes.length; i++){
         outlinedBoxes[i].classList.remove("outline")
+        outlinedBoxes[i].classList.remove("outline"+getCurrentTypeName())
     }
 
     for (let key in unguessedDictionary){
