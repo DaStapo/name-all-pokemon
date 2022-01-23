@@ -1370,6 +1370,7 @@ let regionToAll = function (regionElement){
 
 
 let typeClasses = [
+    "smolbuttonxdarktype",
     "smolbuttonxtype",
     "limetype",
     "limelighttype",
@@ -1388,7 +1389,7 @@ let typeClasses = [
     "ppbuttontype",
     "ppbuttontype:hover",
     "inlineboxtype",
-    "smolbuttonxdarktype",
+
     "buttondarktype",
     "limelightdarktype",
     "inlineboxdarktype" ,
@@ -2544,6 +2545,33 @@ document.getElementById("darkon").onclick = function (){
 document.getElementById("darkoff").onclick = function (){
     if(darkMode){
         darkMode = !darkMode
+
+        //has to be called before removing other shit
+        if(currentType !== ""){
+            document.getElementById("body").classList.remove("blenddark")
+            document.getElementById("body").classList.add("blend")
+
+
+            for (let i = 0; i< typeClasses.length; i++){
+                let currentClass = typeClasses[i];
+                if(!currentClass.includes('dark')){
+                    continue;
+                }
+        
+                let typeName = getCurrentTypeName();
+                let val = currentClass.replace("type", "");
+                let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
+                for (let j = 0; j<allElements.length; j++){
+                    allElements[j].classList.remove(currentClass.replace("type", typeName))
+                }
+        
+            }
+
+
+        }
+
+
+
         visualizeButtonUnclick(document.getElementById("darkon"))
         visualizeButtonClick(document.getElementById("darkoff"))
 
@@ -2595,27 +2623,6 @@ document.getElementById("darkoff").onclick = function (){
         }
         recentSprite.src = '/sprites/unknown.png'
 
-        if(currentType !== ""){
-            document.getElementById("body").classList.remove("blenddark")
-            document.getElementById("body").classList.add("blend")
-
-
-            for (let i = 0; i< typeClasses.length; i++){
-                let currentClass = typeClasses[i];
-                if(!currentClass.includes('dark')){
-                    continue;
-                }
-        
-                let typeName = getCurrentTypeName();
-                let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
-                for (let j = 0; j<allElements.length; j++){
-                    allElements[j].classList.remove(currentClass.replace("type", typeName))
-                }
-        
-            }
-
-
-        }
     }
 }
 
