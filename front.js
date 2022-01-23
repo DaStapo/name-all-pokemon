@@ -660,19 +660,19 @@ for (key in typeDict){
     delete typeDict[key]
     typeDict[standardizeName(key)] = temp
 }
-typeDict["urshifu"]["primary"] = "fighting"
-typeDict["urshifu"]["secondary"] = "dark"
+//typeDict["urshifu"]["primary"] = "fighting"
+//typeDict["urshifu"]["secondary"] = "dark"
 let combinedList = pokemonList.concat(megaList).concat(gmaxList)
 for (let i = 0; i < combinedList.length; i++) {
     let pokemon = standardizeName(combinedList[i]);
-    /*
+    
     if (pokemon === 'urshifu'){
         pokemonListByType["dark"].push(pokemon)
         pokemonRevealListByType["dark"].push(pokemon)
         pokemonListByType["fighting"].push(pokemon)
         pokemonRevealListByType["fighting"].push(pokemon)
         continue
-    }*/
+    }
     
  //for future update testing
     if (!(pokemon in typeDict)){
