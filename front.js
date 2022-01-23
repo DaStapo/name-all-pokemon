@@ -2434,9 +2434,9 @@ let updateFullLeaderboard = function (){
 			ballImg.classList.add('spriteb');
 			ballImg.src = '/sprites/unknown-1.png';
 			scoreDiv.classList.add('board')
-			placeDiv.classList.add('place','inlinebox')
-			usernameDiv.classList.add('twitchname','inlinebox')
-			nrGuessedDiv.classList.add('number','inlinebox')
+			placeDiv.classList.add('place','inlinebox', 'inlinebox'+currentTypeName)
+			usernameDiv.classList.add('twitchname','inlinebox', 'inlinebox'+currentTypeName)
+			nrGuessedDiv.classList.add('number','inlinebox', 'inlinebox'+currentTypeName)
             if (darkMode){
                 placeDiv.classList.add('inlineboxdark')
                 placeDiv.classList.add('inlineboxdark'+currentTypeName)
