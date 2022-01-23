@@ -669,6 +669,8 @@ for (let i = 0; i < combinedList.length; i++) {
     if (pokemon === 'urshifu'){
         pokemonListByType["dark"].push(pokemon)
         pokemonRevealListByType["dark"].push(pokemon)
+        pokemonListByType["water"].push(pokemon)
+        pokemonRevealListByType["water"].push(pokemon)
         pokemonListByType["fighting"].push(pokemon)
         pokemonRevealListByType["fighting"].push(pokemon)
         continue
