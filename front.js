@@ -93,15 +93,39 @@ for (let key in extraPokemon){
 }
 
 
+let getCurrentTypeName = function (){
+    let typeName = currentType
+    if (typeName == "dark"){
+        typeName = "evil"
+    }
+    return typeName;
+}
 let visualizeButtonClick = function(elem){
     elem.classList.add("smolbuttonx")
     if (darkMode){
         elem.classList.add("smolbuttonxdark")
     }
+
+    if (currentType !== ""){
+        let typeName = getCurrentTypeName();
+        elem.classList.add("smolbuttonx"+typeName)
+        if (darkMode){
+            elem.classList.add("smolbuttonxdark"+typeName)
+        }
+    }
+
 }
 let visualizeButtonUnclick = function(elem){
     elem.classList.remove("smolbuttonx")
     elem.classList.remove("smolbuttonxdark")
+    if (currentType !== ""){
+        let typeName = currentType
+        if (typeName == "dark"){
+            typeName = "evil"
+        }
+        elem.classList.remove("smolbuttonx"+typeName)
+        elem.classList.remove("smolbuttonxdark"+typeName)
+    }
 }
 
 
@@ -199,18 +223,25 @@ for (key in formatted_lang_map){
     lang.id = 'missing-'+ key
 	
     lang.onclick = function () {
-		
+		let typeName = getCurrentTypeName();
 		for (let i = 0; i< allMissingLangButtons.length; i++){
 			if (allMissingLangButtons[i] != lang){
 				allMissingLangButtons[i].classList.remove('smolbuttonSwap')
+                allMissingLangButtons[i].classList.remove('smolbuttonSwap'+typeName)
 				allMissingLangButtons[i].classList.add('smolbutton')
+                allMissingLangButtons[i].classList.add('smolbutton' + typeName)
+
                 if (darkMode){
                     allMissingLangButtons[i].classList.add('smolbuttondark')
+                    allMissingLangButtons[i].classList.add('smolbuttondark'+typeName)
                 }
 			}
 			lang.classList.remove('smolbutton');
+            lang.classList.remove('smolbutton'+typeName);
             lang.classList.remove('smolbuttondark');
+            lang.classList.remove('smolbuttondark'+typeName);
 			lang.classList.add('smolbuttonSwap');
+            lang.classList.add('smolbuttonSwap'+typeName);
 		}
 		
 		for (let i = 0; i< formatted_lang_map[currentKey].length; i++){
@@ -527,7 +558,9 @@ function showSprite(name) {
         
 
         if (allRevealed){
+            
             boxElem.classList.add('outline')
+            boxElem.classList.add('outline'+getCurrentTypeName())
         }
     }
 }
@@ -1333,6 +1366,7 @@ let regionToAll = function (regionElement){
 
 
 let typeClasses = [
+    "smolbuttonxtype",
     "limetype",
     "limelighttype",
     "outlinetype",
@@ -1346,7 +1380,7 @@ let typeClasses = [
     "smolbuttontype",
     "smolbuttonSwaptype",
     "smolbuttontype:hover",
-    "smolbuttonxtype",
+    
     "ppbuttontype",
     "ppbuttontype:hover",
     "inlineboxtype",
@@ -1417,6 +1451,7 @@ function updateTypeFilter(type){
             typeName = "evil"
         }
         let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
+        //let allElements = document.querySelectorAll("." + currentClass.replace("type", ""));
         for (let j = 0; j<allElements.length; j++){
             allElements[j].classList.add(currentClass.replace("type", typeName))
         }
@@ -1451,11 +1486,9 @@ function updateGenFilter() {
         document.getElementById("body").classList.remove(currentType);
         for (let i = 0; i< typeClasses.length; i++){
             let currentClass = typeClasses[i];
-            let typeName = currentType;
-            if (typeName=="dark"){
-                typeName = "evil"
-            }
+            let typeName = getCurrentTypeName();
             let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
+            let val  = "." + currentClass.replace("type", "")
             for (let j = 0; j<allElements.length; j++){
                 allElements[j].classList.remove(currentClass.replace("type", typeName))
             }
@@ -1478,11 +1511,15 @@ function updateGenFilter() {
     gmaxBox.style.display = "none";
     gen7half.style.display = "none";
     //all gens
+    let currentTypeName = getCurrentTypeName();
     if (currentGen === 0) {
 
         document.getElementById("fullQuizButton").classList.remove('smolbutton');
+        document.getElementById("fullQuizButton").classList.remove('smolbutton'+currentTypeName);
         document.getElementById("fullQuizButton").classList.remove('smolbuttondark');
+        document.getElementById("fullQuizButton").classList.remove('smolbuttondark'+currentTypeName);
         document.getElementById("fullQuizButton").classList.add('smolbuttonSwap');
+        document.getElementById("fullQuizButton").classList.add('smolbuttonSwap'+currentTypeName);
 
         gen7half.style.display = "block";
         for (let i = 0; i < boxes.length; i++) {
@@ -1507,9 +1544,13 @@ function updateGenFilter() {
     } else {
 
         document.getElementById("fullQuizButton").classList.remove('smolbuttonSwap')
+        document.getElementById("fullQuizButton").classList.remove('smolbuttonSwap'+currentTypeName)
         document.getElementById("fullQuizButton").classList.add('smolbutton')
+        document.getElementById("fullQuizButton").classList.add('smolbutton'+currentTypeName)
+
         if (darkMode){
             document.getElementById("fullQuizButton").classList.add('smolbuttondark')
+            document.getElementById("fullQuizButton").classList.add('smolbuttondark'+currentTypeName)
         }
 
 
@@ -2342,9 +2383,11 @@ let twitchInput = function (twitchUsername, input, shouldCount){
         let sorted = sortDictionaryByValue(twitchLeaderboard);
         emptyLeaderboard();
         let leaderboardDiv = document.getElementById("leaderboard");
+        let currentTypeName = getCurrentTypeName()
         for (let i = 0; i<sorted.length; i++){
             let scoreDiv = document.createElement('div');
             scoreDiv.classList.add('inlinetext')
+            scoreDiv.classList.add('inlinetext'+currentTypeName)
             scoreDiv.classList.add('rank')
             scoreDiv.classList.add(rankVals[i])
             let textNode = document.createTextNode('#' + (i+1) +' '+ sorted[i][0] + ' (' + sorted[i][1] + ')');
@@ -2379,7 +2422,7 @@ let updateFullLeaderboard = function (){
     if (Object.keys(twitchLeaderboard).length > 0){
         let sorted = sortDictionaryByValue(twitchLeaderboard);
         leaderboardDiv.style.display = 'block'
-		
+		let currentTypeName = getCurrentTypeName();
 		for (let i = 0; i<sorted.length; i++){
 			let scoreDiv = document.createElement('div');
 			let placeDiv = document.createElement('div');
@@ -2394,8 +2437,11 @@ let updateFullLeaderboard = function (){
 			nrGuessedDiv.classList.add('number','inlinebox')
             if (darkMode){
                 placeDiv.classList.add('inlineboxdark')
+                placeDiv.classList.add('inlineboxdark'+currentTypeName)
                 usernameDiv.classList.add('inlineboxdark')
+                usernameDiv.classList.add('inlineboxdark'+currentTypeName)
                 nrGuessedDiv.classList.add('inlineboxdark')  
+                nrGuessedDiv.classList.add('inlineboxdark'+currentTypeName)  
             }
 
 			let textNode = document.createTextNode('#' + (i+1));
@@ -2421,7 +2467,7 @@ document.getElementById("darkon").onclick = function (){
         document.getElementById("body").classList.add("bodydark");
 
         let boxes = document.getElementsByClassName("box")
-
+        
         for (let i = 0; i < boxes.length; i++){
             boxes[i].classList.add("boxdark")
         }
@@ -2478,10 +2524,7 @@ document.getElementById("darkon").onclick = function (){
                     continue;
                 }
         
-                let typeName = currentType;
-                if (typeName=="dark"){
-                    typeName = "evil"
-                }
+                let typeName = getCurrentTypeName();
                 let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
                 for (let j = 0; j<allElements.length; j++){
                     allElements[j].classList.add(currentClass.replace("type", typeName))
@@ -2558,10 +2601,7 @@ document.getElementById("darkoff").onclick = function (){
                     continue;
                 }
         
-                let typeName = currentType;
-                if (typeName=="dark"){
-                    typeName = "evil"
-                }
+                let typeName = getCurrentTypeName();
                 let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
                 for (let j = 0; j<allElements.length; j++){
                     allElements[j].classList.remove(currentClass.replace("type", typeName))
