@@ -696,9 +696,8 @@
 		position: relative;
 		right: 0;
 		top: 0;
-		z-index: -2;
 		font-family: 'Roboto';
-		margin: 10px 10px 21px -5px;
+		margin: 10px 10px 50px -5px;
 		border-top: 3px dotted;
 		border-color: #8CC63F;
 		float: right;
