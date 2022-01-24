@@ -101,7 +101,9 @@
 	border-bottom: 2px dotted #8CC63F;
 	}
 	.outline {
-	outline: 2px solid #8CC63F;}
+	border: 2px solid #8CC63F;
+	padding: 9px 8px 8px 8px;
+	}
 	.greyer {
 	background: #444;
 	color: #fff;
@@ -825,8 +827,9 @@ border-color: #9099A1
 !important;
 }
 .outlinenormal {
-outline: 2px solid #9099A1
-;}
+border: 2px solid #9099A1;
+padding: 9px 8px 8px 8px;
+}
 .topedgenormal {
 border-top-color: #9099A1
 ;
@@ -894,7 +897,9 @@ color: #111;
 border-color: #FF9C54 !important;
 }
 .outlinefire {
-outline: 2px solid #FF9C54;}
+border: 2px solid #FF9C54;
+padding: 9px 8px 8px 8px;
+}
 .topedgefire {
 border-top-color: #FF9C54;
 }
@@ -951,7 +956,9 @@ color: #111;
 border-color: #4D90D5 !important;
 }
 .outlinewater {
-outline: 2px solid #4D90D5;}
+border: 2px solid #4D90D5;
+padding: 9px 8px 8px 8px;
+}
 .topedgewater {
 border-top-color: #4D90D5;
 }
@@ -1008,7 +1015,9 @@ color: #111;
 border-color: #63BB5B !important;
 }
 .outlinegrass {
-outline: 2px solid #63BB5B;}
+border: 2px solid #63BB5B;
+padding: 9px 8px 8px 8px;
+}
 .topedgegrass {
 border-top-color: #63BB5B;
 }
@@ -1065,7 +1074,9 @@ color: #111;
 border-color: #F3D23B !important;
 }
 .outlineelectric {
-outline: 2px solid #F3D23B;}
+border: 2px solid #F3D23B;
+padding: 9px 8px 8px 8px;
+}
 .topedgeelectric {
 border-top-color: #F3D23B;
 }
@@ -1123,7 +1134,9 @@ color: #111;
 border-color: #74cec0 !important;
 }
 .outlineice {
-outline: 2px solid #74cec0;}
+border: 2px solid #74cec0;
+padding: 9px 8px 8px 8px;
+}
 .topedgeice {
 border-top-color: #74cec0;
 }
@@ -1180,7 +1193,9 @@ color: #111;
 border-color: #CE4069 !important;
 }
 .outlinefighting {
-outline: 2px solid #CE4069;}
+border: 2px solid #CE4069;
+padding: 9px 8px 8px 8px;
+}
 .topedgefighting {
 border-top-color: #CE4069;
 }
@@ -1237,7 +1252,9 @@ color: #111;
 border-color: #AB6AC8 !important;
 }
 .outlinepoison {
-outline: 2px solid #AB6AC8;}
+border: 2px solid #AB6AC8;
+padding: 9px 8px 8px 8px;
+}
 .topedgepoison {
 border-top-color: #AB6AC8;
 }
@@ -1294,7 +1311,9 @@ color: #111;
 border-color: #D97746 !important;
 }
 .outlineground {
-outline: 2px solid #D97746;}
+border: 2px solid #D97746;
+padding: 9px 8px 8px 8px;
+}
 .topedgeground {
 border-top-color: #D97746;
 }
@@ -1351,7 +1370,9 @@ color: #111;
 border-color: #8fa8dd !important;
 }
 .outlineflying {
-outline: 2px solid #8fa8dd;}
+border: 2px solid #8fa8dd;
+padding: 9px 8px 8px 8px;
+}
 .topedgeflying {
 border-top-color: #8fa8dd;
 }
@@ -1408,7 +1429,9 @@ color: #111;
 border-color: #F97176 !important;
 }
 .outlinepsychic {
-outline: 2px solid #F97176;}
+border: 2px solid #F97176;
+padding: 9px 8px 8px 8px;
+}
 .topedgepsychic {
 border-top-color: #F97176;
 }
@@ -1465,7 +1488,9 @@ color: #111;
 border-color: #90C12C !important;
 }
 .outlinebug {
-outline: 2px solid #90C12C;}
+border: 2px solid #90C12C;
+padding: 9px 8px 8px 8px;
+}
 .topedgebug {
 border-top-color: #90C12C;
 }
@@ -1522,7 +1547,9 @@ color: #111;
 border-color: #C7B78B !important;
 }
 .outlinerock {
-outline: 2px solid #C7B78B;}
+border: 2px solid #C7B78B;
+padding: 9px 8px 8px 8px;
+}
 .topedgerock {
 border-top-color: #C7B78B;
 }
@@ -1579,7 +1606,9 @@ color: #111;
 border-color: #5269AC !important;
 }
 .outlineghost {
-outline: 2px solid #5269AC;}
+border: 2px solid #5269AC;
+padding: 9px 8px 8px 8px;
+}
 .topedgeghost {
 border-top-color: #5269AC;
 }
@@ -1636,7 +1665,9 @@ color: #111;
 border-color: #0A6DC4 !important;
 }
 .outlinedragon {
-outline: 2px solid #0A6DC4;}
+border: 2px solid #0A6DC4;
+padding: 9px 8px 8px 8px;
+}
 .topedgedragon {
 border-top-color: #0A6DC4;
 }
@@ -1693,7 +1724,9 @@ color: #111;
 border-color: #5A5366 !important;
 }
 .outlineevil {
-outline: 2px solid #5A5366;}
+border: 2px solid #5A5366;
+padding: 9px 8px 8px 8px;
+}
 .topedgeevil {
 border-top-color: #5A5366;
 }
@@ -1750,7 +1783,9 @@ color: #111;
 border-color: #5A8EA1 !important;
 }
 .outlinesteel {
-outline: 2px solid #5A8EA1;}
+border: 2px solid #5A8EA1;
+padding: 9px 8px 8px 8px;
+}
 .topedgesteel {
 border-top-color: #5A8EA1;
 }
@@ -1807,7 +1842,9 @@ color: #111;
 border-color: #EC8FE6 !important;
 }
 .outlinefairy {
-outline: 2px solid #EC8FE6;}
+border: 2px solid #EC8FE6;
+padding: 9px 8px 8px 8px;
+}
 .topedgefairy {
 border-top-color: #EC8FE6;
 }
