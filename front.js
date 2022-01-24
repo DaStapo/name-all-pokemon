@@ -1648,12 +1648,6 @@ function onLoadingComplete() {
     document.getElementById("play").style.display = "inline-block";
     document.getElementById("playtext").style.opacity = "1";
     document.getElementById("pokemon").disabled = false;
-    document.getElementById("silhouette").disabled = false;
-    document.getElementById("silhouette").style.opacity = "1";
-    document.getElementById("surrender").style.opacity = "1";
-    document.getElementById("resetButton").style.opacity = "1";
-    document.getElementById("surrender").disabled = false;
-    document.getElementById("resetButton").disabled = false;
     changeFooterPosition();
 }
 

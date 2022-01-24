@@ -114,22 +114,31 @@
       <div class="footer" id="footer">
         <div class="row">
           <div class="column">
-            <button id="surrender" class="button roundedc blocked" disabled="disabled">Give up</button>
+            <button id="surrender" class="button roundedleft">Give up</button>
           </div>
           <div class="column">
-            <button id="resetButton" class="button roundedc blocked" disabled="disabled" style="margin-left: 10px;">Reset</button>
+            <button id="resetButton" class="button roundedc mleft">Reset</button>
           </div>
           <div class="column hidden">
-            <button id="pokeball" class="button roundedc blocked" style="margin-left: 10px;">No Shadows</button>
+            <button id="pokeball" class="button roundedc mleft">No Shadows</button>
           </div>
           <div class="column">
-            <button id="silhouette" class="button roundedc blocked" disabled="disabled" style="margin-left: 10px;">Shadows</button>
+            <button id="silhouette" class="button roundedright mleft">Shadows</button>
+          </div>
+          <div class="column">
+            <button id="darkon" class="button-i roundedc2 moonc mleft"><img src=images/moon.svg class="icon"></button>
+          </div>
+          <div class="column">
+            <button id="darkoff" class="button-i roundedc2 sunc mleft" style="display: none;"><img src=images/sun.svg class="icon"></button>
+          </div>
+          <div class="column">
+            <button id="shiny" class="button-i roundedc2 shinyc mleft"><img src=images/shiny.svg class="icon"></button>
           </div>
         </div>
         <div class="row">
           <div class="column wider">
             <div class="column">
-              <div class="box roundedc slightpad">
+              <div class="box roundedc2 slightpad">
                 <form>Select Quiz:
                   <div class="smolbutton" id="fullQuizButton" onclick="gen0click()">Full</div>
                   <div class="smolbutton" id="genselect" onclick="genselectmenu()">Generation</div>
@@ -138,7 +147,7 @@
               </div>
             </div>
             <div class="column">
-              <div class="box roundedc slightpad">
+              <div class="box roundedc2 slightpad">
                 <form>Timer: <div class="smolbutton smolbuttonx" id="timer0" name='timer' value="timer0"> ∞</div>
                   <div class="smolbutton" id="timer1" name='timer' value="timer1"> 1h</div>
                   <div class="smolbutton" id="timer2" name='timer' value="timer2"> 30m</div>
@@ -147,28 +156,14 @@
               </div>
             </div>
             <div class="column">
-              <div id="lang_box" class="box roundedc padright"></div>
-            </div>
-            <div class="column" style="display:block;">
-              <div class="box roundedc padright">
-                <form>
-                  <div class="smolbutton smolbuttonx" id="darkoff" name="dark" style="display: none;"> Light mode</div>
-                  <div class="smolbutton" id="darkon" name="dark"> Dark mode</div>
-                </form>
-              </div>
-            </div>
-            <div class="column">
-              <div class="box roundedc padright">
-                <form><div class="smolbutton" id="shiny" name="shiny" value="shinyon"> Shiny</div>
-                </form>
-              </div>
+              <div id="lang_box" class="box roundedc2 padright"></div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="column wider">
             <div class="column">
-              <div class="box roundedc slightpad" id="inputbox"> Input from Twitch-chat : <input type="text" class="input-twitch" id="twitch-channel" maxlength="25" autocomplete="off" placeholder="Channel Name">
+              <div class="box roundedc2 slightpad" id="inputbox"> Input from Twitch-chat : <input type="text" class="input-twitch" id="twitch-channel" maxlength="25" autocomplete="off" placeholder="Channel Name">
                 <div class="smolbutton" id="twitch-on"> on</div>
                 <div class="smolbutton smolbuttonx " id="twitch-off"> off</div>
               </div>
@@ -313,7 +308,7 @@
         <h2>Change timer?</h2>
         <p>Quiz and timer will reset</p>
         <br />
-        <div id="timer-yes" class="button hovgr roundedb">Switch</div>
+        <div id="timer-yes" class="button roundedb">Switch</div>
         <div id="timer-no" class="button hovr roundedb">Cancel</div>
       </div>
     </div>
@@ -322,14 +317,14 @@
         <h2>Switch Quiz?</h2>
         <p>Quiz and timer will reset</p>
         <br />
-        <div id="gen-yes" class="button hovgr roundedb">Switch</div>
+        <div id="gen-yes" class="button roundedb">Switch</div>
         <div id="gen-no" class="button hovr roundedb">Cancel</div>
       </div>
     </div>
     <div id="promptsilhouette" class="overlay">
       <div class="prompt">
         <h2>Reveal shadows?</h2>
-        <div id="sil-yes" class="button hovgr roundedb">Reveal</div>
+        <div id="sil-yes" class="button roundedb">Reveal</div>
         <div id="sil-no" class="button hovr roundedb">Cancel</div>
       </div>
     </div>	
