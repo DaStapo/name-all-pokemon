@@ -2169,7 +2169,7 @@ document.getElementById("twitch-on").onclick = function (){
                 }
             }else if (standardizeName(message) === "shinyon".toLowerCase()) {
                 if (Date.now() - swapLimit > lastShinySwap ){
-                    shinyOff();
+                    shinyOn();
                     lastShinySwap = Date.now();
                 }
             }else if (standardizeName(message) === "shinyoff".toLowerCase()) {
