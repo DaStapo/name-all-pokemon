@@ -114,39 +114,40 @@
       <div class="footer" id="footer">
         <div class="row">
           <div class="column">
-            <button id="surrender" class="button roundedleft">Give up</button>
-          </div>
-          <div class="column">
-            <button id="resetButton" class="button roundedc mleft">Reset</button>
-          </div>
-          <div class="column hidden">
-            <button id="pokeball" class="button roundedc mleft">No Shadows</button>
-          </div>
-          <div class="column">
-            <button id="silhouette" class="button roundedright mleft">Shadows</button>
+            <div class="column">
+              <button id="surrender" class="button roundedleft">Give up</button>
+            </div>
+            <div class="column">
+              <button id="resetButton" class="button roundedc mleft">Reset</button>
+            </div>
+            <div class="column">
+              <button id="pokeball" class="button roundedc mleft hidden">No Shadows</button>
+            </div>
+            <div class="column">
+              <button id="silhouette" class="button roundedright mleft">Shadows</button>
+            </div>
           </div>
           <div class="column">
             <button id="darkon" class="button-i roundedc2 moonc mleft"><img src=images/moon.svg class="icon white"></button>
           </div>
           <div class="column">
             <button id="darkoff" class="button-i roundedc2 sunc mleft" style="display: none;"><img src=images/sun.svg class="icon white"></button>
-          </div>
+          </div> 
           <div class="column">
-            <button id="shiny" class="button-i roundedc2 shinyc mleft"><img src=images/shiny.svg class="icon"></button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column wider">
-            <div class="column">
-              <div class="box roundedc2 slightpad">
+            <div class="box roundedc2 slightpad">
                 <form>Select Quiz:
                   <div class="smolbutton" id="fullQuizButton" onclick="gen0click()">Full</div>
                   <div class="smolbutton" id="genselect" onclick="genselectmenu()">Generation</div>
                   <div class="smolbutton" id="typeselect" onclick="typeselectmenu()">Type</div>
                 </form>
-              </div>
             </div>
-            <div class="column">
+          </div>   
+          <div class="column">
+            <button id="shiny" class="button-i roundedc2 shinyc mleft"><img src=images/shiny.svg class="icon"></button>
+          </div>  
+        </div>
+        <div class="row">
+          <div class="column">
               <div class="box roundedc2 slightpad">
                 <form>Timer: <div class="smolbutton smolbuttonx" id="timer0" name='timer' value="timer0"> ∞</div>
                   <div class="smolbutton" id="timer1" name='timer' value="timer1"> 1h</div>
@@ -154,13 +155,10 @@
                   <div class="smolbutton" id="timer3" name='timer' value="timer3"> 10m</div>
                 </form>
               </div>
-            </div>
-            <div class="column">
-              <div id="lang_box" class="box roundedc2 padright"></div>
-            </div>
           </div>
-        </div>
-        <div class="row">
+          <div class="column">
+            <div id="lang_box" class="box roundedc2 padright"></div>
+          </div>
           <div class="column wider">
             <div class="column">
               <div class="box roundedc2 slightpad" id="inputbox"> Input from Twitch-chat : <input type="text" class="input-twitch" id="twitch-channel" maxlength="25" autocomplete="off" placeholder="Channel Name">
@@ -203,8 +201,8 @@
                   </div>
                 </a>
               </div>
-			  <div class="p1">Project by <a href="https://linktr.ee/adeptcharon" target="_blank">Charon</a>, JavaScript by <a href="https://twitter.com/Stapoh" target="_blank">Stapo</a></div>
-			  <pp>This project is developed and maintained for free. If you like this quiz and want to support our work or help offset the server costs, feel free to do so <a href="https://www.paypal.com/donate?hosted_button_id=X2M8PVSB55698" target="_blank">here</a>.<br>
+			        <div class="p1">Project by <a href="https://linktr.ee/adeptcharon" target="_blank">Charon</a>, JavaScript by <a href="https://twitter.com/Stapoh" target="_blank">Stapo</a></div>
+			        <pp>This project is developed and maintained for free. If you like this quiz and want to support our work or help offset the server costs, feel free to do so <a href="https://www.paypal.com/donate?hosted_button_id=X2M8PVSB55698" target="_blank">here</a>.<br>
               Resource for data (e.g. species names in different languages): <a href="https://github.com/PokeAPI/" target="_blank">PokéAPI Project</a>. Resource for sprites: <a href="https://msikma.github.io/pokesprite/overview/dex-gen8.html" target="_blank">Pokésprite Database Project</a>. The sprite-images belong to © Nintendo/Creatures Inc./GAME FREAK Inc. </pp>
             </div>
           </div>
@@ -214,95 +212,90 @@
     <div id="overlay" class="overlay" onclick="off()">
       <div class="prompt bigbox lime">
         <div class="box winbutton pointer"><h1>Well done!</h1>
-			<br />
-			<h2>You named <div id="currentcount"></div>
-			<div id="gen-name"></div>Pokémon <br />in <div id="timer-score"></div>!
-			</h2>
-			<div id="trychallenge">
-				<br />
-				<ppp>Challenge yourself further <br />try naming them without shadows </p>
-			</div>
-		</div>
+			    <br />
+			    <h2>You named <div id="currentcount"></div>
+			    <div id="gen-name"></div>Pokémon <br />in <div id="timer-score"></div>!
+			    </h2>
+			    <div id="trychallenge">
+				  <br />
+				  <ppp>Challenge yourself further <br />try naming them without shadows </p>
+			    </div>
+		    </div>
       </div>
     </div>
- 	<div class="overlay" id="genselection" style="display: block;">
+ 	  <div class="overlay" id="genselection" style="display: block;">
       <div class="prompt">
-		<div id="loadbox">
+		    <div id="loadbox">
           <img src="images/logo.gif" class="titlecard" alt="titlecard">
-        <div class="loader" id="loader">
+          <div class="loader" id="loader">
           <h2>Loading Quiz</h2>
-        </div>
-        <div id="play" class="play">
-          <h2>Loading complete</h2>
-        </div>
-        <div class="row2">
-          <div class="bar">
-            <div id="loadbar" class="load"></div>
           </div>
-        </div>
-		</div>
+          <div id="play" class="play">
+          <h2>Loading complete</h2>
+          </div>
+          <div class="row2">
+            <div class="bar">
+              <div id="loadbar" class="load"></div>
+            </div>
+          </div>
+		    </div>
         <div class="playtext" id="playtext">
-		  <div id="startfull">
-        <div class="button-s roundedb hovg" id="gen0" ><div class="padded2">Full quiz</div></div>
-        <div class="p2">Quiz by generation:</div>
-		  </div>
+		      <div id="startfull">
+            <div class="button-s roundedb hovg" id="gen0" ><div class="padded2">Full quiz</div></div>
+            <div class="p2">Quiz by generation:</div>
+		      </div>
           <div class="row2">
             <div class="button-s roundedh hovg" id="gen1" ><div class="mshow">1</div><div class="mhide">Kanto</div><img id="gen1img" src=sprites/squirtle.png class="spritec cropped"></div>
             <div class="button-s roundedc hovg" id="gen2" ><div class="mshow">2</div><div class="mhide">Johto</div><img id="gen2img" src=sprites/chikorita.png class="spritec cropped"></div>
             <div class="button-s roundedg hovg" id="gen3" ><div class="mshow">3</div><div class="mhide">Hoenn</div><img id="gen3img" src=sprites/torchic.png class="spritec cropped"></div>
           </div>
-		  <div class="row2">
+		      <div class="row2">
             <div class="button-s roundedh hovg" id="gen4" ><div class="mshow">4</div><div class="mhide">Sinnoh</div><img id="gen4img" src=sprites/piplup.png class="spritec cropped"></div>          
             <div class="button-s roundedc hovg" id="gen5" ><div class="mshow">5</div><div class="mhide">Unova</div><img id="gen5img" src=sprites/snivy.png class="spritec cropped"></div>
             <div class="button-s roundedg hovg" id="gen6" ><div class="mshow">6</div><div class="mhide">Kalos</div><img id="gen6img" src=sprites/fennekin.png class="spritec cropped"></div>
           </div>
-		  <div class="row2">
+		      <div class="row2">
             <div class="button-s roundedh hovg" id="gen7" ><div class="mshow">7</div><div class="mhide">Alola</div><img id="gen7img" src=sprites/popplio.png class="spritec cropped"></div>
             <div class="button-s roundedg hovg" id="gen8" ><div class="mshow">8</div><div class="mhide">Galar</div><img id="gen8img" src=sprites/grookey.png class="spritec cropped"></div>
-			<div class="button-s roundedg hovg playtext cursor" id="gen9"><div class="mshow">9</div><div class="mhide">Gen9</div><img id="gen9img" src=sprites/unknown.png class="spritec cropped"></div>
+			      <div class="button-s roundedg hovg playtext cursor" id="gen9"><div class="mshow">9</div><div class="mhide">Gen9</div><img id="gen9img" src=sprites/unknown.png class="spritec cropped"></div>
           </div>
         </div>
       </div>
     </div>
-	
-	
-	
- 	<div class="overlay" id="typeselection" onclick="off2()">
+ 	  <div class="overlay" id="typeselection" onclick="off2()">
       <div class="prompt fullwidth">
-          <div class="row2">
-            <div class="button-s roundedi hovn normal" id="b-normal" ><img src=images/types/NORMAL.svg class="symbol"><div class="tshow">NRM</div><div class="thide">Normal</div></div>
-            <div class="button-s roundedi hovn ground" id="b-ground" ><img src=images/types/GROUND.svg class="symbol"><div class="tshow">GRD</div><div class="thide">Ground</div></div>
-            <div class="button-s roundedi hovn bug" id="b-bug" ><img src=images/types/BUG.svg class="symbol"><div class="tshow">BUG</div><div class="thide">Bug</div></div>
-          </div>
-		  <div class="row2">
-            <div class="button-s roundedi hovn water" id="b-water" ><img src=images/types/WATER.svg class="symbol"><div class="tshow">WTR</div><div class="thide">Water</div></div>
-            <div class="button-s roundedi hovn flying" id="b-flying" ><img src=images/types/FLYING.svg class="symbol"><div class="tshow">FLY</div><div class="thide">Flying</div></div>
-            <div class="button-s roundedi hovn rock" id="b-rock" ><img src=images/types/ROCK.svg class="symbol"><div class="tshow">RCK</div><div class="thide">Rock</div></div>
-          </div>
-          <div class="row2">
-            <div class="button-s roundedi hovn grass" id="b-grass" ><img src=images/types/GRASS.svg class="symbol"><div class="tshow">GRS</div><div class="thide">Grass</div></div>
-            <div class="button-s roundedi hovn fighting" id="b-fighting" ><img src=images/types/FIGHTING.svg class="symbol"><div class="tshow">FGT</div><div class="thide">Fighting</div></div>
-            <div class="button-s roundedi hovn ghost" id="b-ghost" ><img src=images/types/GHOST.svg class="symbol"><div class="tshow">GHT</div><div class="thide">Ghost</div></div>
-          </div>
-          <div class="row2">
-            <div class="button-s roundedi hovn fire" id="b-fire" ><img src=images/types/FIRE.svg class="symbol"><div class="tshow">FIR</div><div class="thide">Fire</div></div>
-            <div class="button-s roundedi hovn poison" id="b-poison" ><img src=images/types/POISON.svg class="symbol"><div class="tshow">PSN</div><div class="thide">Poison</div></div>
-            <div class="button-s roundedi hovn steel" id="b-steel" ><img src=images/types/STEEL.svg class="symbol"><div class="tshow">STL</div><div class="thide">Steel</div></div>
-          </div>
-          <div class="row2">
-            <div class="button-s roundedi hovn electric" id="b-electric" ><img src=images/types/ELECTRIC.svg class="symbol"><div class="tshow">ELC</div><div class="thide">Electric</div></div>
-            <div class="button-s roundedi hovn psychic" id="b-psychic" ><img src=images/types/PSYCHIC.svg class="symbol"><div class="tshow">PSY</div><div class="thide">Psychic</div></div>
-            <div class="button-s roundedi hovn dragon" id="b-dragon" ><img src=images/types/DRAGON.svg class="symbol"><div class="tshow">DRG</div><div class="thide">Dragon</div></div>
-          </div>
-          <div class="row2">
-            <div class="button-s roundedi hovn ice" id="b-ice" ><img src=images/types/ICE.svg class="symbol"><div class="tshow">ICE</div><div class="thide">Ice</div></div>
-            <div class="button-s roundedi hovn evil" id="b-dark" ><img src=images/types/DARK.svg class="symbol"><div class="tshow">DRK</div><div class="thide">Dark</div></div>
-            <div class="button-s roundedi hovn fairy" id="b-fairy" ><img src=images/types/FAIRY.svg class="symbol"><div class="tshow">FRY</div><div class="thide">Fairy</div></div>
-          </div>
+        <div class="row2">
+          <div class="button-s roundedi hovn normal" id="b-normal" ><img src=images/types/NORMAL.svg class="symbol"><div class="tshow">NRM</div><div class="thide">Normal</div></div>
+          <div class="button-s roundedi hovn ground" id="b-ground" ><img src=images/types/GROUND.svg class="symbol"><div class="tshow">GRD</div><div class="thide">Ground</div></div>
+          <div class="button-s roundedi hovn bug" id="b-bug" ><img src=images/types/BUG.svg class="symbol"><div class="tshow">BUG</div><div class="thide">Bug</div></div>
+        </div>
+		    <div class="row2">
+          <div class="button-s roundedi hovn water" id="b-water" ><img src=images/types/WATER.svg class="symbol"><div class="tshow">WTR</div><div class="thide">Water</div></div>
+          <div class="button-s roundedi hovn flying" id="b-flying" ><img src=images/types/FLYING.svg class="symbol"><div class="tshow">FLY</div><div class="thide">Flying</div></div>
+          <div class="button-s roundedi hovn rock" id="b-rock" ><img src=images/types/ROCK.svg class="symbol"><div class="tshow">RCK</div><div class="thide">Rock</div></div>
+        </div>
+        <div class="row2">
+          <div class="button-s roundedi hovn grass" id="b-grass" ><img src=images/types/GRASS.svg class="symbol"><div class="tshow">GRS</div><div class="thide">Grass</div></div>
+          <div class="button-s roundedi hovn fighting" id="b-fighting" ><img src=images/types/FIGHTING.svg class="symbol"><div class="tshow">FGT</div><div class="thide">Fighting</div></div>
+          <div class="button-s roundedi hovn ghost" id="b-ghost" ><img src=images/types/GHOST.svg class="symbol"><div class="tshow">GHT</div><div class="thide">Ghost</div></div>
+        </div>
+        <div class="row2">
+          <div class="button-s roundedi hovn fire" id="b-fire" ><img src=images/types/FIRE.svg class="symbol"><div class="tshow">FIR</div><div class="thide">Fire</div></div>
+          <div class="button-s roundedi hovn poison" id="b-poison" ><img src=images/types/POISON.svg class="symbol"><div class="tshow">PSN</div><div class="thide">Poison</div></div>
+          <div class="button-s roundedi hovn steel" id="b-steel" ><img src=images/types/STEEL.svg class="symbol"><div class="tshow">STL</div><div class="thide">Steel</div></div>
+        </div>
+        <div class="row2">
+          <div class="button-s roundedi hovn electric" id="b-electric" ><img src=images/types/ELECTRIC.svg class="symbol"><div class="tshow">ELC</div><div class="thide">Electric</div></div>
+          <div class="button-s roundedi hovn psychic" id="b-psychic" ><img src=images/types/PSYCHIC.svg class="symbol"><div class="tshow">PSY</div><div class="thide">Psychic</div></div>
+          <div class="button-s roundedi hovn dragon" id="b-dragon" ><img src=images/types/DRAGON.svg class="symbol"><div class="tshow">DRG</div><div class="thide">Dragon</div></div>
+        </div>
+        <div class="row2">
+          <div class="button-s roundedi hovn ice" id="b-ice" ><img src=images/types/ICE.svg class="symbol"><div class="tshow">ICE</div><div class="thide">Ice</div></div>
+          <div class="button-s roundedi hovn evil" id="b-dark" ><img src=images/types/DARK.svg class="symbol"><div class="tshow">DRK</div><div class="thide">Dark</div></div>
+          <div class="button-s roundedi hovn fairy" id="b-fairy" ><img src=images/types/FAIRY.svg class="symbol"><div class="tshow">FRY</div><div class="thide">Fairy</div></div>
+        </div>
       </div>
     </div>
-
-
     <div id="prompttimer" class="overlay">
       <div class="prompt">
         <h2>Change timer?</h2>
