@@ -14,9 +14,18 @@
   <body id="body">
     <div class="centeredbox">
       <div class="main" id="main">
-        <div class="row header" id="header">
+        <div class="row header full centeredbox" id="header">
+          <div class="url">pkmnquiz.com</div>
           <div class="column">
-            <div class="box roundedb padded lime" id="inputbox"> Name all Pokémon: <input type="text" id="pokemon" class="input-name" maxlength="12" autocomplete="off" disabled="disabled">
+            <div class="column">
+              <button id="darkon" class="button-i roundedb moonc"><img src=images/moon.svg class="icon white"></button>
+            </div>
+            <div class="column">
+              <button id="darkoff" class="button-i roundedb sunc" style="display: none;"><img src=images/sun.svg class="icon white"></button>
+            </div> 
+            <div class="column">
+              <div class="box roundedb padded lime" id="inputbox"><div class="inputshort">Input:</div><div class="inputlong">Name all Pokémon:</div> <input type="text" id="pokemon" class="input-name" maxlength="12" autocomplete="off" disabled="disabled">
+              </div>
             </div>
           </div>
           <div class="column wider">
@@ -34,7 +43,6 @@
             <div class="box roundedb padded lime"> Timer: <div class="highlight" id="timer">00:00:00</div>
             </div>
           </div>
-          <div class="url">pkmnquiz.com</div>
         </div>
         <div id="ranking" class="row" style="display: none;">
           <div class="column wider">
@@ -128,22 +136,18 @@
             </div>
           </div>
           <div class="column">
-            <button id="darkon" class="button-i roundedc2 moonc mleft"><img src=images/moon.svg class="icon white"></button>
-          </div>
-          <div class="column">
-            <button id="darkoff" class="button-i roundedc2 sunc mleft" style="display: none;"><img src=images/sun.svg class="icon white"></button>
-          </div> 
-          <div class="column">
-            <div class="box roundedc2 slightpad">
-                <form>Select Quiz:
-                  <div class="smolbutton" id="fullQuizButton" onclick="gen0click()">Full</div>
-                  <div class="smolbutton" id="genselect" onclick="genselectmenu()">Generation</div>
-                  <div class="smolbutton" id="typeselect" onclick="typeselectmenu()">Type</div>
-                </form>
+            <div class="column">
+              <div class="box roundedc2 slightpad">
+                  <form>Select Quiz:
+                    <div class="smolbutton" id="fullQuizButton" onclick="gen0click()">Full</div>
+                    <div class="smolbutton" id="genselect" onclick="genselectmenu()">Generation</div>
+                    <div class="smolbutton" id="typeselect" onclick="typeselectmenu()">Type</div>
+                  </form>
+              </div>
+            </div>   
+            <div class="column">
+              <button id="shiny" class="button-i roundedc2 shinyc"><img src=images/shiny.svg class="icon"></button>
             </div>
-          </div>   
-          <div class="column">
-            <button id="shiny" class="button-i roundedc2 shinyc mleft"><img src=images/shiny.svg class="icon"></button>
           </div>  
         </div>
         <div class="row">
