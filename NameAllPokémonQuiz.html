@@ -130,7 +130,16 @@
           <div class="column wider">
             <div class="column">
               <div class="box roundedc slightpad">
-                <form>Timer limit: <div class="smolbutton smolbuttonx" id="timer0" name='timer' value="timer0"> Ø</div>
+                <form>Select Quiz:
+                  <div class="smolbutton" id="fullQuizButton" onclick="gen0click()">Full</div>
+                  <div class="smolbutton" id="genselect" onclick="genselectmenu()">Generation</div>
+                  <div class="smolbutton" id="typeselect" onclick="typeselectmenu()">Type</div>
+                </form>
+              </div>
+            </div>
+            <div class="column">
+              <div class="box roundedc slightpad">
+                <form>Timer: <div class="smolbutton smolbuttonx" id="timer0" name='timer' value="timer0"> ∞</div>
                   <div class="smolbutton" id="timer1" name='timer' value="timer1"> 1h</div>
                   <div class="smolbutton" id="timer2" name='timer' value="timer2"> 30m</div>
                   <div class="smolbutton" id="timer3" name='timer' value="timer3"> 10m</div>
@@ -138,29 +147,19 @@
               </div>
             </div>
             <div class="column">
-              <div class="box roundedc slightpad">
-				<form>Select Quiz:
-				  <div class="smolbutton" id="fullQuizButton" onclick="gen0click()">Full</div>
-				  <div class="smolbutton" id="genselect" onclick="genselectmenu()">Generation</div>
-				  <div class="smolbutton" id="typeselect" onclick="typeselectmenu()">Type</div>
-				</form>
-              </div>
-            </div>
-            <div class="column">
-              <div id="lang_box" class="box roundedc slightpad"> Input: </div>
-            </div>
-            <div class="column">
-              <div class="box roundedc slightpad">
-                <form>Shiny: <div class="smolbutton" id="shinyon" name="shiny" value="shinyon"> on</div>
-                  <div class="smolbutton smolbuttonx" id="shinyoff" name="shiny" value="shinyoff"> off</div>
-                </form>
-              </div>
+              <div id="lang_box" class="box roundedc padright"></div>
             </div>
             <div class="column" style="display:block;">
               <div class="box roundedc padright">
                 <form>
-                  <div class="smolbutton smolbuttonx" id="darkoff" name="dark"> Light</div>
-                  <div class="smolbutton" id="darkon" name="dark"> Dark</div>
+                  <div class="smolbutton smolbuttonx" id="darkoff" name="dark" style="display: none;"> Light mode</div>
+                  <div class="smolbutton" id="darkon" name="dark"> Dark mode</div>
+                </form>
+              </div>
+            </div>
+            <div class="column">
+              <div class="box roundedc padright">
+                <form><div class="smolbutton" id="shiny" name="shiny" value="shinyon"> Shiny</div>
                 </form>
               </div>
             </div>
@@ -249,8 +248,8 @@
 		</div>
         <div class="playtext" id="playtext">
 		  <div id="startfull">
-            <div class="button-s roundedb hovg" id="gen0" ><div class="padded2">Full quiz</div></div>
-            <div class="p2">Quiz by generation:</div>
+        <div class="button-s roundedb hovg" id="gen0" ><div class="padded2">Full quiz</div></div>
+        <div class="p2">Quiz by generation:</div>
 		  </div>
           <div class="row2">
             <div class="button-s roundedh hovg" id="gen1" ><div class="mshow">1</div><div class="mhide">Kanto</div><img id="gen1img" src=sprites/squirtle.png class="spritec cropped"></div>

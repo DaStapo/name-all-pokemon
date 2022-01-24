@@ -440,8 +440,8 @@
     font-size: 16px;
 	}
 	.smolbutton:hover {
-	background-color: #7eb238;
-	border-color: #7eb238;
+	background-color: #65ae04;
+	border-color: #65ae04;
 	color: #fff;
 	}
 	.smolbuttonx {
@@ -449,9 +449,9 @@
 	color: #fff;
 	}
 	.ppbutton {
-	border: solid #7eb238 1px;
+	border: solid #65ae04 1px;
 	border-radius: 4px;
-	background-color: #7eb238;
+	background-color: #65ae04;
 	color: #fff;
 	padding: 0px;
 	text-align: center;
