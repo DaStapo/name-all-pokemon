@@ -1385,7 +1385,6 @@ let typeClasses = [
     "buttondarktype",
     "limelightdarktype",
     "inlineboxdarktype" ,
-
 ]
 
 function updateTypeFilter(type){
@@ -2502,6 +2501,11 @@ document.getElementById("darkon").onclick = function (){
         for (let i = 0; i < boarders.length; i++){
             boarders[i].classList.add("inlineboxdark")
         }
+
+        let shinybutton = document.getElementsByClassName("shinyc") 
+        for (let i = 0; i < shinybutton.length; i++){
+            shinybutton[i].classList.add("boxdark")
+        }
 		
         for (let i = 0; i < pokeballArray.length; i++){
             pokeballArray[i].src = '/sprites/unknown-2.png';
@@ -2608,6 +2612,11 @@ document.getElementById("darkoff").onclick = function (){
 
         for (let i = 0; i < boarders.length; i++){
             boarders[i].classList.remove("inlineboxdark")
+        }
+
+        let shinybutton = document.getElementsByClassName("shinyc")
+        for (let i = 0; i < shinybutton.length; i++){
+            shinybutton[i].classList.remove("boxdark")
         }
 		
         for (let i = 0; i < pokeballArray.length; i++){
