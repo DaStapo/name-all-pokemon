@@ -1833,12 +1833,17 @@ function gen0click() {
     }
 }
 
-function swapToShiny(){
+function swapShiny(){
     if (document.getElementById("shiny").classList.contains('smolbuttonx')){
-        swapToNormal()
+        shinyOff()
     }
     else{
-	    for(let key in spriteDictionary){
+        shinyOn()
+    }
+}
+
+function shinyOn(){
+    for(let key in spriteDictionary){
 		spriteDictionary[key].src = encodedImages['shiny'][key];
 	    }
         visualizeButtonClick(document.getElementById("shiny"))
@@ -1847,10 +1852,9 @@ function swapToShiny(){
 
 		    unguessedDict[key].getElementsByTagName('img')[0].src = encodedImages['shiny'][key]
 	    }
-    }
 }
 
-function swapToNormal(){
+function shinyOff(){
 	for(let key in spriteDictionary){
 		spriteDictionary[key].src = encodedImages['sprite'][key];
 	}
@@ -1861,7 +1865,7 @@ function swapToNormal(){
 	}
 }
 
-document.getElementById("shiny").onclick = swapToShiny;
+document.getElementById("shiny").onclick = swapShiny;
 
 
 alreadyGuessedPokemon = [];
@@ -2165,18 +2169,16 @@ document.getElementById("twitch-on").onclick = function (){
                 }
             }else if (standardizeName(message) === "shinyon".toLowerCase()) {
                 if (Date.now() - swapLimit > lastShinySwap ){
-                    document.getElementById("shinyon").click()
+                    shinyOff();
                     lastShinySwap = Date.now();
                 }
             }else if (standardizeName(message) === "shinyoff".toLowerCase()) {
                 if (Date.now() - swapLimit > lastShinySwap ){
-                    document.getElementById("shinyoff").click()
+                    shinyOff();
                     lastShinySwap = Date.now();
                 }
             }
-            else if (standardizeName(message) === "shinyoff".toLowerCase()) {
-                document.getElementById("shinyoff").click()
-            }
+      
 			if (channelName.toLowerCase() == 'ethan_from_chicago'){
 
                 if (twitchUsername == 'ethan_from_chicago'){
