@@ -1841,32 +1841,34 @@ function gen0click() {
 }
 
 function swapToShiny(){
-	for(let key in spriteDictionary){
+    if (document.getElementById("shiny").classList.contains('smolbuttonx')){
+        swapToNormal()
+    }
+    else{
+	    for(let key in spriteDictionary){
 		spriteDictionary[key].src = encodedImages['shiny'][key];
-	}
-    visualizeButtonClick(document.getElementById("shinyon"))
-    visualizeButtonUnclick(document.getElementById("shinyoff"))
+	    }
+        visualizeButtonClick(document.getElementById("shiny"))
 	
-	for (key in unguessedDict){
+	    for (key in unguessedDict){
 
-		unguessedDict[key].getElementsByTagName('img')[0].src = encodedImages['shiny'][key]
-	}
+		    unguessedDict[key].getElementsByTagName('img')[0].src = encodedImages['shiny'][key]
+	    }
+    }
 }
 
 function swapToNormal(){
 	for(let key in spriteDictionary){
 		spriteDictionary[key].src = encodedImages['sprite'][key];
 	}
-    visualizeButtonClick(document.getElementById("shinyoff"))
-    visualizeButtonUnclick(document.getElementById("shinyon"))
+    visualizeButtonUnclick(document.getElementById("shiny"))
 	for (key in unguessedDict){
 
 		unguessedDict[key].getElementsByTagName('img')[0].src = encodedImages['sprite'][key];
 	}
 }
 
-document.getElementById("shinyon").onclick = swapToShiny;
-document.getElementById("shinyoff").onclick = swapToNormal;
+document.getElementById("shiny").onclick = swapToShiny;
 
 
 alreadyGuessedPokemon = [];
@@ -2461,6 +2463,8 @@ document.getElementById("darkon").onclick = function (){
         darkMode = !darkMode
         visualizeButtonUnclick(document.getElementById("darkoff"))
         visualizeButtonClick(document.getElementById("darkon"))
+        document.getElementById("darkon").style.display = "none";
+        document.getElementById("darkoff").style.display = "inline";
 
         document.getElementById("body").classList.add("bodydark");
 
@@ -2566,6 +2570,8 @@ document.getElementById("darkoff").onclick = function (){
 
         visualizeButtonUnclick(document.getElementById("darkon"))
         visualizeButtonClick(document.getElementById("darkoff"))
+        document.getElementById("darkoff").style.display = "none";
+        document.getElementById("darkon").style.display = "inline";
 
         document.getElementById("body").classList.remove("bodydark");
 
