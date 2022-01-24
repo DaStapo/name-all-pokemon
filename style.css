@@ -343,7 +343,7 @@
 	}
 	.button {
 	background-color: #777;
-	border: #444;
+	border: #333;
 	color: white;
 	padding: 10px 10px 10px 10px;
 	text-align: center;
@@ -376,17 +376,24 @@
 	}
 	.hovg {
 	background-color: #8CC63F;
+	border: 2px solid #333;
+	}
+	.hovgr {
+	border: 2px solid #333;
+	}
+	.hovn {
+	border: 2px solid #333;
 	}
 	.hovg:hover, .hovn:hover {
-	outline: 2px solid #fff;
+	border: 2px solid #ffffff;
 	}
 	.hovr {
-	background-color: #8CC63F;
+	border: 2px solid #333;
 	}
 	.hovr:hover {
-	background-color: #D00;
+	background-color: #555;
 	}
-	.hovl {
+/*	.hovl {
 	background-color: #777;
 	}
 	.hovl:hover {
@@ -397,7 +404,7 @@
 	}
 	.hovli:hover {
 	background-color: #8CC63F;
-	}
+	}*/
 	.button:focus {
 	outline: none;
 	}
@@ -617,16 +624,16 @@
 	.bar {
 	background-color: #fff;
 	display: inline-block;
-	width: 50%;
-	margin: 0 auto 5px;
+	width: 182px;
+	margin: -7px auto 20px;
 	border: 2px solid #444;
-	border-radius: 4px 8px;
+	border-radius: 4px 4px 4px 12px;
 	}
 	.load {
-	background-color: #8CC63F;
+	background: linear-gradient(90deg, rgb(192 225 146) 0%, rgb(173 231 92) 40%, rgb(75 173 42) 100%);
 	height: 20px;
-	width: 1px;
-	border-radius: 2px 6px;
+	width: 0px;
+	border-radius: 2px 2px 2px 10px;
 	}
 	.loader {
 	display: block;
@@ -833,14 +840,6 @@ border-color: #9099A1
 background-color: #9099A1
 ;
 }
-.hovgnormal {
-background-color: #9099A1
-;
-}
-.hovrnormal {
-background-color: #9099A1
-;
-}
 .smolbuttonnormal {
 border-color: #9099A1
 ;
@@ -906,12 +905,6 @@ border-color: #FF9C54;
 .input-twitchfire:disabled {
 background-color: #FF9C54;
 }
-.hovgfire {
-background-color: #FF9C54;
-}
-.hovrfire {
-background-color: #FF9C54;
-}
 .smolbuttonfire {
 border-color: #FF9C54;
 color: #FF9C54;
@@ -967,12 +960,6 @@ border-top-color: #4D90D5;
 border-color: #4D90D5;
 }
 .input-twitchwater:disabled {
-background-color: #4D90D5;
-}
-.hovgwater {
-background-color: #4D90D5;
-}
-.hovrwater {
 background-color: #4D90D5;
 }
 .smolbuttonwater {
@@ -1032,12 +1019,6 @@ border-color: #63BB5B;
 .input-twitchgrass:disabled {
 background-color: #63BB5B;
 }
-.hovggrass {
-background-color: #63BB5B;
-}
-.hovrgrass {
-background-color: #63BB5B;
-}
 .smolbuttongrass {
 border-color: #63BB5B;
 color: #63BB5B;
@@ -1093,12 +1074,6 @@ border-top-color: #F3D23B;
 border-color: #F3D23B;
 }
 .input-twitchelectric:disabled {
-background-color: #F3D23B;
-}
-.hovgelectric {
-background-color: #F3D23B;
-}
-.hovrelectric {
 background-color: #F3D23B;
 }
 .smolbuttonelectric {
@@ -1159,12 +1134,6 @@ border-color: #74cec0;
 .input-twitchice:disabled {
 background-color: #74cec0;
 }
-.hovgice {
-background-color: #74cec0;
-}
-.hovrice {
-background-color: #74cec0;
-}
 .smolbuttonice {
 border-color: #74cec0;
 color: #74cec0;
@@ -1220,12 +1189,6 @@ border-top-color: #CE4069;
 border-color: #CE4069;
 }
 .input-twitchfighting:disabled {
-background-color: #CE4069;
-}
-.hovgfighting {
-background-color: #CE4069;
-}
-.hovrfighting {
 background-color: #CE4069;
 }
 .smolbuttonfighting {
@@ -1285,12 +1248,6 @@ border-color: #AB6AC8;
 .input-twitchpoison:disabled {
 background-color: #AB6AC8;
 }
-.hovgpoison {
-background-color: #AB6AC8;
-}
-.hovrpoison {
-background-color: #AB6AC8;
-}
 .smolbuttonpoison {
 border-color: #AB6AC8;
 color: #AB6AC8;
@@ -1346,12 +1303,6 @@ border-top-color: #D97746;
 border-color: #D97746;
 }
 .input-twitchground:disabled {
-background-color: #D97746;
-}
-.hovgground {
-background-color: #D97746;
-}
-.hovrground {
 background-color: #D97746;
 }
 .smolbuttonground {
@@ -1411,12 +1362,6 @@ border-color: #8fa8dd;
 .input-twitchflying:disabled {
 background-color: #8fa8dd;
 }
-.hovgflying {
-background-color: #8fa8dd;
-}
-.hovrflying {
-background-color: #8fa8dd;
-}
 .smolbuttonflying {
 border-color: #8fa8dd;
 color: #8fa8dd;
@@ -1472,12 +1417,6 @@ border-top-color: #F97176;
 border-color: #F97176;
 }
 .input-twitchpsychic:disabled {
-background-color: #F97176;
-}
-.hovgpsychic {
-background-color: #F97176;
-}
-.hovrpsychic {
 background-color: #F97176;
 }
 .smolbuttonpsychic {
@@ -1537,12 +1476,6 @@ border-color: #90C12C;
 .input-twitchbug:disabled {
 background-color: #90C12C;
 }
-.hovgbug {
-background-color: #90C12C;
-}
-.hovrbug {
-background-color: #90C12C;
-}
 .smolbuttonbug {
 border-color: #90C12C;
 color: #90C12C;
@@ -1598,12 +1531,6 @@ border-top-color: #C7B78B;
 border-color: #C7B78B;
 }
 .input-twitchrock:disabled {
-background-color: #C7B78B;
-}
-.hovgrock {
-background-color: #C7B78B;
-}
-.hovrrock {
 background-color: #C7B78B;
 }
 .smolbuttonrock {
@@ -1663,12 +1590,6 @@ border-color: #5269AC;
 .input-twitchghost:disabled {
 background-color: #5269AC;
 }
-.hovgghost {
-background-color: #5269AC;
-}
-.hovrghost {
-background-color: #5269AC;
-}
 .smolbuttonghost {
 border-color: #5269AC;
 color: #5269AC;
@@ -1724,12 +1645,6 @@ border-top-color: #0A6DC4;
 border-color: #0A6DC4;
 }
 .input-twitchdragon:disabled {
-background-color: #0A6DC4;
-}
-.hovgdragon {
-background-color: #0A6DC4;
-}
-.hovrdragon {
 background-color: #0A6DC4;
 }
 .smolbuttondragon {
@@ -1789,12 +1704,6 @@ border-color: #5A5366;
 .input-twitchevil:disabled {
 background-color: #5A5366;
 }
-.hovgevil {
-background-color: #5A5366;
-}
-.hovrevil {
-background-color: #5A5366;
-}
 .smolbuttonevil {
 border-color: #5A5366;
 color: #5A5366;
@@ -1852,12 +1761,6 @@ border-color: #5A8EA1;
 .input-twitchsteel:disabled {
 background-color: #5A8EA1;
 }
-.hovgsteel {
-background-color: #5A8EA1;
-}
-.hovrsteel {
-background-color: #5A8EA1;
-}
 .smolbuttonsteel {
 border-color: #5A8EA1;
 color: #5A8EA1;
@@ -1913,12 +1816,6 @@ border-top-color: #EC8FE6;
 border-color: #EC8FE6;
 }
 .input-twitchfairy:disabled {
-background-color: #EC8FE6;
-}
-.hovgfairy {
-background-color: #EC8FE6;
-}
-.hovrfairy {
 background-color: #EC8FE6;
 }
 .smolbuttonfairy {
