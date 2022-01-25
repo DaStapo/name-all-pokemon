@@ -123,16 +123,16 @@
         <div class="row">
           <div class="column">
             <div class="column">
-              <button id="surrender" class="button roundedleft">Give up</button>
+              <button id="surrender" class="button roundedc2">Give up</button>
             </div>
             <div class="column">
-              <button id="resetButton" class="button roundedc mleft">Reset</button>
+              <button id="resetButton" class="button roundedc2 mleft">Reset</button>
             </div>
             <div class="column">
-              <button id="pokeball" class="button roundedc mleft hidden">No Shadows</button>
+              <button id="pokeball" class="button roundedc2 mleft hidden">No Shadows</button>
             </div>
             <div class="column">
-              <button id="silhouette" class="button roundedright mleft">Shadows</button>
+              <button id="silhouette" class="button roundedc2 mleft">Shadows</button>
             </div>
           </div>
           <div class="column">
@@ -153,11 +153,10 @@
         <div class="row">
           <div class="column">
               <div class="box roundedc2 slightpad">
-                <form>Timer: <div class="smolbutton smolbuttonx" id="timer0" name='timer' value="timer0"> ∞</div>
+                Timer: <div class="smolbutton smolbuttonx" id="timer0" name='timer' value="timer0"> ∞</div>
                   <div class="smolbutton" id="timer1" name='timer' value="timer1"> 1h</div>
                   <div class="smolbutton" id="timer2" name='timer' value="timer2"> 30m</div>
-                  <div class="smolbutton" id="timer3" name='timer' value="timer3"> 10m</div>
-                </form>
+                  <div class="smolbutton" id="timer3" name='timer' value="timer3"> 10m</div>    
               </div>
           </div>
           <div class="column">
@@ -300,7 +299,7 @@
         </div>
       </div>
     </div>
-    <div id="prompttimer" class="overlay">
+    <div id="prompttimer" class="overlay" onclick="off3()">
       <div class="prompt">
         <h2>Change timer?</h2>
         <p>Quiz and timer will reset</p>
@@ -309,7 +308,7 @@
         <div id="timer-no" class="button hovr roundedb">Cancel</div>
       </div>
     </div>
-    <div id="promptswitch" class="overlay">
+    <div id="promptswitch" class="overlay" onclick="off3()">
       <div class="prompt">
         <h2>Switch Quiz?</h2>
         <p>Quiz and timer will reset</p>
@@ -318,7 +317,7 @@
         <div id="gen-no" class="button hovr roundedb">Cancel</div>
       </div>
     </div>
-    <div id="promptsilhouette" class="overlay">
+    <div id="promptsilhouette" class="overlay" onclick="off3()">
       <div class="prompt">
         <h2>Reveal shadows?</h2>
         <div id="sil-yes" class="button roundedb">Reveal</div>

@@ -1819,6 +1819,12 @@ function off2() {
     //clearInterval(spriteIntervalId);
 }
 
+function off3() {
+    document.getElementById("promptswitch").style.display = "none";
+	document.getElementById("prompttimer").style.display = "none";
+	document.getElementById("promptsilhouette").style.display = "none";
+}
+
 function genselectmenu() {
 	document.getElementById("genselection").style.display = "block";
 }
