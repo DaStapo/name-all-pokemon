@@ -696,7 +696,7 @@
 	.play {
 	display: none;
 	}
-	.playtext {
+	.playtext, .inputbar {
 	opacity: 0;
 	}
 	.hidden {

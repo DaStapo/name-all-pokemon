@@ -1646,6 +1646,7 @@ function onLoadingComplete() {
     document.getElementById("loader").style.display = "none";
     document.getElementById("play").style.display = "inline-block";
     document.getElementById("playtext").style.opacity = "1";
+    document.getElementById("inputbar").style.opacity = "1";
     document.getElementById("pokemon").disabled = false;
     changeFooterPosition();
 }
