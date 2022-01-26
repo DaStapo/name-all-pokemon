@@ -161,9 +161,16 @@
           </div>
           <div class="column wider">
             <div class="column">
-              <div class="box roundedc2 slightpad" id="inputbox"> Input from Twitch-chat : <input type="text" class="input-twitch" id="twitch-channel" maxlength="25" autocomplete="off" placeholder="Channel Name">
-                <div class="smolbutton" id="twitch-on"> on</div>
-                <div class="smolbutton smolbuttonx " id="twitch-off"> off</div>
+              <div class="box roundedc2 slightpad" id="inputbox">
+                <div class="twitchbar" id="twitch-bar" onclick="twitchopen()">Input from Twitch-chat
+                <div class="arrowbutton abright" id="twitch-open"><i class="arrow aright"></i></div>
+                </div>
+                <div id="twitch-coll" class="twitch-coll">
+                  <div class="arrowbutton ableft" onclick="twitchclose()"><i class="arrow aleft"></i></div>
+                  <input type="text" class="input-twitch" id="twitch-channel" maxlength="25" autocomplete="off" placeholder="Channel Name">
+                  <div class="smolbutton" id="twitch-on"> on</div>
+                  <div class="smolbutton smolbuttonx " id="twitch-off"> off</div>
+                </div>
               </div>
             </div>
           </div>

@@ -1834,6 +1834,17 @@ function typeselectmenu() {
 	document.getElementById("typeselection").style.display = "block";
 }
 
+function twitchopen() {
+	document.getElementById("twitch-coll").style.display = "inline-block";
+    document.getElementById("twitch-open").style.display = "none";
+    document.getElementById("twitch-bar").style.cursor = "default";
+}
+function twitchclose() {
+    document.getElementById("twitch-coll").style.display = "none";
+    document.getElementById("twitch-open").style.display = "inline-block";
+    document.getElementById("twitch-bar").style.cursor = "pointer";
+}
+
 function gen0click() {
     if (currentType !== "" || currentGen !== 0){
 	    document.getElementById("gen0").click();
