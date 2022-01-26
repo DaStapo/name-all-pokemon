@@ -1845,6 +1845,17 @@ function twitchclose() {
     document.getElementById("twitch-bar").style.cursor = "pointer";
 }
 
+function orderopen() {
+	document.getElementById("order-coll").style.display = "inline-block";
+    document.getElementById("order-open").style.display = "none";
+    document.getElementById("order-bar").style.cursor = "default";
+}
+function orderclose() {
+    document.getElementById("order-coll").style.display = "none";
+    document.getElementById("order-open").style.display = "inline-block";
+    document.getElementById("order-bar").style.cursor = "pointer";
+}
+
 function gen0click() {
     if (currentType !== "" || currentGen !== 0){
 	    document.getElementById("gen0").click();

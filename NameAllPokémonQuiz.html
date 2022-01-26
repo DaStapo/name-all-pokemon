@@ -159,17 +159,30 @@
           <div class="column">
             <div id="lang_box" class="box roundedc2 padright"></div>
           </div>
-          <div class="column wider">
+          <div class="column">
             <div class="column">
               <div class="box roundedc2 slightpad" id="inputbox">
-                <div class="twitchbar" id="twitch-bar" onclick="twitchopen()">Input from Twitch-chat
+                <div class="twitchbar" id="twitch-bar" onclick="twitchopen()">Twitch-chat input
                 <div class="arrowbutton abright" id="twitch-open"><i class="arrow aright"></i></div>
                 </div>
                 <div id="twitch-coll" class="twitch-coll">
-                  <div class="arrowbutton ableft" onclick="twitchclose()"><i class="arrow aleft"></i></div>
-                  <input type="text" class="input-twitch" id="twitch-channel" maxlength="25" autocomplete="off" placeholder="Channel Name">
+                  <input type="text" class="input-twitch" id="twitch-channel" maxlength="25" autocomplete="off" placeholder="channel-name">
                   <div class="smolbutton" id="twitch-on"> on</div>
                   <div class="smolbutton smolbuttonx " id="twitch-off"> off</div>
+                  <div class="arrowbutton ableft" onclick="twitchclose()"><i class="arrow aleft"></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="box roundedc2 slightpad" id="orderbox">
+                <div class="orderbar" id="order-bar" onclick="orderopen()">Order-Mode
+                <div class="arrowbutton abright" id="order-open"><i class="arrow aright"></i></div>
+                </div>
+                <div id="order-coll" class="order-coll">
+                  <div class="smolbutton" id="order-on"> on</div>
+                  <div class="smolbutton smolbuttonx " id="order-off"> off</div>
+                  Reveal a shadow <div class="smolbutton" id="shadownext">now</div> or automatically after <div class="smolbutton" id="shadowhelp">30s</div>
+                  <div class="arrowbutton ableft" onclick="orderclose()"><i class="arrow aleft"></i></div>
                 </div>
               </div>
             </div>

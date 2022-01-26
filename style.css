@@ -704,10 +704,10 @@
 	.hidden {
 	display: none;
 	}
-	.twitch-coll {
+	.twitch-coll, .order-coll {
 	display: none;
 	}
-	.twitchbar {
+	.twitchbar, .orderbar {
 		cursor: pointer;
 		display: inline-block;
 	}
