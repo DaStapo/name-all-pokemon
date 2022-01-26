@@ -260,7 +260,11 @@
 	animation-duration:1500ms;
 	}
 	.recentsprite {
-	margin: -40px -10px -10px -5px;
+	margin: -27px -20px -10px 1px;
+    width: 64px;
+    height: 56px;
+    object-fit: none;
+    object-position: 100% 0;
 	}
 	.column {
 	float: left;
@@ -304,11 +308,15 @@
 	.smol {
 	width: 158px;
 	}
+	.smoler {
+	width: 115px;
+	text-align: right;
+	}
 	.decent {
 	width: 235px;
 	}
 	.wider {
-	min-width: 240px;
+	min-width: 158px;
 	}
 	.namelist {
 	width: 183px;
@@ -834,7 +842,7 @@
 	vertical-align: top;
 	}
 	}
-	@media only screen and (max-width: 1048px) {
+	@media only screen and (max-width: 858px) {
 		body {
 	padding-top: 122px;
 	}	
@@ -847,15 +855,7 @@
 	display: none;
 	}
 	}
-	@media only screen and (max-width: 536px) {
-	body {
-	padding-top: 183px;
-	}
-	.langright {
-	float: none;
-	display: block;
-	padding: 10px 0px 0px 0px !important;
-	}
+	@media only screen and (max-width: 585px) {
 	.inputlong {
 	display: none;
 	}
@@ -863,21 +863,23 @@
 	display: inline;
 	}
 	}
-	@media only screen and (max-width: 512px) {
+	@media only screen and (max-width: 536px) {
+	.langright {
+	float: none;
+	display: block;
+	padding: 10px 0px 0px 0px !important;
+	}
+	}
+	@media only screen and (max-width: 486px) {
 	body {
 	padding-top: 183px;
 	}	
 	}
-	@media only screen and (max-width: 437px) {
+	@media only screen and (max-width: 272px) {
 	body {
 	padding-top: 244px;
 	}
 	}
-	@media only screen and (max-width: 272px) {
-		body {
-		padding-top: 305px;
-		}
-		}
 	/*type-color-changing classes*/
 .anormal {
 color: #9099A1
