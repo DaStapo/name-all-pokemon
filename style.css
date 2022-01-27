@@ -49,7 +49,7 @@
 	text-decoration: none;
 	color: #8CC63F;
 	}
-	#counter,#total,#timer,#gen-name,#timer-score,#currentcount{
+	#counter,#total,#timer,#gen-name,#timer-score,#currentcount, .txt {
 		display:inline;
 	}
     .box {
@@ -148,6 +148,9 @@
 	}
 	.padded-left2 {
 	padding-left: 10px;
+	}
+	.lpad {
+	padding-left: 7px;
 	}
 	.padright {
 	padding-right: 14px;
@@ -581,6 +584,9 @@
 	background-color: #f5b942;
 	border-color: #d4920f;
 	}
+	.quizmaster {
+	
+	}
 	.board{
 	margin: 0px auto 6px;
 	}
@@ -710,6 +716,9 @@
 	.twitchbar, .orderbar {
 		cursor: pointer;
 		display: inline-block;
+	}
+	.notxt {
+		cursor: default;
 	}
 	.url {
 		padding: 3px 0px 11px 39px;
@@ -958,15 +967,11 @@ background-color: #9099A1
 }
 .smolbuttonnormal {
 border-color: #9099A1
-;
-color: #9099A1
-;
+;color: #9099A1;
 }
 .smolbuttonSwapnormal {
-background-color: #9099A1
-;
-border-color: #9099A1
-;
+background-color: #9099A1;
+border-color: #9099A1;
 }
 .smolbuttonnormal:hover {
 background-color: #868d94;
@@ -974,8 +979,7 @@ border-color: #868d94;
 color: #fff;
 }
 .smolbuttonxnormal {
-background-color: #9099A1
-;
+background-color: #9099A1;
 color: #fff;
 }
 .inlineboxnormal {

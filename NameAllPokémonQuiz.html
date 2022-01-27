@@ -15,7 +15,7 @@
     <div class="centeredbox">
       <div class="main" id="main">
         <div class="row header full centeredbox" id="header">
-          <div class="url">pkmnquiz.com</div>
+          <div class="url notxt">pkmnquiz.com</div>
           <div class="column">
             <button id="darkon" class="button-i roundedb moonc"><img src=images/moon.svg class="icon white"></button>
           </div>
@@ -23,20 +23,20 @@
             <button id="darkoff" class="button-i roundedb sunc" style="display: none;"><img src=images/sun.svg class="icon white"></button>
           </div> 
           <div class="column inputbar" id="inputbar">
-            <div class="box roundedb padded lime" id="inputbox"><div class="inputshort">Input:</div><div class="inputlong">Name all Pokémon:</div> <input type="text" id="pokemon" class="input-name" maxlength="12" autocomplete="off" disabled="disabled">
+            <div class="box roundedb padded lime" id="inputbox"><div class="inputshort notxt">Input:</div><div class="inputlong notxt">Name all Pokémon:</div> <input type="text" id="pokemon" class="input-name" maxlength="12" autocomplete="off" disabled="disabled">
             <img id="recentsprite" class="recentsprite" src="">
             </div>
           </div>
           <div class="column">
             <div class="column smoler">
-              <div class="box roundedb padded lime">
+              <div class="box roundedb padded lime notxt">
                 <b>
                   <div id="counter" class="highlight">0</div>
                 </b>/ <div id="total">0</div>
               </div>
             </div>
             <div class="column smol">
-              <div class="box roundedb padded lime"> Timer: <div class="highlight" id="timer">00:00:00</div>
+              <div class="box roundedb padded lime notxt"> Timer: <div class="highlight" id="timer">00:00:00</div>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@
         <div id="ranking" class="row" style="display: none;">
           <div class="column wider">
             <div class="column">
-              <div class="box roundedb padded lime" style="min-width: 200px;"> Twitch-chat Ranking: <div id="leaderboard" style="display: inline; margin-right: -10px;"></div>
+              <div class="box roundedb padded lime" style="min-width: 200px;"> <div class="notxt">Twitch-chat Ranking:</div> <div id="leaderboard" style="display: inline; margin-right: -10px;"></div>
               </div>
             </div>
           </div>
@@ -52,41 +52,41 @@
         <div class="row">
           <div class="column third" id="pokecolumn1">
             <div id="pokemon-box-1" class="box rounded bottommargin">
-              <div id="region1" class="region">Kanto</div>
+              <div id="region1" class="region notxt">Kanto</div>
             </div>
             <div id="pokemon-box-2" class="box rounded bottommargin">
-              <div id="region2" class="region">Johto</div>
+              <div id="region2" class="region notxt">Johto</div>
             </div>
             <div id="pokemon-box-3" class="box rounded bottommargin">
-              <div id="region3" class="region">Hoenn</div>
+              <div id="region3" class="region notxt">Hoenn</div>
             </div>
           </div>
           <div class="column third" id="pokecolumn2">
             <div id="pokemon-box-4" class="box rounded bottommargin">
-              <div id="region4" class="region">Sinnoh</div>
+              <div id="region4" class="region notxt">Sinnoh</div>
             </div>
             <div id="pokemon-box-5" class="box rounded bottommargin">
-              <div id="region5" class="region">Unova</div>
+              <div id="region5" class="region notxt">Unova</div>
             </div>
             <div id="pokemon-box-6" class="box rounded bottommargin">
-              <div id="region6" class="region">Kalos</div>
+              <div id="region6" class="region notxt">Kalos</div>
             </div>
             <div id="pokemon-box-mega" class="box rounded bottommargin">
-              <div id="regionmega" class="region">Mega Evolution</div>
+              <div id="regionmega" class="region notxt">Mega Evolution</div>
             </div>
           </div>
           <div class="column third" id="pokecolumn3">
             <div id="pokemon-box-7" class="box rounded bottommargin">
-              <div id="region7" class="region">Alola</div>
+              <div id="region7" class="region notxt">Alola</div>
             </div>
             <div id="pokemon-box-7-5" class="box rounded bottommargin">
-              <div id="region7-5" class="region">Unknown</div>
+              <div id="region7-5" class="region notxt">Unknown</div>
             </div>
             <div id="pokemon-box-8" class="box rounded bottommargin">
-              <div id="region8" class="region">Galar</div>
+              <div id="region8" class="region notxt">Galar</div>
             </div>
             <div id="pokemon-box-gmax" class="box rounded bottommargin">
-              <div id="regiongmax" class="region">Gigantamax</div>
+              <div id="regiongmax" class="region notxt">Gigantamax</div>
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@
             <div id="missednames" style="display: none;">
               <div id="missednames-title">
                 <div class="box roundede limelight">
-                  <div class="padded-left2">Missed names: <button id="accordion" class="smolbutton accordion">Show list</button>
+                  <div class="padded-left2 notxt">Missed names: <button id="accordion" class="smolbutton accordion">Show list</button>
                     <div id="missednames-options" class="langright padded"></div>
                   </div>
                 </div>
@@ -107,7 +107,7 @@
             <div id="ranking2" style="display: none;">
               <div id="ranking2-title">
                 <div class="box roundede limelight">
-                  <div class="padded-left2">Twitch-chat Leaderboard: <button id="accordion2" class="smolbutton accordion">Show list</button>
+                  <div class="padded-left2 notxt">Twitch-chat Leaderboard: <button id="accordion2" class="smolbutton accordion">Show list</button>
                   </div>
                 </div>
                 <div id="leaderboard2" class="box roundedf topedge bottomless panel"></div>
@@ -134,7 +134,7 @@
           </div>
           <div class="column">
             <div class="column">
-              <div class="box roundedc2 slightpad">
+              <div class="box roundedc2 slightpad notxt">
                   <form>Select Quiz:
                     <div class="smolbutton" id="fullQuizButton" onclick="gen0click()">Full</div>
                     <div class="smolbutton" id="genselect" onclick="genselectmenu()">Generation</div>
@@ -149,7 +149,7 @@
         </div>
         <div class="row">
           <div class="column">
-              <div class="box roundedc2 slightpad">
+              <div class="box roundedc2 slightpad notxt">
                 Timer: <div class="smolbutton smolbuttonx" id="timer0" name='timer' value="timer0"> ∞</div>
                   <div class="smolbutton" id="timer1" name='timer' value="timer1"> 1h</div>
                   <div class="smolbutton" id="timer2" name='timer' value="timer2"> 30m</div>
@@ -173,15 +173,15 @@
                 </div>
               </div>
             </div>
-            <div class="column">
+            <div class="column" style="display:none;">
               <div class="box roundedc2 slightpad" id="orderbox">
                 <div class="orderbar" id="order-bar" onclick="orderopen()">Order-Mode
                 <div class="arrowbutton abright" id="order-open"><i class="arrow aright"></i></div>
                 </div>
-                <div id="order-coll" class="order-coll">
+                <div id="order-coll" class="order-coll notxt">
                   <div class="smolbutton" id="order-on"> on</div>
-                  <div class="smolbutton smolbuttonx " id="order-off"> off</div>
-                  Reveal a shadow <div class="smolbutton" id="shadownext">now</div> or automatically after <div class="smolbutton" id="shadowhelp">30s</div>
+                  <div class="smolbutton smolbuttonx" id="order-off"> off</div>
+                  <div class="txt lpad">Reveal a shadow</div><div class="smolbutton" id="shadownext">now</div><div class="txt lpad"> automatically every</div><div class="smolbutton" id="shadowhelp">30s</div>
                   <div class="arrowbutton ableft" onclick="orderclose()"><i class="arrow aleft"></i></div>
                 </div>
               </div>
@@ -337,10 +337,20 @@
     <div id="promptsilhouette" class="overlay" onclick="off3()">
       <div class="prompt">
         <h2>Reveal shadows?</h2>
+        <p>Cannot be undone without reset</p>
         <div id="sil-yes" class="button roundedb">Reveal</div>
         <div id="sil-no" class="button hovr roundedb">Cancel</div>
       </div>
-    </div>	
+    </div>
+    <div id="promptorder" class="overlay" onclick="off3()">
+      <div class="prompt">
+        <h2>guessing in Nationaldex order</h2>
+        <p>Quiz and timer will reset</p>
+        <br />
+        <div id="order-yes" class="button roundedb">Order</div>
+        <div id="order-no" class="button hovr roundedb">Chaos</div>
+      </div>
+    </div>
 	
     <script src="tmi.min.js"></script>
     <script src="encoded.js"></script>
