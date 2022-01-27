@@ -1439,8 +1439,8 @@ function updateTypeFilter(type){
 
     document.getElementById("bgpattern").style.display = 'block';
     document.getElementById("bgpattern2").style.display = 'block';
-    document.getElementById("bgpattern").src = "/images/types/"+ type+".svg"
-    document.getElementById("bgpattern2").src = "/images/types/"+ type+".svg"
+    document.getElementById("bgpattern").src = "/images/types/"+ type+".svg";
+    document.getElementById("bgpattern2").src = "/images/types/"+ type+".svg";
     
     for (let i = 0; i< typeClasses.length; i++){
         let currentClass = typeClasses[i];
@@ -2285,6 +2285,17 @@ document.getElementById("twitch-on").onclick = function (){
 
 	                image = new Image();
 	                image.src = 'images/cramorant.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 300);
+                    }, false);
+			
+				}
+
+				if (message === "wigglypuff".toLowerCase()) {
+					twitchInput(twitchUsername, 'wigglytuff', true)
+
+	                image = new Image();
+	                image.src = 'images/wigglypuff.png';
                     image.addEventListener("load", function () {
                         imageRain(image, 50, 300);
                     }, false);
