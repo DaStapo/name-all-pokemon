@@ -1385,6 +1385,7 @@ let typeClasses = [
     "buttondarktype",
     "limelightdarktype",
     "inlineboxdarktype" ,
+    "arrowtype",
 ]
 
 function updateTypeFilter(type){

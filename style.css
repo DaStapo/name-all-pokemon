@@ -14,7 +14,7 @@
 	color: #333;
 	padding-top: 60px;
 	margin-bottom: 0;
-	min-height: 100% 100%;
+	min-height: 100%;
 	}
 	h1 {
 	font-size: 30px;
@@ -217,6 +217,24 @@
 	80% { transform: translate(-1px, -1px) rotate(1deg); }
 	90% { transform: translate(1px, 2px) rotate(0deg); }
 	100% { transform: translate(1px, -2px) rotate(-1deg); }
+	}
+	.bgpattern {
+		display: none;
+		position: fixed;
+		bottom: 24%;
+		left: 10%;
+		width: 18%;
+		opacity: 0.9;
+		z-index: -2;
+	}
+	.bgpattern2 {
+		display: none;
+		position: fixed;
+		bottom: calc(100px + 40%);
+		right: 14%;
+		width: 33%;
+		opacity: 0.2;
+		z-index: -2;
 	}
 	.centered {
 	margin: 0 auto;
@@ -1002,6 +1020,9 @@ border-bottom-color: #6e7881;
 background-color: #9099A1
 ;
 }
+.arrownormal {
+border-color: #9099A1;
+}
 .afire {
 color: #FF9C54;
 }
@@ -1060,6 +1081,9 @@ border-bottom-color: #dd752b;
 }
 .inlineboxdarkfire {
 background-color: #FF9C54;
+}
+.arrowfire {
+border-color: #FF9C54;
 }
 .awater {
 color: #4D90D5;
@@ -1120,6 +1144,9 @@ border-bottom-color: #1462af;
 .inlineboxdarkwater {
 background-color: #4D90D5;
 }
+.arrowwater {
+border-color: #4D90D5;
+}
 .agrass {
 color: #63BB5B;
 }
@@ -1178,6 +1205,9 @@ border-bottom-color: #378830;
 }
 .inlineboxdarkgrass {
 background-color: #63BB5B;
+}
+.arrowgrass {
+border-color: #63BB5B;
 }
 .aelectric {
 color: #F3D23B !important;
@@ -1239,6 +1269,9 @@ border-bottom-color: #d4af06;
 background-color: #F3D23B;
 color: #333;
 }
+.arrowelectric {
+border-color: #F3D23B;
+}
 .aice {
 color: #74cec0;
 }
@@ -1297,6 +1330,9 @@ border-bottom-color: #38b9a6;
 }
 .inlineboxdarkice {
 background-color: #74cec0;
+}
+.arrowice {
+border-color: #74cec0;
 }
 .afighting {
 color: #CE4069;
@@ -1357,6 +1393,9 @@ border-bottom-color: #ac294e;
 .inlineboxdarkfighting {
 background-color: #CE4069;
 }
+.arrowfighting {
+border-color: #CE4069;
+}
 .apoison {
 color: #AB6AC8;
 }
@@ -1416,6 +1455,9 @@ border-bottom-color: #923cb9;
 .inlineboxdarkpoison {
 background-color: #AB6AC8;
 }		
+.arrowpoison {
+border-color: #AB6AC8;
+}
 .aground {
 color: #D97746;
 }
@@ -1474,6 +1516,9 @@ border-bottom-color: #b15527;
 }
 .inlineboxdarkground {
 background-color: #D97746;
+}
+.arrowground {
+border-color: #D97746;
 }
 .aflying {
 color: #8fa8dd;
@@ -1534,6 +1579,9 @@ border-bottom-color: #5f79af;
 .inlineboxdarkflying {
 background-color: #8fa8dd;
 }
+.arrowflying {
+border-color: #8fa8dd;
+}
 .apsychic {
 color: #F97176;
 }
@@ -1592,6 +1640,9 @@ border-bottom-color: #cf3e43;
 }
 .inlineboxdarkpsychic {
 background-color: #F97176;
+}
+.arrowpsychic {
+border-color: #F97176;
 }
 .abug {
 color: #90C12C;
@@ -1652,6 +1703,9 @@ border-bottom-color: #6f991a;
 .inlineboxdarkbug {
 background-color: #90C12C;
 }
+.arrowbug {
+border-color: #90C12C;
+}
 .arock {
 color: #C7B78B;
 }
@@ -1710,6 +1764,9 @@ border-bottom-color: #96875e;
 }
 .inlineboxdarkrock {
 background-color: #C7B78B;
+}
+.arrowrock {
+border-color: #C7B78B;
 }
 .aghost {
 color: #5269AC;
@@ -1770,6 +1827,9 @@ border-bottom-color: #374c8b;
 .inlineboxdarkghost {
 background-color: #5269AC;
 }
+.arrowghost {
+border-color: #5269AC;
+}
 .adragon {
 color: #0A6DC4;
 }
@@ -1828,6 +1888,9 @@ border-bottom-color: #0b5aa0;
 }
 .inlineboxdarkdragon {
 background-color: #0A6DC4;
+}
+.arrowdragon {
+border-color: #0A6DC4;
 }
 .aevil {
 color: #5A5366;
@@ -1888,6 +1951,9 @@ border-bottom-color: #3c3744;
 .inlineboxdarkevil {
 background-color: #5A5366;
 }
+.arrowevil {
+border-color: #5A5366;
+}
 .asteel {
 color: #5A8EA1;
 }
@@ -1947,6 +2013,9 @@ border-bottom-color: #3e6474;
 .inlineboxdarksteel {
 background-color: #5A8EA1;
 }
+.arrowsteel {
+border-color: #5A8EA1;
+}
 .afairy {
 color: #EC8FE6;
 }
@@ -2005,6 +2074,9 @@ border-bottom-color: #be58b8;
 }
 .inlineboxdarkfairy {
 background-color: #EC8FE6;
+}
+.arrowfairy {
+border-color: #EC8FE6;
 }
 	/*end of type-color-changing classes*/
 .normal {
