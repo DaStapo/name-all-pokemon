@@ -2053,7 +2053,8 @@ document.getElementById("accordion").onclick = function (){
 	
 	if (document.getElementById("panel").style.display == 'block'){
 		document.getElementById("panel").style.display = 'none';
-		document.getElementById("accordion").textContent = 'Show list';
+        document.getElementById("arrow").classList.add('adown');
+        document.getElementById("arrow").classList.remove('aup');
 		
 		let childNodes = document.getElementById("panel").childNodes;
 		
@@ -2063,7 +2064,8 @@ document.getElementById("accordion").onclick = function (){
 		
 	}else{	
 		document.getElementById("panel").style.display = 'block'
-		document.getElementById("accordion").textContent = 'Hide list';
+        document.getElementById("arrow").classList.add('aup');
+        document.getElementById("arrow").classList.remove('adown');
 		
 		let childNodes = document.getElementById("panel").childNodes;
 		
@@ -2095,12 +2097,14 @@ document.getElementById("accordion2").onclick = function (){
 	
 	if (document.getElementById("leaderboard2").style.display == 'block'){
 		document.getElementById("leaderboard2").style.display = 'none';
-		document.getElementById("accordion2").textContent = 'Show list';
+        document.getElementById("arrow2").classList.add('adown');
+        document.getElementById("arrow2").classList.remove('aup');
 		
 		
 	}else{	
 		document.getElementById("leaderboard2").style.display = 'block'
-		document.getElementById("accordion2").textContent = 'Hide list';
+        document.getElementById("arrow2").classList.add('aup');
+        document.getElementById("arrow2").classList.remove('adown');
 		updateFullLeaderboard();
 		
 		

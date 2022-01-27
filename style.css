@@ -789,10 +789,14 @@
 	.aup {
 	transform: rotate(-135deg);
 	-webkit-transform: rotate(-135deg);
+	position: relative;
+	top: 3px;
 	}
 	.adown {
 	transform: rotate(45deg);
-	-webkit-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);	
+	position: relative;
+	bottom: 2px;
 	}
 	.arrowbutton {
 	cursor: pointer;
@@ -803,6 +807,9 @@
 	}
 	.abright {
 		padding-right: 5px;
+	}
+	.abupdown {
+		padding: 0px 5px;
 	}
 	.tooltip {
 	position: relative;
@@ -835,9 +842,6 @@
 	}
 	.fullwidth {
 	width: 100%;
-	}
-	.accordion {
-		
 	}
 	.cropped {
 	width: 30px;
