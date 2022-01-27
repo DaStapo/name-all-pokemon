@@ -584,8 +584,8 @@
 	background-color: #f5b942;
 	border-color: #d4920f;
 	}
-	.quizmaster {
-	
+	.quizmaster:before {
+	content: "\2605 \20 Quizmaster";
 	}
 	.board{
 	margin: 0px auto 6px;
