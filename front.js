@@ -1436,6 +1436,11 @@ function updateTypeFilter(type){
     else{
         document.getElementById("body").classList.add("blend")
     }
+
+    document.getElementById("bgpattern").style.display = 'block';
+    document.getElementById("bgpattern2").style.display = 'block';
+    document.getElementById("bgpattern").src = "/images/types/"+ type+".svg"
+    document.getElementById("bgpattern2").src = "/images/types/"+ type+".svg"
     
     for (let i = 0; i< typeClasses.length; i++){
         let currentClass = typeClasses[i];
@@ -1587,6 +1592,8 @@ function updateGenFilter() {
 
     document.getElementById("body").classList.remove("blend")
     document.getElementById("body").classList.remove("blenddark")
+    document.getElementById("bgpattern").style.display = 'none';
+    document.getElementById("bgpattern2").style.display = 'none';
 
     setTotal(totalPokemonCount);
     setCounter(getAlreadyGuessedAndRelevantPokemon().length);
