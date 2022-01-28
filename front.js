@@ -2467,9 +2467,20 @@ let updateFullLeaderboard = function (){
         leaderboardDiv.firstChild.remove()
     }
     if (Object.keys(twitchLeaderboard).length > 0){
+
+        let twitchChatTotal = 0;
+        for (let key in twitchLeaderboard){
+            twitchChatTotal+=twitchLeaderboard[key]
+        }
+        let quizmasterScore = getAlreadyGuessedAndRelevantPokemon().length - twitchChatTotal;
+        if (quizmasterScore > 0){
+            twitchLeaderboard["Quizmaster"] = getAlreadyGuessedAndRelevantPokemon().length - twitchChatTotal;
+        }
+
         let sorted = sortDictionaryByValue(twitchLeaderboard);
         leaderboardDiv.style.display = 'block'
 		let currentTypeName = getCurrentTypeName();
+        
 		for (let i = 0; i<sorted.length; i++){
 			let scoreDiv = document.createElement('div');
 			let placeDiv = document.createElement('div');
@@ -2494,12 +2505,17 @@ let updateFullLeaderboard = function (){
 			let textNode = document.createTextNode('#' + (i+1));
 			placeDiv.appendChild(textNode)
 			let textNode2 = document.createTextNode(sorted[i][0]);
+            if (sorted[i][0] === "Quizmaster"){
+                usernameDiv.classList.add('quizmaster')
+            }
 			usernameDiv.appendChild(textNode2)
 			let textNode3 = document.createTextNode(' ' + sorted[i][1]);
 			nrGuessedDiv.append(ballImg,textNode3)
 			scoreDiv.append(placeDiv,usernameDiv,nrGuessedDiv)
 			leaderboardDiv.append(scoreDiv);
 		}
+
+
     }
 }
 
