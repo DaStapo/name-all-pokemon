@@ -1179,6 +1179,7 @@ function showCongrats() {
 
     if (Object.keys(twitchLeaderboard).length > 0){
 	    document.getElementById("ranking2").style.display = "block";
+        document.getElementById("accordion2").click();
     }
 
     
@@ -1300,10 +1301,10 @@ function msToTime(s) {
 function giveUp (){
 	document.getElementById("pokemon").disabled = true;
 	
-	document.getElementById("missednames").style.display = "block";
 
     if (Object.keys(twitchLeaderboard).length > 0){
 	    document.getElementById("ranking2").style.display = "block";
+        document.getElementById("accordion2").click();
     }
 
     clearInterval(activeTimer);
@@ -1336,7 +1337,9 @@ function giveUp (){
         let pokemon = revealList[i];
 		unguessedDict[pokemon].style.display = 'inline-block';
 		unguessedDict[pokemon].classList.add('fixed-width');
-    }	
+    }
+    document.getElementById("missednames").style.display = "block";
+    document.getElementById("accordion").click();
 	
 }
 
