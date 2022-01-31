@@ -607,7 +607,7 @@
 	border-color: #d4920f;
 	}
 	.quizmaster:before {
-	content: "\2605 \20 Quizmaster";
+	content: "\2605 \20";
 	}
 	.board{
 	margin: 0px auto 6px;
