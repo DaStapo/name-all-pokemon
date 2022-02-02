@@ -2447,6 +2447,7 @@ let twitchInput = function (twitchUsername, input, shouldCount){
                 break;
             }
         }
+        updateFullLeaderboard()
     }
 }
 
