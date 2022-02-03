@@ -2480,8 +2480,8 @@ let updateFullLeaderboard = function (){
         if (quizmasterScore > 0){
             twitchLeaderboard["Quizmaster"] = getAlreadyGuessedAndRelevantPokemon().length - twitchChatTotal;
         }
-
         let sorted = sortDictionaryByValue(twitchLeaderboard);
+        delete twitchLeaderboard["Quizmaster"];
         leaderboardDiv.style.display = 'block'
 		let currentTypeName = getCurrentTypeName();
         
