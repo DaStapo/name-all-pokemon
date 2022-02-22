@@ -68,7 +68,6 @@ let extraPokemon = {
 	'Zacian':['Zacian-Crowned'],
 	'Zamazenta':['Zamazenta-Crowned'],
 	'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider'],
-    "hisuiplaceholder": ['Decidueye-Hisui', 'Typhlosion-Hisui', 'Samurott-Hisui'],
 	//minor forms (fucntionally identical and always next to original)
 	'Basculin':['Basculin-Blue-Striped'],
 	'Lycanroc':['lycanroc-Midnight', 'Lycanroc-Dusk'],
@@ -86,7 +85,7 @@ let extraPokemon = {
 	'Zygarde':['Zygarde-Complete'],
 	'Toxtricity':['Toxtricity-Low-Key'],
     // Hisuian forms in Hisuidex-order (except Qwilfish due to Overqwil dexnumber after Sneasler) + regular PLA forms
-	'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider', 'Decidueye-Hisui', 'Typhlosion-Hisui', 'Samurott-Hisui'],
+    "hisuiplaceholder": ['Decidueye-Hisui', 'Typhlosion-Hisui', 'Samurott-Hisui'],
     'Kleavor' :['Lilligant-Hisui'],
     'Ursaluna' :['Sliggoo-Hisui', 'Goodra-Hisui', 'Growlithe-Hisui', 'Arcanine-Hisui', 'Basculin-White-Striped'],
     'Basculegion' :['Basculegion-F', 'Voltorb-Hisui', 'Electrode-Hisui', 'Sneasel-Hisui'],
