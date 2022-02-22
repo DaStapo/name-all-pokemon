@@ -67,7 +67,6 @@ let extraPokemon = {
 	'Necrozma':['Necrozma-Dusk-Mane', 'Necrozma-Dawn-Wings', 'Necrozma-Ultra'],
 	'Zacian':['Zacian-Crowned'],
 	'Zamazenta':['Zamazenta-Crowned'],
-	'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider'],
 	//minor forms (fucntionally identical and always next to original)
 	'Basculin':['Basculin-Blue-Striped'],
 	'Lycanroc':['lycanroc-Midnight', 'Lycanroc-Dusk'],
@@ -85,7 +84,7 @@ let extraPokemon = {
 	'Zygarde':['Zygarde-Complete'],
 	'Toxtricity':['Toxtricity-Low-Key'],
     // Hisuian forms in Hisuidex-order (except Qwilfish due to Overqwil dexnumber after Sneasler) + regular PLA forms
-    'Calyrex' :['Decidueye-Hisui', 'Typhlosion-Hisui', 'Samurott-Hisui'],
+	'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider', 'Decidueye-Hisui', 'Typhlosion-Hisui', 'Samurott-Hisui'],
     'Kleavor' :['Lilligant-Hisui'],
     'Ursaluna' :['Sliggoo-Hisui', 'Goodra-Hisui', 'Growlithe-Hisui', 'Arcanine-Hisui', 'Basculin-White-Striped'],
     'Basculegion' :['Basculegion-F', 'Voltorb-Hisui', 'Electrode-Hisui', 'Sneasel-Hisui'],
@@ -311,6 +310,18 @@ for (key in formatted_lang_map){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " 50%"
             }
 			else if(pokemonList[i] === "toxtricity"){
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " A"
+            }
+			else if(pokemonList[i] === "basculegion"){
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + "♂"
+            }
+			else if(pokemonList[i] === "enamorus"){
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " I"
+            }
+			else if(pokemonList[i] === "dialga"){
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " A"
+            }
+			else if(pokemonList[i] === "palkia"){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " A"
             }
             else{
