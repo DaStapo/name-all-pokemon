@@ -2737,7 +2737,8 @@ let images = [
 	[encodedImages['sprite']['tepig'],encodedImages['sprite']['oshawott'], encodedImages['sprite']['snivy']],
 	[encodedImages['sprite']['froakie'], encodedImages['sprite']['chespin'], encodedImages['sprite']['fennekin']],
 	[encodedImages['sprite']['rowlet'], encodedImages['sprite']['litten'],encodedImages['sprite']['popplio']],
-	[encodedImages['sprite']['scorbunny'],encodedImages['sprite']['sobble'], encodedImages['sprite']['grookey']]
+	[encodedImages['sprite']['scorbunny'],encodedImages['sprite']['sobble'], encodedImages['sprite']['grookey']],
+    [encodedImages['sprite']['oshawott'],encodedImages['sprite']['rowlet'], encodedImages['sprite']['cyndaquil']]
 ]
 
 //variable for current image index
