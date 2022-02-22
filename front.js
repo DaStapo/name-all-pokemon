@@ -67,7 +67,8 @@ let extraPokemon = {
 	'Necrozma':['Necrozma-Dusk-Mane', 'Necrozma-Dawn-Wings', 'Necrozma-Ultra'],
 	'Zacian':['Zacian-Crowned'],
 	'Zamazenta':['Zamazenta-Crowned'],
-	'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider','Decidueye-Hisui', 'Typhlosion-Hisui', 'Samurott-Hisui'],
+	'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider'],
+    "hisuiplaceholder": ['Decidueye-Hisui', 'Typhlosion-Hisui', 'Samurott-Hisui'],
 	//minor forms (fucntionally identical and always next to original)
 	'Basculin':['Basculin-Blue-Striped'],
 	'Lycanroc':['lycanroc-Midnight', 'Lycanroc-Dusk'],
@@ -737,9 +738,22 @@ for (let i = 0; i < combinedList.length; i++) {
 for (let i = 0; i < pokemonList.length; i++) {
     let pokemon = pokemonList[i];
 
+    if (i > 0 && pokemonList[i-1] == "calyrex"){
+        for (let j = 0; j < extraPokemon['hisuiplaceholder'].length; j++){
+            
+            let subPokemon = standardizeName(extraPokemon['hisuiplaceholder'][j])
+            currentGenRevealList.push(subPokemon)
+            pokemonRevealListsByGen[0].push(subPokemon)
+            if (!pokemonAlreadyIncluded(subPokemon, currentGenList)){
+                currentGenList.push(subPokemon)
+            }
+        }
+    }
+
     currentGenList.push(pokemon)
     currentGenRevealList.push(pokemon)
     pokemonRevealListsByGen[0].push(pokemon)
+
     if (standardizeName(pokemon) in extraPokemon){
         if (extraPokemon[standardizeName(pokemon)].length < 15){
 
@@ -891,6 +905,15 @@ function loadSprites() {
     
     for (let i = 0; i < pokemonList.length; i++) {
         let pokemon = standardizeName(pokemonList[i]);
+
+        if (i > 0 && pokemonList[i-1] == "calyrex"){
+            for (let j = 0; j<extraPokemon["hisuiplaceholder"].length; j++){
+                fullSpriteList.push(standardizeName(extraPokemon["hisuiplaceholder"][j]))
+                loadPkmn(standardizeName(extraPokemon["hisuiplaceholder"][j]));
+            }
+        }
+        
+
         fullSpriteList.push(pokemon)
         if (pokemon in extraPokemon){
             for (let j = 0; j<extraPokemon[pokemon].length; j++){
