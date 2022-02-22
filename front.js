@@ -86,6 +86,7 @@ let extraPokemon = {
 	'Zygarde':['Zygarde-Complete'],
 	'Toxtricity':['Toxtricity-Low-Key'],
     // Hisuian forms in Hisuidex-order (except Qwilfish due to Overqwil dexnumber after Sneasler) + regular PLA forms
+	'Calyrex':['Calyrex-Ice-Rider', 'Calyrex-Shadow-Rider', 'Decidueye-Hisui', 'Typhlosion-Hisui', 'Samurott-Hisui'],
     'Kleavor' :['Lilligant-Hisui'],
     'Ursaluna' :['Sliggoo-Hisui', 'Goodra-Hisui', 'Growlithe-Hisui', 'Arcanine-Hisui', 'Basculin-White-Striped'],
     'Basculegion' :['Basculegion-F', 'Voltorb-Hisui', 'Electrode-Hisui', 'Sneasel-Hisui'],
@@ -311,6 +312,18 @@ for (key in formatted_lang_map){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " 50%"
             }
 			else if(pokemonList[i] === "toxtricity"){
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " A"
+            }
+			else if(pokemonList[i] === "basculegion"){
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + "♂"
+            }
+			else if(pokemonList[i] === "enamorus"){
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " I"
+            }
+			else if(pokemonList[i] === "dialga"){
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " A"
+            }
+			else if(pokemonList[i] === "palkia"){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " A"
             }
             else{
@@ -2746,7 +2759,8 @@ let images = [
 	[encodedImages['sprite']['tepig'],encodedImages['sprite']['oshawott'], encodedImages['sprite']['snivy']],
 	[encodedImages['sprite']['froakie'], encodedImages['sprite']['chespin'], encodedImages['sprite']['fennekin']],
 	[encodedImages['sprite']['rowlet'], encodedImages['sprite']['litten'],encodedImages['sprite']['popplio']],
-	[encodedImages['sprite']['scorbunny'],encodedImages['sprite']['sobble'], encodedImages['sprite']['grookey']]
+	[encodedImages['sprite']['scorbunny'],encodedImages['sprite']['sobble'], encodedImages['sprite']['grookey']],
+    [encodedImages['sprite']['oshawott'],encodedImages['sprite']['rowlet'], encodedImages['sprite']['cyndaquil']]
 ]
 
 //variable for current image index
