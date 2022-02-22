@@ -8,3 +8,7 @@
 'Sceptile-Mega'
 'Necrozma-Ultra'
 'Giratina-Origin'
+'Sliggoo-Hisui'
+'Goodra-Hisui'
+'Palkia-Origin'
+'Dialga-Origin'

@@ -10,3 +10,4 @@
 'Darmanitan-Galar'
 'Darmanitan-Galar-Zen'
 'Silvally-Ice'
+'Avalugg-Hisui'

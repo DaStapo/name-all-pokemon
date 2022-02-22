@@ -8,3 +8,4 @@
 'Zapdos-Galar'
 'Arceus-Fighting'
 'Silvally-Fighting'
+'Sneasel-Hisui'

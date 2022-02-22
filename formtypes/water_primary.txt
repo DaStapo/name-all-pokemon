@@ -15,3 +15,5 @@
 'Basculin-Blue-Striped'
 'Wishiwashi-School'
 'Keldeo-Resolute'
+'Samurott-Hisui'
+'Palkia-Origin'

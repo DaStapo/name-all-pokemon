@@ -8,3 +8,6 @@
 'Meowth-Galar'
 'Arceus-Steel'
 'Silvally-Steel'
+'Sliggoo-Hisui'
+'Goodra-Hisui'
+'Dialga-Origin'

@@ -5,3 +5,4 @@
 'Muk-Alola'
 'Gyarados-Mega'
 'Hoopa-Unbound'
+'Samurott-Hisui'

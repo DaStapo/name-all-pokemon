@@ -13,3 +13,5 @@
 'Silvally-Electric'
 'Thundurus-Therian'
 'Toxtricity-Low-Key'
+'Voltorb-Hisui'
+'Electrode-Hisui'

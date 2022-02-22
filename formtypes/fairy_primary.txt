@@ -2,3 +2,4 @@
 'Zacian-Crowned'
 'Arceus-Fairy'
 'Silvally-Fairy'
+'Enamorus-Therian'

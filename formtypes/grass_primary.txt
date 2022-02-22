@@ -10,3 +10,5 @@
 'Arceus-Grass'
 'Silvally-Grass'
 'Cherrim-Sunshine'
+'Decidueye-Hisui'
+'Lilligant-Hisui'

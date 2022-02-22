@@ -19,3 +19,4 @@
 'Silvally-Psychic'
 'Meowstic-F'
 'Indeedee-F'
+'Braviary-Hisui'

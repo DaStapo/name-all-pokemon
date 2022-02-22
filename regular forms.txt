@@ -30,3 +30,6 @@
 	'Yveltal':['Zygarde-10'],
 	'Zygarde':['Zygarde-Complete'],
 	'Toxtricity':['Toxtricity-Low-Key']
+
+'Basculin-White-Striped'
+'Basculegion-F'

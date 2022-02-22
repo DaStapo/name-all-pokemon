@@ -6,3 +6,5 @@
 'Lopunny-Mega'
 'Audino-Mega'
 'Meloetta-Pirouette'
+'Zorua-Hisui'
+'Zoroark-Hisui'

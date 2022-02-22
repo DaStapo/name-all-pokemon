@@ -5,3 +5,5 @@
 'Lopunny-Mega'
 'Meloetta-Pirouette'
 'Keldeo-Resolute'
+'Decidueye-Hisui'
+'Lilligant-Hisui'

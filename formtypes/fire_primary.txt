@@ -10,3 +10,6 @@
 'Castform-Sunny'
 'Arceus-Fire'
 'Silvally-Fire'
+'Typhlosion-Hisui'
+'Growlithe-Hisui'
+'Arcanine-Hisui'

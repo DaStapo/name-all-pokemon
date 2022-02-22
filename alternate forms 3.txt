@@ -5,6 +5,7 @@
 'Deoxys-Speed'
 'Giratina-Origin'
 'Basculin-Blue-Striped'
+'Basculin-White-Striped'
 'Tornadus-Therian'
 'Thundurus-Therian'
 'Landorus-Therian'

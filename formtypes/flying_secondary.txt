@@ -15,3 +15,5 @@
 'Shaymin-Sky'
 'Thundurus-Therian'
 'Landorus-Therian'
+'Braviary-Hisui'
+'Enamorus-Therian'

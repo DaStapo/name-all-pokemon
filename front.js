@@ -91,7 +91,7 @@ let extraPokemon = {
     'Basculegion' :['Basculegion-F', 'Voltorb-Hisui', 'Electrode-Hisui', 'Sneasel-Hisui'],
     'Sneasler' :['Qwilfish-Hisui'],
     'Overqwil' :['Avalugg-Hisui', 'Zorua-Hisui', 'Zoroark-Hisui', 'Braviary-Hisui'],
-    'Enamorus' :['Enamorus-Therian', 'Palkia-Origin', 'Dialga-Origin'],
+    'Enamorus' :['Enamorus-Therian', 'Dialga-Origin', 'Palkia-Origin'],
 }
 
 //standardize keys

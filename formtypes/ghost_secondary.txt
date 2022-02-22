@@ -3,3 +3,6 @@
 'Marowak-Alola'
 'Necrozma-Dawn-Wings'
 'Calyrex-Shadow-Rider'
+'Typhlosion-Hisui'
+'Zorua-Hisui'
+'Zoroark-Hisui'

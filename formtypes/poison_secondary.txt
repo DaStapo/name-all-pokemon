@@ -5,3 +5,5 @@
 'Gengar-Gmax'
 'Toxtricity-Gmax'
 'Toxtricity-Low-Key'
+'Sneasel-Hisui'
+'Qwilfish-Hisui'
