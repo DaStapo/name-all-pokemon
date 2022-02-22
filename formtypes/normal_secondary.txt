@@ -3,3 +3,4 @@
 'Zigzagoon-Galar'
 'Linoone-Galar'
 'Indeedee-F'
+'Ursaluna'

@@ -7,3 +7,5 @@
 'Toxtricity-Low-Key'
 'Sneasel-Hisui'
 'Qwilfish-Hisui'
+'Sneasler'
+'Overqwil'

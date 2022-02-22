@@ -7,3 +7,4 @@
 'Silvally-Ground'
 'Yamask-Galar'
 'Landorus-Therian'
+'Ursaluna'

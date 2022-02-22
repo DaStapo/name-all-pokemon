@@ -6,3 +6,5 @@
 'Typhlosion-Hisui'
 'Zorua-Hisui'
 'Zoroark-Hisui'
+'Basculegion'
+'Basculegion-F'

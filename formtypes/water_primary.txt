@@ -17,3 +17,6 @@
 'Keldeo-Resolute'
 'Samurott-Hisui'
 'Palkia-Origin'
+'Basculin-White-Striped'
+'Basculegion'
+'Basculegion-F'
