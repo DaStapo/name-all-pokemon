@@ -167,11 +167,10 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
 	
     //create box references/variables
     if (i !== 0) {
-        boxes.push(document.getElementById("pokemon-box-" + i));
+        boxes.push(document.getElementById("pokemon-box-" + genNames[i]));
     }
 
     //calling functions, popup and changing button CSS
-    console.log(genNames[i])
     document.getElementById("gen" +genNames[i]).onclick = function () {
 
             let swapGen = function () {
@@ -1426,7 +1425,7 @@ function updateTypeFilter(type){
     totalPokemonCount = pokemonListByType[type].length;
     for (let i = 0; i < boxes.length; i++) {
         boxes[i].style.display = "none";
-        regionToSingle(document.getElementById("region" + (i+1)));
+        regionToSingle(document.getElementById("region" + genNames[i+1]));
     }
     regionToSingle(document.getElementById("regionmega"));
     regionToSingle(document.getElementById("regiongmax"));
@@ -1542,7 +1541,7 @@ function updateGenFilter() {
         for (let i = 0; i < boxes.length; i++) {
             boxes[i].style.display = "block";
             totalPokemonCount = pokemonList.length;
-            regionToAll(document.getElementById("region" + (i+1)));
+            regionToAll(document.getElementById("region" +  genNames[i+1]));
         }
         regionToAll(document.getElementById("regionmega"));
         regionToAll(document.getElementById("regiongmax"));
@@ -1573,7 +1572,7 @@ function updateGenFilter() {
 
         for (let i = 0; i < boxes.length; i++) {
             if (i + 1 === currentGen) {
-                regionToSingle(document.getElementById("region" + (i+1)));
+                regionToSingle(document.getElementById("region" + genNames[i+1]));
                 regionToSingle(document.getElementById("regionmega"));
                 regionToSingle(document.getElementById("regiongmax"));
                 regionToSingle(document.getElementById("region7-5"));
