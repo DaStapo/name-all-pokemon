@@ -16,4 +16,5 @@
 'Thundurus-Therian'
 'Landorus-Therian'
 'Braviary-Hisui'
+'Enamorus'
 'Enamorus-Therian'

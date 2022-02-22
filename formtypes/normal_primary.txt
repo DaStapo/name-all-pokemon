@@ -8,3 +8,4 @@
 'Meloetta-Pirouette'
 'Zorua-Hisui'
 'Zoroark-Hisui'
+'Wyrdeer'

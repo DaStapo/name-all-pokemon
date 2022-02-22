@@ -9,3 +9,4 @@
 'Arceus-Fighting'
 'Silvally-Fighting'
 'Sneasel-Hisui'
+'Sneasler'

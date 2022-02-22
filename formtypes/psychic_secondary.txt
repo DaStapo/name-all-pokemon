@@ -9,3 +9,4 @@
 'Orbeetle-Gmax'
 'Raichu-Alola'
 'Darmanitan-Zen'
+'Wyrdeer'

@@ -2,3 +2,4 @@
 'Growlithe-Hisui'
 'Arcanine-Hisui'
 'Avalugg-Hisui'
+'Kleavor'
