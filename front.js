@@ -734,9 +734,9 @@ for (let i = 0; i < combinedList.length; i++) {
     }
 }
 
+for (let i = 0; i < pokemonList.length; i++) {
+    let pokemon = pokemonList[i];
 
-let handlePokemonByGen = function (pokemon) 
-    {
     currentGenList.push(pokemon)
     currentGenRevealList.push(pokemon)
     pokemonRevealListsByGen[0].push(pokemon)
@@ -745,7 +745,11 @@ let handlePokemonByGen = function (pokemon)
 
             for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
                 let subPokemon = standardizeName(extraPokemon[standardizeName(pokemon)][j])
-                handlePokemonByGen(subPokemon);
+                currentGenRevealList.push(subPokemon)
+                pokemonRevealListsByGen[0].push(subPokemon)
+                if (!pokemonAlreadyIncluded(subPokemon, currentGenList)){
+                    currentGenList.push(subPokemon)
+                }
             }
         }
     }
@@ -778,12 +782,6 @@ let handlePokemonByGen = function (pokemon)
         currentGenIndex++;
         currentCount = 0;
     }
-}
-
-
-for (let i = 0; i < pokemonList.length; i++) {
-    let pokemon = pokemonList[i];
-    handlePokemonByGen(pokemon);
 }
 
 //https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
