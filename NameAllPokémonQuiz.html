@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="style.css">
     <title>Pokémon Quiz</title>
-    <meta name="description" content="Can you type all Pokémon names from memory?
-    With this quiz you can try naming all Pokémon of one elemental type, name all from a specific generation, or attempt the full quiz of naming them all! It also features Twitch-chat integration, allowing Twitch-content-creators to let their audience type Pokémon directly through their chat. In addition to the English Pokémon names, inputs from multiple other languages (Japanese, Korean, French, German) can be toggled as well.">
+    <meta name="description" content="Can you type all Pokémon? Or try naming all of one type/region. Includes Twitch-chat integration and toggle for input in Japanese, Korean, French and German.">
     <script type="text/javascript">
       if (document.images)
         (new Image()).src = "/sprites/unknown.png";
@@ -240,7 +239,7 @@
     </div>
     <div id="overlay" class="overlay" onclick="off()">
       <div class="prompt bigbox lime">
-        <div class="box winbutton pointer"><h1>Well done!</h1>
+        <div class="box winbutton pointer"><div class="welldone">Well done!</div>
 			    <br />
 			    <h2>You named <div id="currentcount"></div>
 			    <div id="gen-name"></div>Pokémon <br />in <div id="timer-score"></div>!

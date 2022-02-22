@@ -31,6 +31,10 @@
 	margin-block-start: 0em;
     margin-block-end: 0em;
 	}
+	.welldone {
+	font-size: 30px;
+	font-weight: bold;
+	}
 	.p1 {
 	font-size: 1.15em;
 	}
