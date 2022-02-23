@@ -685,7 +685,7 @@ for (key in typeDict){
 }
 //typeDict["urshifu"]["primary"] = "fighting"
 //typeDict["urshifu"]["secondary"] = "dark"
-let combinedList = pokemonList.concat(megaList).concat(gmaxList)
+let combinedList = pokemonList.concat(megaList).concat(gmaxList).concat(extraPokemon["hisuiplaceholder"])
 for (let i = 0; i < combinedList.length; i++) {
     let pokemon = standardizeName(combinedList[i]);
     
