@@ -278,10 +278,10 @@ for (key in formatted_lang_map){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " H"
             }
 			else if(pokemonList[i] === "indeedee"){
-                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + "♂"
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " ♂"
             }
 			else if(pokemonList[i] === "meowstic"){
-                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + "♂"
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " ♂"
             }
 			else if(pokemonList[i] === "basculin"){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " R"
@@ -314,7 +314,7 @@ for (key in formatted_lang_map){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " A"
             }
 			else if(pokemonList[i] === "basculegion"){
-                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + "♂"
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " ♂"
             }
 			else if(pokemonList[i] === "enamorus"){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " I"
@@ -416,7 +416,7 @@ for (key in formatted_lang_map){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'eternamax'].nodeValue = formatted_lang_map[currentKey][i]  + ' E';
                     }
 					else if(suffixes[j] === "f"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'f'].nodeValue = formatted_lang_map[currentKey][i]  + '♀';
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'f'].nodeValue = formatted_lang_map[currentKey][i]  + ' ♀';
                     }
 					else if(suffixes[j] === "dusk"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'dusk'].nodeValue = formatted_lang_map[currentKey][i]  + ' D';
