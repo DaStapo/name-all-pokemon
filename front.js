@@ -2918,6 +2918,11 @@ let disableTypeParty = function (){
 
 }
 
+function creditspopup() {
+    var popup = document.getElementById("credits");
+    popup.classList.toggle("show");
+}
+
 
 
 loadSprites()

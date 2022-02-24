@@ -36,6 +36,11 @@
 	.p1 {
 	font-size: 1.15em;
 	}
+	.p3 {
+	font-size: 1.15em;
+	text-align: center;
+	padding-bottom: 10px;
+	}
 	pp {
 	font-size: 0.9em;
 	}
@@ -489,12 +494,29 @@
 	.button:focus {
 	outline: none;
 	}
+	.closebutton {
+	margin: 0px 0px 0px 5px;
+	padding: 3px 5px 3px 5px;
+	cursor: pointer;
+	font-family: "Roboto";
+    font-size: 16px;
+	border: solid #8CC63F 2px;
+	color: #fff;
+	background-color: #8CC63F;
+	text-align: center;
+	position: absolute;
+	top: 7px;
+	right:10px;
+	}
+	.closebutton:hover {
+		background-color: #65ae04;
+		border-color: #65ae04;
+	}
 	.smolbutton {
 	background-color: #fff;
 	border: solid #8CC63F 2px;
 	border-radius: 6px 3px 6px 3px;
 	color: #8CC63F;
-	padding: 0px;
 	text-align: center;
 	text-decoration: none;
 	display: inline;
@@ -816,6 +838,54 @@
 	}
 	.abupdown {
 		padding: 0px 5px;
+	}
+	::-webkit-scrollbar {
+	width: 15px;
+  	}
+	::-webkit-scrollbar-track {
+	background: #fff; 
+ 	}
+    ::-webkit-scrollbar-thumb {
+	background: #8cc63f; 
+ 	}
+    ::-webkit-scrollbar-thumb:hover {
+	background: rgb(70, 143, 46);
+    }
+	.popup {
+		cursor: pointer;
+		color: #8CC63F;
+		display:inline;
+	}
+	.popuptext {
+		visibility: hidden;
+		width: 80%;
+		height: 70%;
+		contain: content;
+		background-color: rgba(255, 255, 255, 0.9);
+		color: #333;
+		padding: 10px 10px;
+		position: fixed;
+		z-index: 3;
+		left: 10%;
+		top: 10%;
+		border: #8CC63F solid 2px ;
+	}
+	.popupscrl {
+		overflow: auto;
+		height: 95.5%;
+	}
+	.popuptext::after {
+		content: "";
+		position: fixed;
+		top: 100%;
+		left: 50%;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: #666;
+	}
+	.show {
+		visibility: visible;
 	}
 	.tooltip {
 	position: relative;
