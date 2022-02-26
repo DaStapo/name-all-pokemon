@@ -146,9 +146,6 @@
 	padding-left: 18px;
 	padding-right: 18px;
 	}
-	.padded2 {
-	padding: 0px 7px;
-	}
 	.padded-left {
 	padding-left: 20px;
 	}
@@ -746,11 +743,11 @@
 	.loader {
 	display: block;
 	}
-	.play {
-	display: none;
-	}
 	.playtext, .inputbar {
 	opacity: 0;
+	}
+	.padfull {
+	padding: 16px 0px 8px;
 	}
 	.hidden {
 	display: none;
@@ -2270,24 +2267,80 @@ background-color: #5A8EA1;
 .fairy {
 background-color: #EC8FE6;
 }
-	.blend {
-	background-image: url(/images/background-50-grey.svg);
-	background-blend-mode: hard-light;
-	}
-	.symbol {
-	width: 42px;
-	margin: 0px -5px -10px -5px;
-	/*margin: -5px 0px -10px -10px;*/
-	filter: brightness(0) invert(1);
-	}
-	.icon {
-	width: 75%;
-	vertical-align: text-top;
-	}
-	.white {
-	filter: brightness(0) invert(1);
-	}
-	.resp-sharing-button__link,
+.blend {
+background-image: url(/images/background-50-grey.svg);
+background-blend-mode: hard-light;
+}
+.symbol {
+width: 42px;
+margin: 0px -5px -10px -5px;
+/*margin: -5px 0px -10px -10px;*/
+filter: brightness(0) invert(1);
+}
+.icon {
+width: 75%;
+vertical-align: text-top;
+}
+.white {
+filter: brightness(0) invert(1);
+}
+.lds-ellipsis {
+display: inline-block;
+position: relative;
+width: 80px;
+height: 80px;
+}
+.lds-ellipsis div {
+position: absolute;
+top: 33px;
+width: 13px;
+height: 13px;
+border-radius: 50%;
+background: #8CC63F;
+animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+left: 8px;
+animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+left: 8px;
+animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+left: 32px;
+animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+left: 56px;
+animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+0% {
+	transform: scale(0);
+}
+100% {
+	transform: scale(1);
+}
+}
+@keyframes lds-ellipsis3 {
+0% {
+	transform: scale(1);
+}
+100% {
+	transform: scale(0);
+}
+}
+@keyframes lds-ellipsis2 {
+0% {
+	transform: translate(0, 0);
+}
+100% {
+	transform: translate(24px, 0);
+}
+}
+
+.resp-sharing-button__link,
 .resp-sharing-button__icon {
   display: inline-block
 }

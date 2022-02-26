@@ -1700,10 +1700,10 @@ var loadingBar = document.getElementById("loadbar");
 function onLoadingComplete() {
     //document.getElementById("loadbox").style.display = "none";
     document.getElementById("loader").style.display = "none";
-    document.getElementById("play").style.display = "inline-block";
     document.getElementById("playtext").style.opacity = "1";
     document.getElementById("inputbar").style.opacity = "1";
     document.getElementById("pokemon").disabled = false;
+    document.getElementById("spinner").style.display = "none";
     changeFooterPosition();
 }
 
