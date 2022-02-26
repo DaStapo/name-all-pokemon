@@ -1694,9 +1694,6 @@ function streamInputStart(streamName) {
 
 }
 
-
-var loadingBar = document.getElementById("loadbar");
-
 function onLoadingComplete() {
     //document.getElementById("loadbox").style.display = "none";
     document.getElementById("loader").style.display = "none";
@@ -1709,7 +1706,6 @@ function onLoadingComplete() {
 
 function onSpriteLoad() {
     let fraction = loadedSpritesCount / totalSpritesCount;
-    loadingBar.style.width = fraction * 100 + '%';
     if (fraction === 1) {
         onLoadingComplete();
     }
