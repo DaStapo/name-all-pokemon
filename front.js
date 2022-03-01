@@ -2616,7 +2616,7 @@ document.getElementById("darkon").onclick = function (){
             boarders[i].classList.add("inlineboxdark")
         }
 
-        let shinybutton = document.getElementsByClassName("shinyc") 
+        let shinybutton = document.getElementsByClassName("spbutton") 
         for (let i = 0; i < shinybutton.length; i++){
             shinybutton[i].classList.add("boxdark")
         }
@@ -2728,7 +2728,7 @@ document.getElementById("darkoff").onclick = function (){
             boarders[i].classList.remove("inlineboxdark")
         }
 
-        let shinybutton = document.getElementsByClassName("shinyc")
+        let shinybutton = document.getElementsByClassName("spbutton")
         for (let i = 0; i < shinybutton.length; i++){
             shinybutton[i].classList.remove("boxdark")
         }

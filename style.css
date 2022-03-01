@@ -434,6 +434,19 @@
 	height: 51px;
 	width: 38px;
 	}
+	.button-e {
+		display: inline-block;
+		cursor: pointer;
+		margin: 10px 0px 0px 10px;
+		border: none;
+		padding: 11px 18px 10px;
+		text-align: center;
+		min-height: 30px;
+		line-height: 30px;
+		font-family: "Roboto";
+		font-size: 16px;
+		min-width: 90px;
+	}
 	.moonc {
 	background: #3f3972;
 	border: 2px solid #3f3972;
@@ -442,9 +455,13 @@
 	background: #ed9a1e;
 	border: 2px solid #ed9a1e;
 	}
-	.shinyc {
+	.spbutton {
 		background:rgba(255, 255, 255, 0.85);
-		width: 46px;
+	}
+	.shinyc {
+	width: 46px;
+	}
+	.shadowc {
 	}
 	.moonc:hover {
 	background: #302d50;
@@ -453,7 +470,11 @@
 		background: #eeac4a;
 	}
 	.shinyc:hover {
-		background: #ff7b9a;;
+		background: #ff7b9a;
+	}
+	.shadowc:hover {
+		background: rgb(160, 160, 160);
+		color: #fff;
 	}
 	.hovg {
 	background-color: #8CC63F;
@@ -2259,6 +2280,16 @@ filter: brightness(0) invert(1);
 .icon {
 width: 75%;
 vertical-align: text-top;
+}
+.icon2 {
+	margin: 0px -10px -4px 0px;
+    padding: 0px 5px 0px 10px;
+	float: right;
+	width: 30px;
+	height: 34px;
+	object-fit: none;
+	object-position: 50% 100%;
+	filter: brightness(0) invert(0.7);
 }
 .white {
 filter: brightness(0) invert(1);
