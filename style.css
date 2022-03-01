@@ -473,8 +473,8 @@
 		background: #eeac4a;
 	}
 	.shinyc:hover {
-		background: #ff7b9a;
-		border: #ff7b9a;
+		background: #ff7b9a !important;
+		border: solid 2px #ff7b9a !important;
 	}
 	.shadowc:hover {
 		background: rgb(160, 160, 160);
@@ -693,7 +693,7 @@
 	background-color: #8CC63F;
 	}
 	.buttondark {
-	background-color:#111 !important;
+	background-color:#111;
 	border: 2px solid #8CC63F;
 	}
 	.greyerdark {
@@ -1116,7 +1116,7 @@ background-color: #9099A1
 ;
 }
 .buttondarknormal {
-border-color: #9099A1
+border-color: #6e7881
 ;
 }
 .limelightdarknormal {
@@ -1186,7 +1186,7 @@ color: #111;
 background-color: #FF9C54;
 }
 .buttondarkfire {
-border-color: #FF9C54;
+border-color: #dd752b;
 }
 .limelightdarkfire {
 border-color: #dd752b;
@@ -1254,7 +1254,7 @@ color: #111;
 background-color: #4D90D5;
 }
 .buttondarkwater {
-border-color: #4D90D5;
+border-color: #1462af;
 }
 .limelightdarkwater {
 border-color: #1462af;
@@ -1322,7 +1322,7 @@ color: #111;
 background-color: #63BB5B;
 }
 .buttondarkgrass {
-border-color: #63BB5B;
+border-color: #378830;
 }
 .limelightdarkgrass {
 border-color: #378830;
@@ -1364,6 +1364,7 @@ background-color: #F3D23B;
 .buttonelectric {
 	background-color: #F3D23B;
 	border: solid #e6c120 2px;
+	color: #888;
 }
 .smolbuttonelectric {
 border-color: #F3D23B;
@@ -1390,7 +1391,7 @@ color: #111;
 background-color: #F3D23B;
 }
 .buttondarkelectric {
-border-color: #F3D23B;
+border-color: #d4af06;
 }
 .limelightdarkelectric {
 border-color: #d4af06;
@@ -1459,7 +1460,7 @@ color: #111;
 background-color: #74cec0;
 }
 .buttondarkice {
-border-color: #74cec0;
+border-color: #38b9a6;
 }
 .limelightdarkice {
 border-color: #38b9a6;
@@ -1527,7 +1528,7 @@ color: #111;
 background-color: #CE4069;
 }
 .buttondarkfighting {
-border-color: #CE4069;
+border-color: #ac294e;
 }
 .limelightdarkfighting {
 border-color: #ac294e;
@@ -1595,7 +1596,7 @@ color: #111;
 background-color: #AB6AC8;
 }
 .buttondarkpoison {
-border-color: #AB6AC8;
+border-color: #923cb9;
 }
 .limelightdarkpoison {
 border-color: #923cb9;
@@ -1663,7 +1664,7 @@ color: #111;
 background-color: #D97746;
 }
 .buttondarkground {
-border-color: #D97746;
+border-color: #b15527;
 }
 .limelightdarkground {
 border-color: #b15527;
@@ -1731,7 +1732,7 @@ color: #111;
 background-color: #8fa8dd;
 }
 .buttondarkflying {
-border-color: #8fa8dd;
+border-color: #5f79af;
 }
 .limelightdarkflying {
 border-color: #5f79af;
@@ -1799,7 +1800,7 @@ color: #111;
 background-color: #F97176;
 }
 .buttondarkpsychic {
-border-color: #F97176;
+border-color: #cf3e43;
 }
 .limelightdarkpsychic {
 border-color: #cf3e43;
@@ -1867,7 +1868,7 @@ color: #111;
 background-color: #90C12C;
 }
 .buttondarkbug {
-border-color: #90C12C;
+border-color: #6f991a;
 }
 .limelightdarkbug {
 border-color: #6f991a;
@@ -1935,7 +1936,7 @@ color: #111;
 background-color: #C7B78B;
 }
 .buttondarkrock {
-border-color: #C7B78B;
+border-color: #96875e;
 }
 .limelightdarkrock {
 border-color: #96875e;
@@ -2003,7 +2004,7 @@ color: #111;
 background-color: #5269AC;
 }
 .buttondarkghost {
-border-color: #5269AC;
+border-color: #374c8b;
 }
 .limelightdarkghost {
 border-color: #374c8b;
@@ -2071,7 +2072,7 @@ color: #111;
 background-color: #0A6DC4;
 }
 .buttondarkdragon {
-border-color: #0A6DC4;
+border-color: #0b5aa0;
 }
 .limelightdarkdragon {
 border-color: #0b5aa0;
@@ -2139,7 +2140,7 @@ color: #111;
 background-color: #5A5366;
 }
 .buttondarkevil {
-border-color: #5A5366;
+border-color: #3c3744;
 }
 .limelightdarkevil {
 border-color: #3c3744;
@@ -2207,7 +2208,7 @@ color: #111;
 background-color: #5A8EA1;
 }
 .buttondarksteel {
-border-color: #5A8EA1;
+border-color: #3e6474;
 }
 .limelightdarksteel {
 border-color: #3e6474;
@@ -2275,7 +2276,7 @@ color: #111;
 background-color: #EC8FE6;
 }
 .buttondarkfairy {
-border-color: #EC8FE6;
+border-color: #be58b8;
 }
 .limelightdarkfairy {
 border-color: #be58b8;
