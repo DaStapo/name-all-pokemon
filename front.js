@@ -1512,6 +1512,10 @@ function updateTypeFilter(type){
     for (let i = 0; i < grborderElements.length; i++){
         grborderElements[i].classList.add("smolbutton"+typeName)
     }
+    let bbuttonElements = document.getElementsByClassName("button");
+    for (let i = 0; i < bbuttonElements.length; i++){
+        bbuttonElements[i].classList.add("button"+typeName)
+    }
 
 
     for (let pokemon in unguessedDict){
@@ -1553,6 +1557,10 @@ function updateGenFilter() {
         for (let i = 0; i < grborderElements.length; i++){
             grborderElements[i].classList.remove("smolbutton"+getCurrentTypeName())
         }
+        let bbuttonElements = document.getElementsByClassName("button");
+        for (let i = 0; i < bbuttonElements.length; i++){
+            bbuttonElements[i].classList.remove("button"+getCurrentTypeName())
+        }        
 
     }
     currentType = ""
