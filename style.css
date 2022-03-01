@@ -439,13 +439,16 @@
 		cursor: pointer;
 		margin: 10px 0px 0px 10px;
 		border: none;
-		padding: 11px 18px 10px;
+		padding: 9px 14px 8px;
 		text-align: center;
 		min-height: 30px;
 		line-height: 30px;
 		font-family: "Roboto";
 		font-size: 16px;
 		min-width: 90px;
+	}
+	.grborder {
+		border: 2px solid #8CC63F;
 	}
 	.moonc {
 	background: #3f3972;
@@ -471,10 +474,12 @@
 	}
 	.shinyc:hover {
 		background: #ff7b9a;
+		border: #ff7b9a;
 	}
 	.shadowc:hover {
 		background: rgb(160, 160, 160);
 		color: #fff;
+		border: 2px solid rgb(160, 160, 160);
 	}
 	.hovg {
 	background-color: #8CC63F;

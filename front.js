@@ -2618,7 +2618,7 @@ document.getElementById("darkon").onclick = function (){
 
         let shinybutton = document.getElementsByClassName("spbutton") 
         for (let i = 0; i < shinybutton.length; i++){
-            shinybutton[i].classList.add("boxdark")
+            shinybutton[i].classList.add("buttondark")
         }
 		
         for (let i = 0; i < pokeballArray.length; i++){
@@ -2730,7 +2730,7 @@ document.getElementById("darkoff").onclick = function (){
 
         let shinybutton = document.getElementsByClassName("spbutton")
         for (let i = 0; i < shinybutton.length; i++){
-            shinybutton[i].classList.remove("boxdark")
+            shinybutton[i].classList.remove("buttondark")
         }
 		
         for (let i = 0; i < pokeballArray.length; i++){
