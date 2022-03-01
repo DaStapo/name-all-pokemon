@@ -1489,17 +1489,17 @@ function updateTypeFilter(type){
     document.getElementById("bgpattern2").style.display = 'block';
     document.getElementById("bgpattern").src = "/images/types/"+ type+".svg";
     document.getElementById("bgpattern2").src = "/images/types/"+ type+".svg";
-    
+
+    let typeName = type;
+    if (typeName=="dark"){
+        typeName = "evil"
+    }
     for (let i = 0; i< typeClasses.length; i++){
         let currentClass = typeClasses[i];
         if(currentClass.includes('dark') && !darkMode){
             continue;
         }
 
-        let typeName = type;
-        if (typeName=="dark"){
-            typeName = "evil"
-        }
         let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
         //let allElements = document.querySelectorAll("." + currentClass.replace("type", ""));
         for (let j = 0; j<allElements.length; j++){
@@ -1508,6 +1508,10 @@ function updateTypeFilter(type){
 
     }
 
+    let grborderElements = document.getElementsByClassName("grborder");
+    for (let i = 0; i < grborderElements.length; i++){
+        grborderElements[i].classList.add("smolbutton"+typeName)
+    }
 
 
     for (let pokemon in unguessedDict){
@@ -1534,6 +1538,7 @@ function updateGenFilter() {
     logActions = true;
     if(currentType !== ""){
         document.getElementById("body").classList.remove(currentType);
+
         for (let i = 0; i< typeClasses.length; i++){
             let currentClass = typeClasses[i];
             let typeName = getCurrentTypeName();
@@ -1543,6 +1548,10 @@ function updateGenFilter() {
                 allElements[j].classList.remove(currentClass.replace("type", typeName))
             }
     
+        }
+        let grborderElements = document.getElementsByClassName("grborder");
+        for (let i = 0; i < grborderElements.length; i++){
+            grborderElements[i].classList.remove("smolbutton"+getCurrentTypeName())
         }
 
     }
