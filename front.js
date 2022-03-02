@@ -1487,8 +1487,8 @@ function updateTypeFilter(type){
 
     document.getElementById("bgpattern").style.display = 'block';
     document.getElementById("bgpattern2").style.display = 'block';
-    document.getElementById("bgpattern").src = "/images/types/"+ type+".svg";
-    document.getElementById("bgpattern2").src = "/images/types/"+ type+".svg";
+    document.getElementById("bgpattern").src = "/images/types/"+ type.toUpperCase()+".svg";
+    document.getElementById("bgpattern2").src = "/images/types/"+ type.toUpperCase() +".svg";
 
     let typeName = type;
     if (typeName=="dark"){
