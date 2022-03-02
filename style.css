@@ -886,16 +886,21 @@
 		border-color: #666;
 	}
 	td {
-		border-top: 2px dotted #8CC63F;	
+		border-top: 2px dotted #8CC63F;
+		padding-bottom: 5px;	
 	}
 	table {
 		width: 100%;
 	}
 	td:nth-child(even) {
-		width: 60%;
+		padding-left: 5px;
+		vertical-align: baseline;
+		padding-top: 5px;
 	}
 	td:nth-child(odd) {
-		width: 40%;
+	border-right: 2px dotted #dcdcdc;
+    padding-right: 1px;
+    padding-top: 5px;
 	}
 	.show {
 		visibility: visible;
