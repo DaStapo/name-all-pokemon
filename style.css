@@ -448,7 +448,7 @@
 		min-width: 90px;
 	}
 	.grborder {
-		border: 2px solid #ffffff;
+		border: 2px solid rgba(255, 255, 255, 0.85);
 	}
 	.moonc {
 	background: #3f3972;
