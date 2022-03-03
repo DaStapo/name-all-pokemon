@@ -142,13 +142,13 @@
           </div>
           <div class="column">
             <div class="column">
-              <div class="box roundedc2 slightpad notxt">
-                  <form>Change Quiz:
-                    <div class="smolbutton" id="fullQuizButton" onclick="gen0click()">Full</div>
-                    <div class="smolbutton" id="genselect" onclick="genselectmenu()">Generation</div>
-                    <div class="smolbutton" id="typeselect" onclick="typeselectmenu()">Type</div>
-                  </form>
-              </div>
+              <div id="fullQuizButton" class="button-e grborder roundedc2 spbutton shadowc" onclick="gen0click()">Full Quiz<img src=images/FullQuiz.png class="iconq"></div>
+            </div>
+            <div class="column">
+              <div id="genselect" class="button-e grborder roundedc2 spbutton shadowc" onclick="genselectmenu()">Generation Quiz<img src=images/GenQuiz.png class="iconq"></div>
+            </div>
+            <div class="column">
+              <div id="typeselect" class="button-e grborder roundedc2 spbutton shadowc" onclick="typeselectmenu()">Type Quiz<img src=images/TypeQuiz.png class="iconq"></div>
             </div>   
             <div class="column">
               <button id="shiny" class="button-i grborder roundedc2 spbutton shinyc"><img src=images/shiny.svg class="icon"></button>
@@ -170,7 +170,7 @@
           <div class="column">
             <div class="column">
               <div class="box roundedc2 slightpad" id="inputbox">
-                <div class="twitchbar" id="twitch-bar" onclick="twitchopen()">Twitch-chat input
+                <div class="twitchbar" id="twitch-bar" onclick="twitchopen()"><img src=images/TwitchLogo.png class="icont">Twitch-chat input
                 <div class="arrowbutton abright" id="twitch-open"><i class="arrow aright"></i></div>
                 </div>
                 <div id="twitch-coll" class="twitch-coll">

@@ -1449,12 +1449,6 @@ function updateTypeFilter(type){
 
     currentGen = 0;
     updateGenFilter();
-
-    document.getElementById("fullQuizButton").classList.remove('smolbuttonSwap')
-    document.getElementById("fullQuizButton").classList.add('smolbutton')
-    if (darkMode){
-        document.getElementById("fullQuizButton").classList.add('smolbuttondark')
-    }
     
 
     currentPokemonList = pokemonListByType[type]
@@ -1590,13 +1584,6 @@ function updateGenFilter() {
     let currentTypeName = getCurrentTypeName();
     if (currentGen === 0) {
 
-        document.getElementById("fullQuizButton").classList.remove('smolbutton');
-        document.getElementById("fullQuizButton").classList.remove('smolbutton'+currentTypeName);
-        document.getElementById("fullQuizButton").classList.remove('smolbuttondark');
-        document.getElementById("fullQuizButton").classList.remove('smolbuttondark'+currentTypeName);
-        document.getElementById("fullQuizButton").classList.add('smolbuttonSwap');
-        document.getElementById("fullQuizButton").classList.add('smolbuttonSwap'+currentTypeName);
-
         gen7half.style.display = "block";
         for (let i = 0; i < boxes.length; i++) {
             boxes[i].style.display = "block";
@@ -1618,16 +1605,6 @@ function updateGenFilter() {
 			allSprites[i].classList.remove('spritet');
         }
     } else {
-
-        document.getElementById("fullQuizButton").classList.remove('smolbuttonSwap')
-        document.getElementById("fullQuizButton").classList.remove('smolbuttonSwap'+currentTypeName)
-        document.getElementById("fullQuizButton").classList.add('smolbutton')
-        document.getElementById("fullQuizButton").classList.add('smolbutton'+currentTypeName)
-
-        if (darkMode){
-            document.getElementById("fullQuizButton").classList.add('smolbuttondark')
-            document.getElementById("fullQuizButton").classList.add('smolbuttondark'+currentTypeName)
-        }
 
 
         for (let i = 0; i < boxes.length; i++) {
