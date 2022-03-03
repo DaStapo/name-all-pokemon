@@ -448,7 +448,7 @@
 		min-width: 90px;
 	}
 	.grborder {
-		border: 2px solid #8CC63F;
+		border: 2px solid #ffffff;
 	}
 	.moonc {
 	background: #3f3972;
@@ -477,9 +477,9 @@
 		border: solid 2px #ff7b9a !important;
 	}
 	.shadowc:hover {
-		background: rgb(160, 160, 160);
+		background: #65ae04;
 		color: #fff;
-		border: 2px solid rgb(160, 160, 160);
+		border: 2px solid #65ae04;
 	}
 	.hovg {
 	background-color: #8CC63F;
@@ -2363,6 +2363,14 @@ filter: brightness(0) invert(1);
 .icon {
 width: 75%;
 vertical-align: text-top;
+}
+.icont {
+height: 28px;
+margin: 0px 7px -10px 0px;
+}
+.iconq {
+height: 28px;
+margin: 0px -2px -8px 7px;
 }
 .icon2 {
 	margin: -6px -7px -3px -4px;
