@@ -1511,10 +1511,7 @@ function updateTypeFilter(type){
 
     }
 
-    let grborderElements = document.getElementsByClassName("grborder");
-    for (let i = 0; i < grborderElements.length; i++){
-        grborderElements[i].classList.add("smolbutton"+typeName)
-    }
+
     let bbuttonElements = document.getElementsByClassName("button");
     for (let i = 0; i < bbuttonElements.length; i++){
         bbuttonElements[i].classList.add("button"+typeName)
@@ -1556,10 +1553,7 @@ function updateGenFilter() {
             }
     
         }
-        let grborderElements = document.getElementsByClassName("grborder");
-        for (let i = 0; i < grborderElements.length; i++){
-            grborderElements[i].classList.remove("smolbutton"+getCurrentTypeName())
-        }
+
         let bbuttonElements = document.getElementsByClassName("button");
         for (let i = 0; i < bbuttonElements.length; i++){
             bbuttonElements[i].classList.remove("button"+getCurrentTypeName())
@@ -2584,12 +2578,6 @@ document.getElementById("darkon").onclick = function (){
             boxes[i].classList.add("boxdark")
         }
 
-        let buttons = document.getElementsByClassName("button")
-        for (let i = 0; i < buttons.length; i++){
-            buttons[i].classList.add("buttondark")
-        }
-
-
         let smolButtons = document.getElementsByClassName("smolbutton")
         for (let i = 0; i < smolButtons.length; i++){
             smolButtons[i].classList.add("smolbuttondark")
@@ -2599,6 +2587,11 @@ document.getElementById("darkon").onclick = function (){
 
         for (let i = 0; i < buttonsX.length; i++){
             buttonsX[i].classList.add("smolbuttonxdark")
+        }
+        
+        let buttons = document.getElementsByClassName("button")
+        for (let i = 0; i < buttons.length; i++){
+            buttons[i].classList.add("buttondark")
         }
 		
 		let limelights = document.getElementsByClassName("limelight")

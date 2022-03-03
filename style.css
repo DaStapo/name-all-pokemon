@@ -564,6 +564,7 @@
 	.smolbuttonx {
 	background-color: #8CC63F;
 	color: #fff;
+	border-color: #8CC63F;
 	}
 	.ppbutton {
 	border: solid #65ae04 1px;
@@ -688,13 +689,13 @@
 	.smolbuttondark {
 	background-color: #111;
 	}
-	.smolbuttonxdark {
-	color: #111;
-	background-color: #8CC63F;
-	}
 	.buttondark {
 	background-color:#111;
 	border: 2px solid #8CC63F;
+	}
+	.smolbuttonxdark {
+	color: #111;
+	background-color: #8CC63F;
 	}
 	.greyerdark {
 	background-color: #111;
@@ -1111,6 +1112,7 @@ color: #fff;
 .smolbuttonxnormal {
 background-color: #9099A1;
 color: #fff;
+border-color: #9099A1;
 }
 .inlineboxnormal {
 background-color: #dde5ec;
@@ -1182,6 +1184,7 @@ color: #fff;
 .smolbuttonxfire {
 background-color: #FF9C54;
 color: #fff;
+border-color: #FF9C54;
 }
 .inlineboxfire {
 background-color: #ffe6d4;
@@ -1250,6 +1253,7 @@ color: #fff;
 .smolbuttonxwater {
 background-color: #4D90D5;
 color: #fff;
+border-color: #4D90D5;
 }
 .inlineboxwater {
 background-color: #cee5ff;
@@ -1318,6 +1322,7 @@ color: #fff;
 .smolbuttonxgrass {
 background-color: #63BB5B;
 color: #fff;
+border-color: #63BB5B;
 }
 .inlineboxgrass {
 background-color: #cfe7cd;
@@ -1387,6 +1392,7 @@ color: #fff;
 .smolbuttonxelectric {
 background-color: #F3D23B;
 color: #333;
+border-color: #F3D23B;
 }
 .inlineboxelectric {
 background-color: #fdf2b8;
@@ -1456,6 +1462,7 @@ color: #fff;
 .smolbuttonxice {
 background-color: #74cec0;
 color: #fff;
+border-color: #74cec0;
 }
 .inlineboxice {
 background-color: #e2eeec;
@@ -1524,6 +1531,7 @@ color: #fff;
 .smolbuttonxfighting {
 background-color: #CE4069;
 color: #fff;
+border-color: #CE4069;
 }
 .inlineboxfighting {
 background-color: #f7dae3;
@@ -1592,6 +1600,7 @@ color: #fff;
 .smolbuttonxpoison {
 background-color: #AB6AC8;
 color: #fff;
+border-color: #AB6AC8;
 }
 .inlineboxpoison {
 background-color: #dcd1e0;
@@ -1660,6 +1669,7 @@ color: #fff;
 .smolbuttonxground {
 background-color: #D97746;
 color: #fff;
+border-color: #D97746;
 }
 .inlineboxground {
 background-color: #f9e3d8;
@@ -1728,6 +1738,7 @@ color: #fff;
 .smolbuttonxflying {
 background-color: #8fa8dd;
 color: #fff;
+border-color: #8fa8dd;
 }
 .inlineboxflying {
 background-color: #d7e1f5;
@@ -1796,6 +1807,7 @@ color: #fff;
 .smolbuttonxpsychic {
 background-color: #F97176;
 color: #fff;
+border-color: #F97176;
 }
 .inlineboxpsychic {
 background-color: #f7d2d3;
@@ -1864,6 +1876,7 @@ color: #fff;
 .smolbuttonxbug {
 background-color: #90C12C;
 color: #fff;
+border-color: #90C12C;
 }
 .inlineboxbug {
 background-color: #e7f5c7;
@@ -1932,6 +1945,7 @@ color: #fff;
 .smolbuttonxrock {
 background-color: #C7B78B;
 color: #fff;
+border-color: #C7B78B;
 }
 .inlineboxrock {
 background-color: #e4e0d6;
@@ -2000,6 +2014,7 @@ color: #fff;
 .smolbuttonxghost {
 background-color: #5269AC;
 color: #fff;
+border-color: #5269AC;
 }
 .inlineboxghost {
 background-color: #c6cce3;
@@ -2068,6 +2083,7 @@ color: #fff;
 .smolbuttonxdragon {
 background-color: #0A6DC4;
 color: #fff;
+border-color: #0A6DC4;
 }
 .inlineboxdragon {
 background-color: #d9e6f3;
@@ -2136,6 +2152,7 @@ color: #fff;
 .smolbuttonxevil {
 background-color: #5A5366;
 color: #fff;
+border-color: #5A5366;
 }
 .inlineboxevil {
 background-color: #dfdce4;
@@ -2204,6 +2221,7 @@ color: #fff;
 .smolbuttonxsteel {
 background-color: #5A8EA1;
 color: #fff;
+border-color: #5A8EA1;
 }
 .inlineboxsteel {
 background-color: #d5e5eb;
@@ -2272,6 +2290,7 @@ color: #fff;
 .smolbuttonxfairy {
 background-color: #EC8FE6;
 color: #fff;
+border-color: #EC8FE6;
 }
 .inlineboxfairy {
 background-color: #f3e3f2;
