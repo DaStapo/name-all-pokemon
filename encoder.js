@@ -126,8 +126,6 @@ function loadNames (onSuccess){
 }
 loadNames(onNamesLoad);
 
-var loadingBar = document.getElementById("loadbar");
-
 function onLoadingComplete(){
     document.getElementById("loadbox").style.display = "none";
     document.getElementById("pokemon").disabled = false;
@@ -163,7 +161,6 @@ function saveEncodedImg(targetDict, name, img){
 
 function onSpriteLoad(){
     let fraction = loadedSpritesCount / totalSpritesCount;
-    loadingBar.style.width = fraction*100 + '%';
     if(fraction === 1){
         onLoadingComplete();
     }
