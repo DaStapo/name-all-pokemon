@@ -857,6 +857,15 @@ function loadSprites() {
         if (pokemonName in loadedPokemonDict){
             return;
         }
+        if ( !(pokemonName in encodedImages['sprite']) ){
+            console.log(pokemonName, 'missing in sprites')
+        }
+        if ( !(pokemonName in encodedImages['shiny']) ){
+            console.log(pokemonName, 'missing in shinys')
+        }
+        if ( !(pokemonName in encodedImages['silhouette']) ){
+            console.log(pokemonName, 'missing in silhouettes')
+        }
         loadedPokemonDict[pokemonName] = 1
         let sprite = document.createElement("img");
         sprite.classList.add('sprite');
