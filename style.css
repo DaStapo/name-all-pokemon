@@ -652,6 +652,10 @@
 	.board{
 	margin: 0px auto 6px;
 	}
+	.rankusers {
+	display: inline-block;
+	margin-right: -10px;
+	}
 	.inlinebox {
 	display: inline-block;
 	background-color: #deefc7;
