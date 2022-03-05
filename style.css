@@ -334,10 +334,10 @@
 	max-width: 82px;
 	}
 	.smol {
-	width: 158px;
+	width: 160px;
 	}
 	.smoler {
-	width: 115px;
+	width: 116px;
 	text-align: right;
 	}
 	.decent {
@@ -1034,17 +1034,17 @@
 	padding: 10px 0px 0px 0px !important;
 	}
 	}
-	@media only screen and (max-width: 884px) {
+	@media only screen and (max-width: 887px) {
 	body {
 	padding-top: 122px;
 	}	
 	}
-	@media only screen and (max-width: 512px) {
+	@media only screen and (max-width: 517px) {
 	body {
 	padding-top: 183px;
 	}	
 	}
-	@media only screen and (max-width: 272px) {
+	@media only screen and (max-width: 275px) {
 	body {
 	padding-top: 244px;
 	}
