@@ -224,7 +224,8 @@ let missingOptionsDiv = document.getElementById('missednames-options');
 let engMissingButton = '';
 
 let allMissingLangButtons = []
-
+let missingLangDict = {}
+let lastLangInput = 'ENG';
 
 for (key in formatted_lang_map){
 	let lang = document.createElement("div");
@@ -477,6 +478,7 @@ for (key in formatted_lang_map){
     if (currentKey == 'ENG'){
         engMissingButton = lang;
     }
+    missingLangDict[currentKey] = lang;
     missingOptionsDiv.appendChild(lang);
 	allMissingLangButtons.push(lang);
 	
@@ -491,11 +493,14 @@ enabledLanguages = []
 let disableLanguage = function() { return; };
 
 let enableLanguage = function(languageButton){
+
     enabledLanguages.push(languageButton.id)
     visualizeButtonClick(languageButton);
     languageButton.onclick = function () {
         disableLanguage(languageButton)
     }
+    
+    
 }
 
 disableLanguage = function(languageButton){
@@ -536,6 +541,10 @@ function tryTranslate(input){
         for(let i = 0; i<language_map[key].length;i++){
             if (input == standardizeName(language_map[key][i])){
                 //console.log('translating:' + input + ' to ' +  pokemonList[i])
+                if (lastLangInput !== key){
+                    lastLangInput = key
+                    missingLangDict[lastLangInput].click();
+                }
                 return pokemonList[i]
             }
         }
