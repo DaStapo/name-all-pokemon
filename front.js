@@ -1242,9 +1242,9 @@ function showCongrats() {
 
     if (Object.keys(twitchLeaderboard).length > 0){
 	    document.getElementById("ranking2").style.display = "block";
-        document.getElementById("accordion2").click();
+        //document.getElementById("accordion2").click();
     }
-
+    document.getElementById("ranking").style.display = "none";
     
     for (let i = 0; i < currentRevealList.length; i++) { 
         let pokemon = currentRevealList[i];
@@ -1367,8 +1367,9 @@ function giveUp (){
 
     if (Object.keys(twitchLeaderboard).length > 0){
 	    document.getElementById("ranking2").style.display = "block";
-        document.getElementById("accordion2").click();
+        //document.getElementById("accordion2").click();
     }
+    document.getElementById("ranking").style.display = "none";
 
     clearInterval(activeTimer);
     let delay = 0;
@@ -1744,10 +1745,7 @@ function resetQuiz() {
 		document.getElementById("accordion").click();
 	}
 	document.getElementById("missednames").style.display = "none";
-	if (document.getElementById("leaderboard2").style.display == 'block'){
-		//close and reset accordion
-		document.getElementById("accordion2").click();
-	}
+
 	document.getElementById("ranking2").style.display = "none";
 
 	for (key in unguessedDict){
@@ -2157,7 +2155,6 @@ document.getElementById("accordion2").onclick = function (){
         document.getElementById("arrow2").classList.add('adown');
         document.getElementById("arrow2").classList.remove('aup');
 		
-		
 	}else{	
 		document.getElementById("leaderboard2").style.display = 'block'
         document.getElementById("arrow2").classList.add('aup');
@@ -2528,7 +2525,6 @@ let updateFullLeaderboard = function (){
         }
         let sorted = sortDictionaryByValue(twitchLeaderboard);
         delete twitchLeaderboard["Quizmaster"];
-        leaderboardDiv.style.display = 'block'
 		let currentTypeName = getCurrentTypeName();
         
 		for (let i = 0; i<sorted.length; i++){
@@ -2923,8 +2919,7 @@ function creditspopup() {
     popup.classList.toggle("show");
 }
 
-
-
+document.getElementById("accordion2").click();
 loadSprites()
 updateGenFilter();
 changeFooterPosition();
