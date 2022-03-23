@@ -776,17 +776,50 @@ for (let i = 0; i < pokemonList.length; i++) {
     pokemonRevealListsByGen[0].push(pokemon)
 
     if (standardizeName(pokemon) in extraPokemon){
-        if (extraPokemon[standardizeName(pokemon)].length < 15){
 
-            for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
-                let subPokemon = standardizeName(extraPokemon[standardizeName(pokemon)][j])
-                currentGenRevealList.push(subPokemon)
-                pokemonRevealListsByGen[0].push(subPokemon)
-                if (!pokemonAlreadyIncluded(subPokemon, currentGenList)){
-                    currentGenList.push(subPokemon)
+
+        // --- 
+        let pokemonCounters = {}
+        let pkmnLists = {}
+        for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
+            let subPokemon = standardizeName(extraPokemon[standardizeName(pokemon)][j])
+            for (let i = 0; i < suffixes.length; i++){
+                if (subPokemon.endsWith(suffixes[i])){
+                    let withoutSuffix = subPokemon.substring(0, subPokemon.length- suffixes[i].length);
+                    if (!(withoutSuffix in pokemonCounters)){
+                        pokemonCounters[withoutSuffix] = 0
+                        pkmnLists[withoutSuffix] = []
+                    }
+                    pokemonCounters[withoutSuffix] +=1
+                    pkmnLists[withoutSuffix].push(subPokemon)
+                    break
                 }
             }
         }
+        let finalIgnoreList = []
+        for (let key in pokemonCounters){
+            if (pokemonCounters[key] > 15){
+                finalIgnoreList = finalIgnoreList.concat(pkmnLists[key])
+            }
+        }
+        // ---
+
+
+
+
+
+        for (let j = 0; j < extraPokemon[standardizeName(pokemon)].length; j++){
+            let subPokemon = standardizeName(extraPokemon[standardizeName(pokemon)][j])
+            if (finalIgnoreList.includes(subPokemon)){
+                continue;
+            }
+            currentGenRevealList.push(subPokemon)
+            pokemonRevealListsByGen[0].push(subPokemon)
+            if (!pokemonAlreadyIncluded(subPokemon, currentGenList)){
+                currentGenList.push(subPokemon)
+            }
+        }
+        
     }
 
     currentCount++;
