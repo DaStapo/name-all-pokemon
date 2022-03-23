@@ -1445,6 +1445,7 @@ let typeClasses = [
     "topedgetype",
     "input-twitchtype",
     "input-twitchtype:disabled",
+    "input-timertype",
     "smolbuttontype",
     "smolbuttonSwaptype",
     "smolbuttontype:hover",
