@@ -660,6 +660,7 @@ let pokemonAlreadyIncluded = function (name, list){
         }
     }
 
+    // --- suffixes that show up in lists without the non-suffix pokemon
     if (name.endsWith("megax")){
         let ypkmn = name.substring(0, name.length- "megax".length ) + 'megay'
         if (list.includes(ypkmn)){
@@ -668,6 +669,12 @@ let pokemonAlreadyIncluded = function (name, list){
     }else if (name.endsWith("megay")){
         let xpkmn = name.substring(0, name.length- "megay".length ) + 'megax'
         if (list.includes(xpkmn)){
+            return true;
+        }
+    
+    }else if (name.endsWith("complete")){
+        let temp = name.substring(0, name.length- "complete".length ) + '10'
+        if (list.includes(temp)){
             return true;
         }
     }
