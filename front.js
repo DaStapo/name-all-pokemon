@@ -1178,10 +1178,10 @@ function tryGuessPokemon(input, sendLog,isTwitchChat) {
         let relevantList = getAlreadyGuessedAndRelevantPokemon();
         setCounter(relevantList.length);
         if (!activeTimer) {
-            if (currentTimer === 0) {
+            if (currentTime === 0) {
                 startTimer();
             } else {
-                startCountdown(timerMinutes[currentTimer])
+                startCountdown(currentTime)
             }
 			logGen();
         }
@@ -1216,15 +1216,15 @@ function showCongrats() {
 
     let timerScore = '';
     let pokemonCount = '';
-    if (currentTimer === 0) {
+    if (currentTime === 0) {
         timerScore = timerText.innerHTML;
         pokemonCount = ' every ';
     } else {
 		
 		if(lastDiff === 0){
-			timerScore = timerMinutes[currentTimer] + ' minutes';
+			timerScore = currentTime + ' minutes';
 		}else{
-			timerScore = msToTime(timerMinutes[currentTimer]*60*1000 - lastDiff)
+			timerScore = msToTime(currentTime*60*1000 - lastDiff)
 		}
         pokemonCount = ' '+getAlreadyGuessedAndRelevantPokemon().length+' ';
     }
@@ -1334,10 +1334,10 @@ function updateTimer(msDiff) {
 }
 
 function resetTimer(){
-	if (currentTimer === 0) {
+	if (currentTime === 0) {
 		updateTimer(0);
 	} else {
-		updateTimer(1000 * 60 * timerMinutes[currentTimer]);
+		updateTimer(1000 * 60 * currentTime);
 	}
 }
 
@@ -1793,53 +1793,46 @@ promptSilhNo.onclick = function () {
     radioSilhouette.checked = false;
 
 }
-let currentTimer = 0;
-timers = [];
-timerMinutes = [0, 60, 30, 10];
-//4 timers
-for (let i = 0; i < 4; i++) {
-    let timer = document.getElementById("timer" + i);
-    timers.push(timer);
-    let j = i;
+let currentTime = 0;
 
-    timer.onclick = function () {
+let timerBtn = document.getElementById("timer-set");
+let stopwatchBtn = document.getElementById("timer0");
 
-        function applyNewTimer(){
-            resetQuiz();
-            currentTimer = j;
-			resetTimer();
-				for (let m = 0; m < 4; m++) {
-                    visualizeButtonUnclick(document.getElementById("timer" + m));
-				}
-                visualizeButtonClick(document.getElementById("timer" + j));
+function applyNewTimer(timerVal){
+    currentTime = timerVal
+    resetQuiz();
+    resetTimer();
+}
 
+function cancel() {
+    document.getElementById("prompttimer").style.display = 'none';
+}
+
+let updateTimerFunc = function (timerVal) {
+    if(!activeTimer){
+        applyNewTimer(timerVal)
+    }else{
+        document.getElementById("prompttimer").style.display = 'block'
+        document.getElementById("timer-yes").onclick = function () {
+            document.getElementById("prompttimer").style.display = 'none';
+            applyNewTimer(timerVal);
         }
-
-        if(!activeTimer){
-            applyNewTimer()
-        }else{
-
-            document.getElementById("prompttimer").style.display = 'block'
-            document.getElementById("timer-yes").onclick = function () {
-                document.getElementById("prompttimer").style.display = 'none';
-                applyNewTimer();
-				for (let k = 0; k < 4; k++) {
-                    visualizeButtonUnclick(document.getElementById("timer" + k));
-				}
-                visualizeButtonClick(document.getElementById("timer" + j))
-            }
-
-            function cancel() {
-                timers[currentTimer].checked = true;
-                document.getElementById("prompttimer").style.display = 'none';
-            }
-
-            document.getElementById("timer-no").onclick = cancel;
-            //document.getElementById("prompttimer").onclick = cancel;
-        }
+        document.getElementById("timer-no").onclick = cancel;
+        //document.getElementById("prompttimer").onclick = cancel;
     }
 }
 
+timerBtn.onclick = function () {
+    visualizeButtonClick(timerBtn)
+    visualizeButtonUnclick(stopwatchBtn);
+    let timerVal = Math.abs(document.getElementById("timer-min").value)
+    updateTimerFunc(timerVal);
+}
+stopwatchBtn.onclick = function () {
+    visualizeButtonClick(stopwatchBtn)
+    visualizeButtonUnclick(timerBtn);
+    updateTimerFunc(0);
+}
 
 let main = document.getElementById("main");
 let footer = document.getElementById("footer");
