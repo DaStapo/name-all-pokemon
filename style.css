@@ -175,7 +175,7 @@
 	/*max-width: 1781px;*/
 	overflow-x: hidden;
 	}
-	input[type=text] {
+	input {
 	margin-left: 5px;
 	box-sizing: border-box;
 	font-family: "Roboto";
@@ -183,7 +183,7 @@
 	color: #333;
 	background-color: #EEE;
 	}
-	input[type=text]:focus {
+	input:focus {
 	outline: none;
 	border: 2px solid #444;
 	background-color: #fff;
@@ -206,6 +206,28 @@
 	}
 	.input-twitch:disabled {
 	background-color: #8CC63F;
+	}
+	.input-timer {
+	padding: 3px 33px 3px 3px;
+	width: 68px;
+	border-radius: 6px 0px 0px 3px;
+	border: 2px solid #8CC63F;
+	text-align: right;
+	}
+	.minute {
+	margin-left: -36px;
+	padding-right: 10px;
+	display: inline-block;
+	}
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+	.attached {
+	margin-left: -6px !important;
+	border-radius: 0px 3px 6px 0px !important;
+	padding-left: 1px !important;
 	}
 	.attentionshake {
 	animation: shake 0.5s;

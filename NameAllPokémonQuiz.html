@@ -159,9 +159,11 @@
           <div class="column">
               <div class="box roundedc2 slightpad notxt">
                 Timer: <div class="smolbutton smolbuttonx" id="timer0" name='timer' value="timer0"> ∞</div>
-                  <div class="smolbutton" id="timer1" name='timer' value="timer1"> 1h</div>
+                  <input type="number" class="input-timer" id="timer-min" min="1" max="999" value="10" autocomplete="off" placeholder="1">
+                  <div class="minute">min</div><div class="smolbutton attached" id="timer-set"> select</div>
+                  <!--<div class="smolbutton" id="timer1" name='timer' value="timer1"> 1h</div>
                   <div class="smolbutton" id="timer2" name='timer' value="timer2"> 30m</div>
-                  <div class="smolbutton" id="timer3" name='timer' value="timer3"> 10m</div>    
+                  <div class="smolbutton" id="timer3" name='timer' value="timer3"> 10m</div>    -->
               </div>
           </div>
           <div class="column">
