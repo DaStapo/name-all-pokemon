@@ -63,7 +63,7 @@ let extraPokemon = {
 	'Meloetta':['Meloetta-Pirouette'],
 	'Hoopa':['Hoopa-Unbound'],
 	'Oricorio':['Oricorio-Pom-Pom', 'Oricorio-Pau', 'Oricorio-Sensu'],
-	'Silvally':['Silvally-Water', 'Silvally-Grass', 'Silvally-Fire', 'Silvally-Electric', 'Silvally-Ice', 'Silvally-Ground', 'Silvally-Flying', 'Silvally-Fighting', 'Silvally-Poison', 'Silvally-Psychic', 'Silvally-Dark', 'Silvally-Bug', 'Silvally-Rock', 'Silvally-Ghost', 'Silvally-Steel', 'Silvally-Dragon', 'Silvally-Fairy'],
+	'Silvally':['Silvally-Water', 'Silvally-Grass', 'Silvally-Fire', 'Silvally-Electric', 'Silvally-Ice', 'Silvally-Ground', 'Silvally-Flying', 'Silvally-Fighting', 'Silvally-Poison', 'Silvally-Psychic', 'Silvally-Dark', 'Silvally-Bug', 'Silvally-Rock', 'Silvally-Ghost', 'Silvally-Steel', 'Silvally-Dragon', 'Silvally-Fairy', 'Zygarde-10', 'Zygarde-Complete'],
 	'Necrozma':['Necrozma-Dusk-Mane', 'Necrozma-Dawn-Wings', 'Necrozma-Ultra'],
 	'Zacian':['Zacian-Crowned'],
 	'Zamazenta':['Zamazenta-Crowned'],
@@ -81,8 +81,6 @@ let extraPokemon = {
 	'Landorus':['Landorus-Therian'],
 	'Kyurem':['Kyurem-Black', 'Kyurem-White'],
 	'Keldeo':['Keldeo-Resolute'],
-	'Yveltal':['Zygarde-10'],
-	'Zygarde':['Zygarde-Complete'],
 	'Toxtricity':['Toxtricity-Low-Key'],
     // Hisuian forms in Hisuidex-order (except Qwilfish due to Overqwil dexnumber after Sneasler) + regular PLA forms
     "hisuiplaceholder": ['Decidueye-Hisui', 'Typhlosion-Hisui', 'Samurott-Hisui'],
