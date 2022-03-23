@@ -1046,7 +1046,7 @@
 	display: none;
 	}
 	}
-	@media only screen and (max-width: 611px) {
+	@media only screen and (max-width:626px) {
 	.inputlong {
 	display: none;
 	}
@@ -1066,22 +1066,22 @@
 	padding-top: 122px;
 	}	
 	}
-	@media only screen and (max-width: 517px) {
+	@media only screen and (max-width: 527px) {
 	body {
 	padding-top: 183px;
 	}	
 	}
-	@media only screen and (max-width: 275px) {
+	@media only screen and (max-width: 290px) {
 	body {
 	padding-top: 244px;
 	}
 	}
-	@media only screen and (max-width: 288px) {
+	@media only screen and (max-width: 303px) {
 	.recentsprite {
 	display: none;
 	}
 	}	
-	@media only screen and (max-width: 241px) {
+	@media only screen and (max-width: 255px) {
 	.inputshort {
 	display: none;
 	}
