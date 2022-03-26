@@ -1,4 +1,5 @@
 'Charizard-Mega-Y'
+'Charizard-Gmax'
 'Butterfree-Gmax'
 'Pidgeot-Mega'
 'Aerodactyl-Mega'
