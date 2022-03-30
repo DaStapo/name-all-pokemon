@@ -1061,26 +1061,31 @@
 	padding: 10px 0px 0px 0px !important;
 	}
 	}
-	@media only screen and (max-width: 887px) {
+	@media only screen and (max-width: 902px) {
 	body {
 	padding-top: 122px;
 	}	
 	}
 	@media only screen and (max-width: 527px) {
-	body {
-	padding-top: 183px;
-	}	
-	}
-	@media only screen and (max-width: 290px) {
-	body {
-	padding-top: 244px;
+	.url {
+	display: none;
 	}
 	}
-	@media only screen and (max-width: 303px) {
+	@media only screen and (max-width: 352px) {
 	.recentsprite {
 	display: none;
 	}
 	}	
+	@media only screen and (max-width: 303px) {
+	.lightswitch {
+	display: none;
+	}
+	}
+	@media only screen and (max-width: 290px) {
+	.count {
+	display: none;
+	}
+	}
 	@media only screen and (max-width: 255px) {
 	.inputshort {
 	display: none;

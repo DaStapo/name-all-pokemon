@@ -19,19 +19,17 @@
       <div class="main" id="main">
         <div class="row header full centeredbox" id="header">
           <div class="url notxt">pkmnquiz.com</div>
-          <div class="column">
-            <button id="darkon" class="button-i roundedb moonc"><img src=images/moon.svg class="icon white"></button>
+          <div class="column lightswitch">
+              <button id="darkon" class="button-i roundedb moonc"><img src=images/moon.svg class="icon white"></button>
+              <button id="darkoff" class="button-i roundedb sunc" style="display: none;"><img src=images/sun.svg class="icon white"></button>
           </div>
-          <div class="column">
-            <button id="darkoff" class="button-i roundedb sunc" style="display: none;"><img src=images/sun.svg class="icon white"></button>
-          </div> 
           <div class="column inputbar" id="inputbar">
             <div class="box roundedb padded lime" id="inputbox"><div class="inputshort notxt">Input:</div><div class="inputlong notxt">Name all Pokémon:</div> <input type="text" id="pokemon" class="input-name" maxlength="12" autocomplete="off" disabled="disabled">
             <img id="recentsprite" class="recentsprite" src="">
             </div>
           </div>
           <div class="column">
-            <div class="column smoler">
+            <div class="column smoler count">
               <div class="box roundedb padded lime notxt">
                 <b>
                   <div id="counter" class="highlight">0</div>
