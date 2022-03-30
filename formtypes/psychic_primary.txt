@@ -20,3 +20,6 @@
 'Meowstic-F'
 'Indeedee-F'
 'Braviary-Hisui'
+'Deoxys-Attack'
+'Deoxys-Defense'
+'Deoxys-Speed'

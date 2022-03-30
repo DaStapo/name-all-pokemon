@@ -63,3 +63,6 @@
 -Low-Key
 -Hisui
 -White-Striped
+-Attack
+-Defense
+-Speed
