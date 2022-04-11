@@ -32,5 +32,6 @@ let spriteCycles = {
     "zekrom":["zekrom-active"],
     "kyurem-white":["reshiram-white-active"],
     "kyurem-black":["reshiram-black-active"],
+    "marshadow":["marshadow-zenith"],
     "zarude":["zarude-dada"]
 }
