@@ -30,8 +30,8 @@ let spriteCycles = {
     "magearna":["magearna-original"],
     "reshiram":["reshiram-active"],
     "zekrom":["zekrom-active"],
-    "kyurem-white":["reshiram-white-active"],
-    "kyurem-black":["reshiram-black-active"],
+    "kyurem-white":["kyurem-white-active"],
+    "kyurem-black":["kyurem-black-active"],
     "marshadow":["marshadow-zenith"],
     "zarude":["zarude-dada"]
 }
