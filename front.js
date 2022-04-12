@@ -1969,7 +1969,9 @@ function swapShiny(){
     }
 }
 
+shinyEnabled = false
 function shinyOn(){
+    shinyEnabled= true;
     for(let key in spriteDictionary){
 		spriteDictionary[key].src = encodedImages['shiny'][key];
 	    }
@@ -1982,6 +1984,7 @@ function shinyOn(){
 }
 
 function shinyOff(){
+    shinyEnabled = false
 	for(let key in spriteDictionary){
 		spriteDictionary[key].src = encodedImages['sprite'][key];
 	}
@@ -2784,8 +2787,62 @@ document.getElementById("darkoff").onclick = function (){
     }
 }
 
+let spriteCycles = {
+    "burmy":["burmy", "burmy-sandy", "burmy-trash"],
+    "shellos":["shellos", "shellos-east"],
+    "gastrodon":["gastrodon", "gastrodon-east"],
+    "genesect": ["genesect", "genesect-burn", "genesect-chill", "genesect-shock", "genesect-douse"],
+    "pumpkaboo":["pumpkaboo", "pumpkaboo-large", "pumpkaboo-super", "pumpkaboo-small"],
+    "gourgeist":["gourgeist", "gourgeist-large", "gourgeist-super", "gourgeist-small"],
+    "mimikyu":["mimikyu", "mimikyu-busted"],
+    "aegislash":["aegislash", "aegislash-blade"],
+    "xerneas":["xerneas", "xerneas-inactive"],
+    "minior":["minior", "minior-red", "minior-orange", "minior-yellow", "minior-green", "minior-blue", "minior-indigo", "minior-violet"],
+    "cramorant":["cramorant", "cramorant-gulping", "cramorant-gorging"],
+    "eiscue":["eiscue", "eiscue-noice"],
+    "morpeko":["morpeko", "morpeko-hangry"],
+    "unown":["unown", "unown-g", "unown-h", "unown-i", "unown-j", "unown-k", "unown-l", "unown-m", "unown-n", "unown-o", "unown-p", "unown-q", "unown-r", "unown-s", "unown-t", "unown-u", "unown-v", "unown-w", "unown-x", "unown-y", "unown-z", "unown-question", "unown-exclamation", "unown-a", "unown-b", "unown-c", "unown-d", "unown-e"],
+    "hippopotas":["hippopotas", "hippopotas-f"],
+    "hippowdon":["hippowdon", "hippowdon-f"],
+    "unfezant":["unfezant", "unfezant-f"],
+    "frillish":["frillish", "frillish-f"],
+    "jellicent":["jellicent", "jellicent-f"],
+    "pyroar":["pyroar", "pyroar-f"],
+    "deerling":["deerling", "deerling-summer","deerling-autumn", "deerling-winter"],
+    "sawsbuck":["sawsbuck", "sawsbuck-summer","sawsbuck-autumn", "sawsbuck-winter"],
+    "flabebe":["flabebe", "flabebe-yellow", "flabebe-orange", "flabebe-blue", "flabebe-white", "flabebe"],
+    "floette":["floette", "floette-yellow", "floette-orange", "floette-blue", "floette-white", "floette-eternal"],
+    "florges":["florges", "florges-yellow", "florges-orange", "florges-blue", "florges-white", "florges"],
+    "furfrou":["furfrou", "furfrou-heart", "furfrou-star", "furfrou-diamond", "furfrou-debutante", "furfrou-matron", "furfrou-dandy", "furfrou-la-reine", "furfrou-kabuki", "furfrou-pharaoh"],
+    "vivillon":["vivillon", "vivillon-garden", "vivillon-elegant", "vivillon-modern", "vivillon-marine", "vivillon-icy-snow", "vivillon-polar", "vivillon-tundra", "vivillon-continental", "vivillon-archipelago", "vivillon-high-plains", "vivillon-sandstorm", "vivillon-river", "vivillon-monsoon", "vivillon-savanna", "vivillon-sun", "vivillon-ocean", "vivillon-jungle", "vivillon-fancy", "vivillon-poke-ball"],
+    "alcremie":["alcremie", "alcremie-vanilla-cream-berry", "alcremie-vanilla-cream-love", "alcremie-vanilla-cream-star", "alcremie-vanilla-cream-clover", "alcremie-vanilla-cream-flower", "alcremie-vanilla-cream-ribbon", "alcremie-ruby-cream-strawberry", "alcremie-ruby-cream-berry", "alcremie-ruby-cream-love", "alcremie-ruby-cream-star", "alcremie-ruby-cream-clover", "alcremie-ruby-cream-flower", "alcremie-ruby-cream-ribbon", "alcremie-matcha-cream-strawberry", "alcremie-matcha-cream-berry", "alcremie-matcha-cream-love", "alcremie-matcha-cream-star", "alcremie-matcha-cream-clover", "alcremie-matcha-cream-flower", "alcremie-matcha-cream-ribbon", "alcremie-mint-cream-strawberry", "alcremie-mint-cream-berry", "alcremie-mint-cream-love", "alcremie-mint-cream-star", "alcremie-mint-cream-clover", "alcremie-mint-cream-flower", "alcremie-mint-cream-ribbon", "alcremie-lemon-cream-strawberry", "alcremie-lemon-cream-berry", "alcremie-lemon-cream-love", "alcremie-lemon-cream-star", "alcremie-lemon-cream-clover", "alcremie-lemon-cream-flower", "alcremie-lemon-cream-ribbon", "alcremie-salted-cream-strawberry", "alcremie-salted-cream-berry", "alcremie-salted-cream-love", "alcremie-salted-cream-star", "alcremie-salted-cream-clover", "alcremie-salted-cream-flower", "alcremie-salted-cream-ribbon", "alcremie-ruby-swirl-strawberry", "alcremie-ruby-swirl-berry", "alcremie-ruby-swirl-love", "alcremie-ruby-swirl-star", "alcremie-ruby-swirl-clover", "alcremie-ruby-swirl-flower", "alcremie-ruby-swirl-ribbon", "alcremie-caramel-swirl-strawberry", "alcremie-caramel-swirl-berry", "alcremie-caramel-swirl-love", "alcremie-caramel-swirl-star", "alcremie-caramel-swirl-clover", "alcremie-caramel-swirl-flower", "alcremie-caramel-swirl-ribbon", "alcremie-rainbow-swirl-strawberry", "alcremie-rainbow-swirl-berry", "alcremie-rainbow-swirl-love", "alcremie-rainbow-swirl-star", "alcremie-rainbow-swirl-clover", "alcremie-rainbow-swirl-flower", "alcremie-rainbow-swirl-ribbon"],
+    "magearna":["magearna", "magearna-original"],
+    "reshiram":["reshiram", "reshiram-active"],
+    "zekrom":["zekrom", "zekrom-active"],
+    "kyurem-white":["kyurem-white", "kyurem-white-active"],
+    "kyurem-black":["kyurem-black", "kyurem-black-active"],
+    "marshadow":["marshadow", "marshadow-zenith"],
+    "zarude":["zarude", "zarude-dada"]
+}
 
+function cycleSprites(updateCounter) {
+    for (let pkmn in spriteCycles){
+        
+        let pathName;
+        if (shinyEnabled){
+            pathName = 'shiny'
+        }else{
+            pathName = 'sprite'
+        }
 
+        let currentIndex = updateCounter % spriteCycles[pkmn].length;
+        let currentSprite =  standardizeName( spriteCycles[pkmn][currentIndex]);
+        
+		spriteDictionary[standardizeName(pkmn)].src = encodedImages[pathName][currentSprite];
+		unguessedDict[standardizeName(pkmn)].getElementsByTagName('img')[0].src = encodedImages[pathName][currentSprite]
+
+    }
+}
 
 //images to loop through
 let images = [
@@ -2810,21 +2867,16 @@ let spriteIntervalId = setInterval(() => {
         //select specific <img>
         let imgElement = document.getElementById("gen"+ genNames[i+1] +"img");
         //its src path gets changed to the current image index
-        imgElement.src = images[i][currentImageIndex];
+        imgElement.src = images[i][currentImageIndex%images[0].length];
     }
 
-
-
-    //its src path gets changed to the current image index
-
+    cycleSprites(currentImageIndex)
 
     //move to the next image index
     currentImageIndex+=1
 
-    //if we reach the final image index, reset back to 0
-    if (currentImageIndex == images[0].length){
-        currentImageIndex = 0;
-    }
+
+
 
 }, 2000); //500ms (can be changed ofc)
 
@@ -2965,3 +3017,5 @@ document.getElementById("accordion2").click();
 loadSprites()
 updateGenFilter();
 changeFooterPosition();
+
+
