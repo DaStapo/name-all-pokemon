@@ -55,6 +55,7 @@ function saveLogs(){
 					lastTimeSaved = Date.now();
 				}			
 			});
+			
 		}
 	}
 }
@@ -135,6 +136,15 @@ app.post('/stream',jsonParser, function(req, res){
 	}
 	streamDict[streamName].push(Date.now())
 	res.status(200).end();
+	
+	let formattedLog = (new Date()).toLocaleString() + " " + streamName + "\n";
+	
+	fs.writeFile('formatted_streamlogs.txt',formattedLog ,{flag:"a+"}, (err) => {
+		if (err){
+			console.log('Saving streamlog failed.');
+		}	
+	});
+
 });
 
 
