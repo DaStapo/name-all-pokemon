@@ -10,6 +10,7 @@ let indexLocation = path.join(__dirname + '/NameAllPokémonQuiz.html');
 let icon = path.join(__dirname + '/favicon.ico');
 let jsLocation = path.join(__dirname + '/front.js');
 let twitchLocation = path.join(__dirname + '/tmi.min.js');
+let levenshteinLocation = path.join(__dirname + '/levenshtein.js');
 let encodedImgs = path.join(__dirname + '/encoded.js');
 let spritesFolder = path.join(__dirname + '/sprites');
 let shinyFolder = path.join(__dirname + '/shiny');
@@ -83,6 +84,9 @@ app.get('/front.js', function(req , res){
 });
 app.get('/tmi.min.js', function(req , res){
     res.sendFile(twitchLocation);
+});
+app.get('/levenshtein.js', function(req , res){
+    res.sendFile(levenshteinLocation);
 });
 app.get('/encoded.js', function(req , res){
     res.sendFile(encodedImgs);
