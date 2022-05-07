@@ -1246,6 +1246,7 @@ function spellingHelp() {
         isSpellingEnabled = true;
         
     }
+    inputField.focus()
 }
 
 function showHint(){
@@ -1287,9 +1288,16 @@ function updateHintIndicator(input){
 
 
 inputField.oninput = function (){
-	let success = parseInput(inputField.value, true, false);
-    if (!success){
-        updateHintIndicator(inputField.value);
+    if (inputField.value.length > 0){
+        if (inputField.value[inputField.value.length-1] === '?'){
+            inputField.value = inputField.value.substring(0, inputField.value.length-1);
+            showHint();
+            return;
+        }
+        let success = parseInput(inputField.value, true, false);
+        if (!success){
+            updateHintIndicator(inputField.value);
+        }
     }
 }
 
