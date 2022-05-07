@@ -1222,10 +1222,10 @@ function getMostSimilarInput(input){
     
     let sortedList = getSimilarityScores(input)
     if (sortedList.length>0){
-        return sortedList[0][0];
+        return sortedList[0];
     }
 
-    return "???";
+    return ["???", 11];
 }
 
 
@@ -1251,7 +1251,7 @@ function spellingHelp() {
 function showHint(){
     spellingCheck.style.display = "none";
     spellingHint.style.display = "inline-block"
-    spellingHint.innerHTML = getMostSimilarInput(inputField.value)
+    spellingHint.innerHTML = getMostSimilarInput(inputField.value)[0]
 }
 
 
@@ -1261,11 +1261,36 @@ function hideHint(){
     spellingHint.innerHTML = "";
 }
 
+function updateHintIndicator(input){
+    if (input.length <=3){
+        console.log("meh")
+        return;
+    }
+    
+    let best = getMostSimilarInput(inputField.value);
+    console.log(best)
+    let pkmn = best[0];
+    let score = best[1];
+
+
+
+
+    let normalizedScore = score / input.length;
+    if (score === 1 || normalizedScore < 0.25){
+        console.log('very close')
+    }else if(normalizedScore === 2 || normalizedScore < 0.35 ){
+        console.log(' close')
+    }else{
+        console.log('meh')
+    }
+}
 
 
 inputField.oninput = function (){
-	parseInput(inputField.value, true, false);
-
+	let success = parseInput(inputField.value, true, false);
+    if (!success){
+        updateHintIndicator(inputField.value);
+    }
 }
 
 
