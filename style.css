@@ -98,6 +98,12 @@
 	.roundedh {
 	border-radius: 3px 3px 3px 20px;
 	}
+	.roundedg2 {
+	border-radius: 0px 20px 3px 0px;
+	}
+	.roundedh2 {
+	border-radius: 3px 0px 0px 20px;
+	}
 	.roundedi {
 	border-radius: 35px 5px 15px 35px;
 	}
@@ -106,6 +112,9 @@
 	}
 	.roundedright {
 	border-radius: 3px 10px 10px 3px;
+	}
+	.unleft {
+	margin-left: -4px !important;
 	}
 	.lime {
 	background: #8CC63F !important;
@@ -509,6 +518,12 @@
 		color: #fff;
 		border: 2px solid #65ae04;
 	}
+	.check {
+	display: inline-block;
+	}
+	.hint {
+	display: none;
+	}
 	.hovg {
 	background-color: #8CC63F;
 	border: 2px solid #8CC63F;
@@ -683,6 +698,9 @@
 	.rankusers {
 	display: inline-block;
 	margin-right: -10px;
+	}
+	.inblock {
+	display:inline-block;
 	}
 	.inlinebox {
 	display: inline-block;

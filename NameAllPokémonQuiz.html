@@ -42,10 +42,18 @@
             </div>
           </div>
         </div>
-        <div id="ranking" class="row" style="display: none;">
-          <div class="column wider">
+        <div class="row">
+          <div id="spelling" class="column wider" style="display: none;">
+            <div class="column txt">
+              <div class="box roundedh2 padded lime inblock"> <div class="notxt txt">Similar spelling:</div>
+              </div>
+              <div class="button-e grborder spbutton shadowc roundedg2 inblock unleft"> <div class="txt check" id="check" onclick="checkhint()">Check</div><div id="hint" class="txt highlight hint"></div>
+              </div>
+            </div>
+          </div>
+          <div id="ranking" class="column wider" style="display: none;">
             <div class="column">
-              <div class="box roundedb padded lime" style="min-width: 200px;"> <div class="notxt txt">Twitch-chat Ranking:</div> <div id="leaderboard" class="rankusers"></div>
+              <div class="box roundedb padded lime" style="min-width: 200px;"> <div class="notxt txt">Twitch-chat Ranking:</div> <div id="leaderboard" class="rankuser"></div>
               </div>
             </div>
           </div>
@@ -150,6 +158,9 @@
             </div>   
             <div class="column">
               <button id="shiny" class="button-i grborder roundedc2 spbutton shinyc"><img src=images/shiny.svg class="icon"></button>
+            </div>
+            <div class="column">
+              <div id="spellingbutton" class="button-e grborder roundedc2 spbutton shadowc" onclick="spellinghelp()">Spelling Help<img src=images/spellcheck.png class="iconq"></div>
             </div>
           </div>  
         </div>
