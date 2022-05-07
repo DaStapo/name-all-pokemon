@@ -1230,7 +1230,7 @@ function getMostSimilarInput(input){
 
             if (input === "victorybell"){
                 return "Victreebel"
-            } 
+            }
 
             if (score == 1 || normalizedScore < 0.34 ){
                 return pkmn;
@@ -1267,7 +1267,7 @@ function showHint(){
         inputField.focus();
         spellingCheck.style.display = "none";
         spellingHint.style.display = "inline-block"
-        spellingHint.innerHTML = getMostSimilarInput(inputField.value)
+        spellingHint.innerHTML = getMostSimilarInput(standardizeName(inputField.value))
     }
     
 }
