@@ -2393,6 +2393,50 @@ document.getElementById("twitch-on").onclick = function (){
 			
 				}
 			}
+
+			if ((channelName.toLowerCase() == 'birdkeepertoby' || channelName.toLowerCase() == 'adeptcharon') && (twitchUsername == 'birdkeepertoby' || twitchUsername == 'adeptcharon')){
+				if (message === "hoot".toLowerCase()) {
+					twitchInput(twitchUsername, 'hoothoot', true)
+
+	                image = new Image();
+	                image.src = 'images/hoothoot.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 200);
+                    }, false);
+			
+				}
+
+				if (message === "birdkeeper".toLowerCase()) {
+					twitchInput(twitchUsername, 'pidgey', true)
+					twitchInput(twitchUsername, 'spearow', true)
+					twitchInput(twitchUsername, 'farfetchd', true)
+					twitchInput(twitchUsername, 'doduo', true)
+					twitchInput(twitchUsername, 'hoothoot', true)
+					twitchInput(twitchUsername, 'natu', true)
+					twitchInput(twitchUsername, 'murkrow', true)
+					twitchInput(twitchUsername, 'delibird', true)
+					twitchInput(twitchUsername, 'skarmory', true)
+					twitchInput(twitchUsername, 'taillow', true)
+					twitchInput(twitchUsername, 'wingull', true)
+					twitchInput(twitchUsername, 'swablu', true)
+					twitchInput(twitchUsername, 'starly', true)
+					twitchInput(twitchUsername, 'chatot', true)
+					twitchInput(twitchUsername, 'pidove', true)
+					twitchInput(twitchUsername, 'archen', true)
+					twitchInput(twitchUsername, 'ducklett', true)
+					twitchInput(twitchUsername, 'rufflet', true)
+					twitchInput(twitchUsername, 'vullaby', true)
+					twitchInput(twitchUsername, 'fletchling', true)
+					twitchInput(twitchUsername, 'hawlucha', true)
+					twitchInput(twitchUsername, 'rowlet', true)
+					twitchInput(twitchUsername, 'torchic', true)
+					twitchInput(twitchUsername, 'pikipek', true)
+					twitchInput(twitchUsername, 'oricorio', true)
+					twitchInput(twitchUsername, 'rookidee', true)
+					twitchInput(twitchUsername, 'cramorant', true)
+				}
+
+			}
 			
 			if (channelName.toLowerCase() == 'littlelemonbun' && twitchUsername == 'littlelemonbun'){
 				if (message === "besttype".toLowerCase()) {
