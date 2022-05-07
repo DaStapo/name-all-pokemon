@@ -1228,6 +1228,10 @@ function getMostSimilarInput(input){
             let score = best[1];
             let normalizedScore = score / input.length;
 
+            if (input === "victorybell"){
+                return "Victreebel"
+            } 
+
             if (score == 1 || normalizedScore < 0.34 ){
                 return pkmn;
             }
