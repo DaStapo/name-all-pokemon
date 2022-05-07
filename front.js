@@ -32,6 +32,7 @@ let darkMode = false;
 let useEncoded = true;
 let suffixes = ["alola", "galar", "hisui", "mega", "megax", "megay", "primal", "gmax","rapidstrikegmax", "eternamax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen","galarzen", "pirouette", "unbound", "pompom", "pau", "sensu", "duskmane", "dawnwings", "ultra", "crowned", "icerider", "shadowrider", "f", "dusk", "midnight", "bluestriped", "whitestriped", "sunshine", "school", "origin", "therian", "white", "black", "resolute", "10", "complete", "lowkey", "attack", "defense", "speed"]
 let logActions = true;
+let isSpellingEnabled = false;
 let extraPokemon = {
 	// Alolan forms added to Gen7 in official Aloladex-order
     'Gumshoos':['Rattata-Alola', 'Raticate-Alola', 'Raichu-Alola'],
@@ -1221,15 +1222,48 @@ function getMostSimilarInput(input){
     
     let sortedList = getSimilarityScores(input)
     if (sortedList.length>0){
-        console.log(sortedList[0])
+        return sortedList[0][0];
     }
+
+    return "???";
+}
+
+
+let spellingElement =  document.getElementById("spelling");
+let spellingButton =  document.getElementById("spellingbutton");
+let spellingCheck =  document.getElementById("check");
+let spellingHint =  document.getElementById("hint");
+
+
+function spellingHelp() {
+    if (isSpellingEnabled){
+        spellingElement.style.display = "none";
+        spellingButton.classList.add("smolbuttonx");
+        isSpellingEnabled = false;
+    }else{
+        spellingElement.style.display = "inline-block";
+        spellingButton.classList.remove("smolbuttonx");
+        isSpellingEnabled = true;
+    }
+}
+
+function showHint(){
+    spellingCheck.style.display = "none";
+    spellingHint.style.display = "inline-block"
+    spellingHint.innerHTML = getMostSimilarInput(inputField.value)
+}
+
+
+function hideHint(){
+    spellingCheck.style.display = "inline-block";
+    spellingHint.style.display = "none"
+    spellingHint.innerHTML = "";
 }
 
 
 
 inputField.oninput = function (){
 	parseInput(inputField.value, true, false);
-    getMostSimilarInput(inputField.value)
 
 }
 
@@ -1255,6 +1289,7 @@ function tryGuessPokemon(input, sendLog,isTwitchChat) {
         //showSprite(input);
         if (!isTwitchChat){
             inputField.value = '';
+            hideHint()
         }
         recentSprite.src = spriteDictionary[input].src;
         alreadyGuessedPokemon.push(input);
