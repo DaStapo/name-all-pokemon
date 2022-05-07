@@ -1194,8 +1194,43 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
 	return false;
 };
 
+
+
+function getSimilarityScores(input){
+	let similarityDict = {}
+	input = standardizeName(input)
+    
+    for (let k = 0; k< enabledLanguages.length; k++){
+        key = enabledLanguages[k]
+        for(let i = 0; i<language_map[key].length;i++){
+            let pkmn =  standardizeName(language_map[key][i])
+            let engPkmn  = pokemonList[i]
+            if (currentPokemonList.includes(engPkmn) && !alreadyGuessedPokemon.includes(engPkmn)){
+                let similarityScore = Levenshtein(pkmn, input)
+                similarityDict[pkmn] = similarityScore
+            }
+        }
+    }
+
+    sortedVals = sortDictionaryByValue(similarityDict)
+    return sortedVals.reverse()
+
+}
+
+function getMostSimilarInput(input){
+    
+    let sortedList = getSimilarityScores(input)
+    if (sortedList.length>0){
+        console.log(sortedList[0])
+    }
+}
+
+
+
 inputField.oninput = function (){
 	parseInput(inputField.value, true, false);
+    getMostSimilarInput(inputField.value)
+
 }
 
 
@@ -3061,24 +3096,6 @@ let disableTypeParty = function (){
 function creditspopup() {
     var popup = document.getElementById("credits");
     popup.classList.toggle("show");
-}
-
-
-function getSimilarityScores(input){
-	let similarityDict = {}
-	input = standardizeName(input)
-	for (let i = 0; i < pokemonList.length; i++){
-		let pkmn = standardizeName(pokemonList[i])
-		let similarityScore = Levenshtein(pkmn, input)
-		similarityDict[pkmn] = similarityScore
-	}
-	sortedVals = sortDictionaryByValue(similarityDict)
-	for (let i = 0; i< 20; i++){
-		let score = sortedVals[sortedVals.length-1-i][1];
-		let pkmn = sortedVals[sortedVals.length-1-i][0];
-
-		console.log(score, pkmn);
-	}
 }
 
 document.getElementById("accordion2").click();
