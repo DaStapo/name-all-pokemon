@@ -1220,12 +1220,22 @@ function getSimilarityScores(input){
 
 function getMostSimilarInput(input){
     
-    let sortedList = getSimilarityScores(input)
-    if (sortedList.length>0){
-        return sortedList[0];
+    if (input.length > 3){
+        let sortedList = getSimilarityScores(input)
+        if (sortedList.length>0){
+            let best = sortedList[0];
+            let pkmn = best[0];
+            let score = best[1];
+            let normalizedScore = score / input.length;
+
+            if (score == 1 || normalizedScore < 0.34 ){
+                return pkmn;
+            }
+        }
     }
 
-    return ["???", 11];
+
+    return "???"
 }
 
 
@@ -1246,13 +1256,16 @@ function spellingHelp() {
         isSpellingEnabled = true;
         
     }
-    inputField.focus()
 }
 
 function showHint(){
-    spellingCheck.style.display = "none";
-    spellingHint.style.display = "inline-block"
-    spellingHint.innerHTML = getMostSimilarInput(inputField.value)[0]
+    if (isSpellingEnabled){
+        inputField.focus();
+        spellingCheck.style.display = "none";
+        spellingHint.style.display = "inline-block"
+        spellingHint.innerHTML = getMostSimilarInput(inputField.value)
+    }
+    
 }
 
 
@@ -1262,31 +1275,6 @@ function hideHint(){
     spellingHint.innerHTML = "";
 }
 
-function updateHintIndicator(input){
-    if (input.length <=3){
-        console.log("meh")
-        return;
-    }
-    
-    let best = getMostSimilarInput(inputField.value);
-    console.log(best)
-    let pkmn = best[0];
-    let score = best[1];
-
-
-
-
-    let normalizedScore = score / input.length;
-    if (score === 1 || normalizedScore < 0.25){
-        console.log('very close')
-    }else if(normalizedScore === 2 || normalizedScore < 0.35 ){
-        console.log(' close')
-    }else{
-        console.log('meh')
-    }
-}
-
-
 inputField.oninput = function (){
     if (inputField.value.length > 0){
         if (inputField.value[inputField.value.length-1] === '?'){
@@ -1295,9 +1283,6 @@ inputField.oninput = function (){
             return;
         }
         let success = parseInput(inputField.value, true, false);
-        if (!success){
-            updateHintIndicator(inputField.value);
-        }
     }
 }
 
