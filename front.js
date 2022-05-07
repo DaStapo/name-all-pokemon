@@ -1238,12 +1238,13 @@ let spellingHint =  document.getElementById("hint");
 function spellingHelp() {
     if (isSpellingEnabled){
         spellingElement.style.display = "none";
-        visualizeButtonClick(spellingButton)
+        visualizeButtonUnclick(spellingButton)
         isSpellingEnabled = false;
     }else{
         spellingElement.style.display = "inline-block";
-        visualizeButtonUnclick(spellingButton)
+        visualizeButtonClick(spellingButton)
         isSpellingEnabled = true;
+        
     }
 }
 
