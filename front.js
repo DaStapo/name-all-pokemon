@@ -1238,11 +1238,11 @@ let spellingHint =  document.getElementById("hint");
 function spellingHelp() {
     if (isSpellingEnabled){
         spellingElement.style.display = "none";
-        spellingButton.classList.add("smolbuttonx");
+        visualizeButtonClick(spellingButton)
         isSpellingEnabled = false;
     }else{
         spellingElement.style.display = "inline-block";
-        spellingButton.classList.remove("smolbuttonx");
+        visualizeButtonUnclick(spellingButton)
         isSpellingEnabled = true;
     }
 }
