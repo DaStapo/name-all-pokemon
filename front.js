@@ -3063,9 +3063,28 @@ function creditspopup() {
     popup.classList.toggle("show");
 }
 
+
+function getSimilarityScores(input){
+	let similarityDict = {}
+	input = standardizeName(input)
+	for (let i = 0; i < pokemonList.length; i++){
+		let pkmn = standardizeName(pokemonList[i])
+		let similarityScore = Levenshtein(pkmn, input)
+		similarityDict[pkmn] = similarityScore
+	}
+	sortedVals = sortDictionaryByValue(similarityDict)
+	for (let i = 0; i< 20; i++){
+		let score = sortedVals[sortedVals.length-1-i][1];
+		let pkmn = sortedVals[sortedVals.length-1-i][0];
+
+		console.log(score, pkmn);
+	}
+}
+
 document.getElementById("accordion2").click();
 loadSprites()
 updateGenFilter();
 changeFooterPosition();
+
 
 
