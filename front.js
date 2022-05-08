@@ -1310,6 +1310,7 @@ function hideHint(){
 }
 
 inputField.oninput = function (){
+    hideHint();
     if (inputField.value.length > 0){
         if (inputField.value[inputField.value.length-1] === '?'){
             inputField.value = inputField.value.substring(0, inputField.value.length-1);
