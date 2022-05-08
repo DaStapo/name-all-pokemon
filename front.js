@@ -1208,10 +1208,10 @@ function getSimilarityScores(input){
         for(let i = 0; i<language_map[key].length;i++){
             let pkmn =  language_map[key][i]
             let engPkmn  = pokemonList[i]
-            if (currentPokemonList.includes(engPkmn) && !alreadyGuessedPokemon.includes(engPkmn)){
-                let similarityScore = Levenshtein(standardizeName(pkmn), input)
-                similarityDict[pkmn] = similarityScore
-            }
+            //if (currentPokemonList.includes(engPkmn) && !alreadyGuessedPokemon.includes(engPkmn)){
+            let similarityScore = Levenshtein(standardizeName(pkmn), input)
+            similarityDict[pkmn] = similarityScore
+            //}
         }
     }
 
