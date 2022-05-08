@@ -201,6 +201,17 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
     }
 }
 
+
+function showUserMessage(message){
+    let snackbar = document.getElementById("wrongquiz");
+    snackbar.innerHTML = message
+    snackbar.classList.add("snackbarshow");
+    setTimeout(function(){
+        snackbar.classList.remove("snackbarshow");
+        snackbar.classList.add("snackbar");
+    }, 3000);
+}
+
 //good looking names for missing list
 let formatted_lang_map = {}
 let nidoranfIndex = pokemonList.indexOf('Nidoranf')
@@ -1311,34 +1322,48 @@ function tryGuessPokemon(input, sendLog,isTwitchChat) {
     }catch(err){
 
     }
-    if (currentPokemonList.includes(input) && !alreadyGuessedPokemon.includes(input)) {
 
-        //showSprite(input);
-        if (!isTwitchChat){
-            inputField.value = '';
-            hideHint()
-        }
-        recentSprite.src = spriteDictionary[input].src;
-        alreadyGuessedPokemon.push(input);
-        let relevantList = getAlreadyGuessedAndRelevantPokemon();
-        setCounter(relevantList.length);
-        if (!activeTimer) {
-            if (currentTime === 0) {
-                startTimer();
-            } else {
-                startCountdown(currentTime)
+    
+
+    if (currentPokemonList.includes(input)){
+        if(!alreadyGuessedPokemon.includes(input)) {
+            //showSprite(input);
+            if (!isTwitchChat){
+                inputField.value = '';
+                hideHint()
             }
-			logGen();
+            recentSprite.src = spriteDictionary[input].src;
+            alreadyGuessedPokemon.push(input);
+            let relevantList = getAlreadyGuessedAndRelevantPokemon();
+            setCounter(relevantList.length);
+            if (!activeTimer) {
+                if (currentTime === 0) {
+                    startTimer();
+                } else {
+                    startCountdown(currentTime)
+                }
+	    		logGen();
+            }
+            if (relevantList.length === currentPokemonList.length) {
+                showCongrats();
+            }
+            soundEffect.play();
+	    	if (sendLog){
+	    		logNamed(input);
+	    	}
+	    	//animateInput(input);
+	    	return true;
         }
-        if (relevantList.length === currentPokemonList.length) {
-            showCongrats();
+        if (!isTwitchChat){
+            let formattedName = en_pokemonList[pokemonList.indexOf(input)];
+            showUserMessage(formattedName + " already named.")
         }
-        soundEffect.play();
-		if (sendLog){
-			logNamed(input);
-		}
-		//animateInput(input);
-		return true;
+        return false;
+    }else{
+        if (pokemonList.includes(input)){
+            let formattedName = en_pokemonList[pokemonList.indexOf(input)];
+            showUserMessage(formattedName +" is not part of this quiz")
+        }
     }
 	return false;
 }
@@ -1914,7 +1939,13 @@ function resetQuiz() {
         unguessedDictionary[currentRevealList[i]].style.display = "inline"
     }
 
-
+    let languageMessage = "Currently enabled languages: ";
+    for (let i = 0; i <enabledLanguages.length;i++){
+        languageMessage += enabledLanguages[i] + ', ';
+    }
+    languageMessage = languageMessage.substring(0, languageMessage.length-2) + ".";
+    showUserMessage(languageMessage);
+    
 }
 
 
@@ -3165,6 +3196,7 @@ document.getElementById("accordion2").click();
 loadSprites()
 updateGenFilter();
 changeFooterPosition();
+
 
 
 
