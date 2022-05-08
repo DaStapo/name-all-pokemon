@@ -202,12 +202,17 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
     }
 }
 
-
+let currentMessageTimeout = null;
 function showUserMessage(message){
+
+    if(currentMessageTimeout !== null){
+        clearTimeout(currentMessageTimeout)
+    }
     let snackbar = document.getElementById("wrongquiz");
     snackbar.innerHTML = message
+    snackbar.classList.remove("snackbarshow");
     snackbar.classList.add("snackbarshow");
-    setTimeout(function(){
+    currentMessageTimeout = setTimeout(function(){
         snackbar.classList.remove("snackbarshow");
         snackbar.classList.add("snackbar");
     }, 3000);
