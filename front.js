@@ -1501,7 +1501,17 @@ function updateTimer(msDiff) {
 		msDiff = 0;
 	}
 	lastDiff = msDiff;
+
+    if (timerText.innerHTML != msToTime(msDiff)){
+        if (msDiff === 0){
+            showUserMessage("No timer.")
+	    } else {
+            showUserMessage("Timer set to " + currentTime + " mins")
+        }
+    }
+
     timerText.innerHTML = msToTime(msDiff);
+
 }
 
 function resetTimer(){
