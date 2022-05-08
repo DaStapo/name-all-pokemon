@@ -1249,7 +1249,7 @@ function getMostSimilarInput(input){
 
             
             if (input === "victorybell"){
-                pkmn = "Victreebel"
+                return "Victreebel"
             }
 
             if (score == 1 || normalizedScore < 0.34 ){
