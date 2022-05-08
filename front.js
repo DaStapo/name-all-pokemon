@@ -1502,24 +1502,24 @@ function updateTimer(msDiff) {
 	}
 	lastDiff = msDiff;
 
-    if (timerText.innerHTML != msToTime(msDiff)){
-        if (msDiff === 0){
-            showUserMessage("No timer.")
-	    } else {
-            showUserMessage("Timer set to " + currentTime + " mins")
-        }
-    }
-
     timerText.innerHTML = msToTime(msDiff);
 
 }
 
 function resetTimer(){
+    let initialTimerText = timerText.innerHTML 
 	if (currentTime === 0) {
 		updateTimer(0);
 	} else {
 		updateTimer(1000 * 60 * currentTime);
 	}
+    if (timerText.innerHTML != initialTimerText){
+        if (timerText.innerHTML === "00:00:00"){
+            showUserMessage("No timer.")
+	    } else {
+            showUserMessage("Timer set to " + timerText.innerHTML)
+        }
+    }
 }
 
 function msToTime(s) {
