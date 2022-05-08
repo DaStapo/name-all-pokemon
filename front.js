@@ -35,7 +35,6 @@ let useEncoded = true;
 let suffixes = ["alola", "galar", "hisui", "mega", "megax", "megay", "primal", "gmax","rapidstrikegmax", "eternamax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen","galarzen", "pirouette", "unbound", "pompom", "pau", "sensu", "duskmane", "dawnwings", "ultra", "crowned", "icerider", "shadowrider", "f", "dusk", "midnight", "bluestriped", "whitestriped", "sunshine", "school", "origin", "therian", "white", "black", "resolute", "10", "complete", "lowkey", "attack", "defense", "speed"]
 let logActions = true;
 let isSpellingEnabled = false;
-let alreadyNotifiedLanguages = false;
 let extraPokemon = {
 	// Alolan forms added to Gen7 in official Aloladex-order
     'Gumshoos':['Rattata-Alola', 'Raticate-Alola', 'Raichu-Alola'],
@@ -1965,15 +1964,6 @@ function resetQuiz() {
         unguessedDictionary[currentRevealList[i]].style.display = "inline"
     }
 
-    if (!alreadyNotifiedLanguages){
-        let languageMessage = "Currently enabled languages: ";
-        for (let i = 0; i <enabledLanguages.length;i++){
-            languageMessage += enabledLanguages[i] + ', ';
-        }
-        languageMessage = languageMessage.substring(0, languageMessage.length-2) + ".";
-        showUserMessage(languageMessage);
-        alreadyNotifiedLanguages = true;
-    }
 
 }
 
