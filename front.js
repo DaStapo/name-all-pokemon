@@ -2009,6 +2009,7 @@ function off2() {
 	document.getElementById("typeselection").style.display = "none";
 	document.getElementById("inputbox").classList.add('attentionshake');
     //clearInterval(spriteIntervalId);
+    inputField.focus();
 }
 
 function off3() {
