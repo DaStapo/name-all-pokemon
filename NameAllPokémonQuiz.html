@@ -24,7 +24,7 @@
               <button id="darkoff" class="button-i roundedb sunc" style="display: none;"><img src=images/sun.svg class="icon white"></button>
           </div>
           <div class="column inputbar" id="inputbar">
-            <div class="box roundedb padded lime" id="inputbox"><div class="inputshort notxt">Input:</div><div class="inputlong notxt">Name all Pokémon:</div> <input type="text" id="pokemon" class="input-name" maxlength="12" autocomplete="off" disabled="disabled">
+            <div class="box roundedb padded lime" id="inputbox"><div class="inputshort notxt">Input:</div><div class="inputlong notxt">Name all Pokémon:</div> <input type="text" id="pokemon" class="input-name" maxlength="13" autocomplete="off" disabled="disabled">
             <img id="recentsprite" class="recentsprite" src="">
             </div>
           </div>
@@ -44,10 +44,12 @@
         </div>
         <div class="row">
           <div id="spelling" class="column wider" style="display: none;">
-            <div class="column txt">
-              <div class="box roundedh2 padded lime inblock"> <div class="notxt txt">Similar spelling:</div>
-              </div>
-              <div class="button-e grborder spbutton shadowc roundedg2 inblock unleft" onclick="showHint()" id="hintbox"> <div class="txt check" id="check">Check</div><div id="hint" class="txt hint"></div>
+            <div class="column">
+              <div onclick="showHint()">
+                <div class="box roundedh2 padleft lime inblock pointer"> <div class="txt">Most similar spelling:</div>
+                </div>
+                <div class="button-e grborder spbutton shadowc roundedg2 inblock unleft" id="hintbox" style="min-width: 100px;"> <div class="txt check" id="check"><div id="clicktype">click / type'?'</div></div><div id="hint" class="txt hint"></div>
+                </div>
               </div>
             </div>
           </div>

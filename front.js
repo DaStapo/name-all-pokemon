@@ -1249,6 +1249,9 @@ function getMostSimilarInput(input){
             if (input === "victorybell"){
                 return "Victreebel"
             }
+            if (input === "eggsecute" || input === "egsecute"){
+                return "exeggcute"
+            }
 
             if (score == 1){
                 return pkmn
@@ -1310,7 +1313,6 @@ function hideHint(){
 }
 
 inputField.oninput = function (){
-    hideHint();
     if (inputField.value.length > 0){
         if (inputField.value[inputField.value.length-1] === '?'){
             inputField.value = inputField.value.substring(0, inputField.value.length-1);

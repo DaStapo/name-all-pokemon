@@ -168,6 +168,10 @@
 	.padright {
 	padding-right: 14px;
 	}
+	.padleft {
+	padding-left: 18px;
+	padding-right: 10px;
+	}
 	.slightpad {
 	padding-left: 14px;
 	padding-right: 14px;
@@ -865,6 +869,13 @@
 	}
 	.cursor {
 	cursor: default;
+	}
+	.press {
+	background-color: rgb(17 17 17 / 5%);
+	margin: -4px -8px;
+    width: 98px;
+    padding: 4px;
+    border-radius: 8px 17px 8px 8px;
 	}
 	.arrow {
 	border: solid #8CC63F;
