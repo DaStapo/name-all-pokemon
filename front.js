@@ -1404,7 +1404,7 @@ function tryGuessPokemon(input, sendLog,isTwitchChat) {
 }
 
 function showCongrats() {
-
+    updateFullLeaderboard();
     clearInterval(activeTimer);
     document.getElementById("overlay").style.display = "block";
     soundEffect2.play();
@@ -1577,6 +1577,7 @@ function msToTime(s) {
 }
 
 function giveUp (){
+    updateFullLeaderboard();
 	document.getElementById("pokemon").disabled = true;
 	
 
