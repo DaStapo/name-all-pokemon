@@ -1245,15 +1245,25 @@ function getMostSimilarInput(input){
             let best = sortedList[0];
             let pkmn = best[0];
             let score = best[1];
-            let normalizedScore = score / input.length;
 
             
             if (input === "victorybell"){
                 return "Victreebel"
             }
 
-            if (score == 1 || normalizedScore < 0.34 ){
-
+            if (score == 1){
+                return pkmn
+            }
+            else if (input.length === 5 && score <= 2){
+                return pkmn;
+            }
+            else if (input.length === 6 && score <= 2){
+                return pkmn;
+            }
+            else if (input.length === 7 && score <= 3){
+                return pkmn;
+            }
+            else if (input.length >= 8 && score <= 4){
                 return pkmn;
             }
         }
