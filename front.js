@@ -1197,17 +1197,42 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
             inputs.push(inputText + subSuffixes[i])
         }
 
-        
+        for (let i = 0; i < inputs.length; i++){
+			inputs[i] = standardizeName(inputs[i]);
+		}
+
+
+
 		let wasCorrect = false;
 		let guessResult = false;
 		for (let i = 0; i < inputs.length; i++){
 			//inputText = standardizeName(inputs[i]);
 			//inputText = tryTranslate(inputText)
-			guessResult = tryGuessPokemon(standardizeName(inputs[i]), sendLog, isTwitchChat);
+			guessResult = tryGuessPokemon(inputs[i], sendLog, isTwitchChat);
 			if (!wasCorrect && guessResult){
 				wasCorrect = guessResult;
 			}
 		}
+        if (!wasCorrect && !isTwitchChat){
+
+            let alreadyGuessed = "";
+            for (let i = 0; i < inputs.length; i++){
+                if (alreadyGuessedPokemon.includes(inputs[i])){
+                    alreadyGuessed = inputs[i];
+                    showUserMessage(alreadyGuessed + " already named.")
+                    break;
+                }
+
+            }
+            if (alreadyGuessed === ""){
+                for (let i = 0; i < inputs.length; i++){
+                    if (pokemonList.includes(inputs[i]) && !currentPokemonList.includes(inputs[i])){
+                        showUserMessage(inputs[i] +" is not part of this quiz")
+                        break;
+                    }
+                }
+            }
+        }
 		return wasCorrect;
 	}
 	return false;
@@ -1370,16 +1395,8 @@ function tryGuessPokemon(input, sendLog,isTwitchChat) {
 	    	//animateInput(input);
 	    	return true;
         }
-        if (!isTwitchChat){
-            let formattedName = en_pokemonList[pokemonList.indexOf(input)];
-            showUserMessage(formattedName + " already named.")
-        }
+      
         return false;
-    }else{
-        if (pokemonList.includes(input)){
-            let formattedName = en_pokemonList[pokemonList.indexOf(input)];
-            showUserMessage(formattedName +" is not part of this quiz")
-        }
     }
 	return false;
 }
