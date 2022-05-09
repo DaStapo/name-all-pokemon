@@ -527,6 +527,8 @@
 	}
 	.hint {
 	display: none;
+	font-size: 21px !important;
+	vertical-align: bottom;
 	}
 	.hovg {
 	background-color: #8CC63F;
