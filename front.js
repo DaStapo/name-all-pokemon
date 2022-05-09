@@ -1172,6 +1172,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
         }
 
         inputText = standardizeName(inputText)
+        let originalInput = inputText;
         inputText = tryTranslate(inputText)
 
 		inputs.push(inputText);
@@ -1218,8 +1219,34 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
             let alreadyGuessed = "";
             for (let i = 0; i < inputs.length; i++){
                 if (alreadyGuessedPokemon.includes(inputs[i])){
-                    alreadyGuessed = inputs[i];
+
+                    let otherPokemonStartsWith = false;
+                    for (let j = 0; j < currentPokemonList.length; j++){
+                        if(currentPokemonList[j].startsWith(inputs[i]) && !alreadyGuessedPokemon.includes(currentPokemonList[j])){
+                            otherPokemonStartsWith = true;
+                            break;
+                        }
+                    }
+                    if (otherPokemonStartsWith){
+                        break;
+                    }
+                    for (let k = 0; k< enabledLanguages.length; k++){
+                        key = enabledLanguages[k]
+                        for(let i = 0; i<language_map[key].length;i++){
+                            if (originalInput === standardizeName(language_map[key][i])){
+                                alreadyGuessed = language_map[key][i];
+                                break;
+                            }
+                        }
+                        if (alreadyGuessed !== ""){
+                            break;
+                        }
+                    }
+                    if (alreadyGuessed === ""){
+                        alreadyGuessed = inputs[i]
+                    }
                     showUserMessage(alreadyGuessed + " already named.")
+                    inputField.value = "";
                     break;
                 }
 
@@ -1227,7 +1254,27 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
             if (alreadyGuessed === ""){
                 for (let i = 0; i < inputs.length; i++){
                     if (pokemonList.includes(inputs[i]) && !currentPokemonList.includes(inputs[i])){
-                        showUserMessage(inputs[i] +" is not part of this quiz")
+         
+                        let pkmn = "";
+
+                        for (let k = 0; k< enabledLanguages.length; k++){
+                            key = enabledLanguages[k]
+                            for(let i = 0; i<language_map[key].length;i++){
+                                if (originalInput === standardizeName(language_map[key][i])){
+                                    pkmn = language_map[key][i];
+                                    break;
+                                }
+                            }
+                            if (pkmn !== ""){
+                                break;
+                            }
+                        }
+                        if (pkmn === ""){
+                            pkmn = inputs[i]
+                        }
+
+                        showUserMessage(pkmn +" is not part of this quiz")
+                        inputField.value = "";
                         break;
                     }
                 }
@@ -2426,11 +2473,16 @@ document.getElementById("twitch-on").onclick = function (){
 		client = new tmi.Client({
 			channels: [ document.getElementById("twitch-channel").value ]
 		});
+        client.on("connected", function (address, port) {
+            showUserMessage("Connected to Twitch chat for " + channelName)
+        });
+
+		client.connect()
 		
-		client.connect();
-		
+
+
 		client.on('message', (channel, tags, message, self) => {
-			console.log(`${tags['display-name']}: ${message}`);
+			console.log('Twitch chat message - '+ `${tags['display-name']}: ${message}`);
             let twitchUsername = tags['display-name'].toLowerCase()
             let isVip = false;
 
