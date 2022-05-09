@@ -1274,7 +1274,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
                             pkmn = inputs[i]
                         }
                         hideHint();
-                        showUserMessage(pkmn +" is not part of this quiz")
+                        showUserMessage(pkmn +" is not part of this quiz.")
                         inputField.value = "";
                         break;
                     }
