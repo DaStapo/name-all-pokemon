@@ -1344,7 +1344,7 @@ function getMostSimilarInput(input){
     }
 
 
-    return "???"
+    return "not found"
 }
 
 
@@ -1358,6 +1358,7 @@ function spellingHelp() {
     if (isSpellingEnabled){
         spellingElement.style.display = "none";
         visualizeButtonUnclick(spellingButton)
+        hideHint()
         isSpellingEnabled = false;
     }else{
         spellingElement.style.display = "inline-block";
@@ -1596,7 +1597,7 @@ function resetTimer(){
 	}
     if (timerText.innerHTML != initialTimerText){
         if (timerText.innerHTML === "00:00:00"){
-            showUserMessage("No timer.")
+            showUserMessage("Timer set to stopwatch")
 	    } else {
             showUserMessage("Timer set to " + timerText.innerHTML)
         }
