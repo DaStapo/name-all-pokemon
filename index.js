@@ -8,7 +8,7 @@ let jsonParser = bodyParser.json();
 
 let indexLocation = path.join(__dirname + '/NameAllPokémonQuiz.html');
 let icon = path.join(__dirname + '/favicon.ico');
-let jsLocation = path.join(__dirname + '/front.js');
+let jsLocation = path.join(__dirname + '/obfuscated.js');
 let twitchLocation = path.join(__dirname + '/tmi.min.js');
 let levenshteinLocation = path.join(__dirname + '/levenshtein.js');
 let encodedImgs = path.join(__dirname + '/encoded.js');
