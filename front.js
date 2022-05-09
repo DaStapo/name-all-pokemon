@@ -1395,12 +1395,29 @@ function spellingHelp() {
     }
 }
 
+
+function logMisspelling(val, suggestion) {
+    try{
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("POST", '/misspelling', true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.send(JSON.stringify({misspelling:val, suggestion:suggestion}));
+    }catch(err){
+
+    }
+}
+
 function showHint(){
     if (isSpellingEnabled){
         inputField.focus();
         spellingCheck.style.display = "none";
         spellingHint.style.display = "inline-block"
-        spellingHint.innerHTML = getMostSimilarInput(standardizeName(inputField.value))
+        let suggestion = getMostSimilarInput(standardizeName(inputField.value))
+        spellingHint.innerHTML = suggestion
+        if(inputField.value.length > 0){
+            logMisspelling(inputField.value, suggestion)
+        }
+        
     }
     
 }
@@ -1968,6 +1985,9 @@ function loadNames(onSuccess) {
     };
     xhttp.send();
 }
+
+
+
 function logNamed(pokemon) {
     if (logActions){
         let xhttp = new XMLHttpRequest();

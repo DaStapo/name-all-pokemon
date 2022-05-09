@@ -8,7 +8,7 @@ let jsonParser = bodyParser.json();
 
 let indexLocation = path.join(__dirname + '/NameAllPokémonQuiz.html');
 let icon = path.join(__dirname + '/favicon.ico');
-let jsLocation = path.join(__dirname + '/obfuscated.js');
+let jsLocation = path.join(__dirname + '/front.js');
 let twitchLocation = path.join(__dirname + '/tmi.min.js');
 let levenshteinLocation = path.join(__dirname + '/levenshtein.js');
 let encodedImgs = path.join(__dirname + '/encoded.js');
@@ -150,6 +150,27 @@ app.post('/stream',jsonParser, function(req, res){
 	});
 
 });
+
+
+
+app.post('/misspelling',jsonParser, function(req, res){
+	try{
+		let misspelling = req.body.misspelling
+		let suggestion = req.body.suggestion
+		res.status(200).end();
+		
+		let logMsg = misspelling + ":" + suggestion + "\n";
+		
+		fs.writeFile('misspellings.txt',logMsg ,{flag:"a+"}, (err) => {
+			if (err){
+				console.log('logging misspelling failed.', misspelling);
+			}	
+		});
+	}catch(err){
+
+	}
+});
+
 
 
 
