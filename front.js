@@ -1220,6 +1220,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
                 if (alreadyGuessedPokemon.includes(inputs[i])){
                     alreadyGuessed = inputs[i];
                     showUserMessage(alreadyGuessed + " already named.")
+                    hideHint()
                     break;
                 }
 
@@ -1228,6 +1229,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
                 for (let i = 0; i < inputs.length; i++){
                     if (pokemonList.includes(inputs[i]) && !currentPokemonList.includes(inputs[i])){
                         showUserMessage(inputs[i] +" is not part of this quiz")
+                        hideHint()
                         break;
                     }
                 }
@@ -1297,7 +1299,7 @@ function getMostSimilarInput(input){
     }
 
 
-    return "???"
+    return "not found"
 }
 
 
@@ -1311,6 +1313,7 @@ function spellingHelp() {
     if (isSpellingEnabled){
         spellingElement.style.display = "none";
         visualizeButtonUnclick(spellingButton)
+        hideHint()
         isSpellingEnabled = false;
     }else{
         spellingElement.style.display = "inline-block";
@@ -1549,7 +1552,7 @@ function resetTimer(){
 	}
     if (timerText.innerHTML != initialTimerText){
         if (timerText.innerHTML === "00:00:00"){
-            showUserMessage("No timer.")
+            showUserMessage("Timer set to stopwatch")
 	    } else {
             showUserMessage("Timer set to " + timerText.innerHTML)
         }
