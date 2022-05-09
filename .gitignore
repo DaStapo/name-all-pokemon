@@ -16,3 +16,5 @@ streamlogs\.json
 .genlogs.json
 .streamlogs.json
 pokemonDB\.p
+
+misspellings\.txt
