@@ -1322,12 +1322,22 @@ function getSimilarityScores(input){
 }
 
 
-//key should be standardized, value should be formatted
+
+//key should be formatted, values should be something that went through standardizeName()
 let misspellings = {
-    "victorybell":"Victreebel",
-    "eggsecute":"Exeggcute",
-    "egsecute":"Exeggcute",
+    "Exeggcute":["eggsecute", "egsecute"],
+    "Victreebel":["victorybell"],
 }
+
+
+//tradeoff memory for perofrmance
+let efficientMisspellingsTable = {}
+for (let key in misspellings){
+    for (let i = 0; i < misspellings[key].length; i++){
+        efficientMisspellingsTable[misspellings[key][i]] = key
+    }
+}
+
 function getMostSimilarInput(input){
     
     if (input.length > 3){
@@ -1338,8 +1348,8 @@ function getMostSimilarInput(input){
             let score = best[1];
 
 
-            if (input in misspellings){
-                return misspellings[input]
+            if (input in efficientMisspellingsTable){
+                return efficientMisspellingsTable[input]
             }
 
             if (score == 1){
