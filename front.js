@@ -1377,7 +1377,7 @@ function spellingHelp() {
         spellingElement.style.display = "inline-block";
         visualizeButtonClick(spellingButton)
         isSpellingEnabled = true;
-        
+        showUserMessage("You can also type '?' to reveal");
     }
 }
 
