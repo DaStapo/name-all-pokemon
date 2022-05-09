@@ -1321,6 +1321,13 @@ function getSimilarityScores(input){
 
 }
 
+
+//key should be standardized, value should be formatted
+let misspellings = {
+    "victorybell":"Victreebel",
+    "eggsecute":"Exeggcute",
+    "egsecute":"Exeggcute",
+}
 function getMostSimilarInput(input){
     
     if (input.length > 3){
@@ -1330,12 +1337,9 @@ function getMostSimilarInput(input){
             let pkmn = best[0];
             let score = best[1];
 
-            
-            if (input === "victorybell"){
-                return "Victreebel"
-            }
-            if (input === "eggsecute" || input === "egsecute"){
-                return "Exeggcute"
+
+            if (input in misspellings){
+                return misspellings[input]
             }
 
             if (score == 1){
