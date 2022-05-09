@@ -1256,6 +1256,18 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
                 for (let i = 0; i < inputs.length; i++){
                     if (pokemonList.includes(inputs[i]) && !currentPokemonList.includes(inputs[i])){
          
+                        let otherPokemonStartsWith = false;
+                        for (let j = 0; j < currentPokemonList.length; j++){
+                            if(currentPokemonList[j].startsWith(inputs[i]) && !alreadyGuessedPokemon.includes(currentPokemonList[j])){
+                                otherPokemonStartsWith = true;
+                                break;
+                            }
+                        }
+                        if (otherPokemonStartsWith){
+                            break;
+                        }
+
+                        
                         let pkmn = "";
 
                         for (let k = 0; k< enabledLanguages.length; k++){
