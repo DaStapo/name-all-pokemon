@@ -1335,7 +1335,7 @@ function getMostSimilarInput(input){
                 return "Victreebel"
             }
             if (input === "eggsecute" || input === "egsecute"){
-                return "exeggcute"
+                return "Exeggcute"
             }
 
             if (score == 1){
