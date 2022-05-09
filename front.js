@@ -1245,6 +1245,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
                     if (alreadyGuessed === ""){
                         alreadyGuessed = inputs[i]
                     }
+                    hideHint();
                     showUserMessage(alreadyGuessed + " already named.")
                     inputField.value = "";
                     break;
@@ -1272,7 +1273,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
                         if (pkmn === ""){
                             pkmn = inputs[i]
                         }
-
+                        hideHint();
                         showUserMessage(pkmn +" is not part of this quiz")
                         inputField.value = "";
                         break;
