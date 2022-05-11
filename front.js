@@ -1216,20 +1216,34 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
 		}
         if (!wasCorrect && !isTwitchChat){
 
-            let alreadyGuessed = "";
-            for (let i = 0; i < inputs.length; i++){
-                if (alreadyGuessedPokemon.includes(inputs[i])){
-
-                    let otherPokemonStartsWith = false;
-                    for (let j = 0; j < currentPokemonList.length; j++){
-                        if(currentPokemonList[j].startsWith(inputs[i]) && !alreadyGuessedPokemon.includes(currentPokemonList[j])){
+            let otherPokemonStartsWith = false;
+            for (let j = 0; j < currentPokemonList.length; j++){
+                if (!alreadyGuessedPokemon.includes(currentPokemonList[j])){
+                    let pkmnIndex = pokemonList.indexOf(currentPokemonList[j])
+                    if (pkmnIndex === -1){
+                        continue
+                    }
+                    for (let k = 0; k< enabledLanguages.length; k++){
+                        key = enabledLanguages[k]
+                        if (standardizeName(language_map[key][pkmnIndex]).startsWith(originalInput)){
                             otherPokemonStartsWith = true;
                             break;
                         }
                     }
-                    if (otherPokemonStartsWith){
-                        break;
-                    }
+                }
+                if (otherPokemonStartsWith){
+                    break;
+                }
+            }
+            if (otherPokemonStartsWith){
+                return wasCorrect;
+            }
+
+
+            let alreadyGuessed = "";
+            for (let i = 0; i < inputs.length; i++){
+                if (alreadyGuessedPokemon.includes(inputs[i])){
+
                     for (let k = 0; k< enabledLanguages.length; k++){
                         key = enabledLanguages[k]
                         for(let i = 0; i<language_map[key].length;i++){
@@ -1256,18 +1270,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
                 for (let i = 0; i < inputs.length; i++){
                     if (pokemonList.includes(inputs[i]) && !currentPokemonList.includes(inputs[i])){
          
-                        let otherPokemonStartsWith = false;
-                        for (let j = 0; j < currentPokemonList.length; j++){
-                            if(currentPokemonList[j].startsWith(inputs[i]) && !alreadyGuessedPokemon.includes(currentPokemonList[j])){
-                                otherPokemonStartsWith = true;
-                                break;
-                            }
-                        }
-                        if (otherPokemonStartsWith){
-                            break;
-                        }
-
-                        
+                    
                         let pkmn = "";
 
                         for (let k = 0; k< enabledLanguages.length; k++){
