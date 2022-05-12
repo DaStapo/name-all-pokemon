@@ -1179,8 +1179,12 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
         subGerman = subGerman.replace("ae", "ä")
         subGerman = subGerman.replace("oe", "ö")
         subGerman = subGerman.replace("ue", "ü")
-        subGerman = subGerman.replace("ss", "ß")
-		inputs.push(subGerman);
+        subGerman = subGerman.replace( "ss", "ß")
+        subGerman = standardizeName(subGerman);
+        if (originalInput !== subGerman){
+            inputs.push(tryTranslate(subGerman));
+        }
+		
 
 
         inputText = tryTranslate(inputText)
