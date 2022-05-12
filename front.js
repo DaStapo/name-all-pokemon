@@ -1146,6 +1146,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
 	
         let inputs = []
 
+
 		if (inputText=== 'nidoran') {
 			inputs.push('nidoranf')
 			inputs.push('nidoranm')
@@ -1173,6 +1174,15 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
 
         inputText = standardizeName(inputText)
         let originalInput = inputText;
+
+        let subGerman = originalInput
+        subGerman = subGerman.replace("ae", "ä")
+        subGerman = subGerman.replace("oe", "ö")
+        subGerman = subGerman.replace("ue", "ü")
+        subGerman = subGerman.replace("ss", "ß")
+		inputs.push(subGerman);
+
+
         inputText = tryTranslate(inputText)
 
 		inputs.push(inputText);
