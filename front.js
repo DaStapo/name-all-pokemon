@@ -1254,61 +1254,61 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
             //}
 
 
-            let alreadyGuessed = "";
-            for (let i = 0; i < inputs.length; i++){
-                if (alreadyGuessedPokemon.includes(inputs[i])){
+            //let alreadyGuessed = "";
+            //for (let i = 0; i < inputs.length; i++){
+            //    if (alreadyGuessedPokemon.includes(inputs[i])){
 
-                    for (let k = 0; k< enabledLanguages.length; k++){
-                        key = enabledLanguages[k]
-                        for(let i = 0; i<language_map[key].length;i++){
-                            if (originalInput === standardizeName(language_map[key][i])){
-                                alreadyGuessed = language_map[key][i];
-                                break;
-                            }
-                        }
-                        if (alreadyGuessed !== ""){
-                            break;
-                        }
-                    }
-                    if (alreadyGuessed === ""){
-                        alreadyGuessed = inputs[i]
-                    }
-                    hideHint();
-                    showUserMessage(alreadyGuessed + " already named.")
-                    inputField.value = "";
-                    break;
-                }
+            //        for (let k = 0; k< enabledLanguages.length; k++){
+            //            key = enabledLanguages[k]
+            //            for(let i = 0; i<language_map[key].length;i++){
+            //                if (originalInput === standardizeName(language_map[key][i])){
+            //                    alreadyGuessed = language_map[key][i];
+            //                    break;
+            //                }
+            //            }
+            //            if (alreadyGuessed !== ""){
+            //                break;
+            //            }
+            //        }
+            //        if (alreadyGuessed === ""){
+            //            alreadyGuessed = inputs[i]
+            //        }
+            //        hideHint();
+            //        showUserMessage(alreadyGuessed + " already named.")
+            //        inputField.value = "";
+            //        break;
+            //    }
 
-            }
-            if (alreadyGuessed === ""){
-                for (let i = 0; i < inputs.length; i++){
-                    if (pokemonList.includes(inputs[i]) && !currentPokemonList.includes(inputs[i])){
+            //}
+            //if (alreadyGuessed === ""){
+            //    for (let i = 0; i < inputs.length; i++){
+            //        if (pokemonList.includes(inputs[i]) && !currentPokemonList.includes(inputs[i])){
          
-                    
-                        let pkmn = "";
+            //        
+            //            let pkmn = "";
 
-                        for (let k = 0; k< enabledLanguages.length; k++){
-                            key = enabledLanguages[k]
-                            for(let i = 0; i<language_map[key].length;i++){
-                                if (originalInput === standardizeName(language_map[key][i])){
-                                    pkmn = language_map[key][i];
-                                    break;
-                                }
-                            }
-                            if (pkmn !== ""){
-                                break;
-                            }
-                        }
-                        if (pkmn === ""){
-                            pkmn = inputs[i]
-                        }
-                        hideHint();
-                        showUserMessage(pkmn +" is not part of this quiz.")
-                        inputField.value = "";
-                        break;
-                    }
-                }
-            }
+            //            for (let k = 0; k< enabledLanguages.length; k++){
+            //                key = enabledLanguages[k]
+            //                for(let i = 0; i<language_map[key].length;i++){
+            //                    if (originalInput === standardizeName(language_map[key][i])){
+            //                        pkmn = language_map[key][i];
+            //                        break;
+            //                    }
+            //                }
+            //                if (pkmn !== ""){
+            //                    break;
+            //                }
+            //            }
+            //            if (pkmn === ""){
+            //                pkmn = inputs[i]
+            //            }
+            //            hideHint();
+            //            showUserMessage(pkmn +" is not part of this quiz.")
+            //            inputField.value = "";
+            //            break;
+            //        }
+            //    }
+            //}
         }
 		return wasCorrect;
 	}
