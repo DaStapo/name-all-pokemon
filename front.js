@@ -1093,6 +1093,8 @@ function loadSprites() {
 }
 let unguessedDict = {}
 let unguessedDictTexts = {}
+let spritesMainPokemonIndexDict = {}
+
 function createUnguessedContent(){
 	
 	let genIndex = 0;
@@ -1120,8 +1122,29 @@ function createUnguessedContent(){
 			unguessedContent = createUnguessed(genIndex)
         }
     }
+    for (let i = 0; i < pokemonList.length; i++){
+        let found = false;
+        let pkmn = standardizeName(pokemonList[i])
+        for (let key in spriteDictionary){
+            if (key.startsWith(pkmn)){
+                found = true;
+                spritesMainPokemonIndexDict[key] = i
+            }
+        }
+        if (!found){
+            console.log(pkmn)
+        }
+        
+
+
+    }
+    
 	engMissingButton.click();
 }
+
+
+
+
 
 
 let alreadyGuessedPokemon = [];
@@ -1230,85 +1253,82 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
 		}
         if (!wasCorrect && !isTwitchChat){
 
-            //let otherPokemonStartsWith = false;
-            //for (let j = 0; j < currentPokemonList.length; j++){
-            //    if (!alreadyGuessedPokemon.includes(currentPokemonList[j])){
-            //        let pkmnIndex = pokemonList.indexOf(currentPokemonList[j])
-            //        if (pkmnIndex === -1){
-            //            continue
-            //        }
-            //        for (let k = 0; k< enabledLanguages.length; k++){
-            //            key = enabledLanguages[k]
-            //            if (standardizeName(language_map[key][pkmnIndex]).startsWith(originalInput)){
-            //                otherPokemonStartsWith = true;
-            //                break;
-            //            }
-            //        }
-            //    }
-            //    if (otherPokemonStartsWith){
-            //        break;
-            //    }
-            //}
-            //if (otherPokemonStartsWith){
-            //    return wasCorrect;
-            //}
+            let otherPokemonStartsWith = false;
+            for (let j = 0; j < currentPokemonList.length; j++){
+                if (!alreadyGuessedPokemon.includes(currentPokemonList[j])){
+                    let pkmnIndex = spritesMainPokemonIndexDict[currentRevealList[j]]
+                    for (let k = 0; k< enabledLanguages.length; k++){
+                        key = enabledLanguages[k]
+                        if (standardizeName(language_map[key][pkmnIndex]).startsWith(originalInput)){
+                            otherPokemonStartsWith = true;
+                            break;
+                        }
+                    }
+                }
+                if (otherPokemonStartsWith){
+                    break;
+                }
+            }
+            if (otherPokemonStartsWith){
+                return wasCorrect;
+            }
 
 
-            //let alreadyGuessed = "";
-            //for (let i = 0; i < inputs.length; i++){
-            //    if (alreadyGuessedPokemon.includes(inputs[i])){
+            let alreadyGuessed = "";
+            for (let i = 0; i < inputs.length; i++){
+                if (alreadyGuessedPokemon.includes(inputs[i])){
 
-            //        for (let k = 0; k< enabledLanguages.length; k++){
-            //            key = enabledLanguages[k]
-            //            for(let i = 0; i<language_map[key].length;i++){
-            //                if (originalInput === standardizeName(language_map[key][i])){
-            //                    alreadyGuessed = language_map[key][i];
-            //                    break;
-            //                }
-            //            }
-            //            if (alreadyGuessed !== ""){
-            //                break;
-            //            }
-            //        }
-            //        if (alreadyGuessed === ""){
-            //            alreadyGuessed = inputs[i]
-            //        }
-            //        hideHint();
-            //        showUserMessage(alreadyGuessed + " already named.")
-            //        inputField.value = "";
-            //        break;
-            //    }
+                    for (let k = 0; k< enabledLanguages.length; k++){
+                        key = enabledLanguages[k]
+                        for(let i = 0; i<language_map[key].length;i++){
+                            if (originalInput === standardizeName(language_map[key][i])){
+                                alreadyGuessed = language_map[key][i];
+                                break;
+                            }
+                        }
+                        if (alreadyGuessed !== ""){
+                            break;
+                        }
+                    }
+                    if (alreadyGuessed === ""){
+                        alreadyGuessed = inputs[i]
+                    }
+                    hideHint();
+                    showUserMessage(alreadyGuessed + " already named.")
+                    inputField.value = "";
+                    break;
+                }
 
-            //}
-            //if (alreadyGuessed === ""){
-            //    for (let i = 0; i < inputs.length; i++){
-            //        if (pokemonList.includes(inputs[i]) && !currentPokemonList.includes(inputs[i])){
+            }
+            if (alreadyGuessed === ""){
+                for (let i = 0; i < inputs.length; i++){
+                    if (pokemonList.includes(inputs[i]) && !currentPokemonList.includes(inputs[i])){
          
-            //        
-            //            let pkmn = "";
+                    
+                        let pkmn = "";
 
-            //            for (let k = 0; k< enabledLanguages.length; k++){
-            //                key = enabledLanguages[k]
-            //                for(let i = 0; i<language_map[key].length;i++){
-            //                    if (originalInput === standardizeName(language_map[key][i])){
-            //                        pkmn = language_map[key][i];
-            //                        break;
-            //                    }
-            //                }
-            //                if (pkmn !== ""){
-            //                    break;
-            //                }
-            //            }
-            //            if (pkmn === ""){
-            //                pkmn = inputs[i]
-            //            }
-            //            hideHint();
-            //            showUserMessage(pkmn +" is not part of this quiz.")
-            //            inputField.value = "";
-            //            break;
-            //        }
-            //    }
-            //}
+                        for (let k = 0; k< enabledLanguages.length; k++){
+                            key = enabledLanguages[k]
+                            for(let i = 0; i<language_map[key].length;i++){
+                                if (originalInput === standardizeName(language_map[key][i])){
+                                    pkmn = language_map[key][i];
+                                    break;
+                                }
+                            }
+                            if (pkmn !== ""){
+                                break;
+                            }
+                        }
+                        if (pkmn === ""){
+                            pkmn = inputs[i]
+                        }
+                        hideHint();
+                        showUserMessage(pkmn +" is not part of this quiz.")
+                        inputField.value = "";
+                        break;
+                    }
+                }
+            }
         }
 		return wasCorrect;
 	}
