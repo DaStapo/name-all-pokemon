@@ -18,3 +18,7 @@ streamlogs\.json
 pokemonDB\.p
 
 misspellings\.txt
+
+formatted_streamlogs\.txt
+
+obfuscated\.js

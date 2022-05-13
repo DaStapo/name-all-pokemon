@@ -357,7 +357,7 @@ for (key in formatted_lang_map){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'megax'].nodeValue = formatted_lang_map[currentKey][i]  + ' X';
                     }
 					else if(suffixes[j] === "primal"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'primal'].nodeValue = 'P ' + formatted_lang_map[currentKey][i];
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'primal'].nodeValue = formatted_lang_map[currentKey][i] + ' P';
                     }
                     else if(suffixes[j] === "sunny"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'sunny'].nodeValue = formatted_lang_map[currentKey][i]  + ' S';
@@ -414,22 +414,22 @@ for (key in formatted_lang_map){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'sensu'].nodeValue = formatted_lang_map[currentKey][i]  + ' S';
                     }
 					else if(suffixes[j] === "duskmane"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'duskmane'].nodeValue = 'DM ' + formatted_lang_map[currentKey][i];
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'duskmane'].nodeValue = formatted_lang_map[currentKey][i] + ' DM';
                     }
 					else if(suffixes[j] === "dawnwings"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'dawnwings'].nodeValue = 'DW ' + formatted_lang_map[currentKey][i];
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'dawnwings'].nodeValue = formatted_lang_map[currentKey][i] + ' DW';
                     }
 					else if(suffixes[j] === "ultra"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'ultra'].nodeValue = 'U ' + formatted_lang_map[currentKey][i];
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'ultra'].nodeValue = formatted_lang_map[currentKey][i] + ' U';
                     }
 					else if(suffixes[j] === "crowned"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'crowned'].nodeValue = formatted_lang_map[currentKey][i]  + ' C';
                     }
 					else if(suffixes[j] === "icerider"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'icerider'].nodeValue = 'I ' + formatted_lang_map[currentKey][i];
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'icerider'].nodeValue = formatted_lang_map[currentKey][i] + ' I';
                     }
 					else if(suffixes[j] === "shadowrider"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'shadowrider'].nodeValue = 'S ' + formatted_lang_map[currentKey][i];
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'shadowrider'].nodeValue = formatted_lang_map[currentKey][i] + ' S';
                     }
 					else if(suffixes[j] === "eternamax"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'eternamax'].nodeValue = formatted_lang_map[currentKey][i]  + ' E';
@@ -459,10 +459,10 @@ for (key in formatted_lang_map){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'therian'].nodeValue = formatted_lang_map[currentKey][i]  + ' T';
                     }
 					else if(suffixes[j] === "white"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'white'].nodeValue = 'W ' + formatted_lang_map[currentKey][i];
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'white'].nodeValue = formatted_lang_map[currentKey][i] + ' W';
                     }
 					else if(suffixes[j] === "black"){
-                        unguessedDictTexts[standardizeName(pokemonList[i])+'black'].nodeValue = 'B ' + formatted_lang_map[currentKey][i];
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'black'].nodeValue = formatted_lang_map[currentKey][i] + ' B';
                     }
 					//else if(suffixes[j] === "resolute"){
                     //    unguessedDictTexts[standardizeName(pokemonList[i])+'resolute'].nodeValue = formatted_lang_map[currentKey][i]  + ' R';
@@ -1530,7 +1530,7 @@ let misspellings = {
     "Whismur":["whimser","wismer"],
     "Jigglypuff":["jigglytuff","jiglytuff"],
     //memes
-    "m̷̥̈́i̴͔͝ṡ̸̠s̵͇͑i̴̡̋n̷̞̑g̷̙̓ȯ̸͔.̴̧̈":["missingno"],
+    "m̷̥̈́i̴͔͝ṡ̸̠s̵͇͑i̴̡̋n̷̞̑g̷̓n̙ȯ̸͔.̴̧̈":["missingno"],
     "Charmander":["agumon"],
     "Crabominable":["bestpkmn"],
     "Nutz":["deez"],
