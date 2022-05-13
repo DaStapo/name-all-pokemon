@@ -1230,28 +1230,28 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
 		}
         if (!wasCorrect && !isTwitchChat){
 
-            let otherPokemonStartsWith = false;
-            for (let j = 0; j < currentPokemonList.length; j++){
-                if (!alreadyGuessedPokemon.includes(currentPokemonList[j])){
-                    let pkmnIndex = pokemonList.indexOf(currentPokemonList[j])
-                    if (pkmnIndex === -1){
-                        continue
-                    }
-                    for (let k = 0; k< enabledLanguages.length; k++){
-                        key = enabledLanguages[k]
-                        if (standardizeName(language_map[key][pkmnIndex]).startsWith(originalInput)){
-                            otherPokemonStartsWith = true;
-                            break;
-                        }
-                    }
-                }
-                if (otherPokemonStartsWith){
-                    break;
-                }
-            }
-            if (otherPokemonStartsWith){
-                return wasCorrect;
-            }
+            //let otherPokemonStartsWith = false;
+            //for (let j = 0; j < currentPokemonList.length; j++){
+            //    if (!alreadyGuessedPokemon.includes(currentPokemonList[j])){
+            //        let pkmnIndex = pokemonList.indexOf(currentPokemonList[j])
+            //        if (pkmnIndex === -1){
+            //            continue
+            //        }
+            //        for (let k = 0; k< enabledLanguages.length; k++){
+            //            key = enabledLanguages[k]
+            //            if (standardizeName(language_map[key][pkmnIndex]).startsWith(originalInput)){
+            //                otherPokemonStartsWith = true;
+            //                break;
+            //            }
+            //        }
+            //    }
+            //    if (otherPokemonStartsWith){
+            //        break;
+            //    }
+            //}
+            //if (otherPokemonStartsWith){
+            //    return wasCorrect;
+            //}
 
 
             let alreadyGuessed = "";
