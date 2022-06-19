@@ -2999,6 +2999,7 @@ document.getElementById("twitch-on").onclick = function (){
 			
 			if (twitchUsername == 'r2dabes' || twitchUsername == 'adeptcharon'){
 				if (message === "r2dabes".toLowerCase()) {
+                    twitchInput(twitchUsername, 'flapple', true)
 
 	                image = new Image();
 	                image.src = 'images/flapple.png';
@@ -3011,6 +3012,7 @@ document.getElementById("twitch-on").onclick = function (){
 			
 			if (twitchUsername == 'adeptcharon'){
 				if (message === "bestpkmn".toLowerCase()) {
+                    twitchInput(twitchUsername, 'crabominable', true)
 
 	                image = new Image();
 	                image.src = 'images/crabominable.png';
@@ -3020,6 +3022,30 @@ document.getElementById("twitch-on").onclick = function (){
 			
 				}
 			}	
+			
+			if (twitchUsername == 'fabulousfauna' || twitchUsername == 'adeptcharon'){
+				if (message === "fauna".toLowerCase()) {
+					twitchInput(twitchUsername, 'vulpix', true)
+
+	                image = new Image();
+	                image.src = 'images/vulpix.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 300);
+                    }, false);
+			
+				}
+
+				if (message === "fabulous".toLowerCase()) {
+					twitchInput(twitchUsername, 'ninetales', true)
+
+	                image = new Image();
+	                image.src = 'images/vulpix-alola.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 300);
+                    }, false);
+			
+				}
+			}
 
             twitchInput(twitchUsername, message, true)
 		});
