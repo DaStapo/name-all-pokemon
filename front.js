@@ -652,7 +652,7 @@ function standardizeName(input) {
     input = input.replace(/é/g, 'e');
 
     //delete all special characters
-    input = input.replace(/[^ぁ-んァ-ン가-힣a-z0-9-_ß]/g, '');
+    input = input.replace(/[^ぁ-んァ-ン가-힣a-z0-9-_ß０-９ａ-ｚ]/g, '');
 
     return input;
 }
