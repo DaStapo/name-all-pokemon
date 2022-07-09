@@ -565,6 +565,10 @@
 	.hovli:hover {
 	background-color: #8CC63F;
 	}*/
+	.notready {
+	background-color: #666 !important;
+	border: 2px solid #666 !important;
+	}
 	.button:focus {
 	outline: none;
 	}
