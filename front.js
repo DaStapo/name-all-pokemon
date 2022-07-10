@@ -1044,7 +1044,7 @@ function loadSprites() {
         hideSprite(pokemon);
     }
 
-
+    index_8half = fullSpriteList.indexOf(standardizeName('Calyrex-Shadow-Rider'))
     //ordered appending
     let boxIndex = 0;
     for (let i = 0; i < fullSpriteList.length; i++) {
@@ -1053,7 +1053,14 @@ function loadSprites() {
         if (pokemon == "meltan" || pokemon == "melmetal"){
             addToBox(pokemon, gen7half)
         }else{
-            addToBox(pokemon, box)
+            current_index = fullSpriteList.indexOf(pokemon)
+            if (current_index > index_8half){
+                addToBox(pokemon, gen8half)
+            }else{
+                addToBox(pokemon, box)
+            }
+            
+
         }
         
         if (genLastSprite.includes(pokemon)) {
@@ -1118,7 +1125,7 @@ function createUnguessedContent(){
 		unguessedDict[pokemon] = _elem;
 		unguessedDictTexts[pokemon] = _name
 		unguessedContent.appendChild(_elem)
-        if ((genLastSprite.includes(pokemon) || pokemon == "zeraora") && i !==  fullSpriteList.length-1) {
+        if ((genLastSprite.includes(pokemon) || pokemon == "zeraora" || pokemon == "calyrexshadowrider") && i !==  fullSpriteList.length-1) {
             genIndex++;
 			unguessedContent = createUnguessed(genIndex)
         }
@@ -2156,10 +2163,9 @@ function updateGenFilter() {
                 }
                 else if (i + 1 === 8){
                     gmaxBox.style.display = "block";
-                }
-                else if(i + 1 === 8){
                     gen8half.style.display = "block";
                 }
+          
                 totalPokemonCount = pokemonListsByGen[i + 1].length;
             } else {
                 boxes[i].style.display = "none";
@@ -3422,7 +3428,7 @@ let images = [
 	[encodedImages['sprite']['froakie'], encodedImages['sprite']['chespin'], encodedImages['sprite']['fennekin']],
 	[encodedImages['sprite']['rowlet'], encodedImages['sprite']['litten'],encodedImages['sprite']['popplio']],
 	[encodedImages['sprite']['scorbunny'],encodedImages['sprite']['sobble'], encodedImages['sprite']['grookey']],
-    [encodedImages['sprite']['oshawott'],encodedImages['sprite']['rowlet'], encodedImages['sprite']['cyndaquil']]
+    //[encodedImages['sprite']['oshawott'],encodedImages['sprite']['rowlet'], encodedImages['sprite']['cyndaquil']]
 ]
 
 //variable for current image index
