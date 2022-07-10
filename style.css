@@ -566,6 +566,7 @@
 	background-color: #8CC63F;
 	}*/
 	.notready {
+	opacity: 0.2;
 	background-color: #666 !important;
 	border: 2px solid #666 !important;
 	}
