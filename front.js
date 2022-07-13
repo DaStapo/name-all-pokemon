@@ -1022,7 +1022,7 @@ function loadSprites() {
         
     }
 
-
+    
 
 
 
@@ -1264,7 +1264,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
             let otherPokemonStartsWith = false;
             for (let j = 0; j < currentPokemonList.length; j++){
                 if (!alreadyGuessedPokemon.includes(currentPokemonList[j])){
-                    let pkmnIndex = spritesMainPokemonIndexDict[currentRevealList[j]]
+                    let pkmnIndex = spritesMainPokemonIndexDict[currentPokemonList[j]]
                     for (let k = 0; k< enabledLanguages.length; k++){
                         key = enabledLanguages[k]
                         if (standardizeName(language_map[key][pkmnIndex]).startsWith(originalInput)){
