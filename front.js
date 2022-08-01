@@ -245,7 +245,7 @@ let engMissingButton = '';
 let allMissingLangButtons = []
 let missingLangDict = {}
 let lastLangInput = 'ENG';
-
+let lastLangCount = 0
 for (key in formatted_lang_map){
 	let lang = document.createElement("div");
 	let currentKey = key;
@@ -569,10 +569,20 @@ function tryTranslate(input){
         for(let i = 0; i<language_map[key].length;i++){
             if (input == standardizeName(language_map[key][i])){
                 //console.log('translating:' + input + ' to ' +  pokemonList[i])
-                if (lastLangInput !== key){
-                    lastLangInput = key
-                    missingLangDict[lastLangInput].click();
+
+                languageCounts[key]+=1
+                let currentHighest = lastLangInput;
+                for (let key in languageCounts){
+                    if (languageCounts[key] > lastLangCount){
+                        currentHighest = key
+                        lastLangCount = languageCounts[key]
+                    }
                 }
+                if (currentHighest !== lastLangInput){
+                    lastLangInput = currentHighest
+                    missingLangDict[currentHighest].click();
+                }
+
                 return pokemonList[i]
             }
         }
@@ -1156,6 +1166,10 @@ function createUnguessedContent(){
 
 
 let alreadyGuessedPokemon = [];
+languageCounts = {}
+for (let langKey in language_map){
+    languageCounts[langKey] = 0
+}
 
 let inputField = document.getElementById("pokemon");
 let recentSprite = document.getElementById("recentsprite");
@@ -2262,6 +2276,12 @@ function onSpriteLoad() {
 function resetQuiz() {
     missingnoEnabled = false;
     alreadyGuessedPokemon = [];
+    languageCounts = {}
+    for (let langKey in language_map){
+        languageCounts[langKey] = 0
+    }
+    lastLangInput = 'ENG';
+    lastLangCount = 0;
     clearInterval(activeTimer);
     activeTimer = false;
     usePokeball();
@@ -2491,7 +2511,6 @@ function shinyOff(){
 document.getElementById("shiny").onclick = swapShiny;
 
 
-alreadyGuessedPokemon = [];
 usePokeball();
 setCounter(0);
 resetTimer()
