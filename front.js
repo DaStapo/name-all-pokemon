@@ -2026,7 +2026,7 @@ function updateTypeFilter(type){
     document.getElementById("pokemon-box-7-5").classList.remove('unknownbox');
 
     for (let i = 0; i < pokecolumns.length; i++) {
-        pokecolumns[i].classList.add('third');
+        pokecolumns[i].classList.add('fifth');
         pokecolumns[i].classList.remove('twothirds');
     }
     for (let i = 0; i < allSprites.length; i++) {
@@ -2149,7 +2149,7 @@ function updateGenFilter() {
         document.getElementById("pokemon-box-7-5").classList.remove('unknownbox');
 
         for (let i = 0; i < pokecolumns.length; i++) {
-            pokecolumns[i].classList.add('third');
+            pokecolumns[i].classList.add('fifth');
             pokecolumns[i].classList.remove('twothirds');
         }
         for (let i = 0; i < allSprites.length; i++) {
@@ -2186,7 +2186,7 @@ function updateGenFilter() {
             }
 
             for (let i = 0; i < pokecolumns.length; i++) {
-                pokecolumns[i].classList.remove('third');
+                pokecolumns[i].classList.remove('fifth');
                 pokecolumns[i].classList.add('twothirds');
             }
         }
