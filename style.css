@@ -1203,7 +1203,7 @@
 		color: #d6d6d1 ;
 	}
 	.limenormal {
-		background: #9099A1 !important;
+		background: #d6d6d1 !important;
 		color: #fff !important;
 	}
 	.limelightnormal {
@@ -1212,7 +1212,7 @@
 		border-color: #d6d6d1 !important;
 	}
 	.outlinenormal {
-		border: 2px solid #9099A1;
+		border: 2px solid #d6d6d1;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgenormal {
@@ -1232,7 +1232,7 @@
 		border-color: #d6d6d1 ;
 	   color: #d6d6d1;
 	}
-	.smolbuttonSwapnormal {
+	.smolbuttonswapnormal {
 		background-color: #d6d6d1;
 		border-color: #d6d6d1;
 	}
@@ -1254,7 +1254,7 @@
 		background-color: #d6d6d1 ;
 	}
 	.buttondarknormal {
-		border-color: #6e7881 ;
+		border-color: #7A7A75 ;
 	}
 	.limelightdarknormal {
 		color: #fff;
@@ -1272,7 +1272,7 @@
 		color: #F08218;
 	}
 	.limefire {
-		background: #FF9C54 !important;
+		background: #F08218 !important;
 		color: #fff !important;
 	}
 	.limelightfire {
@@ -1281,7 +1281,7 @@
 		border-color: #F08218 !important;
 	}
 	.outlinefire {
-		border: 2px solid #FF9C54;
+		border: 2px solid #F08218;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgefire {
@@ -1301,7 +1301,7 @@
 		border-color: #F08218;
 		color: #F08218;
 	}
-	.smolbuttonSwapfire {
+	.smolbuttonswapfire {
 		background-color: #F08218;
 		border-color: #F08218;
 	}
@@ -1341,7 +1341,7 @@
 		color: #6099EB;
 	}
 	.limewater {
-		background: #4D90D5 !important;
+		background: #6099EB !important;
 		color: #fff !important;
 	}
 	.limelightwater {
@@ -1350,7 +1350,7 @@
 		border-color: #6099EB !important;
 	}
 	.outlinewater {
-		border: 2px solid #4D90D5;
+		border: 2px solid #6099EB;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgewater {
@@ -1370,7 +1370,7 @@
 		border-color: #6099EB;
 		color: #6099EB;
 	}
-	.smolbuttonSwapwater {
+	.smolbuttonswapwater {
 		background-color: #6099EB;
 		border-color: #6099EB;
 	}
@@ -1410,7 +1410,7 @@
 		color: #36BA45;
 	}
 	.limegrass {
-		background: #63BB5B !important;
+		background: #36BA45 !important;
 		color: #fff !important;
 	}
 	.limelightgrass {
@@ -1419,7 +1419,7 @@
 		border-color: #36BA45 !important;
 	}
 	.outlinegrass {
-		border: 2px solid #63BB5B;
+		border: 2px solid #36BA45;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgegrass {
@@ -1439,7 +1439,7 @@
 		border-color: #36BA45;
 		color: #36BA45;
 	}
-	.smolbuttonSwapgrass {
+	.smolbuttonswapgrass {
 		background-color: #36BA45;
 		border-color: #36BA45;
 	}
@@ -1479,7 +1479,7 @@
 		color: #FFDC0D !important;
 	}
 	.limeelectric {
-		background: #F3D23B !important;
+		background: #FFDC0D !important;
 		color: #646464 !important;
 	}
 	.limelightelectric {
@@ -1488,7 +1488,7 @@
 		border-color: #FFDC0D !important;
 	}
 	.outlineelectric {
-		border: 2px solid #F3D23B;
+		border: 2px solid #FFDC0D;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgeelectric {
@@ -1509,7 +1509,7 @@
 		border-color: #FFDC0D;
 		color: #888;
 	}
-	.smolbuttonSwapelectric {
+	.smolbuttonswapelectric {
 		background-color: #FFDC0D;
 		border-color: #FFDC0D;
 	}
@@ -1550,7 +1550,7 @@
 		color: #91E3FF;
 	}
 	.limeice {
-		background: #74cec0 !important;
+		background: #91E3FF !important;
 		color: #fff !important;
 	}
 	.limelightice {
@@ -1559,7 +1559,7 @@
 		border-color: #91E3FF !important;
 	}
 	.outlineice {
-		border: 2px solid #74cec0;
+		border: 2px solid #91E3FF;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgeice {
@@ -1579,7 +1579,7 @@
 		border-color: #91E3FF;
 		color: #91E3FF;
 	}
-	.smolbuttonSwapice {
+	.smolbuttonswapice {
 		background-color: #91E3FF;
 		border-color: #91E3FF;
 	}
@@ -1619,7 +1619,7 @@
 		color: #BA2525;
 	}
 	.limefighting {
-		background: #CE4069 !important;
+		background: #BA2525 !important;
 		color: #fff !important;
 	}
 	.limelightfighting {
@@ -1628,7 +1628,7 @@
 		border-color: #BA2525 !important;
 	}
 	.outlinefighting {
-		border: 2px solid #CE4069;
+		border: 2px solid #BA2525;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgefighting {
@@ -1648,7 +1648,7 @@
 		border-color: #BA2525;
 		color: #BA2525;
 	}
-	.smolbuttonSwapfighting {
+	.smolbuttonswapfighting {
 		background-color: #BA2525;
 		border-color: #BA2525;
 	}
@@ -1688,7 +1688,7 @@
 		color: #C462D1;
 	}
 	.limepoison {
-		background: #AB6AC8 !important;
+		background: #C462D1 !important;
 		color: #fff !important;
 	}
 	.limelightpoison {
@@ -1697,7 +1697,7 @@
 		border-color: #C462D1 !important;
 	}
 	.outlinepoison {
-		border: 2px solid #AB6AC8;
+		border: 2px solid #C462D1;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgepoison {
@@ -1717,7 +1717,7 @@
 		border-color: #C462D1;
 		color: #C462D1;
 	}
-	.smolbuttonSwappoison {
+	.smolbuttonswappoison {
 		background-color: #C462D1;
 		border-color: #C462D1;
 	}
@@ -1757,7 +1757,7 @@
 		color: #CCAC6C;
 	}
 	.limeground {
-		background: #D97746 !important;
+		background: #CCAC6C !important;
 		color: #fff !important;
 	}
 	.limelightground {
@@ -1766,7 +1766,7 @@
 		border-color: #CCAC6C !important;
 	}
 	.outlineground {
-		border: 2px solid #D97746;
+		border: 2px solid #CCAC6C;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgeground {
@@ -1786,7 +1786,7 @@
 		border-color: #CCAC6C;
 		color: #CCAC6C;
 	}
-	.smolbuttonSwapground {
+	.smolbuttonswapground {
 		background-color: #CCAC6C;
 		border-color: #CCAC6C;
 	}
@@ -1826,7 +1826,7 @@
 		color: #85E0D2;
 	}
 	.limeflying {
-		background: #8fa8dd !important;
+		background: #85E0D2 !important;
 		color: #fff !important;
 	}
 	.limelightflying {
@@ -1835,7 +1835,7 @@
 		border-color: #85E0D2 !important;
 	}
 	.outlineflying {
-		border: 2px solid #8fa8dd;
+		border: 2px solid #85E0D2;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgeflying {
@@ -1855,7 +1855,7 @@
 		border-color: #85E0D2;
 		color: #85E0D2;
 	}
-	.smolbuttonSwapflying {
+	.smolbuttonswapflying {
 		background-color: #85E0D2;
 		border-color: #85E0D2;
 	}
@@ -1895,7 +1895,7 @@
 		color: #FF5480;
 	}
 	.limepsychic {
-		background: #F97176 !important;
+		background: #FF5480 !important;
 		color: #fff !important;
 	}
 	.limelightpsychic {
@@ -1904,7 +1904,7 @@
 		border-color: #FF5480 !important;
 	}
 	.outlinepsychic {
-		border: 2px solid #F97176;
+		border: 2px solid #FF5480;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgepsychic {
@@ -1924,7 +1924,7 @@
 		border-color: #FF5480;
 		color: #FF5480;
 	}
-	.smolbuttonSwappsychic {
+	.smolbuttonswappsychic {
 		background-color: #FF5480;
 		border-color: #FF5480;
 	}
@@ -1964,7 +1964,7 @@
 		color: #AEE340;
 	}
 	.limebug {
-		background: #90C12C !important;
+		background: #AEE340 !important;
 		color: #fff !important;
 	}
 	.limelightbug {
@@ -1973,7 +1973,7 @@
 		border-color: #AEE340 !important;
 	}
 	.outlinebug {
-		border: 2px solid #90C12C;
+		border: 2px solid #AEE340;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgebug {
@@ -1993,7 +1993,7 @@
 		border-color: #AEE340;
 		color: #AEE340;
 	}
-	.smolbuttonSwapbug {
+	.smolbuttonswapbug {
 		background-color: #AEE340;
 		border-color: #AEE340;
 	}
@@ -2033,7 +2033,7 @@
 		color: #785B45;
 	}
 	.limerock {
-		background: #C7B78B !important;
+		background: #785B45 !important;
 		color: #fff !important;
 	}
 	.limelightrock {
@@ -2042,7 +2042,7 @@
 		border-color: #785B45 !important;
 	}
 	.outlinerock {
-		border: 2px solid #C7B78B;
+		border: 2px solid #785B45;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgerock {
@@ -2062,7 +2062,7 @@
 		border-color: #785B45;
 		color: #785B45;
 	}
-	.smolbuttonSwaprock {
+	.smolbuttonswaprock {
 		background-color: #785B45;
 		border-color: #785B45;
 	}
@@ -2102,7 +2102,7 @@
 		color: #795891;
 	}
 	.limeghost {
-		background: #5269AC !important;
+		background: #795891 !important;
 		color: #fff !important;
 	}
 	.limelightghost {
@@ -2111,7 +2111,7 @@
 		border-color: #795891 !important;
 	}
 	.outlineghost {
-		border: 2px solid #5269AC;
+		border: 2px solid #795891;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgeghost {
@@ -2131,7 +2131,7 @@
 		border-color: #795891;
 		color: #795891;
 	}
-	.smolbuttonSwapghost {
+	.smolbuttonswapghost {
 		background-color: #795891;
 		border-color: #795891;
 	}
@@ -2171,7 +2171,7 @@
 		color: #4C41B0;
 	}
 	.limedragon {
-		background: #0A6DC4 !important;
+		background: #4C41B0 !important;
 		color: #fff !important;
 	}
 	.limelightdragon {
@@ -2180,7 +2180,7 @@
 		border-color: #4C41B0 !important;
 	}
 	.outlinedragon {
-		border: 2px solid #0A6DC4;
+		border: 2px solid #4C41B0;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgedragon {
@@ -2200,7 +2200,7 @@
 		border-color: #4C41B0;
 		color: #4C41B0;
 	}
-	.smolbuttonSwapdragon {
+	.smolbuttonswapdragon {
 		background-color: #4C41B0;
 		border-color: #4C41B0;
 	}
@@ -2240,7 +2240,7 @@
 		color: #474F61;
 	}
 	.limeevil {
-		background: #5A5366 !important;
+		background: #474F61 !important;
 		color: #fff !important;
 	}
 	.limelightevil {
@@ -2249,7 +2249,7 @@
 		border-color: #474F61 !important;
 	}
 	.outlineevil {
-		border: 2px solid #5A5366;
+		border: 2px solid #474F61;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgeevil {
@@ -2269,7 +2269,7 @@
 		border-color: #474F61;
 		color: #474F61;
 	}
-	.smolbuttonSwapevil {
+	.smolbuttonswapevil {
 		background-color: #474F61;
 		border-color: #474F61;
 	}
@@ -2309,7 +2309,7 @@
 		color: #7E9C99;
 	}
 	.limesteel {
-		background: #5A8EA1 !important;
+		background: #7E9C99 !important;
 		color: #fff !important;
 	}
 	.limelightsteel {
@@ -2318,7 +2318,7 @@
 		border-color: #7E9C99 !important;
 	}
 	.outlinesteel {
-		border: 2px solid #5A8EA1;
+		border: 2px solid #7E9C99;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgesteel {
@@ -2338,7 +2338,7 @@
 		border-color: #7E9C99;
 		color: #7E9C99;
 	}
-	.smolbuttonSwapsteel {
+	.smolbuttonswapsteel {
 		background-color: #7E9C99;
 		border-color: #7E9C99;
 	}
@@ -2378,7 +2378,7 @@
 		color: #FFB1D8;
 	}
 	.limefairy {
-		background: #EC8FE6 !important;
+		background: #FFB1D8 !important;
 		color: #fff !important;
 	}
 	.limelightfairy {
@@ -2387,7 +2387,7 @@
 		border-color: #FFB1D8 !important;
 	}
 	.outlinefairy {
-		border: 2px solid #EC8FE6;
+		border: 2px solid #FFB1D8;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgefairy {
@@ -2407,7 +2407,7 @@
 		border-color: #FFB1D8;
 		color: #FFB1D8;
 	}
-	.smolbuttonSwapfairy {
+	.smolbuttonswapfairy {
 		background-color: #FFB1D8;
 		border-color: #FFB1D8;
 	}
@@ -2446,58 +2446,58 @@
 	
 	/*end of type-color-changing classes*/
 .normal {
-background-color: #9099A1;
+background-color: #d6d6d1;
 }
 .fire {
-background-color: #FF9C54;
+background-color: #F08218;
 }
 .water {
-background-color: #4D90D5;
+background-color: #6099EB;
 }
 .grass {
-background-color: #63BB5B;
+background-color: #36BA45;
 }
 .electric {
-background-color: #F3D23B;
+background-color: #FFDC0D;
 }
 .ice {
-background-color: #74CEC0;
+background-color: #91E3FF;
 }
 .fighting {
-background-color: #CE4069;
+background-color: #BA2525;
 }
 .poison {
-background-color: #AB6AC8;
+background-color: #C462D1;
 }
 .ground {
-background-color: #D97746;
+background-color: #CCAC6C;
 }
 .flying {
-background-color: #8FA8DD;
+background-color: #85E0D2;
 }
 .psychic {
-background-color: #F97176;
+background-color: #FF5480;
 }
 .bug {
-background-color: #90C12C;
+background-color: #AEE340;
 }
 .rock {
-background-color: #C7B78B;
+background-color: #785B45;
 }
 .ghost {
-background-color: #5269AC;
+background-color: #795891;
 }
 .dragon {
-background-color: #0A6DC4;
+background-color: #4C41B0;
 }
 .evil {
-background-color: #5A5366;
+background-color: #474F61;
 }
 .steel {
-background-color: #5A8EA1;
+background-color: #7E9C99;
 }
 .fairy {
-background-color: #EC8FE6;
+background-color: #FFB1D8;
 }
 .blend {
 background-image: url(/images/background-50-grey.svg);
