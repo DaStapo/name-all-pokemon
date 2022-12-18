@@ -1,0 +1,1254 @@
+.anormal {
+color: #9099A1
+;
+}
+.limenormal {
+background: #9099A1
+!important;
+color: #fff !important;
+}
+.limelightnormal {
+background: #e3e7eb
+;
+color: #111;
+border-color: #9099A1
+!important;
+}
+.outlinenormal {
+border: 2px solid #9099A1;
+padding: 9px 8px 8px 8px;
+}
+.topedgenormal {
+border-top-color: #9099A1
+;
+}
+.input-twitchnormal, .input-timernormal {
+border-color: #9099A1
+;
+}
+.input-twitchnormal:disabled {
+background-color: #9099A1
+;
+}
+.buttonnormal {
+	background-color: #9099A1;
+	border: solid #868d94 2px;
+}
+.smolbuttonnormal {
+border-color: #9099A1
+;color: #9099A1;
+}
+.smolbuttonSwapnormal {
+background-color: #9099A1;
+border-color: #9099A1;
+}
+.smolbuttonnormal:hover {
+background-color: #868d94;
+border-color: #868d94;
+color: #fff;
+}
+.smolbuttonxnormal {
+background-color: #9099A1;
+color: #fff;
+border-color: #9099A1;
+}
+.inlineboxnormal {
+background-color: #dde5ec;
+}
+.smolbuttonxdarknormal {
+color: #111;
+background-color: #9099A1
+;
+}
+.buttondarknormal {
+border-color: #6e7881
+;
+}
+.limelightdarknormal {
+color: #fff;
+background: #111;
+border-color: #6e7881;
+border-bottom-color: #6e7881;
+}
+.inlineboxdarknormal {
+background-color: #9099A1
+;
+}
+.arrownormal {
+border-color: #9099A1;
+}
+.afire {
+color: #FF9C54;
+}
+.limefire {
+background: #FF9C54 !important;
+color: #fff !important;
+}
+.limelightfire {
+background: #ffe0ca;
+color: #111;
+border-color: #FF9C54 !important;
+}
+.outlinefire {
+border: 2px solid #FF9C54;
+padding: 9px 8px 8px 8px;
+}
+.topedgefire {
+border-top-color: #FF9C54;
+}
+.input-twitchfire, .input-timerfire {
+border-color: #FF9C54;
+}
+.input-twitchfire:disabled {
+background-color: #FF9C54;
+}
+.buttonfire {
+	background-color: #FF9C54;
+	border: solid #f88f44 2px;
+}
+.smolbuttonfire {
+border-color: #FF9C54;
+color: #FF9C54;
+}
+.smolbuttonSwapfire {
+background-color: #FF9C54;
+border-color: #FF9C54;
+}
+.smolbuttonfire:hover {
+background-color: #f88f44;
+border-color: #f88f44;
+color: #fff;
+}
+.smolbuttonxfire {
+background-color: #FF9C54;
+color: #fff;
+border-color: #FF9C54;
+}
+.inlineboxfire {
+background-color: #ffe6d4;
+}
+.smolbuttonxdarkfire {
+color: #111;
+background-color: #FF9C54;
+}
+.buttondarkfire {
+border-color: #dd752b;
+}
+.limelightdarkfire {
+border-color: #dd752b;
+border-bottom-color: #dd752b;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkfire {
+background-color: #FF9C54;
+}
+.arrowfire {
+border-color: #FF9C54;
+}
+.awater {
+color: #4D90D5;
+}
+.limewater {
+background: #4D90D5 !important;
+color: #fff !important;
+}
+.limelightwater {
+background: #cee4f9;
+color: #111;
+border-color: #4D90D5 !important;
+}
+.outlinewater {
+border: 2px solid #4D90D5;
+padding: 9px 8px 8px 8px;
+}
+.topedgewater {
+border-top-color: #4D90D5;
+}
+.input-twitchwater, .input-timerwater {
+border-color: #4D90D5;
+}
+.input-twitchwater:disabled {
+background-color: #4D90D5;
+}
+.buttonwater {
+	background-color: #4D90D5;
+	border: solid #3684d1 2px;
+}
+.smolbuttonwater {
+border-color: #4D90D5;
+color: #4D90D5;
+}
+.smolbuttonSwapwater {
+background-color: #4D90D5;
+border-color: #4D90D5;
+}
+.smolbuttonwater:hover {
+background-color: #3684d1;
+border-color: #3684d1;
+color: #fff;
+}
+.smolbuttonxwater {
+background-color: #4D90D5;
+color: #fff;
+border-color: #4D90D5;
+}
+.inlineboxwater {
+background-color: #cee5ff;
+}
+.smolbuttonxdarkwater {
+color: #111;
+background-color: #4D90D5;
+}
+.buttondarkwater {
+border-color: #1462af;
+}
+.limelightdarkwater {
+border-color: #1462af;
+border-bottom-color: #1462af;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkwater {
+background-color: #4D90D5;
+}
+.arrowwater {
+border-color: #4D90D5;
+}
+.agrass {
+color: #63BB5B;
+}
+.limegrass {
+background: #63BB5B !important;
+color: #fff !important;
+}
+.limelightgrass {
+background: #e6f9e4;
+color: #111;
+border-color: #63BB5B !important;
+}
+.outlinegrass {
+border: 2px solid #63BB5B;
+padding: 9px 8px 8px 8px;
+}
+.topedgegrass {
+border-top-color: #63BB5B;
+}
+.input-twitchgrass, .input-timergrass {
+border-color: #63BB5B;
+}
+.input-twitchgrass:disabled {
+background-color: #63BB5B;
+}
+.buttongrass {
+	background-color: #63BB5B;
+	border: solid #4eb145 2px;
+}
+.smolbuttongrass {
+border-color: #63BB5B;
+color: #63BB5B;
+}
+.smolbuttonSwapgrass {
+background-color: #63BB5B;
+border-color: #63BB5B;
+}
+.smolbuttongrass:hover {
+background-color: #4eb145;
+border-color: #4eb145;
+color: #fff;
+}
+.smolbuttonxgrass {
+background-color: #63BB5B;
+color: #fff;
+border-color: #63BB5B;
+}
+.inlineboxgrass {
+background-color: #cfe7cd;
+}
+.smolbuttonxdarkgrass {
+color: #111;
+background-color: #63BB5B;
+}
+.buttondarkgrass {
+border-color: #378830;
+}
+.limelightdarkgrass {
+border-color: #378830;
+border-bottom-color: #378830;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkgrass {
+background-color: #63BB5B;
+}
+.arrowgrass {
+border-color: #63BB5B;
+}
+.aelectric {
+color: #F3D23B !important;
+}
+.limeelectric {
+background: #F3D23B !important;
+color: #646464 !important;
+}
+.limelightelectric {
+background: #fff6d1;
+color: #111;
+border-color: #F3D23B !important;
+}
+.outlineelectric {
+border: 2px solid #F3D23B;
+padding: 9px 8px 8px 8px;
+}
+.topedgeelectric {
+border-top-color: #F3D23B;
+}
+.input-twitchelectric, .input-timerelectric {
+border-color: #F3D23B;
+}
+.input-twitchelectric:disabled {
+background-color: #F3D23B;
+}
+.buttonelectric {
+	background-color: #F3D23B;
+	border: solid #e6c120 2px;
+	color: #888;
+}
+.smolbuttonelectric {
+border-color: #F3D23B;
+color: #888;
+}
+.smolbuttonSwapelectric {
+background-color: #F3D23B;
+border-color: #F3D23B;
+}
+.smolbuttonelectric:hover {
+background-color: #e6c120;
+border-color: #e6c120;
+color: #fff;
+}
+.smolbuttonxelectric {
+background-color: #F3D23B;
+color: #333;
+border-color: #F3D23B;
+}
+.inlineboxelectric {
+background-color: #fdf2b8;
+}
+.smolbuttonxdarkelectric {
+color: #111;
+background-color: #F3D23B;
+}
+.buttondarkelectric {
+border-color: #d4af06;
+}
+.limelightdarkelectric {
+border-color: #d4af06;
+border-bottom-color: #d4af06;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkelectric {
+background-color: #F3D23B;
+color: #333;
+}
+.arrowelectric {
+border-color: #F3D23B;
+}
+.aice {
+color: #74cec0;
+}
+.limeice {
+background: #74cec0 !important;
+color: #fff !important;
+}
+.limelightice {
+background: #e3fbf8;
+color: #111;
+border-color: #74cec0 !important;
+}
+.outlineice {
+border: 2px solid #74cec0;
+padding: 9px 8px 8px 8px;
+}
+.topedgeice {
+border-top-color: #74cec0;
+}
+.input-twitchice, .input-timerice {
+border-color: #74cec0;
+}
+.input-twitchice:disabled {
+background-color: #74cec0;
+}
+.buttonice {
+	background-color: #74cec0;
+	border: solid #55c5b4 2px;
+}
+.smolbuttonice {
+border-color: #74cec0;
+color: #74cec0;
+}
+.smolbuttonSwapice {
+background-color: #74cec0;
+border-color: #74cec0;
+}
+.smolbuttonice:hover {
+background-color: #55c5b4;
+border-color: #55c5b4;
+color: #fff;
+}
+.smolbuttonxice {
+background-color: #74cec0;
+color: #fff;
+border-color: #74cec0;
+}
+.inlineboxice {
+background-color: #e2eeec;
+}
+.smolbuttonxdarkice {
+color: #111;
+background-color: #74cec0;
+}
+.buttondarkice {
+border-color: #38b9a6;
+}
+.limelightdarkice {
+border-color: #38b9a6;
+border-bottom-color: #38b9a6;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkice {
+background-color: #74cec0;
+}
+.arrowice {
+border-color: #74cec0;
+}
+.afighting {
+color: #CE4069;
+}
+.limefighting {
+background: #CE4069 !important;
+color: #fff !important;
+}
+.limelightfighting {
+background: #ffd2df;
+color: #111;
+border-color: #CE4069 !important;
+}
+.outlinefighting {
+border: 2px solid #CE4069;
+padding: 9px 8px 8px 8px;
+}
+.topedgefighting {
+border-top-color: #CE4069;
+}
+.input-twitchfighting, .input-timerfighting {
+border-color: #CE4069;
+}
+.input-twitchfighting:disabled {
+background-color: #CE4069;
+}
+.buttonfighting {
+	background-color: #CE4069;
+	border: solid #bd2752 2px;
+}
+.smolbuttonfighting {
+border-color: #CE4069;
+color: #CE4069;
+}
+.smolbuttonSwapfighting {
+background-color: #CE4069;
+border-color: #CE4069;
+}
+.smolbuttonfighting:hover {
+background-color: #bd2752;
+border-color: #bd2752;
+color: #fff;
+}
+.smolbuttonxfighting {
+background-color: #CE4069;
+color: #fff;
+border-color: #CE4069;
+}
+.inlineboxfighting {
+background-color: #f7dae3;
+}
+.smolbuttonxdarkfighting {
+color: #111;
+background-color: #CE4069;
+}
+.buttondarkfighting {
+border-color: #ac294e;
+}
+.limelightdarkfighting {
+border-color: #ac294e;
+border-bottom-color: #ac294e;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkfighting {
+background-color: #CE4069;
+}
+.arrowfighting {
+border-color: #CE4069;
+}
+.apoison {
+color: #AB6AC8;
+}
+.limepoison {
+background: #AB6AC8 !important;
+color: #fff !important;
+}
+.limelightpoison {
+background: #f3ddfd;
+color: #111;
+border-color: #AB6AC8 !important;
+}
+.outlinepoison {
+border: 2px solid #AB6AC8;
+padding: 9px 8px 8px 8px;
+}
+.topedgepoison {
+border-top-color: #AB6AC8;
+}
+.input-twitchpoison, .input-timerpoison {
+border-color: #AB6AC8;
+}
+.input-twitchpoison:disabled {
+background-color: #AB6AC8;
+}
+.buttonpoison {
+	background-color: #AB6AC8;
+	border: solid #9951bb 2px;
+}
+.smolbuttonpoison {
+border-color: #AB6AC8;
+color: #AB6AC8;
+}
+.smolbuttonSwappoison {
+background-color: #AB6AC8;
+border-color: #AB6AC8;
+}
+.smolbuttonpoison:hover {
+background-color: #9951bb;
+border-color: #9951bb;
+color: #fff;
+}
+.smolbuttonxpoison {
+background-color: #AB6AC8;
+color: #fff;
+border-color: #AB6AC8;
+}
+.inlineboxpoison {
+background-color: #dcd1e0;
+}
+.smolbuttonxdarkpoison {
+color: #111;
+background-color: #AB6AC8;
+}
+.buttondarkpoison {
+border-color: #923cb9;
+}
+.limelightdarkpoison {
+border-color: #923cb9;
+border-bottom-color: #923cb9;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkpoison {
+background-color: #AB6AC8;
+}		
+.arrowpoison {
+border-color: #AB6AC8;
+}
+.aground {
+color: #D97746;
+}
+.limeground {
+background: #D97746 !important;
+color: #fff !important;
+}
+.limelightground {
+background: #ffdece;
+color: #111;
+border-color: #D97746 !important;
+}
+.outlineground {
+border: 2px solid #D97746;
+padding: 9px 8px 8px 8px;
+}
+.topedgeground {
+border-top-color: #D97746;
+}
+.input-twitchground, .input-timerground {
+border-color: #D97746;
+}
+.input-twitchground:disabled {
+background-color: #D97746;
+}
+.buttonground {
+	background-color: #D97746;
+	border: solid #c56a3d 2px;
+}
+.smolbuttonground {
+border-color: #D97746;
+color: #D97746;
+}
+.smolbuttonSwapground {
+background-color: #D97746;
+border-color: #D97746;
+}
+.smolbuttonground:hover {
+background-color: #c56a3d;
+border-color: #c56a3d;
+color: #fff;
+}
+.smolbuttonxground {
+background-color: #D97746;
+color: #fff;
+border-color: #D97746;
+}
+.inlineboxground {
+background-color: #f9e3d8;
+}
+.smolbuttonxdarkground {
+color: #111;
+background-color: #D97746;
+}
+.buttondarkground {
+border-color: #b15527;
+}
+.limelightdarkground {
+border-color: #b15527;
+border-bottom-color: #b15527;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkground {
+background-color: #D97746;
+}
+.arrowground {
+border-color: #D97746;
+}
+.aflying {
+color: #8fa8dd;
+}
+.limeflying {
+background: #8fa8dd !important;
+color: #fff !important;
+}
+.limelightflying {
+background: #e7eeff;
+color: #111;
+border-color: #8fa8dd !important;
+}
+.outlineflying {
+border: 2px solid #8fa8dd;
+padding: 9px 8px 8px 8px;
+}
+.topedgeflying {
+border-top-color: #8fa8dd;
+}
+.input-twitchflying, .input-timerflying {
+border-color: #8fa8dd;
+}
+.input-twitchflying:disabled {
+background-color: #8fa8dd;
+}
+.buttonflying {
+	background-color: #8fa8dd;
+	border: solid #7691ca 2px;
+}
+.smolbuttonflying {
+border-color: #8fa8dd;
+color: #8fa8dd;
+}
+.smolbuttonSwapflying {
+background-color: #8fa8dd;
+border-color: #8fa8dd;
+}
+.smolbuttonflying:hover {
+background-color: #7691ca;
+border-color: #7691ca;
+color: #fff;
+}
+.smolbuttonxflying {
+background-color: #8fa8dd;
+color: #fff;
+border-color: #8fa8dd;
+}
+.inlineboxflying {
+background-color: #d7e1f5;
+}
+.smolbuttonxdarkflying {
+color: #111;
+background-color: #8fa8dd;
+}
+.buttondarkflying {
+border-color: #5f79af;
+}
+.limelightdarkflying {
+border-color: #5f79af;
+border-bottom-color: #5f79af;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkflying {
+background-color: #8fa8dd;
+}
+.arrowflying {
+border-color: #8fa8dd;
+}
+.apsychic {
+color: #F97176;
+}
+.limepsychic {
+background: #F97176 !important;
+color: #fff !important;
+}
+.limelightpsychic {
+background: #ffe4e4;
+color: #111;
+border-color: #F97176 !important;
+}
+.outlinepsychic {
+border: 2px solid #F97176;
+padding: 9px 8px 8px 8px;
+}
+.topedgepsychic {
+border-top-color: #F97176;
+}
+.input-twitchpsychic, .input-timerpsychic {
+border-color: #F97176;
+}
+.input-twitchpsychic:disabled {
+background-color: #F97176;
+}
+.buttonpsychic {
+	background-color: #F97176;
+	border: solid #ec575c 2px;
+}
+.smolbuttonpsychic {
+border-color: #F97176;
+color: #F97176;
+}
+.smolbuttonSwappsychic {
+background-color: #F97176;
+border-color: #F97176;
+}
+.smolbuttonpsychic:hover {
+background-color: #ec575c;
+border-color: #ec575c;
+color: #fff;
+}
+.smolbuttonxpsychic {
+background-color: #F97176;
+color: #fff;
+border-color: #F97176;
+}
+.inlineboxpsychic {
+background-color: #f7d2d3;
+}
+.smolbuttonxdarkpsychic {
+color: #111;
+background-color: #F97176;
+}
+.buttondarkpsychic {
+border-color: #cf3e43;
+}
+.limelightdarkpsychic {
+border-color: #cf3e43;
+border-bottom-color: #cf3e43;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkpsychic {
+background-color: #F97176;
+}
+.arrowpsychic {
+border-color: #F97176;
+}
+.abug {
+color: #90C12C;
+}
+.limebug {
+background: #90C12C !important;
+color: #fff !important;
+}
+.limelightbug {
+background: #e7f7c6;
+color: #111;
+border-color: #90C12C !important;
+}
+.outlinebug {
+border: 2px solid #90C12C;
+padding: 9px 8px 8px 8px;
+}
+.topedgebug {
+border-top-color: #90C12C;
+}
+.input-twitchbug, .input-timerbug {
+border-color: #90C12C;
+}
+.input-twitchbug:disabled {
+background-color: #90C12C;
+}
+.buttonbug {
+	background-color: #90C12C;
+	border: solid #80b11f 2px;
+}
+.smolbuttonbug {
+border-color: #90C12C;
+color: #90C12C;
+}
+.smolbuttonSwapbug {
+background-color: #90C12C;
+border-color: #90C12C;
+}
+.smolbuttonbug:hover {
+background-color: #80b11f;
+border-color: #80b11f;
+color: #fff;
+}
+.smolbuttonxbug {
+background-color: #90C12C;
+color: #fff;
+border-color: #90C12C;
+}
+.inlineboxbug {
+background-color: #e7f5c7;
+}
+.smolbuttonxdarkbug {
+color: #111;
+background-color: #90C12C;
+}
+.buttondarkbug {
+border-color: #6f991a;
+}
+.limelightdarkbug {
+border-color: #6f991a;
+border-bottom-color: #6f991a;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkbug {
+background-color: #90C12C;
+}
+.arrowbug {
+border-color: #90C12C;
+}
+.arock {
+color: #C7B78B;
+}
+.limerock {
+background: #C7B78B !important;
+color: #fff !important;
+}
+.limelightrock {
+background: #f9f4e8;
+color: #111;
+border-color: #C7B78B !important;
+}
+.outlinerock {
+border: 2px solid #C7B78B;
+padding: 9px 8px 8px 8px;
+}
+.topedgerock {
+border-top-color: #C7B78B;
+}
+.input-twitchrock, .input-timerrock {
+border-color: #C7B78B;
+}
+.input-twitchrock:disabled {
+background-color: #C7B78B;
+}
+.buttonrock {
+	background-color: #C7B78B;
+	border: solid #b4a16b 2px;
+}
+.smolbuttonrock {
+border-color: #C7B78B;
+color: #C7B78B;
+}
+.smolbuttonSwaprock {
+background-color: #C7B78B;
+border-color: #C7B78B;
+}
+.smolbuttonrock:hover {
+background-color: #b4a16b;
+border-color: #b4a16b;
+color: #fff;
+}
+.smolbuttonxrock {
+background-color: #C7B78B;
+color: #fff;
+border-color: #C7B78B;
+}
+.inlineboxrock {
+background-color: #e4e0d6;
+}
+.smolbuttonxdarkrock {
+color: #111;
+background-color: #C7B78B;
+}
+.buttondarkrock {
+border-color: #96875e;
+}
+.limelightdarkrock {
+border-color: #96875e;
+border-bottom-color: #96875e;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkrock {
+background-color: #C7B78B;
+}
+.arrowrock {
+border-color: #C7B78B;
+}
+.aghost {
+color: #5269AC;
+}
+.limeghost {
+background: #5269AC !important;
+color: #fff !important;
+}
+.limelightghost {
+background: #dde4f7;
+color: #111;
+border-color: #5269AC !important;
+}
+.outlineghost {
+border: 2px solid #5269AC;
+padding: 9px 8px 8px 8px;
+}
+.topedgeghost {
+border-top-color: #5269AC;
+}
+.input-twitchghost, .input-timerghost {
+border-color: #5269AC;
+}
+.input-twitchghost:disabled {
+background-color: #5269AC;
+}
+.buttonghost {
+	background-color: #5269AC;
+	border: solid #445ba3 2px;
+}
+.smolbuttonghost {
+border-color: #5269AC;
+color: #5269AC;
+}
+.smolbuttonSwapghost {
+background-color: #5269AC;
+border-color: #5269AC;
+}
+.smolbuttonghost:hover {
+background-color: #445ba3;
+border-color: #445ba3;
+color: #fff;
+}
+.smolbuttonxghost {
+background-color: #5269AC;
+color: #fff;
+border-color: #5269AC;
+}
+.inlineboxghost {
+background-color: #c6cce3;
+}
+.smolbuttonxdarkghost {
+color: #111;
+background-color: #5269AC;
+}
+.buttondarkghost {
+border-color: #374c8b;
+}
+.limelightdarkghost {
+border-color: #374c8b;
+border-bottom-color: #374c8b;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkghost {
+background-color: #5269AC;
+}
+.arrowghost {
+border-color: #5269AC;
+}
+.adragon {
+color: #0A6DC4;
+}
+.limedragon {
+background: #0A6DC4 !important;
+color: #fff !important;
+}
+.limelightdragon {
+background: #cae4fb;
+color: #111;
+border-color: #0A6DC4 !important;
+}
+.outlinedragon {
+border: 2px solid #0A6DC4;
+padding: 9px 8px 8px 8px;
+}
+.topedgedragon {
+border-top-color: #0A6DC4;
+}
+.input-twitchdragon, .input-timerdragon {
+border-color: #0A6DC4;
+}
+.input-twitchdragon:disabled {
+background-color: #0A6DC4;
+}
+.buttondragon {
+	background-color: #0A6DC4;
+	border: solid #0f5ea3 2px;
+}
+.smolbuttondragon {
+border-color: #0A6DC4;
+color: #0A6DC4;
+}
+.smolbuttonSwapdragon {
+background-color: #0A6DC4;
+border-color: #0A6DC4;
+}
+.smolbuttondragon:hover {
+background-color: #0f5ea3;
+border-color: #0f5ea3;
+color: #fff;
+}
+.smolbuttonxdragon {
+background-color: #0A6DC4;
+color: #fff;
+border-color: #0A6DC4;
+}
+.inlineboxdragon {
+background-color: #d9e6f3;
+}
+.smolbuttonxdarkdragon {
+color: #111;
+background-color: #0A6DC4;
+}
+.buttondarkdragon {
+border-color: #0b5aa0;
+}
+.limelightdarkdragon {
+border-color: #0b5aa0;
+border-bottom-color: #0b5aa0;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkdragon {
+background-color: #0A6DC4;
+}
+.arrowdragon {
+border-color: #0A6DC4;
+}
+.aevil {
+color: #5A5366;
+}
+.limeevil {
+background: #5A5366 !important;
+color: #fff !important;
+}
+.limelightevil {
+background: #d9d7dd;
+color: #111;
+border-color: #5A5366 !important;
+}
+.outlineevil {
+border: 2px solid #5A5366;
+padding: 9px 8px 8px 8px;
+}
+.topedgeevil {
+border-top-color: #5A5366;
+}
+.input-twitchevil, .input-timerevil {
+border-color: #5A5366;
+}
+.input-twitchevil:disabled {
+background-color: #5A5366;
+}
+.buttonevil {
+	background-color: #5A5366;
+	border: solid #474250 2px;
+}
+.smolbuttonevil {
+border-color: #5A5366;
+color: #5A5366;
+}
+.smolbuttonSwapevil {
+background-color: #5A5366;
+border-color: #5A5366;
+}
+.smolbuttonevil:hover {
+background-color: #474250;
+border-color: #474250;
+color: #fff;
+}
+.smolbuttonxevil {
+background-color: #5A5366;
+color: #fff;
+border-color: #5A5366;
+}
+.inlineboxevil {
+background-color: #dfdce4;
+}
+.smolbuttonxdarkevil {
+color: #111;
+background-color: #5A5366;
+}
+.buttondarkevil {
+border-color: #3c3744;
+}
+.limelightdarkevil {
+border-color: #3c3744;
+border-bottom-color: #3c3744;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkevil {
+background-color: #5A5366;
+}
+.arrowevil {
+border-color: #5A5366;
+}
+.asteel {
+color: #5A8EA1;
+}
+.limesteel {
+background: #5A8EA1 !important;
+color: #fff !important;
+}
+.limelightsteel {
+background: #d7e4e9;
+color: #111;
+border-color: #5A8EA1 !important;
+}
+.outlinesteel {
+border: 2px solid #5A8EA1;
+padding: 9px 8px 8px 8px;
+}
+.topedgesteel {
+border-top-color: #5A8EA1;
+}
+.input-twitchsteel, .input-timersteel {
+border-color: #5A8EA1;
+}
+.input-twitchsteel:disabled {
+background-color: #5A8EA1;
+}
+.buttonsteel {
+	background-color: #5A8EA1;
+	border: solid #477788 2px;
+}
+.smolbuttonsteel {
+border-color: #5A8EA1;
+color: #5A8EA1;
+}
+.smolbuttonSwapsteel {
+background-color: #5A8EA1;
+border-color: #5A8EA1;
+}
+.smolbuttonsteel:hover {
+background-color: #477788;
+border-color: #477788;
+color: #fff;
+}
+.smolbuttonxsteel {
+background-color: #5A8EA1;
+color: #fff;
+border-color: #5A8EA1;
+}
+.inlineboxsteel {
+background-color: #d5e5eb;
+}
+.smolbuttonxdarksteel {
+color: #111;
+background-color: #5A8EA1;
+}
+.buttondarksteel {
+border-color: #3e6474;
+}
+.limelightdarksteel {
+border-color: #3e6474;
+border-bottom-color: #3e6474;
+color: #fff;
+background: #111;
+}
+.inlineboxdarksteel {
+background-color: #5A8EA1;
+}
+.arrowsteel {
+border-color: #5A8EA1;
+}
+.afairy {
+color: #EC8FE6;
+}
+.limefairy {
+background: #EC8FE6 !important;
+color: #fff !important;
+}
+.limelightfairy {
+background: #ffe5fd;
+color: #111;
+border-color: #EC8FE6 !important;
+}
+.outlinefairy {
+border: 2px solid #EC8FE6;
+padding: 9px 8px 8px 8px;
+}
+.topedgefairy {
+border-top-color: #EC8FE6;
+}
+.input-twitchfairy, .input-timerfairy {
+border-color: #EC8FE6;
+}
+.input-twitchfairy:disabled {
+background-color: #EC8FE6;
+}
+.buttonfairy {
+	background-color: #EC8FE6;
+	border: solid #d87ad2 2px;
+}
+.smolbuttonfairy {
+border-color: #EC8FE6;
+color: #EC8FE6;
+}
+.smolbuttonSwapfairy {
+background-color: #EC8FE6;
+border-color: #EC8FE6;
+}
+.smolbuttonfairy:hover {
+background-color: #d87ad2;
+border-color: #d87ad2;
+color: #fff;
+}
+.smolbuttonxfairy {
+background-color: #EC8FE6;
+color: #fff;
+border-color: #EC8FE6;
+}
+.inlineboxfairy {
+background-color: #f3e3f2;
+}
+.smolbuttonxdarkfairy {
+color: #111;
+background-color: #EC8FE6;
+}
+.buttondarkfairy {
+border-color: #be58b8;
+}
+.limelightdarkfairy {
+border-color: #be58b8;
+border-bottom-color: #be58b8;
+color: #fff;
+background: #111;
+}
+.inlineboxdarkfairy {
+background-color: #EC8FE6;
+}
+.arrowfairy {
+border-color: #EC8FE6;
+}

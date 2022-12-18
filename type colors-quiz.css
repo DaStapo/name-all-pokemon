@@ -1,0 +1,39 @@
+old
+.normal {color: #9099A1, #e3e7eb, #868d94, #dde5ec, #6e7881;}
+.fire {color: #FF9C54, #ffe0ca, #f88f44, #ffe6d4, #dd752b;}
+.water {color: #4D90D5, #cee4f9, #3684d1, #cee5ff, #1462af;}
+.grass {color: #63BB5B, #e6f9e4, #4eb145, #cfe7cd, #378830;}
+.electric {color: #F3D23B, #646464, #fff6d1, #e6c120, #fdf2b8, #d4af06;}
+.ice {color: #74cec0, #e3fbf8, #55c5b4, #e2eeec, #38b9a6;}
+.fighting {color: #CE4069, #ffd2df, #bd2752, #f7dae3, #ac294e;}
+.poison {color: #AB6AC8, #f3ddfd, #9951bb, #dcd1e0, #923cb9;}
+.ground {color: #D97746, #ffdece, #c56a3d, #f9e3d8, #b15527;}
+.flying {color: #8fa8dd, #e7eeff, #7691ca, #d7e1f5, #5f79af;}
+.psychic {color: #F97176, #ffe4e4, #ec575c, #f7d2d3, #cf3e43;}
+.bug {color: #90C12C, #e7f7c6, #80b11f, #e7f5c7, #6f991a;}
+.rock {color: #C7B78B, #f9f4e8, #b4a16b, #e4e0d6, #96875e;}
+.ghost {color: #5269AC, #dde4f7, #445ba3, #c6cce3, #374c8b;}
+.evil {color: #5A5366, #d9d7dd, #474250, #dfdce4, #3c3744;}
+.dragon {color: #0A6DC4, #cae4fb, #0f5ea3, #d9e6f3, #0b5aa0;}
+.steel {color: #5A8EA1, #d7e4e9, #477788, #d5e5eb, #3e6474;}
+.fairy {color: #EC8FE6, #ffe5fd, #d87ad2, #f3e3f2, #be58b8;}
+
+new
+.normal {color: #d6d6d1, #F5F5F0, #999994, #EDEDE8, #7A7A75;}
+.fire {color: #F08218, #FFC95F, #DC6E04, #ffe2a8, #A93B00;}
+.water {color: #6099EB, #A7E0FF, #2A63B5, #c4daf8, #002E80;}
+.grass {color: #36BA45, #A1FFB0, #00840F, #c4eec9, #004F00;}
+.electric {color: #FFDC0D, #646464, #FFFF9C, #DBB800, #fff9d6, #947100;}
+.ice {color: #91E3FF, #D8FFFF, #7FD1ED, #dbf6ff, #4A9CB8;}
+.fighting {color: #BA2525, #FFA2A2, #960101, #f9e1e1, #610000;}
+.poison {color: #C462D1, #FFCDFF, #8E2C9B, #efd4f2, #470054;}
+.ground {color: #CCAC6C, #FFF3B3, #967636, #f3ecdd, #4F2F00;}
+.flying {color: #85E0D2, #DEFFFF, #61BCAE, #dbf6f2, #2C8779;}
+.psychic {color: #FF5480, #ffb3c6, #C91E4A, #ffdbe4, #940015;}
+.bug {color: #AEE340, #d7f1a2, #78AD0A, #eef9d7, #437800;}
+.rock {color: #785B45, #d0bdae, #664933, #e9dfd8, #42250F;}
+.ghost {color: #795891, #D2B1EA, #67467F, #e7dfec, #32114A;}
+.evil {color: #474F61, #9ba3b5, #353D4F, #d0d4dc, #11192B;}
+.dragon {color: #4C41B0, #C9BEFF, #281D8C, #d5d2ee, #050069;}
+.steel {color: #7E9C99, #C5E3E0, #6C8A87, #dae2e1, #375552;}
+.fairy {color: #FFB1D8, #FFE7FF, #DB8DB4, #ffe5f2, #94466D;}
