@@ -5,3 +5,7 @@
 'Wormadam-Sandy'
 'Zygarde-10'
 'Zygarde-Complete'
+'Wooper-Paldea'
+'Clodsire'
+'Sandy Shocks'
+'Ting-Lu'

@@ -6,3 +6,8 @@
 'Gyarados-Mega'
 'Hoopa-Unbound'
 'Samurott-Hisui'
+'Meowscarada'
+'Lokix'
+'Bombirdier'
+'Brute Bonnet'
+'Roaring Moon'

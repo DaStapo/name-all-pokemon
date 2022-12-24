@@ -11,3 +11,6 @@
 'Darmanitan-Galar-Zen'
 'Silvally-Ice'
 'Avalugg-Hisui'
+'Cetoddle'
+'Cetitan'
+'Iron Bundle'

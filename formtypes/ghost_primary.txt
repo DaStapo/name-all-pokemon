@@ -6,3 +6,7 @@
 'Oricorio-Sensu'
 'Silvally-Ghost'
 'Giratina-Origin'
+'Greavard'
+'Houndstone'
+'Flutter Mane'
+'Gimmighoul'

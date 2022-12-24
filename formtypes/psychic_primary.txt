@@ -23,3 +23,5 @@
 'Deoxys-Attack'
 'Deoxys-Defense'
 'Deoxys-Speed'
+'Flittle'
+'Espathra'

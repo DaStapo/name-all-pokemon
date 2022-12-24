@@ -4,3 +4,7 @@
 'Calyrex-Ice-Rider'
 'Kyurem-Black'
 'Kyurem-White'
+'Frigibax'
+'Arctibax'
+'Baxcalibur'
+'Chien-Pao'

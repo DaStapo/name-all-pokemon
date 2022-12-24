@@ -8,3 +8,4 @@
 'Weezing-Galar'
 'Altaria-Mega'
 'Audino-Mega'
+'Flutter Mane'

@@ -12,3 +12,5 @@
 'Goodra-Hisui'
 'Palkia-Origin'
 'Dialga-Origin'
+'Koraidon'
+'Miraidon'

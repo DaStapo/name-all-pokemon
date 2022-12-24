@@ -1,3 +1,5 @@
 'Geodude-Alola'
 'Graveler-Alola'
 'Golem-Alola'
+'Iron Hands'
+'Iron Thorns'

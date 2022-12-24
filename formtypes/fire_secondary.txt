@@ -3,3 +3,6 @@
 'Coalossal-Gmax'
 'Groudon-Primal'
 'Rotom-Heat'
+'Scovillain'
+'Chi-Yu'
+'Tauros-Paldea-Blaze'

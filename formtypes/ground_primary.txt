@@ -8,3 +8,7 @@
 'Yamask-Galar'
 'Landorus-Therian'
 'Ursaluna'
+'Toedscool'
+'Toedscruel'
+'Great Tusk'
+'Iron Treads'

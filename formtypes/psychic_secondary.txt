@@ -10,3 +10,8 @@
 'Raichu-Alola'
 'Darmanitan-Zen'
 'Wyrdeer'
+'Armarouge'
+'Rabsca'
+'Veluza'
+'Farigiraf'
+'Scream Tail'

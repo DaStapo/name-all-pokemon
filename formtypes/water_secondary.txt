@@ -1,3 +1,6 @@
 'urshifu-rapid-strike-gmax'
 'Rotom-Wash'
 'Urshifu'
+'Tatsugiri'
+'Iron Bundle'
+'Tauros-Paldea-Aqua'

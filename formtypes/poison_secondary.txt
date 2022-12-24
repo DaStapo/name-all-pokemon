@@ -9,3 +9,8 @@
 'Qwilfish-Hisui'
 'Sneasler'
 'Overqwil'
+'Varoom'
+'Revavroom'
+'Glimmet'
+'Glimmora'
+'Iron Moth'

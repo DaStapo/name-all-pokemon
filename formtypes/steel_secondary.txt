@@ -10,3 +10,8 @@
 'Necrozma-Dusk-Mane'
 'Zacian-Crowned'
 'Zamazenta-Crowned'
+'Tinkatink'
+'Tinkatuff'
+'Tinkaton'
+'Kingambit'
+'Iron Treads'

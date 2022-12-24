@@ -2,3 +2,5 @@
 'Arceus-Flying'
 'Silvally-Flying'
 'Tornadus-Therian'
+'Bombirdier'
+'Flamigo'

@@ -19,3 +19,7 @@
 'Braviary-Hisui'
 'Enamorus'
 'Enamorus-Therian'
+'Squawkabilly'
+'Wattrel'
+'Kilowattrel'
+'Iron Jugulis'
