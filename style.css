@@ -380,11 +380,11 @@
 	max-width: 82px;
 	}
 	.smol {
-	width: 164px;
+	width: 170px;
 	text-align: center;
 	}
 	.smoler {
-	width: 120px;
+	width: 135px;
 	text-align: center;
 	}
 	.decent {
@@ -672,9 +672,9 @@
 	margin-left: 10px;
 	}
 	.region {
-    margin-top: -4px;
+    margin-top: -6px;
 	padding-left: 4px;
-	display: inline-block;
+	display: block;
     min-width: 79px;
 	}
 	.regionb {
@@ -1120,7 +1120,7 @@
 	}		
 	}
 	@media only screen and (max-width: 768px) {
-	.quarter, .sixth, .eighth, .third, .half, .half-fixed, .fiveeighth{
+	.quarter, .sixth, .eighth, .third, .half, .half-fixed, .fiveeighth, .fifth {
     width: 100%;
 	}
 	.mshow {
@@ -1168,7 +1168,7 @@
 	padding: 10px 0px 0px 0px !important;
 	}
 	}
-	@media only screen and (max-width: 910px) {
+	@media only screen and (max-width: 916px) {
 	body {
 	padding-top: 122px;
 	}	
@@ -1188,7 +1188,7 @@
 	display: none;
 	}
 	}
-	@media only screen and (max-width: 290px) {
+	@media only screen and (max-width: 320px) {
 	.count {
 	display: none;
 	}
