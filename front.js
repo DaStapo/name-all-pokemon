@@ -352,6 +352,9 @@ for (key in formatted_lang_map){
 			else if(pokemonList[i] === "palkia"){
                 unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " A"
             }
+            else if(pokemonList[i] === "oinkologne"){
+                unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i] + " ♂"
+            }
             else{
 			    unguessedDictTexts[standardizeName(pokemonList[i])].nodeValue = formatted_lang_map[currentKey][i];
             }
