@@ -676,7 +676,7 @@ function standardizeName(input) {
     input = input.replace(/é/g, 'e');
 
     //delete all special characters
-    input = input.replace(/[^ぁ-んァ-ン가-힣a-z0-9-_ß０-９ａ-ｚ]/g, '');
+    input = input.replace(/[^ぁ-んァ-ン가-힣a-z0-9-_ß０-９ａ-ｚー]/g, '');
 
     return input;
 }
@@ -1204,7 +1204,7 @@ for (let i = 0; i < suffixes.length; i++){
 }
 
 let parseInput = function (inputText, sendLog, isTwitchChat) {
-
+    
 	if (!document.getElementById("pokemon").disabled){
 		inputText = inputText.toLowerCase()
 	
