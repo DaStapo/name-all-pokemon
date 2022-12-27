@@ -1086,7 +1086,7 @@ function loadSprites() {
             current_index = fullSpriteList.indexOf(pokemon)
 
             //there's 27 hisui
-            if (current_index > index_8half && current_index < index_8half + 27){
+            if (current_index > index_8half && current_index < index_8half + 29){
                 addToBox(pokemon, gen8half)
             }else{
                 addToBox(pokemon, box)
