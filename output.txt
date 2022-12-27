@@ -1,0 +1,349 @@
+17  Paw:not found
+8  eggcute:Exeggcute
+7  diglet:Diglett
+7  trop:not found
+6  venosaur:Venusaur
+6  warturtole:Wartortle
+6  jinx:Jynx
+6  amoongus:Amoonguss
+6  revaroom:Revavroom
+6  seal:Seel
+6  pidgeoto:Pidgeotto
+6  gyrados:Gyarados
+6  Pawm:Pawmo
+6  barbaroch:Barbaracle
+5  syther:Scyther
+5  ninetails:Ninetales
+5  Rolling Tusk:not found
+5  venesaur:Venusaur
+5  ':not found
+5  jiglypuff:Jigglypuff
+5  dotrio:Dodrio
+5  ryhorn:Rhyhorn
+5  bulbazord:Bulbasaur
+4  Feraligater:Feraligatr
+4  magicarp:Magikarp
+4  politoad:Politoed
+4  weepingbell:Weepinbell
+4  shelldon:Shellos
+4  sligoo:Sliggoo
+4  sandyghast:Sandygast
+4  drizzle:Drizzile
+4  treeko:Treecko
+4  ninetails :Ninetales
+4  glacier:Glalie
+4  goldengo:Gholdengo
+4  oinkalouge:Oinkologne
+4  si-ling:not found
+4  Grea:not found
+4  Sunflo:Sunflora
+4  aerodactal:Aerodactyl
+4  naclst:Nacli
+4  bulbassaur:Bulbasaur
+4  pippluff:Piplup
+4  Puchiena:Wo-Chien
+4  pidgytio:Pidgeotto
+4  PIgiotto:Pidgeotto
+4  skropy:not found
+4  skrapy:not found
+3  Unknown:Unown
+3  ratata:Rattata
+3  magenium:Meganium
+3  Cyclizer:Cyclizar
+3  Crocanow:Crocalor
+3  victrebell:Victreebel
+3  staru:Staryu
+3  vivillion:Vivillon
+3  kyreum:Kyurem
+3  oinkalogne:Oinkologne
+3  Wigglypuff:Wigglytuff
+3  grimmer:Grimer
+3  lillota:not found
+3  inceneroar:Incineroar
+3  aurora:Aurorus
+3  parsect:Parasect
+3  skeliderge:Skeledirge
+3  Quils:not found
+3  creselia:Cresselia
+3  bronzon:Bronzor
+3   claferi :Clamperl
+3  rydon:Rhydon
+3  coffing:Koffing
+3  salamance:Salamence
+3  shrimp:not found
+3  tera:not found
+3  skeleridge:Skeledirge
+3  ho-ho:Ho-oh
+3  articoono:Articuno
+3  dedene:Dedenne
+3  toadscool:Toedscool
+3  ksks:not found
+3  ksk:not found
+3  ho ho:Ho-oh
+3  mug:not found
+3  chargabug:Charjabug
+3  stuffle:Stufful
+3  sword:not found
+3  Rasu:not found
+3  Fleikoko:Sleimok
+3  lilipup:Lillipup
+3  grovile:Grovyle
+3  iron :Aron
+3  iron s:Aron
+3  Smealsor:Sealeo
+3  exeggute:Exeggcute
+3  lorantis:Lurantis
+3  igglypuff:Igglybuff
+3  purloinn:Purrloin
+3  alolous:not found
+3  wyglypuf:Igglybuff
+3  finkin:not found
+3  shell:Shellos
+3  magmite:Magnemite
+3  Dragonite:not found
+3  Dragonnite:not found
+3  Charizard:not found
+3  parasite:Parasect
+3  krab:not found
+3  chrum:not found
+3  cuhrum:not found
+3  Skyropppppyyy:not found
+2  Firagiraf:Farigiraf
+2  wigglypuff:Wigglytuff
+2  farfetch:Farfetch'd
+2  onyx:Onix
+2  egg:not found
+2  verizion:Virizion
+2  growlith:Growlithe
+2  Tusk:not found
+2  Crokanaw:Croconaw
+2  Screetching:not found
+2  goldean:Goldeen
+2  jztj7tzuj7:not found
+2  pideot:Pidgeot
+2  Quilfish:Qwilfish
+2  crabby:Krabby
+2  omanite:Omanyte
+2  rueniclus:Reuniclus
+2  m:not found
+2  Meomry:not found
+2  graveller:Graveler
+2  meoth:Meowth
+2  Nekcromza:Necrozma
+2  exeggcutor:Exeggutor
+2  regi:not found
+2  Toadscool:Toedscool
+2  xerneus:Xerneas
+2  thyplosion:Typhlosion
+2  omneon:not found
+2  odish:Oddish
+2  parimp:not found
+2  octo:not found
+2  hammoo:Kommo-o
+2  mortag:not found
+2  lilli:not found
+2  lily:not found
+2  pid:not found
+2  carbunkle:Carbink
+2  luvdisk:Luvdisc
+2  sigiliph:Sigilyph
+2  ratacate:Raticate
+2  pachirishu:Pachirisu
+2  primpop:Wimpod
+2  Komoo:Kommo-o
+2  sweddle:Sewaddle
+2  coffagrigas:Cofagrigus
+2  squakabilly:Squawkabilly
+2  sheldon:Shieldon
+2  chicorita:Chikorita
+2  kazam:not found
+2  Shelder:Shellder
+2  Crabby:Krabby
+2  iron:Aron
+2  pallosand:Palossand
+2  Quilfire:Qwilfish
+2  sentil:not found
+2  ladyba:Ledyba
+2  markrow:Murkrow
+2  Scorplane:Scorbunny
+2   rapidesh:Rapidash
+2   jin:not found
+2  hitmonchamp:Hitmonchan
+2  hitmon:not found
+2  bastiadon:Bastiodon
+2  quacks:not found
+2  toaditle:Totodile
+2  bailanda:Bailonda
+2  gulbat:Golbat
+2  marhstomp:Marshtomp
+2  galade:Gallade
+2  kirila:Kirlia
+2  poli:not found
+2  octilary:Octillery
+2  tantacol :Tentacool
+2  Sqir:not found
+2  gold:not found
+2  eletrabuzz:Electabuzz
+2  shedninja:Shedinja
+2  infnip:not found
+2  haryama:Hariyama
+2  wiglet:Wiglett
+2  hatena:Hatenna
+2  shildon:Shieldon
+2  luxor:Luxtra
+2  corvi:not found
+2  execute:Exeggcute
+2  quaqaval:Quaquaval
+2  walreisa:Walraisa
+2  piglet:Wiglett
+2  pig:not found
+2  houndor:Houndour
+2  mos:not found
+2  sprigitito:Sprigatito
+2  esparatha:Espathra
+2  haunta:Haunter
+2  pidgioto:Pidgeot
+2  Charmender:Charmander
+2  oshuwott:Oshawott
+2  Squirtal:Squirtle
+2  armorouge:Armarouge
+2  electrabuzz:Electabuzz
+2  Mel:not found
+2  Metleman:Meltan
+2  Melmetl:Melmetal
+2  Katyhh:not found
+2  Celibi:Celebi
+2  ohho:not found
+2  lickylicky:Lickilicky
+2  meowscarda:Meowscarada
+2  arcus:Arceus
+2  sichelmond:Sichlor
+2  bullbasaur:Bulbasaur
+2  Nidoran :Nidoranm
+2  butterfly:Cutiefly
+2  Jinx:Jynx
+2  beedril:Beedrill
+2  espartha:Espathra
+2  gasly:Gastly
+2  gangar:Gengar
+2  gimmigoul:Gimmighoul
+2  quax:Quaxo
+2  schyter:Scyther
+2  throw:Throh
+2  spearrow:Spearow
+2  Thwacky:Thwackey
+2  jigglipuff:Jigglypuff
+2  diance:Diancie
+2  pickachu:Pikachu
+2  giritina:Giratina
+2  ratatta:Rattata
+2  Coal:not found
+2  kangaskan:Kangaskhan
+2  lickytung:Lickitung
+2  Venasur:Venusaur
+2  teatcups:not found
+2  clefary:Clefairy
+2  meowscrada:Meowscarada
+2  qualvalqil:not found
+2  qualval:Quaquaval
+2  si-long:not found
+2  queeneee:Steenee
+2  grevard:Greavard
+2  scackabilly:Squawkabilly
+2  volt:not found
+2  vaniluxe:Vanilluxe
+2  duraladon:Duraludon
+2  belibolt:Bellibolt
+2  Btr:not found
+2  turtnator:Turtonator
+2  empoleo:Empoleon
+2  bayleaf:Bayleef
+2  kangkashkan:Kangaskhan
+2  roser:not found
+2  oinkolone:Oinkologne
+2  Pawmo:Pawmo
+2  liligant:Lilligant
+2  seismatoad:Seismitoad
+2  sneasle:Sneasel
+2  brailip:Bramblin
+2  Mabostiff:Mabosstiff
+2  wheezing:Weezing
+2  bulbizard:Charizard
+2  stuntank:Skuntank
+2  spirigato:Sprigatito
+2  Zekrum:Zekrom
+2  Sinderreis:not found
+2  De:not found
+2  fiduog:not found
+2  tailow:Taillow
+2  vespiqueen:Vespiquen
+2  tarontula:Tarountula
+2  loppuny:Lopunny
+2  goldhengo:Gholdengo
+2  iron tusk:Iron Moth
+2  venasaur:Venusaur
+2  maschif:Maschiff
+2  mabostiff:Mabosstiff
+2  tyrannitar:Tyranitar
+2  dagbun:not found
+2  unkown:Unown
+2  groundon:Groudon
+2  flaffy:Flaaffy
+2  the:not found
+2  luminion:Lumineon
+2  electrivire:Electivire
+2  palosand:Palossand
+2  mincino:Minccino
+2  cincionno:Cinccino
+2  marrowack:Marowak
+2  eggecuttor:not found
+2  thypholosi:Typhlosion
+2  far'fetched:Farfetch'd
+2  evee:Eevee
+2  fenekkin:Fennekin
+2  burlibax:Arctibax
+2  paimon:Pawmot
+2  growlite:Growlithe
+2  blaze:not found
+2  quaxley:Quaxly
+2  Wiglypuff:Wigglytuff
+2  primate:Primeape
+2  floregosse:Eldegoss
+2  hydera:not found
+2  duotrio:Dugtrio
+2  houndoor:Houndour
+2  kangashkan:Kangaskhan
+2  togpi:Togepi
+2  machomp:Machamp
+2  poliwath:Poliwrath
+2  starvia:Staravia
+2  starmine:Starmie
+2  chimcheo:Chimecho
+2  arcenine:Arcanine
+2  glailie:Glalie
+2  ryhperior:Rhyperior
+2  spreets:not found
+2  spreetz:not found
+2  onnyx:Onix
+2  shelder:Shellder
+2  Jigglytuff:Jigglypuff
+2  Inceneroar:Incineroar
+2  whim:not found
+2  sogoleo:Solgaleo
+2  steene:Steenee
+2  Bido:not found
+2  therak:not found
+2  fraxorus:Haxorus
+2  fracsure:Fraxure
+2  zygrade:Zygarde
+2  yamaha:Yamask
+2  curube:not found
+2  Chrube:Cherubi
+2  chair:not found
+2  'unova':Unown
+2  flora:not found
+2  exegutor:Exeggutor
+2  cinlig:not found
+2  rayaqaza:Rayquaza
+2  Rhino :Deino
+2  Jinks:not found
