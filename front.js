@@ -1214,18 +1214,9 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
         let inputs = []
 
 
-		if (inputText=== 'nidoran') {
+		if (inputText === 'nidoran' || inputText === 'ニドラン'.toLowerCase() ||inputText === '니드런'.toLowerCase()  ) {
 			inputs.push('nidoranf')
 			inputs.push('nidoranm')
-		}
-		if (inputText === 'ニドラン'.toLowerCase() ) {
-			inputs.push('ニドランf')
-			inputs.push('ニドランm')
-		}
-	
-		if (inputText === '니드런'.toLowerCase() ) {
-			inputs.push('니드런f')
-			inputs.push('니드런m')
 		}
 
 
