@@ -2924,6 +2924,19 @@ document.getElementById("twitch-on").onclick = function (){
 				}
 			}
 
+			if (twitchUsername == 'norainthefuture' || twitchUsername == 'adeptcharon'){
+				if (message === "norainthefuture".toLowerCase()) {
+					twitchInput(twitchUsername, 'pawmi', true)
+
+	                image = new Image();
+	                image.src = 'images/pawmi.png';
+                    image.addEventListener("load", function () {
+                        imageRain(image, 50, 300);
+                    }, false);
+			
+				}
+			}
+
 			if ((channelName.toLowerCase() == 'birdkeepertoby' || channelName.toLowerCase() == 'adeptcharon') && (twitchUsername == 'birdkeepertoby' || twitchUsername == 'adeptcharon')){
 				if (message === "hoot".toLowerCase()) {
 					twitchInput(twitchUsername, 'hoothoot', true)
@@ -3464,7 +3477,7 @@ let images = [
 	[encodedImages['sprite']['froakie'], encodedImages['sprite']['chespin'], encodedImages['sprite']['fennekin']],
 	[encodedImages['sprite']['rowlet'], encodedImages['sprite']['litten'],encodedImages['sprite']['popplio']],
 	[encodedImages['sprite']['scorbunny'],encodedImages['sprite']['sobble'], encodedImages['sprite']['grookey']],
-    //[encodedImages['sprite']['quaxly'],encodedImages['sprite']['sprigatito'], encodedImages['sprite']['fuecoco']],
+    [encodedImages['sprite']['quaxly'],encodedImages['sprite']['sprigatito'], encodedImages['sprite']['fuecoco']],
     //[encodedImages['sprite']['oshawott'],encodedImages['sprite']['rowlet'], encodedImages['sprite']['cyndaquil']]
 ]
 
