@@ -3484,25 +3484,7 @@ let images = [
 //variable for current image index
 let currentImageIndex = 0
 
-//starts a repeating function 
-let spriteIntervalId = setInterval(() => {
-    for (let i = 0; i<images.length; i++){
 
-        //select specific <img>
-        let imgElement = document.getElementById("gen"+ genNames[i+1] +"img");
-        //its src path gets changed to the current image index
-        imgElement.src = images[i][currentImageIndex%images[0].length];
-    }
-
-    cycleSprites(currentImageIndex)
-
-    //move to the next image index
-    currentImageIndex+=1
-
-
-
-
-}, 2000); //500ms (can be changed ofc)
 
 
 let missingnoEnabled = false;
@@ -3704,6 +3686,27 @@ loadSprites()
 updateGenFilter();
 changeFooterPosition();
 
+let rotateFunc = function () {
+    for (let i = 0; i<images.length; i++){
+
+        //select specific <img>
+        let imgElement = document.getElementById("gen"+ genNames[i+1] +"img");
+        //its src path gets changed to the current image index
+        imgElement.src = images[i][currentImageIndex%images[0].length];
+    }
+
+    cycleSprites(currentImageIndex)
+
+    //move to the next image index
+    currentImageIndex+=1
+ 
+}
+
+//starts a repeating function 
+let spriteIntervalId = setInterval(() => {
+    rotateFunc()
+}, 2000); //500ms (can be changed ofc)
+rotateFunc();
 
 
 
