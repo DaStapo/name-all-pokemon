@@ -3613,13 +3613,13 @@ let loadArtists = function() {
                 for (let j = 0; j < artists.length; j++) {
                   artistString += artists[j] + ', ';
                 }
-                artistString = artistString.substring(0, artistString.length-3)
+                artistString = artistString.substring(0, artistString.length-2)
                 if (QCs.length > 0){
                     artistString += '<br>QC - ';
                     for (let j = 0; j < QCs.length; j++) {
                       artistString += QCs[j] + ', ';
                     }
-                    artistString = artistString.substring(0, artistString.length-3)
+                    artistString = artistString.substring(0, artistString.length-2)
                 }
                 const row = `<tr><td>${spriteString}</td><td>${artistString}</td></tr>`;
                 table.innerHTML += row;
