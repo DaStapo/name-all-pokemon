@@ -2925,7 +2925,7 @@ document.getElementById("twitch-on").onclick = function (){
 			}
 
 			if (twitchUsername == 'norainthefuture' || twitchUsername == 'adeptcharon'){
-				if (message === "norainthefuture".toLowerCase()) {
+				if (message === "nora".toLowerCase()) {
 					twitchInput(twitchUsername, 'pawmi', true)
 
 	                image = new Image();
