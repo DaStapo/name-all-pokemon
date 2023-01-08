@@ -2234,7 +2234,7 @@ function loadNames(onSuccess) {
                 console.log('error loading image list, retrying...');
                 setTimeout(function () {
                     loadNames(onSuccess);
-                }, 2);
+                }, 200);
             }
 
         }
@@ -3595,6 +3595,67 @@ let enableTypeParty = function(){
 
 }
 
+
+let loadArtists = function() {
+
+
+    let setValues = function(jsonValue){
+
+            table = document.getElementById("creditstable")
+
+            for (let i = 0; i < jsonValue.length; i++) {
+                const element = jsonValue[i];
+                const sprites = element.sprites;
+                const artists = element.artists;
+                const QCs = element.QCs;
+              
+                let spriteString = '';
+                for (let j = 0; j < sprites.length; j++) {
+                  spriteString += sprites[j] + '<br>';
+                }
+              
+                let artistString = '';
+                for (let j = 0; j < artists.length; j++) {
+                  artistString += artists[j] + ', ';
+                }
+                artistString = artistString.substring(0, artistString.length-3)
+                if (QCs.length > 0){
+                    artistString += '<br>QC - ';
+                    for (let j = 0; j < QCs.length; j++) {
+                      artistString += QCs[j] + ', ';
+                    }
+                    artistString = artistString.substring(0, artistString.length-3)
+                }
+                const row = `<tr><td>${spriteString}</td><td>${artistString}</td></tr>`;
+                table.innerHTML += row;
+              }
+            
+    }
+
+
+
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("GET", '/artists', true);
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status === 200) {
+                setValues(JSON.parse(this.response));
+            } else {
+                console.log('error loading image list, retrying...');
+                setTimeout(function () {
+                    loadArtists();
+                }, 200);
+            }
+
+        }
+    };
+    xhttp.send();
+    
+}
+
+
 let disableTypeParty = function (){
 
     if (typePartyIntevalId !== null){
@@ -3625,6 +3686,7 @@ function creditspopup() {
 }
 
 document.getElementById("accordion2").click();
+loadArtists();
 loadSprites()
 updateGenFilter();
 changeFooterPosition();

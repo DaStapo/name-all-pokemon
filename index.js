@@ -18,6 +18,9 @@ let silhouettesFolder = path.join(__dirname + '/silhouettes');
 let cssLocation = path.join(__dirname + '/style.css');
 let soundFolder = path.join(__dirname + '/sound-effects');
 let imageFolder = path.join(__dirname + '/images');
+let artistsLocation = path.join(__dirname + '/artists.json');
+
+
 
 let serverStart = new Date();
 let loadCount = 0;
@@ -105,6 +108,10 @@ app.get('/genlogs', function(req , res){
 app.get('/savelogs', function(req , res){
 	saveLogs();
 	res.send();
+});
+
+app.get('/artists', function(req , res){
+    res.sendFile(artistsLocation);
 });
 
 app.post('/named',jsonParser, function(req, res){
