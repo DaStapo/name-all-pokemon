@@ -3448,24 +3448,7 @@ let spriteCycles = {
     "dudunsparce":["dudunsparce","dudunsparce-three-segment"],
 }
 
-function cycleSprites(updateCounter) {
-    for (let pkmn in spriteCycles){
-        
-        let pathName;
-        if (shinyEnabled){
-            pathName = 'shiny'
-        }else{
-            pathName = 'sprite'
-        }
 
-        let currentIndex = updateCounter % spriteCycles[pkmn].length;
-        let currentSprite =  standardizeName( spriteCycles[pkmn][currentIndex]);
-        
-		spriteDictionary[standardizeName(pkmn)].src = encodedImages[pathName][currentSprite];
-		unguessedDict[standardizeName(pkmn)].getElementsByTagName('img')[0].src = encodedImages[pathName][currentSprite]
-
-    }
-}
 
 //images to loop through
 let images = [
@@ -3690,6 +3673,7 @@ loadSprites()
 updateGenFilter();
 changeFooterPosition();
 
+
 let rotateFunc = function () {
     for (let i = 0; i<images.length; i++){
 
@@ -3710,6 +3694,45 @@ let rotateFunc = function () {
 let spriteIntervalId = setInterval(() => {
     rotateFunc()
 }, 2000); //500ms (can be changed ofc)
+
+
+
+let spriteCycling = true;
+let stopCycling = function () {
+    spriteCycling = false;
+    rotateFunc();
+}
+let startCycling = function () {
+    spriteCycling = true;
+}
+
+
+function cycleSprites(updateCounter) {
+
+    for (let pkmn in spriteCycles){
+        
+        let pathName;
+        if (shinyEnabled){
+            pathName = 'shiny'
+        }else{
+            pathName = 'sprite'
+        }
+
+        let currentIndex = updateCounter % spriteCycles[pkmn].length;
+
+        currentIndex = spriteCycling ? currentIndex : 0;
+
+        let currentSprite =  standardizeName( spriteCycles[pkmn][currentIndex]);
+        
+		spriteDictionary[standardizeName(pkmn)].src = encodedImages[pathName][currentSprite];
+		unguessedDict[standardizeName(pkmn)].getElementsByTagName('img')[0].src = encodedImages[pathName][currentSprite]
+
+    }
+}
+
+
+
+
 rotateFunc();
 
 
