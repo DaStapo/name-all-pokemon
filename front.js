@@ -3615,7 +3615,11 @@ let loadArtists = function() {
                 }
                 artistString = artistString.substring(0, artistString.length-2)
                 if (QCs.length > 0){
-                    artistString += '<br>QC - ';
+                    if (artists.length > 0){
+                        artistString += '<br>QC - ';
+                    }else{
+                        artistString += 'QC - ';
+                    }
                     for (let j = 0; j < QCs.length; j++) {
                       artistString += QCs[j] + ', ';
                     }
