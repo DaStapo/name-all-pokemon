@@ -2,6 +2,7 @@
 'Medicham-Mega'
 'Lucario-Mega'
 'Zamazenta-Crowned'
+'urshifu-rapid-strike'
 'urshifu-rapid-strike-gmax'
 'urshifu-gmax'
 "Farfetch'd-Galar"

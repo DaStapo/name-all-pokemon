@@ -250,6 +250,15 @@
 	border-radius: 0px 3px 6px 0px !important;
 	padding-left: 1px !important;
 	}
+	.atchright {
+	margin-left: -4px !important;
+    border-radius: 0px 3px 6px 0px !important;
+    padding-left: 4px !important;
+	}
+	.atchleft {
+	border-radius: 6px 0px 0px 3px !important;
+	padding-right: 4px !important;
+	}
 	.attentionshake {
 	animation: shake 0.5s;
 	animation-iteration-count: 2;
@@ -1825,73 +1834,73 @@
 		border-color: #CCAC6C;
 	}
 	.aflying {
-		color: #85E0D2;
+		color: #7AF0CD;
 	}
 	.limeflying {
-		background: #85E0D2 !important;
+		background: #7AF0CD !important;
 		color: #fff !important;
 	}
 	.limelightflying {
-		background: #DEFFFF;
+		background: #d8fff3;
 		color: #111;
-		border-color: #85E0D2 !important;
+		border-color: #7AF0CD !important;
 	}
 	.outlineflying {
-		border: 2px solid #85E0D2;
+		border: 2px solid #7AF0CD;
 		padding: 9px 8px 8px 8px;
 	}
 	.topedgeflying {
-		border-top-color: #85E0D2;
+		border-top-color: #7AF0CD;
 	}
 	.input-twitchflying, .input-timerflying {
-		border-color: #85E0D2;
+		border-color: #7AF0CD;
 	}
 	.input-twitchflying:disabled {
-		background-color: #85E0D2;
+		background-color: #7AF0CD;
 	}
 	.buttonflying {
-		background-color: #85E0D2;
-		border: solid #61BCAE 2px;
+		background-color: #7AF0CD;
+		border: solid #4ac0ae 2px;
 	}
 	.smolbuttonflying {
-		border-color: #85E0D2;
-		color: #85E0D2;
+		border-color: #7AF0CD;
+		color: #7AF0CD;
 	}
 	.smolbuttonSwapflying {
-		background-color: #85E0D2;
-		border-color: #85E0D2;
+		background-color: #7AF0CD;
+		border-color: #7AF0CD;
 	}
 	.smolbuttonflying:hover {
-		background-color: #61BCAE;
-		border-color: #61BCAE;
+		background-color: #4ac0ae;
+		border-color: #4ac0ae;
 		color: #fff;
 	}
 	.smolbuttonxflying {
-		background-color: #85E0D2;
+		background-color: #7AF0CD;
 		color: #fff;
-		border-color: #85E0D2;
+		border-color: #7AF0CD;
 	}
 	.inlineboxflying {
-		background-color: #dbf6f2;
+		background-color: #d1ebe3;
 	}
 	.smolbuttonxdarkflying {
 		color: #111;
-		background-color: #85E0D2;
+		background-color: #7AF0CD;
 	}
 	.buttondarkflying {
-		border-color: #2C8779;
+		border-color: #2d7c64;
 	}
 	.limelightdarkflying {
-		border-color: #2C8779;
-		border-bottom-color: #2C8779;
+		border-color: #2d7c64;
+		border-bottom-color: #2d7c64;
 		color: #fff;
 		background: #111;
 	}
 	.inlineboxdarkflying {
-		background-color: #85E0D2;
+		background-color: #7AF0CD;
 	}
 	.arrowflying {
-		border-color: #85E0D2;
+		border-color: #7AF0CD;
 	}
 	.apsychic {
 		color: #FF5480;
@@ -2475,7 +2484,7 @@ background-color: #C462D1;
 background-color: #CCAC6C;
 }
 .flying {
-background-color: #85E0D2;
+background-color: #7AF0CD;
 }
 .psychic {
 background-color: #FF5480;

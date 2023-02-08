@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=6">
     <title>Pokémon Quiz</title>
     <meta name="description" content="Can you type all Pokémon? Or try naming all of one type/region. Includes Twitch-chat integration and toggle for input in Japanese, Korean, French and German.">
     <script type="text/javascript">
@@ -196,8 +196,8 @@
                 </div>
                 <div id="twitch-coll" class="twitch-coll">
                   <input type="text" class="input-twitch" id="twitch-channel" maxlength="25" autocomplete="off" placeholder="channel-name">
-                  <div class="smolbutton" id="twitch-on"> on</div>
-                  <div class="smolbutton smolbuttonx " id="twitch-off"> off</div>
+                  <div class="smolbutton atchleft" id="twitch-on"> on</div>
+                  <div class="smolbutton atchright smolbuttonx" id="twitch-off"> off</div>
                   <div class="arrowbutton ableft" onclick="twitchclose()"><i class="arrow aleft"></i></div>
                 </div>
               </div>
@@ -218,9 +218,9 @@
           </div>
           <div class="column">
             <div class="box roundedc2 slightpad notxt" id="cycle-toggle">
-              Rotating sprites:
-              <div class="smolbutton smolbuttonx" id="cycle-on"> on</div>
-              <div class="smolbutton" id="cycle-off"> off</div>
+              Cycle sprites:
+              <div class="smolbutton atchleft smolbuttonx" id="cycle-on"> on</div>
+              <div class="smolbutton atchright" id="cycle-off"> off</div>
             </div>
           </div>
         </div>

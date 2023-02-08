@@ -1558,7 +1558,7 @@ let misspellings = {
     "Beedrill":["bidril"],
     "Blacephalon":["blaphesion"],
     "Braixen":["brexin"],
-    "Corphish":["cawfish"],
+    "Corphish":["cawfish"],["crawfish"],
     "Swablu":["swabloo"],
     "Crobat":["kroobat"],
     "Vivillon":["vilvion","vilivion"],
@@ -2929,10 +2929,10 @@ document.getElementById("twitch-on").onclick = function (){
 
 			if (twitchUsername == 'norainthefuture' || twitchUsername == 'adeptcharon'){
 				if (message === "nora".toLowerCase()) {
-					twitchInput(twitchUsername, 'pawmi', true)
+					twitchInput(twitchUsername, 'mew', true)
 
 	                image = new Image();
-	                image.src = 'images/pawmi.png';
+	                image.src = 'images/mew.png';
                     image.addEventListener("load", function () {
                         imageRain(image, 50, 300);
                     }, false);
