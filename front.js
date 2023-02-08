@@ -509,11 +509,13 @@ for (key in formatted_lang_map){
                     else if(suffixes[j] === "paldeablaze"){
                         unguessedDictTexts[standardizeName(pokemonList[i])+'paldeablaze'].nodeValue = formatted_lang_map[currentKey][i] + ' B';
                     }
+                    else if(suffixes[j] === 'rapidstrike'){
+                        unguessedDictTexts[standardizeName(pokemonList[i])+'rapidstrike'].nodeValue = formatted_lang_map[currentKey][i] + ' RS';
+                    }
                     else if(suffixes[j] === 'gmax'){
                         if (pokemonList[i] == 'urshifu'){
                             unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i] + ' SS';
                             unguessedDictTexts[standardizeName(pokemonList[i])+'rapidstrikegmax'].nodeValue = formatted_lang_map[currentKey][i] + ' RS';
-                            unguessedDictTexts[standardizeName(pokemonList[i])+'rapidstrike'].nodeValue = formatted_lang_map[currentKey][i] + ' RS';
                         }
                         else{
                             unguessedDictTexts[standardizeName(pokemonList[i])+'gmax'].nodeValue = formatted_lang_map[currentKey][i];
