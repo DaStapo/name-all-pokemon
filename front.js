@@ -716,7 +716,6 @@ let currentGenRevealList = [];
 
 // we kinda rely on normal versions being added first
 let pokemonAlreadyIncluded = function (name, list){
-
     for (let i = 0; i < suffixes.length; i++){
         if (name.endsWith(suffixes[i])){
             if (list.includes(name.substring(0, name.length- suffixes[i].length ))){
@@ -739,6 +738,16 @@ let pokemonAlreadyIncluded = function (name, list){
     
     }else if (name.endsWith("complete")){
         let temp = name.substring(0, name.length- "complete".length ) + '10'
+        if (list.includes(temp)){
+            return true;
+        }
+    }else if (name.endsWith("paldeaaqua")){
+        let temp = name.substring(0, name.length- "paldeaaqua".length ) + "paldea"
+        if (list.includes(temp)){
+            return true;
+        }
+    }else if (name.endsWith("paldeablaze")){
+        let temp = name.substring(0, name.length- "paldeablaze".length )+ "paldea"
         if (list.includes(temp)){
             return true;
         }
