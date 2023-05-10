@@ -3755,5 +3755,9 @@ document.getElementById("cycle-off").onclick = () => {
 
 };
 
-
-
+window.addEventListener('beforeunload', function (e) {
+    if (timerText.innerHTML != "00:00:00"){
+        e.preventDefault();
+        e.returnValue = '';
+    }
+});
