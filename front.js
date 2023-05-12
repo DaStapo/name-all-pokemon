@@ -33,7 +33,7 @@ let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
 soundEffect2.volume = 0.3;
 let darkMode = false;
 let useEncoded = true;
-let suffixes = ["alola", "galar", "hisui", "mega", "megax", "megay", "primal", "gmax","rapidstrike", "rapidstrikegmax", "eternamax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen","galarzen", "pirouette", "unbound", "pompom", "pau", "sensu", "duskmane", "dawnwings", "ultra", "crowned", "icerider", "shadowrider", "f", "dusk", "midnight", "bluestriped", "whitestriped", "sunshine", "school", "origin", "therian", "white", "black", "resolute", "10", "complete", "lowkey", "attack", "defense", "speed", "hero", "paldea", "paldeaaqua", "paldeablaze","limited"]
+let suffixes = ["alola", "galar", "hisui", "mega", "megax", "megay", "primal", "gmax","rapidstrike", "rapidstrikegmax", "eternamax", "water", "grass", "fire", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy", "sunny", "rainy", "snowy", "sandy", "trash", "heat", "wash", "mow", "frost", "fan", "sky", "zen","galarzen", "pirouette", "unbound", "pompom", "pau", "sensu", "duskmane", "dawnwings", "ultra", "crowned", "icerider", "shadowrider", "f", "dusk", "midnight", "bluestriped", "whitestriped", "sunshine", "school", "origin", "therian", "white", "black", "resolute", "10", "complete", "lowkey", "attack", "defense", "speed", "hero", "paldea", "paldeaaqua", "paldeablaze","limited", "lowpower"]
 let logActions = true;
 let isSpellingEnabled = false;
 let extraPokemon = {
@@ -3458,7 +3458,7 @@ let spriteCycles = {
     "tatsugiri":["tatsugiri","tatsugiri-droopy","tatsugiri-stretchy"],
     "dudunsparce":["dudunsparce","dudunsparce-three-segment"],
     "koraidon":["koraidon","koraidon-limited"],
-    "miraidon":["miraidon","miraidon-limited"],
+    "miraidon":["miraidon","miraidon-low-power"],
 }
 
 

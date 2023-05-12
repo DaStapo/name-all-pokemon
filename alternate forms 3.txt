@@ -44,7 +44,7 @@
 'Eiscue-Noice'
 'Morpeko-Hangry'
 'Koraidon-Limited'
-'Miraidon-Limited'
+'Miraidon-Low-Power'
 
 -permanent visual
 'Pichu-Spiky-Eared'
