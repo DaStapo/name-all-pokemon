@@ -686,6 +686,18 @@ function standardizeName(input) {
 
     //flabebe
     input = input.replace(/é/g, 'e');
+    //other special characters
+    input = input.replace(/è/g, 'e');
+    input = input.replace(/ê/g, 'e');
+    input = input.replace(/ü/g, 'u');
+    input = input.replace(/ä/g, 'a');
+    input = input.replace(/ö/g, 'o');
+    input = input.replace(/ß/g, 'ss');
+    input = input.replace(/ç/g, 'c');
+    input = input.replace(/â/g, 'a');
+    input = input.replace(/ï/g, 'i');
+    input = input.replace(/ô/g, 'o');
+
 
     //delete all special characters
     input = input.replace(/[^ぁ-んァ-ン가-힣a-z0-9-_ß０-９ａ-ｚー]/g, '');
