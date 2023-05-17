@@ -635,6 +635,12 @@
 	color: #fff;
 	border-color: #8CC63F;
 	}
+	.langbutton {
+		font-size: 12px !important;
+		font-family: Roboto Condensed !important;
+		padding: 6px 4px 4px 3px !important;
+		margin: 0px 0px 0px 4px !important;
+	}
 	.ppbutton {
 	border: solid #65ae04 1px;
 	border-radius: 4px;

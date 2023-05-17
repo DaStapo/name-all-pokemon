@@ -579,6 +579,7 @@ for (let key in language_map){
     let lang = document.createElement("div");
     lang.innerHTML += key
     lang.classList.add('smolbutton')
+    lang.classList.add('langbutton')
     lang.id = key
     lang.onclick = function () {
         enableLanguage(lang)
