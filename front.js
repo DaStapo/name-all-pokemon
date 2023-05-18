@@ -3792,7 +3792,7 @@ let cycleTypes = function(updateCounter){
     if (typeList.includes(buttonElement.classList[buttonElement.classList.length-1])){
         buttonElement.classList.remove(buttonElement.classList[buttonElement.classList.length-1])
     }
-    buttonElement.classList.add(typeList[currentIndex])
+    buttonElement.classList.add("button"+typeList[currentIndex])
 }
 
 
