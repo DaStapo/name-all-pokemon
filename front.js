@@ -2526,6 +2526,10 @@ function genselectmenu() {
 function typeselectmenu() {
 	document.getElementById("typeselection").style.display = "block";
 }
+function typeselectmenuInitial() {
+    off2();
+	document.getElementById("typeselection").style.display = "block";
+}
 
 function twitchopen() {
 	document.getElementById("twitch-coll").style.display = "inline-block";
