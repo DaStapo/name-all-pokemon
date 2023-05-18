@@ -2528,7 +2528,7 @@ function typeselectmenu() {
 	document.getElementById("typeselection").style.display = "block";
 }
 function typeselectmenuInitial() {
-    off2();
+    document.getElementById("genselection").style.display = "none";
 	document.getElementById("typeselection").style.display = "block";
 }
 
