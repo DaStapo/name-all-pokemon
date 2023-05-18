@@ -693,6 +693,8 @@ function standardizeName(input) {
     //put to lowercase
     input = input.toLowerCase();
 
+    input = input.normalize('NFKC')
+
     //flabebe
     input = input.replace(/é/g, 'e');
     //other special characters
@@ -716,6 +718,9 @@ function standardizeName(input) {
     input = input.replace(/[ťţþț]/g, 't');
     input = input.replace(/[ýÿŷ]/g, 'y');
     input = input.replace(/[źžż乙]/g, 'z');
+
+
+
     //accept latin for full-width characters
     input = input.replace(/[ａ-ｚ０-９]/g, function(match) {
         return String.fromCharCode(match.charCodeAt(0) - 65248);
