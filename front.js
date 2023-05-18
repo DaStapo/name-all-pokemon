@@ -3781,12 +3781,18 @@ function cycleSprites(updateCounter) {
 
 let cycleTypes = function(updateCounter){
     let imgElement = document.getElementById("type-img");
+    let buttonElement = document.getElementById("type0");
 
     let currentIndex = updateCounter % typeList.length;
 
     currentIndex = spriteCycling ? currentIndex : 0;
 
     imgElement.src="images/types/"+typeList[currentIndex].toUpperCase()+".svg"
+    
+    if (typeList.includes(buttonElement.classList[buttonElement.classList.length-1])){
+        buttonElement.classList.remove(buttonElement.classList[buttonElement.classList.length-1])
+    }
+    buttonElement.classList.add(typeList[currentIndex])
 }
 
 
