@@ -1,1254 +1,1244 @@
 .anormal {
-color: #9099A1
-;
+	color: #ddddcc ;
 }
 .limenormal {
-background: #9099A1
-!important;
-color: #fff !important;
+	background: #ddddcc !important;
+	color: #fff !important;
 }
 .limelightnormal {
-background: #e3e7eb
-;
-color: #111;
-border-color: #9099A1
-!important;
+	background: #eeeecc ;
+	color: #111;
+	border-color: #ddddcc !important;
 }
 .outlinenormal {
-border: 2px solid #9099A1;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #ddddcc;
+	padding: 9px 8px 8px 8px;
 }
 .topedgenormal {
-border-top-color: #9099A1
-;
+	border-top-color: #ddddcc ;
 }
 .input-twitchnormal, .input-timernormal {
-border-color: #9099A1
-;
+	border-color: #ddddcc ;
 }
 .input-twitchnormal:disabled {
-background-color: #9099A1
-;
+	background-color: #ddddcc ;
 }
 .buttonnormal {
-	background-color: #9099A1;
-	border: solid #868d94 2px;
+	background-color: #ddddcc;
+	border: solid #c0c0b3 2px;
 }
 .smolbuttonnormal {
-border-color: #9099A1
-;color: #9099A1;
+	border-color: #ddddcc ;
+   color: #ddddcc;
 }
 .smolbuttonSwapnormal {
-background-color: #9099A1;
-border-color: #9099A1;
+	background-color: #ddddcc;
+	border-color: #ddddcc;
 }
 .smolbuttonnormal:hover {
-background-color: #868d94;
-border-color: #868d94;
-color: #fff;
+	background-color: #c0c0b3;
+	border-color: #c0c0b3;
+	color: #fff;
 }
 .smolbuttonxnormal {
-background-color: #9099A1;
-color: #fff;
-border-color: #9099A1;
+	background-color: #ddddcc;
+	color: #fff;
+	border-color: #ddddcc;
 }
 .inlineboxnormal {
-background-color: #dde5ec;
+	background-color: #f0f0e6;
 }
 .smolbuttonxdarknormal {
-color: #111;
-background-color: #9099A1
-;
+	color: #111;
+	background-color: #ddddcc ;
 }
 .buttondarknormal {
-border-color: #6e7881
-;
+	border-color: #b3b3a6 ;
 }
 .limelightdarknormal {
-color: #fff;
-background: #111;
-border-color: #6e7881;
-border-bottom-color: #6e7881;
+	color: #fff;
+	background: #111;
+	border-color: #b3b3a6;
+	border-bottom-color: #b3b3a6;
 }
 .inlineboxdarknormal {
-background-color: #9099A1
-;
+	background-color: #ddddcc ;
 }
 .arrownormal {
-border-color: #9099A1;
+	border-color: #ddddcc;
 }
 .afire {
-color: #FF9C54;
+	color: #ff6611;
 }
 .limefire {
-background: #FF9C54 !important;
-color: #fff !important;
+	background: #ff6611 !important;
+	color: #fff !important;
 }
 .limelightfire {
-background: #ffe0ca;
-color: #111;
-border-color: #FF9C54 !important;
+	background: #ff8844;
+	color: #111;
+	border-color: #ff6611 !important;
 }
 .outlinefire {
-border: 2px solid #FF9C54;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #ff6611;
+	padding: 9px 8px 8px 8px;
 }
 .topedgefire {
-border-top-color: #FF9C54;
+	border-top-color: #ff6611;
 }
 .input-twitchfire, .input-timerfire {
-border-color: #FF9C54;
+	border-color: #ff6611;
 }
 .input-twitchfire:disabled {
-background-color: #FF9C54;
+	background-color: #ff6611;
 }
 .buttonfire {
-	background-color: #FF9C54;
-	border: solid #f88f44 2px;
+	background-color: #ff6611;
+	border: solid #d1550e 2px;
 }
 .smolbuttonfire {
-border-color: #FF9C54;
-color: #FF9C54;
+	border-color: #ff6611;
+	color: #ff6611;
 }
 .smolbuttonSwapfire {
-background-color: #FF9C54;
-border-color: #FF9C54;
+	background-color: #ff6611;
+	border-color: #ff6611;
 }
 .smolbuttonfire:hover {
-background-color: #f88f44;
-border-color: #f88f44;
-color: #fff;
+	background-color: #d1550e;
+	border-color: #d1550e;
+	color: #fff;
 }
 .smolbuttonxfire {
-background-color: #FF9C54;
-color: #fff;
-border-color: #FF9C54;
+	background-color: #ff6611;
+	color: #fff;
+	border-color: #ff6611;
 }
 .inlineboxfire {
-background-color: #ffe6d4;
+	background-color: #ffaa77;
 }
 .smolbuttonxdarkfire {
-color: #111;
-background-color: #FF9C54;
+	color: #111;
+	background-color: #ff6611;
 }
 .buttondarkfire {
-border-color: #dd752b;
+	border-color: #b3480f;
 }
 .limelightdarkfire {
-border-color: #dd752b;
-border-bottom-color: #dd752b;
-color: #fff;
-background: #111;
+	border-color: #b3480f;
+	border-bottom-color: #b3480f;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkfire {
-background-color: #FF9C54;
+	background-color: #ff6611;
 }
 .arrowfire {
-border-color: #FF9C54;
+	border-color: #ff6611;
 }
 .awater {
-color: #4D90D5;
+	color: #3377ff;
 }
 .limewater {
-background: #4D90D5 !important;
-color: #fff !important;
+	background: #3377ff !important;
+	color: #fff !important;
 }
 .limelightwater {
-background: #cee4f9;
-color: #111;
-border-color: #4D90D5 !important;
+	background: #66aaff;
+	color: #111;
+	border-color: #3377ff !important;
 }
 .outlinewater {
-border: 2px solid #4D90D5;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #3377ff;
+	padding: 9px 8px 8px 8px;
 }
 .topedgewater {
-border-top-color: #4D90D5;
+	border-top-color: #3377ff;
 }
 .input-twitchwater, .input-timerwater {
-border-color: #4D90D5;
+	border-color: #3377ff;
 }
 .input-twitchwater:disabled {
-background-color: #4D90D5;
+	background-color: #3377ff;
 }
 .buttonwater {
-	background-color: #4D90D5;
-	border: solid #3684d1 2px;
+	background-color: #3377ff;
+	border: solid #2856b3 2px;
 }
 .smolbuttonwater {
-border-color: #4D90D5;
-color: #4D90D5;
+	border-color: #3377ff;
+	color: #3377ff;
 }
 .smolbuttonSwapwater {
-background-color: #4D90D5;
-border-color: #4D90D5;
+	background-color: #3377ff;
+	border-color: #3377ff;
 }
 .smolbuttonwater:hover {
-background-color: #3684d1;
-border-color: #3684d1;
-color: #fff;
+	background-color: #2856b3;
+	border-color: #2856b3;
+	color: #fff;
 }
 .smolbuttonxwater {
-background-color: #4D90D5;
-color: #fff;
-border-color: #4D90D5;
+	background-color: #3377ff;
+	color: #fff;
+	border-color: #3377ff;
 }
 .inlineboxwater {
-background-color: #cee5ff;
+	background-color: #99ccff;
 }
 .smolbuttonxdarkwater {
-color: #111;
-background-color: #4D90D5;
+	color: #111;
+	background-color: #3377ff;
 }
 .buttondarkwater {
-border-color: #1462af;
+	border-color: #1c3d99;
 }
 .limelightdarkwater {
-border-color: #1462af;
-border-bottom-color: #1462af;
-color: #fff;
-background: #111;
+	border-color: #1c3d99;
+	border-bottom-color: #1c3d99;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkwater {
-background-color: #4D90D5;
+	background-color: #3377ff;
 }
 .arrowwater {
-border-color: #4D90D5;
+	border-color: #3377ff;
 }
 .agrass {
-color: #63BB5B;
+	color: #11cc33;
 }
 .limegrass {
-background: #63BB5B !important;
-color: #fff !important;
+	background: #11cc33 !important;
+	color: #fff !important;
 }
 .limelightgrass {
-background: #e6f9e4;
-color: #111;
-border-color: #63BB5B !important;
+	background: #44dd66;
+	color: #111;
+	border-color: #11cc33 !important;
 }
 .outlinegrass {
-border: 2px solid #63BB5B;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #11cc33;
+	padding: 9px 8px 8px 8px;
 }
 .topedgegrass {
-border-top-color: #63BB5B;
+	border-top-color: #11cc33;
 }
 .input-twitchgrass, .input-timergrass {
-border-color: #63BB5B;
+	border-color: #11cc33;
 }
 .input-twitchgrass:disabled {
-background-color: #63BB5B;
+	background-color: #11cc33;
 }
 .buttongrass {
-	background-color: #63BB5B;
-	border: solid #4eb145 2px;
+	background-color: #11cc33;
+	border: solid #0e9e2f 2px;
 }
 .smolbuttongrass {
-border-color: #63BB5B;
-color: #63BB5B;
+	border-color: #11cc33;
+	color: #11cc33;
 }
 .smolbuttonSwapgrass {
-background-color: #63BB5B;
-border-color: #63BB5B;
+	background-color: #11cc33;
+	border-color: #11cc33;
 }
 .smolbuttongrass:hover {
-background-color: #4eb145;
-border-color: #4eb145;
-color: #fff;
+	background-color: #0e9e2f;
+	border-color: #0e9e2f;
+	color: #fff;
 }
 .smolbuttonxgrass {
-background-color: #63BB5B;
-color: #fff;
-border-color: #63BB5B;
+	background-color: #11cc33;
+	color: #fff;
+	border-color: #11cc33;
 }
 .inlineboxgrass {
-background-color: #cfe7cd;
+	background-color: #77dd88;
 }
 .smolbuttonxdarkgrass {
-color: #111;
-background-color: #63BB5B;
+	color: #111;
+	background-color: #11cc33;
 }
 .buttondarkgrass {
-border-color: #378830;
+	border-color: #0c8023;
 }
 .limelightdarkgrass {
-border-color: #378830;
-border-bottom-color: #378830;
-color: #fff;
-background: #111;
+	border-color: #0c8023;
+	border-bottom-color: #0c8023;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkgrass {
-background-color: #63BB5B;
+	background-color: #11cc33;
 }
 .arrowgrass {
-border-color: #63BB5B;
+	border-color: #11cc33;
 }
 .aelectric {
-color: #F3D23B !important;
+	color: #ffdd11 !important;
 }
 .limeelectric {
-background: #F3D23B !important;
-color: #646464 !important;
+	background: #ffdd11 !important;
+	color: #ffee55 !important;
 }
 .limelightelectric {
-background: #fff6d1;
-color: #111;
-border-color: #F3D23B !important;
+	background: #d0bb0c;
+	color: #111;
+	border-color: #ffdd11 !important;
 }
 .outlineelectric {
-border: 2px solid #F3D23B;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #ffdd11;
+	padding: 9px 8px 8px 8px;
 }
 .topedgeelectric {
-border-top-color: #F3D23B;
+	border-top-color: #ffdd11;
 }
 .input-twitchelectric, .input-timerelectric {
-border-color: #F3D23B;
+	border-color: #ffdd11;
 }
 .input-twitchelectric:disabled {
-background-color: #F3D23B;
+	background-color: #ffdd11;
 }
 .buttonelectric {
-	background-color: #F3D23B;
-	border: solid #e6c120 2px;
+	background-color: #ffdd11;
+	border: solid #ffee66 2px;
 	color: #888;
 }
 .smolbuttonelectric {
-border-color: #F3D23B;
-color: #888;
+	border-color: #ffdd11;
+	color: #888;
 }
 .smolbuttonSwapelectric {
-background-color: #F3D23B;
-border-color: #F3D23B;
+	background-color: #ffdd11;
+	border-color: #ffdd11;
 }
 .smolbuttonelectric:hover {
-background-color: #e6c120;
-border-color: #e6c120;
-color: #fff;
+	background-color: #ffee66;
+	border-color: #ffee66;
+	color: #fff;
 }
 .smolbuttonxelectric {
-background-color: #F3D23B;
-color: #333;
-border-color: #F3D23B;
+	background-color: #ffdd11;
+	color: #333;
+	border-color: #ffdd11;
 }
 .inlineboxelectric {
-background-color: #fdf2b8;
+	background-color: #b3a10a;
 }
 .smolbuttonxdarkelectric {
-color: #111;
-background-color: #F3D23B;
+	color: #111;
+	background-color: #ffdd11;
 }
 .buttondarkelectric {
-border-color: #d4af06;
+	border-color: #776600;
 }
 .limelightdarkelectric {
-border-color: #d4af06;
-border-bottom-color: #d4af06;
-color: #fff;
-background: #111;
+	border-color: #776600;
+	border-bottom-color: #776600;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkelectric {
-background-color: #F3D23B;
-color: #333;
+	background-color: #ffdd11;
+	color: #333;
 }
 .arrowelectric {
-border-color: #F3D23B;
+	border-color: #ffdd11;
 }
 .aice {
-color: #74cec0;
+	color: #33ddff;
 }
 .limeice {
-background: #74cec0 !important;
-color: #fff !important;
+	background: #33ddff !important;
+	color: #fff !important;
 }
 .limelightice {
-background: #e3fbf8;
-color: #111;
-border-color: #74cec0 !important;
+	background: #66eeff;
+	color: #111;
+	border-color: #33ddff !important;
 }
 .outlineice {
-border: 2px solid #74cec0;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #33ddff;
+	padding: 9px 8px 8px 8px;
 }
 .topedgeice {
-border-top-color: #74cec0;
+	border-top-color: #33ddff;
 }
 .input-twitchice, .input-timerice {
-border-color: #74cec0;
+	border-color: #33ddff;
 }
 .input-twitchice:disabled {
-background-color: #74cec0;
+	background-color: #33ddff;
 }
 .buttonice {
-	background-color: #74cec0;
-	border: solid #55c5b4 2px;
+	background-color: #33ddff;
+	border: solid #285a77 2px;
 }
 .smolbuttonice {
-border-color: #74cec0;
-color: #74cec0;
+	border-color: #33ddff;
+	color: #33ddff;
 }
 .smolbuttonSwapice {
-background-color: #74cec0;
-border-color: #74cec0;
+	background-color: #33ddff;
+	border-color: #33ddff;
 }
 .smolbuttonice:hover {
-background-color: #55c5b4;
-border-color: #55c5b4;
-color: #fff;
+	background-color: #285a77;
+	border-color: #285a77;
+	color: #fff;
 }
 .smolbuttonxice {
-background-color: #74cec0;
-color: #fff;
-border-color: #74cec0;
+	background-color: #33ddff;
+	color: #fff;
+	border-color: #33ddff;
 }
 .inlineboxice {
-background-color: #e2eeec;
+	background-color: #99eeff;
 }
 .smolbuttonxdarkice {
-color: #111;
-background-color: #74cec0;
+	color: #111;
+	background-color: #33ddff;
 }
 .buttondarkice {
-border-color: #38b9a6;
+	border-color: #1c4055;
 }
 .limelightdarkice {
-border-color: #38b9a6;
-border-bottom-color: #38b9a6;
-color: #fff;
-background: #111;
+	border-color: #1c4055;
+	border-bottom-color: #1c4055;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkice {
-background-color: #74cec0;
+	background-color: #33ddff;
 }
 .arrowice {
-border-color: #74cec0;
+	border-color: #33ddff;
 }
 .afighting {
-color: #CE4069;
+	color: #bb1122;
 }
 .limefighting {
-background: #CE4069 !important;
-color: #fff !important;
+	background: #bb1122 !important;
+	color: #fff !important;
 }
 .limelightfighting {
-background: #ffd2df;
-color: #111;
-border-color: #CE4069 !important;
+	background: #dd3344;
+	color: #111;
+	border-color: #bb1122 !important;
 }
 .outlinefighting {
-border: 2px solid #CE4069;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #bb1122;
+	padding: 9px 8px 8px 8px;
 }
 .topedgefighting {
-border-top-color: #CE4069;
+	border-top-color: #bb1122;
 }
 .input-twitchfighting, .input-timerfighting {
-border-color: #CE4069;
+	border-color: #bb1122;
 }
 .input-twitchfighting:disabled {
-background-color: #CE4069;
+	background-color: #bb1122;
 }
 .buttonfighting {
-	background-color: #CE4069;
-	border: solid #bd2752 2px;
+	background-color: #bb1122;
+	border: solid #9f0f20 2px;
 }
 .smolbuttonfighting {
-border-color: #CE4069;
-color: #CE4069;
+	border-color: #bb1122;
+	color: #bb1122;
 }
 .smolbuttonSwapfighting {
-background-color: #CE4069;
-border-color: #CE4069;
+	background-color: #bb1122;
+	border-color: #bb1122;
 }
 .smolbuttonfighting:hover {
-background-color: #bd2752;
-border-color: #bd2752;
-color: #fff;
+	background-color: #9f0f20;
+	border-color: #9f0f20;
+	color: #fff;
 }
 .smolbuttonxfighting {
-background-color: #CE4069;
-color: #fff;
-border-color: #CE4069;
+	background-color: #bb1122;
+	color: #fff;
+	border-color: #bb1122;
 }
 .inlineboxfighting {
-background-color: #f7dae3;
+	background-color: #dd6677;
 }
 .smolbuttonxdarkfighting {
-color: #111;
-background-color: #CE4069;
+	color: #111;
+	background-color: #bb1122;
 }
 .buttondarkfighting {
-border-color: #ac294e;
+	border-color: #890c1d;
 }
 .limelightdarkfighting {
-border-color: #ac294e;
-border-bottom-color: #ac294e;
-color: #fff;
-background: #111;
+	border-color: #890c1d;
+	border-bottom-color: #890c1d;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkfighting {
-background-color: #CE4069;
+	background-color: #bb1122;
 }
 .arrowfighting {
-border-color: #CE4069;
+	border-color: #bb1122;
 }
 .apoison {
-color: #AB6AC8;
+	color: #cc22cc;
 }
 .limepoison {
-background: #AB6AC8 !important;
-color: #fff !important;
+	background: #cc22cc !important;
+	color: #fff !important;
 }
 .limelightpoison {
-background: #f3ddfd;
-color: #111;
-border-color: #AB6AC8 !important;
+	background: #dd55dd;
+	color: #111;
+	border-color: #cc22cc !important;
 }
 .outlinepoison {
-border: 2px solid #AB6AC8;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #cc22cc;
+	padding: 9px 8px 8px 8px;
 }
 .topedgepoison {
-border-top-color: #AB6AC8;
+	border-top-color: #cc22cc;
 }
 .input-twitchpoison, .input-timerpoison {
-border-color: #AB6AC8;
+	border-color: #cc22cc;
 }
 .input-twitchpoison:disabled {
-background-color: #AB6AC8;
+	background-color: #cc22cc;
 }
 .buttonpoison {
-	background-color: #AB6AC8;
-	border: solid #9951bb 2px;
+	background-color: #cc22cc;
+	border: solid #b21cb2 2px;
 }
 .smolbuttonpoison {
-border-color: #AB6AC8;
-color: #AB6AC8;
+	border-color: #cc22cc;
+	color: #cc22cc;
 }
 .smolbuttonSwappoison {
-background-color: #AB6AC8;
-border-color: #AB6AC8;
+	background-color: #cc22cc;
+	border-color: #cc22cc;
 }
 .smolbuttonpoison:hover {
-background-color: #9951bb;
-border-color: #9951bb;
-color: #fff;
+	background-color: #b21cb2;
+	border-color: #b21cb2;
+	color: #fff;
 }
 .smolbuttonxpoison {
-background-color: #AB6AC8;
-color: #fff;
-border-color: #AB6AC8;
+	background-color: #cc22cc;
+	color: #fff;
+	border-color: #cc22cc;
 }
 .inlineboxpoison {
-background-color: #dcd1e0;
+	background-color: #dd77dd;
 }
 .smolbuttonxdarkpoison {
-color: #111;
-background-color: #AB6AC8;
+	color: #111;
+	background-color: #cc22cc;
 }
 .buttondarkpoison {
-border-color: #923cb9;
+	border-color: #9e179e;
 }
 .limelightdarkpoison {
-border-color: #923cb9;
-border-bottom-color: #923cb9;
-color: #fff;
-background: #111;
+	border-color: #9e179e;
+	border-bottom-color: #9e179e;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkpoison {
-background-color: #AB6AC8;
-}		
+	background-color: #cc22cc;
+}
 .arrowpoison {
-border-color: #AB6AC8;
+	border-color: #cc22cc;
 }
 .aground {
-color: #D97746;
+	color: #eebb77;
 }
 .limeground {
-background: #D97746 !important;
-color: #fff !important;
+	background: #eebb77 !important;
+	color: #fff !important;
 }
 .limelightground {
-background: #ffdece;
-color: #111;
-border-color: #D97746 !important;
+	background: #ffeeaa;
+	color: #111;
+	border-color: #eebb77 !important;
 }
 .outlineground {
-border: 2px solid #D97746;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #eebb77;
+	padding: 9px 8px 8px 8px;
 }
 .topedgeground {
-border-top-color: #D97746;
+	border-top-color: #eebb77;
 }
 .input-twitchground, .input-timerground {
-border-color: #D97746;
+	border-color: #eebb77;
 }
 .input-twitchground:disabled {
-background-color: #D97746;
+	background-color: #eebb77;
 }
 .buttonground {
-	background-color: #D97746;
-	border: solid #c56a3d 2px;
+	background-color: #eebb77;
+	border: solid #d4a663 2px;
 }
 .smolbuttonground {
-border-color: #D97746;
-color: #D97746;
+	border-color: #eebb77;
+	color: #eebb77;
 }
 .smolbuttonSwapground {
-background-color: #D97746;
-border-color: #D97746;
+	background-color: #eebb77;
+	border-color: #eebb77;
 }
 .smolbuttonground:hover {
-background-color: #c56a3d;
-border-color: #c56a3d;
-color: #fff;
+	background-color: #d4a663;
+	border-color: #d4a663;
+	color: #fff;
 }
 .smolbuttonxground {
-background-color: #D97746;
-color: #fff;
-border-color: #D97746;
+	background-color: #eebb77;
+	color: #fff;
+	border-color: #eebb77;
 }
 .inlineboxground {
-background-color: #f9e3d8;
+	background-color: #ffeebb;
 }
 .smolbuttonxdarkground {
-color: #111;
-background-color: #D97746;
+	color: #111;
+	background-color: #eebb77;
 }
 .buttondarkground {
-border-color: #b15527;
+	border-color: #ba954f;
 }
 .limelightdarkground {
-border-color: #b15527;
-border-bottom-color: #b15527;
-color: #fff;
-background: #111;
+	border-color: #ba954f;
+	border-bottom-color: #ba954f;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkground {
-background-color: #D97746;
+	background-color: #eebb77;
 }
 .arrowground {
-border-color: #D97746;
+	border-color: #eebb77;
 }
 .aflying {
-color: #8fa8dd;
+	color: #ccbbff;
 }
 .limeflying {
-background: #8fa8dd !important;
-color: #fff !important;
+	background: #ccbbff !important;
+	color: #fff !important;
 }
 .limelightflying {
-background: #e7eeff;
-color: #111;
-border-color: #8fa8dd !important;
+	background: #ddccff;
+	color: #111;
+	border-color: #ccbbff !important;
 }
 .outlineflying {
-border: 2px solid #8fa8dd;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #ccbbff;
+	padding: 9px 8px 8px 8px;
 }
 .topedgeflying {
-border-top-color: #8fa8dd;
+	border-top-color: #ccbbff;
 }
 .input-twitchflying, .input-timerflying {
-border-color: #8fa8dd;
+	border-color: #ccbbff;
 }
 .input-twitchflying:disabled {
-background-color: #8fa8dd;
+	background-color: #ccbbff;
 }
 .buttonflying {
-	background-color: #8fa8dd;
-	border: solid #7691ca 2px;
+	background-color: #ccbbff;
+	border: solid #b6a4dd 2px;
 }
 .smolbuttonflying {
-border-color: #8fa8dd;
-color: #8fa8dd;
+	border-color: #ccbbff;
+	color: #ccbbff;
 }
 .smolbuttonSwapflying {
-background-color: #8fa8dd;
-border-color: #8fa8dd;
+	background-color: #ccbbff;
+	border-color: #ccbbff;
 }
 .smolbuttonflying:hover {
-background-color: #7691ca;
-border-color: #7691ca;
-color: #fff;
+	background-color: #b6a4dd;
+	border-color: #b6a4dd;
+	color: #fff;
 }
 .smolbuttonxflying {
-background-color: #8fa8dd;
-color: #fff;
-border-color: #8fa8dd;
+	background-color: #ccbbff;
+	color: #fff;
+	border-color: #ccbbff;
 }
 .inlineboxflying {
-background-color: #d7e1f5;
+	background-color: #ddccff;
 }
 .smolbuttonxdarkflying {
-color: #111;
-background-color: #8fa8dd;
+	color: #111;
+	background-color: #ccbbff;
 }
 .buttondarkflying {
-border-color: #5f79af;
+	border-color: #9e8bcc;
 }
 .limelightdarkflying {
-border-color: #5f79af;
-border-bottom-color: #5f79af;
-color: #fff;
-background: #111;
+	border-color: #9e8bcc;
+	border-bottom-color: #9e8bcc;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkflying {
-background-color: #8fa8dd;
+	background-color: #ccbbff;
 }
 .arrowflying {
-border-color: #8fa8dd;
+	border-color: #ccbbff;
 }
 .apsychic {
-color: #F97176;
+	color: #ff3377;
 }
 .limepsychic {
-background: #F97176 !important;
-color: #fff !important;
+	background: #ff3377 !important;
+	color: #fff !important;
 }
 .limelightpsychic {
-background: #ffe4e4;
-color: #111;
-border-color: #F97176 !important;
+	background: #ff5599;
+	color: #111;
+	border-color: #ff3377 !important;
 }
 .outlinepsychic {
-border: 2px solid #F97176;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #ff3377;
+	padding: 9px 8px 8px 8px;
 }
 .topedgepsychic {
-border-top-color: #F97176;
+	border-top-color: #ff3377;
 }
 .input-twitchpsychic, .input-timerpsychic {
-border-color: #F97176;
+	border-color: #ff3377;
 }
 .input-twitchpsychic:disabled {
-background-color: #F97176;
+	background-color: #ff3377;
 }
 .buttonpsychic {
-	background-color: #F97176;
-	border: solid #ec575c 2px;
+	background-color: #ff3377;
+	border: solid #d12261 2px;
 }
 .smolbuttonpsychic {
-border-color: #F97176;
-color: #F97176;
+	border-color: #ff3377;
+	color: #ff3377;
 }
 .smolbuttonSwappsychic {
-background-color: #F97176;
-border-color: #F97176;
+	background-color: #ff3377;
+	border-color: #ff3377;
 }
 .smolbuttonpsychic:hover {
-background-color: #ec575c;
-border-color: #ec575c;
-color: #fff;
+	background-color: #d12261;
+	border-color: #d12261;
+	color: #fff;
 }
 .smolbuttonxpsychic {
-background-color: #F97176;
-color: #fff;
-border-color: #F97176;
+	background-color: #ff3377;
+	color: #fff;
+	border-color: #ff3377;
 }
 .inlineboxpsychic {
-background-color: #f7d2d3;
+	background-color: #ff5599;
 }
 .smolbuttonxdarkpsychic {
-color: #111;
-background-color: #F97176;
+	color: #111;
+	background-color: #ff3377;
 }
 .buttondarkpsychic {
-border-color: #cf3e43;
+	border-color: #b12351;
 }
 .limelightdarkpsychic {
-border-color: #cf3e43;
-border-bottom-color: #cf3e43;
-color: #fff;
-background: #111;
+	border-color: #b12351;
+	border-bottom-color: #b12351;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkpsychic {
-background-color: #F97176;
+	background-color: #ff3377;
 }
 .arrowpsychic {
-border-color: #F97176;
+	border-color: #ff3377;
 }
 .abug {
-color: #90C12C;
+	color: #aaee33;
 }
 .limebug {
-background: #90C12C !important;
-color: #fff !important;
+	background: #aaee33 !important;
+	color: #fff !important;
 }
 .limelightbug {
-background: #e7f7c6;
-color: #111;
-border-color: #90C12C !important;
+	background: #ccee66;
+	color: #111;
+	border-color: #aaee33 !important;
 }
 .outlinebug {
-border: 2px solid #90C12C;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #aaee33;
+	padding: 9px 8px 8px 8px;
 }
 .topedgebug {
-border-top-color: #90C12C;
+	border-top-color: #aaee33;
 }
 .input-twitchbug, .input-timerbug {
-border-color: #90C12C;
+	border-color: #aaee33;
 }
 .input-twitchbug:disabled {
-background-color: #90C12C;
+	background-color: #aaee33;
 }
 .buttonbug {
-	background-color: #90C12C;
-	border: solid #80b11f 2px;
+	background-color: #aaee33;
+	border: solid #84b329 2px;
 }
 .smolbuttonbug {
-border-color: #90C12C;
-color: #90C12C;
+	border-color: #aaee33;
+	color: #aaee33;
 }
 .smolbuttonSwapbug {
-background-color: #90C12C;
-border-color: #90C12C;
+	background-color: #aaee33;
+	border-color: #aaee33;
 }
 .smolbuttonbug:hover {
-background-color: #80b11f;
-border-color: #80b11f;
-color: #fff;
+	background-color: #84b329;
+	border-color: #84b329;
+	color: #fff;
 }
 .smolbuttonxbug {
-background-color: #90C12C;
-color: #fff;
-border-color: #90C12C;
+	background-color: #aaee33;
+	color: #fff;
+	border-color: #aaee33;
 }
 .inlineboxbug {
-background-color: #e7f5c7;
+	background-color: #bbee66;
 }
 .smolbuttonxdarkbug {
-color: #111;
-background-color: #90C12C;
+	color: #111;
+	background-color: #aaee33;
 }
 .buttondarkbug {
-border-color: #6f991a;
+	border-color: #6d9f1e;
 }
 .limelightdarkbug {
-border-color: #6f991a;
-border-bottom-color: #6f991a;
-color: #fff;
-background: #111;
+	border-color: #6d9f1e;
+	border-bottom-color: #6d9f1e;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkbug {
-background-color: #90C12C;
+	background-color: #aaee33;
 }
 .arrowbug {
-border-color: #90C12C;
+	border-color: #aaee33;
 }
 .arock {
-color: #C7B78B;
+	color: #664433;
 }
 .limerock {
-background: #C7B78B !important;
-color: #fff !important;
+	background: #664433 !important;
+	color: #fff !important;
 }
 .limelightrock {
-background: #f9f4e8;
-color: #111;
-border-color: #C7B78B !important;
+	background: #775544;
+	color: #111;
+	border-color: #664433 !important;
 }
 .outlinerock {
-border: 2px solid #C7B78B;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #664433;
+	padding: 9px 8px 8px 8px;
 }
 .topedgerock {
-border-top-color: #C7B78B;
+	border-top-color: #664433;
 }
 .input-twitchrock, .input-timerrock {
-border-color: #C7B78B;
+	border-color: #664433;
 }
 .input-twitchrock:disabled {
-background-color: #C7B78B;
+	background-color: #664433;
 }
 .buttonrock {
-	background-color: #C7B78B;
-	border: solid #b4a16b 2px;
+	background-color: #664433;
+	border: solid #523328 2px;
 }
 .smolbuttonrock {
-border-color: #C7B78B;
-color: #C7B78B;
+	border-color: #664433;
+	color: #664433;
 }
 .smolbuttonSwaprock {
-background-color: #C7B78B;
-border-color: #C7B78B;
+	background-color: #664433;
+	border-color: #664433;
 }
 .smolbuttonrock:hover {
-background-color: #b4a16b;
-border-color: #b4a16b;
-color: #fff;
+	background-color: #523328;
+	border-color: #523328;
+	color: #fff;
 }
 .smolbuttonxrock {
-background-color: #C7B78B;
-color: #fff;
-border-color: #C7B78B;
+	background-color: #664433;
+	color: #fff;
+	border-color: #664433;
 }
 .inlineboxrock {
-background-color: #e4e0d6;
+	background-color: #887766;
 }
 .smolbuttonxdarkrock {
-color: #111;
-background-color: #C7B78B;
+	color: #111;
+	background-color: #664433;
 }
 .buttondarkrock {
-border-color: #96875e;
+	border-color: #452820;
 }
 .limelightdarkrock {
-border-color: #96875e;
-border-bottom-color: #96875e;
-color: #fff;
-background: #111;
+	border-color: #452820;
+	border-bottom-color: #452820;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkrock {
-background-color: #C7B78B;
+	background-color: #664433;
 }
 .arrowrock {
-border-color: #C7B78B;
+	border-color: #664433;
 }
 .aghost {
-color: #5269AC;
+	color: #663388;
 }
 .limeghost {
-background: #5269AC !important;
-color: #fff !important;
+	background: #663388 !important;
+	color: #fff !important;
 }
 .limelightghost {
-background: #dde4f7;
-color: #111;
-border-color: #5269AC !important;
+	background: #774499;
+	color: #111;
+	border-color: #663388 !important;
 }
 .outlineghost {
-border: 2px solid #5269AC;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #663388;
+	padding: 9px 8px 8px 8px;
 }
 .topedgeghost {
-border-top-color: #5269AC;
+	border-top-color: #663388;
 }
 .input-twitchghost, .input-timerghost {
-border-color: #5269AC;
+	border-color: #663388;
 }
 .input-twitchghost:disabled {
-background-color: #5269AC;
+	background-color: #663388;
 }
 .buttonghost {
-	background-color: #5269AC;
-	border: solid #445ba3 2px;
+	background-color: #663388;
+	border: solid #522f64 2px;
 }
 .smolbuttonghost {
-border-color: #5269AC;
-color: #5269AC;
+	border-color: #663388;
+	color: #663388;
 }
 .smolbuttonSwapghost {
-background-color: #5269AC;
-border-color: #5269AC;
+	background-color: #663388;
+	border-color: #663388;
 }
 .smolbuttonghost:hover {
-background-color: #445ba3;
-border-color: #445ba3;
-color: #fff;
+	background-color: #522f64;
+	border-color: #522f64;
+	color: #fff;
 }
 .smolbuttonxghost {
-background-color: #5269AC;
-color: #fff;
-border-color: #5269AC;
+	background-color: #663388;
+	color: #fff;
+	border-color: #663388;
 }
 .inlineboxghost {
-background-color: #c6cce3;
+	background-color: #886699;
 }
 .smolbuttonxdarkghost {
-color: #111;
-background-color: #5269AC;
+	color: #111;
+	background-color: #663388;
 }
 .buttondarkghost {
-border-color: #374c8b;
+	border-color: #45274f;
 }
 .limelightdarkghost {
-border-color: #374c8b;
-border-bottom-color: #374c8b;
-color: #fff;
-background: #111;
+	border-color: #45274f;
+	border-bottom-color: #45274f;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkghost {
-background-color: #5269AC;
+	background-color: #663388;
 }
 .arrowghost {
-border-color: #5269AC;
+	border-color: #663388;
 }
 .adragon {
-color: #0A6DC4;
+	color: #1144aa;
 }
 .limedragon {
-background: #0A6DC4 !important;
-color: #fff !important;
+	background: #1144aa !important;
+	color: #fff !important;
 }
 .limelightdragon {
-background: #cae4fb;
-color: #111;
-border-color: #0A6DC4 !important;
+	background: #3377cc;
+	color: #111;
+	border-color: #1144aa !important;
 }
 .outlinedragon {
-border: 2px solid #0A6DC4;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #1144aa;
+	padding: 9px 8px 8px 8px;
 }
 .topedgedragon {
-border-top-color: #0A6DC4;
+	border-top-color: #1144aa;
 }
 .input-twitchdragon, .input-timerdragon {
-border-color: #0A6DC4;
+	border-color: #1144aa;
 }
 .input-twitchdragon:disabled {
-background-color: #0A6DC4;
+	background-color: #1144aa;
 }
 .buttondragon {
-	background-color: #0A6DC4;
-	border: solid #0f5ea3 2px;
+	background-color: #1144aa;
+	border: solid #0d3a91 2px;
 }
 .smolbuttondragon {
-border-color: #0A6DC4;
-color: #0A6DC4;
+	border-color: #1144aa;
+	color: #1144aa;
 }
 .smolbuttonSwapdragon {
-background-color: #0A6DC4;
-border-color: #0A6DC4;
+	background-color: #1144aa;
+	border-color: #1144aa;
 }
 .smolbuttondragon:hover {
-background-color: #0f5ea3;
-border-color: #0f5ea3;
-color: #fff;
+	background-color: #0d3a91;
+	border-color: #0d3a91;
+	color: #fff;
 }
 .smolbuttonxdragon {
-background-color: #0A6DC4;
-color: #fff;
-border-color: #0A6DC4;
+	background-color: #1144aa;
+	color: #fff;
+	border-color: #1144aa;
 }
 .inlineboxdragon {
-background-color: #d9e6f3;
+	background-color: #4499cc;
 }
 .smolbuttonxdarkdragon {
-color: #111;
-background-color: #0A6DC4;
+	color: #111;
+	background-color: #1144aa;
 }
 .buttondarkdragon {
-border-color: #0b5aa0;
+	border-color: #0b2c7e;
 }
 .limelightdarkdragon {
-border-color: #0b5aa0;
-border-bottom-color: #0b5aa0;
-color: #fff;
-background: #111;
+	border-color: #0b2c7e;
+	border-bottom-color: #0b2c7e;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkdragon {
-background-color: #0A6DC4;
+	background-color: #1144aa;
 }
 .arrowdragon {
-border-color: #0A6DC4;
+	border-color: #1144aa;
 }
 .aevil {
-color: #5A5366;
+	color: #334466;
 }
 .limeevil {
-background: #5A5366 !important;
-color: #fff !important;
+	background: #334466 !important;
+	color: #fff !important;
 }
 .limelightevil {
-background: #d9d7dd;
-color: #111;
-border-color: #5A5366 !important;
+	background: #446688;
+	color: #111;
+	border-color: #334466 !important;
 }
 .outlineevil {
-border: 2px solid #5A5366;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #334466;
+	padding: 9px 8px 8px 8px;
 }
 .topedgeevil {
-border-top-color: #5A5366;
+	border-top-color: #334466;
 }
 .input-twitchevil, .input-timerevil {
-border-color: #5A5366;
+	border-color: #334466;
 }
 .input-twitchevil:disabled {
-background-color: #5A5366;
+	background-color: #334466;
 }
 .buttonevil {
-	background-color: #5A5366;
-	border: solid #474250 2px;
+	background-color: #334466;
+	border: solid #28394d 2px;
 }
 .smolbuttonevil {
-border-color: #5A5366;
-color: #5A5366;
+	border-color: #334466;
+	color: #334466;
 }
 .smolbuttonSwapevil {
-background-color: #5A5366;
-border-color: #5A5366;
+	background-color: #334466;
+	border-color: #334466;
 }
 .smolbuttonevil:hover {
-background-color: #474250;
-border-color: #474250;
-color: #fff;
+	background-color: #28394d;
+	border-color: #28394d;
+	color: #fff;
 }
 .smolbuttonxevil {
-background-color: #5A5366;
-color: #fff;
-border-color: #5A5366;
+	background-color: #334466;
+	color: #fff;
+	border-color: #334466;
 }
 .inlineboxevil {
-background-color: #dfdce4;
+	background-color: #667788;
 }
 .smolbuttonxdarkevil {
-color: #111;
-background-color: #5A5366;
+	color: #111;
+	background-color: #334466;
 }
 .buttondarkevil {
-border-color: #3c3744;
+	border-color: #1c2a3b;
 }
 .limelightdarkevil {
-border-color: #3c3744;
-border-bottom-color: #3c3744;
-color: #fff;
-background: #111;
+	border-color: #1c2a3b;
+	border-bottom-color: #1c2a3b;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkevil {
-background-color: #5A5366;
+	background-color: #334466;
 }
 .arrowevil {
-border-color: #5A5366;
+	border-color: #334466;
 }
 .asteel {
-color: #5A8EA1;
+	color: #558888;
 }
 .limesteel {
-background: #5A8EA1 !important;
-color: #fff !important;
+	background: #558888 !important;
+	color: #fff !important;
 }
 .limelightsteel {
-background: #d7e4e9;
-color: #111;
-border-color: #5A8EA1 !important;
+	background: #77aaaa;
+	color: #111;
+	border-color: #558888 !important;
 }
 .outlinesteel {
-border: 2px solid #5A8EA1;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #558888;
+	padding: 9px 8px 8px 8px;
 }
 .topedgesteel {
-border-top-color: #5A8EA1;
+	border-top-color: #558888;
 }
 .input-twitchsteel, .input-timersteel {
-border-color: #5A8EA1;
+	border-color: #558888;
 }
 .input-twitchsteel:disabled {
-background-color: #5A8EA1;
+	background-color: #558888;
 }
 .buttonsteel {
-	background-color: #5A8EA1;
-	border: solid #477788 2px;
+	background-color: #558888;
+	border: solid #3a5757 2px;
 }
 .smolbuttonsteel {
-border-color: #5A8EA1;
-color: #5A8EA1;
+	border-color: #558888;
+	color: #558888;
 }
 .smolbuttonSwapsteel {
-background-color: #5A8EA1;
-border-color: #5A8EA1;
+	background-color: #558888;
+	border-color: #558888;
 }
 .smolbuttonsteel:hover {
-background-color: #477788;
-border-color: #477788;
-color: #fff;
+	background-color: #3a5757;
+	border-color: #3a5757;
+	color: #fff;
 }
 .smolbuttonxsteel {
-background-color: #5A8EA1;
-color: #fff;
-border-color: #5A8EA1;
+	background-color: #558888;
+	color: #fff;
+	border-color: #558888;
 }
 .inlineboxsteel {
-background-color: #d5e5eb;
+	background-color: #88aaaa;
 }
 .smolbuttonxdarksteel {
-color: #111;
-background-color: #5A8EA1;
+	color: #111;
+	background-color: #558888;
 }
 .buttondarksteel {
-border-color: #3e6474;
+	border-color: #324040;
 }
 .limelightdarksteel {
-border-color: #3e6474;
-border-bottom-color: #3e6474;
-color: #fff;
-background: #111;
+	border-color: #324040;
+	border-bottom-color: #324040;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarksteel {
-background-color: #5A8EA1;
+	background-color: #558888;
 }
 .arrowsteel {
-border-color: #5A8EA1;
+	border-color: #558888;
 }
 .afairy {
-color: #EC8FE6;
+	color: #ff88bb;
 }
 .limefairy {
-background: #EC8FE6 !important;
-color: #fff !important;
+	background: #ff88bb !important;
+	color: #fff !important;
 }
 .limelightfairy {
-background: #ffe5fd;
-color: #111;
-border-color: #EC8FE6 !important;
+	background: #ffaacd;
+	color: #111;
+	border-color: #ff88bb !important;
 }
 .outlinefairy {
-border: 2px solid #EC8FE6;
-padding: 9px 8px 8px 8px;
+	border: 2px solid #ff88bb;
+	padding: 9px 8px 8px 8px;
 }
 .topedgefairy {
-border-top-color: #EC8FE6;
+	border-top-color: #ff88bb;
 }
 .input-twitchfairy, .input-timerfairy {
-border-color: #EC8FE6;
+	border-color: #ff88bb;
 }
 .input-twitchfairy:disabled {
-background-color: #EC8FE6;
+	background-color: #ff88bb;
 }
 .buttonfairy {
-	background-color: #EC8FE6;
-	border: solid #d87ad2 2px;
+	background-color: #ff88bb;
+	border: solid #d9538a 2px;
 }
 .smolbuttonfairy {
-border-color: #EC8FE6;
-color: #EC8FE6;
+	border-color: #ff88bb;
+	color: #ff88bb;
 }
 .smolbuttonSwapfairy {
-background-color: #EC8FE6;
-border-color: #EC8FE6;
+	background-color: #ff88bb;
+	border-color: #ff88bb;
 }
 .smolbuttonfairy:hover {
-background-color: #d87ad2;
-border-color: #d87ad2;
-color: #fff;
+	background-color: #d9538a;
+	border-color: #d9538a;
+	color: #fff;
 }
 .smolbuttonxfairy {
-background-color: #EC8FE6;
-color: #fff;
-border-color: #EC8FE6;
+	background-color: #ff88bb;
+	color: #fff;
+	border-color: #ff88bb;
 }
 .inlineboxfairy {
-background-color: #f3e3f2;
+	background-color: #ffbbcc;
 }
 .smolbuttonxdarkfairy {
-color: #111;
-background-color: #EC8FE6;
+	color: #111;
+	background-color: #ff88bb;
 }
 .buttondarkfairy {
-border-color: #be58b8;
+	border-color: #b53473;
 }
 .limelightdarkfairy {
-border-color: #be58b8;
-border-bottom-color: #be58b8;
-color: #fff;
-background: #111;
+	border-color: #b53473;
+	border-bottom-color: #b53473;
+	color: #fff;
+	background: #111;
 }
 .inlineboxdarkfairy {
-background-color: #EC8FE6;
+	background-color: #ff88bb;
 }
 .arrowfairy {
-border-color: #EC8FE6;
+	border-color: #ff88bb;
 }

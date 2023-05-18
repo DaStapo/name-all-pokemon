@@ -37,3 +37,24 @@ new
 .dragon {color: #4C41B0, #C9BEFF, #281D8C, #d5d2ee, #050069;}
 .steel {color: #7E9C99, #C5E3E0, #6C8A87, #dae2e1, #375552;}
 .fairy {color: #FFB1D8, #FFE7FF, #DB8DB4, #ffe5f2, #94466D;}
+
+newer
+
+.normal {color:     #ddddcc, #eeeecc, #c0c0b3, #f0f0e6, #b3b3a6;}
+.fire {color:	    #ff6611, #ff8844, #d1550e, #ffaa77, #b3480f;}
+.water {color:	    #3377ff, #66aaff, #2856b3, #99ccff, #1c3d99;}
+.grass {color:	    #11cc33, #44dd66, #0e9e2f, #77dd88, #0c8023;}
+.electric {color:	#ffdd11, #ffee55, #d0bb0c, #ffee66, #b3a10a, #776600;}
+.ice {color:	    #33ddff, #66eeff, #285a77, #99eeff, #1c4055;}
+.fighting {color:	#bb1122, #dd3344, #9f0f20, #dd6677, #890c1d;}
+.poison {color:     #cc22cc, #dd55dd, #b21cb2, #dd77dd, #9e179e;}
+.ground {color:	    #eebb77, #ffeeaa, #d4a663, #ffeebb, #ba954f;}
+.flying {color:	    #ccbbff, #ddccff, #b6a4dd, #ddccff, #9e8bcc;}
+.psychic {color:	#ff3377, #ff5599, #d12261, #ff5599, #b12351;}
+.bug {color:	    #aaee33, #ccee66, #84b329, #bbee66, #6d9f1e;}
+.rock {color:	    #664433, #775544, #523328, #887766, #452820;}
+.ghost {color:	    #663388, #774499, #522f64, #886699, #45274f;}
+.evil {color:	    #334466, #446688, #28394d, #667788, #1c2a3b;}
+.dragon {color:	    #1144aa, #3377cc, #0d3a91, #4499cc, #0b2c7e;}
+.steel {color:	    #558888, #77aaaa, #3a5757, #88aaaa, #324040;}
+.fairy {color:	    #ff88bb, #ffaacd, #d9538a, #ffbbcc, #b53473;}
