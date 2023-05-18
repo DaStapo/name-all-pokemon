@@ -266,6 +266,7 @@ for (key in formatted_lang_map){
 	let currentKey = key;
     lang.innerHTML += key
     lang.classList.add('smolbutton')
+    lang.classList.add('langbutton')
     lang.id = 'missing-'+ key
 	
     lang.onclick = function () {
@@ -714,11 +715,32 @@ function standardizeName(input) {
     input = input.replace(/[śŝşšș]/g, 's');
     input = input.replace(/[ťţþț]/g, 't');
     input = input.replace(/[ýÿŷ]/g, 'y');
-    input = input.replace(/[źžż]/g, 'z');
-
+    input = input.replace(/[źžż乙]/g, 'z');
+    //accept latin for full-width characters
+    input = input.replace(/[ａ-ｚ０-９]/g, function(match) {
+        return String.fromCharCode(match.charCodeAt(0) - 65248);
+      });
+    //accept latin for roman numerals
+    input = input.replace(/Ⅰ/g, 'i');
+    input = input.replace(/Ⅱ/g, 'ii');
+    input = input.replace(/Ⅲ/g, 'iii');
+    input = input.replace(/Ⅳ/g, 'iv');
+    input = input.replace(/Ⅴ/g, 'v');
+    input = input.replace(/Ⅵ/g, 'vi');
+    input = input.replace(/Ⅶ/g, 'ivii');
+    input = input.replace(/Ⅷ/g, 'viii');
+    input = input.replace(/Ⅸ/g, 'ix');
+    input = input.replace(/Ⅹ/g, 'x');
+    input = input.replace(/Ⅺ/g, 'xi');
+    input = input.replace(/Ⅻ/g, 'xii');
+    input = input.replace(/Ⅼ/g, 'l');
+    input = input.replace(/Ⅽ/g, 'c');
+    input = input.replace(/Ⅾ/g, 'd');
+    input = input.replace(/Ⅿ/g, 'm');
+ 
 
     //delete all special characters
-    input = input.replace(/[^ぁ-んァ-ン가-힣a-z0-9-_ß０-９ａ-ｚー\u4e00-\u9fa5]/g, '');
+    input = input.replace(/[^ぁ-んァ-ン가-힣a-z0-9-_ß０-９ａ-ｚー\u4e00-\u9fa5\uf91f\uf929Ⅰ-ↈ]/g, '');
 
     return input;
 }
@@ -1254,7 +1276,7 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
         let inputs = []
 
 
-		if (inputText === 'nidoran' || inputText === 'ニドラン'.toLowerCase() ||inputText === '니드런'.toLowerCase()  ) {
+		if (inputText === 'nidoran' || inputText === 'ニドラン'.toLowerCase() ||inputText === '니드런'.toLowerCase() ) {
 			inputs.push('nidoranf')
 			inputs.push('nidoranm')
 		}
