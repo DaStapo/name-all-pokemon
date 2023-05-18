@@ -190,6 +190,7 @@ for (let i = 0; i <= genLastPokemon.length; i++) {
 
             let swapGen = function () {
                 document.getElementById("genselection").onclick = off2;
+                document.getElementById("typeselection").onclick = off2;
                 currentGen = i;
                 promptGen.style.display = "none";
                 resetQuiz();
@@ -3595,6 +3596,7 @@ for (let i = 0; i < typeList.length; i++){
     document.getElementById('b-' + typeList[i]).onclick = function (){
         let swapGen = function () {
             document.getElementById("typeselection").onclick = off2;
+            document.getElementById("genselection").onclick = off2;
             promptGen.style.display = "none";
             resetQuiz();
             updateTypeFilter(typeList[currentIndex])
