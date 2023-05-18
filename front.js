@@ -3777,8 +3777,8 @@ function cycleSprites(updateCounter) {
 }
 
 
-
-
+let TypeButtonElement = document.getElementById("type0");
+let originalClassListLength = TypeButtonElement.classList.length
 let cycleTypes = function(updateCounter){
     let imgElement = document.getElementById("type-img");
     let buttonElement = document.getElementById("type0");
@@ -3789,9 +3789,10 @@ let cycleTypes = function(updateCounter){
 
     imgElement.src="images/types/"+typeList[currentIndex].toUpperCase()+".svg"
     
-    if (typeList.includes(buttonElement.classList[buttonElement.classList.length-1])){
+    if (buttonElement.classList.length !== originalClassListLength){
         buttonElement.classList.remove(buttonElement.classList[buttonElement.classList.length-1])
     }
+
     buttonElement.classList.add("button"+typeList[currentIndex])
 }
 
