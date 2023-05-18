@@ -239,6 +239,9 @@ for (key in language_map){
 	
 	for (let i = 0; i< language_map[key].length; i++){
 		copiedList.push(language_map[key][i]);
+        if (key === "CHT" || key === "CHS"){
+            continue
+        }
         if (i == nidoranfIndex){
             copiedList[i] = copiedList[i].substring(0, copiedList[i].length - 1) + '♀';
         }else if (i == nidoranmIndex){
