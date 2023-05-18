@@ -2525,6 +2525,11 @@ margin: 0px -5px -10px -5px;
 /*margin: -5px 0px -10px -10px;*/
 filter: brightness(0) invert(1);
 }
+.symbol2 {
+width: 42px;
+margin: -6px -14px -15px 5px;
+filter: brightness(0) invert(1);
+}
 .icon {
 width: 75%;
 vertical-align: text-top;
