@@ -3776,6 +3776,20 @@ function cycleSprites(updateCounter) {
     }
 }
 
+
+
+
+let cycleTypes = function(updateCounter){
+    let imgElement = document.getElementById("type-img");
+
+    let currentIndex = updateCounter % typeList.length;
+
+    currentIndex = spriteCycling ? currentIndex : 0;
+
+    imgElement.src="images/types/"+typeList[currentIndex].toUpperCase()+".svg"
+}
+
+
 let rotateFunc = function () {
     for (let i = 0; i<images.length; i++){
 
@@ -3785,6 +3799,7 @@ let rotateFunc = function () {
         imgElement.src = images[i][currentImageIndex%images[0].length];
     }
 
+    cycleTypes(currentImageIndex)
     cycleSprites(currentImageIndex)
 
     //move to the next image index
