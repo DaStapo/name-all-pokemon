@@ -2116,9 +2116,12 @@ function updateTypeFilter(type){
         allSprites[i].classList.remove('spritew');
 		allSprites[i].classList.remove('sprite');
     }
-
+    let typeName = type;
+    if (typeName=="dark"){
+        typeName = "evil"
+    }
     
-    document.getElementById("body").classList.add(type);
+    document.getElementById("body").classList.add(typeName);
     if(darkMode){
         document.getElementById("body").classList.add("blenddark")
     }
@@ -2131,10 +2134,7 @@ function updateTypeFilter(type){
     document.getElementById("bgpattern").src = "/images/types/"+ type.toUpperCase()+".svg";
     document.getElementById("bgpattern2").src = "/images/types/"+ type.toUpperCase() +".svg";
 
-    let typeName = type;
-    if (typeName=="dark"){
-        typeName = "evil"
-    }
+
     for (let i = 0; i< typeClasses.length; i++){
         let currentClass = typeClasses[i];
         if(currentClass.includes('dark') && !darkMode){
