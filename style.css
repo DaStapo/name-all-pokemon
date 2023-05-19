@@ -477,6 +477,10 @@
 		font-size: 18px;
 		min-width: 80px;
 	}
+	.noborder {
+		border:0px !important;
+		min-height: 34px;
+	}
 	.button:hover {
 	background-color: #D00;
 	border: solid #D00 2px;
@@ -559,11 +563,12 @@
 	background: #65ae04;
 	border-color: #65ae04;
 	}
-	.hovr {
-	}
 	.hovr:hover {
 	background-color: #666;
 	border-color: #666;
+	}
+	.hovt:hover {
+	background-color: #666;	
 	}
 /*	.hovl {
 	background-color: #777;
@@ -1214,7 +1219,7 @@
 	.inputshort {
 	display: none;
 	}
-	}	
+	}	normal
 	/*type-color-changing classes*/
 	.anormal {
 		color: #ddddcc ;
@@ -1244,11 +1249,12 @@
 	.buttonnormal {
 		background-color: #ddddcc;
 		border: solid #c0c0b3 2px;
-		color: #888;
+		color: #555;
 	}
 	.smolbuttonnormal {
 		border-color: #ddddcc ;
 	   color: #ddddcc;
+		color: #555;
 	}
 	.smolbuttonSwapnormal {
 		background-color: #ddddcc;
@@ -1521,11 +1527,11 @@
 	.buttonelectric {
 		background-color: #ffdd11;
 		border: solid #ffee66 2px;
-		color: #888;
+		color: #555;
 	}
 	.smolbuttonelectric {
 		border-color: #ffdd11;
-		color: #888;
+		color: #555;
 	}
 	.smolbuttonSwapelectric {
 		background-color: #ffdd11;
@@ -1776,7 +1782,7 @@
 	}
 	.limeground {
 		background: #eebb77 !important;
-		color: #fff !important;
+		color: #646464 !important;
 	}
 	.limelightground {
 		background: #ffeeaa;
@@ -1799,10 +1805,12 @@
 	.buttonground {
 		background-color: #eebb77;
 		border: solid #d4a663 2px;
+		color: #555;
 	}
 	.smolbuttonground {
 		border-color: #eebb77;
 		color: #eebb77;
+		color: #555;
 	}
 	.smolbuttonSwapground {
 		background-color: #eebb77;
@@ -1983,7 +1991,7 @@
 	}
 	.limebug {
 		background: #aaee33 !important;
-		color: #fff !important;
+		color: #646464 !important;
 	}
 	.limelightbug {
 		background: #ccee66;
@@ -2006,10 +2014,12 @@
 	.buttonbug {
 		background-color: #aaee33;
 		border: solid #84b329 2px;
+		color: #555;
 	}
 	.smolbuttonbug {
 		border-color: #aaee33;
 		color: #aaee33;
+		color: #555;
 	}
 	.smolbuttonSwapbug {
 		background-color: #aaee33;
@@ -2528,7 +2538,7 @@ filter: brightness(0) invert(1);
 }
 .symbol2 {
 width: 42px;
-margin: -6px -14px -15px 5px;
+margin: -5px -12px -15px 8px;
 filter: brightness(0) invert(1);
 }
 .icon {

@@ -2180,7 +2180,7 @@ function updateTypeFilter(type){
 function updateGenFilter() {
     logActions = true;
     if(currentType !== ""){
-        document.getElementById("body").classList.remove(currentType);
+        document.getElementById("body").classList.remove( getCurrentTypeName());
 
         for (let i = 0; i< typeClasses.length; i++){
             let currentClass = typeClasses[i];
