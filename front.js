@@ -3787,13 +3787,18 @@ let cycleTypes = function(updateCounter){
 
     currentIndex = spriteCycling ? currentIndex : 0;
 
-    imgElement.src="images/types/"+typeList[currentIndex].toUpperCase()+".svg"
+    let typeName = typeList[currentIndex]
+    if (typeName === "dark"){
+        typeName = "evil"
+    }
+
+    imgElement.src="images/types/"+typeName.toUpperCase()+".svg"
     
     if (buttonElement.classList.length !== originalClassListLength){
         buttonElement.classList.remove(buttonElement.classList[buttonElement.classList.length-1])
     }
 
-    buttonElement.classList.add("button"+typeList[currentIndex])
+    buttonElement.classList.add("button"+typeName)
 }
 
 
