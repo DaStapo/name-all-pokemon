@@ -3792,7 +3792,7 @@ let cycleTypes = function(updateCounter){
         typeName = "evil"
     }
 
-    imgElement.src="images/types/"+typeName.toUpperCase()+".svg"
+    imgElement.src="images/types/"+typeList[currentIndex].toUpperCase()+".svg"
     
     if (buttonElement.classList.length !== originalClassListLength){
         buttonElement.classList.remove(buttonElement.classList[buttonElement.classList.length-1])
