@@ -1221,10 +1221,10 @@
 	}
 	.limenormal {
 		background: #ddddcc !important;
-		color: #fff !important;
+		color: #646464 !important;
 	}
 	.limelightnormal {
-		background: #eeeecc ;
+		background: #c0c0b3 ;
 		color: #111;
 		border-color: #ddddcc !important;
 	}
@@ -1244,6 +1244,7 @@
 	.buttonnormal {
 		background-color: #ddddcc;
 		border: solid #c0c0b3 2px;
+		color: #888;
 	}
 	.smolbuttonnormal {
 		border-color: #ddddcc ;
@@ -1497,7 +1498,7 @@
 	}
 	.limeelectric {
 		background: #ffdd11 !important;
-		color: #ffee55 !important;
+		color: #646464 !important;
 	}
 	.limelightelectric {
 		background: #d0bb0c;
@@ -1590,7 +1591,7 @@
 	}
 	.buttonice {
 		background-color: #33ddff;
-		border: solid #285a77 2px;
+		border: solid #33aaee 2px;
 	}
 	.smolbuttonice {
 		border-color: #33ddff;
@@ -1601,8 +1602,8 @@
 		border-color: #33ddff;
 	}
 	.smolbuttonice:hover {
-		background-color: #285a77;
-		border-color: #285a77;
+		background-color: #33aaee;
+		border-color: #33aaee;
 		color: #fff;
 	}
 	.smolbuttonxice {
