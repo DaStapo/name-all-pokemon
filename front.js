@@ -719,7 +719,8 @@ function standardizeName(input) {
     input = input.replace(/[ťţþț]/g, 't');
     input = input.replace(/[ýÿŷ]/g, 'y');
     input = input.replace(/[źžż乙]/g, 'z');
-
+    //Espathra alternate Chinese spelling
+    input = input.replace(/[艷]/g, '豔');
 
 
     //accept latin for full-width characters
