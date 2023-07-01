@@ -1294,7 +1294,9 @@ let parseInput = function (inputText, sendLog, isTwitchChat) {
                 missingnoEnabled = true;
                 startMissingno()
                 inputField.value = '';
+                if(soundEnabled){
                 soundEffectMissingno.play();
+                }
             }
 
         }
@@ -1760,11 +1762,15 @@ inputField.oninput = function (){
 
 
 function play_single_sound() {
-    document.getElementById('soundeffect').play();
+    if(soundEnabled){
+        document.getElementById('soundeffect').play();
+    }
 }
 
 function play_single_sound2() {
-    document.getElementById('soundeffect2').play();
+    if(soundEnabled){
+        document.getElementById('soundeffect2').play();
+    }    
 }
 
 function tryGuessPokemon(input, sendLog,isTwitchChat) {
@@ -1800,7 +1806,9 @@ function tryGuessPokemon(input, sendLog,isTwitchChat) {
             if (relevantList.length === currentPokemonList.length) {
                 showCongrats();
             }
-            soundEffect.play();
+            if(soundEnabled){
+                soundEffect.play();
+            }
 	    	if (sendLog){
 	    		logNamed(input);
 	    	}
@@ -1817,7 +1825,9 @@ function showCongrats() {
     updateFullLeaderboard();
     clearInterval(activeTimer);
     document.getElementById("overlay").style.display = "block";
-    soundEffect2.play();
+    if(soundEnabled){
+        soundEffect2.play();
+    }
     let genText = ' ';
     if (currentGen !== 0) {
         genText = ' generation ' + genNames[currentGen] + ' ';
@@ -3855,3 +3865,18 @@ window.addEventListener('beforeunload', function (e) {
         e.returnValue = '';
     }
 });
+
+
+var soundEnabled = true;
+
+document.getElementById("sound-on").onclick = () => {
+    soundEnabled = true
+    visualizeButtonUnclick(document.getElementById("sound-off"))
+    visualizeButtonClick(document.getElementById("sound-on"))
+
+};
+document.getElementById("sound-off").onclick = () => {
+    soundEnabled = false
+    visualizeButtonUnclick(document.getElementById("sound-on"))
+    visualizeButtonClick(document.getElementById("sound-off"))
+};
