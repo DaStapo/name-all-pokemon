@@ -1,4 +1,4 @@
-with open("artist_credits_-_05-2023.csv", "r") as r:
+with open("artist_credits_-_08-2023.csv", "r") as r:
     lines = r.readlines()
 
 
