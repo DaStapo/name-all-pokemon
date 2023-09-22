@@ -10,6 +10,9 @@
 'Rotom-Mow'
 'Arceus-Grass'
 'Silvally-Grass'
+'Ogerpon-Wellspring'
+'Ogerpon-Hearthflame'
+'Ogerpon-Cornerstone'
 
 -fire
 'Marowak-Alola'
@@ -47,6 +50,7 @@
 'Arceus-Ground'
 'Yamask-Galar'
 'Silvally-Ground'
+'Ursaluna-Blood-Moon'
 
 -flying
 'Pinsir-Mega'

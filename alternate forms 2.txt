@@ -37,6 +37,9 @@
 'Rillaboom-Gmax'
 'Flapple-Gmax'
 'Appletun-Gmax'
+'Ogerpon-Wellspring'
+'Ogerpon-Hearthflame'
+'Ogerpon-Cornerstone'
 
 -fire
 'Charizard-Mega-Y'
@@ -77,6 +80,7 @@
 'Garchomp-Mega'
 'Stunfisk-Galar'
 'Sandaconda-Gmax'
+'Ursaluna-Blood-Moon'
 
 -flying
 'Charizard-Mega-Y'

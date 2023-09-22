@@ -45,6 +45,10 @@
 'Morpeko-Hangry'
 'Koraidon-Limited'
 'Miraidon-Low-Power'
+'Ogerpon-Teal-Mask'
+'Ogerpon-Wellspring-Mask'
+'Ogerpon-Hearthflame-Mask'
+'Ogerpon-Cornerstone-Mask'
 
 -permanent visual
 'Pichu-Spiky-Eared'
