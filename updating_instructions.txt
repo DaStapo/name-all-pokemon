@@ -1,0 +1,10 @@
+ADDING POKEMON
+    fill the pkmn_data/data.csv with new pokemon data
+    open CMD inside the pkmn_data folder and run 'python insert_csv.py' (this script will ask you to press enter before it does anything)
+    add stuff to  (the files inside pkmn_data)  misspellings, sprite_cycles, namings or suffix_namings if there is any, but make sure the jsons are valid (either open them in VS Code or use some json validator)
+ADDING SPRITES
+    after adding new sprite images into all folders, just run 'python encoder.py' (it's also inside the pkmn_data folder)
+    (no need for moving any encoded image files, the encoder.py already does it)
+ADDING NEW BOXES
+    edit the box variables at the beginning of front.json
+    open CMD in the root folder and do 'npm run build' (this is only required if adding boxes, not needed for other changes)
