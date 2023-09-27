@@ -191,6 +191,7 @@ class Quiz {
 
     setTypeQuiz(type){
         let filters = {"types":[type]}
+        filters = {"types":["fire", "water"]}
         this.setQuiz(type + " type ", filters);
     }
 
@@ -464,6 +465,7 @@ class Quiz {
     updateLanguages(enabledLanguages){
         this.enabledLanguages = enabledLanguages;
         this.currentLangsNames= new Set()
+        this.nameDict = {}
         this.nameArr = []
         for (let id of this.currentIds){
             for (let j = 0; j < enabledLanguages.length; j++){
@@ -477,8 +479,9 @@ class Quiz {
                 /*if (this.translations[id][key] in this.nameDict && standardizeName(this.translations[id][key]) !== id){
                     console.log('alert, same names for' + this.translations[id]["ENG"] + " and " + id)
                 }*/
-                this.nameDict[standardizeName(this.translations[this.pokemon[i].baseName][key])] = this.pokemon[i].baseName
-                this.nameArr.push(standardizeName(this.pokemon[i].baseName))
+                
+                this.nameDict[standardizeName(this.translations[this.pokemon[i].baseName][key])] = this.pokemon[i].id
+                this.nameArr.push(this.pokemon[i].baseName)
             }
         }
 

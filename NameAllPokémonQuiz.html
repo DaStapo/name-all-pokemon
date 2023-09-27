@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Condensed">
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=8">
     <title>Pokémon Quiz</title>
     <meta name="description" content="Can you type all Pokémon? Or try naming all of one type/region. Includes Twitch-chat integration and toggle for input in Japanese, Korean, French and German.">
     <script type="text/javascript">
@@ -46,7 +46,7 @@
         <div class="row">
           <div id="spelling" class="column wider" style="display: none;">
             <div class="column">
-              <div onclick="showHint()">
+              <div id="hintplace">
                 <div class="box roundedh2 padleft lime inblock pointer"> <div class="txt">Most similar spelling:</div>
                 </div>
                 <div class="button-e grborder spbutton shadowc roundedg2 inblock unleft" id="hintbox" style="min-width: 100px;"> <div class="txt check" id="check"><div id="clicktype">click to reveal</div></div><div id="hint" class="txt hint"></div>
@@ -187,20 +187,6 @@
               </div>
           </div>
           <div class="column">
-            <div class="box roundedc2 slightpad notxt" id="cycle-toggle">
-              Cycle sprites:
-              <div class="smolbutton atchleft smolbuttonx" id="cycle-on"> on</div>
-              <div class="smolbutton atchright" id="cycle-off"> off</div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="box roundedc2 slightpad notxt" id="sound-toggle">
-              Sound:
-              <div class="smolbutton atchleft smolbuttonx" id="sound-on"> on</div>
-              <div class="smolbutton atchright" id="sound-off"> off</div>
-            </div>
-          </div>
-          <div class="column">
             <div id="lang_box" class="box roundedc2 padright"></div>
           </div>
           <div class="column">
@@ -229,6 +215,13 @@
                   <div class="arrowbutton ableft" onclick="orderclose()"><i class="arrow aleft"></i></div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="box roundedc2 slightpad notxt" id="cycle-toggle">
+              Cycle sprites:
+              <div class="smolbutton atchleft smolbuttonx" id="cycle-on"> on</div>
+              <div class="smolbutton atchright" id="cycle-off"> off</div>
             </div>
           </div>
         </div>
@@ -301,11 +294,11 @@
 		      <div class="row2">
             <div class="button-s roundedh hovg" id="gen7" ><div class="mshow">7</div><div class="mhide">Gen 7</div><img id="gen7img" src=sprites/unknown-1.png class="spritec cropped"></div>
             <div class="button-s roundedc hovg" id="gen8" ><div class="mshow">8</div><div class="mhide">Gen 8</div><img id="gen8img" src=sprites/unknown-1.png class="spritec cropped"></div>
-			      <div class="button-s roundedg hovg <!--playtext cursor-->" style="display:none;" id="gen8-5"><div class="mshow" style="margin-left: -3px;">H</div><div class="mhide">Hisui</div><img id="gen8-5img" src=sprites/cyndaquil.png class="spritec cropped"></div>
+			      <div class="button-s roundedg hovg <!--playtext cursor-->" style="display:none;" id="gen8-5"><div class="mshow" style="margin-left: -3px;">H</div><div class="mhide">Hisui</div><img id="gen8-5img" src=sprites/unknown-1.png class="spritec cropped"></div>
             <div class="button-s roundedg hovg" id="gen9" ><div class="mshow">9</div><div class="mhide">Gen 9</div><img id="gen9img" src=sprites/unknown-1.png class="spritec cropped"></div>
           </div>
           <div id="starttype">
-            <div class="button-s roundedb hovg noborder" id="type0" onclick="typeselectmenuInitial()">Types<img id="type-img" src=images/TypeQuiz.png class="symbol2"></div>
+            <div class="button-s roundedb hovg" id="type0" onclick="typeselectmenuInitial()">Types<img id="type-img" src=images/TypeQuiz.png class="symbol2"></div>
 		      </div>
         </div>
       </div>
@@ -382,7 +375,8 @@
     <div id="wrongquiz" class="snackbar"></div>
     <script src="levenshtein.js"></script>
     <script src="tmi.min.js"></script>
-    <script src="encoded.js?v=9.0"></script>
-    <script src="front.js?v=9.0"></script>
+    <script src="js/bundle.js"></script>
+
+
   </body>
 </html>
