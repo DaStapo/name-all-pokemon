@@ -2,18 +2,18 @@
 let allLanguages= ['ENG', 'FRE', 'GER', 'ESP', 'ITA', 'KOR', 'JPN', 'CHT', 'CHS']
 
 let typeList = ["normal", "fire", "water", "grass", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy"]
-let boxIds = ["1", "2", "3", "4", "5", "6", "7", "mega", "7-5", "8", "gmax", "8-5", "9"]
+let boxIds = ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "mega", "unknown", "galar", "gmax", "hisui", "paldea", "kitakami"]
 let genQuizBoxes= {
-    "0":["1", "2", "3", "4", "5", "6", "7", "7-5", "8", "8-5","9"],
-    "1":["1"],
-    "2":["2"],
-    "3":["3"],
-    "4":["4"],
-    "5":["5", "mega"],
-    "6":["6"],
-    "7":["7"],
-    "8":["8"],
-    "9":["9"],
+    "0":["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "unknown", "galar", "hisui", "paldea", "kitakami"],
+    "1":["kanto"],
+    "2":["johto"],
+    "3":["hoenn"],
+    "4":["sinnoh"],
+    "5":["unova"],
+    "6":["kalos", "mega"],
+    "7":["alola", "unknown"],
+    "8":["galar", "gmax", "hisui"],
+    "9":["paldea", "kitakami"],
 }
 
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
@@ -1498,6 +1498,7 @@ let regionToSingle = function (regionElement){
 }
 
 let regionToAll = function (regionElement){
+    console.log(regionElement.id)
     regionElement.classList.add('region');
     regionElement.classList.remove('regionb');
 }

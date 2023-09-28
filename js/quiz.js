@@ -280,7 +280,7 @@ class Quiz {
             for (let box in this.currentBoxes){
                 regionToAll(document.getElementById("region"+box));
             }
-            document.getElementById("pokemon-box-7-5").classList.remove('unknownbox');   
+            document.getElementById("pokemon-box-unknown").classList.remove('unknownbox');   
 
             for (let i = 0; i < this.allSprites.length; i++) {
                 this.allSprites[i].classList.add('sprite');
@@ -295,7 +295,7 @@ class Quiz {
             for (let box in this.currentBoxes){
                 regionToSingle(document.getElementById("region"+box));
             } 
-            document.getElementById("pokemon-box-7-5").classList.add('unknownbox');
+            document.getElementById("pokemon-box-unknown").classList.add('unknownbox');
             for (let i = 0; i < this.allSprites.length; i++) {
                 this.allSprites[i].classList.add('spritew');
                 this.allSprites[i].classList.remove('sprite');
@@ -307,7 +307,7 @@ class Quiz {
             }
         }else{
             //TYPE TODO ALL OF THIS BETTER
-            document.getElementById("pokemon-box-7-5").classList.remove('unknownbox');   
+            document.getElementById("pokemon-box-unknown").classList.remove('unknownbox');   
             for (let box in this.currentBoxes){
                 regionToSingle(document.getElementById("region"+box));
             }
