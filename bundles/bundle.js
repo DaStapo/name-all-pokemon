@@ -855,7 +855,7 @@ let allLanguages= ['ENG', 'FRE', 'GER', 'ESP', 'ITA', 'KOR', 'JPN', 'CHT', 'CHS'
 let typeList = ["normal", "fire", "water", "grass", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy"]
 let boxIds = ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "mega", "unknown", "galar", "gmax", "hisui", "paldea", "kitakami"]
 let genQuizBoxes= {
-    "0":["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "unknown", "galar", "hisui", "paldea", "kitakami"],
+    "0":["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "mega", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "kitakami"],
     "1":["kanto"],
     "2":["johto"],
     "3":["hoenn"],
@@ -2349,7 +2349,6 @@ let regionToSingle = function (regionElement){
 }
 
 let regionToAll = function (regionElement){
-    console.log(regionElement.id)
     regionElement.classList.add('region');
     regionElement.classList.remove('regionb');
 }
