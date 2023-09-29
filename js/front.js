@@ -1248,8 +1248,11 @@ function addTransitionCss(){
         elems[i].classList.add("transition-element")
         
     }
-
-
+    if ((new Date()).getHours() >= 18){
+        setTimeout(() => {
+            document.getElementById("darkon").click();
+        }, 10)
+    }
 }
 
 
@@ -1262,7 +1265,7 @@ function onLoadingComplete() {
     document.getElementById("spinner").style.display = "none";
     document.getElementById("missing-ENG").click()
     changeFooterPosition();
-    const allElements = document.querySelectorAll('*');
+    
 
     addTransitionCss();
 }
