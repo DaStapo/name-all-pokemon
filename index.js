@@ -64,6 +64,8 @@ app.get('/artists', async(req , res) => {
 });
 
 let jsonDataFiles = ["pokemon", "suffix_namings", "translations", "encoded_images", "namings", "sprite_cycles"]
+
+let pkmnDataCache = null;
 app.get('/pkmnData.json', async (req, res) => {
     try {
         const jsonData = {};
@@ -72,10 +74,15 @@ app.get('/pkmnData.json', async (req, res) => {
             const fileData = fs.readFileSync(filePath, 'utf8');
             jsonData[fileName] = JSON.parse(fileData);
         }
+        pkmnDataCache = jsonData
         res.json(jsonData);
     } catch (error) {
         console.log(error)
-        res.status(500).json({ error: 'Internal Server Error' });
+        try{
+            res.json(pkmnDataCache);
+        }catch (error2){
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
     }
 });
 

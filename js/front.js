@@ -31,7 +31,7 @@ let currentType = ""
 let activeTimer = false;
 let shinyEnabled = false
 let isTwitchOn = false;
-
+var soundEnabled = true;
 var client;
 let rankVals = [
 	'rankone',
@@ -323,7 +323,9 @@ async function loadData(){
         let correct = res[0]
         let message = res[1]
         if (correct){
-            soundEffect.play();
+            if(soundEnabled){
+                soundEffect.play();
+            }
             setCounter(quiz.getScore());
             if (!activeTimer) {
                 if (currentTime === 0) {
@@ -377,11 +379,13 @@ async function loadData(){
 
 
     function showCongrats() {
+        inputField.disabled = true;
         updateFullLeaderboard();
         clearInterval(activeTimer);
         document.getElementById("overlay").style.display = "block";
-        soundEffect2.play();
-    
+        if(soundEnabled){
+            soundEffect2.play();
+        }
         let timerScore = '';
         let pokemonCount = ''
         if (currentTime === 0) {
@@ -420,7 +424,7 @@ async function loadData(){
 
     function giveUp (){
         updateFullLeaderboard();
-        document.getElementById("pokemon").disabled = true;
+        inputField.disabled = true;
     
         if (Object.keys(quiz.users).length > 1){
             document.getElementById("ranking2").style.display = "block";
@@ -1334,7 +1338,7 @@ function standardizeName(input) {
 
     //delete all special characters
     input = input.replace(/[^ぁ-んァ-ン가-힣a-z0-9-_ß０-９ａ-ｚー\u4e00-\u9fa5\uf91f\uf929Ⅰ-ↈ]/g, '');
-
+    input = input.replace(/[艷]/g, '豔');
     return input;
 }
 
@@ -1359,16 +1363,6 @@ function hideHint(){
     spellingCheck.style.display = "inline-block";
     spellingHint.style.display = "none"
     spellingHint.innerHTML = "";
-}
-
-
-
-function play_single_sound() {
-    document.getElementById('soundeffect').play();
-}
-
-function play_single_sound2() {
-    document.getElementById('soundeffect2').play();
 }
 
 
@@ -1508,7 +1502,7 @@ function onReset(){
     activeTimer = false;
     setCounter(0);
     resetTimer();
-    document.getElementById("pokemon").disabled = false;
+    inputField.disabled = false;
     if (!darkMode)
         recentSprite.src = '/sprites/unknown.png'
     else
@@ -2123,5 +2117,18 @@ document.addEventListener('keydown', function (event) {
       inputField.focus();
     }
   });
+
+document.getElementById("sound-on").onclick = () => {
+    soundEnabled = true
+    visualizeButtonUnclick(document.getElementById("sound-off"))
+    visualizeButtonClick(document.getElementById("sound-on"))
+
+};
+document.getElementById("sound-off").onclick = () => {
+    soundEnabled = false
+    visualizeButtonUnclick(document.getElementById("sound-on"))
+    visualizeButtonClick(document.getElementById("sound-off"))
+};
+
 
 loadData();

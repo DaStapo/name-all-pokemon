@@ -218,7 +218,7 @@ class Quiz {
                 }
 
                 let j = i + 1
-                while (currentPokemonList[i].baseName === currentPokemonList[j].baseName){
+                while (j < currentPokemonList.length && currentPokemonList[i].baseName === currentPokemonList[j].baseName){
                     indexesToRemove.push(j)
                     j++;
                 }
@@ -526,10 +526,13 @@ class Quiz {
         
         if (inputText == "missingno" || inputText == "けつばん"){
 
-            if (!missingnoEnabled){
+            if (!this.missingnoEnabled){
                 this.missingnoEnabled = true;
-                soundEffectMissingno.play();
-                startMissingno()
+                if (soundEnabled){
+                    soundEffectMissingno.play();
+                }
+                
+                this.startMissingno()
                 return [true, "missingno"];
             }
         
