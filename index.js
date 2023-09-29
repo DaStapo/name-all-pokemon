@@ -4,6 +4,11 @@ import compression from 'compression';
 import {dirname} from 'path'
 import path from 'path'
 import fs from 'fs';
+
+import util from 'util'
+const readFile = util.promisify(fs.readFile);
+
+
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -29,9 +34,11 @@ let cssLocation = path.join(__dirname + '/style.css');
 let soundFolder = path.join(__dirname + '/sound-effects');
 let imageFolder = path.join(__dirname + '/images');
 let artistsLocation = path.join(__dirname + '/artists.json');
+let maintenanceStatusLocation = path.join(__dirname + '/maintenance.json');
+let maintenancePage = path.join(__dirname + '/maintenance.html');
+let errorPage = path.join(__dirname + '/error.html');
 
 app.use('/js', express.static('bundles'));
-app.use('/images', express.static('public/images'));
 app.use('/images', express.static('public/images'));
 app.use('/Data-Icons', express.static('public/Data-Icons'));
 app.use('/images_medium', express.static('public/images_medium'));
@@ -39,8 +46,23 @@ app.use('/cacheable', express.static('public/cacheable'));
 app.set('view engine', 'ejs');
 
 app.get('/', async (req, res) => {
-    res.sendFile(indexLocation);
+    try {
+        const data = await readFile(maintenanceStatusLocation, 'utf8');
+        const jsonData = JSON.parse(data);
+
+        if (jsonData.enabled) {
+            res.send(maintenancePage);
+        } else {
+            res.sendFile(indexLocation);
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(errorPage);
+    }
 });
+
+
+
 app.get('/favicon.ico', async (req, res) => {
     res.sendFile(icon);
 });
@@ -66,21 +88,25 @@ app.get('/artists', async(req , res) => {
 let jsonDataFiles = ["pokemon", "suffix_namings", "translations", "encoded_images", "namings", "sprite_cycles"]
 
 let pkmnDataCache = null;
+
 app.get('/pkmnData.json', async (req, res) => {
     try {
         const jsonData = {};
-        for (const fileName of jsonDataFiles) {
+
+        // Use Promise.all to read all files asynchronously
+        await Promise.all(jsonDataFiles.map(async (fileName) => {
             const filePath = path.join(__dirname, 'pkmn_data', `${fileName}.json`);
-            const fileData = fs.readFileSync(filePath, 'utf8');
+            const fileData = await readFile(filePath, 'utf8');
             jsonData[fileName] = JSON.parse(fileData);
-        }
-        pkmnDataCache = jsonData
+        }));
+
+        pkmnDataCache = jsonData;
         res.json(jsonData);
     } catch (error) {
-        console.log(error)
-        try{
+        console.log(error);
+        try {
             res.json(pkmnDataCache);
-        }catch (error2){
+        } catch (error2) {
             res.status(500).json({ error: 'Internal Server Error' });
         }
     }
