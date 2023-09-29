@@ -1248,7 +1248,8 @@ function addTransitionCss(){
         elems[i].classList.add("transition-element")
         
     }
-    if ((new Date()).getHours() >= 18){
+    let currentDate = new Date()
+    if (currentDate.getHours() >= 18 || currentDate.getHours() <= 7){
         setTimeout(() => {
             document.getElementById("darkon").click();
         }, 10)
