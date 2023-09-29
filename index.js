@@ -1,30 +1,22 @@
+const express = require('express');
+const compression = require('compression');
+const path = require('path');
+const fs = require('fs');
+const util = require('util');
+const { fileURLToPath } = require('url');
 
-import express from 'express';
-import compression from 'compression';
-import {dirname} from 'path'
-import path from 'path'
-import fs from 'fs';
-
-import util from 'util'
 const readFile = util.promisify(fs.readFile);
-
-
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-
-app.use(compression()); 
-app.use(express.json()); 
+app.use(compression());
+app.use(express.json());
 app.use(express.static('public'));
-//TODO use webpack instead
+
 app.use('/js', express.static('js'));
 let indexLocation = path.join(__dirname + '/NameAllPokémonQuiz.html');
 let icon = path.join(__dirname + '/favicon.ico');
-//let jsLocation = path.join(__dirname + '/front.js');
 let twitchLocation = path.join(__dirname + '/tmi.min.js');
 let levenshteinLocation = path.join(__dirname + '/levenshtein.js');
 let spritesFolder = path.join(__dirname + '/sprites');
@@ -51,37 +43,35 @@ app.get('/', async (req, res) => {
         const jsonData = JSON.parse(data);
 
         if (jsonData.enabled) {
-            res.send(maintenancePage);
+            res.sendFile(maintenancePage);
         } else {
             res.sendFile(indexLocation);
         }
     } catch (error) {
         console.error(error);
-        res.status(500).send(errorPage);
+        res.status(500).sendFile(errorPage);
     }
 });
 
-
+app.get('/admin', async (req, res) => {
+    res.sendFile(indexLocation);
+});
 
 app.get('/favicon.ico', async (req, res) => {
     res.sendFile(icon);
 });
 
-/*
-app.get('js/front.js', async(req , res) => {
-    res.sendFile(jsLocation);
-});*/
-app.get('/tmi.min.js', async(req , res) => {
+app.get('/tmi.min.js', async (req, res) => {
     res.sendFile(twitchLocation);
 });
-app.get('/levenshtein.js', async(req , res) => {
+app.get('/levenshtein.js', async (req, res) => {
     res.sendFile(levenshteinLocation);
 });
-app.get('/style.css', async(req , res) => {
+app.get('/style.css', async (req, res) => {
     res.sendFile(cssLocation);
 });
 
-app.get('/artists', async(req , res) => {
+app.get('/artists', async (req, res) => {
     res.sendFile(artistsLocation);
 });
 
@@ -112,22 +102,22 @@ app.get('/pkmnData.json', async (req, res) => {
     }
 });
 
-app.post('/misspelling', async(req, res) => {
-	try{
-		let misspelling = req.body.misspelling
-		let suggestion = req.body.suggestion
-		res.status(200).end();
-		
-		let logMsg = misspelling + ":" + suggestion + "\n";
-		
-		fs.writeFile('misspellings.txt',logMsg ,{flag:"a+"}, (err) => {
-			if (err){
-				console.log('logging misspelling failed.', misspelling);
-			}	
-		});
-	}catch(err){
+app.post('/misspelling', async (req, res) => {
+    try {
+        let misspelling = req.body.misspelling;
+        let suggestion = req.body.suggestion;
+        res.status(200).end();
 
-	}
+        let logMsg = misspelling + ":" + suggestion + "\n";
+
+        fs.writeFile('misspellings.txt', logMsg, { flag: "a+" }, (err) => {
+            if (err) {
+                console.log('logging misspelling failed.', misspelling);
+            }
+        });
+    } catch (err) {
+
+    }
 });
 
 

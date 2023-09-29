@@ -4,7 +4,7 @@ import JavaScriptObfuscator from 'javascript-obfuscator';
 
 async function start() {
   await bundleFiles();
-  //await minifyAndObfuscateBundle();
+  await minifyAndObfuscateBundle();
 }
 
 async function bundleFiles() {
@@ -45,12 +45,12 @@ async function minifyAndObfuscateBundle() {
     const obfuscationResult = JavaScriptObfuscator.obfuscate(minifiedBundle.code, {
       compact: true,
       controlFlowFlattening: true,
-      controlFlowFlatteningThreshold: 0.75,
-      numbersToExpressions: true,
+      controlFlowFlatteningThreshold: 0.5,
+      numbersToExpressions: false,
       simplify: true,
       shuffleStringArray: true,
-      splitStrings: true,
-      stringArray: true,
+      splitStrings: false,
+      stringArray: false,
       stringArrayEncoding: ['base64'], // Use 'base64' encoding
     });
 
