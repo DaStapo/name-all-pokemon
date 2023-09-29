@@ -2763,5 +2763,5 @@ animation: lds-ellipsis3 0.6s infinite;
 
 
 .transition-element {
-    transition: all 1.5s ease;
+    transition: all 0.5s ease;
 }

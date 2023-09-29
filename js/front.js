@@ -1233,6 +1233,25 @@ let visualizeButtonUnclick = function(elem){
 }
 
 
+function addTransitionCss(){
+    let elems = []
+    elems.push(document.getElementById("body"))
+    let classNames = ["box", "button", "smolbutton",  "limelight", "greyer", "inlinebox", "spbutton", "twitchbar"]
+    for (const _c of classNames){
+        let _elems = document.getElementsByClassName(_c)
+        for (let i = 0; i < _elems.length; i++){
+            elems.push(_elems[i])
+        }
+    }
+
+    for (let i = 0; i< elems.length; i++){
+        elems[i].classList.add("transition-element")
+        
+    }
+
+
+}
+
 
 function onLoadingComplete() {
     //document.getElementById("loadbox").style.display = "none";
@@ -1245,10 +1264,7 @@ function onLoadingComplete() {
     changeFooterPosition();
     const allElements = document.querySelectorAll('*');
 
-    // Add the "transition-element" class to each element
-    allElements.forEach(element => {
-      element.classList.add('transition-element');
-    });
+    addTransitionCss();
 }
 
 
