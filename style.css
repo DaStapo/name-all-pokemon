@@ -2760,3 +2760,8 @@ animation: lds-ellipsis3 0.6s infinite;
   background-color: #5e5e5e;
   border-color: #5e5e5e;
 }
+
+
+.transition-element {
+    transition: all 1.5s ease;
+}

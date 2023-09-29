@@ -1,6 +1,7 @@
-import { promises as fsPromises } from 'fs';
-import { minify } from 'terser';
-import JavaScriptObfuscator from 'javascript-obfuscator';
+const fsPromises = require('fs').promises;
+const { minify } = require('terser');
+const JavaScriptObfuscator = require('javascript-obfuscator');
+
 
 async function start() {
   await bundleFiles();

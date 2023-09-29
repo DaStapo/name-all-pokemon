@@ -1243,6 +1243,12 @@ function onLoadingComplete() {
     document.getElementById("spinner").style.display = "none";
     document.getElementById("missing-ENG").click()
     changeFooterPosition();
+    const allElements = document.querySelectorAll('*');
+
+    // Add the "transition-element" class to each element
+    allElements.forEach(element => {
+      element.classList.add('transition-element');
+    });
 }
 
 
