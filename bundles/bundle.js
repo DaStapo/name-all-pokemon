@@ -1199,6 +1199,7 @@ async function loadData(){
         let startTimestamp = countdownInMs + Date.now();
     
         activeTimer = setInterval(function () {
+
             let msDiff = startTimestamp - Date.now();
             updateTimer(msDiff);
             if (msDiff <= 0) {
@@ -1620,6 +1621,12 @@ async function loadData(){
             
             quiz.spriteDictionary[standardizeName(key)].src = encodedImages[pathName][currentSprite];
             quiz.unguessedDict[standardizeName(key)].getElementsByTagName('img')[0].src = encodedImages[pathName][currentSprite]
+
+            if (currentSprite in quiz.pokemonIdDict){
+                quiz.unguessedDictTexts[standardizeName(key)].nodeValue = quiz.pokemonIdDict[standardizeName(data[pkmn][currentIndex])].getFormattedName(quiz.currentLang)
+            }else{
+                quiz.unguessedDictTexts[standardizeName(key)].nodeValue = quiz.pokemonIdDict[standardizeName(pkmn)].getFormattedName(quiz.currentLang)
+            }
         }
 
 
@@ -1648,6 +1655,7 @@ async function loadData(){
         }
     
         imgElement.src="images/types/"+typeList[currentIndex].toUpperCase()+".svg"
+        
         
         if (buttonElement.classList.length !== originalClassListLength){
             buttonElement.classList.remove(buttonElement.classList[buttonElement.classList.length-1])
