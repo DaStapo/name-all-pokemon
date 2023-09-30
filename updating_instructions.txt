@@ -8,3 +8,6 @@ ADDING SPRITES
 ADDING NEW BOXES
     edit the box variables at the beginning of front.json
     open CMD in the root folder and do 'npm run build' (this is only required if adding boxes, not needed for other changes)
+
+ENABLE MAINTENANCE
+	open the maintenance.json in the root folder and set it to true
