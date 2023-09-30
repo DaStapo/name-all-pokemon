@@ -2926,6 +2926,20 @@
         "box": "sinnoh"
     },
     {
+        "id": "burmysandy",
+        "baseName": "burmy",
+        "primaryType": "bug",
+        "secondaryType": null,
+        "box": "sinnoh"
+    },
+    {
+        "id": "burmytrash",
+        "baseName": "burmy",
+        "primaryType": "bug",
+        "secondaryType": null,
+        "box": "sinnoh"
+    },
+    {
         "id": "wormadam",
         "baseName": "wormadam",
         "primaryType": "bug",
@@ -4081,6 +4095,13 @@
         "box": "unova"
     },
     {
+        "id": "basculinbluestriped",
+        "baseName": "basculin",
+        "primaryType": "water",
+        "secondaryType": null,
+        "box": "unova"
+    },
+    {
         "id": "sandile",
         "baseName": "sandile",
         "primaryType": "ground",
@@ -4809,6 +4830,13 @@
         "box": "unova"
     },
     {
+        "id": "keldeoresolute",
+        "baseName": "keldeo",
+        "primaryType": "water",
+        "secondaryType": "fighting",
+        "box": "unova"
+    },
+    {
         "id": "meloetta",
         "baseName": "meloetta",
         "primaryType": "normal",
@@ -4824,6 +4852,34 @@
     },
     {
         "id": "genesect",
+        "baseName": "genesect",
+        "primaryType": "bug",
+        "secondaryType": "steel",
+        "box": "unova"
+    },
+    {
+        "id": "genesectburn",
+        "baseName": "genesect",
+        "primaryType": "bug",
+        "secondaryType": "steel",
+        "box": "unova"
+    },
+    {
+        "id": "genesectchill",
+        "baseName": "genesect",
+        "primaryType": "bug",
+        "secondaryType": "steel",
+        "box": "unova"
+    },
+    {
+        "id": "genesectshock",
+        "baseName": "genesect",
+        "primaryType": "bug",
+        "secondaryType": "steel",
+        "box": "unova"
+    },
+    {
+        "id": "genesectdouse",
         "baseName": "genesect",
         "primaryType": "bug",
         "secondaryType": "steel",
@@ -6237,6 +6293,13 @@
         "box": "alola"
     },
     {
+        "id": "marshadowzenith",
+        "baseName": "marshadow",
+        "primaryType": "fighting",
+        "secondaryType": "ghost",
+        "box": "alola"
+    },
+    {
         "id": "poipole",
         "baseName": "poipole",
         "primaryType": "poison",
@@ -7441,6 +7504,13 @@
         "box": "paldea"
     },
     {
+        "id": "mausholdofthree",
+        "baseName": "maushold",
+        "primaryType": "normal",
+        "secondaryType": null,
+        "box": "paldea"
+    },
+    {
         "id": "fidough",
         "baseName": "fidough",
         "primaryType": "fairy",
@@ -7875,6 +7945,13 @@
         "box": "paldea"
     },
     {
+        "id": "dudunsparcethreesegment",
+        "baseName": "dudunsparce",
+        "primaryType": "normal",
+        "secondaryType": null,
+        "box": "paldea"
+    },
+    {
         "id": "kingambit",
         "baseName": "kingambit",
         "primaryType": "dark",
@@ -8121,6 +8198,13 @@
     },
     {
         "id": "ogerpon",
+        "baseName": "ogerpon",
+        "primaryType": "grass",
+        "secondaryType": null,
+        "box": "kitakami"
+    },
+    {
+        "id": "ogerpontealmask",
         "baseName": "ogerpon",
         "primaryType": "grass",
         "secondaryType": null,
