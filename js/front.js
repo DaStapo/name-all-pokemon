@@ -1527,6 +1527,7 @@ function onReset(){
     clearInterval(activeTimer);
     activeTimer = false;
     setCounter(0);
+    setTotal(quiz.getMaxScore());
     resetTimer();
     inputField.disabled = false;
     if (!darkMode)
