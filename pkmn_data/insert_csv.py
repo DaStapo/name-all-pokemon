@@ -41,7 +41,7 @@ def standardizeName(input):
 
     # Delete all special characters using a regular expression
     input = re.sub(r'[^ぁ-んァ-ン가-힣a-z0-9-_ß０-９ａ-ｚー\u4e00-\u9fa5\uf91f\uf929Ⅰ-ↈ]', '', input)
-
+    input = re.sub(r'[艷]', '豔', input)
     return input
 
 with open('data.csv', 'r') as csv_file:

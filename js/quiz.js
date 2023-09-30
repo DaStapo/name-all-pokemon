@@ -45,6 +45,8 @@ class Quiz {
     langCounts = {}
     currentLang = "ENG"
 
+    spriteCycles = {}
+
     filters = {}
     
     constructor(boxDict, genQuizBoxes, allLanguages){
@@ -201,6 +203,9 @@ class Quiz {
                 filters.types.some(type => pokemon.isType(type))
             );
         }
+
+
+        /*
         let maxNumberOfSame = 7
         let indexesToRemove = []
         let i = 0
@@ -226,7 +231,31 @@ class Quiz {
             }else{
                 i++;
             }
+        }*/
+
+
+
+
+        let currentCycles = {}
+        let indexesToRemove = []
+        let i = 0
+        while (i < currentPokemonList.length){
+
+            if(currentPokemonList[i].baseName === currentPokemonList[i+1].baseName){
+                currentCycles[currentPokemonList[i].id] = []
+                let j = 1
+                while (j < currentPokemonList.length && currentPokemonList[i].baseName === currentPokemonList[i+j].baseName){
+                    indexesToRemove.push(i+j)
+                    currentCycles[currentPokemonList[i].id].push(currentPokemonList[i+j].id)
+                    j+=1;
+                }
+                i+=j
+            }
+            i+=1
         }
+
+        this.spriteCycles = currentCycles;
+
         for (let i = indexesToRemove.length - 1; i >= 0; i--) {
             currentPokemonList.splice(indexesToRemove[i] , 1);
         }

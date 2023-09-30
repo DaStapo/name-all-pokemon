@@ -709,7 +709,7 @@ async function loadData(){
 
     function cycleSprites(updateCounter) {
     
-        for (let pkmn in spriteCycles){
+        let updateFunc = (pkmn, data) => {
             let key = standardizeName(pkmn)
             
             let pathName;
@@ -719,15 +719,22 @@ async function loadData(){
                 pathName = 'sprite'
             }
     
-            let currentIndex = updateCounter % spriteCycles[pkmn].length;
+            let currentIndex = updateCounter % data[pkmn].length;
     
             currentIndex = spriteCycling ? currentIndex : 0;
     
-            let currentSprite =  standardizeName( spriteCycles[pkmn][currentIndex]);
+            let currentSprite =  standardizeName( data[pkmn][currentIndex]);
             
             quiz.spriteDictionary[standardizeName(key)].src = encodedImages[pathName][currentSprite];
             quiz.unguessedDict[standardizeName(key)].getElementsByTagName('img')[0].src = encodedImages[pathName][currentSprite]
-    
+        }
+
+
+        for (let pkmn in spriteCycles){
+            updateFunc(pkmn, spriteCycles)
+        }
+        for (let pkmn in quiz.spriteCycles){
+            updateFunc(pkmn, quiz.spriteCycles)
         }
     }
 

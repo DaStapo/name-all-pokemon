@@ -15,7 +15,6 @@
     "unown":["unown", "unown-g", "unown-h", "unown-i", "unown-j", "unown-k", "unown-l", "unown-m", "unown-n", "unown-o", "unown-p", "unown-q", "unown-r", "unown-s", "unown-t", "unown-u", "unown-v", "unown-w", "unown-x", "unown-y", "unown-z", "unown-question", "unown-exclamation", "unown-a", "unown-b", "unown-c", "unown-d", "unown-e"],
     "hippopotas":["hippopotas", "hippopotas-f"],
     "hippowdon":["hippowdon", "hippowdon-f"],
-    "arceus":["arceus", "arceus-Water", "arceus-Grass", "arceus-Fire", "arceus-Electric", "arceus-Ice", "arceus-Ground", "arceus-Flying", "arceus-Fighting", "arceus-Poison", "arceus-Psychic", "arceus-Dark", "arceus-Bug", "arceus-Rock", "arceus-Ghost", "arceus-Steel", "arceus-Dragon", "arceus-Fairy"],
     "silvally":["silvally", "silvally-Water", "silvally-Grass", "silvally-Fire", "silvally-Electric", "silvally-Ice", "silvally-Ground", "silvally-Flying", "silvally-Fighting", "silvally-Poison", "silvally-Psychic", "silvally-Dark", "silvally-Bug", "silvally-Rock", "silvally-Ghost", "silvally-Steel", "silvally-Dragon", "silvally-Fairy"],
     "unfezant":["unfezant", "unfezant-f"],
     "Basculin":["Basculin", "Basculin-Blue-Striped"],
