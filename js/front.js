@@ -1236,7 +1236,7 @@ let visualizeButtonUnclick = function(elem){
 function addTransitionCss(){
     let elems = []
     elems.push(document.getElementById("body"))
-    let classNames = ["box", "button", "smolbutton",  "limelight", "greyer", "inlinebox", "spbutton", "twitchbar"]
+    let classNames = ["box", "button", "smolbutton",  "limelight", "greyer", "inlinebox", "spbutton", "twitchbar", "bgpattern", "bgpattern2"]
     for (const _c of classNames){
         let _elems = document.getElementsByClassName(_c)
         for (let i = 0; i < _elems.length; i++){
@@ -1257,6 +1257,18 @@ function addTransitionCss(){
 }
 
 
+function preloadSmallerImages(){
+    
+
+    for (let i = 0; i < typeList.length; i++){
+        let typeName = typeList[i].toUpperCase()
+        let img = new Image()
+        img.src = "/images/types/"+ typeName +".svg";
+    }
+
+
+}
+
 function onLoadingComplete() {
     //document.getElementById("loadbox").style.display = "none";
     document.getElementById("loader").style.display = "none";
@@ -1269,6 +1281,7 @@ function onLoadingComplete() {
     
 
     addTransitionCss();
+    preloadSmallerImages();
 }
 
 

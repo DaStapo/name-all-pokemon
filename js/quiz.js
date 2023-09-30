@@ -360,8 +360,15 @@ class Quiz {
 
             document.getElementById("bgpattern").style.display = 'block';
             document.getElementById("bgpattern2").style.display = 'block';
-            document.getElementById("bgpattern").src = "/images/types/"+ imgName+".svg";
             document.getElementById("bgpattern2").src = "/images/types/"+ imgName +".svg";
+            document.getElementById("bgpattern2").src = "/images/types/"+ imgName +".svg";
+
+            document.getElementById("bgpattern").style.opacity = 0;
+            setTimeout(()=>{
+                document.getElementById("bgpattern").src = "/images/types/"+ imgName+".svg";
+
+                document.getElementById("bgpattern").style.opacity = 1;
+            },250)
         }else{
             document.getElementById("body").classList.remove("blend")
             document.getElementById("body").classList.remove("blenddark")
