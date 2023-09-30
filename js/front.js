@@ -1234,7 +1234,7 @@ async function loadData(){
             quiz.paused = true;
             inputField.disabled = true;
             document.getElementById("pause-overlay").style.display = "block"
-            document.body.style.overflow = 'hidden';
+            //document.body.style.overflow = 'hidden';
        // }
     }
 
@@ -1243,7 +1243,7 @@ async function loadData(){
         quiz.paused = false;
         inputField.disabled = false;
         document.getElementById("pause-overlay").style.display = "none"
-        document.body.style.overflow = 'auto';
+        //document.body.style.overflow = 'auto';
 
     }
 
