@@ -4788,13 +4788,6 @@
         "box": "unova"
     },
     {
-        "id": "kyuremblackactive",
-        "baseName": "kyurem",
-        "primaryType": "dragon",
-        "secondaryType": "ice",
-        "box": "unova"
-    },
-    {
         "id": "kyuremwhite",
         "baseName": "kyurem",
         "primaryType": "dragon",
@@ -8129,13 +8122,6 @@
     {
         "id": "ogerpon",
         "baseName": "ogerpon",
-        "primaryType": "grass",
-        "secondaryType": null,
-        "box": "kitakami"
-    },
-    {
-        "id": "ogerpon",
-        "baseName": "ogerpontealmask",
         "primaryType": "grass",
         "secondaryType": null,
         "box": "kitakami"

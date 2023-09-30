@@ -1196,12 +1196,22 @@ async function loadData(){
     
 
     function startCountdown(minutes) {
+
         let countdownInMs = minutes * 60 * 1000;
         let startTimestamp = countdownInMs + Date.now();
-    
+        let prevTimestamp = Date.now()
         activeTimer = setInterval(function () {
+            
+            let currentTime = Date.now()
+            if (paused){
 
-            let msDiff = startTimestamp - Date.now();
+                startTimestamp+= currentTime - prevTimestamp
+            }
+            
+            let msDiff = startTimestamp - currentTime;
+
+            prevTimestamp = currentTime
+
             updateTimer(msDiff);
             if (msDiff <= 0) {
                 giveUp();
@@ -2351,11 +2361,18 @@ function setTotal(count) {
 }
 
 function startTimer() {
-    let startTimestamp = Date.now();
+    let prevTimestamp = Date.now();
+    let total = 0
 
     activeTimer = setInterval(function () {
-        let msDiff = Date.now() - startTimestamp;
-        updateTimer(msDiff);
+
+        let msDiff = Date.now() - prevTimestamp ;
+        prevTimestamp = Date.now();
+        if (!paused){
+            total+=msDiff
+        }
+        
+        updateTimer(total);
     }, 100)
 
 }
