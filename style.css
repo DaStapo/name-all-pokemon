@@ -897,6 +897,9 @@
     z-index: 4;
 	cursor: pointer;
 	}
+	.pauseoverlay {
+		background-color: rgba(16,17,14,1) !important;
+	}
 	.pointer {
 	cursor: pointer;
 	}
