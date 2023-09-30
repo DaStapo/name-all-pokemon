@@ -8498,6 +8498,13 @@
         "box": "mega"
     },
     {
+        "id": "greninjaash",
+        "baseName": "greninja",
+        "primaryType": "water",
+        "secondaryType": "dark",
+        "box": "mega"
+    },
+    {
         "id": "dianciemega",
         "baseName": "diancie",
         "primaryType": "rock",
