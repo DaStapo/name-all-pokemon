@@ -1229,23 +1229,28 @@ async function loadData(){
     }
     
     function pauseOn (){
-        
-        paused = true;
-        inputField.disabled = true;
-        document.getElementById("pause-overlay").style.display = "block"
-        
-
+        if (activeTimer){
+            paused = true;
+            quiz.paused = true;
+            inputField.disabled = true;
+            document.getElementById("pause-overlay").style.display = "block"
+            document.body.style.overflow = 'hidden';
+        }
     }
 
     function pauseOff (){
         paused = false;
-        inputField.enabled = true;
+        quiz.paused = false;
+        inputField.disabled = false;
         document.getElementById("pause-overlay").style.display = "none"
+        document.body.style.overflow = 'auto';
+
     }
+
     document.getElementById("unpause").onclick = () =>{
         pauseOff();
     }
-    document.getElementById("pause").onclick = () =>{
+    document.getElementById("silhouette").onclick = () =>{
         pauseOn();
     } 
     changeFooterPosition();

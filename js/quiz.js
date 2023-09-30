@@ -48,6 +48,8 @@ class Quiz {
     spriteCycles = {}
 
     filters = {}
+
+    paused = false;
     
     constructor(boxDict, genQuizBoxes, allLanguages){
         this.boxDict = boxDict;
@@ -552,6 +554,9 @@ class Quiz {
 
 
     parseInput(inputText, user){
+        if(paused){
+            return [false, null]
+        }
         inputText = inputText.toLowerCase()
         
         let inputs = []

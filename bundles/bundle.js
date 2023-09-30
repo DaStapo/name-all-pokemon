@@ -80,6 +80,8 @@ class Quiz {
     spriteCycles = {}
 
     filters = {}
+
+    paused = false;
     
     constructor(boxDict, genQuizBoxes, allLanguages){
         this.boxDict = boxDict;
@@ -584,6 +586,9 @@ class Quiz {
 
 
     parseInput(inputText, user){
+        if(paused){
+            return [false, null]
+        }
         inputText = inputText.toLowerCase()
         
         let inputs = []
@@ -2120,6 +2125,31 @@ async function loadData(){
         }
     }
     
+    function pauseOn (){
+        
+        paused = true;
+        quiz.paused = true;
+        inputField.disabled = true;
+        document.getElementById("pause-overlay").style.display = "block"
+        document.body.style.overflow = 'hidden';
+
+    }
+
+    function pauseOff (){
+        paused = false;
+        quiz.paused = false;
+        inputField.enabled = false;
+        document.getElementById("pause-overlay").style.display = "none"
+        document.body.style.overflow = 'auto';
+
+    }
+    
+    document.getElementById("unpause").onclick = () =>{
+        pauseOff();
+    }
+    document.getElementById("silhouette").onclick = () =>{
+        pauseOn();
+    } 
     changeFooterPosition();
     onLoadingComplete()
 }
