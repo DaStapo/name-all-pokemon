@@ -32,6 +32,8 @@ let activeTimer = false;
 let shinyEnabled = false
 let isTwitchOn = false;
 var soundEnabled = true;
+var paused = false;
+
 var client;
 let rankVals = [
 	'rankone',

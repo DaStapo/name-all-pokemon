@@ -274,13 +274,14 @@ class Quiz {
         while (i < currentPokemonList.length-1){
 
             if(currentPokemonList[i].baseName === currentPokemonList[i+1].baseName){
-                currentCycles[currentPokemonList[i].id] = []
+                currentCycles[currentPokemonList[i].id] = [currentPokemonList[i].id]
                 let j = 1
                 while ((i+j)  < currentPokemonList.length && currentPokemonList[i].baseName === currentPokemonList[i+j].baseName){
                     indexesToRemove.push(i+j)
                     currentCycles[currentPokemonList[i].id].push(currentPokemonList[i+j].id)
                     j+=1;
                 }
+                j-=1
                 i+=j
             }
             i+=1
@@ -922,6 +923,8 @@ let activeTimer = false;
 let shinyEnabled = false
 let isTwitchOn = false;
 var soundEnabled = true;
+var paused = false;
+
 var client;
 let rankVals = [
 	'rankone',

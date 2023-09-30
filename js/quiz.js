@@ -249,6 +249,7 @@ class Quiz {
                     currentCycles[currentPokemonList[i].id].push(currentPokemonList[i+j].id)
                     j+=1;
                 }
+                j-=1
                 i+=j
             }
             i+=1
