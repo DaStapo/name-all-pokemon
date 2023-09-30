@@ -242,7 +242,7 @@ class Quiz {
         while (i < currentPokemonList.length-1){
 
             if(currentPokemonList[i].baseName === currentPokemonList[i+1].baseName){
-                currentCycles[currentPokemonList[i].id] = []
+                currentCycles[currentPokemonList[i].id] = [currentPokemonList[i].id]
                 let j = 1
                 while ((i+j)  < currentPokemonList.length && currentPokemonList[i].baseName === currentPokemonList[i+j].baseName){
                     indexesToRemove.push(i+j)
