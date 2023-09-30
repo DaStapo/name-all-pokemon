@@ -463,6 +463,7 @@ class Quiz {
         for (let id in this.unguessedDictTexts){
             this.unguessedDictTexts[id].nodeValue  = this.pokemonIdDict[id].getFormattedName(lang)
         }
+        this.currentLang = lang
     }
 
 
