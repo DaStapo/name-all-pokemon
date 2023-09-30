@@ -2126,28 +2126,28 @@ async function loadData(){
     }
     
     function pauseOn (){
-        
-        paused = true;
-        quiz.paused = true;
-        inputField.disabled = true;
-        document.getElementById("pause-overlay").style.display = "block"
-        document.body.style.overflow = 'hidden';
-
+        //if (activeTimer){
+            paused = true;
+            quiz.paused = true;
+            inputField.disabled = true;
+            document.getElementById("pause-overlay").style.display = "block"
+            document.body.style.overflow = 'hidden';
+       // }
     }
 
     function pauseOff (){
         paused = false;
         quiz.paused = false;
-        inputField.enabled = false;
+        inputField.disabled = false;
         document.getElementById("pause-overlay").style.display = "none"
         document.body.style.overflow = 'auto';
 
     }
-    
+
     document.getElementById("unpause").onclick = () =>{
         pauseOff();
     }
-    document.getElementById("silhouette").onclick = () =>{
+    document.getElementById("pause").onclick = () =>{
         pauseOn();
     } 
     changeFooterPosition();
@@ -2499,6 +2499,10 @@ function onReset(){
     setTotal(quiz.getMaxScore());
     resetTimer();
     inputField.disabled = false;
+
+
+
+    
     if (!darkMode)
         recentSprite.src = '/sprites/unknown.png'
     else
