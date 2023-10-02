@@ -155,9 +155,9 @@
           </div>
           <div class="column">
             <div class="column">
-              <div id="fullQuizButton" class="button-e btL grborder roundedc2 spbutton shadowc" onclick="gen0click()">Full Quiz<img src=images/FullQuiz.png class="iconq"></div>
-              <div id="genselect" class="button-e btC grborder roundedc2 spbutton shadowc" onclick="genselectmenu()">Generation Quiz<img src=images/GenQuiz.png class="iconq"></div>
-              <div id="typeselect" class="button-e btR grborder roundedc2 spbutton shadowc" onclick="typeselectmenu()">Type Quiz<img src=images/TypeQuiz.png class="iconq"></div>
+              <div id="fullQuizButton" class="button-e btL grborder roundedc2 spbutton shadowc" onclick="gen0click()">Full Quiz<img src="/images/FullQuiz.png" class="iconq"></div>
+              <div id="genselect" class="button-e btC grborder roundedc2 spbutton shadowc" onclick="genselectmenu()">Generation Quiz<img src="/images/GenQuiz.png" class="iconq"></div>
+              <div id="typeselect" class="button-e btR grborder roundedc2 spbutton shadowc" onclick="typeselectmenu()">Type Quiz<img src="/images/TypeQuiz.png "class="iconq"></div>
             </div>
             <div class="column"> 
               <div class="column">
@@ -204,14 +204,14 @@
         </div>
         <div class="row">
           <div class="column">
-            <div id="hostButton" class="button-e grborder roundedc2 spbutton shadowc" onclick="hostclick()">Multiplayer Quiz<img src=images/HostQuiz.png class="iconq"></div>
-          </div>
-          <div class="column" style="display:none;">
-            <div id="linkButton" class="button-e grborder roundedc2 spbutton shadowc" onclick="linkclick()">Copy Guest Link<img src=images/LinkQuiz.png class="iconq"></div>
+            <div id="hostButton" class="button-e grborder roundedc2 spbutton shadowc">Multiplayer Quiz<img src="/images/HostQuiz.png" class="iconq"></div>
           </div>
           <div class="column">
-            <div class="box roundedc2 slightpad" id="inputbox">
-              <div class="twitchbar" id="twitch-bar" onclick="twitchopen()"><img src=images/TwitchLogo.png class="icont">Twitch-chat input
+            <div id="linkButton" class="button-e grborder roundedc2 spbutton shadowc" style="display:none;">Copy Guest Link<img src="/images/LinkQuiz.png" class="iconq"></div>
+          </div>
+          <div class="column">
+            <div class="box roundedc2 slightpad" id="twitchbox">
+              <div class="twitchbar" id="twitch-bar" onclick="twitchopen()"><img src="/images/TwitchLogo.png" class="icont">Twitch-chat input
               <div class="arrowbutton abright" id="twitch-open"><i class="arrow aright"></i></div>
               </div>
               <div id="twitch-coll" class="twitch-coll">
@@ -404,7 +404,7 @@
         <h2>Choose your username</h2>
         <!--<p>[insert useful info]</p>-->
         <br />
-        <input type="text" class="input-twitch input-user" id="username" maxlength="25" autocomplete="off" placeholder="username">
+        <input type="text" id="input-username" class="input-twitch input-user" id="username" maxlength="25" autocomplete="off" placeholder="username">
         <div class="smolbutton atchleft2" id="username-confirm"> set</div>
       </div>
     </div>

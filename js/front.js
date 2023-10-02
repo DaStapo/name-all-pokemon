@@ -90,8 +90,9 @@ let pauseBtn = document.getElementById("pause")
 let main = document.getElementById("main");
 let footer = document.getElementById("footer");
 
-let hostGame = document.getElementById("host")
-
+let hostGame = document.getElementById("hostButton")
+let linkGame = document.getElementById("linkButton")
+let usernamePrompt = document.getElementById("promptusername")
 let boxDict = {}
 
 for (let i = 0; i < boxIds.length; i++){
@@ -128,10 +129,10 @@ let roomId = getRoomNameFromURL();
 MAX_RETRIES = 5
 RETRY_INTERVAL_MS = 1000
 retries = 0
-async function fetchData(endpoint, method='GET') {
+async function fetchData(endpoint) {
     try {
         let response = await fetch('/'+endpoint, {
-            method: method,
+            method: "GET",
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -153,16 +154,29 @@ async function fetchData(endpoint, method='GET') {
     }
 }
 
-fetchData("roomExists", "POST").then((result) =>{
-    if (!result["success"]){
-        //noSuchRoom();
-    }
-})
-
+async function postData(endpoint, body) {
+  
+    let response = await fetch('/'+endpoint, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(body)
+    });
+    let data = await response.json();  
+    return data;
+    
+}
 
 
 //if (roomId)
 if (roomId.length > 1){
+    postData("roomExists", {"roomId":roomId}).then((result) =>{
+        if (!result["success"]){
+            noSuchRoom();
+        }
+    })
+
     radioSilhouette .style.display="none"
     giveUpBtn.style.display="none"
     resetBtn.style.display="none"
@@ -175,6 +189,8 @@ if (roomId.length > 1){
     document.getElementById("timers").style.display="none"
     document.getElementById("twitchbox").style.display="none"
     document.getElementById("fullQuizButton").style.display="none"
+    document.getElementById("playtext").style.display="none"
+    pauseBtn.style.display = "none"
 }else{
     roomId = null;
 }
@@ -254,7 +270,7 @@ async function loadData(){
     }
     function socketSetSilhouettes(){
         if (socket !== null && isSocketHost){
-            socket.emit('stateChange', {"useSilhouettes":true})
+            socket.emit('stateChange', {"silhouettes":true})
         }
     }
     function socketSetPaused(val){
@@ -288,7 +304,15 @@ async function loadData(){
         });
 
         socket.on('roomCreated', (roomId) => {
-            console.log("pkmnquiz.com/join/"+roomId)
+            linkGame.onclick = function(){
+                var currentURL = new URL(window.location.href);
+                var currentDomain = currentURL.hostname + (currentURL.port ? ':' + currentURL.port : '');
+                let url = currentDomain + "/join/"+roomId
+                navigator.clipboard.writeText(url)
+                showUserMessage("Copied link to clipboard ("+url+")")
+            }
+            linkGame.style.display = "block"
+            hostGame.style.display = "none"
         });
 
         socket.on('named', (data) =>{
@@ -362,14 +386,47 @@ async function loadData(){
     }
 
     hostGame.onclick = function (){
-        let username = "kekec"
         enableSocket();
         isSocketHost = true;
-        host(username);
+        usernamePrompt.style.display = "block"
+        document.getElementById("username-confirm").onclick = function (){
+            let username = document.getElementById("input-username").value
+            if(username.length <2){
+                showUserMessage("Username should be at least 2 characters long")
+                return;
+            }else{
+                usernamePrompt.style.display = "none"
+                
+                hostGame.disabled = true;
+                hostGame.innerText = "Generating room..."
+                host(username);
+            }
+
+        }
     }
+
+
+
+
+
     if (roomId !== null){
-        enableSocket();
-        joinRoom("visitor")
+
+        usernamePrompt.style.display = "block"
+        document.getElementById("username-confirm").onclick = function (){
+            let username = document.getElementById("input-username").value
+            if(username.length <2){
+                showUserMessage("Username should be at least 2 characters long")
+                return;
+            }else{
+                usernamePrompt.style.display = "none"
+                off2()
+                enableSocket();
+                joinRoom(username)
+            }
+
+        }
+
+
     }
 
 
@@ -420,7 +477,7 @@ async function loadData(){
                     for (let j = 0; j < sprites.length; j++) {
                       spriteString += sprites[j] + '<br>';
                     }
-                  
+
                     let artistString = '';
                     for (let j = 0; j < artists.length; j++) {
                       artistString += artists[j] + ', ';
@@ -1672,7 +1729,7 @@ async function loadData(){
         state["named"] = [...quiz.named]
         state["users"] = quiz.users
         state["paused"] = quiz.paused
-        state["useSilhouettes"] = quiz.useSilhouettes
+        state["silhouettes"] = quiz.isSilhouettesEnabled()
     
         state["timer"] = timerObj
     
@@ -1725,7 +1782,7 @@ async function loadData(){
         state["named"] = new Set(state["named"])
 
         quiz.setQuiz(state["quizName"], state["filters"])
-        if (state["useSilhouettes"]){
+        if (state["silhouettes"]){
             quiz.setSilhouettes();
         }
         

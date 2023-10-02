@@ -192,10 +192,11 @@ function countInstances(list, targetString) {
 
 app.post('/roomExists', async (req, res) => {
     try {
-        let roomId = req.roomId
-        res.send({"success":roomId in existingRooms})
+        console.log(req)
+        let roomId = req.body.roomId
+        res.json({"success":roomId in existingRooms})
     } catch (err) {
-        res.send({"success":false})
+        res.json({"success":false})
     }
 });
 
@@ -297,6 +298,7 @@ io.on('connection', (socket) => {
 
     });
 });
+  
 
 
 // start the server
