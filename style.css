@@ -516,6 +516,21 @@
 		font-size: 16px;
 		min-width: 90px;
 	}
+	.btL {
+		border-radius: 13px 0px 0px 3px !important;
+		border-right-style: dotted !important;
+	}
+	.btR {
+		margin: 10px 0px 0px -6px !important;
+		border-radius: 0px 3px 13px 0px !important;
+		border-left-style: dotted !important;
+	}
+	.btC {
+		margin: 10px 0px 0px -6px !important;
+		border-radius: 0px 0px 0px 0px !important;
+		border-left-style: dotted !important;
+		border-right-style: dotted !important;
+	}
 	.grborder {
 		border: 2px solid rgba(255, 255, 255, 0.85);
 	}
