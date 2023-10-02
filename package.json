@@ -14,6 +14,7 @@
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "javascript-obfuscator": "^4.1.0",
-    "minify": "^10.5.2"
+    "minify": "^10.5.2",
+    "socket.io": "^4.7.2"
   }
 }

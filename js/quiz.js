@@ -529,13 +529,13 @@ class Quiz {
         let missingnoPath;
         let randNr = randomIntFromInterval(0, 100);
         if (randNr < 70){
-            missingnoPath = 'images/missingno.png';
+            missingnoPath = '/images/missingno.png';
         }
         else if (randNr < 90){
-            missingnoPath = 'images/missingno2.png';
+            missingnoPath = '/images/missingno2.png';
         }
         else{
-            missingnoPath = 'images/missingno3.png';
+            missingnoPath = '/images/missingno3.png';
         }
         visibleSprites[randomIndex].src = missingnoPath;
         let that = this
@@ -553,7 +553,7 @@ class Quiz {
     }
 
 
-    parseInput(inputText, user){
+    parseInput(inputText, user, onCorrect = null){
         if(paused){
             return [false, null]
         }
@@ -599,6 +599,7 @@ class Quiz {
         
         let correct = false;
         let message = null
+        let pkmn = null
 
         for (let i = 0; i < inputs.length; i++){
             inputs[i] = standardizeName(inputs[i]);
@@ -643,36 +644,50 @@ class Quiz {
                     continue
                 }
 
-                let relatedPokemon = this.pokemonBaseNameDict[baseName]
-
-                let relevantPokemon = []
-                for (let i = 0; i< relatedPokemon.length; i++){
-                    if (this.currentIds.has(relatedPokemon[i].id)){
-                        relevantPokemon.push(relatedPokemon[i])
-                    }
-                }
-
-                for (let i = 0; i< relevantPokemon.length; i++){
-                    this.showSprite(relevantPokemon[i].id)
-                }
-
-                this.named.add(baseName)
-                if (!(user in this.users)){
-                    this.users[user] = 0
-                }
-                this.users[user]+=1
+                let recentPkmn = this.addNamed(baseName)
+                this.addUserPoint(user)
                 if (!(this.langDict[input] in this.langCounts)){
                     this.langCounts[this.langDict[input]] = 0
                 }
                 this.langCounts[this.langDict[input]]+=1
                 this.checkHighestLang()
-                recentSprite.src = this.spriteDictionary[relevantPokemon[relevantPokemon.length-1].id].src;
+                recentSprite.src = this.spriteDictionary[recentPkmn.id].src;
                 correct = true;
+                if (onCorrect !== null){
+                    onCorrect(baseName)
+                }
             }
 
         }
         return [correct, message];
 
+    }
+
+    addUserPoint(user){
+        if (!(user in this.users)){
+            this.users[user] = 0
+        }
+        this.users[user]+=1
+    }
+
+    addNamed(baseName){
+
+        let relatedPokemon = this.pokemonBaseNameDict[baseName]
+
+        let relevantPokemon = []
+        for (let i = 0; i< relatedPokemon.length; i++){
+            if (this.currentIds.has(relatedPokemon[i].id)){
+                relevantPokemon.push(relatedPokemon[i])
+            }
+        }
+
+        for (let i = 0; i< relevantPokemon.length; i++){
+            this.showSprite(relevantPokemon[i].id)
+        }
+
+        this.named.add(baseName)
+
+        return relevantPokemon[relevantPokemon.length-1];
     }
 
     getEndText(){
@@ -860,6 +875,5 @@ class Quiz {
             this.unguessedDict[id].getElementsByTagName('img')[0].src = this.encodedImages['sprite'][id]
         }
     }
-
 
 }

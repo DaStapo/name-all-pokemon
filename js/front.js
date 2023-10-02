@@ -33,6 +33,10 @@ let shinyEnabled = false
 let isTwitchOn = false;
 var soundEnabled = true;
 var paused = false;
+var isSocketHost = false;
+let socket = null;
+
+let timerObj = {}
 
 var client;
 let rankVals = [
@@ -40,6 +44,8 @@ let rankVals = [
 	'ranktwo',
 	'rankthree'
 ]
+let myUsername = "Quizmaster"
+
 let lastDarkSwap = 0
 let lastShinySwap = 0
 let swapLimit = 10000
@@ -79,11 +85,15 @@ let stopwatchBtn = document.getElementById("timer0");
 
 
 let timerText = document.getElementById("timer");
+let pauseBtn = document.getElementById("pause")
 
 let main = document.getElementById("main");
 let footer = document.getElementById("footer");
 
+let hostGame = document.getElementById("host")
+
 let boxDict = {}
+
 for (let i = 0; i < boxIds.length; i++){
     let boxId = boxIds[i]
     boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
@@ -94,11 +104,274 @@ let quiz = new Quiz(boxDict, genQuizBoxes, allLanguages)
 
 
 
+
+document.getElementById("return").onclick = function() {
+    window.location.href = "/";
+}
+
+function noSuchRoom(){
+    document.getElementById("return-message").innerText = "Room no longer exists"
+    document.getElementById("return-overlay").style.display = "block";
+}
+function roomClosed(){
+    document.getElementById("return-message").innerText = "The host has disbanded the room"
+    document.getElementById("return-overlay").style.display = "block";
+}
+
+function getRoomNameFromURL() {
+    const pathArray = window.location.pathname.split('/');
+    // Assuming the room name is the second part of the URL
+    return pathArray[pathArray.length-1];
+}
+let roomId = getRoomNameFromURL();
+
+MAX_RETRIES = 5
+RETRY_INTERVAL_MS = 1000
+retries = 0
+async function fetchData(endpoint, method='GET') {
+    try {
+        let response = await fetch('/'+endpoint, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        let data = await response.json();  
+        retries = 0
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        retries++;
+        if (retries <= MAX_RETRIES) {
+            await new Promise(resolve => setTimeout(resolve, RETRY_INTERVAL_MS));
+            return fetchNext();
+        } else {
+            console.error(error);
+            alert("There seems to be a problem with fetching the data. Please try refreshing the page.");
+        }
+    }
+}
+
+fetchData("roomExists", "POST").then((result) =>{
+    if (!result["success"]){
+        //noSuchRoom();
+    }
+})
+
+
+
+//if (roomId)
+if (roomId.length > 1){
+    radioSilhouette .style.display="none"
+    giveUpBtn.style.display="none"
+    resetBtn.style.display="none"
+    timerBtn .style.display="none"
+    stopwatchBtn.style.display="none"
+    pauseBtn.style.display="none"
+    hostGame.style.display = "none"
+    document.getElementById("genselect").style.display="none"
+    document.getElementById("typeselect").style.display="none"
+    document.getElementById("timers").style.display="none"
+    document.getElementById("twitchbox").style.display="none"
+    document.getElementById("fullQuizButton").style.display="none"
+}else{
+    roomId = null;
+}
+
 async function loadData(){
+
+
+    function onReset(){
+        socketResetQuiz()
+        clearInterval(activeTimer);
+        timerObj = {"type":"none"}
+        activeTimer = false;
+        setCounter(0);
+        setTotal(quiz.getMaxScore());
+        resetTimer();
+        inputField.disabled = false;
+    
+    
+    
+        
+        if (!darkMode)
+            recentSprite.src = '/sprites/unknown.png'
+        else
+            recentSprite.src = '/sprites/unknown-2.png'
+    
+        document.getElementById("silhouette").checked = false;
+    
+        changeFooterPosition();
+    
+        if (document.getElementById("panel").style.display == 'block'){
+            //close and reset accordion
+            document.getElementById("accordion").click();
+        }
+        document.getElementById("missednames").style.display = "none";
+    
+        document.getElementById("ranking2").style.display = "none";
+        document.getElementById("ranking").style.display = 'none';
+    
+        emptyLeaderboard();
+
+    }
+
+
 
     let allData = await fetchData("pkmnData.json")
     let encodedImages = allData["encoded_images"]
     quiz.loadData(allData, enabledLanguages, onReset)
+
+
+
+    function host(username) {
+        if (socket !== null){
+            let data = {}
+            data["username"] = username
+            if (myUsername in quiz.users){
+                quiz.users[username] = quiz.users[myUsername]
+                delete quiz.users[myUsername]
+            }
+            myUsername = username
+    
+            data["state"] = getQuizState();
+            data["state"]["timer"]["updatedAt"] = Date.now()
+            socket.emit('host', data);
+        }
+    }
+    
+
+    function socketChangeQuiz() {
+        if (socket !== null && isSocketHost){
+            socket.emit('stateChange', {"state":getQuizState()})
+        }
+    }
+    function socketResetQuiz() {
+        if (socket !== null && isSocketHost){
+            socket.emit('reset', {})
+        }
+    }
+    function socketSetSilhouettes(){
+        if (socket !== null && isSocketHost){
+            socket.emit('stateChange', {"useSilhouettes":true})
+        }
+    }
+    function socketSetPaused(val){
+        if (socket !== null && isSocketHost){
+            socket.emit('stateChange', {"paused":val})
+            socketUpdateTimer();
+        }
+    }
+    function socketGiveUp(){
+        if (socket !== null && isSocketHost){
+            socket.emit('stateChange', {"giveup":true})
+        }
+    }
+    function socketCongrats(){
+        if(socket !== null && isSocketHost){
+            socket.emit('stateChange', {"showcongrats":true})
+        }
+    }
+    function socketUpdateTimer(){
+        if (socket !== null && isSocketHost){
+            timerObj["updatedAt"] = Date.now()
+            socket.emit('stateChange', {"timer" : timerObj})
+        }
+    }
+    function enableSocket(){
+        socket = io();
+
+    
+        socket.on('userJoined', (username) => {
+            showUserMessage(username + " joined the room !")
+        });
+
+        socket.on('roomCreated', (roomId) => {
+            console.log("pkmnquiz.com/join/"+roomId)
+        });
+
+        socket.on('named', (data) =>{
+            const {username, id} = data;
+            quiz.addNamed(id)
+            quiz.addUserPoint(username)
+
+            if(soundEnabled){
+                soundEffect.play();
+            }
+            setCounter(quiz.getScore());
+            if (!activeTimer) {
+                if (currentTime === 0) {
+                    startTimer();
+                } else {
+                    startCountdown(currentTime)
+                }
+            }
+            updateRankings()
+            updateFullLeaderboard()
+        });
+        
+
+        socket.on('noSuchRoom', () => {
+            noSuchRoom();
+        });
+        socket.on('reset', () => {
+            quiz.reset();
+        });
+        socket.on('end', () => {
+            roomClosed();
+        });
+    
+    
+        // Listen for user joining
+        socket.on('stateChange', (data) => {
+            console.log('stateChange', data)
+            for (let key in data){
+                if (key === "giveup"){
+                    giveUp();
+                }else if( key === "silhouettes"){
+                    quiz.setSilhouettes();
+                }else if( key === "showcongrats"){
+                    showCongrats();
+                }else if(key === "paused"){
+                    if(data["paused"]){
+                        pauseOn();
+                    }else{
+                        pauseOff();
+                    }
+                }else if(key === "state"){
+                    setQuizState(data["state"])
+                }else if (key === "timer"){
+                    roomUpdateTimer(data["timer"])
+                }
+            }
+        });
+    }
+
+
+
+    // Function to join a room
+    function joinRoom(username) {
+        myUsername = username;
+        socket.emit('joinRoom', {roomId, username});
+    }
+    // Function to join a room
+    function socketNamedPkmn(baseName) {
+        console.log('sending',  {"id":baseName})
+        socket.emit('named', {"id":baseName});
+    }
+
+    hostGame.onclick = function (){
+        let username = "kekec"
+        enableSocket();
+        isSocketHost = true;
+        host(username);
+    }
+    if (roomId !== null){
+        enableSocket();
+        joinRoom("visitor")
+    }
+
 
     let visualizeButtonClick = function(elem){
         elem.classList.add("smolbuttonx")
@@ -116,19 +389,19 @@ async function loadData(){
     
 
     darkmodebg = new Image();
-    darkmodebg.src = 'images/background-dark.svg';
+    darkmodebg.src = '/images/background-dark.svg';
     
     unknownDark = new Image();
     unknownDark.src = '/sprites/unknown-2.png';
     
     missingno = new Image();
-    missingno.src = 'images/missingno.png';
+    missingno.src = '/images/missingno.png';
     
     missingno = new Image();
-    missingno.src = 'images/missingno2.png';
+    missingno.src = '/images/missingno2.png';
     
     missingno = new Image();
-    missingno.src = 'images/missingno3.png';
+    missingno.src = '/images/missingno3.png';
 
 
     let loadArtists = function() {
@@ -192,6 +465,121 @@ async function loadData(){
         xhttp.send();
         
     }
+
+
+
+    function setCounter(count) {
+        counterText.innerHTML = count;
+    }
+    
+    function setTotal(count) {
+        totalText.innerHTML = count;
+    }
+    
+    function startTimer() {
+        let prevTimestamp = Date.now();
+        let total = 0
+        timerObj = {"type":"timer", "t": total}
+        socketUpdateTimer();
+        activeTimer = setInterval(function () {
+    
+            let msDiff = Date.now() - prevTimestamp ;
+            prevTimestamp = Date.now();
+            if (!paused){
+                total+=msDiff
+            }
+            timerObj["t"] = total
+            updateTimer(total);
+        }, 100)
+    
+    }
+    
+    let lastDiff;
+    function updateTimer(msDiff) {
+        if (msDiff<0){
+            msDiff = 0;
+        }
+        lastDiff = msDiff;
+    
+        timerText.innerHTML = msToTime(msDiff);
+    
+    }
+    
+    function resetTimer(){
+        if (currentTime === 0) {
+            updateTimer(0);
+        } else {
+            updateTimer(1000 * 60 * currentTime);
+        }
+    }
+    
+    function msToTime(s) {
+        let ms = s % 1000;
+        s = (s - ms) / 1000;
+        let secs = s % 60;
+        s = (s - secs) / 60;
+        let mins = s % 60;
+        let hrs = (s - mins) / 60;
+    
+        if (hrs < 10) {
+            hrs = '0' + hrs;
+        }
+        if (mins < 10) {
+            mins = '0' + mins;
+        }
+        if (secs < 10) {
+            secs = '0' + secs;
+        }
+        return hrs + ':' + mins + ':' + secs;
+    }
+    
+    let currentTime = 0;
+    function applyNewTimer(timerVal){
+        currentTime = timerVal
+        quiz.reset();
+        resetTimer();
+        let initialTimerText = timerText.innerHTML 
+        if (timerText.innerHTML != initialTimerText){
+            if (timerText.innerHTML === "00:00:00"){
+                showUserMessage("Timer set to stopwatch")
+            } else {
+                showUserMessage("Timer set to " + timerText.innerHTML)
+            }
+        }
+    }
+
+
+    function cancel() {
+        document.getElementById("prompttimer").style.display = 'none';
+    }
+    
+    let updateTimerFunc = function (timerVal) {
+        if(!activeTimer){
+            applyNewTimer(timerVal)
+        }else{
+            document.getElementById("prompttimer").style.display = 'block'
+            document.getElementById("timer-yes").onclick = function () {
+                document.getElementById("prompttimer").style.display = 'none';
+                applyNewTimer(timerVal);
+            }
+            document.getElementById("timer-no").onclick = cancel;
+            //document.getElementById("prompttimer").onclick = cancel;
+        }
+    }
+    
+    timerBtn.onclick = function () {
+        visualizeButtonClick(timerBtn)
+        visualizeButtonUnclick(stopwatchBtn);
+        let timerVal = Math.abs(document.getElementById("timer-min").value)
+        updateTimerFunc(timerVal);
+    }
+    stopwatchBtn.onclick = function () {
+        visualizeButtonClick(stopwatchBtn)
+        visualizeButtonUnclick(timerBtn);
+        updateTimerFunc(0);
+    }
+
+
     loadArtists();    
 
     let visualizeButtonUnclick = function(elem){
@@ -210,6 +598,7 @@ async function loadData(){
     let changeQuiz = function(){
         setTotal(quiz.getMaxScore());
         setCounter(quiz.getScore());
+        socketChangeQuiz();
         changeFooterPosition();    
     }
     let changeToGenQuiz = function(genNum){
@@ -308,22 +697,25 @@ async function loadData(){
         let countdownInMs = minutes * 60 * 1000;
         let startTimestamp = countdownInMs + Date.now();
         let prevTimestamp = Date.now()
+        timerObj = {"type":"countdown", "t":startTimestamp}
+        socketUpdateTimer();
         activeTimer = setInterval(function () {
             
             let currentTime = Date.now()
             if (paused){
-
                 startTimestamp+= currentTime - prevTimestamp
             }
-            
+            timerObj["t"] = startTimestamp
             let msDiff = startTimestamp - currentTime;
 
             prevTimestamp = currentTime
 
             updateTimer(msDiff);
             if (msDiff <= 0) {
-                giveUp();
-                showCongrats();
+                if (roomId !== null){
+                    giveUp();
+                    showCongrats();
+                }
             }
             updateTimer(msDiff);
         }, 100)
@@ -332,7 +724,14 @@ async function loadData(){
 
     
     function parseInput(val, username){
-        let res = quiz.parseInput(val, username);
+
+        let onCorrect = null
+        if (isSocketHost || roomId !== null){
+            onCorrect = (pkmn) =>{
+                socketNamedPkmn(pkmn)
+            }
+        }
+        let res = quiz.parseInput(val, username, onCorrect);
         let correct = res[0]
         let message = res[1]
         if (correct){
@@ -348,7 +747,15 @@ async function loadData(){
                 }
             }
             if (quiz.getMaxScore() === quiz.getScore()) {
-                showCongrats();
+                if (roomId !== null){
+                    showCongrats();
+                }
+                
+            }
+
+            if (isSocketHost || roomId !== null || isTwitchOn){
+                updateRankings()
+                updateFullLeaderboard()
             }
         }
         
@@ -357,7 +764,7 @@ async function loadData(){
 
     nameAll = function (){
         for (let id of quiz.currentIds){
-            parseInput(quiz.pokemonIdDict[id].baseName, "Quizmaster")
+            parseInput(quiz.pokemonIdDict[id].baseName, myUsername)
         }
     }
 
@@ -369,7 +776,7 @@ async function loadData(){
                 return;
             }
             
-            res = parseInput(inputField.value, "Quizmaster");
+            res = parseInput(inputField.value, myUsername);
 
             let correct = res[0]
             let message = res[1]
@@ -392,9 +799,15 @@ async function loadData(){
 
 
     function showCongrats() {
+
+        
+        socketCongrats();
         inputField.disabled = true;
         updateFullLeaderboard();
+
         clearInterval(activeTimer);
+        timerObj = {"type":"none"}
+
         document.getElementById("overlay").style.display = "block";
         if(soundEnabled){
             soundEffect2.play();
@@ -436,6 +849,8 @@ async function loadData(){
     }
 
     function giveUp (){
+
+        socketGiveUp();
         updateFullLeaderboard();
         inputField.disabled = true;
     
@@ -446,6 +861,7 @@ async function loadData(){
         document.getElementById("ranking").style.display = "none";
     
         clearInterval(activeTimer);
+        timerObj = {"type":"none"}
 
         quiz.giveUp();
         
@@ -482,6 +898,7 @@ async function loadData(){
     
     promptSilhYes.onclick = function () {
         quiz.setSilhouettes();
+        socketSetSilhouettes()
         promptSilh.style.display = "none";
         radioSilhouette.checked = true;
     }
@@ -583,7 +1000,7 @@ async function loadData(){
                 let textNode = document.createTextNode('#' + (i+1));
                 placeDiv.appendChild(textNode)
                 let textNode2 = document.createTextNode(sorted[i][0]);
-                if (sorted[i][0] === "Quizmaster"){
+                if (sorted[i][0] === myUsername){
                     usernameDiv.classList.add('quizmaster')
                 }
                 usernameDiv.appendChild(textNode2)
@@ -621,7 +1038,7 @@ async function loadData(){
                 document.getElementById("genselection").onclick = off2;
                 promptGen.style.display = "none";
                 quiz.reset();
-                quiz.setTypeQuiz(typeList[currentIndex])
+                changeToTypeQuiz(typeList[currentIndex])
                 
             }
     
@@ -773,7 +1190,7 @@ async function loadData(){
             typeName = "evil"
         }
     
-        imgElement.src="images/types/"+typeList[currentIndex].toUpperCase()+".svg"
+        imgElement.src="/images/types/"+typeList[currentIndex].toUpperCase()+".svg"
         
         
         if (buttonElement.classList.length !== originalClassListLength){
@@ -962,7 +1379,7 @@ async function loadData(){
                         twitchInput(twitchUsername, 'spheal', true)
                     
                         image = new Image();
-                        image.src = 'images/spheal.png';
+                        image.src = '/images/spheal.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 400, 160);
                         }, false);
@@ -974,7 +1391,7 @@ async function loadData(){
                         twitchInput(twitchUsername, 'cramorant', true)
     
                         image = new Image();
-                        image.src = 'images/cramorant.png';
+                        image.src = '/images/cramorant.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);
@@ -985,7 +1402,7 @@ async function loadData(){
                         twitchInput(twitchUsername, 'wigglytuff', true)
     
                         image = new Image();
-                        image.src = 'images/wigglypuff.png';
+                        image.src = '/images/wigglypuff.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);
@@ -998,7 +1415,7 @@ async function loadData(){
                         twitchInput(twitchUsername, 'mew', true)
     
                         image = new Image();
-                        image.src = 'images/mew.png';
+                        image.src = '/images/mew.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);
@@ -1011,7 +1428,7 @@ async function loadData(){
                         twitchInput(twitchUsername, 'hoothoot', true)
     
                         image = new Image();
-                        image.src = 'images/hoothoot.png';
+                        image.src = '/images/hoothoot.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 200);
                         }, false);
@@ -1100,7 +1517,7 @@ async function loadData(){
                     if (message === "lemonbun".toLowerCase()) {
     
                         image = new Image();
-                        image.src = 'images/chikorita.png';
+                        image.src = '/images/chikorita.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);			
@@ -1108,7 +1525,7 @@ async function loadData(){
                     if (message === "lemonmonke".toLowerCase()) {
     
                         image = new Image();
-                        image.src = 'images/grookey.png';
+                        image.src = '/images/grookey.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);			
@@ -1116,7 +1533,7 @@ async function loadData(){
                     if (message === "lemonbulb".toLowerCase()) {
     
                         image = new Image();
-                        image.src = 'images/bulbasaur.png';
+                        image.src = '/images/bulbasaur.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 200);
                         }, false);			
@@ -1124,7 +1541,7 @@ async function loadData(){
                     if (message === "lemonowl".toLowerCase()) {
     
                         image = new Image();
-                        image.src = 'images/rowlet.png';
+                        image.src = '/images/rowlet.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);			
@@ -1136,7 +1553,7 @@ async function loadData(){
                         twitchInput(twitchUsername, 'flapple', true)
     
                         image = new Image();
-                        image.src = 'images/flapple.png';
+                        image.src = '/images/flapple.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);
@@ -1149,7 +1566,7 @@ async function loadData(){
                         twitchInput(twitchUsername, 'crabominable', true)
     
                         image = new Image();
-                        image.src = 'images/crabominable.png';
+                        image.src = '/images/crabominable.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 340);
                         }, false);
@@ -1162,7 +1579,7 @@ async function loadData(){
                         twitchInput(twitchUsername, 'vulpix', true)
     
                         image = new Image();
-                        image.src = 'images/vulpix.png';
+                        image.src = '/images/vulpix.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);
@@ -1173,7 +1590,7 @@ async function loadData(){
                         twitchInput(twitchUsername, 'ninetales', true)
     
                         image = new Image();
-                        image.src = 'images/vulpix-alola.png';
+                        image.src = '/images/vulpix-alola.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);
@@ -1188,32 +1605,31 @@ async function loadData(){
     }
     
     
+    function updateRankings(){
+        document.getElementById("ranking").style.display = 'block';
+            
+        let sorted = sortDictionaryByValue(quiz.users);
+        emptyLeaderboard();
+        let leaderboardDiv = document.getElementById("leaderboard");
+        let currentTypeName = quiz.getStyleName()
+        for (let i = 0; i<sorted.length; i++){
+            let scoreDiv = document.createElement('div');
+            scoreDiv.classList.add('inlinetext')
+            scoreDiv.classList.add('inlinetext'+currentTypeName)
+            scoreDiv.classList.add('rank')
+            scoreDiv.classList.add(rankVals[i])
+            let textNode = document.createTextNode('#' + (i+1) +' '+ sorted[i][0] + ' (' + sorted[i][1] + ')');
+            scoreDiv.appendChild(textNode)
+            leaderboardDiv.appendChild(scoreDiv);
+            if (i >= 2){
+                break;
+            }
+        }
+    }
+
     let twitchInput = function (twitchUsername, input, shouldCount){
     
         let isCorrect = parseInput(input, twitchUsername);
-                
-        if (isCorrect){
-            document.getElementById("ranking").style.display = 'block';
-            
-            let sorted = sortDictionaryByValue(quiz.users);
-            emptyLeaderboard();
-            let leaderboardDiv = document.getElementById("leaderboard");
-            let currentTypeName = quiz.getStyleName()
-            for (let i = 0; i<sorted.length; i++){
-                let scoreDiv = document.createElement('div');
-                scoreDiv.classList.add('inlinetext')
-                scoreDiv.classList.add('inlinetext'+currentTypeName)
-                scoreDiv.classList.add('rank')
-                scoreDiv.classList.add(rankVals[i])
-                let textNode = document.createTextNode('#' + (i+1) +' '+ sorted[i][0] + ' (' + sorted[i][1] + ')');
-                scoreDiv.appendChild(textNode)
-                leaderboardDiv.appendChild(scoreDiv);
-                if (i >= 2){
-                    break;
-                }
-            }
-            updateFullLeaderboard()
-        }
     }
     
     document.getElementById("twitch-off").onclick = function (){
@@ -1247,13 +1663,103 @@ async function loadData(){
 
     }
 
+
+    function getQuizState(){
+
+        let state = {}
+        state["filters"] = quiz.filters
+        state["quizName"] = quiz.name
+        state["named"] = [...quiz.named]
+        state["users"] = quiz.users
+        state["paused"] = quiz.paused
+        state["useSilhouettes"] = quiz.useSilhouettes
+    
+        state["timer"] = timerObj
+    
+        return state;
+    }
+    
+
+    function roomUpdateTimer(_timer) {
+        //slightly changed timer functions
+        if (_timer["type"] !== "none"){
+            clearInterval(activeTimer)
+            if (_timer["type"] === "countdown"){
+    
+                let startTimestamp = _timer["t"]
+                let prevTimestamp = startTimestamp
+                activeTimer = setInterval(function () {
+    
+                    let currentTime = Date.now()
+                    if (paused){
+                        startTimestamp+= currentTime - prevTimestamp
+                    }
+    
+                    let msDiff = startTimestamp - currentTime;
+                
+                    prevTimestamp = currentTime
+            
+                    updateTimer(msDiff);
+                }, 100) 
+             
+            }else{
+    
+                let prevTimestamp = Date.now();
+                let total = _timer["t"] + (Date.now() - _timer["updatedAt"])
+    
+                activeTimer = setInterval(function () {
+            
+                    let msDiff = Date.now() - prevTimestamp ;
+                    prevTimestamp = Date.now();
+                    if (!paused){
+                        total+=msDiff
+                    }
+                    updateTimer(total);
+                }, 100)
+            }
+        }
+    }
+
+    function setQuizState(state){
+    
+        state["named"] = new Set(state["named"])
+
+        quiz.setQuiz(state["quizName"], state["filters"])
+        if (state["useSilhouettes"]){
+            quiz.setSilhouettes();
+        }
+        
+        //timer will start on first input
+        
+        for (let id of state["named"]){
+            quiz.addNamed(id)
+        }
+        quiz.users = state["users"]
+    
+        roomUpdateTimer(state["timer"]);
+    
+        if (state["paused"]){
+            pauseOn()
+        }
+    
+    }
+    
+
+
+
     document.getElementById("unpause").onclick = () =>{
+        socketSetPaused(false);
         pauseOff();
     }
-    document.getElementById("pause").onclick = () =>{
+    pauseBtn.onclick = () =>{
+        socketSetPaused(true);
         pauseOn();
     } 
     changeFooterPosition();
+
+    setCounter(0);
+    resetTimer()    
+
     onLoadingComplete()
 }
 let visualizeButtonClick = function(elem){
@@ -1456,107 +1962,6 @@ function hideHint(){
     spellingHint.innerHTML = "";
 }
 
-
-MAX_RETRIES = 5
-RETRY_INTERVAL_MS = 1000
-retries = 0
-async function fetchData(endpoint) {
-    try {
-        let response = await fetch('/'+endpoint, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        });
-        let data = await response.json();  
-        retries = 0
-        return data;
-
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        retries++;
-        if (retries <= MAX_RETRIES) {
-            await new Promise(resolve => setTimeout(resolve, RETRY_INTERVAL_MS));
-            return fetchNext();
-        } else {
-            console.error(error);
-            alert("There seems to be a problem with fetching the data. Please try refreshing the page.");
-        }
-    }
-}
-
-function setCounter(count) {
-    counterText.innerHTML = count;
-}
-
-function setTotal(count) {
-    totalText.innerHTML = count;
-}
-
-function startTimer() {
-    let prevTimestamp = Date.now();
-    let total = 0
-
-    activeTimer = setInterval(function () {
-
-        let msDiff = Date.now() - prevTimestamp ;
-        prevTimestamp = Date.now();
-        if (!paused){
-            total+=msDiff
-        }
-        
-        updateTimer(total);
-    }, 100)
-
-}
-
-let lastDiff;
-function updateTimer(msDiff) {
-	if (msDiff<0){
-		msDiff = 0;
-	}
-	lastDiff = msDiff;
-
-    timerText.innerHTML = msToTime(msDiff);
-
-}
-
-function resetTimer(){
-    let initialTimerText = timerText.innerHTML 
-	if (currentTime === 0) {
-		updateTimer(0);
-	} else {
-		updateTimer(1000 * 60 * currentTime);
-	}
-    if (timerText.innerHTML != initialTimerText){
-        if (timerText.innerHTML === "00:00:00"){
-            showUserMessage("Timer set to stopwatch")
-	    } else {
-            showUserMessage("Timer set to " + timerText.innerHTML)
-        }
-    }
-}
-
-function msToTime(s) {
-    let ms = s % 1000;
-    s = (s - ms) / 1000;
-    let secs = s % 60;
-    s = (s - secs) / 60;
-    let mins = s % 60;
-    let hrs = (s - mins) / 60;
-
-    if (hrs < 10) {
-        hrs = '0' + hrs;
-    }
-    if (mins < 10) {
-        mins = '0' + mins;
-    }
-    if (secs < 10) {
-        secs = '0' + secs;
-    }
-    return hrs + ':' + mins + ':' + secs;
-}
-
 let typeClasses = [
     "smolbuttonxdarktype",
     "smolbuttonxtype",
@@ -1594,38 +1999,6 @@ let regionToAll = function (regionElement){
     regionElement.classList.remove('regionb');
 }
 
-function onReset(){
-
-    clearInterval(activeTimer);
-    activeTimer = false;
-    setCounter(0);
-    setTotal(quiz.getMaxScore());
-    resetTimer();
-    inputField.disabled = false;
-
-
-
-    
-    if (!darkMode)
-        recentSprite.src = '/sprites/unknown.png'
-    else
-        recentSprite.src = '/sprites/unknown-2.png'
-
-    document.getElementById("silhouette").checked = false;
-
-    changeFooterPosition();
-
-    if (document.getElementById("panel").style.display == 'block'){
-		//close and reset accordion
-		document.getElementById("accordion").click();
-	}
-	document.getElementById("missednames").style.display = "none";
-
-	document.getElementById("ranking2").style.display = "none";
-    document.getElementById("ranking").style.display = 'none';
-
-    emptyLeaderboard();
-}
 function resetQuiz(){
     quiz.reset();
 }
@@ -1639,43 +2012,6 @@ let emptyLeaderboard = function (){
 }
 
 
-
-let currentTime = 0;
-function applyNewTimer(timerVal){
-    currentTime = timerVal
-    quiz.reset();
-    resetTimer();
-}
-
-function cancel() {
-    document.getElementById("prompttimer").style.display = 'none';
-}
-
-let updateTimerFunc = function (timerVal) {
-    if(!activeTimer){
-        applyNewTimer(timerVal)
-    }else{
-        document.getElementById("prompttimer").style.display = 'block'
-        document.getElementById("timer-yes").onclick = function () {
-            document.getElementById("prompttimer").style.display = 'none';
-            applyNewTimer(timerVal);
-        }
-        document.getElementById("timer-no").onclick = cancel;
-        //document.getElementById("prompttimer").onclick = cancel;
-    }
-}
-
-timerBtn.onclick = function () {
-    visualizeButtonClick(timerBtn)
-    visualizeButtonUnclick(stopwatchBtn);
-    let timerVal = Math.abs(document.getElementById("timer-min").value)
-    updateTimerFunc(timerVal);
-}
-stopwatchBtn.onclick = function () {
-    visualizeButtonClick(stopwatchBtn)
-    visualizeButtonUnclick(timerBtn);
-    updateTimerFunc(0);
-}
 
 function changeFooterPosition() {
 
@@ -1782,8 +2118,7 @@ function shinyOff(){
 
 document.getElementById("shiny").onclick = swapShiny;
 
-setCounter(0);
-resetTimer()
+
 recentSprite.src = '/sprites/unknown.png'
 //This accounts for all unknown.png's on the page
 recentSprite.addEventListener("load", function () {
