@@ -192,7 +192,6 @@ function countInstances(list, targetString) {
 
 app.post('/roomExists', async (req, res) => {
     try {
-        console.log(req)
         let roomId = req.body.roomId
         res.json({"success":roomId in existingRooms})
     } catch (err) {
