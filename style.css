@@ -224,6 +224,10 @@
 	.input-twitch:disabled {
 	background-color: #8CC63F;
 	}
+	.input-user {
+	width: 150px !important;
+	border-radius: 6px 0px 0px 3px !important;
+	}
 	.input-timer {
 	padding: 3px 33px 3px 3px;
 	width: 68px;
@@ -258,6 +262,11 @@
 	.atchleft {
 	border-radius: 6px 0px 0px 3px !important;
 	padding-right: 4px !important;
+	}
+	.atchleft2 {
+	margin-left: -6px !important;
+	border-radius: 0px 3px 6px 0px !important;
+	padding-left: 4px !important;
 	}
 	.attentionshake {
 	animation: shake 0.5s;
