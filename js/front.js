@@ -769,7 +769,7 @@ async function loadData(){
 
             updateTimer(msDiff);
             if (msDiff <= 0) {
-                if (roomId !== null){
+                if (roomId === null){
                     giveUp();
                     showCongrats();
                 }
@@ -804,7 +804,7 @@ async function loadData(){
                 }
             }
             if (quiz.getMaxScore() === quiz.getScore()) {
-                if (roomId !== null){
+                if (roomId === null){
                     showCongrats();
                 }
                 
