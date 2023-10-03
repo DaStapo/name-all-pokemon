@@ -32,7 +32,7 @@ let imageFolder = path.join(__dirname + '/images');
 let artistsLocation = path.join(__dirname + '/artists.json');
 let maintenanceStatusLocation = path.join(__dirname + '/maintenance.json');
 let maintenancePage = path.join(__dirname + '/maintenance.html');
-let errorPage = path.join(__dirname + '/error.html');
+let errorPage = path.join(__dirname + '/maintenance.html');
 
 app.use('/js', express.static('bundles'));
 app.use('/images', express.static('public/images'));
@@ -41,12 +41,59 @@ app.use('/images_medium', express.static('public/images_medium'));
 app.use('/cacheable', express.static('public/cacheable'));
 app.set('view engine', 'ejs');
 
-app.get('/', async (req, res) => {
-    try {
+
+function log(...messages) {
+    const logMessage = `${new Date()}: ${messages.map(msg => (typeof msg === 'object' ? JSON.stringify(msg) : msg)).join(' ')}\n`;
+    
+    fs.appendFile('app.log', logMessage, (err) => {
+      if (err) {
+        console.error('Error writing to log file:', err);
+      }
+    });
+  }
+  
+
+
+async function isMaintenance(){
+    try{
         const data = await readFile(maintenanceStatusLocation, 'utf8');
         const jsonData = JSON.parse(data);
-
+    
         if (jsonData.enabled) {
+            return true;
+        }else{
+            return false;
+        }
+    }catch (error){
+        log(error)
+        return true;
+    }
+
+}
+
+async function isMultiplayerEnabled(){
+    try{
+        const data = await readFile(maintenanceStatusLocation, 'utf8');
+        const jsonData = JSON.parse(data);
+    
+        if (jsonData.multiplayerOn) {
+            return true;
+        }else{
+            return false;
+        }
+    }catch (error){
+        log(error)
+        return false;
+    }
+
+}
+
+
+
+
+app.get('/', async (req, res) => {
+    try {
+        if (await isMaintenance()) {
             res.sendFile(maintenancePage);
         } else {
             res.sendFile(indexLocation);
@@ -59,10 +106,7 @@ app.get('/', async (req, res) => {
 
 app.get('/join/:roomId', async (req, res) => {
     try {
-        const data = await readFile(maintenanceStatusLocation, 'utf8');
-        const jsonData = JSON.parse(data);
-
-        if (jsonData.enabled) {
+        if (await isMaintenance()) {
             res.sendFile(maintenancePage);
         } else {
             res.sendFile(indexLocation);
@@ -115,7 +159,7 @@ app.get('/pkmnData.json', async (req, res) => {
         pkmnDataCache = jsonData;
         res.json(jsonData);
     } catch (error) {
-        console.log(error);
+        log(error);
         try {
             res.json(pkmnDataCache);
         } catch (error2) {
@@ -134,7 +178,7 @@ app.post('/misspelling', async (req, res) => {
 
         fs.writeFile('misspellings.txt', logMsg, { flag: "a+" }, (err) => {
             if (err) {
-                console.log('logging misspelling failed.', misspelling);
+                log('logging misspelling failed.', misspelling);
             }
         });
     } catch (err) {
@@ -156,13 +200,22 @@ app.use('/shiny', express.static(shinyFolder));
 app.use('/silhouettes', express.static(silhouettesFolder));
 
 
+function validateAndSanitizeString(username) {
+    const allowedCharacters = /^[a-zA-Z0-9_\u4e00-\u9fa5\uac00-\ud7af\u3040-\u30ff]+$/;
+    if (!allowedCharacters.test(username)) {
+      username = username.replace(/[^a-zA-Z0-9_\u4e00-\u9fa5\uac00-\ud7af\u3040-\u30ff]/g, '_');
+    }
+  
+  
+    return username;
+}
 
-
-
-
+function shortenString(str, maxLength) {
+    return str.length <= maxLength ? str : str.slice(0, maxLength);
+}
 
 function generateRandomString(length) {
-  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const characters = '0123456789ABCDEFGHJKLMNPQRSTUVWXY';
   let randomString = '';
 
   for (let i = 0; i < length; i++) {
@@ -208,99 +261,174 @@ io.on('connection', (socket) => {
 
     // Handle room creation
     socket.on('host', (data) => {
+        try{
+            let {username, state} = data
+            username = shortenString(username, 25);
+            username = validateAndSanitizeString(username)
 
-        const {username, state} = data
-
-        const roomId = generateUniqueRandomString(existingRooms, 5);
-        existingRooms[roomId] = {}
-        existingRooms[roomId]["usernames"] = []
-        existingRooms[roomId]["state"] = state
-
-
-        socket.username = username
-        socket.isHost = true;
-        socket.roomId = roomId
-
-        existingRooms[roomId]["usernames"].push(username)
-        existingRooms[roomId]["host"] = socket
-        socket.join(roomId);
-        socket.emit('roomCreated', roomId);
+            const roomId = generateUniqueRandomString(existingRooms, 6);
+            existingRooms[roomId] = {}
+            existingRooms[roomId]["usernames"] = []
+            existingRooms[roomId]["state"] = state
+            existingRooms[roomId]["namedTime"] = Date.now();
+    
+            socket.username = username
+            socket.isHost = true;
+            socket.roomId = roomId
+    
+            existingRooms[roomId]["usernames"].push(username)
+            existingRooms[roomId]["host"] = socket
+            socket.join(roomId);
+            socket.emit('roomCreated', roomId);
+        } catch(error){
+            log('error hosting', error)
+        }
 
     });
     
     // Handle joining a room
     socket.on('joinRoom', (data) => {
+        try{
+            let { roomId, username } = data;
 
-        let { roomId, username } = data;
-
-        if (roomId in existingRooms){
-
-            if (existingRooms[roomId]["usernames"].includes(username)){
-                username = username +  (countInstances(existingRooms[roomId]["usernames"]) + 1 ).toString() 
-            }
-
-            socket.username = username
-            socket.isHost = false;
+            if (roomId in existingRooms){
     
-            existingRooms[roomId]["usernames"].push(username)
-            socket.roomId = roomId;
-            socket.join(roomId);
-            socket.broadcast.to(roomId).emit('userJoined', socket.username);
-            socket.emit('stateChange', {"state":existingRooms[roomId]["state"]}) 
-        }else{
-            socket.emit("noSuchRoom", {})
+                username = shortenString(username, 25);
+                username = validateAndSanitizeString(username)
+                if (existingRooms[roomId]["usernames"].includes(username)){
+                    username = username +  (countInstances(existingRooms[roomId]["usernames"]) + 1 ).toString() 
+                }
+    
+                socket.username = username
+                socket.isHost = false;
+        
+                existingRooms[roomId]["usernames"].push(username)
+                socket.roomId = roomId;
+                socket.join(roomId);
+                socket.broadcast.to(roomId).emit('userJoined', socket.username);
+                socket.emit('stateChange', {"state":existingRooms[roomId]["state"]}) 
+            }else{
+                socket.emit("noSuchRoom", {})
+            }
+        } catch (error){
+            log('join room error', error)
         }
         
     });
 
     socket.on('named', (data) => {
-
-        const pokemonId = data["id"];
-        existingRooms[socket.roomId]["state"]["named"].push(pokemonId)
-        if (!(socket.username in existingRooms[socket.roomId]["state"]["users"])){
-            existingRooms[socket.roomId]["state"]["users"][socket.username] = 0
+        try{
+            const pokemonId = validateAndSanitizeString(data["id"]);
+            let collision = false;
+            if (existingRooms[socket.roomId]["state"]["named"].includes(pokemonId)){
+                collision = true;
+            }
+            existingRooms[socket.roomId]["state"]["named"].push(pokemonId)
+            if (!(socket.username in existingRooms[socket.roomId]["state"]["users"])){
+                existingRooms[socket.roomId]["state"]["users"][socket.username] = 0
+            }
+            existingRooms[socket.roomId]["state"]["users"][socket.username]+=1
+            
+            socket.broadcast.to(socket.roomId).emit('named', { "username": socket.username, "id":pokemonId });
+            if (collision){
+                socket.broadcast.to(socket.roomId).emit('scores', existingRooms[socket.roomId]["state"]["users"]);
+            }
+            existingRooms[socket.roomId]["namedTime"] = Date.now();
+        }catch(error){
+            log('named error', error)
         }
-        existingRooms[socket.roomId]["state"]["users"][socket.username]+=1
 
-        socket.broadcast.to(socket.roomId).emit('named', { "username": socket.username, "id":pokemonId });
     });
     socket.on('reset', (data) => {
-        socket.broadcast.to(socket.roomId).emit('reset', {});
+        try{
+            socket.broadcast.to(socket.roomId).emit('reset', {});
+            existingRooms[socket.roomId]["state"] = data["state"];
+
+        } catch (error){
+            log('reset error', error)
+        }
     });
     
     // Handle user actions
     socket.on('stateChange', (data) => {
-        if (socket.isHost){
-            for (let key in data){
-                if( key === "silhouettes"){
-                    existingRooms[socket.roomId]["state"]["silhouettes"] = true;
-                }else if(key === "paused"){
-                    existingRooms[socket.roomId]["state"]["paused"] = data["paused"];
-                }else if (key === "state"){
-                    existingRooms[socket.roomId]["state"] = data["state"];
-                }else if (key === "timer"){
-                    existingRooms[socket.roomId]["state"]["timer"] = data["timer"]
+        try{
+            if (socket.isHost){
+                for (let key in data){
+                    if( key === "silhouettes"){
+                        existingRooms[socket.roomId]["state"]["silhouettes"] = true;
+                    }else if(key === "paused"){
+                        existingRooms[socket.roomId]["state"]["paused"] = data["paused"];
+                    }else if (key === "state"){
+                        existingRooms[socket.roomId]["state"] = data["state"];
+                    }else if (key === "timer"){
+                        existingRooms[socket.roomId]["state"]["timer"] = data["timer"]
+                    }
                 }
+                socket.broadcast.to(socket.roomId).emit('stateChange', data);
             }
-            socket.broadcast.to(socket.roomId).emit('stateChange', data);
+        }catch(error){
+            log('stateChange', error)
         }
     });
 
+
     // Handle disconnections
     socket.on('disconnect', () => {
-        if (socket.isHost){
-            socket.broadcast.to(socket.roomId).emit('end', {});
-            delete existingRooms[socket.roomId]
-        }else{
-            socket.broadcast.to(socket.roomId).emit('userLeft', socket.username);
+        try{
+            if (socket.isHost){
+                socket.broadcast.to(socket.roomId).emit('end', {});
+                delete existingRooms[socket.roomId]
+            }else{
+                socket.broadcast.to(socket.roomId).emit('userLeft', socket.username);
+            }
+        }catch(error){
+            log('at disconnect', error)
         }
 
     });
 });
   
 
+app.get('/nrRooms', async (req, res) => {
+    let count = 0
+    for (let key in existingRooms){
+        count+=1
+    }
 
+    res.json({"result":count});
+});
+
+setInterval(()=>{
+    try{
+        let deleteAfter = 1000 * 60 * 60 * 36
+        let roomsToRemove = []
+        for (let roomId in existingRooms){
+            if (Date.now() - existingRooms[roomId]["namedTime"] > deleteAfter){
+                roomsToRemove.push(roomId)
+            }
+        }
+    
+        for (let i = 0; i < roomsToRemove.length; i++){
+            delete existingRooms[roomId]
+        }
+    }catch(error){
+        log('err emptying rooms', error)
+    }
+},1000 * 60 * 60);
+
+
+isMaintenance()
+app.get('/multiplayerEnabled', async (req, res) => {
+    try{
+        let isEnabled =await isMultiplayerEnabled()
+        res.json({"result":isEnabled});
+    }catch(error){
+        log('multiplayer ', error)
+    }
+});
 // start the server
 server.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`)
+    console.log(`Logging outputs or errors into app.log`)
+    log(`Server is running on port ${port}`);
 });

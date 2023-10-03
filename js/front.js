@@ -237,6 +237,7 @@ async function loadData(){
 
     let allData = await fetchData("pkmnData.json")
     let encodedImages = allData["encoded_images"]
+
     quiz.loadData(allData, enabledLanguages, onReset)
 
 
@@ -265,7 +266,8 @@ async function loadData(){
     }
     function socketResetQuiz() {
         if (socket !== null && isSocketHost){
-            socket.emit('reset', {})
+            socket.emit('reset', {"state":getQuizState()})
+
         }
     }
     function socketSetSilhouettes(){
@@ -298,21 +300,31 @@ async function loadData(){
     function enableSocket(){
         socket = io();
 
-    
+        
         socket.on('userJoined', (username) => {
             showUserMessage(username + " joined the room !")
         });
+        socket.on('userLeft', (username) => {
+            showUserMessage(username + " left the room !")
+        });
 
         socket.on('roomCreated', (roomId) => {
-            linkGame.onclick = function(){
+
+            function copyLink(){
                 var currentURL = new URL(window.location.href);
                 var currentDomain = currentURL.hostname + (currentURL.port ? ':' + currentURL.port : '');
                 let url = currentDomain + "/join/"+roomId
                 navigator.clipboard.writeText(url)
                 showUserMessage("Copied link to clipboard ("+url+")")
             }
+
+            linkGame.onclick = function(){
+                copyLink()
+            }
             linkGame.style.display = "block"
             hostGame.style.display = "none"
+            copyLink()
+
         });
 
         socket.on('named', (data) =>{
@@ -331,6 +343,11 @@ async function loadData(){
                     startCountdown(currentTime)
                 }
             }
+            if (quiz.getMaxScore() === quiz.getScore()) {
+                if (roomId === null){
+                    showCongrats();
+                }
+            }
             updateRankings()
             updateFullLeaderboard()
         });
@@ -345,11 +362,15 @@ async function loadData(){
         socket.on('end', () => {
             roomClosed();
         });
+        socket.on('scores', (users) =>{
+            quiz.users = users;
+            updateFullLeaderboard();
+            updateRankings()
+        });
     
-    
+
         // Listen for user joining
         socket.on('stateChange', (data) => {
-            console.log('stateChange', data)
             for (let key in data){
                 if (key === "giveup"){
                     giveUp();
@@ -365,6 +386,8 @@ async function loadData(){
                     }
                 }else if(key === "state"){
                     setQuizState(data["state"])
+                    updateRankings()
+                    updateFullLeaderboard()
                 }else if (key === "timer"){
                     roomUpdateTimer(data["timer"])
                 }
@@ -381,7 +404,6 @@ async function loadData(){
     }
     // Function to join a room
     function socketNamedPkmn(baseName) {
-        console.log('sending',  {"id":baseName})
         socket.emit('named', {"id":baseName});
     }
 
@@ -389,20 +411,32 @@ async function loadData(){
         enableSocket();
         isSocketHost = true;
         usernamePrompt.style.display = "block"
-        document.getElementById("username-confirm").onclick = function (){
+        let usernameInput = document.getElementById("input-username")
+        let usernameButton = document.getElementById("username-confirm")
+
+        usernameButton.onclick = function (){
             let username = document.getElementById("input-username").value
             if(username.length <2){
                 showUserMessage("Username should be at least 2 characters long")
                 return;
             }else{
                 usernamePrompt.style.display = "none"
-                
+                usernameInput.removeEventListener("keyup", detectEnter);
                 hostGame.disabled = true;
                 hostGame.innerText = "Generating room..."
                 host(username);
             }
 
         }
+        usernameInput.focus();
+        function detectEnter(event) {
+            if (event.keyCode === 13) {
+                usernameButton.click();
+            }
+        }
+        usernameInput.addEventListener("keyup", detectEnter);
+
+
     }
 
 
@@ -412,20 +446,30 @@ async function loadData(){
     if (roomId !== null){
 
         usernamePrompt.style.display = "block"
-        document.getElementById("username-confirm").onclick = function (){
+        let usernameInput = document.getElementById("input-username")
+        let usernameButton = document.getElementById("username-confirm")
+
+        usernameButton.onclick = function (){
             let username = document.getElementById("input-username").value
             if(username.length <2){
                 showUserMessage("Username should be at least 2 characters long")
                 return;
             }else{
+                usernameInput.removeEventListener("keyup", detectEnter);
                 usernamePrompt.style.display = "none"
                 off2()
                 enableSocket();
                 joinRoom(username)
-            }
+            }document.getElementById("input-username").focus();
 
         }
-
+        usernameInput.focus();
+        function detectEnter(event) {
+            if (event.keyCode === 13) {
+                usernameButton.click();
+            }
+        }
+        usernameInput.addEventListener("keyup", detectEnter);
 
     }
 
@@ -1663,7 +1707,6 @@ async function loadData(){
     
     
     function updateRankings(){
-        document.getElementById("ranking").style.display = 'block';
             
         let sorted = sortDictionaryByValue(quiz.users);
         emptyLeaderboard();
@@ -1681,6 +1724,9 @@ async function loadData(){
             if (i >= 2){
                 break;
             }
+        }
+        if (sorted.length > 1){
+            document.getElementById("ranking").style.display = 'block';
         }
     }
 
@@ -1885,6 +1931,14 @@ function preloadSmallerImages(){
 }
 
 function onLoadingComplete() {
+    fetchData("multiplayerEnabled").then((result) =>{
+        console.log(result["result"])
+        if (!result["result"]){
+            hostGame.onclick = () =>{
+                showUserMessage("Multiplayer is currently disabled, probably because of an upcoming maintenance.")
+            }
+        }
+    })
     //document.getElementById("loadbox").style.display = "none";
     document.getElementById("loader").style.display = "none";
     document.getElementById("playtext").style.opacity = "1";
