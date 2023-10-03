@@ -56,7 +56,7 @@
           </div>
           <div id="ranking" class="column wider" style="display: none;">
             <div class="column">
-              <div class="box roundedb padded lime" style="min-width: 200px;"> <div class="notxt txt">Twitch-chat Ranking:</div> <div id="leaderboard" class="rankusers"></div>
+              <div class="box roundedb padded lime" style="min-width: 200px;"> <div class="notxt txt">Current Top 3:</div> <div id="leaderboard" class="rankusers"></div>
               </div>
             </div>
           </div>
@@ -204,10 +204,10 @@
         </div>
         <div class="row">
           <div class="column">
-            <div id="hostButton" class="button-e grborder roundedc2 spbutton shadowc">Multiplayer Quiz<img src="/images/HostQuiz.png" class="iconq"></div>
+            <div id="hostButton" class="button-e grborder roundedc2 spbutton shadowc">Multiplayer Invite<img src="/images/HostQuiz.png" class="iconq"></div>
           </div>
           <div class="column">
-            <div id="linkButton" class="button-e grborder roundedc2 spbutton shadowc" style="display:none;">Copy Guest Link<img src="/images/LinkQuiz.png" class="iconq"></div>
+            <div id="linkButton" class="button-e grborder roundedc2 spbutton shadowc" style="display:none;">Copy Invite Link<img src="/images/LinkQuiz.png" class="iconq"></div>
           </div>
           <div class="column">
             <div class="box roundedc2 slightpad" id="twitchbox">
@@ -401,8 +401,16 @@
     </div>
     <div id="promptusername" class="overlay" onclick="off3()">
       <div class="prompt">
-        <h2>Choose your username</h2>
-        <!--<p>[insert useful info]</p>-->
+		    <div id="loadboxguest">
+          <img src="/images/logo.gif" class="titlecard" alt="titlecard">
+          <div class="loader" id="loaderguest">
+          <h2>Loading Quiz</h2>
+          </div>
+            <div class="lds-ellipsis" id="spinnerguest"><div></div><div></div><div></div><div></div></div>
+		    </div>
+        <h2 style="margin-top: -10px;">Choose your username</h2>
+        <p id="host-info">This will create an invite link, <br />which you can share to let other players join. </p>
+        <p id="guest-info" style="display:none;">You are joining a multiplayer quiz. <br />The player hosting the quiz has control over the quiz settings. </p>
         <br />
         <input type="text" id="input-username" class="input-twitch input-user" id="username" maxlength="25" autocomplete="off" placeholder="username">
         <div class="smolbutton atchleft2" id="username-confirm"> set</div>
