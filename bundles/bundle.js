@@ -2847,7 +2847,6 @@ function preloadSmallerImages(){
 
 function onLoadingComplete() {
     fetchData("multiplayerEnabled").then((result) =>{
-        console.log(result["result"])
         if (!result["result"]){
             hostGame.onclick = () =>{
                 showUserMessage("Multiplayer is currently disabled, probably because of an upcoming maintenance.")

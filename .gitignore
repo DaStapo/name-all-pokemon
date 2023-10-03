@@ -13,6 +13,8 @@ genlogs\.json
 streamlogs\.json
 .namelogs.json
 .app.log
+app.log
+app/log
 .genlogs.json
 .streamlogs.json
 pokemonDB\.p
