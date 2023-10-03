@@ -269,7 +269,7 @@
       <div class="prompt">
         <h2 id="return-message"></h2>
         <br />
-        <div id="return" class="button hovr roundedb">OK</div>
+        <div id="return" class="button hovr roundedb">Exit</div>
       </div>
     </div>
 
@@ -408,12 +408,15 @@
           </div>
             <div class="lds-ellipsis" id="spinnerguest"><div></div><div></div><div></div><div></div></div>
 		    </div>
-        <h2 style="margin-top: -10px;">Choose your username</h2>
-        <p id="host-info">This will create an invite link, <br />which you can share to let other players join. </p>
-        <p id="guest-info" style="display:none;">You are joining a multiplayer quiz. <br />The player hosting the quiz has control over the quiz settings. </p>
-        <br />
-        <input type="text" id="input-username" class="input-twitch input-user" id="username" maxlength="25" autocomplete="off" placeholder="username">
-        <div class="smolbutton atchleft2" id="username-confirm"> set</div>
+        <div id="username-area" style="display:none">
+          <h2 style="margin-top: -10px;">Set your temporary username</h2>
+          <p id="host-info" style="display:none;">This will create an invite link, <br />which you can share to let other players join. </p>
+          <p id="guest-info" style="display:none;">You are joining a multiplayer quiz. <br />The player hosting the quiz has control over the quiz settings. </p>
+          <br />
+          <input type="text" id="input-username" class="input-twitch input-user" id="username" maxlength="25" autocomplete="off" placeholder="username">
+          <div class="smolbutton atchleft2" id="username-confirm"> set</div>
+        </div>
+
       </div>
     </div>
     <div id="wrongquiz" class="snackbar"></div>

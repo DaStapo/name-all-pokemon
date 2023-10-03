@@ -44,7 +44,7 @@ app.set('view engine', 'ejs');
 
 function log(...messages) {
     const logMessage = `${new Date()}: ${messages.map(msg => (typeof msg === 'object' ? JSON.stringify(msg) : msg)).join(' ')}\n`;
-    
+    console.log(logMessage)
     fs.appendFile('app.log', logMessage, (err) => {
       if (err) {
         console.error('Error writing to log file:', err);

@@ -176,7 +176,10 @@ if (roomId.length > 1){
             noSuchRoom();
         }
     })
-
+    document.getElementById("guest-info").style.display="block"
+    document.getElementById("loadboxguest").style.display="block"
+    document.getElementById("loadbox").style.display="none"
+    usernamePrompt.style.display = "block"
     radioSilhouette .style.display="none"
     giveUpBtn.style.display="none"
     resetBtn.style.display="none"
@@ -193,6 +196,7 @@ if (roomId.length > 1){
     pauseBtn.style.display = "none"
 }else{
     roomId = null;
+    document.getElementById("host-info").style.display="block"
 }
 
 async function loadData(){
@@ -1932,7 +1936,6 @@ function preloadSmallerImages(){
 
 function onLoadingComplete() {
     fetchData("multiplayerEnabled").then((result) =>{
-        console.log(result["result"])
         if (!result["result"]){
             hostGame.onclick = () =>{
                 showUserMessage("Multiplayer is currently disabled, probably because of an upcoming maintenance.")
@@ -1941,10 +1944,13 @@ function onLoadingComplete() {
     })
     //document.getElementById("loadbox").style.display = "none";
     document.getElementById("loader").style.display = "none";
+    document.getElementById("loadboxguest").style.display = "none";
     document.getElementById("playtext").style.opacity = "1";
     document.getElementById("inputbar").style.opacity = "1";
     document.getElementById("pokemon").disabled = false;
     document.getElementById("spinner").style.display = "none";
+    document.getElementById("spinnerguest").style.display = "none";
+    document.getElementById("username-area").style.display="block"
     document.getElementById("missing-ENG").click()
     changeFooterPosition();
     
