@@ -850,7 +850,9 @@ class Quiz {
         this.spriteDictionary[id].style.display = "inline";
         this.unguessedDictionary[id].style.display = "none";
         let currentBox = this.pokemonIdDict[id].box;
-        this.boxCounters[currentBox].push(this.pokemonIdDict[id])
+        let pkmn = this.pokemonIdDict[id]
+        if(!(this.boxCounters[currentBox].includes(pkmn)))
+        this.boxCounters[currentBox].push(pkmn)
         if (this.boxCounters[currentBox].length === this.currentBoxes[currentBox].length){
             let boxElem = this.spriteDictionary[id].parentElement;
             boxElem.classList.add('outline')
@@ -1105,6 +1107,8 @@ if (roomId.length > 1){
     document.getElementById("fullQuizButton").style.display="none"
     document.getElementById("playtext").style.display="none"
     pauseBtn.style.display = "none"
+    document.getElementById("unpause").style.display = "none"
+    document.getElementById("pause-text").innerText = "Paused by host"
 }else{
     roomId = null;
     document.getElementById("host-info").style.display="block"

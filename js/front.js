@@ -194,6 +194,8 @@ if (roomId.length > 1){
     document.getElementById("fullQuizButton").style.display="none"
     document.getElementById("playtext").style.display="none"
     pauseBtn.style.display = "none"
+    document.getElementById("unpause").style.display = "none"
+    document.getElementById("pause-text").innerText = "Paused by host"
 }else{
     roomId = null;
     document.getElementById("host-info").style.display="block"
