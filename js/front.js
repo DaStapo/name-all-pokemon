@@ -470,10 +470,13 @@ async function loadData(){
                 off2()
                 enableSocket();
                 joinRoom(username)
-            }document.getElementById("input-username").focus();
+            }
 
         }
-        usernameInput.focus();
+        setTimeout(()=>{
+            usernameInput.focus();
+        }, 100);
+        
         function detectEnter(event) {
             if (event.keyCode === 13) {
                 usernameButton.click();
