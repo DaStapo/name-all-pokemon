@@ -39,6 +39,7 @@ class Quiz {
     pokeballArray = []
 
     missingnoEnabled = false;
+    shinyEnabled = false;
     named = new Set()
 
     users = {}
@@ -409,9 +410,8 @@ class Quiz {
         }
 
 
-
+        this.resetCurrentSprites()
         this.reset();
-
 
     }
 
@@ -864,18 +864,29 @@ class Quiz {
         }
     }
 
-    shinyOn(){
-        for (let id of this.currentIds){
-            this.spriteDictionary[id].src = this.encodedImages['shiny'][id]
-            this.unguessedDict[id].getElementsByTagName('img')[0].src = this.encodedImages['shiny'][id]
+
+    resetCurrentSprites(){
+        if (this.shinyEnabled){
+            for (let id of this.currentIds){
+                this.spriteDictionary[id].src = this.encodedImages['shiny'][id]
+                this.unguessedDict[id].getElementsByTagName('img')[0].src = this.encodedImages['shiny'][id]
+            }
+        }else{
+            for (let id of this.currentIds){
+                this.spriteDictionary[id].src = this.encodedImages['sprite'][id]
+                this.unguessedDict[id].getElementsByTagName('img')[0].src = this.encodedImages['sprite'][id]
+            }         
         }
     }
 
+    shinyOn(){
+        this.shinyEnabled = true;
+        this.resetCurrentSprites();
+    }
+
     shinyOff(){
-        for (let id of this.currentIds){
-            this.spriteDictionary[id].src = this.encodedImages['sprite'][id]
-            this.unguessedDict[id].getElementsByTagName('img')[0].src = this.encodedImages['sprite'][id]
-        }
+        this.shinyEnabled = false;
+        this.resetCurrentSprites();
     }
 
 }

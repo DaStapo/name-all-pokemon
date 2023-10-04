@@ -29,7 +29,6 @@ let darkMode = false;
 let isSpellingEnabled = false;
 let currentType = ""
 let activeTimer = false;
-let shinyEnabled = false
 let isTwitchOn = false;
 var soundEnabled = true;
 var paused = false;
@@ -94,7 +93,7 @@ let hostGame = document.getElementById("hostButton")
 let linkGame = document.getElementById("linkButton")
 let usernamePrompt = document.getElementById("promptusername")
 let boxDict = {}
-
+hostGame.style.display = "none"
 for (let i = 0; i < boxIds.length; i++){
     let boxId = boxIds[i]
     boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
@@ -203,7 +202,7 @@ if (roomId.length > 1){
 
 async function loadData(){
 
-
+    
     function onReset(){
         socketResetQuiz()
         clearInterval(activeTimer);
@@ -247,7 +246,7 @@ async function loadData(){
     quiz.loadData(allData, enabledLanguages, onReset)
 
 
-
+    
     function host(username) {
         if (socket !== null){
             let data = {}
@@ -304,9 +303,14 @@ async function loadData(){
         }
     }
     function enableSocket(){
+        /*let current = new URL(window.location.href);
+        if (current.hostname.includes('localhost')){
+            socket = io();
+        }
+        else{
+            socket = io("wss://pkmnquiz.com:3000");
+        }*/
         socket = io();
-
-        
         socket.on('userJoined', (username) => {
             showUserMessage(username + " joined the room !")
         });
@@ -1250,7 +1254,7 @@ async function loadData(){
             let key = standardizeName(pkmn)
             
             let pathName;
-            if (shinyEnabled){
+            if (quiz.shinyEnabled){
                 pathName = 'shiny'
             }else{
                 pathName = 'sprite'
@@ -2224,13 +2228,11 @@ function swapShiny(){
 
 
 function shinyOn(){
-    shinyEnabled= true;
     visualizeButtonClick(document.getElementById("shiny"))
     quiz.shinyOn();
 }
 
 function shinyOff(){
-    shinyEnabled = false
     visualizeButtonUnclick(document.getElementById("shiny"))
     quiz.shinyOff();
 }
