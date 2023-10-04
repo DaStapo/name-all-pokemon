@@ -1,27 +1,27 @@
-app.log
-
-node_modules/
-
-package-lock\.json
-
-test\.txt
-
-neeeke\.txt
-
-namelogs\.json
-
-genlogs\.json
-streamlogs\.json
-.namelogs.json
-.app.log
+# Ignore application logs
 app.log
 app/log
-.genlogs.json
-.streamlogs.json
-pokemonDB\.p
 
-misspellings\.txt
+# Ignore Node.js modules and lock files
+node_modules/
+package-lock.json
 
-formatted_streamlogs\.txt
+# Ignore test files
+test.txt
 
-obfuscated\.js
+# Ignore log files
+namelogs.json
+genlogs.json
+streamlogs.json
+formatted_streamlogs.txt
+
+# Ignore misspelled files
+neeeke.txt
+misspellings.txt
+
+# Ignore obfuscated JavaScript file
+obfuscated.js
+
+# Ignore data files
+pokemonDB.p
+
