@@ -16,6 +16,8 @@ let genQuizBoxes= {
     "9":["paldea", "kitakami"],
 }
 
+let multiplayerUrl = "stapo.cloud"
+
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
 let soundEffectMissingno = new Audio('/sound-effects/032.wav');
 soundEffectMissingno.volume = 0.2;
@@ -93,7 +95,6 @@ let hostGame = document.getElementById("hostButton")
 let linkGame = document.getElementById("linkButton")
 let usernamePrompt = document.getElementById("promptusername")
 let boxDict = {}
-hostGame.style.display = "none"
 for (let i = 0; i < boxIds.length; i++){
     let boxId = boxIds[i]
     boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
@@ -101,8 +102,6 @@ for (let i = 0; i < boxIds.length; i++){
 
 
 let quiz = new Quiz(boxDict, genQuizBoxes, allLanguages)
-
-
 
 
 document.getElementById("return").onclick = function() {
@@ -153,9 +152,9 @@ async function fetchData(endpoint) {
     }
 }
 
-async function postData(endpoint, body) {
+async function roomExistsReq(endpoint, body) {
   
-    let response = await fetch('/'+endpoint, {
+    let response = await fetch('https://stapo.cloud/'+endpoint, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -170,7 +169,7 @@ async function postData(endpoint, body) {
 
 //if (roomId)
 if (roomId.length > 1){
-    postData("roomExists", {"roomId":roomId}).then((result) =>{
+    roomExistsReq("roomExists", {"roomId":roomId}).then((result) =>{
         if (!result["success"]){
             noSuchRoom();
         }
@@ -310,7 +309,8 @@ async function loadData(){
         else{
             socket = io("wss://pkmnquiz.com:3000");
         }*/
-        socket = io();
+        socket = io("wss://" + multiplayerUrl);
+        
         socket.on('userJoined', (username) => {
             showUserMessage(username + " joined the room !")
         });
