@@ -21,10 +21,10 @@ let soundEffectMissingno = new Audio('/sound-effects/032.wav');
 soundEffectMissingno.volume = 0.2;
 soundEffect.volume = 0.5;
 let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
-let soundEffectJoin = new Audio('/sound-effects/Dex-Fanfare.mp3');
-soundEffectJoin.volume = 0.5
-let soundEffectExit = new Audio('/sound-effects/Dex-Fanfare.mp3');
-soundEffectExit.volume = 0.5
+let soundEffectJoin = new Audio('/sound-effects/quizjoin.wav');
+soundEffectJoin.volume = 0.35
+let soundEffectExit = new Audio('/sound-effects/quizleave.wav');
+soundEffectExit.volume = 0.35
 soundEffect2.volume = 0.3;
 
 var nameAll;
@@ -94,6 +94,7 @@ let main = document.getElementById("main");
 let footer = document.getElementById("footer");
 
 let hostGame = document.getElementById("hostButton")
+hostGame.style.display = "none";
 let linkGame = document.getElementById("linkButton")
 let usernamePrompt = document.getElementById("promptusername")
 let boxDict = {}
@@ -557,7 +558,7 @@ async function loadData() {
         checkMultiplayerStatus()
         setInterval(() => {
             checkMultiplayerStatus();
-        }, 1000)
+        }, 20000)
 
     }
 

@@ -218,5 +218,7 @@ server.listen(port, () => {
 });
 
 
-let startMultiplayerServer = require('./multiplayer')
-startMultiplayerServer();
+if (true){
+    let startMultiplayerServer = require('./multiplayer')
+    startMultiplayerServer();
+}
