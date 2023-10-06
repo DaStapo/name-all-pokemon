@@ -43,14 +43,14 @@ let startMultiplayerServer = function (){
     
     
     function validateAndSanitizeString(username) {
-        const allowedCharacters = /^[a-zA-Z0-9_\u4e00-\u9fa5\uac00-\ud7af\u3040-\u30ff]+$/;
+        const allowedCharacters = /^[a-zA-Z0-9_\u4e00-\u9fa5\uac00-\ud7af\u3040-\u30ff\s]+$/;
         if (!allowedCharacters.test(username)) {
-            username = username.replace(/[^a-zA-Z0-9_\u4e00-\u9fa5\uac00-\ud7af\u3040-\u30ff]/g, '_');
+            username = username.replace(/[^a-zA-Z0-9_\u4e00-\u9fa5\uac00-\ud7af\u3040-\u30ff\s]/g, '_');
         }
-    
     
         return username;
     }
+    
     
     function shortenString(str, maxLength) {
         return str.length <= maxLength ? str : str.slice(0, maxLength);
@@ -89,7 +89,7 @@ let startMultiplayerServer = function (){
     
     // Define a function to handle socket connections
     io.on('connection', (socket) => {
-    
+        console.log('recovered?', socket.recovered)
         // Handle room creation
         socket.on('host', (data) => {
             try {

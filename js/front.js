@@ -94,7 +94,6 @@ let main = document.getElementById("main");
 let footer = document.getElementById("footer");
 
 let hostGame = document.getElementById("hostButton")
-hostGame.style.display = "none";
 let linkGame = document.getElementById("linkButton")
 let usernamePrompt = document.getElementById("promptusername")
 let boxDict = {}
@@ -384,7 +383,7 @@ async function loadData() {
                     function copyLink() {
                         var currentURL = new URL(window.location.href);
                         var currentDomain = currentURL.hostname + (currentURL.port ? ':' + currentURL.port : '');
-                        let url = currentDomain + "/join/" + roomId
+                        let url = "https://" + currentDomain + "/join/" + roomId
                         navigator.clipboard.writeText(url)
                         showUserMessage("Copied link to clipboard (" + url + ")")
                     }
@@ -1241,7 +1240,7 @@ async function loadData() {
                 scoreDiv.append(placeDiv, usernameDiv, nrGuessedDiv)
                 leaderboardDiv.append(scoreDiv);
             }
-
+            changeFooterPosition()
         }
     }
 
