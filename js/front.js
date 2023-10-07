@@ -688,7 +688,7 @@ async function loadData() {
                     console.log('error loading image list, retrying...');
                     setTimeout(function () {
                         loadArtists();
-                    }, 200);
+                    }, 2000);
                 }
 
             }
