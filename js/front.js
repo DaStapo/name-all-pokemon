@@ -111,12 +111,16 @@ let footer = document.getElementById("footer");
 let hostGame = document.getElementById("hostButton")
 let linkGame = document.getElementById("linkButton")
 let usernamePrompt = document.getElementById("promptusername")
+
+let genBoxes = document.getElementById("gen-boxes")
+let bigBox = document.getElementById("pokemon-box-big")
+
 let boxDict = {}
 for (let i = 0; i < boxIds.length; i++) {
     let boxId = boxIds[i]
     boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
 }
-
+boxDict["pokemon-box-big"] = bigBox
 
 let quiz = new Quiz(boxDict, genQuizBoxes, allLanguages)
 
@@ -1224,6 +1228,8 @@ async function loadData() {
         socketSetOrderMode(true)
         visualizeButtonUnclick(disableOrderBtn)
         visualizeButtonClick(enableOrderBtn)
+        bigBox.style.display = "block"
+        genBoxes.style.display = "none"
         promptOrderEnable.style.display = "none";
     }
     promptOrderEnableNo.onclick = function () {
@@ -1236,6 +1242,8 @@ async function loadData() {
         socketSetOrderMode(false)
         visualizeButtonUnclick(enableOrderBtn)
         visualizeButtonClick(disableOrderBtn)
+        bigBox.style.display = "none"
+        genBoxes.style.display = "block"
         promptOrderDisable.style.display = "none";
         
     }

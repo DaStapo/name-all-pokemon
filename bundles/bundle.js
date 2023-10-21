@@ -91,6 +91,8 @@ class Quiz {
     revealedShadows = new Set()
 
     name = "none"
+
+    boxConstruction = []
     
     constructor(boxDict, genQuizBoxes, allLanguages){
         this.boxDict = boxDict;
@@ -216,7 +218,7 @@ class Quiz {
     }
 
     setQuiz(name, filters) {
-
+        
         //before we change the style name
         if (this.getStyleName() !== ""){
             document.getElementById("body").classList.remove( this.getStyleName());
@@ -496,10 +498,34 @@ class Quiz {
             document.getElementById("bgpattern2").style.display = 'none';
         }
 
-
+        this.moveBoxes()
         this.resetCurrentSprites()
         this.reset();
 
+    }
+
+    moveBoxes(){
+        if (this.orderMode && this.boxDict["pokemon-box-big"].children.length < 2){
+            for (let i = 0; i < this.boxConstruction.length; i++){
+                let box = this.boxConstruction[i][0]
+                let children = this.boxConstruction[i][1]
+                for (let j = 0; j < children.length; j++){
+                    box.removeChild(children[j])
+                    this.boxDict["pokemon-box-big"].appendChild(children[j])
+                    
+                }
+            }
+        }else if(!this.orderMode && this.boxDict["pokemon-box-big"].children.length > 2){
+            for (let i = 0; i < this.boxConstruction.length; i++){
+                let box = this.boxConstruction[i][0]
+                let children = this.boxConstruction[i][1]
+                for (let j = 0; j < children.length; j++){
+                    this.boxDict["pokemon-box-big"].removeChild(children[j])
+                    box.appendChild(children[j])
+                    
+                }
+            }   
+        }
     }
 
     getStyleName(){
@@ -942,7 +968,8 @@ class Quiz {
             box.appendChild(this.spriteDictionary[pokemon.id]);
             box.appendChild(unguessed);
             this.hideSprite(pokemon.id);
-
+            
+            this.boxConstruction.push([box, [this.spriteDictionary[pokemon.id], unguessed]])
         }
     }
 
@@ -1175,12 +1202,16 @@ let footer = document.getElementById("footer");
 let hostGame = document.getElementById("hostButton")
 let linkGame = document.getElementById("linkButton")
 let usernamePrompt = document.getElementById("promptusername")
+
+let genBoxes = document.getElementById("gen-boxes")
+let bigBox = document.getElementById("pokemon-box-big")
+
 let boxDict = {}
 for (let i = 0; i < boxIds.length; i++) {
     let boxId = boxIds[i]
     boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
 }
-
+boxDict["pokemon-box-big"] = bigBox
 
 let quiz = new Quiz(boxDict, genQuizBoxes, allLanguages)
 
@@ -2288,6 +2319,8 @@ async function loadData() {
         socketSetOrderMode(true)
         visualizeButtonUnclick(disableOrderBtn)
         visualizeButtonClick(enableOrderBtn)
+        bigBox.style.display = "block"
+        genBoxes.style.display = "none"
         promptOrderEnable.style.display = "none";
     }
     promptOrderEnableNo.onclick = function () {
@@ -2300,6 +2333,8 @@ async function loadData() {
         socketSetOrderMode(false)
         visualizeButtonUnclick(enableOrderBtn)
         visualizeButtonClick(disableOrderBtn)
+        bigBox.style.display = "none"
+        genBoxes.style.display = "block"
         promptOrderDisable.style.display = "none";
         
     }
