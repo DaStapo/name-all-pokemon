@@ -184,21 +184,35 @@ let startMultiplayerServer = function (){
         socket.on('stateChange', (data) => {
             try {
                 if (socket.isHost) {
-                    for (let key in data) {
-                        if (key === "silhouettes") {
-                            existingRooms[socket.roomId]["state"]["silhouettes"] = true;
-                        } else if (key === "paused") {
-                            existingRooms[socket.roomId]["state"]["paused"] = data["paused"];
-                        } else if (key === "state") {
+                    for (let key in data) {                    
+                        if (key === "state") {
                             existingRooms[socket.roomId]["state"] = data["state"];
-                        } else if (key === "timer") {
-                            existingRooms[socket.roomId]["state"]["timer"] = data["timer"]
+                        }else{
+                            existingRooms[socket.roomId]["state"][key] = data[key];
                         }
                     }
                     socket.broadcast.to(socket.roomId).emit('stateChange', data);
                 }
             } catch (error) {
                 log('stateChange', error)
+            }
+        });
+
+        socket.on('reveal', (data) => {
+            try {
+                if (socket.isHost) {
+                    socket.broadcast.to(socket.roomId).emit('reveal', data);
+                    if ("revealSingle" in data){
+                        existingRooms[socket.roomId]["state"]["revealedShadows"].push(data["revealSingle"]);
+                    }else if ("revealMultiple" in data){
+                        for (let i = 0; i < data["revealMultiple"].length; i++){
+                            existingRooms[socket.roomId]["state"]["revealedShadows"].push(data["revealMultiple"][i]);   
+                        }
+                    }
+
+                }
+            } catch (error) {
+                log('reveal', error)
             }
         });
     

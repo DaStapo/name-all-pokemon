@@ -53,9 +53,10 @@ class Quiz {
     paused = false;
 
     orderModeSet = new Set()
-    orderModeBaseIdDict = {}
-    orderMode = true;
-    lastOrderIndex = -1
+    baseNameIdDict = {}
+    orderMode = false;
+
+    revealedShadows = new Set()
     
     constructor(boxDict, genQuizBoxes, allLanguages){
         this.boxDict = boxDict;
@@ -78,7 +79,7 @@ class Quiz {
             if (!(pkmn.baseName in this.pokemonBaseNameDict)){
                 this.pokemonBaseNameDict[pkmn.baseName] = []
                 this.orderModeSet.add(pkmn.id)
-                this.orderModeBaseIdDict[pkmn.baseName] = pkmn.id
+                this.baseNameIdDict[pkmn.baseName] = pkmn.id
             }
             this.pokemonBaseNameDict[pkmn.baseName].push(pkmn)
         }
@@ -99,8 +100,8 @@ class Quiz {
         this.langCounts = {}
         this.missingnoEnabled = false;
         this.useSilhouettes = false;
+        this.revealedShadows = new Set()
         this.boxCounters = {}
-        this.lastOrderIndex = -1
         for (let box in this.currentBoxes){
             this.boxCounters[box] = []
         }
@@ -131,6 +132,12 @@ class Quiz {
             }
         }
         this.onReset();
+    }
+
+
+    setOrderMode(val){
+        this.orderMode = val
+        this.setQuiz(this.name, this.filters)
     }
 
     checkHighestLang(){
@@ -280,7 +287,7 @@ class Quiz {
                 if (this.orderModeSet.has(id)){
                     tempList.push(currentPokemonList[i])
                 }else{
-                    let basePkmnId = this.orderModeBaseIdDict[currentPokemonList[i].baseName]
+                    let basePkmnId = this.baseNameIdDict[currentPokemonList[i].baseName]
                     if (!(basePkmnId in currentCycles)){
                         currentCycles[basePkmnId] = [basePkmnId]
                     }
@@ -307,6 +314,7 @@ class Quiz {
         this.currentBaseNames = new Set()
         this.currentIds = new Set()
         this.currentBoxes = {}
+        this.currentPokemonList = currentPokemonList
         for (let i = 0; i<currentPokemonList.length; i++){
             this.currentBaseNames.add(currentPokemonList[i].baseName)
             //essentially sprites
@@ -660,7 +668,7 @@ class Quiz {
                         }
                     }
                     if (!overlap){
-                        message =  this.pokemonIdDict[id].getFormattedName(this.currentLang)+ " already named."
+                        message =  this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang)+ " already named"
                     }
                     continue;
                 }
@@ -675,7 +683,7 @@ class Quiz {
                         }
                     }
                     if (!found){
-                        message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " is not part of this quiz."
+                        message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " is not part of this quiz"
                     }
                     continue;
                     
@@ -685,7 +693,30 @@ class Quiz {
                 }
 
                 if (this.orderMode){
-                    
+
+                    //safe from latency
+                    let highestNamed = -1
+                    for (let k = 0; k < this.currentPokemonList.length; k++){
+                        if (this.named.has(this.currentPokemonList[k].baseName)){
+                            if (k > highestNamed){
+                                highestNamed = k
+                            }
+                        }
+                    }
+
+                    if (baseName !== this.currentPokemonList[highestNamed+1].baseName){
+                        let overlap = false;
+                        for (let key in this.nameDict){
+                            if (key.startsWith(input) && key !== input){
+                                overlap = true;
+                                break
+                            }
+                        }
+                        if (!overlap){
+                            message =  this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang)+ " is not the next Pokémon"
+                        }
+                        continue;
+                    }
                 }
 
                 let recentPkmn = this.addNamed(baseName)
@@ -756,6 +787,29 @@ class Quiz {
         
     }
     
+
+    revealNextShadow(){
+        if (this.orderMode){
+            for (let k = 0; k < this.currentPokemonList.length; k++){
+                if (!(this.named.has(this.currentPokemonList[k].baseName))){
+                    this.silhouetteDictionary[this.currentPokemonList[k].id] .style.display = "inline";
+                    this.pokeballDictionary[this.currentPokemonList[k].id] .style.display = "none";
+                    this.revealedShadows.add(this.currentPokemonList[k].id)
+                    return this.currentPokemonList[k].id
+                    break
+                }
+            }
+
+        }
+
+    }
+    revealSingleShadow(id){
+        this.revealedShadows.add(id)
+        this.silhouetteDictionary[id] .style.display = "inline";
+        this.pokeballDictionary[id] .style.display = "none";
+    }
+
+
 
     setSilhouettes() {
         for (let i = 0; i < this.silhouetteArray.length; i++) {

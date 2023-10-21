@@ -223,7 +223,7 @@
               </div>
             </div>
           </div>
-          <div class="column" style="display:none;">
+          <div class="column">
             <div class="box roundedc2 slightpad" id="orderbox">
               <div class="orderbar" id="order-bar" onclick="orderopen()">Order-Mode
               <div class="arrowbutton abright" id="order-open"><i class="arrow aright"></i></div>
@@ -391,13 +391,22 @@
         <div id="sil-no" class="button hovr roundedb">Cancel</div>
       </div>
     </div>
-    <div id="promptorder" class="overlay" onclick="off3()">
+    <div id="promptorder-enable" class="overlay" onclick="off3()">
       <div class="prompt">
         <h2>Enforce guessing in Pokedex order</h2>
         <p>Quiz and timer will reset</p>
         <br />
-        <div id="order-yes" class="button roundedb">Order</div>
-        <div id="order-no" class="button hovr roundedb">Chaos</div>
+        <div id="order-enable-yes" class="button roundedb">Enable</div>
+        <div id="order-enable-no" class="button hovr roundedb">Cancel</div>
+      </div>
+    </div>
+    <div id="promptorder-disable" class="overlay" onclick="off3()">
+      <div class="prompt">
+        <h2>Disable guessing in Pokedex order</h2>
+        <p>Quiz and timer will reset</p>
+        <br />
+        <div id="order-disable-yes" class="button roundedb">Disable</div>
+        <div id="order-disable-no" class="button hovr roundedb">Cancel</div>
       </div>
     </div>
     <div id="promptusername" class="overlay">
