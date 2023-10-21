@@ -295,8 +295,12 @@ class Quiz {
                 }
             }
             currentPokemonList = tempList
-        }
 
+            if ("darumaka" in currentCycles){
+                currentCycles["darumaka"] = ["darumaka", "darumaka", "darumakagalar", "darumakagalar"]
+            }
+
+        }
 
         this.spriteCycles = currentCycles;
 
