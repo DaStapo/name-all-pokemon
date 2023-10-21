@@ -51,6 +51,11 @@ class Quiz {
     filters = {}
 
     paused = false;
+
+    orderModeSet = new Set()
+    orderModeBaseIdDict = {}
+    orderMode = true;
+    lastOrderIndex = -1
     
     constructor(boxDict, genQuizBoxes, allLanguages){
         this.boxDict = boxDict;
@@ -72,6 +77,8 @@ class Quiz {
             this.pokemonIdDict[pkmn.id] = pkmn
             if (!(pkmn.baseName in this.pokemonBaseNameDict)){
                 this.pokemonBaseNameDict[pkmn.baseName] = []
+                this.orderModeSet.add(pkmn.id)
+                this.orderModeBaseIdDict[pkmn.baseName] = pkmn.id
             }
             this.pokemonBaseNameDict[pkmn.baseName].push(pkmn)
         }
@@ -93,7 +100,7 @@ class Quiz {
         this.missingnoEnabled = false;
         this.useSilhouettes = false;
         this.boxCounters = {}
-
+        this.lastOrderIndex = -1
         for (let box in this.currentBoxes){
             this.boxCounters[box] = []
         }
@@ -258,11 +265,34 @@ class Quiz {
             i+=1
         }
 
-        this.spriteCycles = currentCycles;
 
         for (let i = indexesToRemove.length - 1; i >= 0; i--) {
             currentPokemonList.splice(indexesToRemove[i] , 1);
         }
+
+
+        if (this.orderMode){
+            let tempList = []
+            for (let i = 0; i< currentPokemonList.length; i++ ){
+                if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega" ){
+                    continue
+                }
+                let id = currentPokemonList[i].id;
+                if (this.orderModeSet.has(id)){
+                    tempList.push(currentPokemonList[i])
+                }else{
+                    let basePkmnId = this.orderModeBaseIdDict[currentPokemonList[i].baseName]
+                    if (!(basePkmnId in currentCycles)){
+                        currentCycles[basePkmnId] = [basePkmnId]
+                    }
+                    currentCycles[basePkmnId].push(id)
+                }
+            }
+            currentPokemonList = tempList
+        }
+
+
+        this.spriteCycles = currentCycles;
 
         this.currentBaseNames = new Set()
         this.currentIds = new Set()
@@ -642,6 +672,10 @@ class Quiz {
                 }
                 if (!(this.currentLangsNames.has(input))){
                     continue
+                }
+
+                if (this.orderMode){
+                    
                 }
 
                 let recentPkmn = this.addNamed(baseName)

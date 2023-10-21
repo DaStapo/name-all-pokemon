@@ -1,1 +1,3760 @@
-class Pokemon{['id'];['box'];['primaryType'];['secondaryType'];constructor(_0x208ac6){this['data']=_0x208ac6,this['id']=_0x208ac6['id'],this['baseName']=_0x208ac6['baseName'],this['primaryType']=_0x208ac6['primaryType'],this['secondaryType']=_0x208ac6['secondaryType'],this['box']=_0x208ac6['box'];}['setExtraData'](_0x4341f7){this['extraData']=_0x4341f7;}['isType'](_0x21fcc0){const _0x5d195c={'OPsaR':function(_0x37a91e,_0x2034f0){return _0x37a91e===_0x2034f0;}};return _0x5d195c['OPsaR'](this['primaryType'],_0x21fcc0)||this['secondaryType']===_0x21fcc0;}['setFormattedNames'](_0x4a16b6){this['formattedDict']=_0x4a16b6;}['getFormattedName'](_0x1a4dd2){return this['formattedDict'][_0x1a4dd2];}}class Quiz{['pokemon']=[];['pokemonBaseNameDict']={};['pokemonIdDict']={};['silhouetteDictionary']={};['spriteDictionary']={};['pokeballDictionary']={};['unguessedDictionary']={};['unguessedDict']={};['unguessedDictTexts']={};['enabledLanguages']=[];['nameDict']={};['nameArr']=[];['langDict']={};['currentBaseNames']=new Set();['currentIds']=new Set();['currentLangsNames']=new Set();['revealTimeouts']=[];['allSprites']=[];['silhouetteArray']=[];['pokeballArray']=[];['missingnoEnabled']=!0x1;['shinyEnabled']=!0x1;['named']=new Set();['users']={};['langCounts']={};['currentLang']='ENG';['spriteCycles']={};['filters']={};['paused']=!0x1;constructor(_0x52b931,_0x55fe48,_0x4f8a16){this['boxDict']=_0x52b931,this['genQuizBoxes']=_0x55fe48,this['allLanguages']=_0x4f8a16,this['useSilhouettes']=!0x1;}['loadData'](_0x7cdca,_0x155230,_0x59f066){const _0x394e3c={'YzKma':function(_0x558b3a,_0x3e425d){return _0x558b3a<_0x3e425d;}};this['encodedImages']=_0x7cdca['encoded_images'],this['translations']=_0x7cdca['translations'],this['suffixes']=_0x7cdca['suffix_namings'],this['namings']=_0x7cdca['namings'];let _0x344a72=_0x7cdca['pokemon'];for(let _0xa257d0=0x0;_0x394e3c['YzKma'](_0xa257d0,_0x344a72['length']);_0xa257d0++){let _0x398e70=new Pokemon(_0x344a72[_0xa257d0]);this['pokemon']['push'](_0x398e70),this['pokemonIdDict'][_0x398e70['id']]=_0x398e70,_0x398e70['baseName']in this['pokemonBaseNameDict']||(this['pokemonBaseNameDict'][_0x398e70['baseName']]=[]),this['pokemonBaseNameDict'][_0x398e70['baseName']]['push'](_0x398e70);}this['setupNames'](),this['setFormattedNames'](),this['setupSprites'](),this['setupMissedContent'](),this['updateLanguages'](_0x155230),this['onReset']=_0x59f066,this['usePokeball']();}['reset'](){const _0x50060d={'VpKWU':'none','ABTWm':'outline','DWrcX':'inline'};this['stopReveal'](),this['named']=new Set(),this['users']={},this['langCounts']={},this['missingnoEnabled']=!0x1,this['useSilhouettes']=!0x1,this['boxCounters']={};for(let _0x441d70 in this['currentBoxes'])this['boxCounters'][_0x441d70]=[];this['usePokeball']();for(let _0x563b49 in this['spriteDictionary'])this['hideSprite'](_0x563b49),this['spriteDictionary'][_0x563b49]['classList']['add']('zoom'),this['spriteDictionary'][_0x563b49]['classList']['remove']('revealed');for(let _0x5372d3 in this['unguessedDict'])this['unguessedDict'][_0x5372d3]['style']['display']=_0x50060d['VpKWU'];for(let _0x274f7b in this['boxDict'])this['boxDict'][_0x274f7b]['classList']['remove'](_0x50060d['ABTWm']),this['boxDict'][_0x274f7b]['classList']['remove'](_0x50060d['ABTWm']+this['getStyleName']());for(let _0xabc9fd in this['unguessedDictionary'])this['currentIds']['has'](_0xabc9fd)?this['unguessedDictionary'][_0xabc9fd]['style']['display']=_0x50060d['DWrcX']:this['unguessedDictionary'][_0xabc9fd]['style']['display']=_0x50060d['VpKWU'];this['onReset']();}['checkHighestLang'](){const _0x2df581={'pfGoU':'ENG','WYRlm':function(_0x3e9a44,_0x3f9b60){return _0x3e9a44>_0x3f9b60;},'uwRPq':function(_0x1d0b5f,_0x2b02b8){return _0x1d0b5f+_0x2b02b8;}};let _0x25df4b=_0x2df581['pfGoU'],_0x5be91e=0x0;for(let _0x84f637 in this['langCounts'])_0x2df581['WYRlm'](this['langCounts'][_0x84f637],_0x5be91e)&&(_0x5be91e=this['langCounts'][_0x84f637],_0x25df4b=_0x84f637);this['currentLang']!==_0x25df4b&&(document['getElementById'](_0x2df581['uwRPq']('missing-',_0x25df4b))['click'](),this['currentLang']=_0x25df4b);}['getScore'](){return this['named']['size'];}['getMaxScore'](){return this['currentBaseNames']['size'];}['setGenQuiz'](_0x4ec818){const _0x210aab={'KWKZm':function(_0x28cd3c,_0xa6865f){return _0x28cd3c===_0xa6865f;},'ZQRaU':function(_0x3156e8,_0x16a5f5){return _0x3156e8+_0x16a5f5;}};let _0x4347f8,_0x1e944c={'boxes':this['genQuizBoxes'][_0x4ec818['toString']()]};_0x4347f8=_0x210aab['KWKZm']('0',_0x4ec818)?'Full':_0x210aab['ZQRaU']('Generation\x20',_0x4ec818),this['setQuiz'](_0x4347f8,_0x1e944c);}['setTypeQuiz'](_0x1bdacf){const _0x38d097={'bZPtp':'\x20type\x20'};let _0x51c228={'types':[_0x1bdacf]};this['setQuiz'](_0x1bdacf+_0x38d097['bZPtp'],_0x51c228);}['setQuiz'](_0x5df59d,_0x564c1c){const _0x17a0ee={'MGTtr':'bgpattern','JhTJp':'/images/types/','nOqrn':'.svg','srXbZ':function(_0x20565e,_0x13cbb5){return _0x20565e!==_0x13cbb5;},'uyQzj':function(_0x445a86,_0x36b774){return _0x445a86<_0x36b774;},'OKNjm':'type','lkoKp':function(_0xd171ae,_0x2db06c){return _0xd171ae+_0x2db06c;},'YcRvr':'button','afEAW':function(_0x173526,_0x980c74){return _0x173526 in _0x980c74;},'ENJdG':function(_0x25db02,_0x551e7a){return _0x25db02 in _0x551e7a;},'zyRNY':'types','SijRy':function(_0x2dc160,_0xf9b64a){return _0x2dc160-_0xf9b64a;},'yNFtM':function(_0x2234d8,_0x3437ba){return _0x2234d8===_0x3437ba;},'ordfa':function(_0x31f843,_0x270d0f){return _0x31f843+_0x270d0f;},'oMFZz':function(_0x22a32b,_0x279419){return _0x22a32b+_0x279419;},'ulpNA':function(_0x4c8abc,_0x213f8a){return _0x4c8abc>=_0x213f8a;},'olJHb':function(_0x3e0bfa,_0x4de386){return _0x3e0bfa in _0x4de386;},'WHGTE':function(_0x8b8300,_0x216998){return _0x8b8300 in _0x216998;},'fVcTl':'block','xjqjG':function(_0x418127,_0xd4d158){return _0x418127(_0xd4d158);},'CBniC':'region','NOnOw':function(_0x3ea91a,_0x1a4b84){return _0x3ea91a(_0x1a4b84);},'LasJc':'Full','CfUmm':'pokemon-box-unknown','Yhphl':'unknownbox','AkWcA':'sprite','vcRMk':'fifth','QAXNK':'twothirds','TjYyC':'eneration','EvoPX':function(_0x149be0,_0x2eac58){return _0x149be0(_0x2eac58);},'bxYQm':function(_0x3ac2b0,_0x5739a8){return _0x3ac2b0+_0x5739a8;},'GoHKq':function(_0x5e472f,_0xcbf140){return _0x5e472f<_0xcbf140;},'GPcbA':'spritew','jIYxp':function(_0x12295a,_0x45a3ba){return _0x12295a+_0x45a3ba;},'RbHZw':function(_0x497b84,_0x107ca2){return _0x497b84<_0x107ca2;},'mSQpa':'body','kcqKo':'dark','WvXqT':function(_0x30882e,_0x595132){return _0x30882e<_0x595132;},'WIDdP':'DARK','mYdMi':'bgpattern2','Yjluq':'blenddark','xWOfK':'none'};if(_0x17a0ee['srXbZ']('',this['getStyleName']())){document['getElementById']('body')['classList']['remove'](this['getStyleName']());for(let _0x2cc62b=0x0;_0x17a0ee['uyQzj'](_0x2cc62b,typeClasses['length']);_0x2cc62b++){let _0x4978a3=typeClasses[_0x2cc62b],_0x3095b0=this['getStyleName'](),_0x1755bf=document['getElementsByClassName'](_0x4978a3['replace']('type',''));_0x4978a3['replace'](_0x17a0ee['OKNjm'],'');for(let _0x1fcf4d=0x0;_0x17a0ee['uyQzj'](_0x1fcf4d,_0x1755bf['length']);_0x1fcf4d++)_0x1755bf[_0x1fcf4d]['classList']['remove'](_0x4978a3['replace'](_0x17a0ee['OKNjm'],_0x3095b0));}let _0x430b79=document['getElementsByClassName']('button');for(let _0xeafb1c=0x0;_0xeafb1c<_0x430b79['length'];_0xeafb1c++)_0x430b79[_0xeafb1c]['classList']['remove'](_0x17a0ee['lkoKp'](_0x17a0ee['YcRvr'],this['getStyleName']()));}this['filters']=_0x564c1c,this['name']=_0x5df59d;let _0x2886bd=[];_0x2886bd=_0x17a0ee['afEAW']('boxes',_0x564c1c)?this['pokemon']['filter'](_0x598883=>_0x564c1c['boxes']['includes'](_0x598883['box'])):[...this['pokemon']],_0x17a0ee['ENJdG'](_0x17a0ee['zyRNY'],_0x564c1c)&&(_0x2886bd=_0x2886bd['filter'](_0x31af2a=>_0x564c1c['types']['some'](_0x24e61e=>_0x31af2a['isType'](_0x24e61e))));let _0x4f5a7a={},_0x59ad7b=[],_0xe47a5d=0x0;for(;_0xe47a5d<_0x17a0ee['SijRy'](_0x2886bd['length'],0x1);){if(_0x17a0ee['yNFtM'](_0x2886bd[_0xe47a5d]['baseName'],_0x2886bd[_0xe47a5d+0x1]['baseName'])){_0x4f5a7a[_0x2886bd[_0xe47a5d]['id']]=[_0x2886bd[_0xe47a5d]['id']];let _0x4ebd73=0x1;for(;_0x17a0ee['lkoKp'](_0xe47a5d,_0x4ebd73)<_0x2886bd['length']&&_0x2886bd[_0xe47a5d]['baseName']===_0x2886bd[_0xe47a5d+_0x4ebd73]['baseName'];)_0x59ad7b['push'](_0x17a0ee['ordfa'](_0xe47a5d,_0x4ebd73)),_0x4f5a7a[_0x2886bd[_0xe47a5d]['id']]['push'](_0x2886bd[_0x17a0ee['oMFZz'](_0xe47a5d,_0x4ebd73)]['id']),_0x4ebd73+=0x1;_0x4ebd73-=0x1,_0xe47a5d+=_0x4ebd73;}_0xe47a5d+=0x1;}this['spriteCycles']=_0x4f5a7a;for(let _0xe3996=_0x59ad7b['length']-0x1;_0x17a0ee['ulpNA'](_0xe3996,0x0);_0xe3996--)_0x2886bd['splice'](_0x59ad7b[_0xe3996],0x1);this['currentBaseNames']=new Set(),this['currentIds']=new Set(),this['currentBoxes']={};for(let _0x26cac5=0x0;_0x26cac5<_0x2886bd['length'];_0x26cac5++)this['currentBaseNames']['add'](_0x2886bd[_0x26cac5]['baseName']),this['currentIds']['add'](_0x2886bd[_0x26cac5]['id']),_0x17a0ee['olJHb'](_0x2886bd[_0x26cac5]['box'],this['currentBoxes'])||(this['currentBoxes'][_0x2886bd[_0x26cac5]['box']]=[]),this['currentBoxes'][_0x2886bd[_0x26cac5]['box']]['push'](_0x2886bd[_0x26cac5]);for(let _0x5c6d18 in this['unguessedDictionary'])_0x17a0ee['afEAW'](_0x5c6d18,this['currentIds'])?this['unguessedDictionary'][_0x5c6d18]['style']['display']='inline':this['unguessedDictionary'][_0x5c6d18]['style']['display']='none';for(let _0x1a4c47 in this['boxDict'])_0x17a0ee['WHGTE'](_0x1a4c47,this['currentBoxes'])?this['boxDict'][_0x1a4c47]['style']['display']=_0x17a0ee['fVcTl']:this['boxDict'][_0x1a4c47]['style']['display']='none';for(let _0x3cfdad in this['currentBoxes'])'Full'===this['name']?_0x17a0ee['xjqjG'](regionToAll,document['getElementById'](_0x17a0ee['CBniC']+_0x3cfdad)):_0x17a0ee['NOnOw'](regionToSingle,document['getElementById']('region'+_0x3cfdad));if(this['updateLanguages'](this['enabledLanguages']),_0x17a0ee['LasJc']===this['name']){for(let _0x281127 in this['currentBoxes'])regionToAll(document['getElementById'](_0x17a0ee['oMFZz']('region',_0x281127)));document['getElementById'](_0x17a0ee['CfUmm'])['classList']['remove'](_0x17a0ee['Yhphl']);for(let _0x34749b=0x0;_0x17a0ee['uyQzj'](_0x34749b,this['allSprites']['length']);_0x34749b++)this['allSprites'][_0x34749b]['classList']['add'](_0x17a0ee['AkWcA']),this['allSprites'][_0x34749b]['classList']['remove']('spritew'),this['allSprites'][_0x34749b]['classList']['remove']('spritet');for(let _0x1429d3=0x0;_0x17a0ee['uyQzj'](_0x1429d3,pokecolumns['length']);_0x1429d3++)pokecolumns[_0x1429d3]['classList']['add'](_0x17a0ee['vcRMk']),pokecolumns[_0x1429d3]['classList']['remove'](_0x17a0ee['QAXNK']);}else{if(this['name']['includes'](_0x17a0ee['TjYyC'])){for(let _0x3fde09 in this['currentBoxes'])_0x17a0ee['EvoPX'](regionToSingle,document['getElementById'](_0x17a0ee['bxYQm']('region',_0x3fde09)));document['getElementById']('pokemon-box-unknown')['classList']['add']('unknownbox');for(let _0x580ec6=0x0;_0x17a0ee['GoHKq'](_0x580ec6,this['allSprites']['length']);_0x580ec6++)this['allSprites'][_0x580ec6]['classList']['add'](_0x17a0ee['GPcbA']),this['allSprites'][_0x580ec6]['classList']['remove'](_0x17a0ee['AkWcA']),this['allSprites'][_0x580ec6]['classList']['remove']('spritet');for(let _0x49cb97=0x0;_0x49cb97<pokecolumns['length'];_0x49cb97++)pokecolumns[_0x49cb97]['classList']['remove'](_0x17a0ee['vcRMk']),pokecolumns[_0x49cb97]['classList']['add'](_0x17a0ee['QAXNK']);}else{document['getElementById'](_0x17a0ee['CfUmm'])['classList']['remove'](_0x17a0ee['Yhphl']);for(let _0x488897 in this['currentBoxes'])_0x17a0ee['NOnOw'](regionToSingle,document['getElementById'](_0x17a0ee['jIYxp']('region',_0x488897)));for(let _0x178ee9=0x0;_0x178ee9<pokecolumns['length'];_0x178ee9++)pokecolumns[_0x178ee9]['classList']['add']('fifth'),pokecolumns[_0x178ee9]['classList']['remove'](_0x17a0ee['QAXNK']);for(let _0x5c6a0f=0x0;_0x17a0ee['RbHZw'](_0x5c6a0f,this['allSprites']['length']);_0x5c6a0f++)this['allSprites'][_0x5c6a0f]['classList']['add']('spritet'),this['allSprites'][_0x5c6a0f]['classList']['remove']('spritew'),this['allSprites'][_0x5c6a0f]['classList']['remove']('sprite');}}if(_0x17a0ee['zyRNY']in _0x564c1c){document['getElementById']('body')['classList']['add'](this['getStyleName']()),darkMode?document['getElementById']('body')['classList']['add']('blenddark'):document['getElementById'](_0x17a0ee['mSQpa'])['classList']['add']('blend');for(let _0x328b7=0x0;_0x328b7<typeClasses['length'];_0x328b7++){let _0x8aae6d=typeClasses[_0x328b7];if(_0x8aae6d['includes'](_0x17a0ee['kcqKo'])&&!darkMode)continue;let _0x53e2ef=document['getElementsByClassName'](_0x8aae6d['replace']('type',''));for(let _0x16a120=0x0;_0x16a120<_0x53e2ef['length'];_0x16a120++)_0x53e2ef[_0x16a120]['classList']['add'](_0x8aae6d['replace'](_0x17a0ee['OKNjm'],this['getStyleName']()));}let _0xa77a0d=document['getElementsByClassName']('button');for(let _0x4caa94=0x0;_0x17a0ee['WvXqT'](_0x4caa94,_0xa77a0d['length']);_0x4caa94++)_0xa77a0d[_0x4caa94]['classList']['add'](_0x17a0ee['YcRvr']+this['getStyleName']());let _0x5e8fd9=this['getStyleName']()['toUpperCase']();'EVIL'===_0x5e8fd9&&(_0x5e8fd9=_0x17a0ee['WIDdP']),document['getElementById']('bgpattern')['style']['display']=_0x17a0ee['fVcTl'],document['getElementById'](_0x17a0ee['mYdMi'])['style']['display']=_0x17a0ee['fVcTl'],document['getElementById']('bgpattern2')['src']='/images/types/'+_0x5e8fd9+'.svg',document['getElementById']('bgpattern2')['src']='/images/types/'+_0x5e8fd9+'.svg',document['getElementById']('bgpattern')['style']['opacity']=0x0,setTimeout(()=>{document['getElementById'](_0x17a0ee['MGTtr'])['src']=_0x17a0ee['JhTJp']+_0x5e8fd9+_0x17a0ee['nOqrn'],document['getElementById'](_0x17a0ee['MGTtr'])['style']['opacity']=0x1;},0xfa);}else document['getElementById'](_0x17a0ee['mSQpa'])['classList']['remove']('blend'),document['getElementById'](_0x17a0ee['mSQpa'])['classList']['remove'](_0x17a0ee['Yjluq']),document['getElementById']('bgpattern')['style']['display']='none',document['getElementById'](_0x17a0ee['mYdMi'])['style']['display']=_0x17a0ee['xWOfK'];this['resetCurrentSprites'](),this['reset']();}['getStyleName'](){const _0x3d3462={'nSHRB':'types','WhTWH':function(_0x2695c3,_0xff7498){return _0x2695c3===_0xff7498;}};return _0x3d3462['nSHRB']in this['filters']?_0x3d3462['WhTWH']('dark',this['filters']['types'][0x0])?'evil':this['filters']['types'][0x0]:'';}['setFormattedNames'](){const _0x422294={'TWgqd':function(_0x5bfe82,_0x2d7ba6){return _0x5bfe82 in _0x2d7ba6;},'QBCYI':function(_0x7fb1c0,_0x53b54d){return _0x7fb1c0===_0x53b54d;}};for(let _0x54df15 in this['pokemonIdDict']){let _0x5c36c6=this['pokemonIdDict'][_0x54df15],_0x1dcd91=this['translations'][_0x5c36c6['baseName']],_0x552cab=null;if(_0x422294['TWgqd'](_0x5c36c6['id'],this['namings'])){_0x552cab={};for(let _0x16d591 in _0x1dcd91)_0x552cab[_0x16d591]=_0x1dcd91[_0x16d591]+this['namings'][_0x5c36c6['id']];}else{for(let _0x20bcd2 in this['suffixes'])if(_0x5c36c6['id']['endsWith'](_0x20bcd2)){if(_0x5c36c6['id']['substring'](0x0,_0x5c36c6['id']['length']-_0x20bcd2['length'])in this['pokemonBaseNameDict']){_0x552cab={};for(let _0x8a18b8 in _0x1dcd91)_0x552cab[_0x8a18b8]=_0x1dcd91[_0x8a18b8]+this['suffixes'][_0x20bcd2];break;}}}if(_0x422294['QBCYI'](null,_0x552cab)){_0x552cab={};for(let _0x39eda5 in _0x1dcd91)_0x552cab[_0x39eda5]=_0x1dcd91[_0x39eda5];}_0x5c36c6['setFormattedNames'](_0x552cab);}}['setLanguage'](_0x1bf424){for(let _0x306679 in this['unguessedDictTexts'])this['unguessedDictTexts'][_0x306679]['nodeValue']=this['pokemonIdDict'][_0x306679]['getFormattedName'](_0x1bf424);this['currentLang']=_0x1bf424;}['updateLanguages'](_0x16056f){const _0x4d8dd4={'GuICf':function(_0x2256be,_0x3727a7){return _0x2256be<_0x3727a7;},'hWzWu':function(_0x5efd93,_0x1c41a8){return _0x5efd93(_0x1c41a8);}};this['enabledLanguages']=_0x16056f,this['currentLangsNames']=new Set(),this['nameDict']={},this['nameArr']=[];for(let _0x2504e0 of this['currentIds'])for(let _0x3b144f=0x0;_0x4d8dd4['GuICf'](_0x3b144f,_0x16056f['length']);_0x3b144f++){let _0x543c3c=_0x16056f[_0x3b144f];this['currentLangsNames']['add'](standardizeName(this['translations'][this['pokemonIdDict'][_0x2504e0]['baseName']][_0x543c3c]));}for(let _0x48611c=0x0;_0x4d8dd4['GuICf'](_0x48611c,this['pokemon']['length']);_0x48611c++)for(let _0x131d2f=0x0;_0x131d2f<this['enabledLanguages']['length'];_0x131d2f++){let _0x37cf11=this['enabledLanguages'][_0x131d2f],_0x3698e7=_0x4d8dd4['hWzWu'](standardizeName,this['translations'][this['pokemon'][_0x48611c]['baseName']][_0x37cf11]);this['nameDict'][_0x3698e7]=this['pokemon'][_0x48611c]['id'],this['nameArr']['push'](_0x3698e7);}}['setupNames'](){const _0x4093df={'EpubE':function(_0x4a6021,_0x14e93f){return _0x4a6021<_0x14e93f;},'OZWNp':function(_0x325ebf,_0x40d04d){return _0x325ebf<_0x40d04d;},'IAaEZ':function(_0x4cf82f,_0x275648){return _0x4cf82f===_0x275648;},'iQZwr':function(_0x173d19,_0x40e5eb){return _0x173d19(_0x40e5eb);}};for(let _0x1b0ed5=0x0;_0x4093df['EpubE'](_0x1b0ed5,this['pokemon']['length']);_0x1b0ed5++)for(let _0x49a033=0x0;_0x4093df['OZWNp'](_0x49a033,this['allLanguages']['length']);_0x49a033++){let _0x4f743f=this['allLanguages'][_0x49a033];_0x4093df['IAaEZ'](_0x4093df['iQZwr'](standardizeName,this['translations'][this['pokemon'][_0x1b0ed5]['baseName']]['ENG']),_0x4093df['iQZwr'](standardizeName,this['translations'][this['pokemon'][_0x1b0ed5]['baseName']][_0x4f743f]))?this['langDict'][standardizeName(this['translations'][this['pokemon'][_0x1b0ed5]['baseName']][_0x4f743f])]='ENG':this['langDict'][standardizeName(this['translations'][this['pokemon'][_0x1b0ed5]['baseName']][_0x4f743f])]=_0x4f743f;}}['startMissingno'](){const _0x53406e={'mWPfr':'/unknown','UwYcD':'/sprites/unknown-2.png','fkHCa':'/sprites/unknown.png','kYfrP':function(_0x427571,_0x514672){return _0x427571!=_0x514672;},'ybFre':'none','zuqRX':function(_0x220262,_0x56e2c3,_0x288532){return _0x220262(_0x56e2c3,_0x288532);},'GCJrv':function(_0x308818,_0x3b974){return _0x308818-_0x3b974;},'EEcVa':function(_0x51ddb6,_0x1583dd,_0x1ff0d6){return _0x51ddb6(_0x1583dd,_0x1ff0d6);},'CDglj':'/images/missingno.png','GnZut':'/images/missingno2.png'};if(!this['missingnoEnabled'])return;let _0x376ca8=[];for(let _0xa0046a=0x0;_0xa0046a<this['allSprites']['length'];_0xa0046a++)_0x53406e['kYfrP']('none',this['allSprites'][_0xa0046a]['style']['display'])&&_0x53406e['kYfrP'](_0x53406e['ybFre'],this['allSprites'][_0xa0046a]['parentElement']['style']['display'])&&_0x53406e['kYfrP']('none',this['allSprites'][_0xa0046a]['parentElement']['parentElement']['style']['display'])&&_0x376ca8['push'](this['allSprites'][_0xa0046a]);let _0x2e72c4,_0x1d75dd=_0x53406e['zuqRX'](randomIntFromInterval,0x0,_0x53406e['GCJrv'](_0x376ca8['length'],0x1)),_0xe8ac8d=_0x376ca8[_0x1d75dd]['src'],_0x2225c6=_0x53406e['EEcVa'](randomIntFromInterval,0x0,0x64);_0x2e72c4=_0x2225c6<0x46?_0x53406e['CDglj']:_0x2225c6<0x5a?_0x53406e['GnZut']:'/images/missingno3.png',_0x376ca8[_0x1d75dd]['src']=_0x2e72c4;let _0x36f4ce=this;_0x53406e['zuqRX'](setTimeout,()=>{-0x1!==_0xe8ac8d['indexOf'](_0x53406e['mWPfr'])&&(_0xe8ac8d=darkMode?_0x53406e['UwYcD']:_0x53406e['fkHCa']),_0x376ca8[_0x1d75dd]['src']=_0xe8ac8d,_0x36f4ce['startMissingno']();},_0x53406e['zuqRX'](randomIntFromInterval,0x12c,0xbb8));}['parseInput'](_0x5ce6b8,_0x5d0980,_0x6748cc=null){const _0xae9abe={'Fkjdc':'ニドラン','wIlnV':function(_0x296bcd,_0x1cf129){return _0x296bcd!==_0x1cf129;},'pFIui':'니드런','wPUDD':function(_0x233393,_0x328c55){return _0x233393==_0x328c55;},'yZkun':function(_0x37ea8a,_0xd69f46){return _0x37ea8a(_0xd69f46);},'WkSYT':function(_0x45e00f,_0x225d7e){return _0x45e00f<_0x225d7e;},'HnDUn':function(_0x103326,_0x2bd493){return _0x103326(_0x2bd493);},'OxnwU':function(_0x4825f3,_0x1798d7){return _0x4825f3 in _0x1798d7;},'dmUrP':function(_0x15e989,_0x459888){return _0x15e989!==_0x459888;}};if(paused)return[!0x1,null];let _0x2e9386=[];if('nidoran'!==(_0x5ce6b8=_0x5ce6b8['toLowerCase']())&&_0x5ce6b8!==_0xae9abe['Fkjdc']['toLowerCase']()&&_0xae9abe['wIlnV'](_0x5ce6b8,_0xae9abe['pFIui']['toLowerCase']())||(_0x2e9386['push']('nidoranf'),_0x2e9386['push']('nidoranm')),(_0xae9abe['wPUDD']('missingno',_0x5ce6b8)||'けつばん'==_0x5ce6b8)&&!this['missingnoEnabled'])return this['missingnoEnabled']=!0x0,soundEnabled&&soundEffectMissingno['play'](),this['startMissingno'](),[!0x0,'missingno'];let _0x58b801=_0x5ce6b8=standardizeName(_0x5ce6b8),_0xad8656=_0x58b801;_0xad8656=_0xad8656['replace']('ae','ä'),_0xad8656=_0xad8656['replace']('oe','ö'),_0xad8656=_0xad8656['replace']('ue','ü'),_0xad8656=_0xad8656['replace']('ss','ß'),_0xad8656=_0xae9abe['yZkun'](standardizeName,_0xad8656),_0x58b801!==_0xad8656&&_0x2e9386['push'](_0xad8656),_0x2e9386['push'](_0x5ce6b8);let _0x59ade2=!0x1,_0x4a3ea6=null;for(let _0x9732ba=0x0;_0xae9abe['WkSYT'](_0x9732ba,_0x2e9386['length']);_0x9732ba++){_0x2e9386[_0x9732ba]=_0xae9abe['HnDUn'](standardizeName,_0x2e9386[_0x9732ba]);let _0x4db1a6=_0x2e9386[_0x9732ba];if(_0xae9abe['OxnwU'](_0x4db1a6,this['nameDict'])){let _0x506e37=this['nameDict'][_0x4db1a6],_0x4d75dc=this['pokemonIdDict'][_0x506e37]['baseName'];if(this['named']['has'](_0x4d75dc)){let _0x534ab6=!0x1;for(let _0x37709d in this['nameDict'])if(_0x37709d['startsWith'](_0x4db1a6)&&_0xae9abe['wIlnV'](_0x37709d,_0x4db1a6)){_0x534ab6=!0x0;break;}_0x534ab6||(_0x4a3ea6=this['pokemonIdDict'][_0x506e37]['getFormattedName'](this['currentLang'])+'\x20already\x20named.');continue;}if(!this['currentBaseNames']['has'](_0x4d75dc)){let _0x182b1a=!0x1;for(const _0x12578c of this['currentLangsNames'])if(_0x12578c['startsWith'](_0x4db1a6)){_0x182b1a=!0x0;break;}_0x182b1a||(_0x4a3ea6=this['pokemonIdDict'][_0x506e37]['getFormattedName'](this['currentLang'])+'\x20is\x20not\x20part\x20of\x20this\x20quiz.');continue;}if(!this['currentLangsNames']['has'](_0x4db1a6))continue;let _0x33981a=this['addNamed'](_0x4d75dc);this['addUserPoint'](_0x5d0980),this['langDict'][_0x4db1a6]in this['langCounts']||(this['langCounts'][this['langDict'][_0x4db1a6]]=0x0),this['langCounts'][this['langDict'][_0x4db1a6]]+=0x1,this['checkHighestLang'](),recentSprite['src']=this['spriteDictionary'][_0x33981a['id']]['src'],_0x59ade2=!0x0,_0xae9abe['dmUrP'](null,_0x6748cc)&&_0x6748cc(_0x4d75dc);}}return[_0x59ade2,_0x4a3ea6];}['addUserPoint'](_0x5ded46){_0x5ded46 in this['users']||(this['users'][_0x5ded46]=0x0),this['users'][_0x5ded46]+=0x1;}['addNamed'](_0x56410d){const _0x39f167={'RmOsn':function(_0x5c72fe,_0x2f82d0){return _0x5c72fe<_0x2f82d0;},'BXDbV':function(_0x3f9cd3,_0x494834){return _0x3f9cd3<_0x494834;},'ZKSeQ':function(_0x3ab2e9,_0x2ec41c){return _0x3ab2e9-_0x2ec41c;}};let _0x2a3884=this['pokemonBaseNameDict'][_0x56410d],_0x362222=[];for(let _0x24b9a8=0x0;_0x39f167['RmOsn'](_0x24b9a8,_0x2a3884['length']);_0x24b9a8++)this['currentIds']['has'](_0x2a3884[_0x24b9a8]['id'])&&_0x362222['push'](_0x2a3884[_0x24b9a8]);for(let _0x3b1fc0=0x0;_0x39f167['BXDbV'](_0x3b1fc0,_0x362222['length']);_0x3b1fc0++)this['showSprite'](_0x362222[_0x3b1fc0]['id']);return this['named']['add'](_0x56410d),_0x362222[_0x39f167['ZKSeQ'](_0x362222['length'],0x1)];}['getEndText'](){const _0x14031b={'LFose':function(_0x2e735d,_0x2edb64){return _0x2e735d!==_0x2edb64;},'cmPvJ':'Full','SMWLn':function(_0x12f5b0,_0x759515){return _0x12f5b0+_0x759515;}};let _0x4c796f='\x20';return _0x14031b['LFose'](_0x14031b['cmPvJ'],this['name'])&&(_0x4c796f=_0x14031b['SMWLn']('\x20',this['name']['charAt'](0x0)['toUpperCase']())+this['name']['slice'](0x1)+'\x20'),_0x4c796f;}['isSilhouettesEnabled'](){return this['useSilhouettes'];}['animateCongrats'](){const _0x25f1a0={'yQRFK':function(_0x43de22,_0x1479ec){return _0x43de22(_0x1479ec);}};for(let _0x3faca7 of this['currentIds'])this['named']['has'](this['pokemonIdDict'][_0x3faca7]['baseName'])&&_0x25f1a0['yQRFK'](animateInput,_0x3faca7);}['setSilhouettes'](){const _0x674d7a={'EBYSj':function(_0xd673b,_0x22941a){return _0xd673b<_0x22941a;},'cvtbz':'inline'};for(let _0x582721=0x0;_0x674d7a['EBYSj'](_0x582721,this['silhouetteArray']['length']);_0x582721++)this['silhouetteArray'][_0x582721]['style']['display']=_0x674d7a['cvtbz'],this['pokeballArray'][_0x582721]['style']['display']='none';this['useSilhouettes']=!0x0;}['usePokeball'](){const _0x5c1445={'DQKeV':function(_0x2d526e,_0x2a1f5e){return _0x2d526e<_0x2a1f5e;}};for(let _0x3a7338=0x0;_0x5c1445['DQKeV'](_0x3a7338,this['silhouetteArray']['length']);_0x3a7338++)this['silhouetteArray'][_0x3a7338]['style']['display']='none',this['pokeballArray'][_0x3a7338]['style']['display']='inline';}['hideSprite'](_0x465402){this['spriteDictionary'][_0x465402]['style']['display']='none',this['unguessedDictionary'][_0x465402]['style']['display']='inline';}['setupSprites'](){const _0x574b67={'BJwGM':'sprite','RpnZF':'zoom','huRSf':'img','UwzLk':'none','diJHo':'div'};for(let _0xb28f89=0x0;_0xb28f89<this['pokemon']['length'];_0xb28f89++){let _0x22a932=this['pokemon'][_0xb28f89],_0x34fcc0=document['createElement']('img');_0x34fcc0['classList']['add'](_0x574b67['BJwGM']),_0x34fcc0['classList']['add'](_0x574b67['RpnZF']),_0x34fcc0['src']=this['encodedImages']['sprite'][_0x22a932['id']],this['spriteDictionary'][_0x22a932['id']]=_0x34fcc0,this['allSprites']['push'](_0x34fcc0);let _0x4be309=document['createElement'](_0x574b67['huRSf']);_0x4be309['classList']['add']('sprite'),_0x4be309['src']=this['encodedImages']['silhouette'][_0x22a932['id']],_0x4be309['style']['display']=_0x574b67['UwzLk'],this['silhouetteDictionary'][_0x22a932['id']]=_0x4be309,this['silhouetteArray']['push'](_0x4be309),this['allSprites']['push'](_0x4be309);let _0x518b5c=document['createElement'](_0x574b67['diJHo']),_0x11b8e7=document['createElement'](_0x574b67['huRSf']);_0x11b8e7['classList']['add']('sprite'),_0x11b8e7['src']='/sprites/unknown.png',this['unguessedDictionary'][_0x22a932['id']]=_0x518b5c,this['pokeballDictionary'][_0x22a932['id']]=_0x11b8e7,this['pokeballArray']['push'](_0x11b8e7),this['allSprites']['push'](_0x11b8e7),_0x518b5c['appendChild'](this['silhouetteDictionary'][_0x22a932['id']]),_0x518b5c['appendChild'](_0x11b8e7);let _0x1f0588=this['boxDict'][_0x22a932['box']];_0x1f0588['appendChild'](this['spriteDictionary'][_0x22a932['id']]),_0x1f0588['appendChild'](_0x518b5c),this['hideSprite'](_0x22a932['id']);}}['setupMissedContent'](){const _0x3b24b2={'FfxMU':'div','OdtJR':'box','HjCMF':'roundedf','fwMzX':'topedge','NHJRj':'panel','wVvCz':function(_0x110069,_0x5853bb){return _0x110069<_0x5853bb;},'oMGvj':'img','JePLE':'inline','pvUqV':'none'};let _0x21dd33={};for(let _0x4740c9 in this['boxDict']){let _0x5c0fd9=document['createElement'](_0x3b24b2['FfxMU']),_0x449a04=document['createElement'](_0x3b24b2['FfxMU']);_0x449a04['classList']['add'](_0x3b24b2['OdtJR']),_0x449a04['classList']['add'](_0x3b24b2['HjCMF']),_0x449a04['classList']['add'](_0x3b24b2['fwMzX']),_0x449a04['style']['display']='block',_0x5c0fd9['appendChild'](_0x449a04),document['getElementById'](_0x3b24b2['NHJRj'])['appendChild'](_0x5c0fd9),_0x21dd33[_0x4740c9]=_0x449a04;}for(let _0x3d64b2=0x0;_0x3b24b2['wVvCz'](_0x3d64b2,this['pokemon']['length']);_0x3d64b2++){let _0x93ba6a=this['pokemon'][_0x3d64b2],_0x241f5d=document['createElement'](_0x3b24b2['FfxMU']),_0x254e0a=document['createElement'](_0x3b24b2['oMGvj']),_0x4a0cb4=document['createTextNode']('');_0x254e0a['style']['display']=_0x3b24b2['JePLE'],_0x254e0a['src']=this['spriteDictionary'][_0x93ba6a['id']]['src'],_0x254e0a['classList']['add']('spritel'),_0x241f5d['style']['display']=_0x3b24b2['pvUqV'],_0x241f5d['appendChild'](_0x254e0a),_0x241f5d['appendChild'](_0x4a0cb4),this['unguessedDict'][_0x93ba6a['id']]=_0x241f5d,this['unguessedDictTexts'][_0x93ba6a['id']]=_0x4a0cb4,_0x21dd33[_0x93ba6a['box']]['appendChild'](_0x241f5d);}}['getLeaderboardData'](){}['showSprite'](_0x37aca2){const _0x4b760c={'lVvAj':'inline','JDGTM':'none','wTjPd':function(_0x2fb1dc,_0x5bd773){return _0x2fb1dc===_0x5bd773;},'YejFk':'outline'};this['spriteDictionary'][_0x37aca2]['style']['display']=_0x4b760c['lVvAj'],this['unguessedDictionary'][_0x37aca2]['style']['display']=_0x4b760c['JDGTM'];let _0x197320=this['pokemonIdDict'][_0x37aca2]['box'],_0x23ce5d=this['pokemonIdDict'][_0x37aca2];if(this['boxCounters'][_0x197320]['includes'](_0x23ce5d)||this['boxCounters'][_0x197320]['push'](_0x23ce5d),_0x4b760c['wTjPd'](this['boxCounters'][_0x197320]['length'],this['currentBoxes'][_0x197320]['length'])){let _0x5a5ee2=this['spriteDictionary'][_0x37aca2]['parentElement'];_0x5a5ee2['classList']['add']('outline'),_0x5a5ee2['classList']['add'](_0x4b760c['YejFk']+this['getStyleName']());}}['stopReveal'](){const _0x4daf05={'Gutdj':function(_0x26b778,_0x4ea487){return _0x26b778<_0x4ea487;},'SKUmd':function(_0x1327c9,_0x675ef3){return _0x1327c9(_0x675ef3);}};for(let _0xd89a73=0x0;_0x4daf05['Gutdj'](_0xd89a73,this['revealTimeouts']['length']);_0xd89a73++)_0x4daf05['SKUmd'](clearInterval,this['revealTimeouts'][_0xd89a73]);this['revealTimeouts']=[];}['giveUp'](){const _0x11ee89={'wYNuB':'revealed','IOpNZ':'zoom','zHcaT':function(_0x5e16d5,_0x47ea10,_0x10a4be){return _0x5e16d5(_0x47ea10,_0x10a4be);},'cPFdD':function(_0x136e5f,_0x2deb5c){return _0x136e5f<_0x2deb5c;},'vruHG':'inline-block'};let _0x3d5f4c=0x0,_0x2765ef=[];for(const _0x724f90 of this['currentIds'])this['named']['has'](this['pokemonIdDict'][_0x724f90]['baseName'])||_0x2765ef['push'](_0x724f90);for(let _0x6ac8be=0x0;_0x6ac8be<_0x2765ef['length'];_0x6ac8be++){let _0x2fdc35=_0x2765ef[_0x6ac8be];_0x3d5f4c+=0x23;let _0xe759c5=this,_0x5f0a96=_0x11ee89['zHcaT'](setTimeout,function(){_0xe759c5['spriteDictionary'][_0x2fdc35]['classList']['add'](_0x11ee89['wYNuB']),_0xe759c5['spriteDictionary'][_0x2fdc35]['classList']['remove'](_0x11ee89['IOpNZ']),_0xe759c5['showSprite'](_0x2fdc35),changeFooterPosition();},_0x3d5f4c);this['revealTimeouts']['push'](_0x5f0a96);}for(let _0x104b48=0x0;_0x11ee89['cPFdD'](_0x104b48,_0x2765ef['length']);_0x104b48++){let _0x4df711=_0x2765ef[_0x104b48];this['unguessedDict'][_0x4df711]['style']['display']=_0x11ee89['vruHG'],this['unguessedDict'][_0x4df711]['classList']['add']('fixed-width');}}['resetCurrentSprites'](){const _0x24570a={'HZhuq':'img'};if(this['shinyEnabled']){for(let _0x4eff1d of this['currentIds'])this['spriteDictionary'][_0x4eff1d]['src']=this['encodedImages']['shiny'][_0x4eff1d],this['unguessedDict'][_0x4eff1d]['getElementsByTagName'](_0x24570a['HZhuq'])[0x0]['src']=this['encodedImages']['shiny'][_0x4eff1d];}else{for(let _0x47661b of this['currentIds'])this['spriteDictionary'][_0x47661b]['src']=this['encodedImages']['sprite'][_0x47661b],this['unguessedDict'][_0x47661b]['getElementsByTagName']('img')[0x0]['src']=this['encodedImages']['sprite'][_0x47661b];}}['shinyOn'](){this['shinyEnabled']=!0x0,this['resetCurrentSprites']();}['shinyOff'](){this['shinyEnabled']=!0x1,this['resetCurrentSprites']();}}let allLanguages=['ENG','FRE','GER','ESP','ITA','KOR','JPN','CHT','CHS'],typeList=['normal','fire','water','grass','electric','ice','ground','flying','poison','fighting','psychic','dark','bug','rock','ghost','dragon','steel','fairy'],boxIds=['kanto','johto','hoenn','sinnoh','unova','kalos','alola','mega','unknown','galar','gmax','hisui','paldea','kitakami'],genQuizBoxes={0x0:['kanto','johto','hoenn','sinnoh','unova','kalos','mega','alola','unknown','galar','gmax','hisui','paldea','kitakami'],0x1:['kanto'],0x2:['johto'],0x3:['hoenn'],0x4:['sinnoh'],0x5:['unova'],0x6:['kalos','mega'],0x7:['alola','unknown'],0x8:['galar','gmax','hisui'],0x9:['paldea','kitakami']},soundEffect=new Audio('/sound-effects/gen3-click2.wav'),soundEffectMissingno=new Audio('/sound-effects/032.wav');soundEffectMissingno['volume']=0.2,soundEffect['volume']=0.5;let soundEffect2=new Audio('/sound-effects/Dex-Fanfare.mp3'),soundEffectJoin=new Audio('/sound-effects/quizjoin.wav');soundEffectJoin['volume']=0.35;let soundEffectExit=new Audio('/sound-effects/quizleave.wav');var nameAll;soundEffectExit['volume']=0.35,soundEffect2['volume']=0.3;let darkMode=!0x1,isSpellingEnabled=!0x1,currentType='',activeTimer=!0x1,isTwitchOn=!0x1;var soundEnabled=!0x0,paused=!0x1,isSocketHost=!0x1;let socket=null,timerObj={};var client;let rankVals=['rankone','ranktwo','rankthree'],myUsername='Quizmaster',lastDarkSwap=0x0,lastShinySwap=0x0,swapLimit=0x2710,missingOptionsDiv=document['getElementById']('missednames-options'),language_box=document['getElementById']('lang_box'),inputField=document['getElementById']('pokemon'),recentSprite=document['getElementById']('recentsprite'),spellingElement=document['getElementById']('spelling'),spellingButton=document['getElementById']('spellingbutton'),spellingCheck=document['getElementById']('check'),spellingHint=document['getElementById']('hint'),radioPokeball=document['getElementById']('pokeball'),radioSilhouette=document['getElementById']('silhouette'),counterText=document['getElementById']('counter'),totalText=document['getElementById']('total'),giveUpBtn=document['getElementById']('surrender'),resetBtn=document['getElementById']('resetButton'),promptSilh=document['getElementById']('promptsilhouette'),promptGen=document['getElementById']('promptswitch'),promptSilhYes=document['getElementById']('sil-yes'),promptSilhNo=document['getElementById']('sil-no'),promptGenYes=document['getElementById']('gen-yes'),promptGenNo=document['getElementById']('gen-no'),timerBtn=document['getElementById']('timer-set'),stopwatchBtn=document['getElementById']('timer0'),timerText=document['getElementById']('timer'),pauseBtn=document['getElementById']('pause'),main=document['getElementById']('main'),footer=document['getElementById']('footer'),hostGame=document['getElementById']('hostButton'),linkGame=document['getElementById']('linkButton'),usernamePrompt=document['getElementById']('promptusername'),boxDict={};for(let e=0x0;e<boxIds['length'];e++){let t=boxIds[e];boxDict[t]=document['getElementById']('pokemon-box-'+t);}let multiplayerUrl,quiz=new Quiz(boxDict,genQuizBoxes,allLanguages);function noSuchRoom(){const _0x3fdffe={'xOBxT':'return-message','jZMWp':'return-overlay'};document['getElementById'](_0x3fdffe['xOBxT'])['innerText']='Room\x20no\x20longer\x20exists',document['getElementById'](_0x3fdffe['jZMWp'])['style']['display']='block';}function roomClosed(){const _0x3f11c8={'DIHIp':'return-overlay','zwrmh':'block'};document['getElementById']('return-message')['innerText']='The\x20host\x20has\x20disbanded\x20the\x20room',document['getElementById'](_0x3f11c8['DIHIp'])['style']['display']=_0x3f11c8['zwrmh'];}function multiplayerDisabled(){const _0x3c408f={'DxQEU':'Multiplayer\x20is\x20undergoing\x20maintenance.\x20Try\x20again\x20later.','xoQWU':'return-overlay','SFAqC':'block'};document['getElementById']('return-message')['innerText']=_0x3c408f['DxQEU'],document['getElementById'](_0x3c408f['xoQWU'])['style']['display']=_0x3c408f['SFAqC'];}document['getElementById']('return')['onclick']=function(){window['removeEventListener']('beforeunload',beforeUnload),window['location']['href']='/';};let current=new URL(window['location']['href']);function loadSocketIO(){return new Promise((_0x4a46be,_0x242888)=>{let _0xefca49=multiplayerUrl+'socket.io/socket.io.js';const _0x2b0bae=document['createElement']('script');_0x2b0bae['src']=_0xefca49,_0x2b0bae['onload']=_0x4a46be,_0x2b0bae['onerror']=_0x242888,document['head']['appendChild'](_0x2b0bae);});}function getRoomNameFromURL(){const _0x9e69b3={'EbwDT':function(_0x187ba9,_0x5b2bbb){return _0x187ba9-_0x5b2bbb;}},_0x56447d=window['location']['pathname']['split']('/');return _0x56447d[_0x9e69b3['EbwDT'](_0x56447d['length'],0x1)];}multiplayerUrl=current['hostname']['includes']('localhost')?'//localhost:3001/':'//stapo.cloud/';let roomId=getRoomNameFromURL();async function fetchData(_0x34ac9f){const _0x2c8abb={'CMvNY':function(_0x505232,_0xdd6744,_0x41090a){return _0x505232(_0xdd6744,_0x41090a);},'wBUBC':function(_0x55e7b6,_0x125f9e){return _0x55e7b6+_0x125f9e;},'bUJIR':'GET','Estho':'application/json'};try{let _0x14fe25=await _0x2c8abb['CMvNY'](fetch,_0x2c8abb['wBUBC']('/',_0x34ac9f),{'method':_0x2c8abb['bUJIR'],'headers':{'Content-Type':_0x2c8abb['Estho']}}),_0x50e0e3=await _0x14fe25['json']();return retries=0x0,_0x50e0e3;}catch(_0x398cd6){if(console['error']('Error\x20fetching\x20data:',_0x398cd6),retries++,retries<=MAX_RETRIES)return await new Promise(_0x54302c=>setTimeout(_0x54302c,RETRY_INTERVAL_MS)),fetchNext();console['error'](_0x398cd6),alert('There\x20seems\x20to\x20be\x20a\x20problem\x20with\x20fetching\x20the\x20data.\x20Please\x20try\x20refreshing\x20the\x20page.');}}async function postMultiplayerServer(_0xa6542,_0x26e788){const _0x1df1a1={'ORbyS':function(_0x311282,_0x3ef77e,_0x440581){return _0x311282(_0x3ef77e,_0x440581);},'cnwCO':function(_0x5956d8,_0x5f292c){return _0x5956d8+_0x5f292c;},'CmtKc':'POST'};try{let _0x35b71a=await _0x1df1a1['ORbyS'](fetch,_0x1df1a1['cnwCO'](multiplayerUrl,_0xa6542),{'method':_0x1df1a1['CmtKc'],'headers':{'Content-Type':'application/json'},'body':JSON['stringify'](_0x26e788)});return await _0x35b71a['json']();}catch(_0x7c2c9d){return console['log'](_0x7c2c9d),!0x1;}}async function getMultiplayerServer(_0x48a8cb){const _0x5bd230={'ASHmp':'application/json'};try{let _0x5e98cd=await fetch(multiplayerUrl+_0x48a8cb,{'method':'GET','headers':{'Content-Type':_0x5bd230['ASHmp']}});return await _0x5e98cd['json']();}catch(_0x3a72ac){return console['log'](_0x3a72ac),!0x1;}}function beforeUnload(_0x283cf9){const _0x2aa63f={'gkOEG':function(_0x369fe5,_0x3d490d){return _0x369fe5!=_0x3d490d;}};_0x2aa63f['gkOEG']('00:00:00',timerText['innerHTML'])&&(_0x283cf9['preventDefault'](),_0x283cf9['returnValue']='');}async function loadData(){const _0x877045={'gHCKd':'stateChange','QNiGy':function(_0x1de2ef,_0x4fc81a){return _0x1de2ef+_0x4fc81a;},'EttqI':function(_0x387137){return _0x387137();},'ADeAm':'paused','TpgxQ':function(_0x379d67,_0xb82578){return _0x379d67===_0xb82578;},'jzorE':function(_0x1afad3,_0x1caa8b){return _0x1afad3(_0x1caa8b);},'befMv':'roomCreated','aqTbd':'named','pYzyc':'noSuchRoom','BVRxp':function(_0x8ce379){return _0x8ce379();},'AXKmu':function(_0x3cef78,_0xfb0a46){return _0x3cef78===_0xfb0a46;},'YsjJy':function(_0x19b12b,_0x489930){return _0x19b12b!==_0x489930;},'eQPFp':function(_0x17cd41){return _0x17cd41();},'Hdefs':'host','unQNx':'none','oJNJh':'block','twgGf':'input-username','OljyO':'username-confirm','TOVqs':'keyup','qLIXT':'Multiplayer\x20is\x20undergoing\x20maintenance.\x20Try\x20again\x20later.','GSmdH':'reset','HCzZU':function(_0x36757e){return _0x36757e();},'aQssB':function(_0x430ede,_0xdb0520){return _0x430ede(_0xdb0520);},'esmah':'/sprites/unknown.png','TSXuv':'silhouette','FQnUx':'panel','WzDcc':'accordion','DFJbp':'ranking','ACzQo':function(_0x5db9e0){return _0x5db9e0();},'KfqXa':function(_0x480062,_0x2f32e2){return _0x480062(_0x2f32e2);},'lVhlw':function(_0x31b6ee,_0x2d4ab6){return _0x31b6ee<_0x2d4ab6;},'rmDRv':'Username\x20should\x20be\x20at\x20least\x202\x20characters\x20long','EFgiH':'smolbuttonx','bkdWO':'<br>','EcMDW':function(_0x479e20,_0x2bcfb8){return _0x479e20-_0x2bcfb8;},'WRrYp':function(_0x574552,_0x404a42){return _0x574552===_0x404a42;},'DqeXc':'error\x20loading\x20image\x20list,\x20retrying...','mGyTO':function(_0x2120c2,_0x2afa62){return _0x2120c2-_0x2afa62;},'FMgLS':function(_0x2d3790,_0x18ae41,_0x11e965){return _0x2d3790(_0x18ae41,_0x11e965);},'menxx':function(_0xc98187,_0x181755){return _0xc98187(_0x181755);},'JkLov':function(_0x1c8a00,_0x5a7420){return _0x1c8a00*_0x5a7420;},'FHRTX':function(_0x250e4a,_0x38826c){return _0x250e4a/_0x38826c;},'QXqSR':function(_0x5b41ec,_0x323118){return _0x5b41ec-_0x323118;},'GjdjM':function(_0x5732ce,_0x2a9bbb){return _0x5732ce-_0x2a9bbb;},'bFzYt':function(_0x37db51,_0x1aaf78){return _0x37db51<_0x1aaf78;},'mZtTq':function(_0x14bc12,_0x302edf){return _0x14bc12+_0x302edf;},'YeuUW':function(_0xeb5770,_0x3c74c1){return _0xeb5770+_0x3c74c1;},'oUFtP':function(_0x4df06c,_0x2dec39){return _0x4df06c!=_0x2dec39;},'TYdFB':'Timer\x20set\x20to\x20','pGuam':function(_0x311326,_0x156a82){return _0x311326(_0x156a82);},'HCNsS':'smolbuttonxdark','DTSQC':function(_0xab20cc,_0x3af6b3){return _0xab20cc!==_0x3af6b3;},'ObyuQ':function(_0x42bfe9,_0x7910){return _0x42bfe9==_0x7910;},'lNVop':function(_0x4fb5d3,_0x286335){return _0x4fb5d3+_0x286335;},'nNzte':function(_0x2db073,_0x4ee3b1){return _0x2db073+_0x4ee3b1;},'qihuB':'genselection','wMAix':'typeselection','TCqsl':function(_0x4b29d1){return _0x4b29d1();},'imlyX':function(_0x3c5222){return _0x3c5222();},'Fpfdk':function(_0x2f9c25,_0x5a1c1e){return _0x2f9c25!==_0x5a1c1e;},'rRenC':'inline','UONpa':function(_0x10e6b4){return _0x10e6b4();},'Kdbgf':function(_0x16ccef){return _0x16ccef();},'VPvdh':function(_0x42342b,_0x5df0a1){return _0x42342b<_0x5df0a1;},'BLMon':function(_0x14d959,_0xcd25d2){return _0x14d959+_0xcd25d2;},'okFYZ':'smolbuttondark','fEonm':function(_0x3f423a,_0x2793b2){return _0x3f423a+_0x2793b2;},'EoGNI':'smolbutton','JcQQt':function(_0x35b762,_0x2e9dae){return _0x35b762+_0x2e9dae;},'wVKUR':'countdown','bMxyQ':function(_0x55934d,_0x3ae26d,_0x40bbbb){return _0x55934d(_0x3ae26d,_0x40bbbb);},'AuKOn':function(_0x2c31d6,_0x4b343d){return _0x2c31d6(_0x4b343d);},'GIfZj':function(_0xd255b4){return _0xd255b4();},'bbcal':function(_0x29e67c,_0x21009d){return _0x29e67c!==_0x21009d;},'VIlSr':function(_0x578597,_0x408ab1){return _0x578597(_0x408ab1);},'GnxhT':'overlay','jXIjZ':'\x20every\x20','IqXzB':function(_0x23cd75,_0x5978cc){return _0x23cd75+_0x5978cc;},'VOiXj':'\x20minutes','wlnSt':function(_0x2bf775,_0x422524){return _0x2bf775(_0x422524);},'HGvHa':'timer-score','ooHCP':function(_0x29de15,_0x1f3f6f){return _0x29de15!==_0x1f3f6f;},'LgsDO':function(_0x131fa0){return _0x131fa0();},'OCBqk':'ranking2','oTBWf':'missednames','sbimN':function(_0x2ab2da,_0x3667f5){return _0x2ab2da>_0x3667f5;},'BTkYf':function(_0x4c3b35,_0xd83145){return _0x4c3b35===_0xd83145;},'gtzMY':function(_0x4adb92){return _0x4adb92();},'vQAPg':function(_0x1a48fa,_0x13223b,_0x1dfc93){return _0x1a48fa(_0x13223b,_0x1dfc93);},'gQhOu':function(_0x1cbedb,_0x577aa6){return _0x1cbedb===_0x577aa6;},'olzNb':function(_0x1f5fe2){return _0x1f5fe2();},'wTEOm':function(_0x1f2e53,_0x5ab1f5){return _0x1f2e53(_0x5ab1f5);},'qToDN':function(_0x1b478b,_0x2e826c){return _0x1b478b!==_0x2e826c;},'gScYF':function(_0x5623ae,_0x3f3dff,_0x580242){return _0x5623ae(_0x3f3dff,_0x580242);},'jSHLQ':function(_0x56088f,_0x1c2f48){return _0x56088f(_0x1c2f48);},'csAIm':function(_0x311404,_0x5d0b9c){return _0x311404>_0x5d0b9c;},'PzjuZ':function(_0x51733f,_0x2f0d0e){return _0x51733f>_0x2f0d0e;},'VqMMf':function(_0xd44dc3,_0x691fee){return _0xd44dc3 in _0x691fee;},'OqPOn':function(_0x227b6e,_0xac222c){return _0x227b6e===_0xac222c;},'DYJKj':function(_0x5bc5b7,_0x31f18b){return _0x5bc5b7<=_0x31f18b;},'rslak':function(_0x516498,_0x1419e3){return _0x516498===_0x1419e3;},'piJCK':'/misspelling','uHOoK':function(_0x46b020,_0x3f77e9){return _0x46b020(_0x3f77e9);},'BbCPW':'leaderboard2','gLjKg':function(_0x50bd2a,_0x50df28){return _0x50bd2a>_0x50df28;},'YfFmV':function(_0x253dff,_0x20d5f6){return _0x253dff<_0x20d5f6;},'PGJWR':'/sprites/unknown-1.png','ltIKX':function(_0x4373de,_0x25b261){return _0x4373de+_0x25b261;},'XGnqt':'twitchname','ZjSfG':'inlinebox','kwLEC':'inlineboxdark','EfanQ':function(_0x199c74,_0x15c634){return _0x199c74+_0x15c634;},'zwlpn':function(_0x3ef51c,_0x2681d1){return _0x3ef51c+_0x2681d1;},'ivKeJ':function(_0x5ee14d,_0x29e1de){return _0x5ee14d==_0x29e1de;},'lOxmh':'adown','DtwDF':function(_0x337bc9){return _0x337bc9();},'EhYIf':function(_0x16f2c0){return _0x16f2c0();},'AhQGm':function(_0x239439){return _0x239439();},'PDjZE':'img','BywrS':function(_0x10732b,_0x1396c5){return _0x10732b%_0x1396c5;},'ksKPJ':function(_0x4856d7){return _0x4856d7();},'NImDW':'leaderboard','cbEEY':function(_0x231366,_0x3668ab){return _0x231366<_0x3668ab;},'KbpaB':'inlinetext','nzOCv':'rank','SIkXU':function(_0x450e40,_0x4e257a){return _0x450e40+_0x4e257a;},'nZntc':function(_0x4a92c6,_0x43eac3){return _0x4a92c6+_0x43eac3;},'czCuT':function(_0x239736,_0xefe6b3){return _0x239736>=_0xefe6b3;},'YSewU':function(_0x5f5541,_0x3a5a22){return _0x5f5541(_0x3a5a22);},'xEELP':'cycle-off','uTiPY':function(_0xd7620d,_0x4d02a2){return _0xd7620d(_0x4d02a2);},'Tifbs':'cycle-on','UGzzA':'Connected\x20to\x20Twitch\x20chat\x20for\x20','PiCXl':function(_0xf0220a,_0x45d50c){return _0xf0220a(_0x45d50c);},'VCrxX':'body','hlAgJ':function(_0x549301,_0x5c4957,_0xaec193,_0x828f62){return _0x549301(_0x5c4957,_0xaec193,_0x828f62);},'IptgY':function(_0x1d5008,_0x24db2b,_0x13882f,_0x439cec){return _0x1d5008(_0x24db2b,_0x13882f,_0x439cec);},'AdJRP':'display-name','XIoOy':function(_0x46c652,_0x34135f){return _0x46c652 in _0x34135f;},'MwBzz':'stapotv','HBnXt':'darkoff','KYceU':function(_0x3329d1,_0x5bd712){return _0x3329d1===_0x5bd712;},'xXLCR':function(_0x1be426,_0x5767ba){return _0x1be426===_0x5767ba;},'DQMlX':function(_0x5d5630,_0x3cf2){return _0x5d5630-_0x3cf2;},'NnqyK':'ethan_from_chicago','nXGIR':'satan','Bzjhx':'pidove','VsrTk':'tranquill','OHdrg':'dennis','DlUid':'roggenrola','kiRTn':'spheal','KNJlV':'load','iLQlh':'pkmncast','umtKo':function(_0x73581f,_0x12b16b){return _0x73581f!=_0x12b16b;},'IPnRy':'mew','mKdBP':function(_0x4aaa5a,_0x42ab2b){return _0x4aaa5a!=_0x42ab2b;},'hBkUh':'adeptcharon','DWrkG':'hoot','DzOqg':'birdkeeper','rMxLg':'farfetchd','ryFeF':'doduo','qrvrs':'natu','YWGho':'delibird','SvWOy':'skarmory','mdcsv':function(_0x1101cf,_0x88e14e,_0x12b02f,_0x73f7b4){return _0x1101cf(_0x88e14e,_0x12b02f,_0x73f7b4);},'ZeHKS':function(_0x585759,_0x345b00,_0x262d31,_0xa04ae6){return _0x585759(_0x345b00,_0x262d31,_0xa04ae6);},'CuAxU':'rowlet','WPWQl':'oricorio','nwAqV':'cramorant','yCnPQ':'littlelemonbun','jnhsi':function(_0x4fea2b,_0xe1c04){return _0x4fea2b==_0xe1c04;},'mBmqb':'bulbasaur','ZmJyF':'lileep','mCDUY':'tropius','gWriR':function(_0x4a66b4,_0x14c30f,_0x1926e4,_0xc4a214){return _0x4a66b4(_0x14c30f,_0x1926e4,_0xc4a214);},'nwyAh':'turtwig','VRIvw':'cottonee','OAtbV':function(_0x1ae7d2,_0x1a7c09,_0x4c7977,_0x137ed6){return _0x1ae7d2(_0x1a7c09,_0x4c7977,_0x137ed6);},'GtZgd':'ferroseed','dvwCH':function(_0x3e8e95,_0x14703d,_0x3fd612,_0x4bbe11){return _0x3e8e95(_0x14703d,_0x3fd612,_0x4bbe11);},'Whtfb':function(_0x145d8a,_0x5e3f14,_0x34964a,_0x9afc){return _0x145d8a(_0x5e3f14,_0x34964a,_0x9afc);},'jXmva':'morelull','gFfGp':'lemonbun','Hswal':'/images/rowlet.png','rSIRH':'flapple','HKwDH':'/images/crabominable.png','VwmPi':'ninetales','fVvVz':'twitch-channel','fTOGq':function(_0x169290,_0x29af79){return _0x169290(_0x29af79);},'PwyPX':'twitch-off','lEypE':'message','QpVBN':function(_0x322446,_0x56ba5e,_0x7c49b7){return _0x322446(_0x56ba5e,_0x7c49b7);},'HvLQz':function(_0x106a7c,_0x213856){return _0x106a7c-_0x213856;},'vNBJt':function(_0x25db18,_0x50142f){return _0x25db18(_0x50142f);},'hQSTp':function(_0x2dd1e2,_0x2d91e4){return _0x2dd1e2(_0x2d91e4);},'PMUzP':function(_0x359071,_0x1ccff3){return _0x359071===_0x1ccff3;},'WzuNG':function(_0x5a76aa,_0xdda44a){return _0x5a76aa+_0xdda44a;},'XHKob':function(_0x399470,_0xf93982){return _0x399470(_0xf93982);},'zZbdd':'disable','oWTQQ':'twitch-on','EQAYp':function(_0x5aec4e,_0x54d349){return _0x5aec4e(_0x54d349);},'WExqE':function(_0x51d416,_0x27ab8e){return _0x51d416!==_0x27ab8e;},'gHJlK':function(_0xfdb3d6,_0x27c042,_0xc9dbb4){return _0xfdb3d6(_0x27c042,_0xc9dbb4);},'NTPMd':'/images/missingno.png','NLgtR':'/images/missingno2.png','RbolK':function(_0x468f78,_0x562083){return _0x468f78<_0x562083;},'QQDUO':'div','XfiLU':'missing-','xKDtU':'hintplace','YODLW':'accordion2','swIAF':'type0','YdZXd':function(_0x386d35,_0x1bb2e2,_0x1cd7d2){return _0x386d35(_0x1bb2e2,_0x1cd7d2);},'wOXqj':'unpause'};let _0x536c4a=await _0x877045['EQAYp'](fetchData,'pkmnData.json'),_0x2d6ae8=_0x536c4a['encoded_images'];function _0x5c277f(_0x22c4d1){null!==socket&&isSocketHost&&(socket['emit']('stateChange',{'paused':_0x22c4d1}),_0x6f0839());}function _0x6f0839(){null!==socket&&isSocketHost&&(timerObj['updatedAt']=Date['now'](),socket['emit'](_0x877045['gHCKd'],{'timer':timerObj}));}function _0x5cf551(_0x4e6214,_0x2e15d3){const _0x47d5d7={'MDnWd':function(_0x5cdc53,_0x474a42){return _0x5cdc53(_0x474a42);},'OYYhA':function(_0x2eb3c9,_0x31de29){return _0x877045['QNiGy'](_0x2eb3c9,_0x31de29);},'oWfcL':function(_0x93c7e6){return _0x877045['EttqI'](_0x93c7e6);},'KbNOX':function(_0x305e4f,_0xa25f37){return _0x305e4f+_0xa25f37;},'EZhMb':'none','vtHrX':function(_0x1e1132,_0x2022f5){return _0x1e1132===_0x2022f5;},'EQyJU':function(_0x1d97a9,_0x2d5162){return _0x1d97a9===_0x2d5162;},'XupNq':_0x877045['ADeAm'],'EexJY':function(_0x427c2e,_0x1bbcf3){return _0x877045['TpgxQ'](_0x427c2e,_0x1bbcf3);},'wbfmH':function(_0x618a87,_0x5c429d){return _0x877045['jzorE'](_0x618a87,_0x5c429d);},'ViAdO':function(_0x5328a8,_0x1623dc){return _0x5328a8===_0x1623dc;},'DCuVZ':function(_0x7ced3a,_0x5266a4){return _0x7ced3a(_0x5266a4);},'gjUnn':'userJoined','GePOE':_0x877045['befMv'],'rCbfU':_0x877045['aqTbd'],'LBBSP':_0x877045['pYzyc'],'xfUnp':'end','SryAw':'scores','noxsk':'stateChange','dZtqH':function(_0x4bf610){return _0x4bf610();}};_0x877045['BVRxp'](loadSocketIO)['then'](()=>{const _0x58a3ee={'dsePn':function(_0x47e232,_0xe5be72){return _0x47d5d7['MDnWd'](_0x47e232,_0xe5be72);},'ZPjis':function(_0x36ac4a,_0x52fa37){return _0x47d5d7['OYYhA'](_0x36ac4a,_0x52fa37);},'vWynG':function(_0x2a2c7d){return _0x47d5d7['oWfcL'](_0x2a2c7d);},'yurhu':function(_0x2156c3,_0x1d90b0){return _0x47d5d7['KbNOX'](_0x2156c3,_0x1d90b0);},'Jozkt':_0x47d5d7['EZhMb'],'KjNaO':function(_0xe2e556,_0x2432b6){return _0x47d5d7['vtHrX'](_0xe2e556,_0x2432b6);},'qCCpc':function(_0x579f7b){return _0x47d5d7['oWfcL'](_0x579f7b);},'GIBIL':function(_0x18b574,_0x35eb8c){return _0x47d5d7['EQyJU'](_0x18b574,_0x35eb8c);},'cpXco':function(_0x578b89){return _0x47d5d7['oWfcL'](_0x578b89);},'bMpeS':function(_0x40756e){return _0x40756e();},'JyzRt':_0x47d5d7['XupNq'],'zeSre':function(_0x351ddd,_0x5e8f27){return _0x47d5d7['EexJY'](_0x351ddd,_0x5e8f27);},'GwhvA':function(_0x5947d1,_0x40b079){return _0x47d5d7['wbfmH'](_0x5947d1,_0x40b079);},'dKWPs':function(_0x207c5b){return _0x47d5d7['oWfcL'](_0x207c5b);},'DMMYt':function(_0x342db3,_0x50ce7f){return _0x47d5d7['ViAdO'](_0x342db3,_0x50ce7f);}};try{socket=_0x47d5d7['DCuVZ'](io,multiplayerUrl),socket['on'](_0x47d5d7['gjUnn'],_0x589a16=>{soundEnabled&&soundEffectJoin['play'](),showUserMessage(_0x589a16+'\x20joined\x20the\x20room\x20!');}),socket['on']('userLeft',_0x264c77=>{soundEnabled&&soundEffectExit['play'](),_0x58a3ee['dsePn'](showUserMessage,_0x58a3ee['ZPjis'](_0x264c77,'\x20left\x20the\x20room\x20!'));}),socket['on'](_0x47d5d7['GePOE'],_0x513404=>{const _0x40d0a6={'Htdvt':function(_0xf16b23,_0x5c659c){return _0x58a3ee['yurhu'](_0xf16b23,_0x5c659c);},'Yergm':function(_0x5f412a,_0x479740){return _0x5f412a+_0x479740;},'OoqAr':function(_0x29fa0c,_0x22ddc9){return _0x29fa0c(_0x22ddc9);},'ZaWtS':function(_0x516657,_0x4b3ab8){return _0x58a3ee['yurhu'](_0x516657,_0x4b3ab8);}};function _0x31e62f(){var _0x19e3e4=new URL(window['location']['href']);let _0x3e16c1='https://'+_0x40d0a6['Htdvt'](_0x19e3e4['hostname'],_0x19e3e4['port']?_0x40d0a6['Yergm'](':',_0x19e3e4['port']):'')+'/join/'+_0x513404;navigator['clipboard']['writeText'](_0x3e16c1),_0x40d0a6['OoqAr'](showUserMessage,_0x40d0a6['ZaWtS']('Copied\x20link\x20to\x20clipboard\x20('+_0x3e16c1,')'));}linkGame['onclick']=function(){_0x58a3ee['vWynG'](_0x31e62f);},linkGame['style']['display']='block',hostGame['style']['display']=_0x58a3ee['Jozkt'],_0x58a3ee['vWynG'](_0x31e62f);}),socket['on'](_0x47d5d7['rCbfU'],_0x38e534=>{const {username:_0x5ea448,id:_0x58d4c3}=_0x38e534;quiz['addNamed'](_0x58d4c3),quiz['addUserPoint'](_0x5ea448),soundEnabled&&soundEffect['play'](),_0x12264d(quiz['getScore']()),activeTimer||(_0x58a3ee['KjNaO'](0x0,_0x716cf1)?_0x2f23b1():_0x2750cb(_0x716cf1)),quiz['getMaxScore']()===quiz['getScore']()&&_0x58a3ee['KjNaO'](null,roomId)&&_0x273a1b(),_0x58a3ee['qCCpc'](_0x56e604),_0x426915();}),socket['on'](_0x47d5d7['LBBSP'],()=>{noSuchRoom();}),socket['on']('reset',()=>{quiz['reset']();}),socket['on'](_0x47d5d7['xfUnp'],()=>{roomClosed();}),socket['on'](_0x47d5d7['SryAw'],_0x3755c3=>{quiz['users']=_0x3755c3,_0x426915(),_0x56e604();}),socket['on'](_0x47d5d7['noxsk'],_0x26aa2=>{for(let _0x32804a in _0x26aa2)_0x58a3ee['GIBIL']('giveup',_0x32804a)?_0x58a3ee['cpXco'](_0x557edc):'silhouettes'===_0x32804a?quiz['setSilhouettes']():_0x58a3ee['GIBIL']('showcongrats',_0x32804a)?_0x58a3ee['bMpeS'](_0x273a1b):_0x58a3ee['JyzRt']===_0x32804a?_0x26aa2['paused']?_0x153d04():_0x58a3ee['bMpeS'](_0x2a9622):_0x58a3ee['zeSre']('state',_0x32804a)?(_0x58a3ee['GwhvA'](_0x22bc5b,_0x26aa2['state']),_0x56e604(),_0x58a3ee['dKWPs'](_0x426915)):_0x58a3ee['DMMYt']('timer',_0x32804a)&&_0xcf217b(_0x26aa2['timer']);}),_0x47d5d7['dZtqH'](_0x4e6214);}catch(_0x2fe560){_0x2e15d3(),console['log'](_0x2fe560);}})['catch'](_0x3e1031=>{_0x2e15d3();});}function _0x407767(){const _0x8b6d8={'Hmvni':function(_0x496cc4,_0x246651){return _0x877045['AXKmu'](_0x496cc4,_0x246651);},'yEjTc':function(_0x3b4e15,_0x1c0ce1){return _0x877045['YsjJy'](_0x3b4e15,_0x1c0ce1);},'XzkBt':function(_0x48f6ee){return _0x877045['eQPFp'](_0x48f6ee);},'VNPJg':_0x877045['Hdefs'],'XfGhc':_0x877045['unQNx'],'jLhIF':'keyup','BDkrZ':'input-username'};usernamePrompt['style']['display']=_0x877045['oJNJh'];let _0x40be1c=document['getElementById'](_0x877045['twgGf']),_0x4d7cbc=document['getElementById'](_0x877045['OljyO']);function _0xd8c1e4(_0xe6f842){0xd===_0xe6f842['keyCode']?_0x4d7cbc['click']():_0x8b6d8['Hmvni'](0x1b,_0xe6f842['keyCode'])&&(usernamePrompt['style']['display']='none');}_0x4d7cbc['onclick']=function(){const _0xe0aa43={'PNwWY':function(_0x42425d,_0x477a2b){return _0x8b6d8['yEjTc'](_0x42425d,_0x477a2b);},'qsIKH':function(_0x3d24a7){return _0x8b6d8['XzkBt'](_0x3d24a7);},'WislI':_0x8b6d8['VNPJg'],'qSbQO':_0x8b6d8['XfGhc'],'PFfZB':_0x8b6d8['jLhIF']};let _0x49932d=document['getElementById'](_0x8b6d8['BDkrZ'])['value'];if(_0x49932d['length']<0x2)showUserMessage('Username\x20should\x20be\x20at\x20least\x202\x20characters\x20long');else{let _0x1bde0d=function(){isSocketHost=!0x0,usernamePrompt['style']['display']=_0xe0aa43['qSbQO'],usernamePrompt['removeEventListener'](_0xe0aa43['PFfZB'],_0xd8c1e4),hostGame['disabled']=!0x0,hostGame['innerText']='Generating\x20room...',function(_0xfe7988){if(_0xe0aa43['PNwWY'](null,socket)){let _0x23b6bb={};_0x23b6bb['username']=_0xfe7988,myUsername in quiz['users']&&(quiz['users'][_0xfe7988]=quiz['users'][myUsername],delete quiz['users'][myUsername]),myUsername=_0xfe7988,_0x23b6bb['state']=_0xe0aa43['qsIKH'](_0x2ffd4b),_0x23b6bb['state']['timer']['updatedAt']=Date['now'](),socket['emit'](_0xe0aa43['WislI'],_0x23b6bb);}}(_0x49932d);};_0x5cf551(_0x1bde0d,function(){multiplayerDisabled();});}},_0x40be1c['focus'](),usernamePrompt['addEventListener'](_0x877045['TOVqs'],_0xd8c1e4),usernamePrompt['onclick']=function(){usernamePrompt['style']['display']=_0x8b6d8['XfGhc'];},_0x40be1c['onclick']=function(_0x758a0){_0x758a0['stopPropagation']();};}function _0x349382(){_0x877045['jzorE'](showUserMessage,_0x877045['qLIXT']);}if(quiz['loadData'](_0x536c4a,enabledLanguages,function(){null!==socket&&isSocketHost&&socket['emit'](_0x877045['GSmdH'],{'state':_0x877045['HCzZU'](_0x2ffd4b)}),clearInterval(activeTimer),timerObj={'type':'none'},activeTimer=!0x1,_0x12264d(0x0),_0x877045['aQssB'](_0x544861,quiz['getMaxScore']()),_0x877045['HCzZU'](_0x548842),inputField['disabled']=!0x1,recentSprite['src']=darkMode?'/sprites/unknown-2.png':_0x877045['esmah'],document['getElementById'](_0x877045['TSXuv'])['checked']=!0x1,_0x877045['eQPFp'](changeFooterPosition),_0x877045['oJNJh']==document['getElementById'](_0x877045['FQnUx'])['style']['display']&&document['getElementById'](_0x877045['WzDcc'])['click'](),document['getElementById']('missednames')['style']['display']=_0x877045['unQNx'],document['getElementById']('ranking2')['style']['display']='none',document['getElementById'](_0x877045['DFJbp'])['style']['display']=_0x877045['unQNx'],_0x877045['ACzQo'](emptyLeaderboard);}),_0x877045['KYceU'](null,roomId)){async function _0x1f1b3a(){let _0x395ae6=_0x877045['aQssB'](getMultiplayerServer,'online'),_0x50daaa=_0x877045['KfqXa'](fetchData,'multiplayerEnabled'),_0x563727=await _0x395ae6,_0x551cf3=(await _0x50daaa)['result'];hostGame['onclick']=_0x563727&&_0x551cf3?_0x407767:_0x349382;}_0x1f1b3a(),setInterval(()=>{_0x1f1b3a();},0x4e20);}if(_0x877045['WExqE'](null,roomId)){usernamePrompt['style']['display']=_0x877045['oJNJh'];let _0xca6efc=document['getElementById'](_0x877045['twgGf']),_0x4230a1=document['getElementById'](_0x877045['OljyO']);function _0xbc5c07(_0x1a8e2f){0xd===_0x1a8e2f['keyCode']&&_0x4230a1['click']();}_0x4230a1['onclick']=function(){const _0x268fbd={'ukHbs':function(_0x16ced7,_0x2fb71b){return _0x877045['aQssB'](_0x16ced7,_0x2fb71b);},'JsqIQ':'Multiplayer\x20is\x20undergoing\x20maintenance.\x20Try\x20again\x20later.'};let _0x15aae6=document['getElementById'](_0x877045['twgGf'])['value'];if(_0x877045['lVhlw'](_0x15aae6['length'],0x2))showUserMessage(_0x877045['rmDRv']);else{let _0x11a412=function(){_0xca6efc['removeEventListener'](_0x877045['TOVqs'],_0xbc5c07),usernamePrompt['style']['display']='none',_0x877045['ACzQo'](off2),function(_0x66bf06){myUsername=_0x66bf06,socket['emit']('joinRoom',{'roomId':roomId,'username':_0x66bf06});}(_0x15aae6);};_0x5cf551(_0x11a412,function(){_0x268fbd['ukHbs'](showUserMessage,_0x268fbd['JsqIQ']);});}},_0x877045['gHJlK'](setTimeout,()=>{_0xca6efc['focus']();},0x64),_0xca6efc['addEventListener']('keyup',_0xbc5c07);}let _0x5c2d3b=function(_0x406a5d){_0x406a5d['classList']['add'](_0x877045['EFgiH']),darkMode&&_0x406a5d['classList']['add']('smolbuttonxdark');let _0x22cea4=quiz['getStyleName']();''!==_0x22cea4&&(_0x406a5d['classList']['add'](_0x877045['EFgiH']+_0x22cea4),darkMode&&_0x406a5d['classList']['add']('smolbuttonxdark'+_0x22cea4));};darkmodebg=new Image(),darkmodebg['src']='/images/background-dark.svg',unknownDark=new Image(),unknownDark['src']='/sprites/unknown-2.png',missingno=new Image(),missingno['src']=_0x877045['NTPMd'],missingno=new Image(),missingno['src']=_0x877045['NLgtR'],missingno=new Image(),missingno['src']='/images/missingno3.png';let _0x5f54bb,_0x4e198b=function(){let _0x470a5b=new XMLHttpRequest();_0x470a5b['open']('GET','/artists',!0x0),_0x470a5b['onreadystatechange']=function(){const _0x411bf1={'MveIa':_0x877045['bkdWO'],'QOTPR':function(_0x2f8f78,_0x14f01d){return _0x2f8f78+_0x14f01d;},'Xxbtz':'<br>QC\x20-\x20','EDWwA':function(_0x46459e,_0x233466){return _0x877045['EcMDW'](_0x46459e,_0x233466);},'zMdYT':function(_0x52afed){return _0x52afed();}};0x4==this['readyState']&&(_0x877045['WRrYp'](0xc8,this['status'])?function(_0x261492){table=document['getElementById']('creditstable');for(let _0x3628fc=0x0;_0x3628fc<_0x261492['length'];_0x3628fc++){const _0x277c67=_0x261492[_0x3628fc],_0x393b60=_0x277c67['sprites'],_0x45f47e=_0x277c67['artists'],_0x5e3771=_0x277c67['QCs'];let _0x4c63f0='';for(let _0xae3877=0x0;_0xae3877<_0x393b60['length'];_0xae3877++)_0x4c63f0+=_0x393b60[_0xae3877]+_0x411bf1['MveIa'];let _0xffd3c2='';for(let _0xf48c1d=0x0;_0xf48c1d<_0x45f47e['length'];_0xf48c1d++)_0xffd3c2+=_0x411bf1['QOTPR'](_0x45f47e[_0xf48c1d],',\x20');if(_0xffd3c2=_0xffd3c2['substring'](0x0,_0xffd3c2['length']-0x2),_0x5e3771['length']>0x0){_0x45f47e['length']>0x0?_0xffd3c2+=_0x411bf1['Xxbtz']:_0xffd3c2+='QC\x20-\x20';for(let _0x1a2d28=0x0;_0x1a2d28<_0x5e3771['length'];_0x1a2d28++)_0xffd3c2+=_0x5e3771[_0x1a2d28]+',\x20';_0xffd3c2=_0xffd3c2['substring'](0x0,_0x411bf1['EDWwA'](_0xffd3c2['length'],0x2));}const _0x383681='<tr><td>'+_0x4c63f0+'</td><td>'+_0xffd3c2+'</td></tr>';table['innerHTML']+=_0x383681;}}(JSON['parse'](this['response'])):(console['log'](_0x877045['DqeXc']),setTimeout(function(){_0x411bf1['zMdYT'](_0x4e198b);},0x7d0)));},_0x470a5b['send']();};function _0x12264d(_0x2a2e01){counterText['innerHTML']=_0x2a2e01;}function _0x544861(_0x2c17fc){totalText['innerHTML']=_0x2c17fc;}function _0x2f23b1(){let _0x5ed793=Date['now'](),_0x51fd8e=0x0;timerObj={'type':'timer','t':_0x51fd8e},_0x6f0839(),activeTimer=_0x877045['FMgLS'](setInterval,function(){let _0x3ae23a=_0x877045['mGyTO'](Date['now'](),_0x5ed793);_0x5ed793=Date['now'](),paused||(_0x51fd8e+=_0x3ae23a),timerObj['t']=_0x51fd8e,_0x877045['jzorE'](_0x4a9a3a,_0x51fd8e);},0x64);}function _0x4a9a3a(_0x505df6){_0x877045['lVhlw'](_0x505df6,0x0)&&(_0x505df6=0x0),_0x5f54bb=_0x505df6,timerText['innerHTML']=_0x877045['menxx'](_0x5bda80,_0x505df6);}function _0x548842(){_0x877045['menxx'](_0x4a9a3a,_0x877045['WRrYp'](0x0,_0x716cf1)?0x0:_0x877045['JkLov'](0xea60,_0x716cf1));}function _0x5bda80(_0x474c09){let _0x22a90e=(_0x474c09=_0x877045['FHRTX'](_0x877045['QXqSR'](_0x474c09,_0x474c09%0x3e8),0x3e8))%0x3c,_0xfd9e51=(_0x474c09=_0x877045['FHRTX'](_0x877045['GjdjM'](_0x474c09,_0x22a90e),0x3c))%0x3c,_0x292f5c=_0x877045['GjdjM'](_0x474c09,_0xfd9e51)/0x3c;return _0x292f5c<0xa&&(_0x292f5c=_0x877045['QNiGy']('0',_0x292f5c)),_0x877045['bFzYt'](_0xfd9e51,0xa)&&(_0xfd9e51=_0x877045['mZtTq']('0',_0xfd9e51)),_0x22a90e<0xa&&(_0x22a90e=_0x877045['YeuUW']('0',_0x22a90e)),_0x877045['YeuUW'](_0x292f5c+':'+_0xfd9e51+':',_0x22a90e);}let _0x716cf1=0x0;function _0x4cb3bb(_0x2c5f9f){_0x716cf1=_0x2c5f9f,quiz['reset'](),_0x548842();let _0x28651d=timerText['innerHTML'];_0x877045['oUFtP'](timerText['innerHTML'],_0x28651d)&&('00:00:00'===timerText['innerHTML']?_0x877045['menxx'](showUserMessage,'Timer\x20set\x20to\x20stopwatch'):_0x877045['aQssB'](showUserMessage,_0x877045['TYdFB']+timerText['innerHTML']));}function _0x22a07a(){document['getElementById']('prompttimer')['style']['display']='none';}let _0x4e5c62=function(_0x5c7985){const _0x5e0991={'hzNXA':'prompttimer','rQVPf':_0x877045['unQNx']};activeTimer?(document['getElementById']('prompttimer')['style']['display']=_0x877045['oJNJh'],document['getElementById']('timer-yes')['onclick']=function(){document['getElementById'](_0x5e0991['hzNXA'])['style']['display']=_0x5e0991['rQVPf'],_0x4cb3bb(_0x5c7985);},document['getElementById']('timer-no')['onclick']=_0x22a07a):_0x4cb3bb(_0x5c7985);};timerBtn['onclick']=function(){_0x877045['aQssB'](_0x5c2d3b,timerBtn),_0x17a017(stopwatchBtn);let _0x5a3e19=Math['abs'](document['getElementById']('timer-min')['value']);_0x877045['pGuam'](_0x4e5c62,_0x5a3e19);},stopwatchBtn['onclick']=function(){_0x5c2d3b(stopwatchBtn),_0x17a017(timerBtn),_0x4e5c62(0x0);},_0x4e198b();let _0x17a017=function(_0x15a2a4){_0x15a2a4['classList']['remove']('smolbuttonx'),_0x15a2a4['classList']['remove'](_0x877045['HCNsS']);let _0xf406ed=quiz['getStyleName']();_0x877045['DTSQC']('',_0xf406ed)&&(_0x877045['ObyuQ']('dark',_0xf406ed)&&(_0xf406ed='evil'),_0x15a2a4['classList']['remove'](_0x877045['lNVop'](_0x877045['EFgiH'],_0xf406ed)),_0x15a2a4['classList']['remove'](_0x877045['nNzte'](_0x877045['HCNsS'],_0xf406ed)));},_0x4f38cf=function(){_0x544861(quiz['getMaxScore']()),_0x12264d(quiz['getScore']()),_0x877045['YsjJy'](null,socket)&&isSocketHost&&socket['emit']('stateChange',{'state':_0x877045['BVRxp'](_0x2ffd4b)}),changeFooterPosition();};for(let _0x1ec85b in genQuizBoxes)document['getElementById']('gen'+_0x1ec85b)['onclick']=function(){const _0x23ab66={'LwPpS':_0x877045['unQNx']};let _0x5ea316=function(){var _0x327497;document['getElementById'](_0x877045['qihuB'])['onclick']=off2,document['getElementById'](_0x877045['wMAix'])['onclick']=off2,promptGen['style']['display']='none',_0x327497=_0x1ec85b,quiz['setGenQuiz'](_0x327497),_0x877045['BVRxp'](_0x4f38cf);};promptGenYes['onclick']=function(){_0x877045['TCqsl'](_0x5ea316),_0x877045['imlyX'](off2);},promptGenNo['onclick']=function(){promptGen['style']['display']=_0x23ab66['LwPpS'];},_0x877045['Fpfdk'](0x0,quiz['getScore']())?promptGen['style']['display']=_0x877045['rRenC']:(_0x877045['UONpa'](_0x5ea316),_0x877045['Kdbgf'](off2));};let _0x4e0409=[];for(let _0x289acb=0x0;_0x877045['RbolK'](_0x289acb,allLanguages['length']);_0x289acb++){let _0x1598dc=allLanguages[_0x289acb],_0x255ac3=document['createElement'](_0x877045['QQDUO']);_0x255ac3['innerHTML']+=_0x1598dc,_0x255ac3['classList']['add']('smolbutton'),_0x255ac3['classList']['add']('langbutton'),_0x255ac3['id']=_0x877045['XfiLU']+_0x1598dc,_0x255ac3['onclick']=function(){let _0x473014=quiz['getStyleName']();for(let _0x12039b=0x0;_0x877045['VPvdh'](_0x12039b,_0x4e0409['length']);_0x12039b++)_0x877045['oUFtP'](_0x4e0409[_0x12039b],_0x255ac3)&&(_0x4e0409[_0x12039b]['classList']['remove']('smolbuttonSwap'),_0x4e0409[_0x12039b]['classList']['remove'](_0x877045['BLMon']('smolbuttonSwap',_0x473014)),_0x4e0409[_0x12039b]['classList']['add']('smolbutton'),_0x4e0409[_0x12039b]['classList']['add']('smolbutton'+_0x473014),darkMode&&(_0x4e0409[_0x12039b]['classList']['add'](_0x877045['okFYZ']),_0x4e0409[_0x12039b]['classList']['add'](_0x877045['okFYZ']+_0x473014))),_0x255ac3['classList']['remove']('smolbutton'),_0x255ac3['classList']['remove'](_0x877045['fEonm'](_0x877045['EoGNI'],_0x473014)),_0x255ac3['classList']['remove'](_0x877045['okFYZ']),_0x255ac3['classList']['remove'](_0x877045['fEonm']('smolbuttondark',_0x473014)),_0x255ac3['classList']['add']('smolbuttonSwap'),_0x255ac3['classList']['add'](_0x877045['JcQQt']('smolbuttonSwap',_0x473014));quiz['setLanguage'](_0x1598dc);},missingOptionsDiv['appendChild'](_0x255ac3),_0x4e0409['push'](_0x255ac3);}function _0x2750cb(_0x2f12a2){const _0x38bf98={'vUpDX':function(_0x2ceb84,_0x4ab533){return _0x2ceb84-_0x4ab533;},'JmdPE':function(_0x4a55ea,_0x4ee95a){return _0x877045['aQssB'](_0x4a55ea,_0x4ee95a);},'gbyyw':function(_0x142e96,_0x591431){return _0x142e96===_0x591431;},'ZlhWG':function(_0x4fcc88){return _0x4fcc88();}};let _0x592b53=0x3c*_0x2f12a2*0x3e8+Date['now'](),_0x381db7=Date['now']();timerObj={'type':_0x877045['wVKUR'],'t':_0x592b53},_0x6f0839(),activeTimer=_0x877045['bMxyQ'](setInterval,function(){let _0x2b1c90=Date['now']();paused&&(_0x592b53+=_0x2b1c90-_0x381db7),timerObj['t']=_0x592b53;let _0x33e7fb=_0x38bf98['vUpDX'](_0x592b53,_0x2b1c90);_0x381db7=_0x2b1c90,_0x38bf98['JmdPE'](_0x4a9a3a,_0x33e7fb),_0x33e7fb<=0x0&&_0x38bf98['gbyyw'](null,roomId)&&(_0x38bf98['ZlhWG'](_0x557edc),_0x273a1b()),_0x38bf98['JmdPE'](_0x4a9a3a,_0x33e7fb);},0x64);}function _0x27a44e(_0x12291d,_0x47f19b){let _0x6937a7=null;(isSocketHost||_0x877045['Fpfdk'](null,roomId))&&(_0x6937a7=_0x51efd7=>{var _0x1183c9;_0x1183c9=_0x51efd7,socket['emit']('named',{'id':_0x1183c9});});let _0x3b1f13=quiz['parseInput'](_0x12291d,_0x47f19b,_0x6937a7),_0x2650cb=_0x3b1f13[0x0],_0xd47e3b=_0x3b1f13[0x1];return _0x2650cb&&(soundEnabled&&soundEffect['play'](),_0x877045['AuKOn'](_0x12264d,quiz['getScore']()),activeTimer||(0x0===_0x716cf1?_0x877045['GIfZj'](_0x2f23b1):_0x2750cb(_0x716cf1)),_0x877045['WRrYp'](quiz['getMaxScore'](),quiz['getScore']())&&_0x877045['AXKmu'](null,roomId)&&_0x877045['GIfZj'](_0x273a1b),(isSocketHost||null!==roomId||isTwitchOn)&&(_0x56e604(),_0x426915())),[_0x2650cb,_0xd47e3b];}function _0x273a1b(){_0x877045['bbcal'](null,socket)&&isSocketHost&&socket['emit']('stateChange',{'showcongrats':!0x0}),inputField['disabled']=!0x0,_0x877045['TCqsl'](_0x426915),_0x877045['VIlSr'](clearInterval,activeTimer),timerObj={'type':_0x877045['unQNx']},document['getElementById'](_0x877045['GnxhT'])['style']['display']='block',soundEnabled&&soundEffect2['play']();let _0x34c616='',_0x2b159d='';0x0===_0x716cf1?(_0x34c616=timerText['innerHTML'],_0x2b159d=_0x877045['jXIjZ']):(_0x34c616=0x0===_0x5f54bb?_0x877045['IqXzB'](_0x716cf1,_0x877045['VOiXj']):_0x877045['wlnSt'](_0x5bda80,_0x877045['JkLov'](0x3c,_0x716cf1)*0x3e8-_0x5f54bb),_0x2b159d=_0x877045['nNzte']('\x20',quiz['getScore']())+'\x20'),document['getElementById']('gen-name')['innerHTML']=quiz['getEndText'](),document['getElementById'](_0x877045['HGvHa'])['innerHTML']=_0x34c616,document['getElementById']('currentcount')['innerHTML']=_0x2b159d,quiz['isSilhouettesEnabled']()?document['getElementById']('trychallenge')['style']['display']='block':document['getElementById']('trychallenge')['style']['display']='none',Object['keys'](quiz['users'])['length']>0x1&&(document['getElementById']('ranking2')['style']['display']='block'),document['getElementById']('ranking')['style']['display']='none',quiz['animateCongrats']();}function _0x557edc(){_0x877045['ooHCP'](null,socket)&&isSocketHost&&socket['emit']('stateChange',{'giveup':!0x0}),_0x877045['LgsDO'](_0x426915),inputField['disabled']=!0x0,Object['keys'](quiz['users'])['length']>0x1&&(document['getElementById'](_0x877045['OCBqk'])['style']['display']='block'),document['getElementById']('ranking')['style']['display']='none',clearInterval(activeTimer),timerObj={'type':_0x877045['unQNx']},quiz['giveUp'](),document['getElementById'](_0x877045['oTBWf'])['style']['display']='block',document['getElementById']('accordion')['click']();}nameAll=function(){for(let _0x54759d of quiz['currentIds'])_0x27a44e(quiz['pokemonIdDict'][_0x54759d]['baseName'],myUsername);},inputField['oninput']=function(){if(_0x877045['sbimN'](inputField['value']['length'],0x0)){if(_0x877045['BTkYf']('?',inputField['value'][inputField['value']['length']-0x1]))return inputField['value']=inputField['value']['substring'](0x0,inputField['value']['length']-0x1),void _0x877045['gtzMY'](_0xf75f8b);res=_0x877045['vQAPg'](_0x27a44e,inputField['value'],myUsername);let _0x12163b=res[0x0],_0xd42ca0=res[0x1];_0x877045['gQhOu']('missingno',_0xd42ca0)?inputField['value']='':_0x12163b?(inputField['value']='',hideHint()):_0x12163b||_0x877045['gQhOu'](null,_0xd42ca0)||(inputField['value']='',_0x877045['olzNb'](hideHint),_0x877045['wTEOm'](showUserMessage,_0xd42ca0));}},giveUpBtn['onclick']=_0x557edc,radioPokeball['onclick']=function(){quiz['usePokeball']();},radioSilhouette['onclick']=function(){!0x0!==quiz['isSilhouettesEnabled']()&&(promptSilh['style']['display']='inline');},promptSilhYes['onclick']=function(){quiz['setSilhouettes'](),_0x877045['qToDN'](null,socket)&&isSocketHost&&socket['emit']('stateChange',{'silhouettes':!0x0}),promptSilh['style']['display']='none',radioSilhouette['checked']=!0x0;},promptSilhNo['onclick']=function(){promptSilh['style']['display']=_0x877045['unQNx'],radioSilhouette['checked']=!0x1;};let _0x123d3=_0x536c4a['misspellings'],_0x20434a={};for(let _0x2b918a in _0x123d3)for(let _0x24d024=0x0;_0x877045['YfFmV'](_0x24d024,_0x123d3[_0x2b918a]['length']);_0x24d024++)_0x20434a[_0x123d3[_0x2b918a][_0x24d024]]=_0x2b918a;function _0xf75f8b(){const _0x45c594={'rRElF':_0x877045['piJCK']};if(isSpellingEnabled){inputField['focus'](),spellingCheck['style']['display']=_0x877045['unQNx'],spellingHint['style']['display']='inline-block';let _0x16bae3=function(_0x31f445){const _0x48192d={'XifKP':function(_0x4dbdba,_0x18022e,_0x32682a){return _0x877045['gScYF'](_0x4dbdba,_0x18022e,_0x32682a);},'JWwal':function(_0x2e0dfc,_0x46d15c){return _0x877045['jSHLQ'](_0x2e0dfc,_0x46d15c);}};if(_0x877045['csAIm'](_0x31f445['length'],0x3)){let _0x129eaf=function(_0x52f838){let _0x1d726c={};_0x52f838=standardizeName(_0x52f838);let _0xd1cd54=quiz['nameArr'];for(const _0x55d901 of _0xd1cd54){let _0x355f7e=_0x48192d['XifKP'](Levenshtein,standardizeName(_0x55d901),_0x52f838);_0x1d726c[_0x55d901]=_0x355f7e;}return sortedVals=_0x48192d['JWwal'](sortDictionaryByValue,_0x1d726c),sortedVals['reverse']();}(_0x31f445);if(_0x877045['PzjuZ'](_0x129eaf['length'],0x0)){let _0x232d36=_0x129eaf[0x0],_0x106133=_0x232d36[0x0],_0x18c428=_0x232d36[0x1];if(_0x877045['VqMMf'](_0x31f445,_0x20434a))return _0x20434a[_0x31f445];if(0x1==_0x18c428)return _0x106133;if(_0x877045['OqPOn'](0x5,_0x31f445['length'])&&_0x877045['DYJKj'](_0x18c428,0x2))return _0x106133;if(_0x877045['rslak'](0x6,_0x31f445['length'])&&_0x877045['DYJKj'](_0x18c428,0x2))return _0x106133;if(0x7===_0x31f445['length']&&_0x18c428<=0x3)return _0x106133;if(_0x31f445['length']>=0x8&&_0x877045['DYJKj'](_0x18c428,0x4))return _0x106133;}}return'not\x20found';}(_0x877045['uHOoK'](standardizeName,inputField['value']));spellingHint['innerHTML']=_0x16bae3,inputField['value']['length']>0x0&&function(_0x32cfa2,_0x3c0c79){try{let _0x528435=new XMLHttpRequest();_0x528435['open']('POST',_0x45c594['rRElF'],!0x0),_0x528435['setRequestHeader']('Content-Type','application/json'),_0x528435['send'](JSON['stringify']({'misspelling':_0x32cfa2,'suggestion':_0x3c0c79}));}catch(_0x45c2b2){}}(inputField['value'],_0x16bae3);}}document['getElementById'](_0x877045['xKDtU'])['onclick']=_0xf75f8b;let _0x426915=function(){let _0x147660=document['getElementById'](_0x877045['BbCPW']);for(;_0x147660['firstChild'];)_0x147660['firstChild']['remove']();if(_0x877045['gLjKg'](Object['keys'](quiz['users'])['length'],0x1)){let _0x1ffa58=sortDictionaryByValue(quiz['users']),_0x2aefc0=quiz['getStyleName']();for(let _0x58b5b3=0x0;_0x877045['YfFmV'](_0x58b5b3,_0x1ffa58['length']);_0x58b5b3++){let _0x32b3d8=document['createElement']('div'),_0x2a16be=document['createElement']('div'),_0x23e471=document['createElement']('div'),_0xb10964=document['createElement']('div'),_0x327c55=document['createElement']('img');_0x327c55['classList']['add']('spriteb'),_0x327c55['src']=_0x877045['PGJWR'],_0x32b3d8['classList']['add']('board'),_0x2a16be['classList']['add']('place','inlinebox',_0x877045['ltIKX']('inlinebox',_0x2aefc0)),_0x23e471['classList']['add'](_0x877045['XGnqt'],_0x877045['ZjSfG'],_0x877045['mZtTq']('inlinebox',_0x2aefc0)),_0xb10964['classList']['add']('number','inlinebox',_0x877045['QNiGy']('inlinebox',_0x2aefc0)),darkMode&&(_0x2a16be['classList']['add'](_0x877045['kwLEC']),_0x2a16be['classList']['add'](_0x877045['YeuUW']('inlineboxdark',_0x2aefc0)),_0x23e471['classList']['add'](_0x877045['kwLEC']),_0x23e471['classList']['add'](_0x877045['QNiGy']('inlineboxdark',_0x2aefc0)),_0xb10964['classList']['add']('inlineboxdark'),_0xb10964['classList']['add']('inlineboxdark'+_0x2aefc0));let _0x12d062=document['createTextNode'](_0x877045['EfanQ']('#',_0x877045['BLMon'](_0x58b5b3,0x1)));_0x2a16be['appendChild'](_0x12d062);let _0x5018fd=document['createTextNode'](_0x1ffa58[_0x58b5b3][0x0]);_0x877045['TpgxQ'](_0x1ffa58[_0x58b5b3][0x0],myUsername)&&_0x23e471['classList']['add']('quizmaster'),_0x23e471['appendChild'](_0x5018fd);let _0x2b77f8=document['createTextNode'](_0x877045['zwlpn']('\x20',_0x1ffa58[_0x58b5b3][0x1]));_0xb10964['append'](_0x327c55,_0x2b77f8),_0x32b3d8['append'](_0x2a16be,_0x23e471,_0xb10964),_0x147660['append'](_0x32b3d8);}changeFooterPosition();}};document['getElementById'](_0x877045['YODLW'])['onclick']=function(){_0x877045['ivKeJ']('block',document['getElementById']('leaderboard2')['style']['display'])?(document['getElementById'](_0x877045['BbCPW'])['style']['display']=_0x877045['unQNx'],document['getElementById']('arrow2')['classList']['add'](_0x877045['lOxmh']),document['getElementById']('arrow2')['classList']['remove']('aup')):(document['getElementById']('leaderboard2')['style']['display']=_0x877045['oJNJh'],document['getElementById']('arrow2')['classList']['add']('aup'),document['getElementById']('arrow2')['classList']['remove'](_0x877045['lOxmh']),_0x426915()),_0x877045['TCqsl'](changeFooterPosition);};for(let _0x38cb9e=0x0;_0x38cb9e<typeList['length'];_0x38cb9e++){let _0x5dffb9=_0x38cb9e;document['getElementById']('b-'+typeList[_0x38cb9e])['onclick']=function(){const _0xa0521b={'zbESx':function(_0x45a786){return _0x877045['DtwDF'](_0x45a786);}};let _0x3ddd14=function(){var _0x30644a;document['getElementById']('typeselection')['onclick']=off2,document['getElementById'](_0x877045['qihuB'])['onclick']=off2,promptGen['style']['display']=_0x877045['unQNx'],quiz['reset'](),_0x30644a=typeList[_0x5dffb9],quiz['setTypeQuiz'](_0x30644a),_0x4f38cf();};promptGenYes['onclick']=function(){_0x3ddd14(),_0xa0521b['zbESx'](off2);},promptGenNo['onclick']=function(){promptGen['style']['display']='none';},0x0!==quiz['getScore']()?promptGen['style']['display']=_0x877045['rRenC']:(_0x877045['EhYIf'](_0x3ddd14),_0x877045['AhQGm'](off2));};}let _0x29dbed=null;document['getElementById'](_0x877045['YODLW'])['click']();let _0x3febeb=[[_0x2d6ae8['sprite']['bulbasaur'],_0x2d6ae8['sprite']['charmander'],_0x2d6ae8['sprite']['squirtle']],[_0x2d6ae8['sprite']['cyndaquil'],_0x2d6ae8['sprite']['totodile'],_0x2d6ae8['sprite']['chikorita']],[_0x2d6ae8['sprite']['mudkip'],_0x2d6ae8['sprite']['treecko'],_0x2d6ae8['sprite']['torchic']],[_0x2d6ae8['sprite']['turtwig'],_0x2d6ae8['sprite']['chimchar'],_0x2d6ae8['sprite']['piplup']],[_0x2d6ae8['sprite']['tepig'],_0x2d6ae8['sprite']['oshawott'],_0x2d6ae8['sprite']['snivy']],[_0x2d6ae8['sprite']['froakie'],_0x2d6ae8['sprite']['chespin'],_0x2d6ae8['sprite']['fennekin']],[_0x2d6ae8['sprite']['rowlet'],_0x2d6ae8['sprite']['litten'],_0x2d6ae8['sprite']['popplio']],[_0x2d6ae8['sprite']['scorbunny'],_0x2d6ae8['sprite']['sobble'],_0x2d6ae8['sprite']['grookey']],[_0x2d6ae8['sprite']['quaxly'],_0x2d6ae8['sprite']['sprigatito'],_0x2d6ae8['sprite']['fuecoco']]],_0x117dda=0x0,_0x2b2791=!0x0,_0x4d327f=_0x536c4a['sprite_cycles'],_0x1242d5=document['getElementById'](_0x877045['swIAF'])['classList']['length'],_0x1863ba=function(){const _0x181f5c={'FvYFP':'type-img','UsmWx':'type0','Fmxdu':function(_0x4789b2,_0x171053){return _0x4789b2===_0x171053;},'jSdFR':function(_0x2faa61,_0x24ee8f){return _0x2faa61+_0x24ee8f;},'pnIzN':function(_0x19ac2a,_0x3297e0,_0x35abb7){return _0x19ac2a(_0x3297e0,_0x35abb7);},'pUnra':function(_0x2ea071,_0x5c2e0c,_0x367cf0){return _0x2ea071(_0x5c2e0c,_0x367cf0);}};for(let _0xe66b5d=0x0;_0xe66b5d<_0x3febeb['length'];_0xe66b5d++){document['getElementById'](_0x877045['lNVop']('gen'+[_0xe66b5d+0x1],_0x877045['PDjZE']))['src']=_0x3febeb[_0xe66b5d][_0x877045['BywrS'](_0x117dda,_0x3febeb[0x0]['length'])];}!function(_0x59fb7d){let _0x41ba76=document['getElementById'](_0x181f5c['FvYFP']),_0x1ed59b=document['getElementById'](_0x181f5c['UsmWx']),_0xe521b7=_0x59fb7d%typeList['length'];_0xe521b7=_0x2b2791?_0xe521b7:0x0;let _0x5a1814=typeList[_0xe521b7];_0x181f5c['Fmxdu']('dark',_0x5a1814)&&(_0x5a1814='evil'),_0x41ba76['src']=_0x181f5c['jSdFR']('/images/types/',typeList[_0xe521b7]['toUpperCase']())+'.svg',_0x1ed59b['classList']['length']!==_0x1242d5&&_0x1ed59b['classList']['remove'](_0x1ed59b['classList'][_0x1ed59b['classList']['length']-0x1]),_0x1ed59b['classList']['add']('button'+_0x5a1814);}(_0x117dda),function(_0x3d976c){const _0x4739ee={'ostmB':function(_0x2438f0,_0x1504e5){return _0x2438f0%_0x1504e5;},'HrzcW':function(_0x929146,_0x182bf5){return _0x929146 in _0x182bf5;},'oFOVh':function(_0x2fe48a,_0x1d7897){return _0x2fe48a(_0x1d7897);}};let _0xe5d4d3=(_0x267080,_0x43ad8d)=>{let _0x5aea6a,_0x1e2a61=standardizeName(_0x267080);_0x5aea6a=quiz['shinyEnabled']?'shiny':'sprite';let _0x56fff7=_0x4739ee['ostmB'](_0x3d976c,_0x43ad8d[_0x267080]['length']);_0x56fff7=_0x2b2791?_0x56fff7:0x0;let _0x500df5=standardizeName(_0x43ad8d[_0x267080][_0x56fff7]);quiz['spriteDictionary'][standardizeName(_0x1e2a61)]['src']=_0x2d6ae8[_0x5aea6a][_0x500df5],quiz['unguessedDict'][standardizeName(_0x1e2a61)]['getElementsByTagName']('img')[0x0]['src']=_0x2d6ae8[_0x5aea6a][_0x500df5],_0x4739ee['HrzcW'](_0x500df5,quiz['pokemonIdDict'])?quiz['unguessedDictTexts'][standardizeName(_0x1e2a61)]['nodeValue']=quiz['pokemonIdDict'][standardizeName(_0x43ad8d[_0x267080][_0x56fff7])]['getFormattedName'](quiz['currentLang']):quiz['unguessedDictTexts'][_0x4739ee['oFOVh'](standardizeName,_0x1e2a61)]['nodeValue']=quiz['pokemonIdDict'][standardizeName(_0x267080)]['getFormattedName'](quiz['currentLang']);};for(let _0x3875c8 in _0x4d327f)_0x181f5c['pnIzN'](_0xe5d4d3,_0x3875c8,_0x4d327f);for(let _0x383601 in quiz['spriteCycles'])_0x181f5c['pUnra'](_0xe5d4d3,_0x383601,quiz['spriteCycles']);}(_0x117dda),_0x117dda+=0x1;};_0x877045['YdZXd'](setInterval,()=>{_0x877045['ksKPJ'](_0x1863ba);},0x7d0),_0x1863ba();function _0x56e604(){let _0x388089=sortDictionaryByValue(quiz['users']);emptyLeaderboard();let _0x45ea6a=document['getElementById'](_0x877045['NImDW']),_0x1750c3=quiz['getStyleName']();for(let _0x15d7e1=0x0;_0x877045['cbEEY'](_0x15d7e1,_0x388089['length']);_0x15d7e1++){let _0x42631e=document['createElement']('div');_0x42631e['classList']['add'](_0x877045['KbpaB']),_0x42631e['classList']['add']('inlinetext'+_0x1750c3),_0x42631e['classList']['add'](_0x877045['nzOCv']),_0x42631e['classList']['add'](rankVals[_0x15d7e1]);let _0x16f7ca=document['createTextNode'](_0x877045['SIkXU'](_0x877045['EfanQ'](_0x877045['nZntc']('#'+(_0x15d7e1+0x1)+'\x20',_0x388089[_0x15d7e1][0x0]),'\x20(')+_0x388089[_0x15d7e1][0x1],')'));if(_0x42631e['appendChild'](_0x16f7ca),_0x45ea6a['appendChild'](_0x42631e),_0x877045['czCuT'](_0x15d7e1,0x2))break;}_0x388089['length']>0x1&&(document['getElementById']('ranking')['style']['display']='block');}document['getElementById'](_0x877045['Tifbs'])['onclick']=()=>{_0x2b2791=!0x0,_0x877045['YSewU'](_0x17a017,document['getElementById'](_0x877045['xEELP'])),_0x877045['uTiPY'](_0x5c2d3b,document['getElementById']('cycle-on'));},document['getElementById']('cycle-off')['onclick']=()=>{_0x2b2791=!0x1,_0x1863ba(),_0x17a017(document['getElementById'](_0x877045['Tifbs'])),_0x5c2d3b(document['getElementById'](_0x877045['xEELP']));},window['addEventListener']('beforeunload',beforeUnload),document['getElementById']('twitch-on')['onclick']=function(){const _0x14c5b5={'gjCLn':function(_0x27082b,_0x4be33d){return _0x877045['PiCXl'](_0x27082b,_0x4be33d);},'BeHxt':_0x877045['VCrxX'],'Mtpsw':function(_0x32caaf,_0x50b435){return _0x32caaf===_0x50b435;},'cuIUB':function(_0x1cde84,_0x440a7e,_0x530872,_0x5af3ad){return _0x877045['hlAgJ'](_0x1cde84,_0x440a7e,_0x530872,_0x5af3ad);},'fQmRd':function(_0x2ac24c,_0x24912e,_0x162258,_0x21a547){return _0x2ac24c(_0x24912e,_0x162258,_0x21a547);},'ARLcz':function(_0x3e3b74,_0x5e6717,_0x273f6f,_0x5a41b1){return _0x877045['IptgY'](_0x3e3b74,_0x5e6717,_0x273f6f,_0x5a41b1);},'mtaXp':_0x877045['AdJRP'],'vtvHf':function(_0x32f93a,_0x368c43){return _0x877045['XIoOy'](_0x32f93a,_0x368c43);},'CqYzz':function(_0x3840ff,_0x16b5f4){return _0x877045['oUFtP'](_0x3840ff,_0x16b5f4);},'eNshi':'vip','MsyRW':function(_0xb8f77f,_0x1a6ddd){return _0x877045['XIoOy'](_0xb8f77f,_0x1a6ddd);},'PHqeM':'moderator','POahI':'broadcaster','ixIOc':function(_0x1a900e,_0x483dd8){return _0x1a900e==_0x483dd8;},'NYFze':_0x877045['MwBzz'],'inJYx':'scrollup','EriTv':_0x877045['HBnXt'],'aARFi':function(_0x248606,_0x25dcc9){return _0x248606>_0x25dcc9;},'zgTTY':function(_0x47ba61,_0x429642){return _0x877045['KYceU'](_0x47ba61,_0x429642);},'bfEmz':function(_0xb214f9,_0x5e24ec){return _0x877045['xXLCR'](_0xb214f9,_0x5e24ec);},'bTyFX':function(_0x5dde27,_0x210f4e){return _0x877045['DQMlX'](_0x5dde27,_0x210f4e);},'OnyUj':function(_0x328e98,_0x5de80e){return _0x328e98(_0x5de80e);},'IDsxB':function(_0x55de69,_0x4259de){return _0x877045['PzjuZ'](_0x55de69,_0x4259de);},'vLLis':_0x877045['NnqyK'],'wwhBA':_0x877045['nXGIR'],'CWJBq':_0x877045['Bzjhx'],'ioQAo':function(_0x34b878,_0x1eaef1,_0x12eb84,_0x3b33dc){return _0x877045['IptgY'](_0x34b878,_0x1eaef1,_0x12eb84,_0x3b33dc);},'jnKFU':_0x877045['VsrTk'],'IeJOX':'unfezant','xAyyu':_0x877045['OHdrg'],'ndsym':function(_0x523aef,_0x3b8b45,_0xd82b18,_0x444b7f){return _0x877045['hlAgJ'](_0x523aef,_0x3b8b45,_0xd82b18,_0x444b7f);},'ylRVy':_0x877045['DlUid'],'EOenJ':'boldore','wqxMy':'fortuna','DMwOC':_0x877045['kiRTn'],'VEunR':function(_0x190e60,_0x3af01b){return _0x190e60===_0x3af01b;},'NkLPo':'party\x20off','WGLxq':'/images/spheal.png','mnPYk':_0x877045['KNJlV'],'aYept':_0x877045['iLQlh'],'vOHLT':'/images/wigglypuff.png','EbbMd':function(_0x5e6613,_0x4c7ecf){return _0x877045['umtKo'](_0x5e6613,_0x4c7ecf);},'Jqigr':'nora','NGkaJ':_0x877045['IPnRy'],'VIXZy':'birdkeepertoby','NUure':function(_0x24ea64,_0x20aa23){return _0x877045['mKdBP'](_0x24ea64,_0x20aa23);},'YaSfb':_0x877045['hBkUh'],'gWpUA':_0x877045['DWrkG'],'JhoMe':'hoothoot','yTguE':'/images/hoothoot.png','BIpFP':_0x877045['DzOqg'],'xujUJ':'spearow','UCrGK':_0x877045['rMxLg'],'UnATy':_0x877045['ryFeF'],'sIJGC':_0x877045['qrvrs'],'FdPls':function(_0x5cb4e6,_0xbb1f32,_0x35e4f7,_0x435e6f){return _0x5cb4e6(_0xbb1f32,_0x35e4f7,_0x435e6f);},'bQRqT':_0x877045['YWGho'],'WWQlM':_0x877045['SvWOy'],'SqJCN':function(_0x330cb2,_0xf374cd,_0x3c8f10,_0x4e455f){return _0x877045['mdcsv'](_0x330cb2,_0xf374cd,_0x3c8f10,_0x4e455f);},'RlcQh':'swablu','fEmdP':function(_0x2ec411,_0x4cfb89,_0x73a9cb,_0x574fcd){return _0x877045['ZeHKS'](_0x2ec411,_0x4cfb89,_0x73a9cb,_0x574fcd);},'zJphp':'chatot','gnjwY':function(_0x1579ab,_0x317e10,_0x52f196,_0x4818e6){return _0x877045['IptgY'](_0x1579ab,_0x317e10,_0x52f196,_0x4818e6);},'KfiKY':'vullaby','tsTfN':'hawlucha','ehmuk':function(_0x52100f,_0x2945a8,_0x55d634,_0x51833c){return _0x52100f(_0x2945a8,_0x55d634,_0x51833c);},'pFrlU':_0x877045['CuAxU'],'LYDrv':function(_0x4677c6,_0x58e279,_0x322bfa,_0x56e72f){return _0x877045['ZeHKS'](_0x4677c6,_0x58e279,_0x322bfa,_0x56e72f);},'RgzeB':'torchic','NyIpg':function(_0x589bda,_0x402b6d,_0x440783,_0x6cdb71){return _0x877045['ZeHKS'](_0x589bda,_0x402b6d,_0x440783,_0x6cdb71);},'heuDs':_0x877045['WPWQl'],'lSwoK':_0x877045['nwAqV'],'zbyHY':function(_0x1096f0,_0x46432a){return _0x1096f0==_0x46432a;},'QmOtc':_0x877045['yCnPQ'],'fHCxC':function(_0x2e16f9,_0x53edaa){return _0x877045['jnhsi'](_0x2e16f9,_0x53edaa);},'HabIM':function(_0x1ad7f1,_0x14d022){return _0x1ad7f1===_0x14d022;},'DRByX':function(_0x10de30,_0x245d2d,_0x1e48e1,_0x27dc57){return _0x10de30(_0x245d2d,_0x1e48e1,_0x27dc57);},'hQaBZ':_0x877045['mBmqb'],'TEUPo':'oddish','YhRAy':function(_0x4d182b,_0x5cc903,_0xe9521f,_0x56b78f){return _0x877045['hlAgJ'](_0x4d182b,_0x5cc903,_0xe9521f,_0x56b78f);},'Tbqao':function(_0x1d0d05,_0x69e97,_0x1ee250,_0x1c684d){return _0x1d0d05(_0x69e97,_0x1ee250,_0x1c684d);},'EvPKW':function(_0x35b2a1,_0x2ff461,_0x21fd6f,_0x20e71d){return _0x35b2a1(_0x2ff461,_0x21fd6f,_0x20e71d);},'uorLj':_0x877045['ZmJyF'],'keAup':function(_0x4d77eb,_0x222144,_0x18a688,_0xf1db84){return _0x4d77eb(_0x222144,_0x18a688,_0xf1db84);},'uRHvX':_0x877045['mCDUY'],'XkHRm':function(_0x5a2b88,_0x3f57b8,_0x23cba2,_0x18b679){return _0x877045['gWriR'](_0x5a2b88,_0x3f57b8,_0x23cba2,_0x18b679);},'skUgW':_0x877045['nwyAh'],'jQNVR':'budew','jXHfT':'cherubi','MOURg':'carnivine','HXnfm':'pansage','gPtar':'sewaddle','kdFDv':_0x877045['VRIvw'],'cuhUB':function(_0x2fd032,_0x4be0f1,_0x2b2768,_0x2677d3){return _0x877045['OAtbV'](_0x2fd032,_0x4be0f1,_0x2b2768,_0x2677d3);},'vRnTk':_0x877045['GtZgd'],'AtqvA':function(_0x2d2bc2,_0x4f9000,_0x5a2e4a,_0x449f5e){return _0x877045['dvwCH'](_0x2d2bc2,_0x4f9000,_0x5a2e4a,_0x449f5e);},'UPBfb':function(_0x4a5284,_0x3ecdb0,_0x20f833,_0x405b8a){return _0x877045['Whtfb'](_0x4a5284,_0x3ecdb0,_0x20f833,_0x405b8a);},'Fofku':_0x877045['jXmva'],'aYxmh':function(_0x3ac78e,_0x58fa7e,_0x48e17f,_0x4fa185){return _0x3ac78e(_0x58fa7e,_0x48e17f,_0x4fa185);},'fUBYE':'bounsweet','PIhrw':function(_0x4bce31,_0x4ddbec,_0x22ac60,_0x37f3fe){return _0x4bce31(_0x4ddbec,_0x22ac60,_0x37f3fe);},'uxIiT':function(_0x181bd7,_0x1cca16,_0xe4c097,_0x1866e4){return _0x877045['OAtbV'](_0x181bd7,_0x1cca16,_0xe4c097,_0x1866e4);},'eFoWt':'gossifleur','diwek':_0x877045['gFfGp'],'zIoWM':'/images/chikorita.png','eHeoi':'/images/grookey.png','ZtKPl':_0x877045['Hswal'],'jZofB':function(_0xc175d5,_0x431625){return _0xc175d5!=_0x431625;},'YyVYU':_0x877045['rSIRH'],'cXQSO':function(_0xdc5d06,_0x7a0019,_0xf11aa1,_0x2af126){return _0x877045['ZeHKS'](_0xdc5d06,_0x7a0019,_0xf11aa1,_0x2af126);},'bTPLI':_0x877045['HKwDH'],'DbERx':function(_0x44a189,_0x381c8b){return _0x44a189===_0x381c8b;},'DOmYJ':'fauna','ZJdUx':'vulpix','tQqhD':_0x877045['VwmPi'],'gHthp':'/images/vulpix-alola.png'};if(!isTwitchOn&&''!=document['getElementById'](_0x877045['fVvVz'])['value']){isTwitchOn=!0x0;let _0x4c7211=document['getElementById'](_0x877045['fVvVz'])['value'];console['log']('enable',_0x4c7211),document['getElementById'](_0x877045['fVvVz'])['disabled']=!0x0,_0x877045['fTOGq'](_0x17a017,document['getElementById'](_0x877045['PwyPX'])),_0x877045['jSHLQ'](_0x5c2d3b,document['getElementById']('twitch-on')),(client=new tmi['Client']({'channels':[document['getElementById'](_0x877045['fVvVz'])['value']]}))['on']('connected',function(_0x3592fd,_0x5a37db){showUserMessage(_0x877045['fEonm'](_0x877045['UGzzA'],_0x4c7211));}),client['connect'](),client['on'](_0x877045['lEypE'],(_0x364c1d,_0x64c2db,_0x3dfe9a,_0x48f61a)=>{const _0x10ec1f={'zUxfo':function(_0x2da7e0,_0x5e611e,_0x518cc6,_0x15d373){return _0x14c5b5['fQmRd'](_0x2da7e0,_0x5e611e,_0x518cc6,_0x15d373);},'dNYBF':_0x14c5b5['BeHxt'],'yVvmk':'blenddark','sSbiS':function(_0x9add7f,_0x239d9f,_0x9b57d2){return _0x9add7f(_0x239d9f,_0x9b57d2);},'OPBPB':function(_0x71a4c1,_0x3ad1ef,_0x425b23,_0x2c26db){return _0x14c5b5['ARLcz'](_0x71a4c1,_0x3ad1ef,_0x425b23,_0x2c26db);}};console['log']('Twitch\x20chat\x20message\x20-\x20'+_0x64c2db['display-name']+':\x20'+_0x3dfe9a);let _0x1d95cc=_0x64c2db[_0x14c5b5['mtaXp']]['toLowerCase'](),_0x2babeb=!0x1;if(_0x14c5b5['vtvHf']('badges',_0x64c2db)&&_0x14c5b5['CqYzz'](null,_0x64c2db['badges'])&&(_0x14c5b5['vtvHf'](_0x14c5b5['eNshi'],_0x64c2db['badges'])&&'1'==_0x64c2db['badges']['vip']&&(_0x2babeb=!0x0),_0x14c5b5['MsyRW'](_0x14c5b5['PHqeM'],_0x64c2db['badges'])&&'1'==_0x64c2db['badges']['moderator']&&(_0x2babeb=!0x0),_0x14c5b5['POahI']in _0x64c2db['badges']&&_0x14c5b5['ixIOc']('1',_0x64c2db['badges']['broadcaster'])&&(_0x2babeb=!0x0)),(_0x2babeb||'adeptcharon'==_0x1d95cc||_0x14c5b5['ixIOc'](_0x14c5b5['NYFze'],_0x1d95cc))&&(standardizeName(_0x3dfe9a)==='scrolldown'['toLowerCase']()?window['scrollBy'](0x0,0x3c):standardizeName(_0x3dfe9a)===_0x14c5b5['inJYx']['toLowerCase']()&&window['scrollBy'](0x0,-0x3c),standardizeName(_0x3dfe9a)===_0x14c5b5['EriTv']['toLowerCase']()?_0x14c5b5['aARFi'](Date['now']()-swapLimit,lastDarkSwap)&&(document['getElementById']('darkoff')['click'](),lastDarkSwap=Date['now']()):_0x14c5b5['zgTTY'](_0x14c5b5['gjCLn'](standardizeName,_0x3dfe9a),'darkon'['toLowerCase']())?Date['now']()-swapLimit>lastDarkSwap&&(document['getElementById']('darkon')['click'](),lastDarkSwap=Date['now']()):_0x14c5b5['bfEmz'](_0x14c5b5['gjCLn'](standardizeName,_0x3dfe9a),'shinyon'['toLowerCase']())?_0x14c5b5['bTyFX'](Date['now'](),swapLimit)>lastShinySwap&&(shinyOn(),lastShinySwap=Date['now']()):_0x14c5b5['OnyUj'](standardizeName,_0x3dfe9a)==='shinyoff'['toLowerCase']()&&_0x14c5b5['IDsxB'](Date['now']()-swapLimit,lastShinySwap)&&(shinyOff(),lastShinySwap=Date['now']())),_0x14c5b5['ixIOc'](_0x14c5b5['vLLis'],_0x4c7211['toLowerCase']())){if(_0x14c5b5['ixIOc'](_0x14c5b5['vLLis'],_0x1d95cc)&&_0x14c5b5['ixIOc']('ethan',_0x3dfe9a)){let _0x285020=0x5;for(const _0x5b3259 of quiz['currentIds']){if(quiz['named']['has'](_0x5b3259))continue;let _0x326517=quiz['pokemonIdDict'][_0x5b3259]['baseName'];setTimeout(()=>{_0x10ec1f['zUxfo'](_0x2c6154,_0x1d95cc,_0x326517,!0x0);},_0x285020),_0x285020+=0x5;}}_0x3dfe9a===_0x14c5b5['wwhBA']['toLowerCase']()&&_0x2c6154(_0x1d95cc,'whimsicott',!0x0),_0x3dfe9a==='wilbur'['toLowerCase']()&&(_0x2c6154(_0x1d95cc,_0x14c5b5['CWJBq'],!0x0),_0x14c5b5['ioQAo'](_0x2c6154,_0x1d95cc,_0x14c5b5['jnKFU'],!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['IeJOX'],!0x0)),_0x14c5b5['bfEmz'](_0x3dfe9a,_0x14c5b5['xAyyu']['toLowerCase']())&&(_0x14c5b5['ndsym'](_0x2c6154,_0x1d95cc,_0x14c5b5['ylRVy'],!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['EOenJ'],!0x0),_0x14c5b5['cuIUB'](_0x2c6154,_0x1d95cc,'gigalith',!0x0)),_0x14c5b5['zgTTY'](_0x3dfe9a,_0x14c5b5['wqxMy']['toLowerCase']())&&_0x2c6154(_0x1d95cc,_0x14c5b5['DMwOC'],!0x0);}'stapotv'===_0x1d95cc&&(_0x14c5b5['VEunR']('party\x20on',_0x3dfe9a)?(function(){const _0x5bcdb0={'oyeXd':_0x10ec1f['dNYBF'],'XhEDD':_0x10ec1f['yVvmk']};let _0x5e5de8=0x0;''!==currentType&&document['getElementById'](_0x10ec1f['dNYBF'])['classList']['remove'](currentType),_0x29dbed=_0x10ec1f['sSbiS'](setInterval,()=>{document['getElementById']('body')['classList']['remove'](typeList[_0x5e5de8]),_0x5e5de8+=0x1,_0x5e5de8==typeList['length']&&(_0x5e5de8=0x0),document['getElementById'](_0x5bcdb0['oyeXd'])['classList']['add'](typeList[_0x5e5de8]),darkMode?document['getElementById']('body')['classList']['add'](_0x5bcdb0['XhEDD']):document['getElementById'](_0x5bcdb0['oyeXd'])['classList']['add']('blend');},0x96);}()):_0x14c5b5['zgTTY'](_0x14c5b5['NkLPo'],_0x3dfe9a)&&(function(){null!==_0x29dbed&&_0x14c5b5['gjCLn'](clearInterval,_0x29dbed);for(let _0x47a52a=0x0;_0x47a52a<typeList['length'];_0x47a52a++)document['getElementById'](_0x14c5b5['BeHxt'])['classList']['remove'](typeList[_0x47a52a]);_0x14c5b5['Mtpsw']('',currentType)?(document['getElementById']('body')['classList']['remove']('blend'),document['getElementById']('body')['classList']['remove']('blenddark')):(darkMode?document['getElementById']('body')['classList']['add']('blenddark'):document['getElementById'](_0x14c5b5['BeHxt'])['classList']['add']('blend'),document['getElementById'](_0x14c5b5['BeHxt'])['classList']['add'](currentType));}())),_0x14c5b5['CqYzz'](_0x14c5b5['vLLis'],_0x1d95cc)&&_0x14c5b5['vLLis']!=_0x4c7211['toLowerCase']()||_0x3dfe9a==='ethan_from_chicago\x27s\x20favorite\x20pokemon'['toLowerCase']()&&(_0x2c6154(_0x1d95cc,_0x14c5b5['DMwOC'],!0x0),image=new Image(),image['src']=_0x14c5b5['WGLxq'],image['addEventListener'](_0x14c5b5['mnPYk'],function(){imageRain(image,0x190,0xa0);},!0x1)),_0x14c5b5['CqYzz'](_0x14c5b5['aYept'],_0x1d95cc)&&_0x14c5b5['CqYzz']('adeptcharon',_0x1d95cc)||(_0x3dfe9a==='pkmncast'['toLowerCase']()&&(_0x2c6154(_0x1d95cc,'cramorant',!0x0),image=new Image(),image['src']='/images/cramorant.png',image['addEventListener'](_0x14c5b5['mnPYk'],function(){imageRain(image,0x32,0x12c);},!0x1)),_0x3dfe9a==='wigglypuff'['toLowerCase']()&&(_0x2c6154(_0x1d95cc,'wigglytuff',!0x0),image=new Image(),image['src']=_0x14c5b5['vOHLT'],image['addEventListener'](_0x14c5b5['mnPYk'],function(){_0x14c5b5['cuIUB'](imageRain,image,0x32,0x12c);},!0x1))),_0x14c5b5['EbbMd']('norainthefuture',_0x1d95cc)&&'adeptcharon'!=_0x1d95cc||_0x14c5b5['VEunR'](_0x3dfe9a,_0x14c5b5['Jqigr']['toLowerCase']())&&(_0x14c5b5['fQmRd'](_0x2c6154,_0x1d95cc,_0x14c5b5['NGkaJ'],!0x0),image=new Image(),image['src']='/images/mew.png',image['addEventListener'](_0x14c5b5['mnPYk'],function(){_0x10ec1f['zUxfo'](imageRain,image,0x32,0x12c);},!0x1)),_0x14c5b5['VIXZy']!=_0x4c7211['toLowerCase']()&&_0x14c5b5['NUure']('adeptcharon',_0x4c7211['toLowerCase']())||'birdkeepertoby'!=_0x1d95cc&&_0x14c5b5['YaSfb']!=_0x1d95cc||(_0x3dfe9a===_0x14c5b5['gWpUA']['toLowerCase']()&&(_0x14c5b5['fQmRd'](_0x2c6154,_0x1d95cc,_0x14c5b5['JhoMe'],!0x0),image=new Image(),image['src']=_0x14c5b5['yTguE'],image['addEventListener']('load',function(){imageRain(image,0x32,0xc8);},!0x1)),_0x3dfe9a===_0x14c5b5['BIpFP']['toLowerCase']()&&(_0x2c6154(_0x1d95cc,'pidgey',!0x0),_0x14c5b5['cuIUB'](_0x2c6154,_0x1d95cc,_0x14c5b5['xujUJ'],!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['UCrGK'],!0x0),_0x14c5b5['fQmRd'](_0x2c6154,_0x1d95cc,_0x14c5b5['UnATy'],!0x0),_0x2c6154(_0x1d95cc,'hoothoot',!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['sIJGC'],!0x0),_0x14c5b5['FdPls'](_0x2c6154,_0x1d95cc,'murkrow',!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['bQRqT'],!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['WWQlM'],!0x0),_0x14c5b5['ARLcz'](_0x2c6154,_0x1d95cc,'taillow',!0x0),_0x14c5b5['SqJCN'](_0x2c6154,_0x1d95cc,'wingull',!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['RlcQh'],!0x0),_0x2c6154(_0x1d95cc,'starly',!0x0),_0x14c5b5['fEmdP'](_0x2c6154,_0x1d95cc,_0x14c5b5['zJphp'],!0x0),_0x14c5b5['ARLcz'](_0x2c6154,_0x1d95cc,_0x14c5b5['CWJBq'],!0x0),_0x2c6154(_0x1d95cc,'archen',!0x0),_0x2c6154(_0x1d95cc,'ducklett',!0x0),_0x2c6154(_0x1d95cc,'rufflet',!0x0),_0x14c5b5['gnjwY'](_0x2c6154,_0x1d95cc,_0x14c5b5['KfiKY'],!0x0),_0x14c5b5['fQmRd'](_0x2c6154,_0x1d95cc,'fletchling',!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['tsTfN'],!0x0),_0x14c5b5['ehmuk'](_0x2c6154,_0x1d95cc,_0x14c5b5['pFrlU'],!0x0),_0x14c5b5['LYDrv'](_0x2c6154,_0x1d95cc,_0x14c5b5['RgzeB'],!0x0),_0x14c5b5['ehmuk'](_0x2c6154,_0x1d95cc,'pikipek',!0x0),_0x14c5b5['NyIpg'](_0x2c6154,_0x1d95cc,_0x14c5b5['heuDs'],!0x0),_0x2c6154(_0x1d95cc,'rookidee',!0x0),_0x14c5b5['FdPls'](_0x2c6154,_0x1d95cc,_0x14c5b5['lSwoK'],!0x0))),_0x14c5b5['zbyHY'](_0x14c5b5['QmOtc'],_0x4c7211['toLowerCase']())&&_0x14c5b5['fHCxC'](_0x14c5b5['QmOtc'],_0x1d95cc)&&_0x14c5b5['HabIM'](_0x3dfe9a,'besttype'['toLowerCase']())&&(_0x14c5b5['DRByX'](_0x2c6154,_0x1d95cc,_0x14c5b5['hQaBZ'],!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['TEUPo'],!0x0),_0x14c5b5['YhRAy'](_0x2c6154,_0x1d95cc,'paras',!0x0),_0x14c5b5['Tbqao'](_0x2c6154,_0x1d95cc,'bellsprout',!0x0),_0x2c6154(_0x1d95cc,'exeggcute',!0x0),_0x2c6154(_0x1d95cc,'tangela',!0x0),_0x2c6154(_0x1d95cc,'chikorita',!0x0),_0x2c6154(_0x1d95cc,'hoppip',!0x0),_0x2c6154(_0x1d95cc,'sunkern',!0x0),_0x2c6154(_0x1d95cc,'treecko',!0x0),_0x2c6154(_0x1d95cc,'lotad',!0x0),_0x2c6154(_0x1d95cc,'seedot',!0x0),_0x14c5b5['EvPKW'](_0x2c6154,_0x1d95cc,'shroomish',!0x0),_0x2c6154(_0x1d95cc,'cacnea',!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['uorLj'],!0x0),_0x14c5b5['keAup'](_0x2c6154,_0x1d95cc,_0x14c5b5['uRHvX'],!0x0),_0x14c5b5['XkHRm'](_0x2c6154,_0x1d95cc,_0x14c5b5['skUgW'],!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['jQNVR'],!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['jXHfT'],!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['MOURg'],!0x0),_0x14c5b5['ARLcz'](_0x2c6154,_0x1d95cc,'snover',!0x0),_0x2c6154(_0x1d95cc,'leafeon',!0x0),_0x2c6154(_0x1d95cc,'snivy',!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['HXnfm'],!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['gPtar'],!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['kdFDv'],!0x0),_0x14c5b5['ndsym'](_0x2c6154,_0x1d95cc,'petilil',!0x0),_0x2c6154(_0x1d95cc,'maractus',!0x0),_0x14c5b5['fQmRd'](_0x2c6154,_0x1d95cc,'deerling',!0x0),_0x14c5b5['cuhUB'](_0x2c6154,_0x1d95cc,'foongus',!0x0),_0x14c5b5['cuIUB'](_0x2c6154,_0x1d95cc,_0x14c5b5['vRnTk'],!0x0),_0x2c6154(_0x1d95cc,'chespin',!0x0),_0x14c5b5['AtqvA'](_0x2c6154,_0x1d95cc,'phantump',!0x0),_0x14c5b5['UPBfb'](_0x2c6154,_0x1d95cc,'pumpkaboo',!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['pFrlU'],!0x0),_0x2c6154(_0x1d95cc,'fomantis',!0x0),_0x2c6154(_0x1d95cc,_0x14c5b5['Fofku'],!0x0),_0x14c5b5['aYxmh'](_0x2c6154,_0x1d95cc,_0x14c5b5['fUBYE'],!0x0),_0x14c5b5['PIhrw'](_0x2c6154,_0x1d95cc,'dhelmise',!0x0),_0x2c6154(_0x1d95cc,'grookey',!0x0),_0x14c5b5['uxIiT'](_0x2c6154,_0x1d95cc,_0x14c5b5['eFoWt'],!0x0),_0x2c6154(_0x1d95cc,'applin',!0x0)),(_0x14c5b5['QmOtc']==_0x1d95cc||_0x14c5b5['zbyHY'](_0x14c5b5['YaSfb'],_0x1d95cc)||_0x14c5b5['QmOtc']==_0x4c7211['toLowerCase']()&&_0x2babeb)&&(_0x3dfe9a===_0x14c5b5['diwek']['toLowerCase']()&&(image=new Image(),image['src']=_0x14c5b5['zIoWM'],image['addEventListener']('load',function(){_0x14c5b5['fQmRd'](imageRain,image,0x32,0x12c);},!0x1)),_0x3dfe9a==='lemonmonke'['toLowerCase']()&&(image=new Image(),image['src']=_0x14c5b5['eHeoi'],image['addEventListener'](_0x14c5b5['mnPYk'],function(){_0x10ec1f['zUxfo'](imageRain,image,0x32,0x12c);},!0x1)),_0x3dfe9a==='lemonbulb'['toLowerCase']()&&(image=new Image(),image['src']='/images/bulbasaur.png',image['addEventListener']('load',function(){imageRain(image,0x32,0xc8);},!0x1)),_0x14c5b5['zgTTY'](_0x3dfe9a,'lemonowl'['toLowerCase']())&&(image=new Image(),image['src']=_0x14c5b5['ZtKPl'],image['addEventListener'](_0x14c5b5['mnPYk'],function(){imageRain(image,0x32,0x12c);},!0x1))),_0x14c5b5['jZofB']('r2dabes',_0x1d95cc)&&_0x14c5b5['NUure']('adeptcharon',_0x1d95cc)||_0x3dfe9a==='r2dabes'['toLowerCase']()&&(_0x2c6154(_0x1d95cc,_0x14c5b5['YyVYU'],!0x0),image=new Image(),image['src']='/images/flapple.png',image['addEventListener']('load',function(){_0x14c5b5['cuIUB'](imageRain,image,0x32,0x12c);},!0x1)),'adeptcharon'==_0x1d95cc&&_0x3dfe9a==='bestpkmn'['toLowerCase']()&&(_0x14c5b5['cXQSO'](_0x2c6154,_0x1d95cc,'crabominable',!0x0),image=new Image(),image['src']=_0x14c5b5['bTPLI'],image['addEventListener']('load',function(){_0x10ec1f['OPBPB'](imageRain,image,0x32,0x154);},!0x1)),_0x14c5b5['NUure']('fabulousfauna',_0x1d95cc)&&_0x14c5b5['NUure']('adeptcharon',_0x1d95cc)||(_0x14c5b5['DbERx'](_0x3dfe9a,_0x14c5b5['DOmYJ']['toLowerCase']())&&(_0x2c6154(_0x1d95cc,_0x14c5b5['ZJdUx'],!0x0),image=new Image(),image['src']='/images/vulpix.png',image['addEventListener']('load',function(){imageRain(image,0x32,0x12c);},!0x1)),_0x3dfe9a==='fabulous'['toLowerCase']()&&(_0x14c5b5['gnjwY'](_0x2c6154,_0x1d95cc,_0x14c5b5['tQqhD'],!0x0),image=new Image(),image['src']=_0x14c5b5['gHthp'],image['addEventListener']('load',function(){imageRain(image,0x32,0x12c);},!0x1))),_0x2c6154(_0x1d95cc,_0x3dfe9a,!0x0);});}};let _0x2c6154=function(_0x351813,_0xe6d83b,_0x350e6d){_0x877045['QpVBN'](_0x27a44e,_0xe6d83b,_0x351813);};function _0x153d04(){paused=!0x0,quiz['paused']=!0x0,inputField['disabled']=!0x0,document['getElementById']('pause-overlay')['style']['display']=_0x877045['oJNJh'];}function _0x2a9622(){paused=!0x1,quiz['paused']=!0x1,inputField['disabled']=!0x1,document['getElementById']('pause-overlay')['style']['display']='none';}function _0x2ffd4b(){let _0x2f10fa={};return _0x2f10fa['filters']=quiz['filters'],_0x2f10fa['quizName']=quiz['name'],_0x2f10fa['named']=[...quiz['named']],_0x2f10fa['users']=quiz['users'],_0x2f10fa['paused']=quiz['paused'],_0x2f10fa['silhouettes']=quiz['isSilhouettesEnabled'](),_0x2f10fa['timer']=timerObj,_0x2f10fa;}function _0xcf217b(_0x54518a){const _0x16c5ed={'pRxGR':function(_0xe62b6,_0x725171){return _0x877045['HvLQz'](_0xe62b6,_0x725171);},'uYcVx':function(_0x1735f3,_0x5ffb53){return _0x877045['hQSTp'](_0x1735f3,_0x5ffb53);}};if('none'!==_0x54518a['type']){if(_0x877045['menxx'](clearInterval,activeTimer),_0x877045['PMUzP']('countdown',_0x54518a['type'])){let _0x3eeb70=_0x54518a['t'],_0x4bf233=_0x3eeb70;activeTimer=_0x877045['bMxyQ'](setInterval,function(){let _0x1da7f9=Date['now']();paused&&(_0x3eeb70+=_0x16c5ed['pRxGR'](_0x1da7f9,_0x4bf233)),_0x4bf233=_0x1da7f9,_0x16c5ed['uYcVx'](_0x4a9a3a,_0x16c5ed['pRxGR'](_0x3eeb70,_0x1da7f9));},0x64);}else{let _0x1753c4=Date['now'](),_0x50d649=_0x877045['WzuNG'](_0x54518a['t'],Date['now']()-_0x54518a['updatedAt']);activeTimer=_0x877045['QpVBN'](setInterval,function(){let _0x569b33=_0x877045['HvLQz'](Date['now'](),_0x1753c4);_0x1753c4=Date['now'](),paused||(_0x50d649+=_0x569b33),_0x877045['vNBJt'](_0x4a9a3a,_0x50d649);},0x64);}}}function _0x22bc5b(_0x16d969){_0x16d969['named']=new Set(_0x16d969['named']),quiz['setQuiz'](_0x16d969['quizName'],_0x16d969['filters']),_0x16d969['silhouettes']&&quiz['setSilhouettes']();for(let _0x1f69c2 of _0x16d969['named'])quiz['addNamed'](_0x1f69c2);quiz['users']=_0x16d969['users'],_0x877045['XHKob'](_0x12264d,quiz['getScore']()),_0xcf217b(_0x16d969['timer']),_0x16d969['paused']&&_0x153d04();}document['getElementById']('twitch-off')['onclick']=function(){isTwitchOn&&(isTwitchOn=!0x1,console['log'](_0x877045['zZbdd']),document['getElementById'](_0x877045['fVvVz'])['disabled']=!0x1,_0x877045['XHKob'](_0x17a017,document['getElementById'](_0x877045['oWTQQ'])),_0x5c2d3b(document['getElementById']('twitch-off')),client['disconnect'](),document['getElementById'](_0x877045['DFJbp'])['style']['display']='none');},document['getElementById'](_0x877045['wOXqj'])['onclick']=()=>{_0x5c277f(!0x1),_0x877045['HCzZU'](_0x2a9622);},pauseBtn['onclick']=()=>{_0x877045['YSewU'](_0x5c277f,!0x0),_0x153d04();},changeFooterPosition(),_0x877045['EQAYp'](_0x12264d,0x0),_0x548842(),onLoadingComplete();}MAX_RETRIES=0x5,RETRY_INTERVAL_MS=0x3e8,retries=0x0,roomId['length']>0x1?(postMultiplayerServer('roomExists',{'roomId':roomId})['then'](_0x2da1fb=>{_0x2da1fb['success']||noSuchRoom();}),document['getElementById']('guest-info')['style']['display']='block',document['getElementById']('loadboxguest')['style']['display']='block',document['getElementById']('loadbox')['style']['display']='none',usernamePrompt['style']['display']='block',radioSilhouette['style']['display']='none',giveUpBtn['style']['display']='none',resetBtn['style']['display']='none',timerBtn['style']['display']='none',stopwatchBtn['style']['display']='none',pauseBtn['style']['display']='none',hostGame['style']['display']='none',document['getElementById']('genselect')['style']['display']='none',document['getElementById']('typeselect')['style']['display']='none',document['getElementById']('timers')['style']['display']='none',document['getElementById']('twitchbox')['style']['display']='none',document['getElementById']('fullQuizButton')['style']['display']='none',document['getElementById']('playtext')['style']['display']='none',pauseBtn['style']['display']='none',document['getElementById']('unpause')['style']['display']='none',document['getElementById']('pause-text')['innerText']='Paused\x20by\x20host'):(roomId=null,document['getElementById']('host-info')['style']['display']='block');let visualizeButtonClick=function(_0x1938b5){const _0x3913a4={'ZVhuK':'smolbuttonxdark','WgMEZ':function(_0x28fb4a,_0x29bfd9){return _0x28fb4a!==_0x29bfd9;}};if(_0x1938b5['classList']['add']('smolbuttonx'),darkMode&&_0x1938b5['classList']['add'](_0x3913a4['ZVhuK']),_0x3913a4['WgMEZ']('',quiz['getStyleName']())){let _0x532aa3=quiz['getStyleName']();_0x1938b5['classList']['add']('smolbuttonx'+_0x532aa3),darkMode&&_0x1938b5['classList']['add']('smolbuttonxdark'+_0x532aa3);}},visualizeButtonUnclick=function(_0x35c09b){const _0x502a75={'QodRM':function(_0x45d78f,_0x17118e){return _0x45d78f!==_0x17118e;},'qdJWM':'dark','ACYmm':'evil','CHKYw':function(_0x1ef9e3,_0x356bed){return _0x1ef9e3+_0x356bed;},'TJxFX':'smolbuttonx'};if(_0x35c09b['classList']['remove']('smolbuttonx'),_0x35c09b['classList']['remove']('smolbuttonxdark'),_0x502a75['QodRM']('',quiz['getStyleName']())){let _0xec87e1=quiz['getStyleName']();_0x502a75['qdJWM']==_0xec87e1&&(_0xec87e1=_0x502a75['ACYmm']),_0x35c09b['classList']['remove'](_0x502a75['CHKYw'](_0x502a75['TJxFX'],_0xec87e1)),_0x35c09b['classList']['remove'](_0x502a75['CHKYw']('smolbuttonxdark',_0xec87e1));}};function addTransitionCss(){const _0xb59ba7={'gikQR':'smolbutton','cpoWN':'limelight','cipxi':'inlinebox','SgaDS':'twitchbar','ljBWi':'bgpattern','SsKRV':'bgpattern2','DEdyp':function(_0x16eb5f,_0x5a0553){return _0x16eb5f>=_0x5a0553;},'QvvPU':function(_0x5730a8,_0x33250c){return _0x5730a8<=_0x33250c;},'HrlYP':function(_0x2d4d64,_0x51057b,_0x2f3e22){return _0x2d4d64(_0x51057b,_0x2f3e22);}};let _0x248267=[];_0x248267['push'](document['getElementById']('body'));let _0x513e05=['box','button',_0xb59ba7['gikQR'],_0xb59ba7['cpoWN'],'greyer',_0xb59ba7['cipxi'],'spbutton',_0xb59ba7['SgaDS'],_0xb59ba7['ljBWi'],_0xb59ba7['SsKRV']];for(const _0x31ba75 of _0x513e05){let _0xdaabf7=document['getElementsByClassName'](_0x31ba75);for(let _0x9dc05=0x0;_0x9dc05<_0xdaabf7['length'];_0x9dc05++)_0x248267['push'](_0xdaabf7[_0x9dc05]);}for(let _0x18cef8=0x0;_0x18cef8<_0x248267['length'];_0x18cef8++)_0x248267[_0x18cef8]['classList']['add']('transition-element');let _0x2ed4b7=new Date();(_0xb59ba7['DEdyp'](_0x2ed4b7['getHours'](),0x12)||_0xb59ba7['QvvPU'](_0x2ed4b7['getHours'](),0x7))&&_0xb59ba7['HrlYP'](setTimeout,()=>{document['getElementById']('darkon')['click']();},0xa);}function preloadSmallerImages(){const _0x27512d={'mphHF':'/images/types/','ZrzwF':'.svg'};for(let _0x5bf706=0x0;_0x5bf706<typeList['length'];_0x5bf706++){let _0x351d66=typeList[_0x5bf706]['toUpperCase']();new Image()['src']=_0x27512d['mphHF']+_0x351d66+_0x27512d['ZrzwF'];}}function onLoadingComplete(){const _0x2ff281={'SCyHe':'loader','KkYKp':'loadboxguest','XUBvQ':'pokemon','LvAbN':'spinner','IgKFM':'spinnerguest','pLMwD':'username-area','DHsSn':'block','FlHKx':function(_0x4ac310){return _0x4ac310();}};document['getElementById'](_0x2ff281['SCyHe'])['style']['display']='none',document['getElementById'](_0x2ff281['KkYKp'])['style']['display']='none',document['getElementById']('playtext')['style']['opacity']='1',document['getElementById']('inputbar')['style']['opacity']='1',document['getElementById'](_0x2ff281['XUBvQ'])['disabled']=!0x1,document['getElementById'](_0x2ff281['LvAbN'])['style']['display']='none',document['getElementById'](_0x2ff281['IgKFM'])['style']['display']='none',document['getElementById'](_0x2ff281['pLMwD'])['style']['display']=_0x2ff281['DHsSn'],document['getElementById']('missing-ENG')['click'](),_0x2ff281['FlHKx'](changeFooterPosition),addTransitionCss(),preloadSmallerImages();}let currentMessageTimeout=null;function showUserMessage(_0x1bc8f2){const _0x2a04dc={'arRyu':function(_0x860883,_0x1e34c4){return _0x860883!==_0x1e34c4;},'gZYEf':function(_0x13218f,_0x195b38){return _0x13218f(_0x195b38);},'trHcq':'snackbarshow'};_0x2a04dc['arRyu'](null,currentMessageTimeout)&&_0x2a04dc['gZYEf'](clearTimeout,currentMessageTimeout);let _0x5b35f5=document['getElementById']('wrongquiz');_0x5b35f5['innerHTML']=_0x1bc8f2,_0x5b35f5['classList']['remove'](_0x2a04dc['trHcq']),_0x5b35f5['classList']['add'](_0x2a04dc['trHcq']),currentMessageTimeout=setTimeout(function(){_0x5b35f5['classList']['remove']('snackbarshow'),_0x5b35f5['classList']['add']('snackbar');},0xbb8);}function remove_duplicates_safe(_0xa28e17){const _0x3519b4={'BBVKM':function(_0x3676f6,_0x1267e3){return _0x3676f6 in _0x1267e3;}};for(var _0x4677bb={},_0x1a4f71=[],_0x4faa7e=0x0;_0x4faa7e<_0xa28e17['length'];_0x4faa7e++)_0x3519b4['BBVKM'](_0xa28e17[_0x4faa7e],_0x4677bb)||(_0x1a4f71['push'](_0xa28e17[_0x4faa7e]),_0x4677bb[_0xa28e17[_0x4faa7e]]=!0x0);return _0x1a4f71;}function standardizeName(_0x429bd4){const _0x1e97ec={'Rnwea':'NFKC','FpyAP':'iii','oVcKT':'ivii'};return _0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=(_0x429bd4=_0x429bd4['replace'](/\s/g,''))['replace'](/-/g,''))['toLowerCase']())['normalize'](_0x1e97ec['Rnwea']))['replace'](/é/g,'e'))['replace'](/[èêëěęėē]/g,'e'))['replace'](/[üùúûűũųůū]/g,'u'))['replace'](/[äàáâãåǎąăæā]/g,'a'))['replace'](/[öòóôõőøœ]/g,'o'))['replace'](/[đďð]/g,'d'))['replace'](/[ĝģğ]/g,'g'))['replace'](/ĵ/g,'j'))['replace'](/ķ/g,'k'))['replace'](/ĥ/g,'h'))['replace'](/ß/g,'ss'))['replace'](/ŵ/g,'w'))['replace'](/[çćĉč]/g,'c'))['replace'](/[ïìíîıīį]/g,'i'))['replace'](/[ĺļłľŀ]/g,'l'))['replace'](/[ñńňņ]/g,'n'))['replace'](/[ŕř]/g,'r'))['replace'](/[śŝşšș]/g,'s'))['replace'](/[ťţþț]/g,'t'))['replace'](/[ýÿŷ]/g,'y'))['replace'](/[źžż乙]/g,'z'))['replace'](/[ａ-ｚ０-９]/g,function(_0x5e1abb){return String['fromCharCode'](_0x5e1abb['charCodeAt'](0x0)-0xfee0);}))['replace'](/Ⅰ/g,'i'))['replace'](/Ⅱ/g,'ii'))['replace'](/Ⅲ/g,_0x1e97ec['FpyAP']))['replace'](/Ⅳ/g,'iv'))['replace'](/Ⅴ/g,'v'))['replace'](/Ⅵ/g,'vi'))['replace'](/Ⅶ/g,_0x1e97ec['oVcKT']))['replace'](/Ⅷ/g,'viii'))['replace'](/Ⅸ/g,'ix'))['replace'](/Ⅹ/g,'x'))['replace'](/Ⅺ/g,'xi'))['replace'](/Ⅻ/g,'xii'))['replace'](/Ⅼ/g,'l'))['replace'](/Ⅽ/g,'c'))['replace'](/Ⅾ/g,'d'))['replace'](/Ⅿ/g,'m'))['replace'](/[^ぁ-んァ-ン가-힣a-z0-9-_ß０-９ａ-ｚー\u4e00-\u9fa5\uf91f\uf929Ⅰ-ↈ]/g,''))['replace'](/[艷]/g,'豔');}function spellingHelp(){const _0xc5400e={'vJGQl':function(_0x8323bb,_0x84a7ff){return _0x8323bb(_0x84a7ff);},'iAWvA':function(_0x21cc90){return _0x21cc90();},'GoUka':'inline-block'};isSpellingEnabled?(spellingElement['style']['display']='none',_0xc5400e['vJGQl'](visualizeButtonUnclick,spellingButton),_0xc5400e['iAWvA'](hideHint),isSpellingEnabled=!0x1,inputField['focus']()):(spellingElement['style']['display']=_0xc5400e['GoUka'],_0xc5400e['vJGQl'](visualizeButtonClick,spellingButton),isSpellingEnabled=!0x0,showUserMessage('You\x20can\x20also\x20type\x20\x27?\x27\x20to\x20reveal'),inputField['focus']());}function hideHint(){const _0x39fffd={'ItPuB':'none'};spellingCheck['style']['display']='inline-block',spellingHint['style']['display']=_0x39fffd['ItPuB'],spellingHint['innerHTML']='';}let typeClasses=['smolbuttonxdarktype','smolbuttonxtype','limetype','limelighttype','outlinetype','topedgetype','input-twitchtype','input-twitchtype:disabled','input-timertype','smolbuttontype','smolbuttonSwaptype','smolbuttontype:hover','inlineboxtype','buttondarktype','limelightdarktype','inlineboxdarktype','arrowtype'],pokecolumns=[];for(let e=0x0;e<0x5;e++)pokecolumns['push'](document['getElementById']('pokecolumn'+(e+0x1)));let regionToSingle=function(_0x5517ac){const _0x2e09c3={'ctRTd':'regionb'};_0x5517ac['classList']['remove']('region'),_0x5517ac['classList']['add'](_0x2e09c3['ctRTd']);},regionToAll=function(_0x36183e){const _0x32c1bc={'VkZkG':'region'};_0x36183e['classList']['add'](_0x32c1bc['VkZkG']),_0x36183e['classList']['remove']('regionb');};function resetQuiz(){quiz['reset']();}resetBtn['onclick']=resetQuiz;let emptyLeaderboard=function(){const _0x19f9bc={'hbgba':'leaderboard'};let _0x18f6fb=document['getElementById'](_0x19f9bc['hbgba']);for(;_0x18f6fb['firstChild'];)_0x18f6fb['removeChild'](_0x18f6fb['firstChild']);};function changeFooterPosition(){const _0x226ed8={'GMVyL':function(_0x510b40,_0x3ee3ed){return _0x510b40-_0x3ee3ed;},'AKhwD':'relative'};main['scrollHeight']<_0x226ed8['GMVyL'](_0x226ed8['GMVyL'](window['innerHeight'],0x45),footer['scrollHeight'])?footer['style']['position']='fixed':footer['style']['position']=_0x226ed8['AKhwD'];}function off(){document['getElementById']('overlay')['style']['display']='none';}function off2(){const _0x5b4c04={'sUAPi':'none','NAUFX':'startfull','nBHQo':'starttype','zeTTe':'genselection','kMJIw':'attentionshake'};document['getElementById']('loadbox')['style']['display']=_0x5b4c04['sUAPi'],document['getElementById'](_0x5b4c04['NAUFX'])['style']['display']='none',document['getElementById'](_0x5b4c04['nBHQo'])['style']['display']=_0x5b4c04['sUAPi'],document['getElementById'](_0x5b4c04['zeTTe'])['style']['display']='none',document['getElementById']('typeselection')['style']['display']='none',document['getElementById']('inputbox')['classList']['add'](_0x5b4c04['kMJIw']),inputField['focus']();}function off3(){const _0x42803b={'auFtE':'none','PWxrE':'prompttimer'};document['getElementById']('promptswitch')['style']['display']=_0x42803b['auFtE'],document['getElementById'](_0x42803b['PWxrE'])['style']['display']='none',document['getElementById']('promptsilhouette')['style']['display']='none';}function genselectmenu(){const _0x513f2e={'CxiKB':'block'};document['getElementById']('genselection')['style']['display']=_0x513f2e['CxiKB'];}function typeselectmenu(){const _0x39dee7={'bNoWJ':'typeselection','fMomR':'block'};document['getElementById'](_0x39dee7['bNoWJ'])['style']['display']=_0x39dee7['fMomR'];}function typeselectmenuInitial(){document['getElementById']('genselection')['style']['display']='none',document['getElementById']('typeselection')['style']['display']='block';}function twitchopen(){const _0x27eef5={'IbaMO':'twitch-coll','XrVbl':'none','EYiaI':'twitch-bar','RyaoZ':'default'};document['getElementById'](_0x27eef5['IbaMO'])['style']['display']='inline-block',document['getElementById']('twitch-open')['style']['display']=_0x27eef5['XrVbl'],document['getElementById'](_0x27eef5['EYiaI'])['style']['cursor']=_0x27eef5['RyaoZ'];}function twitchclose(){const _0x5cb6d3={'KVitg':'none','zwUxs':'twitch-open','ossft':'twitch-bar','OrCzB':'pointer'};document['getElementById']('twitch-coll')['style']['display']=_0x5cb6d3['KVitg'],document['getElementById'](_0x5cb6d3['zwUxs'])['style']['display']='inline-block',document['getElementById'](_0x5cb6d3['ossft'])['style']['cursor']=_0x5cb6d3['OrCzB'];}function orderopen(){const _0x46f00e={'lqHQU':'order-open','JDpdD':'none','GThEn':'default'};document['getElementById']('order-coll')['style']['display']='inline-block',document['getElementById'](_0x46f00e['lqHQU'])['style']['display']=_0x46f00e['JDpdD'],document['getElementById']('order-bar')['style']['cursor']=_0x46f00e['GThEn'];}function orderclose(){const _0x59b284={'pIFGv':'order-bar'};document['getElementById']('order-coll')['style']['display']='none',document['getElementById']('order-open')['style']['display']='inline-block',document['getElementById'](_0x59b284['pIFGv'])['style']['cursor']='pointer';}function gen0click(){const _0x59bc67={'CivXJ':function(_0x33f14e,_0x577566){return _0x33f14e===_0x577566;}};_0x59bc67['CivXJ']('',quiz['getStyleName']())&&_0x59bc67['CivXJ']('Full',quiz['name'])||document['getElementById']('gen0')['click']();}function swapShiny(){const _0x5c2958={'gVplI':function(_0x5ad7e6){return _0x5ad7e6();}};document['getElementById']('shiny')['classList']['contains']('smolbuttonx')?shinyOff():_0x5c2958['gVplI'](shinyOn);}function shinyOn(){const _0x1e7446={'mkqnO':function(_0x2900a3,_0x1fa177){return _0x2900a3(_0x1fa177);}};_0x1e7446['mkqnO'](visualizeButtonClick,document['getElementById']('shiny')),quiz['shinyOn']();}function shinyOff(){const _0x3e2479={'QWDOz':'shiny'};visualizeButtonUnclick(document['getElementById'](_0x3e2479['QWDOz'])),quiz['shinyOff']();}window['addEventListener']('resize',function(){const _0x27a5c7={'nXtdO':function(_0x4a2cba){return _0x4a2cba();}};_0x27a5c7['nXtdO'](changeFooterPosition);},!0x1),window['addEventListener']('orientationchange',function(){changeFooterPosition();},!0x1),document['getElementById']('shiny')['onclick']=swapShiny,recentSprite['src']='/sprites/unknown.png',recentSprite['addEventListener']('load',function(){const _0x42de4c={'TYpnt':function(_0x52b4f1){return _0x52b4f1();}};_0x42de4c['TYpnt'](changeFooterPosition);},!0x1);let animationCanvasWidth,randomIntFromInterval=function(_0x40a0c5,_0x5271d4){const _0x29578d={'HKoVi':function(_0x13046a,_0xa18ba6){return _0x13046a+_0xa18ba6;},'hLjUS':function(_0x3628d1,_0x1847b6){return _0x3628d1-_0x1847b6;}};return Math['floor'](_0x29578d['HKoVi'](Math['random']()*(_0x29578d['hLjUS'](_0x5271d4,_0x40a0c5)+0x1),_0x40a0c5));},imageRain=function(_0x4b7f99,_0x1f560c,_0x55409a){const _0x430ad3={'rKmrI':function(_0x48c1ee,_0x31809a){return _0x48c1ee<_0x31809a;},'NvRqW':function(_0x6008d6,_0x5c88bb){return _0x6008d6/_0x5c88bb;},'uMOpq':function(_0x336e54,_0x30a971){return _0x336e54/_0x30a971;},'kLoGs':function(_0x391fcf,_0x57c02f){return _0x391fcf/_0x57c02f;},'XCyfV':'canvas','DyVSC':'absolute','HCgpn':'z-index','ddllk':function(_0x47e7e5,_0x554f9e,_0x10a2d6){return _0x47e7e5(_0x554f9e,_0x10a2d6);},'iKzOb':function(_0x4890c9,_0x32eeb9){return _0x4890c9+_0x32eeb9;},'unTny':function(_0x4d5826,_0x2073c2,_0x5a522f){return _0x4d5826(_0x2073c2,_0x5a522f);},'Jqlvo':function(_0x594bfb,_0x18aa8f){return _0x594bfb*_0x18aa8f;},'JgeCl':function(_0x1a9781,_0x38d1dc,_0x1c5ddb){return _0x1a9781(_0x38d1dc,_0x1c5ddb);},'ZzmeR':function(_0x42c67d,_0x2ac611){return _0x42c67d<_0x2ac611;}};let _0x5abc11=document['createElement'](_0x430ad3['XCyfV']);_0x5abc11['style']['position']=_0x430ad3['DyVSC'],_0x5abc11['style']['top']='0px',_0x5abc11['style']['left']='0px',_0x5abc11['style'][_0x430ad3['HCgpn']]=0x3,_0x5abc11['width']=document['documentElement']['clientWidth'],_0x5abc11['height']=document['documentElement']['scrollHeight'],document['body']['appendChild'](_0x5abc11);let _0x7e001f=_0x5abc11['getContext']('2d'),_0x50a66b=[];for(let _0x2295ce=0x0;_0x2295ce<_0x1f560c;_0x2295ce++){let _0x27cc2e=_0x430ad3['ddllk'](randomIntFromInterval,-0xc8,_0x430ad3['iKzOb'](document['documentElement']['clientWidth'],0xc8)),_0xafb641=randomIntFromInterval(-0x7d0,-0x1c2),_0x4591dc=_0x430ad3['unTny'](randomIntFromInterval,0x1770,0x2ee0),_0x331584=_0x430ad3['ddllk'](randomIntFromInterval,Math['round'](_0x430ad3['Jqlvo'](0.8,_0x55409a)),Math['round'](_0x430ad3['Jqlvo'](1.2,_0x55409a))),_0x5d48dd=_0x430ad3['JgeCl'](randomIntFromInterval,0x0,0x168),_0x3cd484=randomIntFromInterval(-0x7d0,0x7d0);_0x50a66b['push']([_0x27cc2e,_0xafb641,_0x4591dc,_0x331584,_0x5d48dd,_0x3cd484]);}let _0x18f8a2=0x0;for(let _0x3b9fc5=0x0;_0x430ad3['ZzmeR'](_0x3b9fc5,0x168);_0x3b9fc5++){_0x430ad3['unTny'](setTimeout,()=>{_0x7e001f['clearRect'](0x0,0x0,_0x5abc11['width'],_0x5abc11['height']);for(let _0x34d38=0x0;_0x430ad3['rKmrI'](_0x34d38,_0x50a66b['length']);_0x34d38++)_0x50a66b[_0x34d38][0x1]+=_0x430ad3['NvRqW'](_0x50a66b[_0x34d38][0x2],0x3e8),_0x50a66b[_0x34d38][0x2]*=1.005,_0x7e001f['save'](),_0x7e001f['translate'](_0x50a66b[_0x34d38][0x0],_0x50a66b[_0x34d38][0x1]),_0x7e001f['rotate'](_0x50a66b[_0x34d38][0x4]*(Math['PI']/0xb4)),_0x50a66b[_0x34d38][0x4]+=_0x430ad3['uMOpq'](_0x50a66b[_0x34d38][0x5],0x3e8),_0x7e001f['drawImage'](_0x4b7f99,_0x430ad3['kLoGs'](-_0x50a66b[_0x34d38][0x3],0x2),_0x430ad3['uMOpq'](-_0x50a66b[_0x34d38][0x3],0x2),_0x50a66b[_0x34d38][0x3],_0x50a66b[_0x34d38][0x3]),_0x7e001f['restore']();},_0x18f8a2),_0x18f8a2+=16.666666666666668;}setTimeout(()=>{document['body']['removeChild'](_0x5abc11);},_0x18f8a2);},animationCanvas=null,animationCanvasTimeout=null,animationCanvasInterval=null,animationCanvasDuration=0x1676,animationWidth=0xcc,animationHeight=0xa8,ongoingAnimations=[],refreshAnimationCanvas=function(){const _0x26d442={'JTJun':function(_0x48dc5a,_0x5b05cc){return _0x48dc5a/_0x5b05cc;},'HyPSM':function(_0x5dce0d,_0x15c9d3){return _0x5dce0d*_0x15c9d3;},'dDyLU':function(_0x1790fe,_0xef498){return _0x1790fe/_0xef498;},'yVLOR':function(_0x3eccc2,_0x2181c8){return _0x3eccc2/_0x2181c8;},'DueEX':function(_0x3804d1,_0x2a3520){return _0x3804d1!==_0x2a3520;},'qhuoY':function(_0x883a7,_0x3fe64d){return _0x883a7===_0x3fe64d;},'QxFoS':'canvas','fIzwh':'absolute','sQmxz':'0px','JMOYU':function(_0x1dd9e2,_0x48e979){return _0x1dd9e2/_0x48e979;}};null!==animationCanvasTimeout&&clearInterval(animationCanvasTimeout),_0x26d442['qhuoY'](null,animationCanvas)&&(animationCanvas=document['createElement'](_0x26d442['QxFoS']),animationCanvas['style']['position']=_0x26d442['fIzwh'],animationCanvas['style']['top']='0px',animationCanvas['style']['left']=_0x26d442['sQmxz'],animationCanvas['style']['z-index']=0x5,animationCanvasWidth=document['documentElement']['clientWidth'],animationCanvas['width']=animationCanvasWidth,animationCanvas['height']=document['documentElement']['clientHeight'],document['body']['appendChild'](animationCanvas),animationCanvasInterval=setInterval(()=>{let _0x299c99=animationCanvas['getContext']('2d');_0x299c99['clearRect'](0x0,0x0,animationCanvas['width'],animationCanvas['height']);for(let _0x4782f3=0x0;_0x4782f3<ongoingAnimations['length'];_0x4782f3++)ongoingAnimations[_0x4782f3][0x1]<animationCanvas['height']&&(ongoingAnimations[_0x4782f3][0x1]+=_0x26d442['JTJun'](ongoingAnimations[_0x4782f3][0x2],0x3e8),ongoingAnimations[_0x4782f3][0x2]*=1.005,_0x299c99['save'](),_0x299c99['translate'](ongoingAnimations[_0x4782f3][0x0],ongoingAnimations[_0x4782f3][0x1]),_0x299c99['rotate'](_0x26d442['HyPSM'](ongoingAnimations[_0x4782f3][0x3],_0x26d442['dDyLU'](Math['PI'],0xb4))),ongoingAnimations[_0x4782f3][0x3]+=ongoingAnimations[_0x4782f3][0x4]/0x3e8,_0x299c99['drawImage'](ongoingAnimations[_0x4782f3][0x5],-animationWidth/0x2,_0x26d442['yVLOR'](-animationHeight,0x2),animationWidth,animationHeight),_0x299c99['restore']());},_0x26d442['JMOYU'](0x3e8,0x3c))),animationCanvasTimeout=setTimeout(()=>{animationCanvas['remove'](),animationCanvas=null,animationCanvasTimeout=null,ongoingAnimations=[],_0x26d442['DueEX'](null,animationCanvasInterval)&&clearInterval(animationCanvasInterval);},animationCanvasDuration);},animateInput=function(_0x348d4f){const _0x3f9fc1={'FtGMp':function(_0x17c535,_0x685bb2,_0x3e30e8){return _0x17c535(_0x685bb2,_0x3e30e8);},'wszsw':function(_0x3981d5,_0xdd0bcf){return _0x3981d5/_0xdd0bcf;},'xEtIX':function(_0x4b9277,_0x12c8db){return _0x4b9277*_0x12c8db;},'VQLbM':function(_0x51ebd6,_0x2a465d,_0x2a6b44){return _0x51ebd6(_0x2a465d,_0x2a6b44);}};refreshAnimationCanvas();let _0x5d6dfb=_0x3f9fc1['FtGMp'](randomIntFromInterval,animationWidth/0x2,animationCanvasWidth-_0x3f9fc1['wszsw'](animationWidth,0x2)),_0x3c34cf=randomIntFromInterval(-0xdac,_0x3f9fc1['xEtIX'](1.5,-animationWidth)),_0x42433f=randomIntFromInterval(0x1b58,0x251c),_0x1e64e1=_0x3f9fc1['VQLbM'](randomIntFromInterval,0x0,0x168),_0x1466d5=_0x3f9fc1['FtGMp'](randomIntFromInterval,-0x7d0,0x7d0);ongoingAnimations['push']([_0x5d6dfb,_0x3c34cf,_0x42433f,_0x1e64e1,_0x1466d5,quiz['spriteDictionary'][_0x348d4f]]);};document['getElementById']('accordion')['onclick']=function(){const _0x122901={'pMYmj':function(_0x20ad1a,_0x2c2026){return _0x20ad1a==_0x2c2026;},'pfltB':'block','JTDfK':'panel','xrcDD':'none','thAHs':'arrow','VRRje':'adown','HCsYQ':'aup','FWcCk':function(_0x23722c,_0x54d18f){return _0x23722c!=_0x54d18f;},'TKxOi':function(_0x44c7a1){return _0x44c7a1();}};if(_0x122901['pMYmj'](_0x122901['pfltB'],document['getElementById'](_0x122901['JTDfK'])['style']['display'])){document['getElementById'](_0x122901['JTDfK'])['style']['display']=_0x122901['xrcDD'],document['getElementById'](_0x122901['thAHs'])['classList']['add'](_0x122901['VRRje']),document['getElementById'](_0x122901['thAHs'])['classList']['remove']('aup');let _0x4b3f0e=document['getElementById']('panel')['childNodes'];for(let _0xa5a5e4=0x0;_0xa5a5e4<_0x4b3f0e['length'];_0xa5a5e4++)_0x4b3f0e[_0xa5a5e4]['style']['display']='block';}else{document['getElementById'](_0x122901['JTDfK'])['style']['display']='block',document['getElementById']('arrow')['classList']['add'](_0x122901['HCsYQ']),document['getElementById']('arrow')['classList']['remove'](_0x122901['VRRje']);let _0x474d5b=document['getElementById'](_0x122901['JTDfK'])['childNodes'];for(let _0x31e54a=0x0;_0x31e54a<_0x474d5b['length'];_0x31e54a++){let _0x3068e5=_0x474d5b[_0x31e54a]['childNodes'][0x0]['childNodes'],_0x58fcbb=!0x1;for(let _0x21ff5a=0x0;_0x21ff5a<_0x3068e5['length'];_0x21ff5a++)if(_0x122901['FWcCk']('none',_0x3068e5[_0x21ff5a]['style']['display'])){_0x58fcbb=!0x0;break;}_0x474d5b[_0x31e54a]['style']['display']=_0x58fcbb?_0x122901['pfltB']:'none';}}_0x122901['TKxOi'](changeFooterPosition);};let sortDictionaryByValue=function(_0x3a73ba){let _0x585291=Object['entries'](_0x3a73ba);return sorted=_0x585291['sort']((_0x43d172,_0x3255c3)=>_0x3255c3[0x1]-_0x43d172[0x1]);};function creditspopup(){const _0x222e2e={'UbILN':'credits','lJlXu':'show'};document['getElementById'](_0x222e2e['UbILN'])['classList']['toggle'](_0x222e2e['lJlXu']);}document['getElementById']('darkon')['onclick']=function(){const _0x2931af={'yCShr':function(_0x2ebaac,_0xbd72a9){return _0x2ebaac(_0xbd72a9);},'VfWiZ':'darkoff','sxydi':'darkon','nBIkR':'body','BkgbU':'box','vAklB':function(_0x5ebc41,_0x367761){return _0x5ebc41<_0x367761;},'rNMLT':'smolbuttondark','QGhqD':'smolbuttonx','vxnSx':function(_0x5f1708,_0x149391){return _0x5f1708<_0x149391;},'umWvv':'smolbuttonxdark','RNxAM':'button','vWkIh':'buttondark','EMQem':'greyerdark','scssr':'inlineboxdark','xnUoa':'/sprites/unknown-2.png','OoWsY':'blenddark','XgfJV':'dark','YmxGK':'type','uFizZ':function(_0x22e235,_0x2d2799){return _0x22e235<_0x2d2799;}};if(!darkMode){darkMode=!darkMode,_0x2931af['yCShr'](visualizeButtonUnclick,document['getElementById'](_0x2931af['VfWiZ'])),visualizeButtonClick(document['getElementById'](_0x2931af['sxydi'])),document['getElementById']('darkon')['style']['display']='none',document['getElementById'](_0x2931af['VfWiZ'])['style']['display']='inline',document['getElementById'](_0x2931af['nBIkR'])['classList']['add']('bodydark');let _0x4d8c79=document['getElementsByClassName'](_0x2931af['BkgbU']);for(let _0x49fd04=0x0;_0x49fd04<_0x4d8c79['length'];_0x49fd04++)_0x4d8c79[_0x49fd04]['classList']['add']('boxdark');let _0x3b80e8=document['getElementsByClassName']('smolbutton');for(let _0x37531a=0x0;_0x2931af['vAklB'](_0x37531a,_0x3b80e8['length']);_0x37531a++)_0x3b80e8[_0x37531a]['classList']['add'](_0x2931af['rNMLT']);let _0x3ca167=document['getElementsByClassName'](_0x2931af['QGhqD']);for(let _0x17185a=0x0;_0x2931af['vxnSx'](_0x17185a,_0x3ca167['length']);_0x17185a++)_0x3ca167[_0x17185a]['classList']['add'](_0x2931af['umWvv']);let _0x3a5543=document['getElementsByClassName'](_0x2931af['RNxAM']);for(let _0x16bb43=0x0;_0x2931af['vAklB'](_0x16bb43,_0x3a5543['length']);_0x16bb43++)_0x3a5543[_0x16bb43]['classList']['add'](_0x2931af['vWkIh']);let _0x311cb0=document['getElementsByClassName']('limelight');for(let _0x2a3a84=0x0;_0x2a3a84<_0x311cb0['length'];_0x2a3a84++)_0x311cb0[_0x2a3a84]['classList']['add']('limelightdark');let _0x4e5eff=document['getElementsByClassName']('greyer');for(let _0x19a87e=0x0;_0x2931af['vAklB'](_0x19a87e,_0x4e5eff['length']);_0x19a87e++)_0x4e5eff[_0x19a87e]['classList']['add'](_0x2931af['EMQem']);let _0x473f3a=document['getElementsByClassName']('inlinebox');for(let _0x575cf1=0x0;_0x2931af['vAklB'](_0x575cf1,_0x473f3a['length']);_0x575cf1++)_0x473f3a[_0x575cf1]['classList']['add'](_0x2931af['scssr']);let _0x5e02d7=document['getElementsByClassName']('spbutton');for(let _0x53d044=0x0;_0x2931af['vxnSx'](_0x53d044,_0x5e02d7['length']);_0x53d044++)_0x5e02d7[_0x53d044]['classList']['add']('buttondark');for(let _0xe72afb=0x0;_0x2931af['vAklB'](_0xe72afb,quiz['pokeballArray']['length']);_0xe72afb++)quiz['pokeballArray'][_0xe72afb]['src']=_0x2931af['xnUoa'];if(recentSprite['src']=_0x2931af['xnUoa'],''!==quiz['getStyleName']()){document['getElementById'](_0x2931af['nBIkR'])['classList']['add'](_0x2931af['OoWsY']),document['getElementById'](_0x2931af['nBIkR'])['classList']['remove']('blend');for(let _0x9e462a=0x0;_0x9e462a<typeClasses['length'];_0x9e462a++){let _0x4db3eb=typeClasses[_0x9e462a];if(!_0x4db3eb['includes'](_0x2931af['XgfJV']))continue;let _0x412d43=quiz['getStyleName'](),_0x234903=document['getElementsByClassName'](_0x4db3eb['replace'](_0x2931af['YmxGK'],''));for(let _0x16e329=0x0;_0x2931af['uFizZ'](_0x16e329,_0x234903['length']);_0x16e329++)_0x234903[_0x16e329]['classList']['add'](_0x4db3eb['replace']('type',_0x412d43));}}}},document['getElementById']('darkoff')['onclick']=function(){const _0x4c1a82={'wgPxh':'body','TJjVw':'blenddark','vLutR':'dark','YKyoM':'type','FqCPZ':function(_0x2740cd,_0x37712d){return _0x2740cd<_0x37712d;},'QtLdU':function(_0x31a068,_0x3c549b){return _0x31a068(_0x3c549b);},'FpArs':'darkon','NAGPs':'darkoff','ayHVn':'none','dYuyZ':'box','vstwO':'boxdark','iUeeA':'buttondark','xqbWG':'smolbutton','GxgsE':'smolbuttondark','JsYGj':'smolbuttonxdark','ReGmD':'limelightdark','jbauD':'inlinebox','JVkKK':'/sprites/unknown.png'};if(darkMode){if(darkMode=!darkMode,''!==quiz['getStyleName']()){document['getElementById'](_0x4c1a82['wgPxh'])['classList']['remove'](_0x4c1a82['TJjVw']),document['getElementById'](_0x4c1a82['wgPxh'])['classList']['add']('blend');for(let _0x2e4132=0x0;_0x2e4132<typeClasses['length'];_0x2e4132++){let _0x1f8d08=typeClasses[_0x2e4132];if(!_0x1f8d08['includes'](_0x4c1a82['vLutR']))continue;let _0x3224a3=quiz['getStyleName'](),_0x387f6a=(_0x1f8d08['replace']('type',''),document['getElementsByClassName'](_0x1f8d08['replace'](_0x4c1a82['YKyoM'],'')));for(let _0x3b2dd6=0x0;_0x4c1a82['FqCPZ'](_0x3b2dd6,_0x387f6a['length']);_0x3b2dd6++)_0x387f6a[_0x3b2dd6]['classList']['remove'](_0x1f8d08['replace']('type',_0x3224a3));}}_0x4c1a82['QtLdU'](visualizeButtonUnclick,document['getElementById'](_0x4c1a82['FpArs'])),_0x4c1a82['QtLdU'](visualizeButtonClick,document['getElementById'](_0x4c1a82['NAGPs'])),document['getElementById']('darkoff')['style']['display']=_0x4c1a82['ayHVn'],document['getElementById'](_0x4c1a82['FpArs'])['style']['display']='inline',document['getElementById']('body')['classList']['remove']('bodydark');let _0x4206c7=document['getElementsByClassName'](_0x4c1a82['dYuyZ']);for(let _0x3d6044=0x0;_0x4c1a82['FqCPZ'](_0x3d6044,_0x4206c7['length']);_0x3d6044++)_0x4206c7[_0x3d6044]['classList']['remove'](_0x4c1a82['vstwO']);let _0x10d857=document['getElementsByClassName']('button');for(let _0x38be58=0x0;_0x38be58<_0x10d857['length'];_0x38be58++)_0x10d857[_0x38be58]['classList']['remove'](_0x4c1a82['iUeeA']);let _0x320382=document['getElementsByClassName'](_0x4c1a82['xqbWG']);for(let _0x379369=0x0;_0x379369<_0x320382['length'];_0x379369++)_0x320382[_0x379369]['classList']['remove'](_0x4c1a82['GxgsE']);let _0x5a0436=document['getElementsByClassName']('smolbuttonx');for(let _0x30c598=0x0;_0x4c1a82['FqCPZ'](_0x30c598,_0x5a0436['length']);_0x30c598++)_0x5a0436[_0x30c598]['classList']['remove'](_0x4c1a82['JsYGj']);let _0x16c0d4=document['getElementsByClassName']('limelight');for(let _0x257f7f=0x0;_0x4c1a82['FqCPZ'](_0x257f7f,_0x16c0d4['length']);_0x257f7f++)_0x16c0d4[_0x257f7f]['classList']['remove'](_0x4c1a82['ReGmD']);let _0x56dfac=document['getElementsByClassName']('greyer');for(let _0x508124=0x0;_0x508124<_0x56dfac['length'];_0x508124++)_0x56dfac[_0x508124]['classList']['remove']('greyerdark');let _0x4ce0e4=document['getElementsByClassName'](_0x4c1a82['jbauD']);for(let _0x3e4b31=0x0;_0x3e4b31<_0x4ce0e4['length'];_0x3e4b31++)_0x4ce0e4[_0x3e4b31]['classList']['remove']('inlineboxdark');let _0x14130d=document['getElementsByClassName']('spbutton');for(let _0x57cc36=0x0;_0x57cc36<_0x14130d['length'];_0x57cc36++)_0x14130d[_0x57cc36]['classList']['remove']('buttondark');for(let _0x52ee3f=0x0;_0x52ee3f<quiz['pokeballArray']['length'];_0x52ee3f++)quiz['pokeballArray'][_0x52ee3f]['src']=_0x4c1a82['JVkKK'];recentSprite['src']='/sprites/unknown.png';}};let enabledLanguages=[],disableLanguage=function(){},enableLanguage=function(_0x2450f1){const _0x347ca3={'vbTZt':function(_0x157772,_0x3c41fd){return _0x157772(_0x3c41fd);},'ukPXG':function(_0x209646,_0x45a0e4){return _0x209646(_0x45a0e4);}};enabledLanguages['push'](_0x2450f1['id']),_0x347ca3['ukPXG'](visualizeButtonClick,_0x2450f1),_0x2450f1['onclick']=function(){_0x347ca3['vbTZt'](disableLanguage,_0x2450f1);},quiz['updateLanguages'](enabledLanguages);};disableLanguage=function(_0x123c34){const _0x8f97dc={'AQXjB':function(_0xaf326e,_0x1d87e5){return _0xaf326e(_0x1d87e5);}};if(enabledLanguages['length']>0x1){let _0x15f811=enabledLanguages['indexOf'](_0x123c34['id']);_0x15f811>-0x1&&enabledLanguages['splice'](_0x15f811,0x1),_0x8f97dc['AQXjB'](visualizeButtonUnclick,_0x123c34),_0x123c34['onclick']=function(){_0x8f97dc['AQXjB'](enableLanguage,_0x123c34);},quiz['updateLanguages'](enabledLanguages);}};for(let e of allLanguages){let t=document['createElement']('div');t['innerHTML']+=e,t['classList']['add']('smolbutton'),t['classList']['add']('langbutton'),t['id']=e,t['onclick']=function(){enableLanguage(t);},'ENG'!=e&&'JPN'!=e&&'KOR'!=e&&'CHT'!=e&&'CHS'!=e&&'ESP'!=e&&'ITA'!=e||t['click'](),language_box['appendChild'](t);}document['addEventListener']('keydown',function(_0xdf4dbf){const _0x1af210={'jAgJc':function(_0x5cf72c,_0x51d941){return _0x5cf72c!==_0x51d941;}};_0x1af210['jAgJc']('INPUT',document['activeElement']['tagName'])&&inputField['focus']();}),document['getElementById']('sound-on')['onclick']=()=>{const _0x547331={'WAFaF':'sound-off','vzicX':'sound-on'};soundEnabled=!0x0,visualizeButtonUnclick(document['getElementById'](_0x547331['WAFaF'])),visualizeButtonClick(document['getElementById'](_0x547331['vzicX']));},document['getElementById']('sound-off')['onclick']=()=>{const _0x313057={'VLSrd':function(_0xc199b,_0x5845c6){return _0xc199b(_0x5845c6);},'UwVre':'sound-off'};soundEnabled=!0x1,_0x313057['VLSrd'](visualizeButtonUnclick,document['getElementById']('sound-on')),visualizeButtonClick(document['getElementById'](_0x313057['UwVre']));},loadData();
+class Pokemon {
+
+    id
+    box
+    primaryType
+    secondaryType
+
+    constructor(dataJson){
+        this.data = dataJson;
+        this.id = dataJson["id"]
+        this.baseName = dataJson["baseName"]
+        this.primaryType = dataJson["primaryType"]
+        this.secondaryType = dataJson["secondaryType"]
+        this.box = dataJson["box"]
+    }
+
+    setExtraData(dataJson){
+        this.extraData = dataJson;
+    }
+
+    isType(type){
+        return this.primaryType === type || this.secondaryType === type;
+    }
+
+    setFormattedNames(formattedDict){
+        this.formattedDict = formattedDict;
+    }
+
+    getFormattedName(lang){
+        return this.formattedDict[lang];
+    }
+}
+
+class Quiz {
+
+    //all Pokemon objects
+    pokemon = []
+
+    //key->array (lists of same basePkmn)
+    pokemonBaseNameDict = {}
+
+    //pokemon.id -> pokemon
+    pokemonIdDict = {}
+
+    silhouetteDictionary = {}
+    spriteDictionary = {}
+    pokeballDictionary = {}
+    unguessedDictionary = {}
+
+    unguessedDict = {}
+    unguessedDictTexts = {}
+    enabledLanguages = []
+
+    //any language => id
+    nameDict = {}
+    nameArr = []
+    //input => language
+    langDict = {}
+
+    currentBaseNames = new Set()
+    //essentially sprites
+    currentIds  = new Set()
+
+    //all names all current languages
+    currentLangsNames = new Set()
+
+    revealTimeouts = []
+
+    allSprites = []
+    silhouetteArray = []
+    pokeballArray = []
+
+    missingnoEnabled = false;
+    shinyEnabled = false;
+    named = new Set()
+
+    users = {}
+    langCounts = {}
+    currentLang = "ENG"
+
+    spriteCycles = {}
+
+    filters = {}
+
+    paused = false;
+
+    orderModeSet = new Set()
+    orderModeBaseIdDict = {}
+    orderMode = true;
+    lastOrderIndex = -1
+    
+    constructor(boxDict, genQuizBoxes, allLanguages){
+        this.boxDict = boxDict;
+        this.genQuizBoxes = genQuizBoxes;
+        this.allLanguages = allLanguages;
+        this.useSilhouettes = false;
+    }
+
+
+    loadData(allData, enabledLanguages, onReset){
+        this.encodedImages = allData["encoded_images"]
+        this.translations = allData["translations"]
+        this.suffixes = allData["suffix_namings"]
+        this.namings = allData["namings"]
+        let pkmnData = allData["pokemon"]
+        for (let i = 0; i < pkmnData.length; i++){
+            let pkmn = new Pokemon(pkmnData[i])
+            this.pokemon.push(pkmn)
+            this.pokemonIdDict[pkmn.id] = pkmn
+            if (!(pkmn.baseName in this.pokemonBaseNameDict)){
+                this.pokemonBaseNameDict[pkmn.baseName] = []
+                this.orderModeSet.add(pkmn.id)
+                this.orderModeBaseIdDict[pkmn.baseName] = pkmn.id
+            }
+            this.pokemonBaseNameDict[pkmn.baseName].push(pkmn)
+        }
+        this.setupNames();
+        this.setFormattedNames();
+        this.setupSprites();
+        this.setupMissedContent();
+        this.updateLanguages(enabledLanguages)
+        this.onReset = onReset
+        this.usePokeball();
+        
+    }
+
+    reset(){
+        this.stopReveal()
+        this.named = new Set()
+        this.users = {}
+        this.langCounts = {}
+        this.missingnoEnabled = false;
+        this.useSilhouettes = false;
+        this.boxCounters = {}
+        this.lastOrderIndex = -1
+        for (let box in this.currentBoxes){
+            this.boxCounters[box] = []
+        }
+        
+        this.usePokeball();
+
+        for (let id in this.spriteDictionary){
+            this.hideSprite(id)
+            this.spriteDictionary[id].classList.add("zoom");
+            this.spriteDictionary[id].classList.remove("revealed");
+        }
+
+        for (let key in this.unguessedDict){
+            this.unguessedDict[key].style.display = 'none';
+        }
+
+        for (let box in this.boxDict){
+            this.boxDict[box].classList.remove("outline")
+            this.boxDict[box].classList.remove("outline"+this.getStyleName())
+        }
+
+        for (let id in this.unguessedDictionary){
+            if (this.currentIds.has(id)){
+                this.unguessedDictionary[id].style.display = "inline"
+            }else{
+                this.unguessedDictionary[id].style.display = "none"
+
+            }
+        }
+        this.onReset();
+    }
+
+    checkHighestLang(){
+        let highestKey = "ENG";
+        let highestCount =0;
+        for (let key in this.langCounts){
+            if (this.langCounts[key] > highestCount ){
+                highestCount = this.langCounts[key]
+                highestKey = key
+            }
+        }
+
+        if (this.currentLang !== highestKey){
+            //this.setLanguage(highestKey)
+            document.getElementById("missing-"+ highestKey).click();
+            this.currentLang = highestKey
+        }
+    }
+
+    getScore(){
+        return this.named.size
+    }
+
+    getMaxScore(){
+        return this.currentBaseNames.size;
+    }
+
+    setGenQuiz(genNum){
+        let filters = {"boxes":this.genQuizBoxes[genNum.toString()]}
+        let name;
+        if (genNum === "0"){
+            name = "Full"
+        }else{
+            name = "Generation " + genNum 
+        }
+        this.setQuiz(name, filters);
+    }
+
+    setTypeQuiz(type){
+        let filters = {"types":[type]}
+        this.setQuiz(type + " type ", filters);
+    }
+
+    setQuiz(name, filters) {
+
+        //before we change the style name
+        if (this.getStyleName() !== ""){
+            document.getElementById("body").classList.remove( this.getStyleName());
+
+            for (let i = 0; i< typeClasses.length; i++){
+                let currentClass = typeClasses[i];
+                let typeName = this.getStyleName();
+                let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
+                let val  = "." + currentClass.replace("type", "")
+                for (let j = 0; j<allElements.length; j++){
+                    allElements[j].classList.remove(currentClass.replace("type", typeName))
+                }
+        
+            }
+    
+            let bbuttonElements = document.getElementsByClassName("button");
+            for (let i = 0; i < bbuttonElements.length; i++){
+                bbuttonElements[i].classList.remove("button"+this.getStyleName())
+            }        
+        }
+
+
+        this.filters = filters;
+        this.name = name;
+        let currentPokemonList = [];
+    
+        if ("boxes" in filters) {
+            currentPokemonList = this.pokemon.filter(pokemon => filters.boxes.includes(pokemon.box));
+        } else {
+            currentPokemonList = [...this.pokemon]; // Clone the pokemon list
+        }
+    
+        if ("types" in filters) {
+            currentPokemonList = currentPokemonList.filter(pokemon =>
+                filters.types.some(type => pokemon.isType(type))
+            );
+        }
+
+
+        /*
+        let maxNumberOfSame = 7
+        let indexesToRemove = []
+        let i = 0
+        while (i<currentPokemonList.length-maxNumberOfSame){
+            if (currentPokemonList[i].baseName === currentPokemonList[i+maxNumberOfSame].baseName){
+                let isSequential = true;
+                for (let j = 1; j<maxNumberOfSame; j++){
+                    if (currentPokemonList[i].baseName !== currentPokemonList[i+j].baseName){
+                        isSequential = false;
+                        break
+                    }
+                }
+                if (!isSequential){
+                    continue
+                }
+
+                let j = i + 1
+                while (j < currentPokemonList.length && currentPokemonList[i].baseName === currentPokemonList[j].baseName){
+                    indexesToRemove.push(j)
+                    j++;
+                }
+                i = j;
+            }else{
+                i++;
+            }
+        }*/
+
+
+
+
+        let currentCycles = {}
+        let indexesToRemove = []
+        let i = 0
+        while (i < currentPokemonList.length-1){
+
+            if(currentPokemonList[i].baseName === currentPokemonList[i+1].baseName){
+                currentCycles[currentPokemonList[i].id] = [currentPokemonList[i].id]
+                let j = 1
+                while ((i+j)  < currentPokemonList.length && currentPokemonList[i].baseName === currentPokemonList[i+j].baseName){
+                    indexesToRemove.push(i+j)
+                    currentCycles[currentPokemonList[i].id].push(currentPokemonList[i+j].id)
+                    j+=1;
+                }
+                j-=1
+                i+=j
+            }
+            i+=1
+        }
+
+
+        for (let i = indexesToRemove.length - 1; i >= 0; i--) {
+            currentPokemonList.splice(indexesToRemove[i] , 1);
+        }
+
+
+        if (this.orderMode){
+            let tempList = []
+            for (let i = 0; i< currentPokemonList.length; i++ ){
+                if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega" ){
+                    continue
+                }
+                let id = currentPokemonList[i].id;
+                if (this.orderModeSet.has(id)){
+                    tempList.push(currentPokemonList[i])
+                }else{
+                    let basePkmnId = this.orderModeBaseIdDict[currentPokemonList[i].baseName]
+                    if (!(basePkmnId in currentCycles)){
+                        currentCycles[basePkmnId] = [basePkmnId]
+                    }
+                    currentCycles[basePkmnId].push(id)
+                }
+            }
+            currentPokemonList = tempList
+        }
+
+
+        this.spriteCycles = currentCycles;
+
+        this.currentBaseNames = new Set()
+        this.currentIds = new Set()
+        this.currentBoxes = {}
+        for (let i = 0; i<currentPokemonList.length; i++){
+            this.currentBaseNames.add(currentPokemonList[i].baseName)
+            //essentially sprites
+            this.currentIds.add(currentPokemonList[i].id)
+            if (!(currentPokemonList[i].box in this.currentBoxes)){
+                this.currentBoxes[currentPokemonList[i].box] = []
+            }
+            this.currentBoxes[currentPokemonList[i].box].push(currentPokemonList[i])
+        }
+
+        for (let id in this.unguessedDictionary){
+            if (id in this.currentIds){
+                this.unguessedDictionary[id].style.display = "inline"
+            }else{
+                this.unguessedDictionary[id].style.display = "none"
+
+            }
+        }
+    
+        for (let box in this.boxDict){
+            if (box in this.currentBoxes)
+            {
+                this.boxDict[box].style.display = "block";
+            }
+            else
+            {
+                this.boxDict[box].style.display = "none";
+            }
+        }
+
+        for (let box in this.currentBoxes){
+            if (this.name === "Full"){
+                regionToAll(document.getElementById("region"+box));
+            }else{
+                regionToSingle(document.getElementById("region"+box));
+            }
+
+        }
+
+        this.updateLanguages(this.enabledLanguages);
+
+
+        if (this.name === "Full"){
+            for (let box in this.currentBoxes){
+                regionToAll(document.getElementById("region"+box));
+            }
+            document.getElementById("pokemon-box-unknown").classList.remove('unknownbox');   
+
+            for (let i = 0; i < this.allSprites.length; i++) {
+                this.allSprites[i].classList.add('sprite');
+                this.allSprites[i].classList.remove('spritew');
+                this.allSprites[i].classList.remove('spritet');
+            }    
+            for (let i = 0; i < pokecolumns.length; i++) {
+                pokecolumns[i].classList.add('fifth');
+                pokecolumns[i].classList.remove('twothirds');
+            } 
+        }else if(this.name.includes("eneration")){
+            for (let box in this.currentBoxes){
+                regionToSingle(document.getElementById("region"+box));
+            } 
+            document.getElementById("pokemon-box-unknown").classList.add('unknownbox');
+            for (let i = 0; i < this.allSprites.length; i++) {
+                this.allSprites[i].classList.add('spritew');
+                this.allSprites[i].classList.remove('sprite');
+                this.allSprites[i].classList.remove('spritet');
+            }
+            for (let i = 0; i < pokecolumns.length; i++) {
+                pokecolumns[i].classList.remove('fifth');
+                pokecolumns[i].classList.add('twothirds');
+            }
+        }else{
+            //TYPE TODO ALL OF THIS BETTER
+            document.getElementById("pokemon-box-unknown").classList.remove('unknownbox');   
+            for (let box in this.currentBoxes){
+                regionToSingle(document.getElementById("region"+box));
+            }
+
+            for (let i = 0; i < pokecolumns.length; i++) {
+                pokecolumns[i].classList.add('fifth');
+                pokecolumns[i].classList.remove('twothirds');
+            }
+            for (let i = 0; i < this.allSprites.length; i++) {
+                this.allSprites[i].classList.add('spritet');
+                this.allSprites[i].classList.remove('spritew')
+                this.allSprites[i].classList.remove('sprite');
+            }
+        }
+
+
+        if ("types" in filters){
+
+            document.getElementById("body").classList.add(this.getStyleName());
+            if(darkMode){
+                document.getElementById("body").classList.add("blenddark")
+            }
+            else{
+                document.getElementById("body").classList.add("blend")
+            }
+
+            for (let i = 0; i< typeClasses.length; i++){
+                let currentClass = typeClasses[i];
+                if(currentClass.includes('dark') && !darkMode){
+                    continue;
+                }
+        
+                let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
+                for (let j = 0; j<allElements.length; j++){
+                    allElements[j].classList.add(currentClass.replace("type", this.getStyleName()))
+                }
+        
+            }
+        
+        
+            let bbuttonElements = document.getElementsByClassName("button");
+            for (let i = 0; i < bbuttonElements.length; i++){
+                bbuttonElements[i].classList.add("button"+this.getStyleName())
+            }
+
+            let imgName = this.getStyleName().toUpperCase();
+            if (imgName === "EVIL"){
+                imgName = "DARK"
+            }
+
+            document.getElementById("bgpattern").style.display = 'block';
+            document.getElementById("bgpattern2").style.display = 'block';
+            document.getElementById("bgpattern2").src = "/images/types/"+ imgName +".svg";
+            document.getElementById("bgpattern2").src = "/images/types/"+ imgName +".svg";
+
+            document.getElementById("bgpattern").style.opacity = 0;
+            setTimeout(()=>{
+                document.getElementById("bgpattern").src = "/images/types/"+ imgName+".svg";
+
+                document.getElementById("bgpattern").style.opacity = 1;
+            },250)
+        }else{
+            document.getElementById("body").classList.remove("blend")
+            document.getElementById("body").classList.remove("blenddark")
+            document.getElementById("bgpattern").style.display = 'none';
+            document.getElementById("bgpattern2").style.display = 'none';
+        }
+
+
+        this.resetCurrentSprites()
+        this.reset();
+
+    }
+
+    getStyleName(){
+        if ("types" in this.filters){
+            if (this.filters["types"][0] === "dark"){
+                return "evil"
+            }
+            return this.filters["types"][0]
+        }
+        return "";
+    }
+
+    setFormattedNames(){
+
+        for (let id in this.pokemonIdDict){
+            let pkmn = this.pokemonIdDict[id]
+            let translation = this.translations[pkmn.baseName]
+    
+            let formattedDict = null
+            if (pkmn.id in this.namings){
+                formattedDict = {}
+                for (let key in translation){
+                    formattedDict[key] = translation[key] + this.namings[pkmn.id]
+                }
+            }else{
+                for (let suffix in this.suffixes){
+                    if (pkmn.id.endsWith(suffix)){
+                        let without = pkmn.id.substring(0, pkmn.id.length - suffix.length);
+                        if (without in this.pokemonBaseNameDict){
+                            formattedDict = {}
+                            for (let key in translation){
+                                formattedDict[key] = translation[key] + this.suffixes[suffix]
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            if (formattedDict === null){
+                formattedDict = {}
+                for (let key in translation){
+                    formattedDict[key] = translation[key]
+                }
+            }
+            pkmn.setFormattedNames(formattedDict);
+        }
+    }
+
+    setLanguage(lang){
+        for (let id in this.unguessedDictTexts){
+            this.unguessedDictTexts[id].nodeValue  = this.pokemonIdDict[id].getFormattedName(lang)
+        }
+        this.currentLang = lang
+    }
+
+
+    updateLanguages(enabledLanguages){
+        this.enabledLanguages = enabledLanguages;
+        this.currentLangsNames= new Set()
+        this.nameDict = {}
+        this.nameArr = []
+        for (let id of this.currentIds){
+            for (let j = 0; j < enabledLanguages.length; j++){
+                let key = enabledLanguages[j];
+                this.currentLangsNames.add(standardizeName(this.translations[this.pokemonIdDict[id].baseName][key]))
+            }
+        }
+        for (let i = 0; i < this.pokemon.length; i++ ){
+            for (let j = 0; j < this.enabledLanguages.length; j++){
+                let key = this.enabledLanguages[j];
+                /*if (this.translations[id][key] in this.nameDict && standardizeName(this.translations[id][key]) !== id){
+                    console.log('alert, same names for' + this.translations[id]["ENG"] + " and " + id)
+                }*/
+                let daName = standardizeName(this.translations[this.pokemon[i].baseName][key])
+                this.nameDict[daName] = this.pokemon[i].id
+                this.nameArr.push(daName)
+            }
+        }
+
+        
+    }
+    setupNames(){
+        for (let i = 0; i < this.pokemon.length; i++ ){
+            for (let j = 0; j < this.allLanguages.length; j++){
+                let key = this.allLanguages[j];
+                if (standardizeName(this.translations[this.pokemon[i].baseName]["ENG"]) === standardizeName(this.translations[this.pokemon[i].baseName][key])){
+                    this.langDict[standardizeName(this.translations[this.pokemon[i].baseName][key])] = "ENG"
+                }else{
+                    this.langDict[standardizeName(this.translations[this.pokemon[i].baseName][key])] = key
+                }
+
+            }
+        }
+    }
+
+    startMissingno(){
+
+        if (!this.missingnoEnabled){
+            return
+        }
+        
+    
+        let visibleSprites = []
+        for (let i = 0; i< this.allSprites.length; i++){
+            if (this.allSprites[i].style.display != "none" && this.allSprites[i].parentElement.style.display != "none" && this.allSprites[i].parentElement.parentElement.style.display != "none"){
+                visibleSprites.push(this.allSprites[i])
+            }
+        }
+        
+    
+        let randomIndex = randomIntFromInterval(0, visibleSprites.length-1)
+    
+        let originalSrc = visibleSprites[randomIndex].src
+        let missingnoPath;
+        let randNr = randomIntFromInterval(0, 100);
+        if (randNr < 70){
+            missingnoPath = '/images/missingno.png';
+        }
+        else if (randNr < 90){
+            missingnoPath = '/images/missingno2.png';
+        }
+        else{
+            missingnoPath = '/images/missingno3.png';
+        }
+        visibleSprites[randomIndex].src = missingnoPath;
+        let that = this
+        setTimeout(()=>{
+            if ((originalSrc.indexOf('/unknown') !== -1)){
+                if (darkMode){
+                    originalSrc = '/sprites/unknown-2.png';
+                }else{
+                    originalSrc = '/sprites/unknown.png';
+                }
+            }
+            visibleSprites[randomIndex].src  = originalSrc
+            that.startMissingno();
+        }, randomIntFromInterval(300, 3000))
+    }
+
+
+    parseInput(inputText, user, onCorrect = null){
+        if(paused){
+            return [false, null]
+        }
+        inputText = inputText.toLowerCase()
+        
+        let inputs = []
+        
+        if (inputText === 'nidoran' || inputText === 'ニドラン'.toLowerCase() ||inputText === '니드런'.toLowerCase() ) {
+            inputs.push('nidoranf')
+            inputs.push('nidoranm')
+        }
+        
+        
+        if (inputText == "missingno" || inputText == "けつばん"){
+
+            if (!this.missingnoEnabled){
+                this.missingnoEnabled = true;
+                if (soundEnabled){
+                    soundEffectMissingno.play();
+                }
+                
+                this.startMissingno()
+                return [true, "missingno"];
+            }
+        
+        }
+        
+        inputText = standardizeName(inputText)
+        let originalInput = inputText;
+        
+
+        let subGerman = originalInput
+        subGerman = subGerman.replace("ae", "ä")
+        subGerman = subGerman.replace("oe", "ö")
+        subGerman = subGerman.replace("ue", "ü")
+        subGerman = subGerman.replace( "ss", "ß")
+        subGerman = standardizeName(subGerman);
+        if (originalInput !== subGerman){
+            inputs.push(subGerman);
+        }
+        
+        inputs.push(inputText);
+        
+        let correct = false;
+        let message = null
+        let pkmn = null
+
+        for (let i = 0; i < inputs.length; i++){
+            inputs[i] = standardizeName(inputs[i]);
+            let input = inputs[i]
+
+            if (input in this.nameDict){
+
+                let id = this.nameDict[input]
+                let baseName = this.pokemonIdDict[id].baseName
+
+                if (this.named.has(baseName)){
+
+                    let overlap = false;
+                    for (let key in this.nameDict){
+                        if (key.startsWith(input) && key !== input){
+                            overlap = true;
+                            break
+                        }
+                    }
+                    if (!overlap){
+                        message =  this.pokemonIdDict[id].getFormattedName(this.currentLang)+ " already named."
+                    }
+                    continue;
+                }
+
+                if (!(this.currentBaseNames.has(baseName))){
+
+                    let found = false
+                    for (const langName of this.currentLangsNames) {
+                        if (langName.startsWith(input)) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found){
+                        message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " is not part of this quiz."
+                    }
+                    continue;
+                    
+                }
+                if (!(this.currentLangsNames.has(input))){
+                    continue
+                }
+
+                if (this.orderMode){
+                    
+                }
+
+                let recentPkmn = this.addNamed(baseName)
+                this.addUserPoint(user)
+                if (!(this.langDict[input] in this.langCounts)){
+                    this.langCounts[this.langDict[input]] = 0
+                }
+                this.langCounts[this.langDict[input]]+=1
+                this.checkHighestLang()
+                recentSprite.src = this.spriteDictionary[recentPkmn.id].src;
+                correct = true;
+                if (onCorrect !== null){
+                    onCorrect(baseName)
+                }
+            }
+
+        }
+        return [correct, message];
+
+    }
+
+    addUserPoint(user){
+        if (!(user in this.users)){
+            this.users[user] = 0
+        }
+        this.users[user]+=1
+    }
+
+    addNamed(baseName){
+
+        let relatedPokemon = this.pokemonBaseNameDict[baseName]
+
+        let relevantPokemon = []
+        for (let i = 0; i< relatedPokemon.length; i++){
+            if (this.currentIds.has(relatedPokemon[i].id)){
+                relevantPokemon.push(relatedPokemon[i])
+            }
+        }
+
+        for (let i = 0; i< relevantPokemon.length; i++){
+            this.showSprite(relevantPokemon[i].id)
+        }
+
+        this.named.add(baseName)
+
+        return relevantPokemon[relevantPokemon.length-1];
+    }
+
+    getEndText(){
+        let genText = ' ';
+        if (this.name !== "Full") {
+            genText = " " + this.name.charAt(0).toUpperCase() + this.name.slice(1) + " "
+        }
+        return genText
+    }
+
+    isSilhouettesEnabled(){
+        return this.useSilhouettes
+    }
+
+    animateCongrats(){
+        for (let id of this.currentIds){
+            if (this.named.has(this.pokemonIdDict[id].baseName)){
+                animateInput(id)
+            }
+            
+        }
+        
+    }
+    
+
+    setSilhouettes() {
+        for (let i = 0; i < this.silhouetteArray.length; i++) {
+            this.silhouetteArray[i].style.display = "inline";
+            this.pokeballArray[i].style.display = "none";
+        }
+        this.useSilhouettes=true
+    }
+    
+    usePokeball() {
+        for (let i = 0; i < this.silhouetteArray.length; i++) {
+            this.silhouetteArray[i].style.display = "none";
+            this.pokeballArray[i].style.display = "inline";
+        }
+    }
+
+
+    hideSprite(id){
+        this.spriteDictionary[id].style.display = "none";
+        this.unguessedDictionary[id].style.display = "inline";
+    }
+
+    setupSprites(){
+        for (let i = 0; i< this.pokemon.length; i++){
+            let pokemon = this.pokemon[i];
+
+            let sprite = document.createElement("img");
+            sprite.classList.add('sprite');
+            sprite.classList.add('zoom');
+            sprite.src = this.encodedImages['sprite'][pokemon.id];
+
+            this.spriteDictionary[pokemon.id] = sprite;
+            this.allSprites.push(sprite)
+            let silhouette = document.createElement("img");
+            silhouette.classList.add('sprite');
+            silhouette.src = this.encodedImages['silhouette'][pokemon.id];
+            silhouette.style.display = "none";
+            this.silhouetteDictionary[pokemon.id] = silhouette;
+            this.silhouetteArray.push(silhouette)
+            this.allSprites.push(silhouette)
+            let unguessed = document.createElement("div");
+            //not included to loading bar, all use the same single image
+            let pokeballImg = document.createElement("img");
+            pokeballImg.classList.add('sprite');
+            pokeballImg.src = '/sprites/unknown.png';
+            this.unguessedDictionary[pokemon.id] = unguessed;
+            this.pokeballDictionary[pokemon.id] = pokeballImg;
+            this.pokeballArray.push(pokeballImg)
+            this.allSprites.push(pokeballImg)
+
+            unguessed.appendChild(this.silhouetteDictionary[pokemon.id])
+            unguessed.appendChild(pokeballImg)
+
+            let box = this.boxDict[pokemon.box]
+
+            box.appendChild(this.spriteDictionary[pokemon.id]);
+            box.appendChild(unguessed);
+            this.hideSprite(pokemon.id);
+
+        }
+    }
+
+    setupMissedContent(){
+        let contentDict = {}
+        for (let key in this.boxDict){
+            let unnamedList = document.createElement("div");
+            let unnamedContent = document.createElement("div");
+            unnamedContent.classList.add('box');
+            unnamedContent.classList.add('roundedf');
+            unnamedContent.classList.add('topedge');
+            unnamedContent.style.display = 'block';
+            unnamedList.appendChild(unnamedContent)
+            document.getElementById("panel").appendChild(unnamedList);
+            contentDict[key] = unnamedContent;
+        }
+
+        for (let i = 0; i< this.pokemon.length; i++){
+
+            let pokemon = this.pokemon[i];
+
+            let _elem = document.createElement("div");
+            let _img = document.createElement("img");
+            let _name = document.createTextNode('')
+            _img.style.display = 'inline';
+            _img.src = this.spriteDictionary[pokemon.id].src
+            _img.classList.add('spritel')
+            _elem.style.display = 'none';
+            _elem.appendChild(_img)
+            _elem.appendChild(_name)
+
+            this.unguessedDict[pokemon.id] = _elem;
+            this.unguessedDictTexts[pokemon.id] = _name
+            contentDict[pokemon.box].appendChild(_elem)
+            
+        }
+
+    }
+
+    getLeaderboardData(){
+
+    }
+
+    showSprite(id){
+        this.spriteDictionary[id].style.display = "inline";
+        this.unguessedDictionary[id].style.display = "none";
+        let currentBox = this.pokemonIdDict[id].box;
+        let pkmn = this.pokemonIdDict[id]
+        if(!(this.boxCounters[currentBox].includes(pkmn)))
+        this.boxCounters[currentBox].push(pkmn)
+        if (this.boxCounters[currentBox].length === this.currentBoxes[currentBox].length){
+            let boxElem = this.spriteDictionary[id].parentElement;
+            boxElem.classList.add('outline')
+            boxElem.classList.add('outline'+this.getStyleName())
+        }
+    }
+    stopReveal() {
+        for (let i = 0; i < this.revealTimeouts.length; i++) {
+            clearInterval(this.revealTimeouts[i])
+        }
+        this.revealTimeouts = [];
+    }
+    giveUp(){
+
+        let delay = 0;
+        let revealList = []
+        for (const id of this.currentIds) {
+            if (!(this.named.has(this.pokemonIdDict[id].baseName))){
+                revealList.push(id)
+            }
+        }
+    
+        for (let i = 0; i < revealList.length; i++) {
+            let id = revealList[i];
+            delay = delay + 35;
+            let that = this;
+            let timeout = setTimeout(function () {
+                that.spriteDictionary[id].classList.add('revealed');
+                that.spriteDictionary[id].classList.remove('zoom');
+                that.showSprite(id);
+                changeFooterPosition()
+            }, delay);
+            this.revealTimeouts.push(timeout);
+        }
+        
+        //loop without delay
+        for (let i = 0; i < revealList.length; i++) {
+            let id = revealList[i];
+            this.unguessedDict[id].style.display = 'inline-block';
+            this.unguessedDict[id].classList.add('fixed-width');
+        }
+    }
+
+
+    resetCurrentSprites(){
+        if (this.shinyEnabled){
+            for (let id of this.currentIds){
+                this.spriteDictionary[id].src = this.encodedImages['shiny'][id]
+                this.unguessedDict[id].getElementsByTagName('img')[0].src = this.encodedImages['shiny'][id]
+            }
+        }else{
+            for (let id of this.currentIds){
+                this.spriteDictionary[id].src = this.encodedImages['sprite'][id]
+                this.unguessedDict[id].getElementsByTagName('img')[0].src = this.encodedImages['sprite'][id]
+            }         
+        }
+    }
+
+    shinyOn(){
+        this.shinyEnabled = true;
+        this.resetCurrentSprites();
+    }
+
+    shinyOff(){
+        this.shinyEnabled = false;
+        this.resetCurrentSprites();
+    }
+
+}
+
+let allLanguages = ['ENG', 'FRE', 'GER', 'ESP', 'ITA', 'KOR', 'JPN', 'CHT', 'CHS']
+
+let typeList = ["normal", "fire", "water", "grass", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy"]
+let boxIds = ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "mega", "unknown", "galar", "gmax", "hisui", "paldea", "kitakami"]
+let genQuizBoxes = {
+    "0": ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "mega", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "kitakami"],
+    "1": ["kanto"],
+    "2": ["johto"],
+    "3": ["hoenn"],
+    "4": ["sinnoh"],
+    "5": ["unova"],
+    "6": ["kalos", "mega"],
+    "7": ["alola", "unknown"],
+    "8": ["galar", "gmax", "hisui"],
+    "9": ["paldea", "kitakami"],
+}
+
+let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
+let soundEffectMissingno = new Audio('/sound-effects/032.wav');
+soundEffectMissingno.volume = 0.2;
+soundEffect.volume = 0.5;
+let soundEffect2 = new Audio('/sound-effects/Dex-Fanfare.mp3');
+let soundEffectJoin = new Audio('/sound-effects/quizjoin.wav');
+soundEffectJoin.volume = 0.35
+let soundEffectExit = new Audio('/sound-effects/quizleave.wav');
+soundEffectExit.volume = 0.35
+soundEffect2.volume = 0.3;
+
+var nameAll;
+
+let darkMode = false;
+let isSpellingEnabled = false;
+let currentType = ""
+let activeTimer = false;
+let isTwitchOn = false;
+var soundEnabled = true;
+var paused = false;
+var isSocketHost = false;
+let socket = null;
+
+let timerObj = {}
+
+var client;
+let rankVals = [
+    'rankone',
+    'ranktwo',
+    'rankthree'
+]
+let myUsername = "Quizmaster"
+
+let lastDarkSwap = 0
+let lastShinySwap = 0
+let swapLimit = 10000
+
+
+let missingOptionsDiv = document.getElementById('missednames-options');
+let language_box = document.getElementById('lang_box')
+
+let inputField = document.getElementById("pokemon");
+let recentSprite = document.getElementById("recentsprite");
+
+let spellingElement = document.getElementById("spelling");
+let spellingButton = document.getElementById("spellingbutton");
+let spellingCheck = document.getElementById("check");
+let spellingHint = document.getElementById("hint");
+
+let radioPokeball = document.getElementById("pokeball");
+let radioSilhouette = document.getElementById("silhouette");
+
+let counterText = document.getElementById("counter");
+let totalText = document.getElementById("total");
+
+let giveUpBtn = document.getElementById("surrender");
+
+let resetBtn = document.getElementById("resetButton");
+
+let promptSilh = document.getElementById("promptsilhouette");
+let promptGen = document.getElementById("promptswitch");
+
+let promptSilhYes = document.getElementById("sil-yes");
+let promptSilhNo = document.getElementById("sil-no");
+let promptGenYes = document.getElementById("gen-yes");
+let promptGenNo = document.getElementById("gen-no");
+
+let timerBtn = document.getElementById("timer-set");
+let stopwatchBtn = document.getElementById("timer0");
+
+
+let timerText = document.getElementById("timer");
+let pauseBtn = document.getElementById("pause")
+
+let main = document.getElementById("main");
+let footer = document.getElementById("footer");
+
+let hostGame = document.getElementById("hostButton")
+let linkGame = document.getElementById("linkButton")
+let usernamePrompt = document.getElementById("promptusername")
+let boxDict = {}
+for (let i = 0; i < boxIds.length; i++) {
+    let boxId = boxIds[i]
+    boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
+}
+
+
+let quiz = new Quiz(boxDict, genQuizBoxes, allLanguages)
+
+
+document.getElementById("return").onclick = function () {
+    window.removeEventListener('beforeunload', beforeUnload);
+    window.location.href = "/";
+}
+
+function noSuchRoom() {
+    document.getElementById("return-message").innerText = "Room no longer exists"
+    document.getElementById("return-overlay").style.display = "block";
+}
+function roomClosed() {
+    document.getElementById("return-message").innerText = "The host has disbanded the room"
+    document.getElementById("return-overlay").style.display = "block";
+}
+function multiplayerDisabled() {
+    document.getElementById("return-message").innerText = "Multiplayer is undergoing maintenance. Try again later."
+    document.getElementById("return-overlay").style.display = "block";
+}
+
+
+let multiplayerUrl;
+
+let current = new URL(window.location.href);
+if (current.hostname.includes('localhost')) {
+    multiplayerUrl = "//localhost:3001/"
+}
+else {
+    multiplayerUrl = "//stapo.cloud/"
+}
+
+
+
+function loadSocketIO() {
+    return new Promise((resolve, reject) => {
+        let path = multiplayerUrl + 'socket.io/socket.io.js'
+        const script = document.createElement('script');
+        script.src = path
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
+
+function getRoomNameFromURL() {
+    const pathArray = window.location.pathname.split('/');
+    // Assuming the room name is the second part of the URL
+    return pathArray[pathArray.length - 1];
+}
+let roomId = getRoomNameFromURL();
+
+MAX_RETRIES = 5
+RETRY_INTERVAL_MS = 1000
+retries = 0
+async function fetchData(endpoint) {
+    try {
+        let response = await fetch('/' + endpoint, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        let data = await response.json();
+        retries = 0
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        retries++;
+        if (retries <= MAX_RETRIES) {
+            await new Promise(resolve => setTimeout(resolve, RETRY_INTERVAL_MS));
+            return fetchNext();
+        } else {
+            console.error(error);
+            alert("There seems to be a problem with fetching the data. Please try refreshing the page.");
+        }
+    }
+}
+
+async function postMultiplayerServer(endpoint, body) {
+
+    try {
+        let response = await fetch(multiplayerUrl + endpoint, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+        let data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+        return false;
+    }
+
+}
+async function getMultiplayerServer(endpoint) {
+
+    try {
+        let response = await fetch(multiplayerUrl + endpoint, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        let data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+        return false;
+    }
+
+}
+
+//if (roomId)
+if (roomId.length > 1) {
+    postMultiplayerServer("roomExists", { "roomId": roomId }).then((result) => {
+        if (!result["success"]) {
+            noSuchRoom();
+        }
+    })
+    document.getElementById("guest-info").style.display = "block"
+    document.getElementById("loadboxguest").style.display = "block"
+    document.getElementById("loadbox").style.display = "none"
+    usernamePrompt.style.display = "block"
+    radioSilhouette.style.display = "none"
+    giveUpBtn.style.display = "none"
+    resetBtn.style.display = "none"
+    timerBtn.style.display = "none"
+    stopwatchBtn.style.display = "none"
+    pauseBtn.style.display = "none"
+    hostGame.style.display = "none"
+    document.getElementById("genselect").style.display = "none"
+    document.getElementById("typeselect").style.display = "none"
+    document.getElementById("timers").style.display = "none"
+    document.getElementById("twitchbox").style.display = "none"
+    document.getElementById("fullQuizButton").style.display = "none"
+    document.getElementById("playtext").style.display = "none"
+    pauseBtn.style.display = "none"
+    document.getElementById("unpause").style.display = "none"
+    document.getElementById("pause-text").innerText = "Paused by host"
+} else {
+    roomId = null;
+    document.getElementById("host-info").style.display = "block"
+}
+function beforeUnload(e){
+    if (timerText.innerHTML != "00:00:00") {
+        e.preventDefault();
+        e.returnValue = '';
+    }
+}
+
+async function loadData() {
+
+
+    function onReset() {
+        socketResetQuiz()
+        clearInterval(activeTimer);
+        timerObj = { "type": "none" }
+        activeTimer = false;
+        setCounter(0);
+        setTotal(quiz.getMaxScore());
+        resetTimer();
+        inputField.disabled = false;
+
+
+
+
+        if (!darkMode)
+            recentSprite.src = '/sprites/unknown.png'
+        else
+            recentSprite.src = '/sprites/unknown-2.png'
+
+        document.getElementById("silhouette").checked = false;
+
+        changeFooterPosition();
+
+        if (document.getElementById("panel").style.display == 'block') {
+            //close and reset accordion
+            document.getElementById("accordion").click();
+        }
+        document.getElementById("missednames").style.display = "none";
+
+        document.getElementById("ranking2").style.display = "none";
+        document.getElementById("ranking").style.display = 'none';
+
+        emptyLeaderboard();
+
+    }
+
+
+
+    let allData = await fetchData("pkmnData.json")
+    let encodedImages = allData["encoded_images"]
+
+    quiz.loadData(allData, enabledLanguages, onReset)
+
+
+
+    function host(username) {
+        if (socket !== null) {
+            let data = {}
+            data["username"] = username
+            if (myUsername in quiz.users) {
+                quiz.users[username] = quiz.users[myUsername]
+                delete quiz.users[myUsername]
+            }
+            myUsername = username
+
+            data["state"] = getQuizState();
+            data["state"]["timer"]["updatedAt"] = Date.now()
+            socket.emit('host', data);
+        }
+    }
+
+
+    function socketChangeQuiz() {
+        if (socket !== null && isSocketHost) {
+            socket.emit('stateChange', { "state": getQuizState() })
+        }
+    }
+    function socketResetQuiz() {
+        if (socket !== null && isSocketHost) {
+            socket.emit('reset', { "state": getQuizState() })
+
+        }
+    }
+    function socketSetSilhouettes() {
+        if (socket !== null && isSocketHost) {
+            socket.emit('stateChange', { "silhouettes": true })
+        }
+    }
+    function socketSetPaused(val) {
+        if (socket !== null && isSocketHost) {
+            socket.emit('stateChange', { "paused": val })
+            socketUpdateTimer();
+        }
+    }
+    function socketGiveUp() {
+        if (socket !== null && isSocketHost) {
+            socket.emit('stateChange', { "giveup": true })
+        }
+    }
+    function socketCongrats() {
+        if (socket !== null && isSocketHost) {
+            socket.emit('stateChange', { "showcongrats": true })
+        }
+    }
+    function socketUpdateTimer() {
+        if (socket !== null && isSocketHost) {
+            timerObj["updatedAt"] = Date.now()
+            socket.emit('stateChange', { "timer": timerObj })
+        }
+    }
+    function enableSocket(onSuccess, onFail) {
+        loadSocketIO().then(() => {
+            try{
+                socket = io(multiplayerUrl);
+
+                socket.on('userJoined', (username) => {
+                    if (soundEnabled){
+                        soundEffectJoin.play();
+                    }
+                    showUserMessage(username + " joined the room !")
+                });
+                socket.on('userLeft', (username) => {
+                    if (soundEnabled){
+                        soundEffectExit.play();
+                    }
+                    showUserMessage(username + " left the room !")
+                });
+    
+                socket.on('roomCreated', (roomId) => {
+    
+                    function copyLink() {
+                        var currentURL = new URL(window.location.href);
+                        var currentDomain = currentURL.hostname + (currentURL.port ? ':' + currentURL.port : '');
+                        let url = "https://" + currentDomain + "/join/" + roomId
+                        navigator.clipboard.writeText(url)
+                        showUserMessage("Copied link to clipboard (" + url + ")")
+                    }
+    
+                    linkGame.onclick = function () {
+                        copyLink()
+                    }
+                    linkGame.style.display = "block"
+                    hostGame.style.display = "none"
+                    copyLink()
+    
+                });
+    
+                socket.on('named', (data) => {
+                    const { username, id } = data;
+                    quiz.addNamed(id)
+                    quiz.addUserPoint(username)
+    
+                    if (soundEnabled) {
+                        soundEffect.play();
+                    }
+                    setCounter(quiz.getScore());
+                    if (!activeTimer) {
+                        if (currentTime === 0) {
+                            startTimer();
+                        } else {
+                            startCountdown(currentTime)
+                        }
+                    }
+                    if (quiz.getMaxScore() === quiz.getScore()) {
+                        if (roomId === null) {
+                            showCongrats();
+                        }
+                    }
+                    updateRankings()
+                    updateFullLeaderboard()
+                });
+    
+    
+                socket.on('noSuchRoom', () => {
+                    noSuchRoom();
+                });
+                socket.on('reset', () => {
+                    quiz.reset();
+                });
+                socket.on('end', () => {
+                    roomClosed();
+                });
+                socket.on('scores', (users) => {
+                    quiz.users = users;
+                    updateFullLeaderboard();
+                    updateRankings()
+                });
+    
+    
+                // Listen for user joining
+                socket.on('stateChange', (data) => {
+                    for (let key in data) {
+                        if (key === "giveup") {
+                            giveUp();
+                        } else if (key === "silhouettes") {
+                            quiz.setSilhouettes();
+                        } else if (key === "showcongrats") {
+                            showCongrats();
+                        } else if (key === "paused") {
+                            if (data["paused"]) {
+                                pauseOn();
+                            } else {
+                                pauseOff();
+                            }
+                        } else if (key === "state") {
+                            setQuizState(data["state"])
+                            updateRankings()
+                            updateFullLeaderboard()
+                        } else if (key === "timer") {
+                            roomUpdateTimer(data["timer"])
+                        }
+                    }
+                });
+                onSuccess()
+            }catch (error){
+                onFail();
+                console.log(error)
+            }
+        }).catch((error) => {
+            onFail();
+        });
+    }
+
+
+
+    // Function to join a room
+    function joinRoom(username) {
+        myUsername = username;
+        socket.emit('joinRoom', { roomId, username });
+    }
+    // Function to join a room
+    function socketNamedPkmn(baseName) {
+        socket.emit('named', { "id": baseName });
+    }
+
+    function hostGameClick() {
+        
+        usernamePrompt.style.display = "block"
+        let usernameInput = document.getElementById("input-username")
+        let usernameButton = document.getElementById("username-confirm")
+
+        usernameButton.onclick = function () {
+            let username = document.getElementById("input-username").value
+            if (username.length < 2) {
+                showUserMessage("Username should be at least 2 characters long")
+                return;
+            } else {
+                
+                let onSuccess = function (){
+                    isSocketHost = true;
+                    usernamePrompt.style.display = "none"
+                    usernamePrompt.removeEventListener("keyup", detectEnter);
+                    hostGame.disabled = true;
+                    hostGame.innerText = "Generating room..."
+                    host(username);
+                }
+
+                let onFail = function (){
+                    multiplayerDisabled();
+                }
+
+                enableSocket(onSuccess, onFail)
+            }
+
+        }
+        usernameInput.focus();
+        function detectEnter(event) {
+            if (event.keyCode === 13) {
+                usernameButton.click();
+            }else if (event.keyCode === 27) {
+                usernamePrompt.style.display = "none"
+            }
+        }
+        usernamePrompt.addEventListener("keyup", detectEnter);
+
+        usernamePrompt.onclick = function () {
+            usernamePrompt.style.display = "none"
+        }
+        usernameInput.onclick = function(e){
+            e.stopPropagation();
+        }
+
+
+    }
+
+    function hostGameDisabled() {
+        showUserMessage("Multiplayer is undergoing maintenance. Try again later.")
+    }
+
+    if (roomId === null) {
+
+        async function checkMultiplayerStatus() {
+            let multiplayerOnline = getMultiplayerServer("online");
+            let multiplayerEnabled = fetchData("multiplayerEnabled");
+
+            let isOnline = await multiplayerOnline
+            let isEnabled = (await multiplayerEnabled)["result"]
+
+            if (isOnline && isEnabled) {
+                hostGame.onclick = hostGameClick
+            } else {
+                hostGame.onclick = hostGameDisabled
+            }
+        }
+        checkMultiplayerStatus()
+        setInterval(() => {
+            checkMultiplayerStatus();
+        }, 20000)
+
+    }
+
+
+
+    if (roomId !== null) {
+        usernamePrompt.style.display = "block"
+        let usernameInput = document.getElementById("input-username")
+        let usernameButton = document.getElementById("username-confirm")
+
+        usernameButton.onclick = function () {
+            let username = document.getElementById("input-username").value
+            if (username.length < 2) {
+                showUserMessage("Username should be at least 2 characters long")
+                return;
+            } else {
+
+                let onSuccess = function() {
+                    usernameInput.removeEventListener("keyup", detectEnter);
+                    usernamePrompt.style.display = "none"
+                    off2()
+                    joinRoom(username)
+                }
+
+                let onFail = function (){
+                    showUserMessage("Multiplayer is undergoing maintenance. Try again later.")
+
+                }
+                enableSocket(onSuccess, onFail);
+            }
+
+        }
+        setTimeout(() => {
+            usernameInput.focus();
+        }, 100);
+
+        function detectEnter(event) {
+            if (event.keyCode === 13) {
+                usernameButton.click();
+            }
+        }
+        usernameInput.addEventListener("keyup", detectEnter);
+
+    }
+
+
+    let visualizeButtonClick = function (elem) {
+        elem.classList.add("smolbuttonx")
+        if (darkMode) {
+            elem.classList.add("smolbuttonxdark")
+        }
+        let currentType = quiz.getStyleName();
+        if (currentType !== "") {
+            elem.classList.add("smolbuttonx" + currentType)
+            if (darkMode) {
+                elem.classList.add("smolbuttonxdark" + currentType)
+            }
+        }
+    }
+
+
+    darkmodebg = new Image();
+    darkmodebg.src = '/images/background-dark.svg';
+
+    unknownDark = new Image();
+    unknownDark.src = '/sprites/unknown-2.png';
+
+    missingno = new Image();
+    missingno.src = '/images/missingno.png';
+
+    missingno = new Image();
+    missingno.src = '/images/missingno2.png';
+
+    missingno = new Image();
+    missingno.src = '/images/missingno3.png';
+
+
+    let loadArtists = function () {
+
+        let setValues = function (jsonValue) {
+
+            table = document.getElementById("creditstable")
+
+            for (let i = 0; i < jsonValue.length; i++) {
+                const element = jsonValue[i];
+                const sprites = element.sprites;
+                const artists = element.artists;
+                const QCs = element.QCs;
+
+                let spriteString = '';
+                for (let j = 0; j < sprites.length; j++) {
+                    spriteString += sprites[j] + '<br>';
+                }
+
+                let artistString = '';
+                for (let j = 0; j < artists.length; j++) {
+                    artistString += artists[j] + ', ';
+                }
+                artistString = artistString.substring(0, artistString.length - 2)
+                if (QCs.length > 0) {
+                    if (artists.length > 0) {
+                        artistString += '<br>QC - ';
+                    } else {
+                        artistString += 'QC - ';
+                    }
+                    for (let j = 0; j < QCs.length; j++) {
+                        artistString += QCs[j] + ', ';
+                    }
+                    artistString = artistString.substring(0, artistString.length - 2)
+                }
+                const row = `<tr><td>${spriteString}</td><td>${artistString}</td></tr>`;
+                table.innerHTML += row;
+            }
+
+        }
+
+
+
+
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("GET", '/artists', true);
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status === 200) {
+                    setValues(JSON.parse(this.response));
+                } else {
+                    console.log('error loading image list, retrying...');
+                    setTimeout(function () {
+                        loadArtists();
+                    }, 2000);
+                }
+
+            }
+        };
+        xhttp.send();
+
+    }
+
+
+
+    function setCounter(count) {
+        counterText.innerHTML = count;
+    }
+
+    function setTotal(count) {
+        totalText.innerHTML = count;
+    }
+
+    function startTimer() {
+        let prevTimestamp = Date.now();
+        let total = 0
+        timerObj = { "type": "timer", "t": total }
+        socketUpdateTimer();
+        activeTimer = setInterval(function () {
+
+            let msDiff = Date.now() - prevTimestamp;
+            prevTimestamp = Date.now();
+            if (!paused) {
+                total += msDiff
+            }
+            timerObj["t"] = total
+            updateTimer(total);
+        }, 100)
+
+    }
+
+    let lastDiff;
+    function updateTimer(msDiff) {
+        if (msDiff < 0) {
+            msDiff = 0;
+        }
+        lastDiff = msDiff;
+
+        timerText.innerHTML = msToTime(msDiff);
+
+    }
+
+    function resetTimer() {
+        if (currentTime === 0) {
+            updateTimer(0);
+        } else {
+            updateTimer(1000 * 60 * currentTime);
+        }
+    }
+
+    function msToTime(s) {
+        let ms = s % 1000;
+        s = (s - ms) / 1000;
+        let secs = s % 60;
+        s = (s - secs) / 60;
+        let mins = s % 60;
+        let hrs = (s - mins) / 60;
+
+        if (hrs < 10) {
+            hrs = '0' + hrs;
+        }
+        if (mins < 10) {
+            mins = '0' + mins;
+        }
+        if (secs < 10) {
+            secs = '0' + secs;
+        }
+        return hrs + ':' + mins + ':' + secs;
+    }
+
+    let currentTime = 0;
+    function applyNewTimer(timerVal) {
+        currentTime = timerVal
+        quiz.reset();
+        resetTimer();
+        let initialTimerText = timerText.innerHTML
+        if (timerText.innerHTML != initialTimerText) {
+            if (timerText.innerHTML === "00:00:00") {
+                showUserMessage("Timer set to stopwatch")
+            } else {
+                showUserMessage("Timer set to " + timerText.innerHTML)
+            }
+        }
+    }
+
+
+    function cancel() {
+        document.getElementById("prompttimer").style.display = 'none';
+    }
+
+    let updateTimerFunc = function (timerVal) {
+        if (!activeTimer) {
+            applyNewTimer(timerVal)
+        } else {
+            document.getElementById("prompttimer").style.display = 'block'
+            document.getElementById("timer-yes").onclick = function () {
+                document.getElementById("prompttimer").style.display = 'none';
+                applyNewTimer(timerVal);
+            }
+            document.getElementById("timer-no").onclick = cancel;
+            //document.getElementById("prompttimer").onclick = cancel;
+        }
+    }
+
+    timerBtn.onclick = function () {
+        visualizeButtonClick(timerBtn)
+        visualizeButtonUnclick(stopwatchBtn);
+        let timerVal = Math.abs(document.getElementById("timer-min").value)
+        updateTimerFunc(timerVal);
+    }
+    stopwatchBtn.onclick = function () {
+        visualizeButtonClick(stopwatchBtn)
+        visualizeButtonUnclick(timerBtn);
+        updateTimerFunc(0);
+    }
+
+
+    loadArtists();
+
+    let visualizeButtonUnclick = function (elem) {
+        elem.classList.remove("smolbuttonx")
+        elem.classList.remove("smolbuttonxdark")
+        let currentType = quiz.getStyleName();
+        if (currentType !== "") {
+            if (currentType == "dark") {
+                currentType = "evil"
+            }
+            elem.classList.remove("smolbuttonx" + currentType)
+            elem.classList.remove("smolbuttonxdark" + currentType)
+        }
+    }
+
+    let changeQuiz = function () {
+        setTotal(quiz.getMaxScore());
+        setCounter(quiz.getScore());
+        socketChangeQuiz();
+        changeFooterPosition();
+    }
+    let changeToGenQuiz = function (genNum) {
+        quiz.setGenQuiz(genNum);
+        changeQuiz();
+    }
+    let changeToTypeQuiz = function (type) {
+        quiz.setTypeQuiz(type);
+        changeQuiz();
+    }
+
+    for (let genKey in genQuizBoxes) {
+        //calling functions, popup and changing button CSS
+        document.getElementById("gen" + genKey).onclick = function () {
+            let swapGen = function () {
+                document.getElementById("genselection").onclick = off2;
+                document.getElementById("typeselection").onclick = off2;
+                promptGen.style.display = "none";
+                changeToGenQuiz(genKey)
+            }
+            promptGenYes.onclick = function () {
+                swapGen();
+                off2();
+            }
+            promptGenNo.onclick = function () {
+                promptGen.style.display = "none";
+            }
+            if (quiz.getScore() !== 0) {
+                promptGen.style.display = 'inline';
+            } else {
+                swapGen();
+                off2();
+            }
+        }
+    }
+
+
+    let allMissingLangButtons = []
+
+    for (let i = 0; i < allLanguages.length; i++) {
+        let key = allLanguages[i]
+        let lang = document.createElement("div");
+        lang.innerHTML += key
+        lang.classList.add('smolbutton')
+        lang.classList.add('langbutton')
+        lang.id = 'missing-' + key
+
+        lang.onclick = function () {
+            let currentType = quiz.getStyleName();
+            for (let i = 0; i < allMissingLangButtons.length; i++) {
+                if (allMissingLangButtons[i] != lang) {
+                    allMissingLangButtons[i].classList.remove('smolbuttonSwap')
+                    allMissingLangButtons[i].classList.remove('smolbuttonSwap' + currentType)
+                    allMissingLangButtons[i].classList.add('smolbutton')
+                    allMissingLangButtons[i].classList.add('smolbutton' + currentType)
+
+                    if (darkMode) {
+                        allMissingLangButtons[i].classList.add('smolbuttondark')
+                        allMissingLangButtons[i].classList.add('smolbuttondark' + currentType)
+                    }
+                }
+                lang.classList.remove('smolbutton');
+                lang.classList.remove('smolbutton' + currentType);
+                lang.classList.remove('smolbuttondark');
+                lang.classList.remove('smolbuttondark' + currentType);
+                lang.classList.add('smolbuttonSwap');
+                lang.classList.add('smolbuttonSwap' + currentType);
+            }
+
+            quiz.setLanguage(key);
+        }
+
+        missingOptionsDiv.appendChild(lang);
+        allMissingLangButtons.push(lang);
+    }
+
+
+
+    function logMisspelling(val, suggestion) {
+        try {
+            let xhttp = new XMLHttpRequest();
+            xhttp.open("POST", '/misspelling', true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.send(JSON.stringify({ misspelling: val, suggestion: suggestion }));
+        } catch (err) {
+
+        }
+    }
+
+
+
+
+
+    function startCountdown(minutes) {
+
+        let countdownInMs = minutes * 60 * 1000;
+        let startTimestamp = countdownInMs + Date.now();
+        let prevTimestamp = Date.now()
+        timerObj = { "type": "countdown", "t": startTimestamp }
+        socketUpdateTimer();
+        activeTimer = setInterval(function () {
+
+            let currentTime = Date.now()
+            if (paused) {
+                startTimestamp += currentTime - prevTimestamp
+            }
+            timerObj["t"] = startTimestamp
+            let msDiff = startTimestamp - currentTime;
+
+            prevTimestamp = currentTime
+
+            updateTimer(msDiff);
+            if (msDiff <= 0) {
+                if (roomId === null) {
+                    giveUp();
+                    showCongrats();
+                }
+            }
+            updateTimer(msDiff);
+        }, 100)
+
+    }
+
+
+    function parseInput(val, username) {
+
+        let onCorrect = null
+        if (isSocketHost || roomId !== null) {
+            onCorrect = (pkmn) => {
+                socketNamedPkmn(pkmn)
+            }
+        }
+        let res = quiz.parseInput(val, username, onCorrect);
+        let correct = res[0]
+        let message = res[1]
+        if (correct) {
+            if (soundEnabled) {
+                soundEffect.play();
+            }
+            setCounter(quiz.getScore());
+            if (!activeTimer) {
+                if (currentTime === 0) {
+                    startTimer();
+                } else {
+                    startCountdown(currentTime)
+                }
+            }
+            if (quiz.getMaxScore() === quiz.getScore()) {
+                if (roomId === null) {
+                    showCongrats();
+                }
+
+            }
+
+            if (isSocketHost || roomId !== null || isTwitchOn) {
+                updateRankings()
+                updateFullLeaderboard()
+            }
+        }
+
+        return [correct, message]
+    }
+
+    nameAll = function () {
+        for (let id of quiz.currentIds) {
+            parseInput(quiz.pokemonIdDict[id].baseName, myUsername)
+        }
+    }
+
+    inputField.oninput = function () {
+        if (inputField.value.length > 0) {
+            if (inputField.value[inputField.value.length - 1] === '?') {
+                inputField.value = inputField.value.substring(0, inputField.value.length - 1);
+                showHint();
+                return;
+            }
+
+            res = parseInput(inputField.value, myUsername);
+
+            let correct = res[0]
+            let message = res[1]
+
+            if (message === "missingno") {
+                inputField.value = '';
+            }
+            else if (correct) {
+                inputField.value = '';
+                hideHint()
+            }
+            else if ((!correct) && message !== null) {
+                inputField.value = '';
+                hideHint()
+                showUserMessage(message);
+            }
+        }
+    }
+
+
+
+    function showCongrats() {
+
+
+        socketCongrats();
+        inputField.disabled = true;
+        updateFullLeaderboard();
+
+        clearInterval(activeTimer);
+        timerObj = { "type": "none" }
+
+        document.getElementById("overlay").style.display = "block";
+        if (soundEnabled) {
+            soundEffect2.play();
+        }
+        let timerScore = '';
+        let pokemonCount = ''
+        if (currentTime === 0) {
+            timerScore = timerText.innerHTML;
+            pokemonCount = ' every ';
+        } else {
+            if (lastDiff === 0) {
+                timerScore = currentTime + ' minutes';
+            } else {
+                timerScore = msToTime(currentTime * 60 * 1000 - lastDiff)
+            }
+            pokemonCount = ' ' + quiz.getScore() + ' '
+        }
+
+
+
+
+        document.getElementById("gen-name").innerHTML = quiz.getEndText();
+        document.getElementById("timer-score").innerHTML = timerScore;
+        document.getElementById("currentcount").innerHTML = pokemonCount
+
+        if (quiz.isSilhouettesEnabled()) {
+            document.getElementById("trychallenge").style.display = "block";
+        } else {
+            document.getElementById("trychallenge").style.display = "none";
+        }
+
+        if (Object.keys(quiz.users).length > 1) {
+            document.getElementById("ranking2").style.display = "block";
+            //document.getElementById("accordion2").click();
+        }
+        document.getElementById("ranking").style.display = "none";
+
+        quiz.animateCongrats()
+    }
+
+    function giveUp() {
+
+        socketGiveUp();
+        updateFullLeaderboard();
+        inputField.disabled = true;
+
+        if (Object.keys(quiz.users).length > 1) {
+            document.getElementById("ranking2").style.display = "block";
+            //document.getElementById("accordion2").click();
+        }
+        document.getElementById("ranking").style.display = "none";
+
+        clearInterval(activeTimer);
+        timerObj = { "type": "none" }
+
+        quiz.giveUp();
+
+        document.getElementById("missednames").style.display = "block";
+        document.getElementById("accordion").click();
+
+    }
+
+    giveUpBtn.onclick = giveUp;
+
+    function getSimilarityScores(input) {
+        let similarityDict = {}
+        input = standardizeName(input)
+        let allPossibleNames = quiz.nameArr
+
+        for (const langName of allPossibleNames) {
+            let similarityScore = Levenshtein(standardizeName(langName), input)
+            similarityDict[langName] = similarityScore
+        }
+        sortedVals = sortDictionaryByValue(similarityDict)
+        return sortedVals.reverse()
+    }
+
+    function usePokeball() {
+        quiz.usePokeball();
+    }
+
+    radioPokeball.onclick = usePokeball;
+    radioSilhouette.onclick = function () {
+        if (quiz.isSilhouettesEnabled() !== true) {
+            promptSilh.style.display = "inline";
+        }
+    };
+
+    promptSilhYes.onclick = function () {
+        quiz.setSilhouettes();
+        socketSetSilhouettes()
+        promptSilh.style.display = "none";
+        radioSilhouette.checked = true;
+    }
+    promptSilhNo.onclick = function () {
+        promptSilh.style.display = "none";
+        radioSilhouette.checked = false;
+
+    }
+
+    let misspellings = allData["misspellings"]
+    //tradeoff memory for perofrmance
+    let efficientMisspellingsTable = {}
+    for (let key in misspellings) {
+        for (let i = 0; i < misspellings[key].length; i++) {
+            efficientMisspellingsTable[misspellings[key][i]] = key
+        }
+    }
+
+
+    function showHint() {
+        if (isSpellingEnabled) {
+            inputField.focus();
+            spellingCheck.style.display = "none";
+            spellingHint.style.display = "inline-block"
+            let suggestion = getMostSimilarInput(standardizeName(inputField.value))
+            spellingHint.innerHTML = suggestion
+            if (inputField.value.length > 0) {
+                logMisspelling(inputField.value, suggestion)
+            }
+        }
+    }
+    document.getElementById("hintplace").onclick = showHint
+    function getMostSimilarInput(input) {
+        if (input.length > 3) {
+            let sortedList = getSimilarityScores(input)
+            if (sortedList.length > 0) {
+                let best = sortedList[0];
+                let pkmn = best[0];
+                let score = best[1];
+
+                if (input in efficientMisspellingsTable) {
+                    return efficientMisspellingsTable[input]
+                }
+
+                if (score == 1) {
+                    return pkmn
+                }
+                else if (input.length === 5 && score <= 2) {
+                    return pkmn;
+                }
+                else if (input.length === 6 && score <= 2) {
+                    return pkmn;
+                }
+                else if (input.length === 7 && score <= 3) {
+                    return pkmn;
+                }
+                else if (input.length >= 8 && score <= 4) {
+                    return pkmn;
+                }
+            }
+        }
+
+        return "not found"
+    }
+
+
+    let updateFullLeaderboard = function () {
+        let leaderboardDiv = document.getElementById("leaderboard2");
+
+        while (leaderboardDiv.firstChild) {
+            leaderboardDiv.firstChild.remove()
+        }
+        if (Object.keys(quiz.users).length > 1) {
+
+            let sorted = sortDictionaryByValue(quiz.users);
+            let currentTypeName = quiz.getStyleName();
+
+            for (let i = 0; i < sorted.length; i++) {
+                let scoreDiv = document.createElement('div');
+                let placeDiv = document.createElement('div');
+                let usernameDiv = document.createElement('div');
+                let nrGuessedDiv = document.createElement('div');
+                let ballImg = document.createElement("img");
+                ballImg.classList.add('spriteb');
+                ballImg.src = '/sprites/unknown-1.png';
+                scoreDiv.classList.add('board')
+                placeDiv.classList.add('place', 'inlinebox', 'inlinebox' + currentTypeName)
+                usernameDiv.classList.add('twitchname', 'inlinebox', 'inlinebox' + currentTypeName)
+                nrGuessedDiv.classList.add('number', 'inlinebox', 'inlinebox' + currentTypeName)
+                if (darkMode) {
+                    placeDiv.classList.add('inlineboxdark')
+                    placeDiv.classList.add('inlineboxdark' + currentTypeName)
+                    usernameDiv.classList.add('inlineboxdark')
+                    usernameDiv.classList.add('inlineboxdark' + currentTypeName)
+                    nrGuessedDiv.classList.add('inlineboxdark')
+                    nrGuessedDiv.classList.add('inlineboxdark' + currentTypeName)
+                }
+
+                let textNode = document.createTextNode('#' + (i + 1));
+                placeDiv.appendChild(textNode)
+                let textNode2 = document.createTextNode(sorted[i][0]);
+                if (sorted[i][0] === myUsername) {
+                    usernameDiv.classList.add('quizmaster')
+                }
+                usernameDiv.appendChild(textNode2)
+                let textNode3 = document.createTextNode(' ' + sorted[i][1]);
+                nrGuessedDiv.append(ballImg, textNode3)
+                scoreDiv.append(placeDiv, usernameDiv, nrGuessedDiv)
+                leaderboardDiv.append(scoreDiv);
+            }
+            changeFooterPosition()
+        }
+    }
+
+    document.getElementById("accordion2").onclick = function () {
+
+        if (document.getElementById("leaderboard2").style.display == 'block') {
+            document.getElementById("leaderboard2").style.display = 'none';
+            document.getElementById("arrow2").classList.add('adown');
+            document.getElementById("arrow2").classList.remove('aup');
+
+        } else {
+            document.getElementById("leaderboard2").style.display = 'block'
+            document.getElementById("arrow2").classList.add('aup');
+            document.getElementById("arrow2").classList.remove('adown');
+            updateFullLeaderboard();
+
+
+        }
+        changeFooterPosition()
+    }
+    for (let i = 0; i < typeList.length; i++) {
+        let currentIndex = i;
+        document.getElementById('b-' + typeList[i]).onclick = function () {
+            let swapGen = function () {
+                document.getElementById("typeselection").onclick = off2;
+                document.getElementById("genselection").onclick = off2;
+                promptGen.style.display = "none";
+                quiz.reset();
+                changeToTypeQuiz(typeList[currentIndex])
+
+            }
+
+            promptGenYes.onclick = function () {
+                swapGen();
+                off2();
+
+            }
+            promptGenNo.onclick = function () {
+                promptGen.style.display = "none";
+            }
+            if (quiz.getScore() !== 0) {
+                promptGen.style.display = 'inline';
+            } else {
+                swapGen();
+                off2();
+            }
+
+        }
+    }
+
+
+    let typePartyIntevalId = null;
+    let enableTypeParty = function () {
+
+        let currentPartyIndex = 0
+
+        if (currentType !== "") {
+            document.getElementById("body").classList.remove(currentType);
+        }
+
+        typePartyIntevalId = setInterval(() => {
+
+            document.getElementById("body").classList.remove(typeList[currentPartyIndex]);
+            currentPartyIndex += 1
+            if (currentPartyIndex == typeList.length) {
+                currentPartyIndex = 0
+            }
+            document.getElementById("body").classList.add(typeList[currentPartyIndex]);
+            if (darkMode) {
+                document.getElementById("body").classList.add("blenddark")
+            }
+            else {
+                document.getElementById("body").classList.add("blend")
+            }
+
+        }, 150);
+
+    }
+
+    let disableTypeParty = function () {
+
+        if (typePartyIntevalId !== null) {
+            clearInterval(typePartyIntevalId);
+        }
+        for (let i = 0; i < typeList.length; i++) {
+            document.getElementById("body").classList.remove(typeList[i])
+        }
+
+        if (currentType === "") {
+            document.getElementById("body").classList.remove("blend")
+            document.getElementById("body").classList.remove("blenddark")
+        } else {
+            if (darkMode) {
+                document.getElementById("body").classList.add("blenddark")
+            }
+            else {
+                document.getElementById("body").classList.add("blend")
+            }
+            document.getElementById("body").classList.add(currentType);
+        }
+
+    }
+
+
+    document.getElementById("accordion2").click();
+    //images to loop through
+    let images = [
+        [encodedImages['sprite']['bulbasaur'], encodedImages['sprite']['charmander'], encodedImages['sprite']['squirtle']],
+        [encodedImages['sprite']['cyndaquil'], encodedImages['sprite']['totodile'], encodedImages['sprite']['chikorita']],
+        [encodedImages['sprite']['mudkip'], encodedImages['sprite']['treecko'], encodedImages['sprite']['torchic']],
+        [encodedImages['sprite']['turtwig'], encodedImages['sprite']['chimchar'], encodedImages['sprite']['piplup']],
+        [encodedImages['sprite']['tepig'], encodedImages['sprite']['oshawott'], encodedImages['sprite']['snivy']],
+        [encodedImages['sprite']['froakie'], encodedImages['sprite']['chespin'], encodedImages['sprite']['fennekin']],
+        [encodedImages['sprite']['rowlet'], encodedImages['sprite']['litten'], encodedImages['sprite']['popplio']],
+        [encodedImages['sprite']['scorbunny'], encodedImages['sprite']['sobble'], encodedImages['sprite']['grookey']],
+        [encodedImages['sprite']['quaxly'], encodedImages['sprite']['sprigatito'], encodedImages['sprite']['fuecoco']],
+        //[encodedImages['sprite']['oshawott'],encodedImages['sprite']['rowlet'], encodedImages['sprite']['cyndaquil']]
+    ]
+
+    //variable for current image index
+    let currentImageIndex = 0
+
+
+    let spriteCycling = true;
+
+    let spriteCycles = allData["sprite_cycles"];
+
+    function cycleSprites(updateCounter) {
+
+        let updateFunc = (pkmn, data) => {
+            let key = standardizeName(pkmn)
+
+            let pathName;
+            if (quiz.shinyEnabled) {
+                pathName = 'shiny'
+            } else {
+                pathName = 'sprite'
+            }
+
+            let currentIndex = updateCounter % data[pkmn].length;
+
+            currentIndex = spriteCycling ? currentIndex : 0;
+
+            let currentSprite = standardizeName(data[pkmn][currentIndex]);
+
+            quiz.spriteDictionary[standardizeName(key)].src = encodedImages[pathName][currentSprite];
+            quiz.unguessedDict[standardizeName(key)].getElementsByTagName('img')[0].src = encodedImages[pathName][currentSprite]
+
+            if (currentSprite in quiz.pokemonIdDict) {
+                quiz.unguessedDictTexts[standardizeName(key)].nodeValue = quiz.pokemonIdDict[standardizeName(data[pkmn][currentIndex])].getFormattedName(quiz.currentLang)
+            } else {
+                quiz.unguessedDictTexts[standardizeName(key)].nodeValue = quiz.pokemonIdDict[standardizeName(pkmn)].getFormattedName(quiz.currentLang)
+            }
+        }
+
+
+        for (let pkmn in spriteCycles) {
+            updateFunc(pkmn, spriteCycles)
+        }
+        for (let pkmn in quiz.spriteCycles) {
+            updateFunc(pkmn, quiz.spriteCycles)
+        }
+    }
+
+
+    let TypeButtonElement = document.getElementById("type0");
+    let originalClassListLength = TypeButtonElement.classList.length
+    let cycleTypes = function (updateCounter) {
+        let imgElement = document.getElementById("type-img");
+        let buttonElement = document.getElementById("type0");
+
+        let currentIndex = updateCounter % typeList.length;
+
+        currentIndex = spriteCycling ? currentIndex : 0;
+
+        let typeName = typeList[currentIndex]
+        if (typeName === "dark") {
+            typeName = "evil"
+        }
+
+        imgElement.src = "/images/types/" + typeList[currentIndex].toUpperCase() + ".svg"
+
+
+        if (buttonElement.classList.length !== originalClassListLength) {
+            buttonElement.classList.remove(buttonElement.classList[buttonElement.classList.length - 1])
+        }
+
+        buttonElement.classList.add("button" + typeName)
+    }
+
+
+    let rotateFunc = function () {
+
+        for (let i = 0; i < images.length; i++) {
+
+            //select specific <img>
+            let imgElement = document.getElementById("gen" + [i + 1] + "img");
+            //its src path gets changed to the current image index
+            imgElement.src = images[i][currentImageIndex % images[0].length];
+        }
+
+        cycleTypes(currentImageIndex)
+        cycleSprites(currentImageIndex)
+
+        //move to the next image index
+        currentImageIndex += 1
+
+    }
+
+    //starts a repeating function 
+    let spriteIntervalId = setInterval(() => {
+        rotateFunc()
+    }, 2000); //500ms (can be changed ofc)
+
+    rotateFunc();
+
+    let stopCycling = function () {
+        spriteCycling = false;
+        rotateFunc();
+    }
+    let startCycling = function () {
+        spriteCycling = true;
+    }
+
+
+    document.getElementById("cycle-on").onclick = () => {
+        startCycling();
+        visualizeButtonUnclick(document.getElementById("cycle-off"))
+        visualizeButtonClick(document.getElementById("cycle-on"))
+
+    };
+    document.getElementById("cycle-off").onclick = () => {
+        stopCycling();
+        visualizeButtonUnclick(document.getElementById("cycle-on"))
+        visualizeButtonClick(document.getElementById("cycle-off"))
+
+    };
+
+    window.addEventListener('beforeunload', beforeUnload);
+
+
+    document.getElementById("twitch-on").onclick = function () {
+        if (!isTwitchOn && document.getElementById("twitch-channel").value != "") {
+            isTwitchOn = true;
+            let channelName = document.getElementById("twitch-channel").value;
+            console.log('enable', channelName);
+            document.getElementById("twitch-channel").disabled = true;
+
+            visualizeButtonUnclick(document.getElementById("twitch-off"))
+            visualizeButtonClick(document.getElementById("twitch-on"))
+
+            client = new tmi.Client({
+                channels: [document.getElementById("twitch-channel").value]
+            });
+            client.on("connected", function (address, port) {
+                showUserMessage("Connected to Twitch chat for " + channelName)
+            });
+
+            client.connect()
+
+
+
+            client.on('message', (channel, tags, message, self) => {
+                console.log('Twitch chat message - ' + `${tags['display-name']}: ${message}`);
+                let twitchUsername = tags['display-name'].toLowerCase()
+                let isVip = false;
+
+                if ("badges" in tags && tags["badges"] != null) {
+                    if ("vip" in tags["badges"]) {
+                        if (tags["badges"]["vip"] == "1") {
+                            isVip = true;
+                        }
+                    }
+                    if ("moderator" in tags["badges"]) {
+                        if (tags["badges"]["moderator"] == "1") {
+                            isVip = true;
+                        }
+                    }
+                    if ("broadcaster" in tags["badges"]) {
+                        if (tags["badges"]["broadcaster"] == "1") {
+                            isVip = true;
+                        }
+                    }
+                }
+                if (isVip || twitchUsername == 'adeptcharon' || twitchUsername == 'stapotv') {
+                    if (standardizeName(message) === "scrolldown".toLowerCase()) {
+                        window.scrollBy(0, 60);
+                    } else if (standardizeName(message) === "scrollup".toLowerCase()) {
+                        window.scrollBy(0, -60);
+                    }
+                    if (standardizeName(message) === "darkoff".toLowerCase()) {
+                        if (Date.now() - swapLimit > lastDarkSwap) {
+                            document.getElementById("darkoff").click()
+                            lastDarkSwap = Date.now();
+                        }
+                    } else if (standardizeName(message) === "darkon".toLowerCase()) {
+                        if (Date.now() - swapLimit > lastDarkSwap) {
+                            document.getElementById("darkon").click()
+                            lastDarkSwap = Date.now();
+                        }
+                    } else if (standardizeName(message) === "shinyon".toLowerCase()) {
+                        if (Date.now() - swapLimit > lastShinySwap) {
+                            shinyOn();
+                            lastShinySwap = Date.now();
+                        }
+                    } else if (standardizeName(message) === "shinyoff".toLowerCase()) {
+                        if (Date.now() - swapLimit > lastShinySwap) {
+                            shinyOff();
+                            lastShinySwap = Date.now();
+                        }
+                    }
+                }
+
+                if (channelName.toLowerCase() == 'ethan_from_chicago') {
+
+                    if (twitchUsername == 'ethan_from_chicago') {
+
+                        if (message == 'ethan') {
+                            let delay = 5
+                            for (const id of quiz.currentIds) {
+                                if (quiz.named.has(id)) {
+                                    continue
+                                }
+                                let pokemon = quiz.pokemonIdDict[id].baseName;
+                                setTimeout(() => {
+                                    twitchInput(twitchUsername, pokemon, true)
+                                }, delay)
+                                delay += 5
+                            }
+                        }
+                    }
+
+                    if (message === "satan".toLowerCase()) {
+                        twitchInput(twitchUsername, 'whimsicott', true)
+                    }
+                    if (message === "wilbur".toLowerCase()) {
+                        twitchInput(twitchUsername, 'pidove', true)
+                        twitchInput(twitchUsername, 'tranquill', true)
+                        twitchInput(twitchUsername, 'unfezant', true)
+                    }
+                    if (message === "dennis".toLowerCase()) {
+                        twitchInput(twitchUsername, 'roggenrola', true)
+                        twitchInput(twitchUsername, 'boldore', true)
+                        twitchInput(twitchUsername, 'gigalith', true)
+                    }
+                    if (message === "fortuna".toLowerCase()) {
+                        twitchInput(twitchUsername, 'spheal', true)
+                    }
+                }
+
+                if (twitchUsername === 'stapotv') {
+                    if (message === "party on") {
+                        enableTypeParty()
+                    }
+                    else if (message === "party off") {
+                        disableTypeParty()
+                    }
+                }
+
+                if (twitchUsername == 'ethan_from_chicago' || channelName.toLowerCase() == 'ethan_from_chicago') {
+                    if (message === "ethan_from_chicago's favorite pokemon".toLowerCase()) {
+                        twitchInput(twitchUsername, 'spheal', true)
+
+                        image = new Image();
+                        image.src = '/images/spheal.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 400, 160);
+                        }, false);
+                    }
+                }
+
+                if (twitchUsername == 'pkmncast' || twitchUsername == 'adeptcharon') {
+                    if (message === "pkmncast".toLowerCase()) {
+                        twitchInput(twitchUsername, 'cramorant', true)
+
+                        image = new Image();
+                        image.src = '/images/cramorant.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 300);
+                        }, false);
+
+                    }
+
+                    if (message === "wigglypuff".toLowerCase()) {
+                        twitchInput(twitchUsername, 'wigglytuff', true)
+
+                        image = new Image();
+                        image.src = '/images/wigglypuff.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 300);
+                        }, false);
+
+                    }
+                }
+
+                if (twitchUsername == 'norainthefuture' || twitchUsername == 'adeptcharon') {
+                    if (message === "nora".toLowerCase()) {
+                        twitchInput(twitchUsername, 'mew', true)
+
+                        image = new Image();
+                        image.src = '/images/mew.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 300);
+                        }, false);
+
+                    }
+                }
+
+                if ((channelName.toLowerCase() == 'birdkeepertoby' || channelName.toLowerCase() == 'adeptcharon') && (twitchUsername == 'birdkeepertoby' || twitchUsername == 'adeptcharon')) {
+                    if (message === "hoot".toLowerCase()) {
+                        twitchInput(twitchUsername, 'hoothoot', true)
+
+                        image = new Image();
+                        image.src = '/images/hoothoot.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 200);
+                        }, false);
+
+                    }
+
+                    if (message === "birdkeeper".toLowerCase()) {
+                        twitchInput(twitchUsername, 'pidgey', true)
+                        twitchInput(twitchUsername, 'spearow', true)
+                        twitchInput(twitchUsername, 'farfetchd', true)
+                        twitchInput(twitchUsername, 'doduo', true)
+                        twitchInput(twitchUsername, 'hoothoot', true)
+                        twitchInput(twitchUsername, 'natu', true)
+                        twitchInput(twitchUsername, 'murkrow', true)
+                        twitchInput(twitchUsername, 'delibird', true)
+                        twitchInput(twitchUsername, 'skarmory', true)
+                        twitchInput(twitchUsername, 'taillow', true)
+                        twitchInput(twitchUsername, 'wingull', true)
+                        twitchInput(twitchUsername, 'swablu', true)
+                        twitchInput(twitchUsername, 'starly', true)
+                        twitchInput(twitchUsername, 'chatot', true)
+                        twitchInput(twitchUsername, 'pidove', true)
+                        twitchInput(twitchUsername, 'archen', true)
+                        twitchInput(twitchUsername, 'ducklett', true)
+                        twitchInput(twitchUsername, 'rufflet', true)
+                        twitchInput(twitchUsername, 'vullaby', true)
+                        twitchInput(twitchUsername, 'fletchling', true)
+                        twitchInput(twitchUsername, 'hawlucha', true)
+                        twitchInput(twitchUsername, 'rowlet', true)
+                        twitchInput(twitchUsername, 'torchic', true)
+                        twitchInput(twitchUsername, 'pikipek', true)
+                        twitchInput(twitchUsername, 'oricorio', true)
+                        twitchInput(twitchUsername, 'rookidee', true)
+                        twitchInput(twitchUsername, 'cramorant', true)
+                    }
+
+                }
+
+                if (channelName.toLowerCase() == 'littlelemonbun' && twitchUsername == 'littlelemonbun') {
+                    if (message === "besttype".toLowerCase()) {
+                        twitchInput(twitchUsername, 'bulbasaur', true)
+                        twitchInput(twitchUsername, 'oddish', true)
+                        twitchInput(twitchUsername, 'paras', true)
+                        twitchInput(twitchUsername, 'bellsprout', true)
+                        twitchInput(twitchUsername, 'exeggcute', true)
+                        twitchInput(twitchUsername, 'tangela', true)
+                        twitchInput(twitchUsername, 'chikorita', true)
+                        twitchInput(twitchUsername, 'hoppip', true)
+                        twitchInput(twitchUsername, 'sunkern', true)
+                        twitchInput(twitchUsername, 'treecko', true)
+                        twitchInput(twitchUsername, 'lotad', true)
+                        twitchInput(twitchUsername, 'seedot', true)
+                        twitchInput(twitchUsername, 'shroomish', true)
+                        twitchInput(twitchUsername, 'cacnea', true)
+                        twitchInput(twitchUsername, 'lileep', true)
+                        twitchInput(twitchUsername, 'tropius', true)
+                        twitchInput(twitchUsername, 'turtwig', true)
+                        twitchInput(twitchUsername, 'budew', true)
+                        twitchInput(twitchUsername, 'cherubi', true)
+                        twitchInput(twitchUsername, 'carnivine', true)
+                        twitchInput(twitchUsername, 'snover', true)
+                        twitchInput(twitchUsername, 'leafeon', true)
+                        twitchInput(twitchUsername, 'snivy', true)
+                        twitchInput(twitchUsername, 'pansage', true)
+                        twitchInput(twitchUsername, 'sewaddle', true)
+                        twitchInput(twitchUsername, 'cottonee', true)
+                        twitchInput(twitchUsername, 'petilil', true)
+                        twitchInput(twitchUsername, 'maractus', true)
+                        twitchInput(twitchUsername, 'deerling', true)
+                        twitchInput(twitchUsername, 'foongus', true)
+                        twitchInput(twitchUsername, 'ferroseed', true)
+                        twitchInput(twitchUsername, 'chespin', true)
+                        twitchInput(twitchUsername, 'phantump', true)
+                        twitchInput(twitchUsername, 'pumpkaboo', true)
+                        twitchInput(twitchUsername, 'rowlet', true)
+                        twitchInput(twitchUsername, 'fomantis', true)
+                        twitchInput(twitchUsername, 'morelull', true)
+                        twitchInput(twitchUsername, 'bounsweet', true)
+                        twitchInput(twitchUsername, 'dhelmise', true)
+                        twitchInput(twitchUsername, 'grookey', true)
+                        twitchInput(twitchUsername, 'gossifleur', true)
+                        twitchInput(twitchUsername, 'applin', true)
+                    }
+                }
+                if (twitchUsername == 'littlelemonbun' || twitchUsername == 'adeptcharon' || (channelName.toLowerCase() == 'littlelemonbun' && isVip)) {
+                    if (message === "lemonbun".toLowerCase()) {
+
+                        image = new Image();
+                        image.src = '/images/chikorita.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 300);
+                        }, false);
+                    }
+                    if (message === "lemonmonke".toLowerCase()) {
+
+                        image = new Image();
+                        image.src = '/images/grookey.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 300);
+                        }, false);
+                    }
+                    if (message === "lemonbulb".toLowerCase()) {
+
+                        image = new Image();
+                        image.src = '/images/bulbasaur.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 200);
+                        }, false);
+                    }
+                    if (message === "lemonowl".toLowerCase()) {
+
+                        image = new Image();
+                        image.src = '/images/rowlet.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 300);
+                        }, false);
+                    }
+                }
+
+                if (twitchUsername == 'r2dabes' || twitchUsername == 'adeptcharon') {
+                    if (message === "r2dabes".toLowerCase()) {
+                        twitchInput(twitchUsername, 'flapple', true)
+
+                        image = new Image();
+                        image.src = '/images/flapple.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 300);
+                        }, false);
+
+                    }
+                }
+
+                if (twitchUsername == 'adeptcharon') {
+                    if (message === "bestpkmn".toLowerCase()) {
+                        twitchInput(twitchUsername, 'crabominable', true)
+
+                        image = new Image();
+                        image.src = '/images/crabominable.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 340);
+                        }, false);
+
+                    }
+                }
+
+                if (twitchUsername == 'fabulousfauna' || twitchUsername == 'adeptcharon') {
+                    if (message === "fauna".toLowerCase()) {
+                        twitchInput(twitchUsername, 'vulpix', true)
+
+                        image = new Image();
+                        image.src = '/images/vulpix.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 300);
+                        }, false);
+
+                    }
+
+                    if (message === "fabulous".toLowerCase()) {
+                        twitchInput(twitchUsername, 'ninetales', true)
+
+                        image = new Image();
+                        image.src = '/images/vulpix-alola.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 300);
+                        }, false);
+
+                    }
+                }
+
+                twitchInput(twitchUsername, message, true)
+            });
+
+        }
+    }
+
+
+    function updateRankings() {
+
+        let sorted = sortDictionaryByValue(quiz.users);
+        emptyLeaderboard();
+        let leaderboardDiv = document.getElementById("leaderboard");
+        let currentTypeName = quiz.getStyleName()
+        for (let i = 0; i < sorted.length; i++) {
+            let scoreDiv = document.createElement('div');
+            scoreDiv.classList.add('inlinetext')
+            scoreDiv.classList.add('inlinetext' + currentTypeName)
+            scoreDiv.classList.add('rank')
+            scoreDiv.classList.add(rankVals[i])
+            let textNode = document.createTextNode('#' + (i + 1) + ' ' + sorted[i][0] + ' (' + sorted[i][1] + ')');
+            scoreDiv.appendChild(textNode)
+            leaderboardDiv.appendChild(scoreDiv);
+            if (i >= 2) {
+                break;
+            }
+        }
+        if (sorted.length > 1) {
+            document.getElementById("ranking").style.display = 'block';
+        }
+    }
+
+    let twitchInput = function (twitchUsername, input, shouldCount) {
+
+        let isCorrect = parseInput(input, twitchUsername);
+    }
+
+    document.getElementById("twitch-off").onclick = function () {
+        if (isTwitchOn) {
+            isTwitchOn = false;
+            console.log('disable');
+            document.getElementById("twitch-channel").disabled = false;
+            visualizeButtonUnclick(document.getElementById("twitch-on"))
+            visualizeButtonClick(document.getElementById("twitch-off"))
+            client.disconnect();
+            document.getElementById("ranking").style.display = 'none';
+        }
+    }
+
+    function pauseOn() {
+        //if (activeTimer){
+        paused = true;
+        quiz.paused = true;
+        inputField.disabled = true;
+        document.getElementById("pause-overlay").style.display = "block"
+        //document.body.style.overflow = 'hidden';
+        // }
+    }
+
+    function pauseOff() {
+        paused = false;
+        quiz.paused = false;
+        inputField.disabled = false;
+        document.getElementById("pause-overlay").style.display = "none"
+        //document.body.style.overflow = 'auto';
+
+    }
+
+
+    function getQuizState() {
+
+        let state = {}
+        state["filters"] = quiz.filters
+        state["quizName"] = quiz.name
+        state["named"] = [...quiz.named]
+        state["users"] = quiz.users
+        state["paused"] = quiz.paused
+        state["silhouettes"] = quiz.isSilhouettesEnabled()
+
+        state["timer"] = timerObj
+
+        return state;
+    }
+
+
+    function roomUpdateTimer(_timer) {
+        //slightly changed timer functions
+        if (_timer["type"] !== "none") {
+            clearInterval(activeTimer)
+            if (_timer["type"] === "countdown") {
+
+                let startTimestamp = _timer["t"]
+                let prevTimestamp = startTimestamp
+                activeTimer = setInterval(function () {
+
+                    let currentTime = Date.now()
+                    if (paused) {
+                        startTimestamp += currentTime - prevTimestamp
+                    }
+
+                    let msDiff = startTimestamp - currentTime;
+
+                    prevTimestamp = currentTime
+
+                    updateTimer(msDiff);
+                }, 100)
+
+            } else {
+
+                let prevTimestamp = Date.now();
+                let total = _timer["t"] + (Date.now() - _timer["updatedAt"])
+
+                activeTimer = setInterval(function () {
+
+                    let msDiff = Date.now() - prevTimestamp;
+                    prevTimestamp = Date.now();
+                    if (!paused) {
+                        total += msDiff
+                    }
+                    updateTimer(total);
+                }, 100)
+            }
+        }
+    }
+
+    function setQuizState(state) {
+
+        state["named"] = new Set(state["named"])
+
+        quiz.setQuiz(state["quizName"], state["filters"])
+        if (state["silhouettes"]) {
+            quiz.setSilhouettes();
+        }
+
+        //timer will start on first input
+
+        for (let id of state["named"]) {
+            quiz.addNamed(id)
+        }
+        quiz.users = state["users"]
+        setCounter(quiz.getScore());
+        roomUpdateTimer(state["timer"]);
+
+        if (state["paused"]) {
+            pauseOn()
+        }
+
+    }
+
+
+
+
+    document.getElementById("unpause").onclick = () => {
+        socketSetPaused(false);
+        pauseOff();
+    }
+    pauseBtn.onclick = () => {
+        socketSetPaused(true);
+        pauseOn();
+    }
+    changeFooterPosition();
+
+    setCounter(0);
+    resetTimer()
+
+    onLoadingComplete()
+}
+let visualizeButtonClick = function (elem) {
+    elem.classList.add("smolbuttonx")
+    if (darkMode) {
+        elem.classList.add("smolbuttonxdark")
+    }
+
+    if (quiz.getStyleName() !== "") {
+        let typeName = quiz.getStyleName()
+        elem.classList.add("smolbuttonx" + typeName)
+        if (darkMode) {
+            elem.classList.add("smolbuttonxdark" + typeName)
+        }
+    }
+
+}
+let visualizeButtonUnclick = function (elem) {
+    elem.classList.remove("smolbuttonx")
+    elem.classList.remove("smolbuttonxdark")
+    if (quiz.getStyleName() !== "") {
+        let typeName = quiz.getStyleName()
+        if (typeName == "dark") {
+            typeName = "evil"
+        }
+        elem.classList.remove("smolbuttonx" + typeName)
+        elem.classList.remove("smolbuttonxdark" + typeName)
+    }
+}
+
+
+function addTransitionCss() {
+    let elems = []
+    elems.push(document.getElementById("body"))
+    let classNames = ["box", "button", "smolbutton", "limelight", "greyer", "inlinebox", "spbutton", "twitchbar", "bgpattern", "bgpattern2"]
+    for (const _c of classNames) {
+        let _elems = document.getElementsByClassName(_c)
+        for (let i = 0; i < _elems.length; i++) {
+            elems.push(_elems[i])
+        }
+    }
+
+    for (let i = 0; i < elems.length; i++) {
+        elems[i].classList.add("transition-element")
+
+    }
+    let currentDate = new Date()
+    if (currentDate.getHours() >= 18 || currentDate.getHours() <= 7) {
+        setTimeout(() => {
+            document.getElementById("darkon").click();
+        }, 10)
+    }
+}
+
+
+function preloadSmallerImages() {
+
+
+    for (let i = 0; i < typeList.length; i++) {
+        let typeName = typeList[i].toUpperCase()
+        let img = new Image()
+        img.src = "/images/types/" + typeName + ".svg";
+    }
+
+
+}
+
+function onLoadingComplete() {
+
+    //document.getElementById("loadbox").style.display = "none";
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("loadboxguest").style.display = "none";
+    document.getElementById("playtext").style.opacity = "1";
+    document.getElementById("inputbar").style.opacity = "1";
+    document.getElementById("pokemon").disabled = false;
+    document.getElementById("spinner").style.display = "none";
+    document.getElementById("spinnerguest").style.display = "none";
+    document.getElementById("username-area").style.display = "block"
+    document.getElementById("missing-ENG").click()
+    changeFooterPosition();
+
+
+    addTransitionCss();
+    preloadSmallerImages();
+}
+
+
+let currentMessageTimeout = null;
+function showUserMessage(message) {
+
+    if (currentMessageTimeout !== null) {
+        clearTimeout(currentMessageTimeout)
+    }
+    let snackbar = document.getElementById("wrongquiz");
+    snackbar.innerHTML = message
+    snackbar.classList.remove("snackbarshow");
+    snackbar.classList.add("snackbarshow");
+    currentMessageTimeout = setTimeout(function () {
+        snackbar.classList.remove("snackbarshow");
+        snackbar.classList.add("snackbar");
+    }, 3000);
+}
+
+
+//https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
+function remove_duplicates_safe(arr) {
+    var seen = {};
+    var ret_arr = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (!(arr[i] in seen)) {
+            ret_arr.push(arr[i]);
+            seen[arr[i]] = true;
+        }
+    }
+    return ret_arr;
+}
+function standardizeName(input) {
+    //remove whitespaces
+    input = input.replace(/\s/g, '');
+
+    //remove dashes
+    input = input.replace(/-/g, '');
+
+    //put to lowercase
+    input = input.toLowerCase();
+
+    input = input.normalize('NFKC')
+
+    //flabebe
+    input = input.replace(/é/g, 'e');
+    //other special characters
+    input = input.replace(/[èêëěęėē]/g, 'e');
+    input = input.replace(/[üùúûűũųůū]/g, 'u');
+    input = input.replace(/[äàáâãåǎąăæā]/g, "a");
+    input = input.replace(/[öòóôõőøœ]/g, 'o');
+    input = input.replace(/[đďð]/g, 'd');
+    input = input.replace(/[ĝģğ]/g, 'g');
+    input = input.replace(/ĵ/g, 'j');
+    input = input.replace(/ķ/g, 'k');
+    input = input.replace(/ĥ/g, 'h');
+    input = input.replace(/ß/g, 'ss');
+    input = input.replace(/ŵ/g, 'w');
+    input = input.replace(/[çćĉč]/g, 'c');
+    input = input.replace(/[ïìíîıīį]/g, 'i');
+    input = input.replace(/[ĺļłľŀ]/g, 'l');
+    input = input.replace(/[ñńňņ]/g, 'n');
+    input = input.replace(/[ŕř]/g, 'r');
+    input = input.replace(/[śŝşšș]/g, 's');
+    input = input.replace(/[ťţþț]/g, 't');
+    input = input.replace(/[ýÿŷ]/g, 'y');
+    input = input.replace(/[źžż乙]/g, 'z');
+
+
+
+    //accept latin for full-width characters
+    input = input.replace(/[ａ-ｚ０-９]/g, function (match) {
+        return String.fromCharCode(match.charCodeAt(0) - 65248);
+    });
+    //accept latin for roman numerals
+    input = input.replace(/Ⅰ/g, 'i');
+    input = input.replace(/Ⅱ/g, 'ii');
+    input = input.replace(/Ⅲ/g, 'iii');
+    input = input.replace(/Ⅳ/g, 'iv');
+    input = input.replace(/Ⅴ/g, 'v');
+    input = input.replace(/Ⅵ/g, 'vi');
+    input = input.replace(/Ⅶ/g, 'ivii');
+    input = input.replace(/Ⅷ/g, 'viii');
+    input = input.replace(/Ⅸ/g, 'ix');
+    input = input.replace(/Ⅹ/g, 'x');
+    input = input.replace(/Ⅺ/g, 'xi');
+    input = input.replace(/Ⅻ/g, 'xii');
+    input = input.replace(/Ⅼ/g, 'l');
+    input = input.replace(/Ⅽ/g, 'c');
+    input = input.replace(/Ⅾ/g, 'd');
+    input = input.replace(/Ⅿ/g, 'm');
+
+
+    //delete all special characters
+    input = input.replace(/[^ぁ-んァ-ン가-힣a-z0-9-_ß０-９ａ-ｚー\u4e00-\u9fa5\uf91f\uf929Ⅰ-ↈ]/g, '');
+    input = input.replace(/[艷]/g, '豔');
+    return input;
+}
+
+function spellingHelp() {
+    if (isSpellingEnabled) {
+        spellingElement.style.display = "none";
+        visualizeButtonUnclick(spellingButton)
+        hideHint()
+        isSpellingEnabled = false;
+        inputField.focus()
+    } else {
+        spellingElement.style.display = "inline-block";
+        visualizeButtonClick(spellingButton)
+        isSpellingEnabled = true;
+        showUserMessage("You can also type '?' to reveal");
+        inputField.focus();
+    }
+}
+
+
+function hideHint() {
+    spellingCheck.style.display = "inline-block";
+    spellingHint.style.display = "none"
+    spellingHint.innerHTML = "";
+}
+
+let typeClasses = [
+    "smolbuttonxdarktype",
+    "smolbuttonxtype",
+    "limetype",
+    "limelighttype",
+    "outlinetype",
+    "topedgetype",
+    "input-twitchtype",
+    "input-twitchtype:disabled",
+    "input-timertype",
+    "smolbuttontype",
+    "smolbuttonSwaptype",
+    "smolbuttontype:hover",
+    "inlineboxtype",
+    "buttondarktype",
+    "limelightdarktype",
+    "inlineboxdarktype",
+    "arrowtype",
+]
+
+
+let pokecolumns = [];
+for (let i = 0; i < 5; i++) {
+    pokecolumns.push(document.getElementById("pokecolumn" + (i + 1)));
+}
+
+
+let regionToSingle = function (regionElement) {
+    regionElement.classList.remove('region');
+    regionElement.classList.add('regionb');
+}
+
+let regionToAll = function (regionElement) {
+    regionElement.classList.add('region');
+    regionElement.classList.remove('regionb');
+}
+
+function resetQuiz() {
+    quiz.reset();
+}
+resetBtn.onclick = resetQuiz;
+
+let emptyLeaderboard = function () {
+    let leaderboardDiv = document.getElementById("leaderboard");
+    while (leaderboardDiv.firstChild) {
+        leaderboardDiv.removeChild(leaderboardDiv.firstChild);
+    }
+}
+
+
+
+function changeFooterPosition() {
+
+    if (main.scrollHeight < window.innerHeight - 69 - footer.scrollHeight) {
+
+        footer.style.position = 'fixed';
+    } else {
+
+        footer.style.position = 'relative';
+    }
+}
+
+window.addEventListener('resize', function () {
+    changeFooterPosition();
+}, false);
+window.addEventListener('orientationchange', function () {
+    changeFooterPosition();
+}, false);
+
+
+function off() {
+    document.getElementById("overlay").style.display = "none";
+}
+
+function off2() {
+    document.getElementById("loadbox").style.display = "none";
+    document.getElementById("startfull").style.display = "none";
+    document.getElementById("starttype").style.display = "none";
+    document.getElementById("genselection").style.display = "none";
+    document.getElementById("typeselection").style.display = "none";
+    document.getElementById("inputbox").classList.add('attentionshake');
+    //clearInterval(spriteIntervalId);
+    inputField.focus();
+}
+
+function off3() {
+    document.getElementById("promptswitch").style.display = "none";
+    document.getElementById("prompttimer").style.display = "none";
+    document.getElementById("promptsilhouette").style.display = "none";
+}
+
+function genselectmenu() {
+    document.getElementById("genselection").style.display = "block";
+}
+
+function typeselectmenu() {
+    document.getElementById("typeselection").style.display = "block";
+}
+function typeselectmenuInitial() {
+    document.getElementById("genselection").style.display = "none";
+    document.getElementById("typeselection").style.display = "block";
+}
+
+function twitchopen() {
+    document.getElementById("twitch-coll").style.display = "inline-block";
+    document.getElementById("twitch-open").style.display = "none";
+    document.getElementById("twitch-bar").style.cursor = "default";
+}
+function twitchclose() {
+    document.getElementById("twitch-coll").style.display = "none";
+    document.getElementById("twitch-open").style.display = "inline-block";
+    document.getElementById("twitch-bar").style.cursor = "pointer";
+}
+
+function orderopen() {
+    document.getElementById("order-coll").style.display = "inline-block";
+    document.getElementById("order-open").style.display = "none";
+    document.getElementById("order-bar").style.cursor = "default";
+}
+function orderclose() {
+    document.getElementById("order-coll").style.display = "none";
+    document.getElementById("order-open").style.display = "inline-block";
+    document.getElementById("order-bar").style.cursor = "pointer";
+}
+
+
+function gen0click() {
+    if (quiz.getStyleName() !== "" || quiz.name !== "Full") {
+        document.getElementById("gen0").click();
+    }
+}
+
+function swapShiny() {
+    if (document.getElementById("shiny").classList.contains('smolbuttonx')) {
+        shinyOff()
+    }
+    else {
+        shinyOn()
+    }
+}
+
+
+function shinyOn() {
+    visualizeButtonClick(document.getElementById("shiny"))
+    quiz.shinyOn();
+}
+
+function shinyOff() {
+    visualizeButtonUnclick(document.getElementById("shiny"))
+    quiz.shinyOff();
+}
+
+document.getElementById("shiny").onclick = swapShiny;
+
+
+recentSprite.src = '/sprites/unknown.png'
+//This accounts for all unknown.png's on the page
+recentSprite.addEventListener("load", function () {
+    changeFooterPosition();
+}, false)
+
+
+
+
+
+let randomIntFromInterval = function (min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+let imageRain = function (image, imageCount, avgSize) {
+
+    let canvas = document.createElement('canvas');
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0px';
+    canvas.style.left = '0px';
+    canvas.style['z-index'] = 3;
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.scrollHeight;
+    document.body.appendChild(canvas);
+    let ctx = canvas.getContext("2d");
+
+    let imageList = [];
+
+    for (let i = 0; i < imageCount; i++) {
+
+        let x = randomIntFromInterval(-200, document.documentElement.clientWidth + 200);
+        let y = randomIntFromInterval(-2000, -450);
+        let speed = randomIntFromInterval(6000, 12000);
+        let size = randomIntFromInterval(Math.round(avgSize * 0.8), Math.round(avgSize * 1.2));
+        let angle = randomIntFromInterval(0, 360);
+        let angleIncrement = randomIntFromInterval(-2000, 2000);
+
+        imageList.push([x, y, speed, size, angle, angleIncrement]);
+    }
+
+    let fps = 60;
+    let animationDuration = 6;
+    let nrFrames = fps * animationDuration;
+
+    let delay = 1000 / fps;
+    let waitFor = 0;
+    for (let i = 0; i < nrFrames; i++) {
+        let k = i;
+        setTimeout(() => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
+            for (let j = 0; j < imageList.length; j++) {
+                imageList[j][1] += (imageList[j][2] / 1000)
+                imageList[j][2] *= 1.005;
+                ctx.save(); //saves the state of canvas
+                ctx.translate(imageList[j][0], imageList[j][1])
+                ctx.rotate(imageList[j][4] * (Math.PI / 180))
+                imageList[j][4] += (imageList[j][5] / 1000);
+                ctx.drawImage(image, -imageList[j][3] / 2, -imageList[j][3] / 2, imageList[j][3], imageList[j][3]);
+                ctx.restore()
+            }
+
+        }, waitFor);
+        waitFor += delay;
+
+    }
+    setTimeout(() => {
+        document.body.removeChild(canvas);
+    }, waitFor);
+
+}
+
+
+let animationCanvas = null;
+let animationCanvasTimeout = null;
+let animationCanvasInterval = null;
+
+let animationCanvasDuration = 5750;
+
+let animationWidth = 204;
+let animationHeight = 168;
+
+let ongoingAnimations = [];
+let animationCanvasWidth;
+
+
+let refreshAnimationCanvas = function () {
+    if (animationCanvasTimeout !== null) {
+        clearInterval(animationCanvasTimeout);
+    }
+    if (animationCanvas === null) {
+
+        animationCanvas = document.createElement('canvas');
+        animationCanvas.style.position = 'absolute';
+        animationCanvas.style.top = '0px';
+        animationCanvas.style.left = '0px';
+        animationCanvas.style['z-index'] = 5;
+        animationCanvasWidth = document.documentElement.clientWidth;
+        animationCanvas.width = animationCanvasWidth;
+        animationCanvas.height = document.documentElement.clientHeight;
+        document.body.appendChild(animationCanvas);
+
+        animationCanvasInterval = setInterval(() => {
+            let ctx = animationCanvas.getContext("2d");
+            ctx.clearRect(0, 0, animationCanvas.width, animationCanvas.height);
+            for (let j = 0; j < ongoingAnimations.length; j++) {
+                if (ongoingAnimations[j][1] < (animationCanvas.height)) {
+                    ongoingAnimations[j][1] += (ongoingAnimations[j][2] / 1000)
+                    ongoingAnimations[j][2] *= 1.005;
+                    ctx.save(); //saves the state of canvas
+                    ctx.translate(ongoingAnimations[j][0], ongoingAnimations[j][1])
+                    ctx.rotate(ongoingAnimations[j][3] * (Math.PI / 180))
+                    ongoingAnimations[j][3] += (ongoingAnimations[j][4] / 1000);
+                    ctx.drawImage(ongoingAnimations[j][5], -animationWidth / 2, -animationHeight / 2, animationWidth, animationHeight);
+                    ctx.restore()
+                }
+            }
+
+        }, 1000 / 60)
+    }
+
+    animationCanvasTimeout = setTimeout(() => {
+        animationCanvas.remove()
+        animationCanvas = null;
+        animationCanvasTimeout = null;
+        ongoingAnimations = [];
+        if (animationCanvasInterval !== null) {
+            clearInterval(animationCanvasInterval);
+        }
+    }, animationCanvasDuration);
+
+
+}
+
+let animateInput = function (id) {
+    refreshAnimationCanvas();
+
+    let x = randomIntFromInterval(animationWidth / 2, animationCanvasWidth - (animationWidth / 2));
+    let y = randomIntFromInterval(-3500, -animationWidth * 1.5);
+    let speed = randomIntFromInterval(7000, 9500);
+    let angle = randomIntFromInterval(0, 360);
+    let angleIncrement = randomIntFromInterval(-2000, 2000);
+    ongoingAnimations.push([x, y, speed, angle, angleIncrement, quiz.spriteDictionary[id]]);
+
+}
+
+
+
+document.getElementById("accordion").onclick = function () {
+
+    if (document.getElementById("panel").style.display == 'block') {
+        document.getElementById("panel").style.display = 'none';
+        document.getElementById("arrow").classList.add('adown');
+        document.getElementById("arrow").classList.remove('aup');
+
+        let childNodes = document.getElementById("panel").childNodes;
+
+        for (let i = 0; i < childNodes.length; i++) {
+            childNodes[i].style.display = 'block';
+        }
+
+    } else {
+        document.getElementById("panel").style.display = 'block'
+        document.getElementById("arrow").classList.add('aup');
+        document.getElementById("arrow").classList.remove('adown');
+
+        let childNodes = document.getElementById("panel").childNodes;
+
+        for (let i = 0; i < childNodes.length; i++) {
+            let childElements = childNodes[i].childNodes[0].childNodes;
+            let hasContent = false;
+
+            for (let j = 0; j < childElements.length; j++) {
+                if (childElements[j].style.display != 'none') {
+
+                    hasContent = true;
+                    break;
+                }
+            }
+
+            if (!hasContent) {
+                childNodes[i].style.display = 'none';
+            } else {
+                childNodes[i].style.display = 'block';
+            }
+        }
+
+
+    }
+    changeFooterPosition()
+}
+
+
+
+let sortDictionaryByValue = function (dictionary) {
+    let entries = Object.entries(dictionary);
+    return sorted = entries.sort((a, b) => b[1] - a[1]);
+}
+
+
+
+
+document.getElementById("darkon").onclick = function () {
+
+    if (!darkMode) {
+        darkMode = !darkMode
+        visualizeButtonUnclick(document.getElementById("darkoff"))
+        visualizeButtonClick(document.getElementById("darkon"))
+        document.getElementById("darkon").style.display = "none";
+        document.getElementById("darkoff").style.display = "inline";
+
+        document.getElementById("body").classList.add("bodydark");
+
+        let boxes = document.getElementsByClassName("box")
+
+        for (let i = 0; i < boxes.length; i++) {
+            boxes[i].classList.add("boxdark")
+        }
+
+        let smolButtons = document.getElementsByClassName("smolbutton")
+        for (let i = 0; i < smolButtons.length; i++) {
+            smolButtons[i].classList.add("smolbuttondark")
+        }
+
+        let buttonsX = document.getElementsByClassName("smolbuttonx")
+
+        for (let i = 0; i < buttonsX.length; i++) {
+            buttonsX[i].classList.add("smolbuttonxdark")
+        }
+
+        let buttons = document.getElementsByClassName("button")
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].classList.add("buttondark")
+        }
+
+        let limelights = document.getElementsByClassName("limelight")
+
+        for (let i = 0; i < limelights.length; i++) {
+            limelights[i].classList.add("limelightdark")
+        }
+
+        let greyers = document.getElementsByClassName("greyer")
+
+        for (let i = 0; i < greyers.length; i++) {
+            greyers[i].classList.add("greyerdark")
+        }
+
+        let boarders = document.getElementsByClassName("inlinebox")
+
+        for (let i = 0; i < boarders.length; i++) {
+            boarders[i].classList.add("inlineboxdark")
+        }
+
+        let shinybutton = document.getElementsByClassName("spbutton")
+        for (let i = 0; i < shinybutton.length; i++) {
+            shinybutton[i].classList.add("buttondark")
+        }
+
+        for (let i = 0; i < quiz.pokeballArray.length; i++) {
+            quiz.pokeballArray[i].src = '/sprites/unknown-2.png';
+        }
+        recentSprite.src = '/sprites/unknown-2.png'
+
+        if (quiz.getStyleName() !== "") {
+            document.getElementById("body").classList.add("blenddark")
+            document.getElementById("body").classList.remove("blend")
+
+
+            for (let i = 0; i < typeClasses.length; i++) {
+                let currentClass = typeClasses[i];
+                if (!currentClass.includes('dark')) {
+                    continue;
+                }
+
+                let typeName = quiz.getStyleName();
+                let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
+                for (let j = 0; j < allElements.length; j++) {
+                    allElements[j].classList.add(currentClass.replace("type", typeName))
+                }
+
+            }
+
+        }
+
+    }
+}
+
+
+
+document.getElementById("darkoff").onclick = function () {
+    if (darkMode) {
+        darkMode = !darkMode
+
+        //has to be called before removing other shit
+        if (quiz.getStyleName() !== "") {
+            document.getElementById("body").classList.remove("blenddark")
+            document.getElementById("body").classList.add("blend")
+
+
+            for (let i = 0; i < typeClasses.length; i++) {
+                let currentClass = typeClasses[i];
+                if (!currentClass.includes('dark')) {
+                    continue;
+                }
+
+                let typeName = quiz.getStyleName();
+                let val = currentClass.replace("type", "");
+                let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
+                for (let j = 0; j < allElements.length; j++) {
+                    allElements[j].classList.remove(currentClass.replace("type", typeName))
+                }
+
+            }
+
+
+        }
+
+
+
+        visualizeButtonUnclick(document.getElementById("darkon"))
+        visualizeButtonClick(document.getElementById("darkoff"))
+        document.getElementById("darkoff").style.display = "none";
+        document.getElementById("darkon").style.display = "inline";
+
+        document.getElementById("body").classList.remove("bodydark");
+
+        let boxes = document.getElementsByClassName("box")
+
+        for (let i = 0; i < boxes.length; i++) {
+            boxes[i].classList.remove("boxdark")
+        }
+
+        let buttons = document.getElementsByClassName("button")
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove("buttondark")
+        }
+
+
+        let smolButtons = document.getElementsByClassName("smolbutton")
+        for (let i = 0; i < smolButtons.length; i++) {
+            smolButtons[i].classList.remove("smolbuttondark")
+        }
+
+        let buttonsX = document.getElementsByClassName("smolbuttonx")
+
+        for (let i = 0; i < buttonsX.length; i++) {
+            buttonsX[i].classList.remove("smolbuttonxdark")
+        }
+
+        let limelights = document.getElementsByClassName("limelight")
+
+        for (let i = 0; i < limelights.length; i++) {
+            limelights[i].classList.remove("limelightdark")
+        }
+
+        let greyers = document.getElementsByClassName("greyer")
+
+        for (let i = 0; i < greyers.length; i++) {
+            greyers[i].classList.remove("greyerdark")
+        }
+
+        let boarders = document.getElementsByClassName("inlinebox")
+
+        for (let i = 0; i < boarders.length; i++) {
+            boarders[i].classList.remove("inlineboxdark")
+        }
+
+        let shinybutton = document.getElementsByClassName("spbutton")
+        for (let i = 0; i < shinybutton.length; i++) {
+            shinybutton[i].classList.remove("buttondark")
+        }
+
+        for (let i = 0; i < quiz.pokeballArray.length; i++) {
+            quiz.pokeballArray[i].src = '/sprites/unknown.png';
+        }
+        recentSprite.src = '/sprites/unknown.png'
+    }
+}
+
+function creditspopup() {
+    var popup = document.getElementById("credits");
+    popup.classList.toggle("show");
+}
+
+let enabledLanguages = []
+
+let disableLanguage = function () { return; };
+
+let enableLanguage = function (languageButton) {
+
+    enabledLanguages.push(languageButton.id)
+    visualizeButtonClick(languageButton);
+    languageButton.onclick = function () {
+        disableLanguage(languageButton)
+    }
+    quiz.updateLanguages(enabledLanguages)
+}
+
+disableLanguage = function (languageButton) {
+    if (enabledLanguages.length > 1) {
+        let index = enabledLanguages.indexOf(languageButton.id);
+        if (index > -1) {
+            enabledLanguages.splice(index, 1);
+        }
+        visualizeButtonUnclick(languageButton);
+        languageButton.onclick = function () {
+            enableLanguage(languageButton)
+        }
+        quiz.updateLanguages(enabledLanguages)
+    }
+
+}
+
+for (let key of allLanguages) {
+
+    let lang = document.createElement("div");
+    lang.innerHTML += key
+    lang.classList.add('smolbutton')
+    lang.classList.add('langbutton')
+    lang.id = key
+    lang.onclick = function () {
+        enableLanguage(lang)
+    }
+    if (key == 'ENG' || key == 'JPN' || key == 'KOR' || key == 'CHT' || key == 'CHS' || key == 'ESP' || key == 'ITA') {
+        lang.click()
+    }
+    language_box.appendChild(lang);
+}
+
+
+document.addEventListener('keydown', function (event) {
+    // Check if the main input field is not focused
+    if (document.activeElement.tagName !== "INPUT") {
+        // Focus on the main input field when any key is pressed
+        inputField.focus();
+    }
+});
+
+document.getElementById("sound-on").onclick = () => {
+    soundEnabled = true
+    visualizeButtonUnclick(document.getElementById("sound-off"))
+    visualizeButtonClick(document.getElementById("sound-on"))
+
+};
+document.getElementById("sound-off").onclick = () => {
+    soundEnabled = false
+    visualizeButtonUnclick(document.getElementById("sound-on"))
+    visualizeButtonClick(document.getElementById("sound-off"))
+};
+
+
+loadData();
