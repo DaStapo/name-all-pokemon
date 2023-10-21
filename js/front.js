@@ -120,7 +120,6 @@ for (let i = 0; i < boxIds.length; i++) {
     let boxId = boxIds[i]
     boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
 }
-boxDict["pokemon-box-big"] = bigBox
 
 let quiz = new Quiz(boxDict, genQuizBoxes, allLanguages)
 
@@ -1244,8 +1243,6 @@ async function loadData() {
         visualizeButtonClick(disableOrderBtn)
         quiz.setOrderMode(false)
         socketSetOrderMode(false)
-        bigBox.style.display = "none"
-        genBoxes.style.display = "block"
         promptOrderDisable.style.display = "none";
         
     }

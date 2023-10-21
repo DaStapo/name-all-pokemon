@@ -512,24 +512,25 @@ class Quiz {
 
     moveBoxes(){
         
-        if (this.orderMode && this.boxDict["pokemon-box-big"].children.length < 2){
+        if (this.orderMode && document.getElementById("pokemon-box-big").children.length < 2){
             for (let i = 0; i < this.boxConstruction.length; i++){
                 let box = this.boxConstruction[i][0]
                 let children = this.boxConstruction[i][1]
                 for (let j = 0; j < children.length; j++){
                     box.removeChild(children[j])
-                    this.boxDict["pokemon-box-big"].appendChild(children[j])
+                    document.getElementById("pokemon-box-big").appendChild(children[j])
                     
                 }
             }
             document.getElementById("pokemon-box-big").style.display = "block"
             document.getElementById("gen-boxes").style.display = "none"
-        }else if(!this.orderMode && this.boxDict["pokemon-box-big"].children.length > 2){
+
+        }else if(!this.orderMode && document.getElementById("pokemon-box-big").children.length > 2){
             for (let i = 0; i < this.boxConstruction.length; i++){
                 let box = this.boxConstruction[i][0]
                 let children = this.boxConstruction[i][1]
                 for (let j = 0; j < children.length; j++){
-                    this.boxDict["pokemon-box-big"].removeChild(children[j])
+                    document.getElementById("pokemon-box-big").removeChild(children[j])
                     box.appendChild(children[j])
                     
                 }
@@ -537,6 +538,25 @@ class Quiz {
             document.getElementById("pokemon-box-big").style.display = "none"
             document.getElementById("gen-boxes").style.display = "block"
         }
+
+        if (this.orderMode){
+            if ("boxes" in this.filters){
+                if (this.filters["boxes"].length > 3){
+                    document.getElementById("regionall").innerText = "Full"
+                }else{
+                    let fullText = ''
+                    for (let i =0; i < this.filters["boxes"].length; i++){
+                        let regionName = this.filters["boxes"][i] ;
+                        regionName = regionName.charAt(0).toUpperCase() + regionName.slice(1)
+                        fullText += regionName+ ", "
+                    }
+                    document.getElementById("regionall").innerText = fullText.substring(0, fullText.length-2)
+
+                }
+            }
+        }
+
+
     }
 
     getStyleName(){
@@ -1222,7 +1242,6 @@ for (let i = 0; i < boxIds.length; i++) {
     let boxId = boxIds[i]
     boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
 }
-boxDict["pokemon-box-big"] = bigBox
 
 let quiz = new Quiz(boxDict, genQuizBoxes, allLanguages)
 
@@ -2318,8 +2337,9 @@ async function loadData() {
         if (!quiz.orderMode){
             if("types" in quiz.filters){
                 showUserMessage("Order mode does not work with type quizzes")
+            }else{
+                promptOrderEnable.style.display = "inline";
             }
-            promptOrderEnable.style.display = "inline";
         }
     };
     disableOrderBtn.onclick = function () {
@@ -2345,8 +2365,6 @@ async function loadData() {
         visualizeButtonClick(disableOrderBtn)
         quiz.setOrderMode(false)
         socketSetOrderMode(false)
-        bigBox.style.display = "none"
-        genBoxes.style.display = "block"
         promptOrderDisable.style.display = "none";
         
     }

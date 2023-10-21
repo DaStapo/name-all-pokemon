@@ -480,24 +480,25 @@ class Quiz {
 
     moveBoxes(){
         
-        if (this.orderMode && this.boxDict["pokemon-box-big"].children.length < 2){
+        if (this.orderMode && document.getElementById("pokemon-box-big").children.length < 2){
             for (let i = 0; i < this.boxConstruction.length; i++){
                 let box = this.boxConstruction[i][0]
                 let children = this.boxConstruction[i][1]
                 for (let j = 0; j < children.length; j++){
                     box.removeChild(children[j])
-                    this.boxDict["pokemon-box-big"].appendChild(children[j])
+                    document.getElementById("pokemon-box-big").appendChild(children[j])
                     
                 }
             }
             document.getElementById("pokemon-box-big").style.display = "block"
             document.getElementById("gen-boxes").style.display = "none"
-        }else if(!this.orderMode && this.boxDict["pokemon-box-big"].children.length > 2){
+
+        }else if(!this.orderMode && document.getElementById("pokemon-box-big").children.length > 2){
             for (let i = 0; i < this.boxConstruction.length; i++){
                 let box = this.boxConstruction[i][0]
                 let children = this.boxConstruction[i][1]
                 for (let j = 0; j < children.length; j++){
-                    this.boxDict["pokemon-box-big"].removeChild(children[j])
+                    document.getElementById("pokemon-box-big").removeChild(children[j])
                     box.appendChild(children[j])
                     
                 }
@@ -505,6 +506,25 @@ class Quiz {
             document.getElementById("pokemon-box-big").style.display = "none"
             document.getElementById("gen-boxes").style.display = "block"
         }
+
+        if (this.orderMode){
+            if ("boxes" in this.filters){
+                if (this.filters["boxes"].length > 3){
+                    document.getElementById("regionall").innerText = "Full"
+                }else{
+                    let fullText = ''
+                    for (let i =0; i < this.filters["boxes"].length; i++){
+                        let regionName = this.filters["boxes"][i] ;
+                        regionName = regionName.charAt(0).toUpperCase() + regionName.slice(1)
+                        fullText += regionName+ ", "
+                    }
+                    document.getElementById("regionall").innerText = fullText.substring(0, fullText.length-2)
+
+                }
+            }
+        }
+
+
     }
 
     getStyleName(){
