@@ -480,35 +480,44 @@ class Quiz {
 
     moveBoxes(){
         
-        if (this.orderMode && document.getElementById("pokemon-box-big").children.length < 2){
-            for (let i = 0; i < this.boxConstruction.length; i++){
-                let box = this.boxConstruction[i][0]
-                let children = this.boxConstruction[i][1]
-                for (let j = 0; j < children.length; j++){
-                    box.removeChild(children[j])
-                    document.getElementById("pokemon-box-big").appendChild(children[j])
-                    
-                }
-            }
-            document.getElementById("pokemon-box-big").style.display = "block"
-            document.getElementById("gen-boxes").style.display = "none"
+        let isCurrentlyBig = document.getElementById("pokemon-box-big").children.length > 2
+        
+        let neededBig = this.orderMode && ("boxes" in this.filters && this.filters["boxes"].length > 2)
 
-        }else if(!this.orderMode && document.getElementById("pokemon-box-big").children.length > 2){
-            for (let i = 0; i < this.boxConstruction.length; i++){
-                let box = this.boxConstruction[i][0]
-                let children = this.boxConstruction[i][1]
-                for (let j = 0; j < children.length; j++){
-                    document.getElementById("pokemon-box-big").removeChild(children[j])
-                    box.appendChild(children[j])
-                    
+        if(neededBig){
+            if(!isCurrentlyBig){
+                for (let i = 0; i < this.boxConstruction.length; i++){
+                    let box = this.boxConstruction[i][0]
+                    let children = this.boxConstruction[i][1]
+                    for (let j = 0; j < children.length; j++){
+                        box.removeChild(children[j])
+                        document.getElementById("pokemon-box-big").appendChild(children[j])
+
+                    }
                 }
-            }   
-            document.getElementById("pokemon-box-big").style.display = "none"
-            document.getElementById("gen-boxes").style.display = "block"
+                document.getElementById("pokemon-box-big").style.display = "block"
+                document.getElementById("gen-boxes").style.display = "none" 
+            }
+        }
+        else{
+            if(isCurrentlyBig){
+                for (let i = 0; i < this.boxConstruction.length; i++){
+                    let box = this.boxConstruction[i][0]
+                    let children = this.boxConstruction[i][1]
+                    for (let j = 0; j < children.length; j++){
+                        document.getElementById("pokemon-box-big").removeChild(children[j])
+                        box.appendChild(children[j])
+                        
+                    }
+                }   
+                document.getElementById("pokemon-box-big").style.display = "none"
+                document.getElementById("gen-boxes").style.display = "block"
+            }
         }
 
+
         if (this.orderMode){
-            if ("boxes" in this.filters){
+            if ("boxes" in this.filters && neededBig){
                 if (this.filters["boxes"].length > 3){
                     document.getElementById("regionall").innerText = "Full"
                 }else{
