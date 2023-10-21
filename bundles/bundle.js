@@ -85,9 +85,10 @@ class Quiz {
     paused = false;
 
     orderModeSet = new Set()
-    orderModeBaseIdDict = {}
-    orderMode = true;
-    lastOrderIndex = -1
+    baseNameIdDict = {}
+    orderMode = false;
+
+    revealedShadows = new Set()
     
     constructor(boxDict, genQuizBoxes, allLanguages){
         this.boxDict = boxDict;
@@ -110,7 +111,7 @@ class Quiz {
             if (!(pkmn.baseName in this.pokemonBaseNameDict)){
                 this.pokemonBaseNameDict[pkmn.baseName] = []
                 this.orderModeSet.add(pkmn.id)
-                this.orderModeBaseIdDict[pkmn.baseName] = pkmn.id
+                this.baseNameIdDict[pkmn.baseName] = pkmn.id
             }
             this.pokemonBaseNameDict[pkmn.baseName].push(pkmn)
         }
@@ -131,8 +132,8 @@ class Quiz {
         this.langCounts = {}
         this.missingnoEnabled = false;
         this.useSilhouettes = false;
+        this.revealedShadows = new Set()
         this.boxCounters = {}
-        this.lastOrderIndex = -1
         for (let box in this.currentBoxes){
             this.boxCounters[box] = []
         }
@@ -163,6 +164,12 @@ class Quiz {
             }
         }
         this.onReset();
+    }
+
+
+    setOrderMode(val){
+        this.orderMode = val
+        this.setQuiz(this.name, this.filters)
     }
 
     checkHighestLang(){
@@ -312,7 +319,7 @@ class Quiz {
                 if (this.orderModeSet.has(id)){
                     tempList.push(currentPokemonList[i])
                 }else{
-                    let basePkmnId = this.orderModeBaseIdDict[currentPokemonList[i].baseName]
+                    let basePkmnId = this.baseNameIdDict[currentPokemonList[i].baseName]
                     if (!(basePkmnId in currentCycles)){
                         currentCycles[basePkmnId] = [basePkmnId]
                     }
@@ -339,6 +346,7 @@ class Quiz {
         this.currentBaseNames = new Set()
         this.currentIds = new Set()
         this.currentBoxes = {}
+        this.currentPokemonList = currentPokemonList
         for (let i = 0; i<currentPokemonList.length; i++){
             this.currentBaseNames.add(currentPokemonList[i].baseName)
             //essentially sprites
@@ -692,7 +700,7 @@ class Quiz {
                         }
                     }
                     if (!overlap){
-                        message =  this.pokemonIdDict[id].getFormattedName(this.currentLang)+ " already named."
+                        message =  this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang)+ " already named"
                     }
                     continue;
                 }
@@ -707,7 +715,7 @@ class Quiz {
                         }
                     }
                     if (!found){
-                        message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " is not part of this quiz."
+                        message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " is not part of this quiz"
                     }
                     continue;
                     
@@ -717,7 +725,30 @@ class Quiz {
                 }
 
                 if (this.orderMode){
-                    
+
+                    //safe from latency
+                    let highestNamed = -1
+                    for (let k = 0; k < this.currentPokemonList.length; k++){
+                        if (this.named.has(this.currentPokemonList[k].baseName)){
+                            if (k > highestNamed){
+                                highestNamed = k
+                            }
+                        }
+                    }
+
+                    if (baseName !== this.currentPokemonList[highestNamed+1].baseName){
+                        let overlap = false;
+                        for (let key in this.nameDict){
+                            if (key.startsWith(input) && key !== input){
+                                overlap = true;
+                                break
+                            }
+                        }
+                        if (!overlap){
+                            message =  this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang)+ " is not the next Pokémon"
+                        }
+                        continue;
+                    }
                 }
 
                 let recentPkmn = this.addNamed(baseName)
@@ -788,6 +819,29 @@ class Quiz {
         
     }
     
+
+    revealNextShadow(){
+        if (this.orderMode){
+            for (let k = 0; k < this.currentPokemonList.length; k++){
+                if (!(this.named.has(this.currentPokemonList[k].baseName))){
+                    this.silhouetteDictionary[this.currentPokemonList[k].id] .style.display = "inline";
+                    this.pokeballDictionary[this.currentPokemonList[k].id] .style.display = "none";
+                    this.revealedShadows.add(this.currentPokemonList[k].id)
+                    return this.currentPokemonList[k].id
+                    break
+                }
+            }
+
+        }
+
+    }
+    revealSingleShadow(id){
+        this.revealedShadows.add(id)
+        this.silhouetteDictionary[id] .style.display = "inline";
+        this.pokeballDictionary[id] .style.display = "none";
+    }
+
+
 
     setSilhouettes() {
         for (let i = 0; i < this.silhouetteArray.length; i++) {
@@ -1035,6 +1089,11 @@ let spellingHint = document.getElementById("hint");
 
 let radioPokeball = document.getElementById("pokeball");
 let radioSilhouette = document.getElementById("silhouette");
+let orderModeMenu = document.getElementById("orderbox");
+let enableOrderBtn =  document.getElementById("order-on");
+let disableOrderBtn =  document.getElementById("order-off");
+let shadowNextBtn =  document.getElementById("shadownext");
+let shadowHelpRadio =  document.getElementById("shadowhelp");
 
 let counterText = document.getElementById("counter");
 let totalText = document.getElementById("total");
@@ -1044,10 +1103,16 @@ let giveUpBtn = document.getElementById("surrender");
 let resetBtn = document.getElementById("resetButton");
 
 let promptSilh = document.getElementById("promptsilhouette");
+let promptOrderEnable = document.getElementById("promptorder-enable");
+let promptOrderDisable = document.getElementById("promptorder-disable");
 let promptGen = document.getElementById("promptswitch");
 
 let promptSilhYes = document.getElementById("sil-yes");
 let promptSilhNo = document.getElementById("sil-no");
+let promptOrderEnableYes = document.getElementById("order-enable-yes");
+let promptOrderDisableYes = document.getElementById("order-disable-yes");
+let promptOrderEnableNo = document.getElementById("order-enable-no");
+let promptOrderDisableNo = document.getElementById("order-disable-no");
 let promptGenYes = document.getElementById("gen-yes");
 let promptGenNo = document.getElementById("gen-no");
 
@@ -1144,7 +1209,7 @@ async function fetchData(endpoint) {
         retries++;
         if (retries <= MAX_RETRIES) {
             await new Promise(resolve => setTimeout(resolve, RETRY_INTERVAL_MS));
-            return fetchNext();
+            return fetchData(endpoint);
         } else {
             console.error(error);
             alert("There seems to be a problem with fetching the data. Please try refreshing the page.");
@@ -1200,6 +1265,7 @@ if (roomId.length > 1) {
     document.getElementById("loadbox").style.display = "none"
     usernamePrompt.style.display = "block"
     radioSilhouette.style.display = "none"
+    orderModeMenu.style.display = "none"
     giveUpBtn.style.display = "none"
     resetBtn.style.display = "none"
     timerBtn.style.display = "none"
@@ -1306,10 +1372,20 @@ async function loadData() {
             socket.emit('stateChange', { "silhouettes": true })
         }
     }
+    function socketSetOrderMode(val) {
+        if (socket !== null && isSocketHost) {
+            socket.emit('stateChange', { "orderMode": val })
+        }
+    }
     function socketSetPaused(val) {
         if (socket !== null && isSocketHost) {
             socket.emit('stateChange', { "paused": val })
             socketUpdateTimer();
+        }
+    }
+    function socketRevealSingleShadow(id) {
+        if (socket !== null && isSocketHost) {
+            socket.emit('reveal', { "revealSingle": id })
         }
     }
     function socketGiveUp() {
@@ -1352,6 +1428,9 @@ async function loadData() {
                         var currentURL = new URL(window.location.href);
                         var currentDomain = currentURL.hostname + (currentURL.port ? ':' + currentURL.port : '');
                         let url = "https://" + currentDomain + "/join/" + roomId
+                        if (currentDomain.includes('localhost')){
+                            url = "http://" + currentDomain + "/join/" + roomId
+                        }
                         navigator.clipboard.writeText(url)
                         showUserMessage("Copied link to clipboard (" + url + ")")
                     }
@@ -1405,7 +1484,15 @@ async function loadData() {
                     updateFullLeaderboard();
                     updateRankings()
                 });
-    
+                socket.on('reveal', (data) => {
+                    if ("revealSingle" in data){
+                        quiz.revealSingleShadow(data["revealSingle"])
+                    }else if ("revealMultiple" in data){
+                        for (let i = 0; i < data["revealMultiple"].length; i++){
+                            quiz.revealSingleShadow(data["revealMultiple"][i])
+                        }
+                    }
+                });
     
                 // Listen for user joining
                 socket.on('stateChange', (data) => {
@@ -1413,7 +1500,12 @@ async function loadData() {
                         if (key === "giveup") {
                             giveUp();
                         } else if (key === "silhouettes") {
-                            quiz.setSilhouettes();
+                            if (data[key]){
+                                quiz.setSilhouettes()
+                            }
+                        }
+                        else if (key === "orderMode") {
+                           quiz.orderMode = true;
                         } else if (key === "showcongrats") {
                             showCongrats();
                         } else if (key === "paused") {
@@ -2089,6 +2181,7 @@ async function loadData() {
     }
 
     radioPokeball.onclick = usePokeball;
+
     radioSilhouette.onclick = function () {
         if (quiz.isSilhouettesEnabled() !== true) {
             promptSilh.style.display = "inline";
@@ -2104,8 +2197,52 @@ async function loadData() {
     promptSilhNo.onclick = function () {
         promptSilh.style.display = "none";
         radioSilhouette.checked = false;
-
     }
+
+
+    enableOrderBtn.onclick = function () {
+        if (!quiz.orderMode){
+            promptOrderEnable.style.display = "inline";
+        }
+    };
+    disableOrderBtn.onclick = function () {
+        if (quiz.orderMode){
+            promptOrderDisable.style.display = "inline";
+        }
+    };
+
+    promptOrderEnableYes.onclick = function () {
+        quiz.setOrderMode(true)
+        socketSetOrderMode(true)
+        visualizeButtonUnclick(disableOrderBtn)
+        visualizeButtonClick(enableOrderBtn)
+        promptOrderEnable.style.display = "none";
+    }
+    promptOrderEnableNo.onclick = function () {
+        promptOrderEnable.style.display = "none";
+    }
+
+    promptOrderDisableYes.onclick = function () {
+
+        quiz.setOrderMode(false)
+        socketSetOrderMode(false)
+        visualizeButtonUnclick(enableOrderBtn)
+        visualizeButtonClick(disableOrderBtn)
+        promptOrderDisable.style.display = "none";
+        
+    }
+    promptOrderDisableNo.onclick = function () {
+        promptOrderDisable.style.display = "none";
+    }
+
+    shadowNextBtn.onclick = function(){
+        if (quiz.orderMode && (socket === null || isSocketHost) ){
+            let id = quiz.revealNextShadow()
+            socketRevealSingleShadow(id);
+        }
+    }
+
+
 
     let misspellings = allData["misspellings"]
     //tradeoff memory for perofrmance
@@ -2869,6 +3006,8 @@ async function loadData() {
         state["users"] = quiz.users
         state["paused"] = quiz.paused
         state["silhouettes"] = quiz.isSilhouettesEnabled()
+        state["orderMode"] = quiz.orderMode
+        state["revealedShadows"] =  [...quiz.revealedShadows]
 
         state["timer"] = timerObj
 
@@ -2924,6 +3063,18 @@ async function loadData() {
         if (state["silhouettes"]) {
             quiz.setSilhouettes();
         }
+        if ("orderMode" in state){
+            quiz.orderMode = state["orderMode"]
+        }else{
+            quiz.orderMode = false;
+        }
+
+        if ('revealedShadows' in state){
+            for (let i = 0; i < state["revealedShadows"].length; i++){
+                quiz.revealSingleShadow(state["revealedShadows"][i])
+            }
+        }
+
 
         //timer will start on first input
 
@@ -3251,6 +3402,9 @@ function off3() {
     document.getElementById("promptswitch").style.display = "none";
     document.getElementById("prompttimer").style.display = "none";
     document.getElementById("promptsilhouette").style.display = "none";
+    document.getElementById("promptsilhouette").style.display = "none";
+    document.getElementById("promptorder-enable").style.display = "none";
+    document.getElementById("promptorder-disable").style.display = "none";
 }
 
 function genselectmenu() {
