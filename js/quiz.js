@@ -270,7 +270,6 @@ class Quiz {
             currentPokemonList.splice(indexesToRemove[i] , 1);
         }
 
-
         if (this.orderMode){
             let tempList = []
             for (let i = 0; i< currentPokemonList.length; i++ ){
@@ -285,7 +284,14 @@ class Quiz {
                     if (!(basePkmnId in currentCycles)){
                         currentCycles[basePkmnId] = [basePkmnId]
                     }
-                    currentCycles[basePkmnId].push(id)
+
+                    if(id in currentCycles){
+                        for (let j = 0; j < currentCycles[id].length; j++){
+                            currentCycles[basePkmnId].push(currentCycles[id][j])
+                        }
+                    }else{
+                        currentCycles[basePkmnId].push(id)
+                    }
                 }
             }
             currentPokemonList = tempList
