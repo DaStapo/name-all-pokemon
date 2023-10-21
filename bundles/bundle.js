@@ -255,6 +255,12 @@ class Quiz {
             currentPokemonList = currentPokemonList.filter(pokemon =>
                 filters.types.some(type => pokemon.isType(type))
             );
+            if (this.orderMode){
+                visualizeButtonClick(document.getElementById("order-off"))
+                visualizeButtonUnclick(document.getElementById("order-on"))
+                this.orderMode = false;
+                showUserMessage("Order mode disabled")
+            }
         }
 
 
@@ -505,6 +511,7 @@ class Quiz {
     }
 
     moveBoxes(){
+        
         if (this.orderMode && this.boxDict["pokemon-box-big"].children.length < 2){
             for (let i = 0; i < this.boxConstruction.length; i++){
                 let box = this.boxConstruction[i][0]
@@ -515,6 +522,8 @@ class Quiz {
                     
                 }
             }
+            document.getElementById("pokemon-box-big").style.display = "block"
+            document.getElementById("gen-boxes").style.display = "none"
         }else if(!this.orderMode && this.boxDict["pokemon-box-big"].children.length > 2){
             for (let i = 0; i < this.boxConstruction.length; i++){
                 let box = this.boxConstruction[i][0]
@@ -525,6 +534,8 @@ class Quiz {
                     
                 }
             }   
+            document.getElementById("pokemon-box-big").style.display = "none"
+            document.getElementById("gen-boxes").style.display = "block"
         }
     }
 
@@ -2305,6 +2316,9 @@ async function loadData() {
 
     enableOrderBtn.onclick = function () {
         if (!quiz.orderMode){
+            if("types" in quiz.filters){
+                showUserMessage("Order mode does not work with type quizzes")
+            }
             promptOrderEnable.style.display = "inline";
         }
     };
@@ -2315,12 +2329,11 @@ async function loadData() {
     };
 
     promptOrderEnableYes.onclick = function () {
-        quiz.setOrderMode(true)
-        socketSetOrderMode(true)
         visualizeButtonUnclick(disableOrderBtn)
         visualizeButtonClick(enableOrderBtn)
-        bigBox.style.display = "block"
-        genBoxes.style.display = "none"
+        quiz.setOrderMode(true)
+        socketSetOrderMode(true)
+
         promptOrderEnable.style.display = "none";
     }
     promptOrderEnableNo.onclick = function () {
@@ -2328,11 +2341,10 @@ async function loadData() {
     }
 
     promptOrderDisableYes.onclick = function () {
-
-        quiz.setOrderMode(false)
-        socketSetOrderMode(false)
         visualizeButtonUnclick(enableOrderBtn)
         visualizeButtonClick(disableOrderBtn)
+        quiz.setOrderMode(false)
+        socketSetOrderMode(false)
         bigBox.style.display = "none"
         genBoxes.style.display = "block"
         promptOrderDisable.style.display = "none";

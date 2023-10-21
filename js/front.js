@@ -1214,7 +1214,11 @@ async function loadData() {
 
     enableOrderBtn.onclick = function () {
         if (!quiz.orderMode){
-            promptOrderEnable.style.display = "inline";
+            if("types" in quiz.filters){
+                showUserMessage("Order mode does not work with type quizzes")
+            }else{
+                promptOrderEnable.style.display = "inline";
+            }
         }
     };
     disableOrderBtn.onclick = function () {
@@ -1224,12 +1228,11 @@ async function loadData() {
     };
 
     promptOrderEnableYes.onclick = function () {
-        quiz.setOrderMode(true)
-        socketSetOrderMode(true)
         visualizeButtonUnclick(disableOrderBtn)
         visualizeButtonClick(enableOrderBtn)
-        bigBox.style.display = "block"
-        genBoxes.style.display = "none"
+        quiz.setOrderMode(true)
+        socketSetOrderMode(true)
+
         promptOrderEnable.style.display = "none";
     }
     promptOrderEnableNo.onclick = function () {
@@ -1237,11 +1240,10 @@ async function loadData() {
     }
 
     promptOrderDisableYes.onclick = function () {
-
-        quiz.setOrderMode(false)
-        socketSetOrderMode(false)
         visualizeButtonUnclick(enableOrderBtn)
         visualizeButtonClick(disableOrderBtn)
+        quiz.setOrderMode(false)
+        socketSetOrderMode(false)
         bigBox.style.display = "none"
         genBoxes.style.display = "block"
         promptOrderDisable.style.display = "none";
