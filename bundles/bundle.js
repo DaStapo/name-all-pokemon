@@ -89,6 +89,8 @@ class Quiz {
     orderMode = false;
 
     revealedShadows = new Set()
+
+    name = "none"
     
     constructor(boxDict, genQuizBoxes, allLanguages){
         this.boxDict = boxDict;
@@ -338,7 +340,12 @@ class Quiz {
             if ("darumaka" in currentCycles){
                 currentCycles["darumaka"] = ["darumaka", "darumaka", "darumakagalar", "darumakagalar"]
             }
-
+            if ("meowth" in currentCycles){
+                currentCycles["meowth"] = ["meowth", "meowthalola", "meowthgalar"]
+            }
+            if ("persian" in currentCycles){
+                currentCycles["persian"] = ["persian", "persianalola", "persian"]
+            }
         }
 
         this.spriteCycles = currentCycles;
@@ -821,20 +828,36 @@ class Quiz {
     
 
     revealNextShadow(){
-        if (this.orderMode){
-            for (let k = 0; k < this.currentPokemonList.length; k++){
-                if (!(this.named.has(this.currentPokemonList[k].baseName))){
-                    this.silhouetteDictionary[this.currentPokemonList[k].id] .style.display = "inline";
-                    this.pokeballDictionary[this.currentPokemonList[k].id] .style.display = "none";
-                    this.revealedShadows.add(this.currentPokemonList[k].id)
-                    return this.currentPokemonList[k].id
-                    break
-                }
-            }
 
+        for (let k = 0; k < this.currentPokemonList.length; k++){
+            if (!(this.named.has(this.currentPokemonList[k].baseName))){
+                this.silhouetteDictionary[this.currentPokemonList[k].id] .style.display = "inline";
+                this.pokeballDictionary[this.currentPokemonList[k].id] .style.display = "none";
+                this.revealedShadows.add(this.currentPokemonList[k].id)
+                return this.currentPokemonList[k].id
+                break
+            }
         }
 
     }
+    revealRandomShadow(){
+        if (! this.orderMode){
+            let possibleIndexes = []
+            for (let k = 0; k < this.currentPokemonList.length; k++){
+                if (!(this.named.has(this.currentPokemonList[k].baseName))){
+                    possibleIndexes.push(this.currentPokemonList[k].id)
+                }
+            }
+            let index = Math.floor(Math.random() * possibleIndexes.length);
+            let id = this.currentPokemonList[index].id
+            this.silhouetteDictionary[id] .style.display = "inline";
+            this.pokeballDictionary[id] .style.display = "none";
+            this.revealedShadows.add(id)
+            return id
+        }
+    }
+
+
     revealSingleShadow(id){
         this.revealedShadows.add(id)
         this.silhouetteDictionary[id] .style.display = "inline";
@@ -1307,7 +1330,7 @@ async function loadData() {
         setTotal(quiz.getMaxScore());
         resetTimer();
         inputField.disabled = false;
-
+        shadowNextBtn.disabled = false;
 
 
 
@@ -2068,6 +2091,10 @@ async function loadData() {
                 inputField.value = inputField.value.substring(0, inputField.value.length - 1);
                 showHint();
                 return;
+            }else if (quiz.name !== "none" && inputField.value[inputField.value.length - 1] === ',') {
+                inputField.value = inputField.value.substring(0, inputField.value.length - 1);
+                shadowNextBtn.click();
+                return;
             }
 
             res = parseInput(inputField.value, myUsername);
@@ -2103,6 +2130,7 @@ async function loadData() {
 
 
         socketCongrats();
+        shadowNextBtn.disabled = true;
         inputField.disabled = true;
         updateFullLeaderboard();
 
@@ -2152,6 +2180,7 @@ async function loadData() {
     function giveUp() {
 
         socketGiveUp();
+        shadowNextBtn.disabled = true
         updateFullLeaderboard();
         inputField.disabled = true;
 
@@ -2246,9 +2275,16 @@ async function loadData() {
     }
 
     shadowNextBtn.onclick = function(){
-        if (quiz.orderMode && (socket === null || isSocketHost) ){
-            let id = quiz.revealNextShadow()
-            socketRevealSingleShadow(id);
+        if ((socket === null || isSocketHost) ){
+            
+            if (quiz.orderMode){
+                let id = quiz.revealNextShadow()
+                socketRevealSingleShadow(id);
+            }else{
+                let id = quiz.revealRandomShadow()
+                socketRevealSingleShadow(id);
+            }
+
         }
     }
 

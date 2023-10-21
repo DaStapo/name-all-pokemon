@@ -285,7 +285,7 @@ async function loadData() {
         setTotal(quiz.getMaxScore());
         resetTimer();
         inputField.disabled = false;
-
+        shadowNextBtn.disabled = false;
 
 
 
@@ -1046,6 +1046,10 @@ async function loadData() {
                 inputField.value = inputField.value.substring(0, inputField.value.length - 1);
                 showHint();
                 return;
+            }else if (quiz.name !== "none" && inputField.value[inputField.value.length - 1] === ',') {
+                inputField.value = inputField.value.substring(0, inputField.value.length - 1);
+                shadowNextBtn.click();
+                return;
             }
 
             res = parseInput(inputField.value, myUsername);
@@ -1081,6 +1085,7 @@ async function loadData() {
 
 
         socketCongrats();
+        shadowNextBtn.disabled = true;
         inputField.disabled = true;
         updateFullLeaderboard();
 
@@ -1130,6 +1135,7 @@ async function loadData() {
     function giveUp() {
 
         socketGiveUp();
+        shadowNextBtn.disabled = true
         updateFullLeaderboard();
         inputField.disabled = true;
 
@@ -1224,9 +1230,16 @@ async function loadData() {
     }
 
     shadowNextBtn.onclick = function(){
-        if (quiz.orderMode && (socket === null || isSocketHost) ){
-            let id = quiz.revealNextShadow()
-            socketRevealSingleShadow(id);
+        if ((socket === null || isSocketHost) ){
+            
+            if (quiz.orderMode){
+                let id = quiz.revealNextShadow()
+                socketRevealSingleShadow(id);
+            }else{
+                let id = quiz.revealRandomShadow()
+                socketRevealSingleShadow(id);
+            }
+
         }
     }
 

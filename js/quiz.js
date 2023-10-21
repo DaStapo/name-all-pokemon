@@ -57,6 +57,8 @@ class Quiz {
     orderMode = false;
 
     revealedShadows = new Set()
+
+    name = "none"
     
     constructor(boxDict, genQuizBoxes, allLanguages){
         this.boxDict = boxDict;
@@ -306,7 +308,12 @@ class Quiz {
             if ("darumaka" in currentCycles){
                 currentCycles["darumaka"] = ["darumaka", "darumaka", "darumakagalar", "darumakagalar"]
             }
-
+            if ("meowth" in currentCycles){
+                currentCycles["meowth"] = ["meowth", "meowthalola", "meowthgalar"]
+            }
+            if ("persian" in currentCycles){
+                currentCycles["persian"] = ["persian", "persianalola", "persian"]
+            }
         }
 
         this.spriteCycles = currentCycles;
@@ -789,20 +796,36 @@ class Quiz {
     
 
     revealNextShadow(){
-        if (this.orderMode){
-            for (let k = 0; k < this.currentPokemonList.length; k++){
-                if (!(this.named.has(this.currentPokemonList[k].baseName))){
-                    this.silhouetteDictionary[this.currentPokemonList[k].id] .style.display = "inline";
-                    this.pokeballDictionary[this.currentPokemonList[k].id] .style.display = "none";
-                    this.revealedShadows.add(this.currentPokemonList[k].id)
-                    return this.currentPokemonList[k].id
-                    break
-                }
-            }
 
+        for (let k = 0; k < this.currentPokemonList.length; k++){
+            if (!(this.named.has(this.currentPokemonList[k].baseName))){
+                this.silhouetteDictionary[this.currentPokemonList[k].id] .style.display = "inline";
+                this.pokeballDictionary[this.currentPokemonList[k].id] .style.display = "none";
+                this.revealedShadows.add(this.currentPokemonList[k].id)
+                return this.currentPokemonList[k].id
+                break
+            }
         }
 
     }
+    revealRandomShadow(){
+        if (! this.orderMode){
+            let possibleIndexes = []
+            for (let k = 0; k < this.currentPokemonList.length; k++){
+                if (!(this.named.has(this.currentPokemonList[k].baseName))){
+                    possibleIndexes.push(this.currentPokemonList[k].id)
+                }
+            }
+            let index = Math.floor(Math.random() * possibleIndexes.length);
+            let id = this.currentPokemonList[index].id
+            this.silhouetteDictionary[id] .style.display = "inline";
+            this.pokeballDictionary[id] .style.display = "none";
+            this.revealedShadows.add(id)
+            return id
+        }
+    }
+
+
     revealSingleShadow(id){
         this.revealedShadows.add(id)
         this.silhouetteDictionary[id] .style.display = "inline";
