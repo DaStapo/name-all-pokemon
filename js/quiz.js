@@ -486,9 +486,9 @@ class Quiz {
                 /*if (this.translations[id][key] in this.nameDict && standardizeName(this.translations[id][key]) !== id){
                     console.log('alert, same names for' + this.translations[id]["ENG"] + " and " + id)
                 }*/
-                
-                this.nameDict[standardizeName(this.translations[this.pokemon[i].baseName][key])] = this.pokemon[i].id
-                this.nameArr.push(this.pokemon[i].baseName)
+                let daName = standardizeName(this.translations[this.pokemon[i].baseName][key])
+                this.nameDict[daName] = this.pokemon[i].id
+                this.nameArr.push(daName)
             }
         }
 
