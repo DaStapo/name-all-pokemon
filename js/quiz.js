@@ -795,6 +795,21 @@ class Quiz {
     }
     
 
+    isAllShadowsRevealed(){
+
+        let all = true;
+        for (let k = 0; k < this.currentPokemonList.length; k++){
+            let pkmn = this.currentPokemonList[k]
+            if (!(this.revealedShadows.has(pkmn.id))){
+                all = false;
+                break
+            }
+        }
+        return all;
+
+    }
+
+
     revealNextShadow(){
 
         for (let k = 0; k < this.currentPokemonList.length; k++){
@@ -803,26 +818,30 @@ class Quiz {
                 this.pokeballDictionary[this.currentPokemonList[k].id] .style.display = "none";
                 this.revealedShadows.add(this.currentPokemonList[k].id)
                 return this.currentPokemonList[k].id
-                break
             }
         }
+        return null;
 
     }
     revealRandomShadow(){
-        if (! this.orderMode){
-            let possibleIndexes = []
+        if (!this.orderMode){
+            let possibleIds = []
             for (let k = 0; k < this.currentPokemonList.length; k++){
-                if (!(this.named.has(this.currentPokemonList[k].baseName))){
-                    possibleIndexes.push(this.currentPokemonList[k].id)
+                let pkmn = this.currentPokemonList[k]
+                if (!(this.named.has(pkmn.baseName)) && !(this.revealedShadows.has(pkmn.id))){
+                    possibleIds.push(this.currentPokemonList[k].id)
                 }
             }
-            let index = Math.floor(Math.random() * possibleIndexes.length);
-            let id = this.currentPokemonList[index].id
-            this.silhouetteDictionary[id] .style.display = "inline";
-            this.pokeballDictionary[id] .style.display = "none";
-            this.revealedShadows.add(id)
-            return id
+            if (possibleIds.length > 0){
+                let index = Math.floor(Math.random() * possibleIds.length);
+                let id = possibleIds[index]
+                this.silhouetteDictionary[id] .style.display = "inline";
+                this.pokeballDictionary[id] .style.display = "none";
+                this.revealedShadows.add(id)
+                return id
+            }
         }
+        return null;
     }
 
 

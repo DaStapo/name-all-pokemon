@@ -827,6 +827,21 @@ class Quiz {
     }
     
 
+    isAllShadowsRevealed(){
+
+        let all = true;
+        for (let k = 0; k < this.currentPokemonList.length; k++){
+            let pkmn = this.currentPokemonList[k]
+            if (!(this.revealedShadows.has(pkmn.id))){
+                all = false;
+                break
+            }
+        }
+        return all;
+
+    }
+
+
     revealNextShadow(){
 
         for (let k = 0; k < this.currentPokemonList.length; k++){
@@ -835,26 +850,30 @@ class Quiz {
                 this.pokeballDictionary[this.currentPokemonList[k].id] .style.display = "none";
                 this.revealedShadows.add(this.currentPokemonList[k].id)
                 return this.currentPokemonList[k].id
-                break
             }
         }
+        return null;
 
     }
     revealRandomShadow(){
-        if (! this.orderMode){
-            let possibleIndexes = []
+        if (!this.orderMode){
+            let possibleIds = []
             for (let k = 0; k < this.currentPokemonList.length; k++){
-                if (!(this.named.has(this.currentPokemonList[k].baseName))){
-                    possibleIndexes.push(this.currentPokemonList[k].id)
+                let pkmn = this.currentPokemonList[k]
+                if (!(this.named.has(pkmn.baseName)) && !(this.revealedShadows.has(pkmn.id))){
+                    possibleIds.push(this.currentPokemonList[k].id)
                 }
             }
-            let index = Math.floor(Math.random() * possibleIndexes.length);
-            let id = this.currentPokemonList[index].id
-            this.silhouetteDictionary[id] .style.display = "inline";
-            this.pokeballDictionary[id] .style.display = "none";
-            this.revealedShadows.add(id)
-            return id
+            if (possibleIds.length > 0){
+                let index = Math.floor(Math.random() * possibleIds.length);
+                let id = possibleIds[index]
+                this.silhouetteDictionary[id] .style.display = "inline";
+                this.pokeballDictionary[id] .style.display = "none";
+                this.revealedShadows.add(id)
+                return id
+            }
         }
+        return null;
     }
 
 
@@ -1086,7 +1105,8 @@ var soundEnabled = true;
 var paused = false;
 var isSocketHost = false;
 let socket = null;
-
+let shadowHelpInterval = null;
+let shadowHelpIntervalMessage = null;
 let timerObj = {}
 
 var client;
@@ -1318,6 +1338,8 @@ function beforeUnload(e){
     }
 }
 
+
+
 async function loadData() {
 
 
@@ -1330,7 +1352,6 @@ async function loadData() {
         setTotal(quiz.getMaxScore());
         resetTimer();
         inputField.disabled = false;
-        shadowNextBtn.disabled = false;
 
 
 
@@ -1424,6 +1445,11 @@ async function loadData() {
             socket.emit('stateChange', { "showcongrats": true })
         }
     }
+    function socketHostMessage(message) {
+        if (socket !== null && isSocketHost) {
+            socket.emit('message', { "message": message })
+        }
+    }
     function socketUpdateTimer() {
         if (socket !== null && isSocketHost) {
             timerObj["updatedAt"] = Date.now()
@@ -1504,6 +1530,9 @@ async function loadData() {
                 });
                 socket.on('end', () => {
                     roomClosed();
+                });
+                socket.on('message', (data) => {
+                    showUserMessage(data["message"])
                 });
                 socket.on('scores', (users) => {
                     quiz.users = users;
@@ -1786,6 +1815,12 @@ async function loadData() {
 
 
     function setCounter(count) {
+        try{
+            resetShadowHelp();
+        }
+        catch(e){
+
+        }
         counterText.innerHTML = count;
     }
 
@@ -2130,7 +2165,6 @@ async function loadData() {
 
 
         socketCongrats();
-        shadowNextBtn.disabled = true;
         inputField.disabled = true;
         updateFullLeaderboard();
 
@@ -2180,7 +2214,6 @@ async function loadData() {
     function giveUp() {
 
         socketGiveUp();
-        shadowNextBtn.disabled = true
         updateFullLeaderboard();
         inputField.disabled = true;
 
@@ -2275,19 +2308,74 @@ async function loadData() {
     }
 
     shadowNextBtn.onclick = function(){
-        if ((socket === null || isSocketHost) ){
+        
+        if (quiz.name !== "none" && !(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore())){
+            if ((socket === null || isSocketHost) ){
             
-            if (quiz.orderMode){
-                let id = quiz.revealNextShadow()
-                socketRevealSingleShadow(id);
-            }else{
-                let id = quiz.revealRandomShadow()
-                socketRevealSingleShadow(id);
+                if (quiz.orderMode){
+                    let id = quiz.revealNextShadow()
+                    if (id !== null){
+                        socketRevealSingleShadow(id);
+                    }
+                }else{
+                    let id = quiz.revealRandomShadow()
+                    if (id !== null){
+                        socketRevealSingleShadow(id);
+                    }
+                }
             }
-
         }
     }
 
+    function resetShadowHelp(){
+
+        if (shadowHelpInterval !== null){
+            clearTimeout(shadowHelpInterval)
+            clearTimeout(shadowHelpIntervalMessage)
+    
+            shadowHelpIntervalMessage = setTimeout(()=>{
+                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0)){
+                    socketHostMessage("Revealing a shadow in 3 seconds ...")
+                    showUserMessage("Revealing a shadow in 3 seconds ...")
+                }
+            }, 27000)
+    
+            shadowHelpInterval = setTimeout(()=>{
+                shadowNextBtn.click();
+                resetShadowHelp();
+            }, 30000)
+        }
+    }
+
+
+    shadowHelpRadio.onclick = function(){
+        if (shadowHelpInterval !== null){
+            visualizeButtonUnclick(shadowHelpRadio)
+            clearTimeout(shadowHelpInterval)
+            clearTimeout(shadowHelpIntervalMessage)
+            showUserMessage("Disabled auto-reveal of shadows")    
+            shadowHelpInterval = null
+        }else{
+            visualizeButtonClick(shadowHelpRadio)
+            if (quiz.orderMode){
+                showUserMessage("The next shadow will be revealed every 30s")    
+            }else{
+                showUserMessage("A random will be revealed every 30s")    
+            }
+    
+            shadowHelpIntervalMessage = setTimeout(()=>{
+                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed())){
+                    socketHostMessage("Revealing a shadow in 3 seconds ...")
+                    showUserMessage("Revealing a shadow in 3 seconds ...")
+                }
+            }, 27000)
+    
+            shadowHelpInterval = setTimeout(()=>{
+                shadowNextBtn.click();
+                resetShadowHelp();
+            }, 30000)
+        }
+    }
 
 
     let misspellings = allData["misspellings"]

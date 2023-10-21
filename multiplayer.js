@@ -146,7 +146,8 @@ let startMultiplayerServer = function (){
             }
     
         });
-    
+
+        
         socket.on('named', (data) => {
             try {
                 const pokemonId = validateAndSanitizeString(data["id"]);
@@ -170,6 +171,18 @@ let startMultiplayerServer = function (){
             }
     
         });
+
+        socket.on('message', (data) => {
+            try {
+                const message = validateAndSanitizeString(data["message"]);
+                socket.broadcast.to(socket.roomId).emit('message', {"message":message});
+            } catch (error) {
+                log('message error', error)
+            }
+    
+        });
+
+
         socket.on('reset', (data) => {
             try {
                 socket.broadcast.to(socket.roomId).emit('reset', {});
@@ -209,7 +222,6 @@ let startMultiplayerServer = function (){
                             existingRooms[socket.roomId]["state"]["revealedShadows"].push(data["revealMultiple"][i]);   
                         }
                     }
-
                 }
             } catch (error) {
                 log('reveal', error)
