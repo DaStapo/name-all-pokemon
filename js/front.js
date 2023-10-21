@@ -27,6 +27,9 @@ let soundEffectExit = new Audio('/sound-effects/quizleave.wav');
 soundEffectExit.volume = 0.35
 soundEffect2.volume = 0.3;
 
+let soundEffectWrongOrder = new Audio('/sound-effects/wrong.mp3');
+soundEffectWrongOrder.volume = 0.15
+
 var nameAll;
 
 let darkMode = false;
@@ -1049,6 +1052,13 @@ async function loadData() {
 
             let correct = res[0]
             let message = res[1]
+
+            if (message !== null && message.includes("not the next")){
+                if (soundEnabled){
+                    soundEffectWrongOrder.play()
+
+                }
+            }
 
             if (message === "missingno") {
                 inputField.value = '';
