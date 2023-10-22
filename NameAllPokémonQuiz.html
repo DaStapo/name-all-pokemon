@@ -171,107 +171,126 @@
       <div class="row">
         <div class="column">
           <div class="column">
-            <button id="surrender" class="button roundedc2">Give up</button>
+            <button id="surrender" class="button roundedc2">Give Up</button>
           </div>
           <div class="column">
             <button id="resetButton" class="button roundedc2 mleft">Reset</button>
           </div>
         </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <div id="fullQuizButton" class="button-e btL grborder roundedc2 spbutton shadowc" onclick="gen0click()">Full
+            Quiz<img src="/images/FullQuiz.png" class="iconq"></div>
+          <div id="genselect" class="button-e btC grborder roundedc2 spbutton shadowc" onclick="genselectmenu()">
+            Generation Quiz<img src="/images/GenQuiz.png" class="iconq"></div>
+          <div id="typeselect" class="button-e btR grborder roundedc2 spbutton shadowc" onclick="typeselectmenu()">
+            Type Quiz<img src="/images/TypeQuiz.png " class="iconq"></div>
+        </div>
         <div class="column">
           <div class="column">
-            <div id="fullQuizButton" class="button-e btL grborder roundedc2 spbutton shadowc" onclick="gen0click()">Full
-              Quiz<img src="/images/FullQuiz.png" class="iconq"></div>
-            <div id="genselect" class="button-e btC grborder roundedc2 spbutton shadowc" onclick="genselectmenu()">
-              Generation Quiz<img src="/images/GenQuiz.png" class="iconq"></div>
-            <div id="typeselect" class="button-e btR grborder roundedc2 spbutton shadowc" onclick="typeselectmenu()">
-              Type Quiz<img src="/images/TypeQuiz.png " class="iconq"></div>
+            <div id="timers" class="box roundedc2 slightpad notxt">
+              Timer: <div class="smolbutton smolbuttonx" id="timer0" name='timer' value="timer0"> ∞</div>
+              <input type="number" class="input-timer" id="timer-min" min="1" max="999" value="35" autocomplete="off"
+                placeholder="1">
+              <div class="minute">min</div>
+              <div class="smolbutton attached" id="timer-set"> set</div>
+              <div class="smolbutton" id="pause" name='pause' value="pause"> ⏸</div>
+            </div>
           </div>
           <div class="column">
-            <div class="column">
-              <button id="shiny" class="button-i grborder roundedc2 spbutton shinyc"><img src="/images/shiny.svg"
-                  class="icon"></button>
-            </div>
-            <div class="column">
-              <button id="pokeball" class="button roundedc2 mleft hidden">No Shadows</button>
-            </div>
-            <div class="column">
-              <div id="silhouette" class="button-e grborder roundedc2 spbutton shadowc">Shadows<img
-                  src="/silhouettes/raichu.png" class="icon2"></div>
-            </div>
-            <div class="column">
-              <div id="spellingbutton" class="button-e grborder roundedc2 spbutton shadowc" onclick="spellingHelp()">
-                Spelling Help<img src="/images/spellcheck.png" class="iconq"></div>
+            <div class="box roundedc2 slightpad notxt" id="orderbox">
+              Order-Mode:
+              <div class="smolbutton atchleft" id="order-on"> on</div>
+              <div class="smolbutton atchright smolbuttonx" id="order-off"> off</div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="column">
-          <div id="timers" class="box roundedc2 slightpad notxt">
-            Timer: <div class="smolbutton smolbuttonx" id="timer0" name='timer' value="timer0"> ∞</div>
-            <input type="number" class="input-timer" id="timer-min" min="1" max="999" value="35" autocomplete="off"
-              placeholder="1">
-            <div class="minute">min</div>
-            <div class="smolbutton attached" id="timer-set"> set</div>
-            <div class="smolbutton" id="pause" name='pause' value="pause"> ⏸</div>
+          <div class="column">
+            <button id="shiny" class="button-i grborder roundedc2 spbutton shinyc"><img src="/images/shiny.svg"
+                class="icon"></button>
+          </div>
+          <div class="column">
+            <div id="spellingbutton" class="button-e grborder roundedc2 spbutton shadowc" onclick="spellingHelp()">
+              Spelling Help<img src="/images/spellcheck.png" class="iconq"></div>
+          </div>
+          <div class="column">
+            <button id="pokeball" class="button roundedc2 mleft hidden">No Shadows</button>
+          </div>
+          <div class="column">
+            <div id="silhouette" class="button-e grborder roundedc2 spbutton shadowc">Shadows<img
+                src="/silhouettes/raichu.png" class="icon2"></div>
+          </div>
+          <div class="column">
+            <div class="box roundedc2 slightpad notxt" id="extrashadow">
+              Next Shadow: press
+              <div class="smolbutton commabutton" id="shadownext">,</div>
+              or activate 
+              <div class="smolbutton langbutton" id="shadowhelp"> AUTO 30s</div>
+            </div>
           </div>
         </div>
         <div class="column">
-          <div class="box roundedc2 slightpad notxt" id="cycle-toggle">
-            Cycle sprites:
-            <div class="smolbutton atchleft smolbuttonx" id="cycle-on"> on</div>
-            <div class="smolbutton atchright" id="cycle-off"> off</div>
+          <div class="column">
+            <div class="box roundedc2 slightpad notxt" id="cycle-toggle">
+              Cycle sprites:
+              <div class="smolbutton atchleft smolbuttonx" id="cycle-on"> on</div>
+              <div class="smolbutton atchright" id="cycle-off"> off</div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="box roundedc2 slightpad notxt" id="sound-toggle">
+              Sound:
+              <div class="smolbutton atchleft smolbuttonx" id="sound-on"> on</div>
+              <div class="smolbutton atchright" id="sound-off"> off</div>
+            </div>
           </div>
         </div>
-        <div class="column">
-          <div class="box roundedc2 slightpad notxt" id="sound-toggle">
-            Sound:
-            <div class="smolbutton atchleft smolbuttonx" id="sound-on"> on</div>
-            <div class="smolbutton atchright" id="sound-off"> off</div>
-          </div>
-        </div>
+      </div>
+      <div class="row">
         <div class="column">
           <div id="lang_box" class="box roundedc2 padright"></div>
         </div>
-      </div>
-      <div class="row">
         <div class="column">
-          <div id="hostButton" class="button-e grborder roundedc2 spbutton shadowc">Multiplayer Invite<img
-              src="/images/HostQuiz.png" class="iconq"></div>
-        </div>
-        <div class="column">
-          <div id="linkButton" class="button-e grborder roundedc2 spbutton shadowc" style="display:none;">Copy Invite
-            Link<img src="/images/LinkQuiz.png" class="iconq"></div>
-        </div>
-        <div class="column">
-          <div class="box roundedc2 slightpad" id="twitchbox">
-            <div class="twitchbar" id="twitch-bar" onclick="twitchopen()"><img src="/images/TwitchLogo.png"
-                class="icont">Twitch-chat input
-              <div class="arrowbutton abright" id="twitch-open"><i class="arrow aright"></i></div>
-            </div>
-            <div id="twitch-coll" class="twitch-coll">
-              <input type="text" class="input-twitch" id="twitch-channel" maxlength="25" autocomplete="off"
-                placeholder="channel-name">
-              <div class="smolbutton atchleft" id="twitch-on"> on</div>
-              <div class="smolbutton atchright smolbuttonx" id="twitch-off"> off</div>
-              <div class="arrowbutton ableft" onclick="twitchclose()"><i class="arrow aleft"></i></div>
+          <div class="column">
+            <div id="hostButton" class="button-e grborder roundedc2 spbutton shadowc">Multiplayer Invite<img
+                src="/images/HostQuiz.png" class="iconq"></div>
+            <div id="linkButton" class="button-e grborder roundedc2 spbutton shadowc" style="display:none;">Copy Invite
+              Link<img src="/images/LinkQuiz.png" class="iconq"></div>
+          </div>
+          <div class="column">
+            <div class="box roundedc2 slightpad" id="twitchbox">
+              <div class="twitchbar" id="twitch-bar" onclick="twitchopen()"><img src="/images/TwitchLogo.png"
+                  class="icont">Twitch-chat input
+                <div class="arrowbutton abright" id="twitch-open"><i class="arrow aright"></i></div>
+              </div>
+              <div id="twitch-coll" class="twitch-coll">
+                <input type="text" class="input-twitch" id="twitch-channel" maxlength="25" autocomplete="off"
+                  placeholder="channel-name">
+                <div class="smolbutton atchleft" id="twitch-on"> on</div>
+                <div class="smolbutton atchright smolbuttonx" id="twitch-off"> off</div>
+                <div class="arrowbutton ableft" onclick="twitchclose()"><i class="arrow aleft"></i></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="column">
-          <div class="box roundedc2 slightpad" id="orderbox">
-            <div class="orderbar" id="order-bar" onclick="orderopen()">Order-Mode
-              <div class="arrowbutton abright" id="order-open"><i class="arrow aright"></i></div>
-            </div>
-            <div id="order-coll" class="order-coll notxt">
-              <div class="smolbutton atchleft" id="order-on"> on</div>
-              <div class="smolbutton atchright smolbuttonx" id="order-off"> off</div>
-              <div class="txt lpad">To reveal next shadow Press <img src="/images/comma.png" class="icono pointer"
-                  id="shadownext"> or activate <img src="/images/30s.png" class="icono pointer" id="shadowhelp"></div>
-              <div class="arrowbutton ableft" onclick="orderclose()"><i class="arrow aleft"></i></div>
-            </div>
-          </div>
-        </div>
+        <!--        <div class="column">
+                  <div class="box roundedc2 slightpad" id="orderbox">
+                    <div class="orderbar" id="order-bar" onclick="orderopen()">Order-Mode
+                      <div class="arrowbutton abright" id="order-open"><i class="arrow aright"></i></div>
+                    </div>
+                    <div id="order-coll" class="order-coll notxt">
+                      <div class="smolbutton atchleft" id="order-on"> on</div>
+                      <div class="smolbutton atchright smolbuttonx" id="order-off"> off</div>
+                      <div class="txt lpad">To reveal next shadow Press <img src="/images/comma.png" class="icono pointer"
+                          id="shadownext"> or activate <img src="/images/30s.png" class="icono pointer" id="shadowhelp"></div>
+                      <div class="arrowbutton ableft" onclick="orderclose()"><i class="arrow aleft"></i></div>
+                    </div>
+                  </div>
+                </div>-->
       </div>
       <div class="row">
         <div class="column centeredbox full">

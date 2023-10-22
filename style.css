@@ -250,9 +250,9 @@
 		-moz-appearance: textfield;
 	}
 	.attached {
-	margin-left: -6px !important;
+	margin-left: -10px !important;
 	border-radius: 0px 3px 6px 0px !important;
-	padding-left: 1px !important;
+	padding-left: 5px !important;
 	}
 	.atchright {
 	margin-left: -4px !important;
@@ -669,6 +669,11 @@
 		font-family: Roboto Condensed !important;
 		padding: 6px 4px 4px 3px !important;
 		margin: 0px 0px 0px 4px !important;
+	}
+	.commabutton {
+		padding-right: 7px !important;
+		padding-left: 12px !important;
+		margin: 0px 4px 0px 1px !important;
 	}
 	.ppbutton {
 	border: solid #65ae04 1px;
