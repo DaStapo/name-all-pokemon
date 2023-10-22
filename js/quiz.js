@@ -126,6 +126,9 @@ class Quiz {
             this.boxDict[box].classList.remove("outline")
             this.boxDict[box].classList.remove("outline"+this.getStyleName())
         }
+        document.getElementById("pokemon-box-big").classList.remove("outline")
+        document.getElementById("pokemon-box-big").classList.remove("outline"+this.getStyleName())
+        
 
         for (let id in this.unguessedDictionary){
             if (this.currentIds.has(id)){
@@ -482,7 +485,7 @@ class Quiz {
         
         let isCurrentlyBig = document.getElementById("pokemon-box-big").children.length > 2
         
-        let neededBig = this.orderMode && ("boxes" in this.filters && this.filters["boxes"].length > 2)
+        let neededBig = this.orderMode && ("boxes" in this.filters && this.filters["boxes"].length > 5)
 
         if(neededBig){
             if(!isCurrentlyBig){
@@ -518,8 +521,8 @@ class Quiz {
 
         if (this.orderMode){
             if ("boxes" in this.filters && neededBig){
-                if (this.filters["boxes"].length > 3){
-                    document.getElementById("regionall").innerText = "Full"
+                if (this.filters["boxes"].length > 5){
+                    document.getElementById("regionall").innerText = ""
                 }else{
                     let fullText = ''
                     for (let i =0; i < this.filters["boxes"].length; i++){
