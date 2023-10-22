@@ -1277,16 +1277,16 @@ async function loadData() {
             clearTimeout(shadowHelpIntervalMessage)
     
             shadowHelpIntervalMessage = setTimeout(()=>{
-                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0)){
+                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed())){
                     socketHostMessage("Revealing a shadow in 3 seconds ...")
                     showUserMessage("Revealing a shadow in 3 seconds ...")
                 }
-            }, 27000)
+            }, 17000)
     
             shadowHelpInterval = setTimeout(()=>{
                 shadowNextBtn.click();
                 resetShadowHelp();
-            }, 30000)
+            }, 20000)
         }
     }
 
@@ -1311,12 +1311,12 @@ async function loadData() {
                     socketHostMessage("Revealing a shadow in 3 seconds ...")
                     showUserMessage("Revealing a shadow in 3 seconds ...")
                 }
-            }, 27000)
+            }, 17000)
     
             shadowHelpInterval = setTimeout(()=>{
                 shadowNextBtn.click();
                 resetShadowHelp();
-            }, 30000)
+            }, 20000)
         }
     }
 

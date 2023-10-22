@@ -866,10 +866,13 @@ class Quiz {
 
     isAllShadowsRevealed(){
 
+        if (this.useSilhouettes){
+            return true;
+        }
         let all = true;
         for (let k = 0; k < this.currentPokemonList.length; k++){
             let pkmn = this.currentPokemonList[k]
-            if (!(this.revealedShadows.has(pkmn.id))){
+            if (!(this.revealedShadows.has(pkmn.id) || this.named.has(pkmn.baseName))){
                 all = false;
                 break
             }
