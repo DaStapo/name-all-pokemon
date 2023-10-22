@@ -1303,9 +1303,9 @@ async function loadData() {
         }else{
             visualizeButtonClick(shadowHelpRadio)
             if (quiz.orderMode){
-                showUserMessage("The next shadow will be revealed every 30s")    
+                showUserMessage("Activated auto-reveal of next shadow (20s after previous answer)")    
             }else{
-                showUserMessage("A random will be revealed every 30s")    
+                showUserMessage("Activated auto-reveal of random shadow (20s after previous answer)")    
             }
     
             shadowHelpIntervalMessage = setTimeout(()=>{
