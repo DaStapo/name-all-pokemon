@@ -2421,7 +2421,9 @@ async function loadData() {
             }, 17000)
     
             shadowHelpInterval = setTimeout(()=>{
-                shadowNextBtn.click();
+                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed())){
+                    shadowNextBtn.click();
+                }
                 resetShadowHelp();
             }, 20000)
         }
@@ -2451,7 +2453,9 @@ async function loadData() {
             }, 17000)
     
             shadowHelpInterval = setTimeout(()=>{
-                shadowNextBtn.click();
+                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed())){
+                    shadowNextBtn.click();
+                }
                 resetShadowHelp();
             }, 20000)
         }
