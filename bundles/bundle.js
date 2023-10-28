@@ -90,6 +90,8 @@ class Quiz {
 
     revealedShadows = new Set()
 
+    giveUpState = false;
+    
     name = "none"
 
     boxConstruction = []
@@ -130,6 +132,7 @@ class Quiz {
     }
 
     reset(){
+        this.giveUpState = true
         this.stopReveal()
         this.named = new Set()
         this.users = {}
@@ -898,9 +901,6 @@ class Quiz {
 
     isAllShadowsRevealed(){
 
-        if (this.useSilhouettes){
-            return true;
-        }
         let all = true;
         for (let k = 0; k < this.currentPokemonList.length; k++){
             let pkmn = this.currentPokemonList[k]
@@ -950,18 +950,27 @@ class Quiz {
 
 
     revealSingleShadow(id){
-        this.revealedShadows.add(id)
-        this.silhouetteDictionary[id] .style.display = "inline";
-        this.pokeballDictionary[id] .style.display = "none";
+        if (!this.revealedShadows.has(id)){
+            this.revealedShadows.add(id)
+            this.silhouetteDictionary[id] .style.display = "inline";
+            this.pokeballDictionary[id] .style.display = "none";
+        }
     }
 
 
 
     setSilhouettes() {
-        for (let i = 0; i < this.silhouetteArray.length; i++) {
-            this.silhouetteArray[i].style.display = "inline";
-            this.pokeballArray[i].style.display = "none";
+        
+        for (let id of this.currentIds){
+            this.revealSingleShadow(id)
         }
+        /*
+        for (let i = 0; i < this.silhouetteArray.length; i++) {
+            if (this.silhouetteArray[i].style.display != "inline"){
+                this.silhouetteArray[i].style.display = "inline";
+                this.pokeballArray[i].style.display = "none";
+            }
+        }*/
         this.useSilhouettes=true
     }
     
@@ -1079,7 +1088,7 @@ class Quiz {
         this.revealTimeouts = [];
     }
     giveUp(){
-
+        this.giveUpState = true
         let delay = 0;
         let revealList = []
         for (const id of this.currentIds) {
@@ -2272,8 +2281,9 @@ async function loadData() {
         document.getElementById("gen-name").innerHTML = quiz.getEndText();
         document.getElementById("timer-score").innerHTML = timerScore;
         document.getElementById("currentcount").innerHTML = pokemonCount
+        document.getElementById("shadow-count").innerHTML = quiz.revealedShadows.size
 
-        if (quiz.isSilhouettesEnabled()) {
+        if (quiz.revealedShadows.size > 0) {
             document.getElementById("trychallenge").style.display = "block";
         } else {
             document.getElementById("trychallenge").style.display = "none";
@@ -2416,14 +2426,14 @@ async function loadData() {
             clearTimeout(shadowHelpIntervalMessage)
     
             shadowHelpIntervalMessage = setTimeout(()=>{
-                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed())){
+                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed() && !quiz.giveUpState)){
                     socketHostMessage("Revealing a shadow in 3 seconds ...")
                     showUserMessage("Revealing a shadow in 3 seconds ...")
                 }
             }, 17000)
     
             shadowHelpInterval = setTimeout(()=>{
-                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed())){
+                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed()  && !quiz.giveUpState)){
                     shadowNextBtn.click();
                 }
                 resetShadowHelp();
@@ -2448,14 +2458,14 @@ async function loadData() {
             }
     
             shadowHelpIntervalMessage = setTimeout(()=>{
-                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed())){
+                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed() && !quiz.giveUpState)){
                     socketHostMessage("Revealing a shadow in 3 seconds ...")
                     showUserMessage("Revealing a shadow in 3 seconds ...")
                 }
             }, 17000)
     
             shadowHelpInterval = setTimeout(()=>{
-                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed())){
+                if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed() && !quiz.giveUpState)){
                     shadowNextBtn.click();
                 }
                 resetShadowHelp();
@@ -3228,7 +3238,7 @@ async function loadData() {
         state["silhouettes"] = quiz.isSilhouettesEnabled()
         state["orderMode"] = quiz.orderMode
         state["revealedShadows"] =  [...quiz.revealedShadows]
-
+        state["giveup"] = quiz.giveUpState
         state["timer"] = timerObj
 
         return state;
@@ -3278,7 +3288,7 @@ async function loadData() {
     function setQuizState(state) {
 
         state["named"] = new Set(state["named"])
-        
+
         if ("orderMode" in state){
             quiz.orderMode = state["orderMode"]
         }else{
@@ -3305,6 +3315,10 @@ async function loadData() {
         quiz.users = state["users"]
         setCounter(quiz.getScore());
         roomUpdateTimer(state["timer"]);
+
+        if (state['giveup']){
+            giveUp()
+        }
 
         if (state["paused"]) {
             pauseOn()

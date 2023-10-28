@@ -58,6 +58,8 @@ class Quiz {
 
     revealedShadows = new Set()
 
+    giveUpState = false;
+    
     name = "none"
 
     boxConstruction = []
@@ -98,6 +100,7 @@ class Quiz {
     }
 
     reset(){
+        this.giveUpState = true
         this.stopReveal()
         this.named = new Set()
         this.users = {}
@@ -866,9 +869,6 @@ class Quiz {
 
     isAllShadowsRevealed(){
 
-        if (this.useSilhouettes){
-            return true;
-        }
         let all = true;
         for (let k = 0; k < this.currentPokemonList.length; k++){
             let pkmn = this.currentPokemonList[k]
@@ -918,18 +918,27 @@ class Quiz {
 
 
     revealSingleShadow(id){
-        this.revealedShadows.add(id)
-        this.silhouetteDictionary[id] .style.display = "inline";
-        this.pokeballDictionary[id] .style.display = "none";
+        if (!this.revealedShadows.has(id)){
+            this.revealedShadows.add(id)
+            this.silhouetteDictionary[id] .style.display = "inline";
+            this.pokeballDictionary[id] .style.display = "none";
+        }
     }
 
 
 
     setSilhouettes() {
-        for (let i = 0; i < this.silhouetteArray.length; i++) {
-            this.silhouetteArray[i].style.display = "inline";
-            this.pokeballArray[i].style.display = "none";
+        
+        for (let id of this.currentIds){
+            this.revealSingleShadow(id)
         }
+        /*
+        for (let i = 0; i < this.silhouetteArray.length; i++) {
+            if (this.silhouetteArray[i].style.display != "inline"){
+                this.silhouetteArray[i].style.display = "inline";
+                this.pokeballArray[i].style.display = "none";
+            }
+        }*/
         this.useSilhouettes=true
     }
     
@@ -1047,7 +1056,7 @@ class Quiz {
         this.revealTimeouts = [];
     }
     giveUp(){
-
+        this.giveUpState = true
         let delay = 0;
         let revealList = []
         for (const id of this.currentIds) {
