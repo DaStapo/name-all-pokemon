@@ -397,6 +397,9 @@
 	.unknownbox {
 	max-width: 82px;
 	}
+	.allbox {
+	max-width: 1566px;
+	}
 	.smol {
 	width: 170px;
 	text-align: center;
