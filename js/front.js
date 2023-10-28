@@ -2196,6 +2196,32 @@ async function loadData() {
     setCounter(0);
     resetTimer()
 
+
+    function onLoadingComplete() {
+
+        //document.getElementById("loadbox").style.display = "none";
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("loadboxguest").style.display = "none";
+        document.getElementById("playtext").style.opacity = "1";
+        document.getElementById("inputbar").style.opacity = "1";
+        document.getElementById("pokemon").disabled = false;
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById("spinnerguest").style.display = "none";
+        document.getElementById("username-area").style.display = "block"
+        document.getElementById("missing-ENG").click()
+        if (roomId === null ){
+            quiz.setTypeQuiz('ghost');
+            changeQuiz();
+            off2();
+        }
+
+        changeFooterPosition();
+    
+    
+        addTransitionCss();
+        preloadSmallerImages();
+    }
+
     onLoadingComplete()
 }
 let visualizeButtonClick = function (elem) {
@@ -2263,24 +2289,7 @@ function preloadSmallerImages() {
 
 }
 
-function onLoadingComplete() {
 
-    //document.getElementById("loadbox").style.display = "none";
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("loadboxguest").style.display = "none";
-    document.getElementById("playtext").style.opacity = "1";
-    document.getElementById("inputbar").style.opacity = "1";
-    document.getElementById("pokemon").disabled = false;
-    document.getElementById("spinner").style.display = "none";
-    document.getElementById("spinnerguest").style.display = "none";
-    document.getElementById("username-area").style.display = "block"
-    document.getElementById("missing-ENG").click()
-    changeFooterPosition();
-
-
-    addTransitionCss();
-    preloadSmallerImages();
-}
 
 
 let currentMessageTimeout = null;
