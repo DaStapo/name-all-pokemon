@@ -1118,14 +1118,26 @@ class Quiz {
         this.unguessedDictionary[id].style.display = "none";
         let currentBox = this.pokemonIdDict[id].box;
         let pkmn = this.pokemonIdDict[id]
-        if(!(this.boxCounters[currentBox].includes(pkmn)))
-        this.boxCounters[currentBox].push(pkmn)
-        if (this.boxCounters[currentBox].length === this.currentBoxes[currentBox].length){
-            let boxElem = this.spriteDictionary[id].parentElement;
-            boxElem.classList.add('outline')
-            boxElem.classList.add('outline'+this.getStyleName())
+
+        if (this.spriteDictionary[id].parentElement.id === "pokemon-box-big"){
+            if (id === this.currentPokemonList[this.currentPokemonList.length-1].id){
+                this.spriteDictionary[id].parentElement.classList.add('outline')
+                this.spriteDictionary[id].parentElement.classList.add('outline'+this.getStyleName())
+            }
         }
+        else{
+            if(!(this.boxCounters[currentBox].includes(pkmn))){
+                this.boxCounters[currentBox].push(pkmn)
+                if (this.boxCounters[currentBox].length === this.currentBoxes[currentBox].length){
+                    let boxElem = this.spriteDictionary[id].parentElement;
+                    boxElem.classList.add('outline')
+                    boxElem.classList.add('outline'+this.getStyleName())
+                }
+            }
+        }
+
     }
+
     stopReveal() {
         for (let i = 0; i < this.revealTimeouts.length; i++) {
             clearInterval(this.revealTimeouts[i])
