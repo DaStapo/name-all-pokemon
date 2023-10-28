@@ -134,7 +134,7 @@ class Quiz {
     }
 
     reset(){
-        this.giveUpState = true
+        this.giveUpState = false
         this.stopReveal()
         this.named = new Set()
         this.users = {}
@@ -737,50 +737,53 @@ class Quiz {
                     }, 1000)
         
                 }else{
-                    try{
-                        if(soundEnabled){
-                            let soundEffectF4 = new Audio('/sound-effects/ruby_00F4.wav');
-                            soundEffectF4.volume = 0.2;
-                            soundEffectF4.play()
-                        }
-                        let randomIndex = randomIntFromInterval(0, visibleSprites.length-1)
-
-                        let originalSrc = visibleSprites[randomIndex].src
-                        let duskullPath = "/sprites/duskull.png";
-
-                        visibleSprites[randomIndex].src = duskullPath;
-                        
-                        
-
-                        setTimeout(()=>{
-
-
-
-                            if ((originalSrc.indexOf('/unknown') !== -1)){
-                                if (darkMode){
-                                    originalSrc = '/sprites/unknown-2.png';
-                                }else{
-                                    originalSrc = '/sprites/unknown.png';
-                                }
-                            }
-                            visibleSprites[randomIndex].src  = originalSrc
-                            if (that.spooky){
-                                if (soundEnabled){
-                                    let soundEffectED = new Audio('/sound-effects/ruby_00ED.wav');
-                                    soundEffectED.volume = 0.2;
-                                    soundEffectED.play()
-                                }
-                                that.startSpooky()
-                            }
-                        }, randomIntFromInterval(2000, 5000));
-                    } catch (e){
-                    setTimeout(()=>{
-                        that.startSpooky();
-                    }, 1000)
+                    let playedSound = false;
+                    if(soundEnabled){
+                        let soundEffectF4 = new Audio('/sound-effects/ruby_00F4.wav');
+                        soundEffectF4.volume = 0.2;
+                        soundEffectF4.play().then(() => {
+                            playedSound = true;
+                        })
                     }
+                    let randomIndex = randomIntFromInterval(0, visibleSprites.length-1)
+
+                    let originalSrc = visibleSprites[randomIndex].src
+                    let duskullPath = "/sprites/duskull.png";
+
+                    visibleSprites[randomIndex].src = duskullPath;
+
+
+
+                    setTimeout(()=>{
+
+
+
+                        if ((originalSrc.indexOf('/unknown') !== -1)){
+                            if (darkMode){
+                                originalSrc = '/sprites/unknown-2.png';
+                            }else{
+                                originalSrc = '/sprites/unknown.png';
+                            }
+                        }
+                        visibleSprites[randomIndex].src  = originalSrc
+                        if (that.spooky){
+                            if (soundEnabled && playedSound){
+                                let soundEffectED = new Audio('/sound-effects/ruby_00ED.wav');
+                                soundEffectED.volume = 0.2;
+                                soundEffectED.play()
+                                document.getElementById('spooky').style.display="block"
+                            }
+                            if (!soundEnabled){
+                                document.getElementById('spooky').style.display="block"
+                            }
+
+                            that.startSpooky()
+                        }
+                    }, randomIntFromInterval(1500, 3000));
                 }
+                
             }
-        }, randomIntFromInterval(5000, 10000))
+        }, randomIntFromInterval(10000, 20000))
     
     }
 
@@ -3317,7 +3320,7 @@ async function loadData() {
         state["revealedShadows"] =  [...quiz.revealedShadows]
         state["giveup"] = quiz.giveUpState
         state["timer"] = timerObj
-
+        console.log('give up state', quiz.giveUpState)
         return state;
     }
 

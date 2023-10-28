@@ -2097,7 +2097,7 @@ async function loadData() {
         state["revealedShadows"] =  [...quiz.revealedShadows]
         state["giveup"] = quiz.giveUpState
         state["timer"] = timerObj
-
+        console.log('give up state', quiz.giveUpState)
         return state;
     }
 
