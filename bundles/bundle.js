@@ -91,7 +91,8 @@ class Quiz {
     revealedShadows = new Set()
 
     giveUpState = false;
-    
+    spooky = true;
+
     name = "none"
 
     boxConstruction = []
@@ -101,6 +102,7 @@ class Quiz {
         this.genQuizBoxes = genQuizBoxes;
         this.allLanguages = allLanguages;
         this.useSilhouettes = false;
+        this.startSpooky()
     }
 
 
@@ -173,6 +175,7 @@ class Quiz {
 
             }
         }
+        
         this.onReset();
     }
 
@@ -710,6 +713,76 @@ class Quiz {
             that.startMissingno();
         }, randomIntFromInterval(300, 3000))
     }
+
+
+    startSpooky(){
+
+        if (!this.spooky){
+            return
+        }
+        let that = this
+
+        setTimeout(()=>{
+
+            if (that.spooky){
+                let visibleSprites = []
+                for (let i = 0; i< this.allSprites.length; i++){
+                    if (this.allSprites[i].style.display != "none" && this.allSprites[i].parentElement.style.display != "none" && this.allSprites[i].parentElement.parentElement.style.display != "none"){
+                        visibleSprites.push(this.allSprites[i])
+                    }
+                }
+                if (visibleSprites.length < 1){
+                    setTimeout(()=>{
+                        that.startSpooky();
+                    }, 1000)
+        
+                }else{
+                    try{
+                        if(soundEnabled){
+                            let soundEffectF4 = new Audio('/sound-effects/ruby_00F4.wav');
+                            soundEffectF4.volume = 0.2;
+                            soundEffectF4.play()
+                        }
+                        let randomIndex = randomIntFromInterval(0, visibleSprites.length-1)
+
+                        let originalSrc = visibleSprites[randomIndex].src
+                        let duskullPath = "/sprites/duskull.png";
+
+                        visibleSprites[randomIndex].src = duskullPath;
+                        
+                        
+
+                        setTimeout(()=>{
+
+                            if (soundEnabled){
+                                let soundEffectED = new Audio('/sound-effects/ruby_00ED.wav');
+                                soundEffectED.volume = 0.2;
+                                soundEffectED.play()
+                            }
+
+                            if ((originalSrc.indexOf('/unknown') !== -1)){
+                                if (darkMode){
+                                    originalSrc = '/sprites/unknown-2.png';
+                                }else{
+                                    originalSrc = '/sprites/unknown.png';
+                                }
+                            }
+                            visibleSprites[randomIndex].src  = originalSrc
+                            if (that.spooky){
+                                that.startSpooky()
+                            }
+                        }, randomIntFromInterval(2000, 5000));
+                    } catch (e){
+                    setTimeout(()=>{
+                        that.startSpooky();
+                    }, 1000)
+                    }
+                }
+            }
+        }, randomIntFromInterval(5000, 10000))
+    
+    }
+
 
 
     parseInput(inputText, user, onCorrect = null){
@@ -1267,6 +1340,9 @@ for (let i = 0; i < boxIds.length; i++) {
     boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
 }
 
+let randomIntFromInterval = function (min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
 let quiz = new Quiz(boxDict, genQuizBoxes, allLanguages)
 
 
@@ -3415,7 +3491,7 @@ function addTransitionCss() {
 
     }
     let currentDate = new Date()
-    if (currentDate.getHours() >= 18 || currentDate.getHours() <= 7) {
+    if (true || currentDate.getHours() >= 18 || currentDate.getHours() <= 7) {
         setTimeout(() => {
             document.getElementById("darkon").click();
         }, 10)
@@ -3725,9 +3801,6 @@ recentSprite.addEventListener("load", function () {
 
 
 
-let randomIntFromInterval = function (min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min)
-}
 
 let imageRain = function (image, imageCount, avgSize) {
 

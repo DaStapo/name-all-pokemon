@@ -121,6 +121,9 @@ for (let i = 0; i < boxIds.length; i++) {
     boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
 }
 
+let randomIntFromInterval = function (min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
 let quiz = new Quiz(boxDict, genQuizBoxes, allLanguages)
 
 
@@ -2269,7 +2272,7 @@ function addTransitionCss() {
 
     }
     let currentDate = new Date()
-    if (currentDate.getHours() >= 18 || currentDate.getHours() <= 7) {
+    if (true || currentDate.getHours() >= 18 || currentDate.getHours() <= 7) {
         setTimeout(() => {
             document.getElementById("darkon").click();
         }, 10)
@@ -2579,9 +2582,6 @@ recentSprite.addEventListener("load", function () {
 
 
 
-let randomIntFromInterval = function (min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min)
-}
 
 let imageRain = function (image, imageCount, avgSize) {
 
