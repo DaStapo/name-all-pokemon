@@ -716,7 +716,7 @@ class Quiz {
                     let randomIndex = randomIntFromInterval(0, visibleSprites.length-1)
 
                     let originalSrc = visibleSprites[randomIndex].src
-                    let duskullPath = "/sprites/duskull.png";
+                    let duskullPath = "/images/duskull.gif";
 
                     visibleSprites[randomIndex].src = duskullPath;
 
@@ -747,11 +747,11 @@ class Quiz {
 
                             that.startSpooky()
                         }
-                    }, randomIntFromInterval(1500, 3000));
+                    }, randomIntFromInterval(3500, 4500));
                 }
                 
             }
-        }, randomIntFromInterval(10000, 20000))
+        }, randomIntFromInterval(10000, 25000))
     
     }
 
