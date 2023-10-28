@@ -2224,7 +2224,10 @@ async function loadData() {
         addTransitionCss();
         preloadSmallerImages();
     }
-
+    document.getElementById('spooky').onclick = () =>{
+        quiz.spooky = false;
+        document.getElementById('spooky').style.display="none"
+    }
     onLoadingComplete()
 }
 let visualizeButtonClick = function (elem) {

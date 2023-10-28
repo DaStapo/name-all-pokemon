@@ -754,11 +754,7 @@ class Quiz {
 
                         setTimeout(()=>{
 
-                            if (soundEnabled){
-                                let soundEffectED = new Audio('/sound-effects/ruby_00ED.wav');
-                                soundEffectED.volume = 0.2;
-                                soundEffectED.play()
-                            }
+
 
                             if ((originalSrc.indexOf('/unknown') !== -1)){
                                 if (darkMode){
@@ -769,6 +765,11 @@ class Quiz {
                             }
                             visibleSprites[randomIndex].src  = originalSrc
                             if (that.spooky){
+                                if (soundEnabled){
+                                    let soundEffectED = new Audio('/sound-effects/ruby_00ED.wav');
+                                    soundEffectED.volume = 0.2;
+                                    soundEffectED.play()
+                                }
                                 that.startSpooky()
                             }
                         }, randomIntFromInterval(2000, 5000));
@@ -3443,7 +3444,10 @@ async function loadData() {
         addTransitionCss();
         preloadSmallerImages();
     }
-
+    document.getElementById('spooky').onclick = () =>{
+        quiz.spooky = false;
+        document.getElementById('spooky').style.display="none"
+    }
     onLoadingComplete()
 }
 let visualizeButtonClick = function (elem) {
