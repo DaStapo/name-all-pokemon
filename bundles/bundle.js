@@ -3447,10 +3447,13 @@ async function loadData() {
         document.getElementById("spinnerguest").style.display = "none";
         document.getElementById("username-area").style.display = "block"
         document.getElementById("missing-ENG").click()
+
         if (roomId === null ){
             quiz.setTypeQuiz('ghost');
             changeQuiz();
             off2();
+            document.getElementById("genselection").onclick = off2;
+            document.getElementById("typeselection").onclick = off2;
         }
 
         changeFooterPosition();
