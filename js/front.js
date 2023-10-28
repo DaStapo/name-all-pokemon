@@ -180,7 +180,7 @@ let roomId = getRoomNameFromURL();
 MAX_RETRIES = 5
 RETRY_INTERVAL_MS = 1000
 retries = 0
-async function fetchData(endpoint) {
+async function fetchData(endpoint, warn=true) {
     try {
         let response = await fetch('/' + endpoint, {
             method: "GET",
@@ -194,13 +194,15 @@ async function fetchData(endpoint) {
 
     } catch (error) {
         console.error('Error fetching data:', error);
-        retries++;
-        if (retries <= MAX_RETRIES) {
-            await new Promise(resolve => setTimeout(resolve, RETRY_INTERVAL_MS));
-            return fetchData(endpoint);
-        } else {
-            console.error(error);
-            alert("There seems to be a problem with fetching the data. Please try refreshing the page.");
+        if (warn){
+            retries++;
+            if (retries <= MAX_RETRIES) {
+                await new Promise(resolve => setTimeout(resolve, RETRY_INTERVAL_MS));
+                return fetchData(endpoint, warn);
+            } else {
+                console.error(error);
+                alert("There seems to be a problem with fetching the data. Please try refreshing the page.");
+            }
         }
     }
 }
@@ -601,7 +603,7 @@ async function loadData() {
 
         async function checkMultiplayerStatus() {
             let multiplayerOnline = getMultiplayerServer("online");
-            let multiplayerEnabled = fetchData("multiplayerEnabled");
+            let multiplayerEnabled = fetchData("multiplayerEnabled", false);
 
             let isOnline = await multiplayerOnline
             let isEnabled = (await multiplayerEnabled)["result"]
