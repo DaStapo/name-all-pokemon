@@ -1385,6 +1385,7 @@ if (roomId.length > 1) {
     document.getElementById("guest-info").style.display = "block"
     document.getElementById("loadboxguest").style.display = "block"
     document.getElementById("loadbox").style.display = "none"
+    document.getElementById("extrashadow").style.display = "none"
     usernamePrompt.style.display = "block"
     radioSilhouette.style.display = "none"
     orderModeMenu.style.display = "none"
@@ -1495,11 +1496,11 @@ async function loadData() {
             socket.emit('stateChange', { "silhouettes": true })
         }
     }
-    function socketSetOrderMode(val) {
+    /*function socketSetOrderMode(val) {
         if (socket !== null && isSocketHost) {
             socket.emit('stateChange', { "orderMode": val })
         }
-    }
+    }*/
     function socketSetPaused(val) {
         if (socket !== null && isSocketHost) {
             socket.emit('stateChange', { "paused": val })
@@ -1635,9 +1636,9 @@ async function loadData() {
                                 quiz.setSilhouettes()
                             }
                         }
-                        else if (key === "orderMode") {
+                       /* else if (key === "orderMode") {
                            quiz.orderMode = true;
-                        } else if (key === "showcongrats") {
+                        }*/ else if (key === "showcongrats") {
                             showCongrats();
                         } else if (key === "paused") {
                             if (data["paused"]) {
@@ -2367,8 +2368,8 @@ async function loadData() {
         visualizeButtonUnclick(disableOrderBtn)
         visualizeButtonClick(enableOrderBtn)
         quiz.setOrderMode(true)
-        socketSetOrderMode(true)
-
+        //socketSetOrderMode(true)
+        changeQuiz()
         promptOrderEnable.style.display = "none";
     }
     promptOrderEnableNo.onclick = function () {
@@ -2379,7 +2380,8 @@ async function loadData() {
         visualizeButtonUnclick(enableOrderBtn)
         visualizeButtonClick(disableOrderBtn)
         quiz.setOrderMode(false)
-        socketSetOrderMode(false)
+        changeQuiz()
+        //socketSetOrderMode(false)
         promptOrderDisable.style.display = "none";
         
     }
@@ -2440,9 +2442,9 @@ async function loadData() {
         }else{
             visualizeButtonClick(shadowHelpRadio)
             if (quiz.orderMode){
-                showUserMessage("The next shadow will be revealed every 30s")    
+                showUserMessage("Activated auto-reveal of next shadow (20s after previous answer)")    
             }else{
-                showUserMessage("A random will be revealed every 30s")    
+                showUserMessage("Activated auto-reveal of random shadow (20s after previous answer)")    
             }
     
             shadowHelpIntervalMessage = setTimeout(()=>{
@@ -3276,15 +3278,16 @@ async function loadData() {
     function setQuizState(state) {
 
         state["named"] = new Set(state["named"])
-
-        quiz.setQuiz(state["quizName"], state["filters"])
-        if (state["silhouettes"]) {
-            quiz.setSilhouettes();
-        }
+        
         if ("orderMode" in state){
             quiz.orderMode = state["orderMode"]
         }else{
             quiz.orderMode = false;
+        }
+
+        quiz.setQuiz(state["quizName"], state["filters"])
+        if (state["silhouettes"]) {
+            quiz.setSilhouettes();
         }
 
         if ('revealedShadows' in state){

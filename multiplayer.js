@@ -43,9 +43,9 @@ let startMultiplayerServer = function (){
     
     
     function validateAndSanitizeString(username) {
-        const allowedCharacters = /^[a-zA-Z0-9_\u4e00-\u9fa5\uac00-\ud7af\u3040-\u30ff\s]+$/;
+        const allowedCharacters = /^[a-zA-Z0-9_\u4e00-\u9fa5\uac00-\ud7af\u3040-\u30ff\s.]+$/;
         if (!allowedCharacters.test(username)) {
-            username = username.replace(/[^a-zA-Z0-9_\u4e00-\u9fa5\uac00-\ud7af\u3040-\u30ff\s]/g, '_');
+            username = username.replace(/[^a-zA-Z0-9_\u4e00-\u9fa5\uac00-\ud7af\u3040-\u30ff\s.]/g, '_');
         }
     
         return username;
