@@ -1141,7 +1141,11 @@ async function loadData() {
         document.getElementById("timer-score").innerHTML = timerScore;
         document.getElementById("currentcount").innerHTML = pokemonCount
         document.getElementById("shadow-count").innerHTML = quiz.revealedShadows.size
-
+        if (quiz.orderMode){
+            document.getElementById("order-congrats").innerHTML = " in Pokédex order!"
+        }else{
+            document.getElementById("order-congrats").innerHTML = "!"
+        }
         if (quiz.revealedShadows.size > 0) {
             document.getElementById("trychallenge").style.display = "block";
         } else {
