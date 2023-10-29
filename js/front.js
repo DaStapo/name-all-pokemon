@@ -1226,6 +1226,7 @@ async function loadData() {
         if (!quiz.orderMode){
             if("types" in quiz.filters){
                 showUserMessage("Order mode does not work with type quizzes")
+                
             }else{
                 promptOrderEnable.style.display = "inline";
             }
@@ -1315,9 +1316,9 @@ async function loadData() {
         }else{
             visualizeButtonClick(shadowHelpRadio)
             if (quiz.orderMode){
-                showUserMessage("Activated auto-reveal of next shadow (20s after previous answer)")    
+                showUserMessage("Activated auto-reveal of next shadow every 20 seconds")    
             }else{
-                showUserMessage("Activated auto-reveal of random shadow (20s after previous answer)")    
+                showUserMessage("Activated auto-reveal of random shadow every 20 seconds")    
             }
     
             shadowHelpIntervalMessage = setTimeout(()=>{
