@@ -89,7 +89,6 @@ let startMultiplayerServer = function (){
     
     // Define a function to handle socket connections
     io.on('connection', (socket) => {
-        console.log('recovered?', socket.recovered)
         // Handle room creation
         socket.on('host', (data) => {
             try {
@@ -166,6 +165,7 @@ let startMultiplayerServer = function (){
                     socket.broadcast.to(socket.roomId).emit('scores', existingRooms[socket.roomId]["state"]["users"]);
                 }
                 existingRooms[socket.roomId]["namedTime"] = Date.now();
+                log('pkmn named')
             } catch (error) {
                 log('named error', error)
             }
