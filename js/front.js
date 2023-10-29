@@ -3010,7 +3010,12 @@ for (let key of allLanguages) {
 
 
 document.addEventListener('keydown', function (event) {
-    // Check if the main input field is not focused
+  
+    //TODO if enter is pressed, empty inputField
+    if (event.key === "Enter" || event.code === "Enter" || event.keyCode === 13) {
+        // Clear the input field
+        inputField.value = '';
+    }
     if (document.activeElement.tagName !== "INPUT") {
         // Focus on the main input field when any key is pressed
         inputField.focus();
