@@ -59,7 +59,7 @@ class Quiz {
     revealedShadows = new Set()
 
     giveUpState = false;
-    spooky = true;
+    spooky = false;
 
     name = "none"
 
@@ -587,6 +587,13 @@ class Quiz {
                     formattedDict[key] = translation[key]
                 }
             }
+            if (pkmn.baseName === "nidoranm" || pkmn.baseName === "nidoranf"){
+                for (let key in formattedDict){
+                    if (formattedDict[key].endsWith("m") || formattedDict[key].endsWith("f") ){
+                        formattedDict[key] = formattedDict[key].substring(0, formattedDict[key].length-1)
+                    }
+                }
+            }
             pkmn.setFormattedNames(formattedDict);
         }
     }
@@ -766,8 +773,18 @@ class Quiz {
         let inputs = []
         
         if (inputText === 'nidoran' || inputText === 'ニドラン'.toLowerCase() ||inputText === '니드런'.toLowerCase() ) {
-            inputs.push('nidoranf')
-            inputs.push('nidoranm')
+            if(!this.orderMode){
+                inputs.push('nidoranf')
+                inputs.push('nidoranm')
+            }else{
+                if (!this.named.has("nidoranf")){
+                    inputs.push('nidoranf')
+                }else{
+                    inputs.push('nidoranm')
+                    
+                }
+            }
+
         }
         
         

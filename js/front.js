@@ -1061,6 +1061,9 @@ async function loadData() {
 
     nameAll = function () {
         for (let id of quiz.currentIds) {
+            if (id === "sandslash"){
+                break
+            }
             parseInput(quiz.pokemonIdDict[id].baseName, myUsername)
         }
     }
@@ -2219,13 +2222,14 @@ async function loadData() {
         document.getElementById("username-area").style.display = "block"
         document.getElementById("missing-ENG").click()
 
+        /*halloween
         if (roomId === null ){
             quiz.setTypeQuiz('ghost');
             changeQuiz();
             off2();
             document.getElementById("genselection").onclick = off2;
             document.getElementById("typeselection").onclick = off2;
-        }
+        }*/
 
         changeFooterPosition();
     
@@ -2284,7 +2288,7 @@ function addTransitionCss() {
 
     }
     let currentDate = new Date()
-    if (true || currentDate.getHours() >= 18 || currentDate.getHours() <= 7) {
+    if (currentDate.getHours() >= 18 || currentDate.getHours() <= 7) {
         setTimeout(() => {
             document.getElementById("darkon").click();
         }, 10)
