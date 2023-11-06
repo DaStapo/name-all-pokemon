@@ -115,6 +115,10 @@ let usernamePrompt = document.getElementById("promptusername")
 let genBoxes = document.getElementById("gen-boxes")
 let bigBox = document.getElementById("pokemon-box-big")
 
+let saveButton = document.getElementById("save")
+let loadButton = document.getElementById("load")
+
+
 let boxDict = {}
 for (let i = 0; i < boxIds.length; i++) {
     let boxId = boxIds[i]
@@ -2110,6 +2114,52 @@ async function loadData() {
         return state;
     }
 
+     saveButton.onclick = () => {
+        let jsonContent = JSON.stringify(getQuizState())
+        // Create a Blob containing the JSON data
+        let blob = new Blob([jsonContent], { type: 'application/json' });
+            
+        // Create a URL for the Blob
+        let url = URL.createObjectURL(blob);
+    
+        function getCurrentDateString(){
+            let currentDate = new Date().toISOString().slice(0, 10); // get the current date in the ISO format (YYYY-MM-DD) and slice it to get only the date part
+            currentDate = currentDate.replace(/-/g, '_'); // replace all dashes with underscores
+            return currentDate;
+        }
+
+        // Create an anchor element and trigger a click event
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = 'pkmnquiz_save_'+getCurrentDateString()  +'.json';
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        // Clean up by revoking the URL
+        URL.revokeObjectURL(url);
+    }
+
+    loadButton.addEventListener('change', function(event) {
+        function loadJSONFile(file) {
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const jsonData = JSON.parse(event.target.result);
+                console.log('Loaded JSON data:', jsonData);
+                setQuizState(jsonData)
+                loadButton.value = '';
+            };
+
+            reader.readAsText(file);
+        }
+
+        const file = event.target.files[0];
+        if (file) {
+            loadJSONFile(file);
+        }
+    });
+    
+    
 
     function roomUpdateTimer(_timer) {
         //slightly changed timer functions
