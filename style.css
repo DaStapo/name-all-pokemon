@@ -548,6 +548,10 @@
 	.spbutton {
 		background:rgba(255, 255, 255, 0.85);
 	}
+	.iconc {
+		min-width: 1px !important;
+		padding-bottom: 2px !important;
+	}
 	.shinyc {
 	width: 46px;
 	}
@@ -737,6 +741,12 @@
 	}
 	.center {
 	text-align: center;
+	}
+	.lmarg {
+		margin-left: 10px;
+	}
+	.tmarg {
+		margin-top: 20px;
 	}
 	.rank {
 	padding: 0px 4px;
