@@ -2083,12 +2083,14 @@ async function loadData() {
         state["revealedShadows"] =  [...quiz.revealedShadows]
         state["giveup"] = quiz.giveUpState
         state["timer"] = timerObj
+        console.log('timerObj', timerObj)
         return state;
     }
 
      saveButton.onclick = () => {
         let state = getQuizState()
         state["timer"]["savedAt"] = Date.now()
+        
         let jsonContent = JSON.stringify(state)
 
         // Create a Blob containing the JSON data
@@ -2158,16 +2160,16 @@ async function loadData() {
             console.log('creating new timer')
             if (_timer["type"] === "countdown") {
 
-                let startTimestamp = _timer["t"]
-                let prevTimestamp = startTimestamp
+                let _s = _timer["t"]
+                let prevTimestamp = Date.now()
                 activeTimer = setInterval(function () {
                     console.log('timer updating1')
                     let currentTime = Date.now()
                     if (paused) {
-                        startTimestamp += currentTime - prevTimestamp
+                        _s += currentTime - prevTimestamp
                     }
 
-                    let msDiff = startTimestamp - currentTime;
+                    let msDiff = _s - currentTime;
 
                     prevTimestamp = currentTime
 
@@ -2181,12 +2183,14 @@ async function loadData() {
 
                 activeTimer = setInterval(function () {
                     console.log('timer updating2')
-
+                    
                     let msDiff = Date.now() - prevTimestamp;
                     prevTimestamp = Date.now();
                     if (!paused) {
                         total += msDiff
                     }
+                    timerObj["t"] = total
+                    timerObj["updatedAt"] = prevTimestamp
                     updateTimer(total);
                 }, 100)
             }
@@ -2223,7 +2227,8 @@ async function loadData() {
         quiz.users = state["users"]
         setCounter(quiz.getScore());
         if (isLoad){
-            state["timer"]["t"] += Date.now() + state["timer"]["savedAt"]
+            state["timer"]["t"] += Date.now() - state["timer"]["savedAt"]
+            state["timer"]["updatedAt"] = Date.now()  + Date.now() - state["timer"]["savedAt"]
         }
         roomUpdateTimer(state["timer"]);
 
@@ -2266,11 +2271,13 @@ async function loadData() {
         });
         // Handle the file drop event.
         document.addEventListener('drop', function (e) {
-            e.preventDefault();
-            let files = e.dataTransfer.files;
-            if (files.length > 0){
-                let file = files[0]
-                loadFileFunc(file)
+            if (socket === null || isSocketHost){
+                e.preventDefault();
+                let files = e.dataTransfer.files;
+                if (files.length > 0){
+                    let file = files[0]
+                    loadFileFunc(file)
+                }
             }
         });
     
