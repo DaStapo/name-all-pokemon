@@ -900,6 +900,7 @@ class Quiz {
                 this.langCounts[this.langDict[input]]+=1
                 this.checkHighestLang()
                 recentSprite.src = this.spriteDictionary[recentPkmn.id].src;
+                this.spriteDictionary["ditto"].src = this.spriteDictionary[recentPkmn.id].src
                 correct = true;
                 if (onCorrect !== null){
                     onCorrect(baseName)
