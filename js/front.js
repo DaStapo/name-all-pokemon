@@ -115,8 +115,8 @@ let usernamePrompt = document.getElementById("promptusername")
 let genBoxes = document.getElementById("gen-boxes")
 let bigBox = document.getElementById("pokemon-box-big")
 
-let saveButton = document.getElementById("save")
-let loadButton = document.getElementById("load")
+let saveButton = document.getElementById("savestate")
+let loadButton = document.getElementById("loadstate")
 
 
 let boxDict = {}
