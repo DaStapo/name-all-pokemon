@@ -2229,8 +2229,9 @@ async function loadData() {
         if (isLoad){
             state["timer"]["t"] += Date.now() - state["timer"]["savedAt"]
             state["timer"]["updatedAt"] = Date.now()  + Date.now() - state["timer"]["savedAt"]
+            //delete state["timer"]["savedAt"]
+            timerObj = state["timer"]
         }
-        roomUpdateTimer(state["timer"]);
 
         if (state['giveup']){
             giveUp()
@@ -2239,6 +2240,9 @@ async function loadData() {
         if (state["paused"]) {
             pauseOn()
         }
+
+        roomUpdateTimer(state["timer"]);
+
 
     }
 
