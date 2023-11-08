@@ -4339,8 +4339,9 @@ disableLanguage = function (languageButton) {
 
 }
 
-for (let key of allLanguages) {
 
+let langButtonsDict = {}
+for (let key of allLanguages) {
     let lang = document.createElement("div");
     lang.innerHTML += key
     lang.classList.add('smolbutton')
@@ -4349,18 +4350,29 @@ for (let key of allLanguages) {
     lang.onclick = function () {
         enableLanguage(lang)
     }
-    if (key == 'ENG' || key == 'JPN' || key == 'KOR' || key == 'CHT' || key == 'CHS' || key == 'ESP' || key == 'ITA') {
-        lang.click()
-    }
-    if (key == "GER" && navigator.language.includes("de")){
-        lang.click()
-    }
-    if (key == "FRE" && navigator.language.includes("fr")){
-        lang.click()
-    }
+    langButtonsDict[key] = lang
     language_box.appendChild(lang);
 }
+langButtonsDict["ENG"].innerHTML = "ENG / ESP / ITA"
+langButtonsDict["ENG"].onclick = function(){
+    enableLanguage(langButtonsDict["ENG"])
+    enableLanguage(langButtonsDict["ESP"])
+    enableLanguage(langButtonsDict["ITA"])
+}
+langButtonsDict["ESP"].style.display = "none"
+langButtonsDict["ITA"].style.display="none"
+langButtonsDict["ENG"].click()
+langButtonsDict["JPN"].click()
+langButtonsDict["KOR"].click()
+langButtonsDict["CHT"].click()
+langButtonsDict["CHS"].click()
 
+if (navigator.language.includes("de")){
+    langButtonsDict["GER"].click()
+}
+if (navigator.language.includes("fr")){
+    langButtonsDict["FRE"].click()
+}
 
 document.addEventListener('keydown', function (event) {
   
