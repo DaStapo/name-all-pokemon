@@ -933,9 +933,8 @@ class Quiz {
                 this.checkHighestLang()
                 recentSprite.src = this.spriteDictionary[recentPkmn.id].src;
                 if (this.named.has("ditto")){
-                    //this.spriteDictionary["ditto"].src = this.spriteDictionary[recentPkmn.id].src
-                    //this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.spriteDictionary[recentPkmn.id].src
-                    this.spriteCycles["ditto"] = ["ditto", recentPkmn.id]
+                    this.spriteDictionary["ditto"].src = this.spriteDictionary[recentPkmn.id].src
+                    this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.spriteDictionary[recentPkmn.id].src
                 }
 
                 correct = true;
@@ -1228,6 +1227,16 @@ class Quiz {
             this.unguessedDict[id].style.display = 'inline-block';
             this.unguessedDict[id].classList.add('fixed-width');
         }
+
+        if (this.shinyEnabled){
+            this.spriteDictionary["ditto"].src = this.encodedImages['sprite']["ditto"]
+            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages['sprite']["ditto"]
+        }else{
+            this.spriteDictionary["ditto"].src = this.encodedImages["shiny"]["ditto"]
+            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages["shiny"]["ditto"]      
+        }
+
+        
     }
 
 
