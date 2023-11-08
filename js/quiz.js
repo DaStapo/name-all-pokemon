@@ -607,6 +607,7 @@ class Quiz {
 
 
     updateLanguages(enabledLanguages){
+        console.log(enabledLanguages)
         this.enabledLanguages = enabledLanguages;
         this.currentLangsNames= new Set()
         this.nameDict = {}

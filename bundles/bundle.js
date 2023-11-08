@@ -639,6 +639,7 @@ class Quiz {
 
 
     updateLanguages(enabledLanguages){
+        console.log(enabledLanguages)
         this.enabledLanguages = enabledLanguages;
         this.currentLangsNames= new Set()
         this.nameDict = {}
@@ -4334,10 +4335,24 @@ let enableLanguage = function (languageButton) {
     enabledLanguages.push(languageButton.id)
     visualizeButtonClick(languageButton);
     languageButton.onclick = function () {
+        if (languageButton.id === "ENG"){
+            langButtonsDict["ESP"].click()
+            langButtonsDict["ITA"].click()
+        }
         disableLanguage(languageButton)
+        
     }
-    quiz.updateLanguages(enabledLanguages)
+    if (updateTimeout !== false){
+        clearTimeout(updateTimeout)
+    }
+    updateTimeout = setTimeout(()=>{
+        quiz.updateLanguages(enabledLanguages)
+        updateTimeout = false
+    }, 500)
 }
+
+
+let updateTimeout = false;
 
 disableLanguage = function (languageButton) {
     if (enabledLanguages.length > 1) {
@@ -4347,9 +4362,20 @@ disableLanguage = function (languageButton) {
         }
         visualizeButtonUnclick(languageButton);
         languageButton.onclick = function () {
+            if (languageButton.id === "ENG"){
+                langButtonsDict["ESP"].click()
+                langButtonsDict["ITA"].click()
+            }
             enableLanguage(languageButton)
         }
-        quiz.updateLanguages(enabledLanguages)
+        if (updateTimeout !== false){
+            clearTimeout(updateTimeout)
+        }
+        updateTimeout = setTimeout(()=>{
+            quiz.updateLanguages(enabledLanguages)
+            updateTimeout = false
+        }, 500)
+        
     }
 
 }
