@@ -3100,6 +3100,12 @@ for (let key of allLanguages) {
     if (key == 'ENG' || key == 'JPN' || key == 'KOR' || key == 'CHT' || key == 'CHS' || key == 'ESP' || key == 'ITA') {
         lang.click()
     }
+    if (key == "GER" && navigator.language.includes("de")){
+        lang.click()
+    }
+    if (key == "FRE" && navigator.language.includes("fr")){
+        lang.click()
+    }
     language_box.appendChild(lang);
 }
 

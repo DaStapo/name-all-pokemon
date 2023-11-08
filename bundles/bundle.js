@@ -2264,9 +2264,7 @@ async function loadData() {
                 soundEffect.play();
             }
             setCounter(quiz.getScore());
-            console.log('test2', activeTimer)
             if (!activeTimer) {
-                console.log('test3')
                 if (currentTime === 0) {
                     startTimer();
                 } else {
@@ -3337,7 +3335,6 @@ async function loadData() {
         state["revealedShadows"] =  [...quiz.revealedShadows]
         state["giveup"] = quiz.giveUpState
         state["timer"] = timerObj
-        console.log('timerObj', timerObj)
         return state;
     }
 
@@ -3381,7 +3378,6 @@ async function loadData() {
                 let base64Data = event.target.result; // Extract the base64 part of the data URI
                 let jsonContent = atob(base64Data); // Decode base64 data
                 let jsonData = JSON.parse(jsonContent); // Parse JSON content
-                console.log('Loaded JSON data:', jsonData);
                 setQuizState(jsonData, true);
                 socketChangeQuiz();
                 
@@ -3409,7 +3405,6 @@ async function loadData() {
         document.getElementById("fileInput").click()
     }
     document.getElementById("fileInput").addEventListener('change', function (e) {
-        console.log(e.target.files)
         if (e.target.files.length > 0){
             let file = e.target.files[0];
             loadFileFunc(file)
@@ -3420,22 +3415,15 @@ async function loadData() {
     
 
     function roomUpdateTimer(_timer) {
-        console.log('trying to reset')
 
-        /*if (paused && activeTimer !== false && "savedAt" in _timer){
-            return;
-        }*/
 
-        console.log('clearing timer', activeTimer)
         clearInterval(activeTimer)
         activeTimer = false
         if (_timer["type"] !== "none") {
-            console.log('creating new timer')
             if (_timer["type"] === "countdown") {
 
                 let prevTimestamp = Date.now()
                 activeTimer = setInterval(function () {
-                    console.log('timer updating1')
                     let currentTime = Date.now()
                     if (paused) {
                         _timer["t"] += currentTime - prevTimestamp
@@ -3454,7 +3442,6 @@ async function loadData() {
                 let total = _timer["t"] + (Date.now() - _timer["updatedAt"])
 
                 activeTimer = setInterval(function () {
-                    console.log('timer updating2')
                     
                     let msDiff = Date.now() - prevTimestamp;
                     prevTimestamp = Date.now();
@@ -4363,6 +4350,12 @@ for (let key of allLanguages) {
         enableLanguage(lang)
     }
     if (key == 'ENG' || key == 'JPN' || key == 'KOR' || key == 'CHT' || key == 'CHS' || key == 'ESP' || key == 'ITA') {
+        lang.click()
+    }
+    if (key == "GER" && navigator.language.includes("de")){
+        lang.click()
+    }
+    if (key == "FRE" && navigator.language.includes("fr")){
         lang.click()
     }
     language_box.appendChild(lang);
