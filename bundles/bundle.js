@@ -3384,7 +3384,7 @@ async function loadData() {
                 console.log('Loaded JSON data:', jsonData);
                 setQuizState(jsonData, true);
                 socketChangeQuiz();
-                showUserMessage("Successfully Loaded quiz [ " + quiz.name + "]");
+                showUserMessage("Successfully Loaded quiz [" + quiz.name + "]".replace(" ]", "]"));
 
             } catch (eee) {
                 console.error('Failed to load file:', eee);
