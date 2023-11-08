@@ -3384,7 +3384,10 @@ async function loadData() {
                 console.log('Loaded JSON data:', jsonData);
                 setQuizState(jsonData, true);
                 socketChangeQuiz();
-                showUserMessage("Successfully Loaded quiz [" + quiz.name + "]".replace(" ]", "]"));
+                
+                let msg = "Successfully Loaded quiz [" + quiz.name.toLowerCase() + "]"
+                msg = msg.replace(" ]", "]")
+                showUserMessage(msg);
 
             } catch (eee) {
                 console.error('Failed to load file:', eee);
@@ -3553,7 +3556,7 @@ async function loadData() {
         // Handle the file drop event.
         document.addEventListener('drop', function (e) {
             e.preventDefault();
-            if (socket === null || isSocketHost){
+            if ((socket === null || isSocketHost) && quiz.name !== "none" ){
                 
                 let files = e.dataTransfer.files;
                 if (files.length > 0 && files[0].name.endsWith('.quiz')){
