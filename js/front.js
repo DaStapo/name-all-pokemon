@@ -256,6 +256,7 @@ if (roomId.length > 1) {
     })
     document.getElementById("guest-info").style.display = "block"
     document.getElementById("loadboxguest").style.display = "block"
+    document.getElementById("savemenu").style.display = "none"
     document.getElementById("loadbox").style.display = "none"
     document.getElementById("extrashadow").style.display = "none"
     usernamePrompt.style.display = "block"
@@ -797,6 +798,7 @@ async function loadData() {
     }
 
     function resetTimer() {
+        delete timerObj["savedAt"]
         if (currentTime === 0) {
             updateTimer(0);
         } else {
@@ -2090,11 +2092,15 @@ async function loadData() {
      saveButton.onclick = () => {
         let state = getQuizState()
         state["timer"]["savedAt"] = Date.now()
+        state["version"]  = 1.0
         
         let jsonContent = JSON.stringify(state)
 
         // Create a Blob containing the JSON data
-        let blob = new Blob([jsonContent], { type: 'application/json' });
+        let base64Content = btoa(jsonContent);
+
+        // Create a Blob containing the base64-encoded data
+        let blob = new Blob([base64Content], { type: "text/plain" });
             
         // Create a URL for the Blob
         let url = URL.createObjectURL(blob);
@@ -2116,22 +2122,30 @@ async function loadData() {
         URL.revokeObjectURL(url);
     }
 
-    let loadFileFunc = (file) =>{
+    let loadFileFunc = (file) => {
         const reader = new FileReader();
-        reader.onload = function(event) {
+        reader.onload = function (event) {
             try {
-                const jsonData = JSON.parse(event.target.result);
+                let base64Data = event.target.result; // Extract the base64 part of the data URI
+                let jsonContent = atob(base64Data); // Decode base64 data
+                let jsonData = JSON.parse(jsonContent); // Parse JSON content
                 console.log('Loaded JSON data:', jsonData);
-                setQuizState(jsonData, true)
-                socketChangeQuiz()
-                showUserMessage("Loaded", quiz.name + " quiz.")
-            }catch (eee){
-                //show failed loading file
+                setQuizState(jsonData, true);
+                socketChangeQuiz();
+                showUserMessage("Loaded [" + quiz.name + "] quiz.");
+
+            } catch (eee) {
+                console.error('Failed to load file:', eee);
+                showUserMessage("Failed loading file")
             }
         };
-        //show loading
-        reader.readAsText(file);
+        // Show loading
+        reader.readAsText(file); // Use readAsDataURL to read the data as a data URL
     }
+    
+    
+    
+    
 
     loadButton.addEventListener('change', function(event) {
         document.getElementById("fileInput").click()
@@ -2152,7 +2166,11 @@ async function loadData() {
 
     function roomUpdateTimer(_timer) {
         console.log('trying to reset')
-        //slightly changed timer functions
+
+        /*if (paused && activeTimer !== false && "savedAt" in _timer){
+            return;
+        }*/
+
         console.log('clearing timer', activeTimer)
         clearInterval(activeTimer)
         activeTimer = false
@@ -2160,16 +2178,15 @@ async function loadData() {
             console.log('creating new timer')
             if (_timer["type"] === "countdown") {
 
-                let _s = _timer["t"]
                 let prevTimestamp = Date.now()
                 activeTimer = setInterval(function () {
                     console.log('timer updating1')
                     let currentTime = Date.now()
                     if (paused) {
-                        _s += currentTime - prevTimestamp
+                        _timer["t"] += currentTime - prevTimestamp
                     }
 
-                    let msDiff = _s - currentTime;
+                    let msDiff = _timer["t"] - currentTime;
 
                     prevTimestamp = currentTime
 
@@ -2203,8 +2220,12 @@ async function loadData() {
 
         if ("orderMode" in state){
             quiz.orderMode = state["orderMode"]
+            visualizeButtonClick(enableOrderBtn)
+            visualizeButtonUnclick(disableOrderBtn)
         }else{
             quiz.orderMode = false;
+            visualizeButtonClick(disableOrderBtn)
+            visualizeButtonUnclick(enableOrderBtn)
         }
 
         quiz.setQuiz(state["quizName"], state["filters"])
@@ -2269,16 +2290,16 @@ async function loadData() {
         document.addEventListener('dragover', function (e) {
             e.preventDefault();
             if (socket === null || isSocketHost){
-                showUserMessage("Drop the file anywhere to load")
-                pauseBtn.click()
+                showUserMessage("Drop the .quiz file anywhere to load")
             }
         });
         // Handle the file drop event.
         document.addEventListener('drop', function (e) {
+            e.preventDefault();
             if (socket === null || isSocketHost){
-                e.preventDefault();
+                
                 let files = e.dataTransfer.files;
-                if (files.length > 0){
+                if (files.length > 0 && files[0].name.endsWith('.quiz')){
                     let file = files[0]
                     loadFileFunc(file)
                 }
