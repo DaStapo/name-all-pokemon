@@ -3470,7 +3470,7 @@ async function loadData() {
 
         state["named"] = new Set(state["named"])
 
-        if ("orderMode" in state){
+        if (("orderMode" in state) && state["orderMode"]){
             quiz.orderMode = state["orderMode"]
             visualizeButtonClick(enableOrderBtn)
             visualizeButtonUnclick(disableOrderBtn)
@@ -3539,9 +3539,14 @@ async function loadData() {
     function onLoadingComplete() {
 
         // Prevent the default behavior to open the file in the browser.
+        let lastMsg = 0;
         document.addEventListener('dragover', function (e) {
             e.preventDefault();
-            if (socket === null || isSocketHost){
+            if ((socket === null || isSocketHost) && quiz.name !== "none"){
+                if(Date.now() < lastMsg + 5000){
+                    return
+                }
+                lastMsg = Date.now()
                 showUserMessage("Drop the .quiz file anywhere to load")
             }
         });
