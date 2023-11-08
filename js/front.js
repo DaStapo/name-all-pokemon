@@ -294,9 +294,9 @@ async function loadData() {
 
     function onReset() {
         socketResetQuiz()
-        clearInterval(activeTimer);
+        //clearInterval(activeTimer);
         timerObj = { "type": "none" }
-        activeTimer = false;
+        roomUpdateTimer(timerObj)
         setCounter(0);
         setTotal(quiz.getMaxScore());
         resetTimer();
@@ -400,8 +400,8 @@ async function loadData() {
         }
     }
     function socketUpdateTimer() {
+        timerObj["updatedAt"] = Date.now()
         if (socket !== null && isSocketHost) {
-            timerObj["updatedAt"] = Date.now()
             socket.emit('stateChange', { "timer": timerObj })
         }
     }
@@ -782,17 +782,7 @@ async function loadData() {
         let total = 0
         timerObj = { "type": "timer", "t": total }
         socketUpdateTimer();
-        activeTimer = setInterval(function () {
-
-            let msDiff = Date.now() - prevTimestamp;
-            prevTimestamp = Date.now();
-            if (!paused) {
-                total += msDiff
-            }
-            timerObj["t"] = total
-            updateTimer(total);
-        }, 100)
-
+        roomUpdateTimer(timerObj)
     }
 
     let lastDiff;
@@ -999,28 +989,8 @@ async function loadData() {
         let startTimestamp = countdownInMs + Date.now();
         let prevTimestamp = Date.now()
         timerObj = { "type": "countdown", "t": startTimestamp }
+        roomUpdateTimer(timerObj)
         socketUpdateTimer();
-        activeTimer = setInterval(function () {
-
-            let currentTime = Date.now()
-            if (paused) {
-                startTimestamp += currentTime - prevTimestamp
-            }
-            timerObj["t"] = startTimestamp
-            let msDiff = startTimestamp - currentTime;
-
-            prevTimestamp = currentTime
-
-            updateTimer(msDiff);
-            if (msDiff <= 0) {
-                if (roomId === null) {
-                    giveUp();
-                    showCongrats();
-                }
-            }
-            updateTimer(msDiff);
-        }, 100)
-
     }
 
 
@@ -1040,7 +1010,9 @@ async function loadData() {
                 soundEffect.play();
             }
             setCounter(quiz.getScore());
+            console.log('test2', activeTimer)
             if (!activeTimer) {
+                console.log('test3')
                 if (currentTime === 0) {
                     startTimer();
                 } else {
@@ -2115,7 +2087,10 @@ async function loadData() {
     }
 
      saveButton.onclick = () => {
-        let jsonContent = JSON.stringify(getQuizState())
+        let state = getQuizState()
+        state["timer"]["savedAt"] = Date.now()
+        let jsonContent = JSON.stringify(state)
+
         // Create a Blob containing the JSON data
         let blob = new Blob([jsonContent], { type: 'application/json' });
             
@@ -2131,7 +2106,7 @@ async function loadData() {
         // Create an anchor element and trigger a click event
         let a = document.createElement('a');
         a.href = url;
-        a.download = 'pkmnquiz_save_'+getCurrentDateString()  +'.json';
+        a.download = 'pkmnquiz_state_'+getCurrentDateString()  +'.quiz';
         a.style.display = 'none';
         document.body.appendChild(a);
         a.click();
@@ -2139,38 +2114,54 @@ async function loadData() {
         URL.revokeObjectURL(url);
     }
 
-    loadButton.addEventListener('change', function(event) {
-        function loadJSONFile(file) {
-            const reader = new FileReader();
-
-            reader.onload = function(event) {
+    let loadFileFunc = (file) =>{
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            try {
                 const jsonData = JSON.parse(event.target.result);
                 console.log('Loaded JSON data:', jsonData);
-                setQuizState(jsonData)
-                loadButton.value = '';
-            };
+                setQuizState(jsonData, true)
+                socketChangeQuiz()
+                showUserMessage("Loaded", quiz.name + " quiz.")
+            }catch (eee){
+                //show failed loading file
+            }
+        };
+        //show loading
+        reader.readAsText(file);
+    }
 
-            reader.readAsText(file);
-        }
-
-        const file = event.target.files[0];
-        if (file) {
-            loadJSONFile(file);
+    loadButton.addEventListener('change', function(event) {
+        document.getElementById("fileInput").click()
+    });
+    loadButton.onclick = () => {
+        document.getElementById("fileInput").click()
+    }
+    document.getElementById("fileInput").addEventListener('change', function (e) {
+        console.log(e.target.files)
+        if (e.target.files.length > 0){
+            let file = e.target.files[0];
+            loadFileFunc(file)
+            document.getElementById("fileInput").value = ''
         }
     });
     
     
 
     function roomUpdateTimer(_timer) {
+        console.log('trying to reset')
         //slightly changed timer functions
+        console.log('clearing timer', activeTimer)
+        clearInterval(activeTimer)
+        activeTimer = false
         if (_timer["type"] !== "none") {
-            clearInterval(activeTimer)
+            console.log('creating new timer')
             if (_timer["type"] === "countdown") {
 
                 let startTimestamp = _timer["t"]
                 let prevTimestamp = startTimestamp
                 activeTimer = setInterval(function () {
-
+                    console.log('timer updating1')
                     let currentTime = Date.now()
                     if (paused) {
                         startTimestamp += currentTime - prevTimestamp
@@ -2189,6 +2180,7 @@ async function loadData() {
                 let total = _timer["t"] + (Date.now() - _timer["updatedAt"])
 
                 activeTimer = setInterval(function () {
+                    console.log('timer updating2')
 
                     let msDiff = Date.now() - prevTimestamp;
                     prevTimestamp = Date.now();
@@ -2201,7 +2193,7 @@ async function loadData() {
         }
     }
 
-    function setQuizState(state) {
+    function setQuizState(state, isLoad = false) {
 
         state["named"] = new Set(state["named"])
 
@@ -2230,6 +2222,9 @@ async function loadData() {
         }
         quiz.users = state["users"]
         setCounter(quiz.getScore());
+        if (isLoad){
+            state["timer"]["t"] += Date.now() + state["timer"]["savedAt"]
+        }
         roomUpdateTimer(state["timer"]);
 
         if (state['giveup']){
@@ -2261,6 +2256,24 @@ async function loadData() {
 
     function onLoadingComplete() {
 
+        // Prevent the default behavior to open the file in the browser.
+        document.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            if (socket === null || isSocketHost){
+                showUserMessage("Drop the file anywhere to load")
+                pauseBtn.click()
+            }
+        });
+        // Handle the file drop event.
+        document.addEventListener('drop', function (e) {
+            e.preventDefault();
+            let files = e.dataTransfer.files;
+            if (files.length > 0){
+                let file = files[0]
+                loadFileFunc(file)
+            }
+        });
+    
         //document.getElementById("loadbox").style.display = "none";
         document.getElementById("loader").style.display = "none";
         document.getElementById("loadboxguest").style.display = "none";
