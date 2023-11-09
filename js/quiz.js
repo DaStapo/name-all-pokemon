@@ -491,7 +491,7 @@ class Quiz {
         
         let isCurrentlyBig = document.getElementById("pokemon-box-big").children.length > 2
         
-        let neededBig = this.orderMode && ("boxes" in this.filters && this.filters["boxes"].length > 5)
+        let neededBig = this.orderMode// && ("boxes" in this.filters && this.filters["boxes"].length > 5)
 
         if(neededBig){
             if(!isCurrentlyBig){
@@ -524,8 +524,9 @@ class Quiz {
             }
         }
 
+        document.getElementById("regionall").innerText = ""
 
-        if (this.orderMode){
+        /*if (this.orderMode){
             if ("boxes" in this.filters && neededBig){
                 if (this.filters["boxes"].length > 5){
                     document.getElementById("regionall").innerText = ""
@@ -540,7 +541,7 @@ class Quiz {
 
                 }
             }
-        }
+        }*/
 
 
     }
@@ -607,7 +608,6 @@ class Quiz {
 
 
     updateLanguages(enabledLanguages){
-        console.log(enabledLanguages)
         this.enabledLanguages = enabledLanguages;
         this.currentLangsNames= new Set()
         this.nameDict = {}

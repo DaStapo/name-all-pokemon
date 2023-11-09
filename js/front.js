@@ -2129,7 +2129,7 @@ async function loadData() {
                 setQuizState(jsonData, true);
                 socketChangeQuiz();
                 
-                let msg = "Successfully Loaded quiz [" + quiz.name.toLowerCase() + "]"
+                let msg = "Successfully loaded quiz [" + quiz.name.toLowerCase() + "]"
                 msg = msg.replace(" ]", "]")
                 showUserMessage(msg);
 
@@ -2281,7 +2281,7 @@ async function loadData() {
         document.addEventListener('dragover', function (e) {
             e.preventDefault();
             if ((socket === null || isSocketHost) && quiz.name !== "none"){
-                if(Date.now() < lastMsg + 5000){
+                if(Date.now() < lastMsg + 3000){
                     return
                 }
                 lastMsg = Date.now()
