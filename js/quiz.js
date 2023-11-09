@@ -143,6 +143,14 @@ class Quiz {
 
             }
         }
+
+        if (this.shinyEnabled){
+            this.spriteDictionary["ditto"].src = this.encodedImages['shiny']["ditto"]
+            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages['shiny']["ditto"]
+        }else{
+            this.spriteDictionary["ditto"].src = this.encodedImages["sprite"]["ditto"]
+            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages["sprite"]["ditto"]      
+        }
         
         this.onReset();
     }
