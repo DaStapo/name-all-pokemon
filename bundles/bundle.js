@@ -933,10 +933,7 @@ class Quiz {
                 this.langCounts[this.langDict[input]]+=1
                 this.checkHighestLang()
                 recentSprite.src = this.spriteDictionary[recentPkmn.id].src;
-                if (this.named.has("ditto")){
-                    this.spriteDictionary["ditto"].src = this.spriteDictionary[recentPkmn.id].src
-                    this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.spriteDictionary[recentPkmn.id].src
-                }
+
 
                 correct = true;
                 if (onCorrect !== null){
