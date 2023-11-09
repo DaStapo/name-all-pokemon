@@ -928,6 +928,12 @@ class Quiz {
 
         let relatedPokemon = this.pokemonBaseNameDict[baseName]
 
+        if (this.named.has("ditto")){
+            this.spriteDictionary["ditto"].src = this.spriteDictionary[relatedPokemon[0].id].src
+            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.spriteDictionary[relatedPokemon[0].id].src
+        }
+
+
         let relevantPokemon = []
         for (let i = 0; i< relatedPokemon.length; i++){
             if (this.currentIds.has(relatedPokemon[i].id)){
