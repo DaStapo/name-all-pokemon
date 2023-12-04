@@ -1037,9 +1037,9 @@ async function loadData() {
 
     nameAll = function () {
         for (let id of quiz.currentIds) {
-            if (id === "sandslash"){
-                break
-            }
+            //if (id === "sandslash"){
+            //    break
+            //}
             parseInput(quiz.pokemonIdDict[id].baseName, myUsername)
         }
     }
@@ -2178,7 +2178,11 @@ async function loadData() {
                     }
 
                     let msDiff = _timer["t"] - currentTime;
-
+                    if(socket === null || isSocketHost){
+                        if (msDiff <= 0){
+                            showCongrats()
+                        }
+                    }
                     prevTimestamp = currentTime
 
                     updateTimer(msDiff);
