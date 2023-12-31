@@ -24,6 +24,10 @@
 	font-weight: normal;
 	margin-bottom: 5px;
 	}
+	hh {
+	font-size: 23px;
+	line-height: 40px;
+	}
 	p {
 	font-size: 1em;
 	margin-block-start: 0em;
@@ -70,6 +74,9 @@
 	.bigbox {
 	padding: 20px;
 	width: 100%;
+	}
+	.bigbox2 {
+		padding: 20px 10px 0px 10px;
 	}
 	.rounded {
 	border-radius: 3px 10px 3px 20px;
@@ -143,9 +150,12 @@
 	color: #fff;
 	}
 	.winbutton {
-	background-color: rgb(255,255,255,0.2);
-	padding: 40px;
-	margin: 50% auto;
+	background-color: rgb(0,0,0,0.1);
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-top: 10px;
 	border-radius: 4px 20px;
 	}
 	.highlight {
@@ -175,6 +185,9 @@
 	padding-left: 18px;
 	padding-right: 10px;
 	}
+	.padtop {
+		padding-top: 10px;
+	}
 	.slightpad {
 	padding-left: 14px;
 	padding-right: 14px;
@@ -183,6 +196,12 @@
 	margin-top: -2px;
 	border-top: 2px dotted #8CC63F;
 	}
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		line-height: 20px;
+	  }
 	.centeredbox {
 	margin: 0 auto;
 	/*max-width: 1474px;*/
@@ -748,6 +767,9 @@
 	.tmarg {
 		margin-top: 20px;
 	}
+	.tmarg2 {
+		margin-top: 50px;
+	}
 	.rank {
 	padding: 0px 4px;
 	margin-top: -2px;
@@ -1095,8 +1117,8 @@
     right: 0;
     text-align: center;
     color: #fff;
-    width: 300px;
-    height: 100%;
+    width: 330px;
+	height: 100%;
 	}
 	.fullwidth {
 	width: 100%;
@@ -2618,6 +2640,10 @@ margin: 0px 2px -8px 2px;
 .kofi {
 	height: 26px;
     margin: 0px 0px -8px 0px;
+}
+.kofi2 {
+	height: 80px;
+	margin-top: 10px;
 }
 .white {
 filter: brightness(0) invert(1);
