@@ -2179,7 +2179,7 @@ async function loadData() {
 
                     let msDiff = _timer["t"] - currentTime;
                     if(socket === null || isSocketHost){
-                        if (msDiff <= 0){
+                        if (msDiff < 0){
                             showCongrats()
                         }
                     }
@@ -2594,8 +2594,13 @@ window.addEventListener('orientationchange', function () {
 }, false);
 
 
+document.getElementById("close-donate").onclick = () =>{
+    document.getElementById("donate-overlay").style.display="none"
+}
+
 function off() {
     document.getElementById("overlay").style.display = "none";
+    document.getElementById("donate-overlay").style.display = "block";
 }
 
 function off2() {
