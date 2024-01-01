@@ -13,6 +13,12 @@
   <script type="text/javascript">
     if (document.images)
       (new Image()).src = "/sprites/unknown.png";
+
+      function handleKofiClick(event) {
+        // Prevent the click event from propagating to the parent overlay
+        event.stopPropagation();
+
+      }
   </script>
 </head>
 
@@ -373,7 +379,7 @@
           <p>Challenge yourself further <br />try naming them without shadows. (<span id="shadow-count"></span> shadows used)</p>
         </div>
       </div>
-      <div class="winbutton pointer">
+      <div class="winbutton pointer" onclick="handleKofiClick(event)">
         <pp>Pkmnquiz is developed and maintained for free.<br /> We want to keep it running and ad-free.<br />
           If you enjoy using it and want to show support, you can do so via Ko-Fi:</pp>
         <pp><a href="https://ko-fi.com/pkmnquiz" target="_blank"><img class="kofi2"
