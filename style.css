@@ -958,7 +958,7 @@
     right: 0;
     bottom: 0;
     background: linear-gradient(90deg, rgb(0 0 0 / 0%) 0%, rgb(16 17 14 / 10%) 20%, rgb(16 17 14 / 30%) 50%, rgba(16,17,14,0.8015581232492998) 100%);
-    z-index: 4;
+    z-index: 6;
 	cursor: pointer;
 	}
 	.pauseoverlay {
