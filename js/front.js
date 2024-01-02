@@ -750,7 +750,7 @@ async function loadData() {
                 if (this.status === 200) {
                     setValues(JSON.parse(this.response));
                 } else {
-                    console.log('error loading image list, retrying...');
+                    console.log('error loading arists, retrying...');
                     setTimeout(function () {
                         loadArtists();
                     }, 2000);
@@ -763,6 +763,44 @@ async function loadData() {
     }
 
 
+    let loadDonors = function () {
+
+        let setValues = function (nameArr) {
+            // Step 2: Select the list element
+            var ul = document.getElementById('donors').getElementsByTagName('ul')[0];
+
+            // Step 3: Iterate over the names and create list items
+            nameArr.forEach(function(name) {
+                var li = document.createElement('li');
+                li.appendChild(document.createTextNode(name));
+                // Step 4: Append the list item to the list
+                ul.appendChild(li);
+            });
+
+        }
+
+
+
+
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("GET", '/donors', true);
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status === 200) {
+                    setValues(JSON.parse(this.response));
+                } else {
+                    console.log('error loading donors, retrying...');
+                    setTimeout(function () {
+                        loadDonors();
+                    }, 2000);
+                }
+
+            }
+        };
+        xhttp.send();
+
+    }
 
     function setCounter(count) {
         try{
@@ -874,7 +912,7 @@ async function loadData() {
 
 
     loadArtists();
-
+    loadDonors()
     let visualizeButtonUnclick = function (elem) {
         elem.classList.remove("smolbuttonx")
         elem.classList.remove("smolbuttonxdark")

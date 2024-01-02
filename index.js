@@ -2,10 +2,10 @@ const express = require('express');
 const compression = require('compression');
 const path = require('path');
 const fs = require('fs');
+const fsPromises = require('fs').promises; // Note the addition of .promises
 const util = require('util');
 const { fileURLToPath } = require('url');
 const http = require('http'); // You will need to require http module
-
 const readFile = util.promisify(fs.readFile);
 
 const app = express();
@@ -15,6 +15,7 @@ const port = process.env.PORT || 3000;
 
 app.use(compression());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.use('/js', express.static('js'));
@@ -44,44 +45,85 @@ app.set('view engine', 'ejs');
 function log(...messages) {
     const logMessage = `${new Date()}: ${messages.join(' ')}\n`;
     console.log(logMessage);
-  
+
     fs.appendFile('app.log', logMessage, (err) => {
-      if (err) {
-        console.error('Error writing to log file:', err);
-      }
+        if (err) {
+            console.error('Error writing to log file:', err);
+        }
     });
-  }
-  
+}
 
 
-async function isMaintenance(){
-    try{
+let writeQueue = Promise.resolve();
+
+app.post('/ko-fi-log', async (req, res) => {
+    const data = req.body;
+    console.log('Received Ko-Fi Webhook Data:', data);
+
+    if (data["is_public"]){
+        const fromName = data["from_name"];
+        const amount = parseFloat(data["amount"]);
+    
+        writeQueue = writeQueue
+            .then(async () => {
+                try {
+                    const fileData = await fsPromises.readFile('donations.json', 'utf-8');
+                    let donations = JSON.parse(fileData);
+                    donations.push([fromName, amount]);
+                    donations.sort((a, b) => b[1] - a[1]);
+                    await fsPromises.writeFile('donations.json', JSON.stringify(donations, null, 2));
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+    }
+
+
+    res.status(200).send('Webhook data received successfully');
+});
+
+
+app.get('/donors', async (req, res) => {
+    try {
+        const fileData = await fsPromises.readFile('donations.json', 'utf-8');
+        const donations = JSON.parse(fileData);
+        const donorNames = donations.map(donation => donation[0]);
+        res.json(donorNames);
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+async function isMaintenance() {
+    try {
         const data = await readFile(maintenanceStatusLocation, 'utf8');
         const jsonData = JSON.parse(data);
-    
+
         if (jsonData.enabled) {
             return true;
-        }else{
+        } else {
             return false;
         }
-    }catch (error){
+    } catch (error) {
         log(error)
         return true;
     }
 
 }
 
-async function isMultiplayerEnabled(){
-    try{
+async function isMultiplayerEnabled() {
+    try {
         const data = await readFile(maintenanceStatusLocation, 'utf8');
         const jsonData = JSON.parse(data);
-    
+
         if (jsonData.multiplayerOn) {
             return true;
-        }else{
+        } else {
             return false;
         }
-    }catch (error){
+    } catch (error) {
         log(error)
         return false;
     }
@@ -201,11 +243,11 @@ app.use('/silhouettes', express.static(silhouettesFolder));
 
 isMaintenance()
 app.get('/multiplayerEnabled', async (req, res) => {
-    try{
-        let isEnabled =await isMultiplayerEnabled()
-        res.json({"result":isEnabled});
-    }catch(error){
-        res.json({"result":false})
+    try {
+        let isEnabled = await isMultiplayerEnabled()
+        res.json({ "result": isEnabled });
+    } catch (error) {
+        res.json({ "result": false })
         log('multiplayer ', error)
     }
 });
@@ -218,7 +260,7 @@ server.listen(port, () => {
 });
 
 
-if (true){
+if (false) {
     let startMultiplayerServer = require('./multiplayer')
     startMultiplayerServer();
 }
