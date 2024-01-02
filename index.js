@@ -57,27 +57,33 @@ function log(...messages) {
 let writeQueue = Promise.resolve();
 
 app.post('/ko-fi-log', async (req, res) => {
-    const data = req.body;
-    console.log('Received Ko-Fi Webhook Data:', data);
+    try{
+        const data = JSON.parse(req.body.data);
+        
+        fs.writeFile('kofilog.txt', JSON.stringify(data), { flag: "a+" }, (err) => {
+            if (err) {
+            }
+        });
+        if (data["is_public"] && data["verification_token"] === "2817015b-a667-4f32-8028-2196b716bcc7"){
+            const fromName = data["from_name"];
+            const amount = parseFloat(data["amount"]);
+        
+            writeQueue = writeQueue
+                .then(async () => {
+                    try {
+                        const fileData = await fsPromises.readFile('donations.json', 'utf-8');
+                        let donations = JSON.parse(fileData);
+                        donations.push([fromName, amount]);
+                        donations.sort((a, b) => b[1] - a[1]);
+                        await fsPromises.writeFile('donations.json', JSON.stringify(donations, null, 2));
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                });
+        }
+    }catch(e){
 
-    if (data["is_public"]){
-        const fromName = data["from_name"];
-        const amount = parseFloat(data["amount"]);
-    
-        writeQueue = writeQueue
-            .then(async () => {
-                try {
-                    const fileData = await fsPromises.readFile('donations.json', 'utf-8');
-                    let donations = JSON.parse(fileData);
-                    donations.push([fromName, amount]);
-                    donations.sort((a, b) => b[1] - a[1]);
-                    await fsPromises.writeFile('donations.json', JSON.stringify(donations, null, 2));
-                } catch (error) {
-                    console.error('Error:', error);
-                }
-            });
     }
-
 
     res.status(200).send('Webhook data received successfully');
 });
