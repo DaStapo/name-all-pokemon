@@ -6300,7 +6300,7 @@
         "box": "alola"
     },
     {
-        "id": "magearnaorigin",
+        "id": "magearnaoriginal",
         "baseName": "magearna",
         "primaryType": "steel",
         "secondaryType": "fairy",
@@ -8169,7 +8169,7 @@
         "box": "paldea"
     },
     {
-        "id": "miraidonlimited",
+        "id": "miraidonlowpower",
         "baseName": "miraidon",
         "primaryType": "electric",
         "secondaryType": "dragon",
