@@ -1675,10 +1675,13 @@ async function loadData() {
 
     let stopCycling = function () {
         spriteCycling = false;
+        quiz.cyclingEnabled = false;
+        quiz.resetDitto();
         rotateFunc();
     }
     let startCycling = function () {
         spriteCycling = true;
+        quiz.cyclingEnabled = true;
     }
 
 

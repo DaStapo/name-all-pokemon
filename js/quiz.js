@@ -47,6 +47,7 @@ class Quiz {
     currentLang = "ENG"
 
     spriteCycles = {}
+    cyclingEnabled = true;
 
     filters = {}
 
@@ -65,6 +66,10 @@ class Quiz {
 
     boxConstruction = []
     
+    showCounter = 0
+
+
+
     constructor(boxDict, genQuizBoxes, allLanguages){
         this.boxDict = boxDict;
         this.genQuizBoxes = genQuizBoxes;
@@ -102,6 +107,7 @@ class Quiz {
     }
 
     reset(){
+        this.showCounter = 0
         this.giveUpState = false
         this.stopReveal()
         this.named = new Set()
@@ -143,7 +149,7 @@ class Quiz {
 
             }
         }
-
+        
         if (this.shinyEnabled){
             this.spriteDictionary["ditto"].src = this.encodedImages['shiny']["ditto"]
             this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages['shiny']["ditto"]
@@ -506,6 +512,7 @@ class Quiz {
                 for (let i = 0; i < this.boxConstruction.length; i++){
                     let box = this.boxConstruction[i][0]
                     let children = this.boxConstruction[i][1]
+                    
                     for (let j = 0; j < children.length; j++){
                         box.removeChild(children[j])
                         document.getElementById("pokemon-box-big").appendChild(children[j])
@@ -915,6 +922,7 @@ class Quiz {
                 if (onCorrect !== null){
                     onCorrect(baseName)
                 }
+
             }
 
         }
@@ -929,6 +937,16 @@ class Quiz {
         this.users[user]+=1
     }
 
+    resetDitto(){
+        if (this.shinyEnabled){
+            this.spriteDictionary["ditto"].src = this.encodedImages['shiny']["ditto"]
+            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages['shiny']["ditto"]
+        }else{
+            this.spriteDictionary["ditto"].src = this.encodedImages["sprite"]["ditto"]
+            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages["sprite"]["ditto"]      
+        }
+    }
+
     addNamed(baseName){
 
         let relatedPokemon = this.pokemonBaseNameDict[baseName]
@@ -939,12 +957,22 @@ class Quiz {
                 relevantPokemon.push(relatedPokemon[i])
             }
         }
-        if (this.named.has("ditto")){
-            this.spriteDictionary["ditto"].src = this.spriteDictionary[relevantPokemon[0].id].src
-            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.spriteDictionary[relevantPokemon[0].id].src
+        if (this.cyclingEnabled){
+            if (this.named.has("ditto")){
+                this.spriteDictionary["ditto"].src = this.spriteDictionary[relevantPokemon[0].id].src
+                this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.spriteDictionary[relevantPokemon[0].id].src
+            }
+        }else{
+            this.resetDitto();
         }
+
         for (let i = 0; i< relevantPokemon.length; i++){
             this.showSprite(relevantPokemon[i].id)
+
+            //let positionPokemon = this.pokemon[this.showCounter]
+            //swapElements(this.unguessedDict[positionPokemon.id], this.unguessedDict[relevantPokemon[i].id])
+            //swapElements(this.spriteDictionary[positionPokemon.id], this.spriteDictionary[relevantPokemon[i].id])
+            this.showCounter+=1
         }
 
         this.named.add(baseName)
@@ -1205,13 +1233,7 @@ class Quiz {
             this.unguessedDict[id].classList.add('fixed-width');
         }
 
-        if (this.shinyEnabled){
-            this.spriteDictionary["ditto"].src = this.encodedImages['shiny']["ditto"]
-            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages['shiny']["ditto"]
-        }else{
-            this.spriteDictionary["ditto"].src = this.encodedImages["sprite"]["ditto"]
-            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages["sprite"]["ditto"]      
-        }
+        this.resetDitto()
 
         
     }
@@ -1241,4 +1263,33 @@ class Quiz {
         this.resetCurrentSprites();
     }
 
+}
+
+function swapElements(element1, element2) {
+    console.log('swapping', element1, element2)
+    // Check if the elements are valid
+    if (!element1 || !element2) {
+        console.error("Invalid elements provided");
+        return;
+    }
+
+    // Get the parent nodes of both elements
+    const parent1 = element1.parentNode;
+    const parent2 = element2.parentNode;
+
+    // Check if the elements have different parents
+    if (parent1 !== parent2) {
+        // Swap element1 with a clone of element2 in its parent
+        const cloneElement2 = element2.cloneNode(true);
+        parent1.replaceChild(cloneElement2, element1);
+
+        // Swap element2 with a clone of element1 in its parent
+        const cloneElement1 = element1.cloneNode(true);
+        parent2.replaceChild(cloneElement1, element2);
+    } else {
+        // If the elements have the same parent, use the original approach
+        const nextSibling = element2.nextSibling;
+        parent1.insertBefore(element1, element2);
+        parent1.insertBefore(element2, nextSibling);
+    }
 }

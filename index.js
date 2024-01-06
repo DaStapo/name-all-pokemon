@@ -64,7 +64,7 @@ app.post('/ko-fi-log', async (req, res) => {
             if (err) {
             }
         });
-        if (data["is_public"] && data["verification_token"] === "2817015b-a667-4f32-8028-2196b716bcc7"){
+        if (data["verification_token"] === "2817015b-a667-4f32-8028-2196b716bcc7"){
             const fromName = data["from_name"];
             const amount = parseFloat(data["amount"]);
         
