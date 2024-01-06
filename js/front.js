@@ -2,9 +2,9 @@
 let allLanguages = ['ENG', 'FRE', 'GER', 'ESP', 'ITA', 'KOR', 'JPN', 'CHT', 'CHS']
 
 let typeList = ["normal", "fire", "water", "grass", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy"]
-let boxIds = ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "mega", "unknown", "galar", "gmax", "hisui", "paldea", "kitakami"]
+let boxIds = ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "mega", "unknown", "galar", "gmax", "hisui", "paldea", "kitakami", "terarium"]
 let genQuizBoxes = {
-    "0": ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "mega", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "kitakami"],
+    "0": ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "mega", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "kitakami", "terarium"],
     "1": ["kanto"],
     "2": ["johto"],
     "3": ["hoenn"],
@@ -13,7 +13,7 @@ let genQuizBoxes = {
     "6": ["kalos", "mega"],
     "7": ["alola", "unknown"],
     "8": ["galar", "gmax", "hisui"],
-    "9": ["paldea", "kitakami"],
+    "9": ["paldea", "kitakami", "terarium"],
 }
 
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
