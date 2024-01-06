@@ -119,6 +119,9 @@ class Quiz {
         let pkmnData = allData["pokemon"]
         for (let i = 0; i < pkmnData.length; i++){
             let pkmn = new Pokemon(pkmnData[i])
+            if (pkmn.box === "unreleased"){
+                continue
+            }
             this.pokemon.push(pkmn)
             this.pokemonIdDict[pkmn.id] = pkmn
             if (!(pkmn.baseName in this.pokemonBaseNameDict)){
