@@ -4809,6 +4809,13 @@
         "box": "unova"
     },
     {
+        "id": "kyuremblackactive",
+        "baseName": "kyurem",
+        "primaryType": "dragon",
+        "secondaryType": "ice",
+        "box": "unova"
+    },
+    {
         "id": "kyuremwhite",
         "baseName": "kyurem",
         "primaryType": "dragon",
@@ -5356,6 +5363,13 @@
     },
     {
         "id": "xerneas",
+        "baseName": "xerneas",
+        "primaryType": "fairy",
+        "secondaryType": null,
+        "box": "kalos"
+    },
+    {
+        "id": "xerneasinactive",
         "baseName": "xerneas",
         "primaryType": "fairy",
         "secondaryType": null,
@@ -6286,6 +6300,13 @@
         "box": "alola"
     },
     {
+        "id": "magearnaorigin",
+        "baseName": "magearna",
+        "primaryType": "steel",
+        "secondaryType": "fairy",
+        "box": "alola"
+    },
+    {
         "id": "marshadow",
         "baseName": "marshadow",
         "primaryType": "fighting",
@@ -7085,6 +7106,13 @@
     },
     {
         "id": "zarude",
+        "baseName": "zarude",
+        "primaryType": "dark",
+        "secondaryType": "grass",
+        "box": "galar"
+    },
+    {
+        "id": "zarudedada",
         "baseName": "zarude",
         "primaryType": "dark",
         "secondaryType": "grass",
@@ -8127,7 +8155,21 @@
         "box": "paldea"
     },
     {
+        "id": "koraidonlimited",
+        "baseName": "koraidon",
+        "primaryType": "fighting",
+        "secondaryType": "dragon",
+        "box": "paldea"
+    },
+    {
         "id": "miraidon",
+        "baseName": "miraidon",
+        "primaryType": "electric",
+        "secondaryType": "dragon",
+        "box": "paldea"
+    },
+    {
+        "id": "miraidonlimited",
         "baseName": "miraidon",
         "primaryType": "electric",
         "secondaryType": "dragon",
@@ -8138,14 +8180,14 @@
         "baseName": "walkingwake",
         "primaryType": "water",
         "secondaryType": "dragon",
-        "box": "paldea"
+        "box": "terarium"
     },
     {
         "id": "ironleaves",
         "baseName": "ironleaves",
         "primaryType": "grass",
         "secondaryType": "psychic",
-        "box": "paldea"
+        "box": "terarium"
     },
     {
         "id": "dipplin",
@@ -8253,18 +8295,74 @@
         "box": "kitakami"
     },
     {
+        "id": "archaludon",
+        "baseName": "archaludon",
+        "primaryType": "steel",
+        "secondaryType": "dragon",
+        "box": "terarium"
+    },
+    {
+        "id": "hydrapple",
+        "baseName": "hydrapple",
+        "primaryType": "grass",
+        "secondaryType": "dragon",
+        "box": "terarium"
+    },
+    {
+        "id": "gougingfire",
+        "baseName": "gougingfire",
+        "primaryType": "fire",
+        "secondaryType": "dragon",
+        "box": "terarium"
+    },
+    {
         "id": "ragingbolt",
         "baseName": "ragingbolt",
         "primaryType": "electric",
         "secondaryType": "dragon",
-        "box": "paldea"
+        "box": "terarium"
+    },
+    {
+        "id": "ironboulder",
+        "baseName": "ironboulder",
+        "primaryType": "rock",
+        "secondaryType": "psychic",
+        "box": "terarium"
     },
     {
         "id": "ironcrown",
         "baseName": "ironcrown",
         "primaryType": "steel",
         "secondaryType": "psychic",
-        "box": "paldea"
+        "box": "terarium"
+    },
+    {
+        "id": "terapagos",
+        "baseName": "terapagos",
+        "primaryType": "normal",
+        "secondaryType": "null",
+        "box": "terarium"
+    },
+    {
+        "id": "terapagosnormal",
+        "baseName": "terapagos",
+        "primaryType": "normal",
+        "secondaryType": "null",
+        "box": "terarium"
+    },
+    {
+        "id": "terapagosstellar",
+        "baseName": "terapagos",
+        "primaryType": "normal",
+        "secondaryType": "null",
+        "box": "terarium"
+    },
+    {
+        "id": "pecharunt",
+        "baseName": "pecharunt",
+        "primaryType": "poison",
+        "secondaryType": "ghost",
+        "box": "terarium"
     },
     {
         "id": "venusaurmega",
