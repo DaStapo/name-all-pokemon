@@ -4,6 +4,7 @@ class Pokemon {
     box
     primaryType
     secondaryType
+    legendary
 
     constructor(dataJson){
         this.data = dataJson;
@@ -11,6 +12,7 @@ class Pokemon {
         this.baseName = dataJson["baseName"]
         this.primaryType = dataJson["primaryType"]
         this.secondaryType = dataJson["secondaryType"]
+        this.legendary = dataJson["legendary"]
         this.box = dataJson["box"]
     }
 
@@ -20,6 +22,10 @@ class Pokemon {
 
     isType(type){
         return this.primaryType === type || this.secondaryType === type;
+    }
+
+    isLegendary(){
+        return this.legendary !== "no"
     }
 
     setFormattedNames(formattedDict){

@@ -56,6 +56,7 @@ class Quiz {
     orderModeSet = new Set()
     baseNameIdDict = {}
     orderMode = false;
+    chaosMode = false;
 
     revealedShadows = new Set()
 
@@ -65,9 +66,6 @@ class Quiz {
     name = "none"
 
     boxConstruction = []
-    
-    showCounter = 0
-
 
 
     constructor(boxDict, genQuizBoxes, allLanguages){
@@ -110,7 +108,6 @@ class Quiz {
     }
 
     reset(){
-        this.showCounter = 0
         this.giveUpState = false
         this.stopReveal()
         this.named = new Set()
@@ -169,7 +166,13 @@ class Quiz {
         this.orderMode = val
         this.setQuiz(this.name, this.filters)
     }
-
+    
+    setChaosMode(val){
+        if (!(this.orderMode)){
+            this.chaosMode = val
+            this.moveBoxes()
+        }
+    }
     checkHighestLang(){
         let highestKey = "ENG";
         let highestCount =0;
@@ -248,6 +251,17 @@ class Quiz {
         if ("types" in filters) {
             currentPokemonList = currentPokemonList.filter(pokemon =>
                 filters.types.some(type => pokemon.isType(type))
+            );
+            if (this.orderMode){
+                visualizeButtonClick(document.getElementById("order-off"))
+                visualizeButtonUnclick(document.getElementById("order-on"))
+                this.orderMode = false;
+                showUserMessage("Order mode disabled")
+            }
+        }
+        if ("legendary" in filters) {
+            currentPokemonList = currentPokemonList.filter(pokemon =>
+                {return pokemon.isLegendary()}
             );
             if (this.orderMode){
                 visualizeButtonClick(document.getElementById("order-off"))
@@ -508,7 +522,7 @@ class Quiz {
         
         let isCurrentlyBig = document.getElementById("pokemon-box-big").children.length > 2
         
-        let neededBig = this.orderMode// && ("boxes" in this.filters && this.filters["boxes"].length > 5)
+        let neededBig = this.orderMode || this.chaosMode// && ("boxes" in this.filters && this.filters["boxes"].length > 5)
 
         if(neededBig){
             if(!isCurrentlyBig){
@@ -570,6 +584,8 @@ class Quiz {
                 return "evil"
             }
             return this.filters["types"][0]
+        }else if ("legendary" in this.filters){
+            return "legendary"
         }
         return "";
     }
@@ -971,11 +987,6 @@ class Quiz {
 
         for (let i = 0; i< relevantPokemon.length; i++){
             this.showSprite(relevantPokemon[i].id)
-
-            //let positionPokemon = this.pokemon[this.showCounter]
-            //swapElements(this.unguessedDict[positionPokemon.id], this.unguessedDict[relevantPokemon[i].id])
-            //swapElements(this.spriteDictionary[positionPokemon.id], this.spriteDictionary[relevantPokemon[i].id])
-            this.showCounter+=1
         }
 
         this.named.add(baseName)
@@ -1181,6 +1192,39 @@ class Quiz {
         let currentBox = this.pokemonIdDict[id].box;
         let pkmn = this.pokemonIdDict[id]
 
+        if (this.chaosMode){
+            let children = document.getElementById("pokemon-box-big").children
+
+            let spotIndex = -1;
+            let targetIndex = -1;
+
+            for (let i = 1; i< children.length; i++){
+                if (spotIndex === -1 && children[i].tagName.toUpperCase() === "DIV"){
+                    if( children[i].children[1].style.display === "inline"){
+                        spotIndex = i
+                        if (targetIndex !== -1){
+                            break
+                        }
+                    }
+                }
+                else if (targetIndex === -1 && children[i] === this.spriteDictionary[id]){
+                    targetIndex = i
+                    if (spotIndex !== -1){
+                        break
+                    }
+                }
+
+            }
+
+            swapChildren(document.getElementById("pokemon-box-big"), spotIndex, targetIndex);
+            if (spotIndex > targetIndex){
+                document.getElementById("pokemon-box-big").insertBefore(children[targetIndex+1], children[spotIndex+1]);
+
+            }
+
+
+        }
+
         if (this.spriteDictionary[id].parentElement.id === "pokemon-box-big"){
             if (id === this.currentPokemonList[this.currentPokemonList.length-1].id){
                 this.spriteDictionary[id].parentElement.classList.add('outline')
@@ -1268,31 +1312,15 @@ class Quiz {
 
 }
 
-function swapElements(element1, element2) {
-    console.log('swapping', element1, element2)
-    // Check if the elements are valid
-    if (!element1 || !element2) {
-        console.error("Invalid elements provided");
-        return;
-    }
+function swapChildren(parentElement, childIndex1, childIndex2) {
+    const child1 = parentElement.children[childIndex1];
+    const child2 = parentElement.children[childIndex2];
 
-    // Get the parent nodes of both elements
-    const parent1 = element1.parentNode;
-    const parent2 = element2.parentNode;
+    // Insert child2 before child1
+    parentElement.insertBefore(child2, child1);
 
-    // Check if the elements have different parents
-    if (parent1 !== parent2) {
-        // Swap element1 with a clone of element2 in its parent
-        const cloneElement2 = element2.cloneNode(true);
-        parent1.replaceChild(cloneElement2, element1);
-
-        // Swap element2 with a clone of element1 in its parent
-        const cloneElement1 = element1.cloneNode(true);
-        parent2.replaceChild(cloneElement1, element2);
-    } else {
-        // If the elements have the same parent, use the original approach
-        const nextSibling = element2.nextSibling;
-        parent1.insertBefore(element1, element2);
-        parent1.insertBefore(element2, nextSibling);
-    }
+    // Since child1 is now moved, the index of where child2 was originally is changed.
+    // So we need to find the new correct place to insert child1.
+    const newChild2Index = (childIndex1 < childIndex2) ? childIndex2 : childIndex2 + 1;
+    parentElement.insertBefore(child1, parentElement.children[newChild2Index]);
 }

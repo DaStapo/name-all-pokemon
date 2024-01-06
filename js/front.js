@@ -1599,7 +1599,7 @@ async function loadData() {
             let currentIndex = updateCounter % data[pkmn].length;
 
             currentIndex = spriteCycling ? currentIndex : 0;
-
+            
             let currentSprite = standardizeName(data[pkmn][currentIndex]);
 
             quiz.spriteDictionary[standardizeName(key)].src = encodedImages[pathName][currentSprite];
@@ -1616,13 +1616,27 @@ async function loadData() {
             }
         }
 
-
+        
         for (let pkmn in spriteCycles) {
             updateFunc(pkmn, spriteCycles)
         }
         for (let pkmn in quiz.spriteCycles) {
             updateFunc(pkmn, quiz.spriteCycles)
         }
+        // if cycles are ever an issue
+        /*
+        let alreadyCycled = []
+        for (let pkmn in quiz.spriteCycles) {
+            updateFunc(pkmn, quiz.spriteCycles)
+            alreadyCycled.push(pkmn)
+        }
+        for (let pkmn in spriteCycles) {
+            if (alreadyCycled.includes(pkmn)){
+                continue
+            }
+            updateFunc(pkmn, spriteCycles)
+        }
+        */
     }
 
 
