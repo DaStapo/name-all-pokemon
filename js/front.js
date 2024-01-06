@@ -1603,6 +1603,10 @@ async function loadData() {
             let currentSprite = standardizeName(data[pkmn][currentIndex]);
 
             quiz.spriteDictionary[standardizeName(key)].src = encodedImages[pathName][currentSprite];
+            if (!(currentSprite in encodedImages[pathName])){
+                console.log(currentSprite, "SPRITE NOT FOUND!")
+                return
+            }
             quiz.unguessedDict[standardizeName(key)].getElementsByTagName('img')[0].src = encodedImages[pathName][currentSprite]
 
             if (currentSprite in quiz.pokemonIdDict) {
