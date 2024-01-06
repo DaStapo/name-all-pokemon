@@ -2551,6 +2551,75 @@
 	.arrowfairy {
 		border-color: #ff88bb;
 	}
+	.aspecial {
+		color: #ffbb11;
+	}
+	.limespecial {
+		background: #ffbb11 !important;
+		color: #fff !important;
+	}
+	.limelightspecial {
+		background: #ffbf1e;
+		color: #111;
+		border-color: #ffbb11 !important;
+	}
+	.outlinespecial {
+		border: 2px solid #ffbb11;
+		padding: 9px 8px 8px 8px;
+	}
+	.topedgespecial {
+		border-top-color: #ffbb11;
+	}
+	.input-twitchspecial, .input-timerspecial {
+		border-color: #ffbb11;
+	}
+	.input-twitchspecial:disabled {
+		background-color: #ffbb11;
+	}
+	.buttonspecial {
+		background-color: #ffbb11;
+		border: solid #c99000 2px;
+	}
+	.smolbuttonspecial {
+		border-color: #ffbb11;
+		color: #ffbb11;
+	}
+	.smolbuttonSwapspecial {
+		background-color: #ffbb11;
+		border-color: #ffbb11;
+	}
+	.smolbuttonspecial:hover {
+		background-color: #c99000;
+		border-color: #c99000;
+		color: #fff;
+	}
+	.smolbuttonxspecial {
+		background-color: #ffbb11;
+		color: #fff;
+		border-color: #ffbb11;
+	}
+	.inlineboxspecial {
+		background-color: #ffcd50;
+	}
+	.smolbuttonxdarkspecial {
+		color: #111;
+		background-color: #ffbb11;
+	}
+	.buttondarkspecial {
+		border-color: #ac7b00;
+	}
+	.limelightdarkspecial {
+		border-color: #ac7b00;
+		border-bottom-color: #ac7b00;
+		color: #fff;
+		background: #111;
+	}
+	.inlineboxdarkspecial {
+		background-color: #ffbb11;
+	}
+	.arrowspecial {
+		border-color: #ffbb11;
+	}
 	/*end of type-color-changing classes*/
 .normal {
 background-color: #ddddcc;
@@ -2605,6 +2674,9 @@ background-color: #558888;
 }
 .fairy {
 background-color: #ff88bb;
+}
+.special {
+background-color: #ffbb11;
 }
 .blend {
 background-image: url(/images/background-50-grey.svg);
