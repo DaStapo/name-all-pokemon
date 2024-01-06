@@ -61,6 +61,15 @@
 	text-decoration: none;
 	color: #8CC63F;
 	}
+	ol {
+		list-style-type: square;
+		list-style-position: inside;
+		margin-block-start: 5px;
+		margin-block-end: 5px;
+		margin-inline-start: 0;
+		margin-inline-end: 0px;
+		padding-inline-start: 0;
+	}
 	#counter,#total,#timer,#gen-name,#timer-score,#currentcount, .txt {
 		display:inline;
 	}
@@ -1052,6 +1061,10 @@
 	.popupscrl {
 		overflow: auto;
 		height: 95.5%;
+	}
+	.scrollbox {
+		overflow: auto;
+		height: 185px;
 	}
 	.popuptext::after {
 		content: "";

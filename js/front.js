@@ -767,14 +767,14 @@ async function loadData() {
 
         let setValues = function (nameArr) {
             // Step 2: Select the list element
-            var ul = document.getElementById('donors').getElementsByTagName('ul')[0];
+            var ol = document.getElementById('donors').getElementsByTagName('ol')[0];
 
             // Step 3: Iterate over the names and create list items
             nameArr.forEach(function(name) {
                 var li = document.createElement('li');
                 li.appendChild(document.createTextNode(name));
                 // Step 4: Append the list item to the list
-                ul.appendChild(li);
+                ol.appendChild(li);
             });
 
         }
