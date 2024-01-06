@@ -8180,182 +8180,182 @@
         "baseName": "walkingwake",
         "primaryType": "water",
         "secondaryType": "dragon",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "ironleaves",
         "baseName": "ironleaves",
         "primaryType": "grass",
         "secondaryType": "psychic",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "dipplin",
         "baseName": "dipplin",
         "primaryType": "grass",
         "secondaryType": "dragon",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "poltchageist",
         "baseName": "poltchageist",
         "primaryType": "grass",
         "secondaryType": "ghost",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "sinistcha",
         "baseName": "sinistcha",
         "primaryType": "grass",
         "secondaryType": "ghost",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "ursalunabloodmoon",
         "baseName": "ursaluna",
         "primaryType": "ground",
         "secondaryType": "normal",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "okidogi",
         "baseName": "okidogi",
         "primaryType": "poison",
         "secondaryType": "fighting",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "munkidori",
         "baseName": "munkidori",
         "primaryType": "poison",
         "secondaryType": "psychic",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "fezandipiti",
         "baseName": "fezandipiti",
         "primaryType": "poison",
         "secondaryType": "fairy",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "ogerpon",
         "baseName": "ogerpon",
         "primaryType": "grass",
         "secondaryType": null,
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "ogerpontealmask",
         "baseName": "ogerpon",
         "primaryType": "grass",
         "secondaryType": null,
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "ogerponwellspring",
         "baseName": "ogerpon",
         "primaryType": "grass",
         "secondaryType": "water",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "ogerponwellspringmask",
         "baseName": "ogerpon",
         "primaryType": "grass",
         "secondaryType": "water",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "ogerponhearthflame",
         "baseName": "ogerpon",
         "primaryType": "grass",
         "secondaryType": "fire",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "ogerponhearthflamemask",
         "baseName": "ogerpon",
         "primaryType": "grass",
         "secondaryType": "fire",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "ogerponcornerstone",
         "baseName": "ogerpon",
         "primaryType": "grass",
         "secondaryType": "rock",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "ogerponcornerstonemask",
         "baseName": "ogerpon",
         "primaryType": "grass",
         "secondaryType": "rock",
-        "box": "kitakami"
+        "box": "paldeadlc"
     },
     {
         "id": "archaludon",
         "baseName": "archaludon",
         "primaryType": "steel",
         "secondaryType": "dragon",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "hydrapple",
         "baseName": "hydrapple",
         "primaryType": "grass",
         "secondaryType": "dragon",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "gougingfire",
         "baseName": "gougingfire",
         "primaryType": "fire",
         "secondaryType": "dragon",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "ragingbolt",
         "baseName": "ragingbolt",
         "primaryType": "electric",
         "secondaryType": "dragon",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "ironboulder",
         "baseName": "ironboulder",
         "primaryType": "rock",
         "secondaryType": "psychic",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "ironcrown",
         "baseName": "ironcrown",
         "primaryType": "steel",
         "secondaryType": "psychic",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "terapagos",
         "baseName": "terapagos",
         "primaryType": "normal",
         "secondaryType": "null",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "terapagosnormal",
         "baseName": "terapagos",
         "primaryType": "normal",
         "secondaryType": "null",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "terapagosstellar",
         "baseName": "terapagos",
         "primaryType": "normal",
         "secondaryType": "null",
-        "box": "terarium"
+        "box": "paldeadlc"
     },
     {
         "id": "pecharunt",
