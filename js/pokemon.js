@@ -2,6 +2,7 @@ class Pokemon {
 
     id
     box
+    currentBox
     primaryType
     secondaryType
     legendary
@@ -14,6 +15,7 @@ class Pokemon {
         this.secondaryType = dataJson["secondaryType"]
         this.legendary = dataJson["legendary"]
         this.box = dataJson["box"]
+        this.currentBox = this.box
     }
 
     setExtraData(dataJson){

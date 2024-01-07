@@ -215,7 +215,7 @@ class Quiz {
     }
 
     setQuiz(name, filters) {
-        
+        this.emptyBoxes()
         //before we change the style name
         if (this.getStyleName() !== ""){
             document.getElementById("body").classList.remove( this.getStyleName());
@@ -270,35 +270,6 @@ class Quiz {
                 showUserMessage("Order mode disabled")
             }
         }
-
-
-        /*
-        let maxNumberOfSame = 7
-        let indexesToRemove = []
-        let i = 0
-        while (i<currentPokemonList.length-maxNumberOfSame){
-            if (currentPokemonList[i].baseName === currentPokemonList[i+maxNumberOfSame].baseName){
-                let isSequential = true;
-                for (let j = 1; j<maxNumberOfSame; j++){
-                    if (currentPokemonList[i].baseName !== currentPokemonList[i+j].baseName){
-                        isSequential = false;
-                        break
-                    }
-                }
-                if (!isSequential){
-                    continue
-                }
-
-                let j = i + 1
-                while (j < currentPokemonList.length && currentPokemonList[i].baseName === currentPokemonList[j].baseName){
-                    indexesToRemove.push(j)
-                    j++;
-                }
-                i = j;
-            }else{
-                i++;
-            }
-        }*/
 
 
 
@@ -370,14 +341,30 @@ class Quiz {
         this.currentIds = new Set()
         this.currentBoxes = {}
         this.currentPokemonList = currentPokemonList
+
+        if (this.chaosMode || this.orderMode){
+            for (let i = 0; i<currentPokemonList.length; i++){
+                currentPokemonList[i].currentBox = "big"
+            }
+        }else if ("legendary" in filters){
+            for (let i = 0; i<currentPokemonList.length; i++){
+                currentPokemonList[i].currentBox = currentPokemonList[i].legendary
+            }
+        }else{
+            for (let i = 0; i<currentPokemonList.length; i++){
+                currentPokemonList[i].currentBox = currentPokemonList[i].box
+            }
+        }
+
+
         for (let i = 0; i<currentPokemonList.length; i++){
             this.currentBaseNames.add(currentPokemonList[i].baseName)
             //essentially sprites
             this.currentIds.add(currentPokemonList[i].id)
-            if (!(currentPokemonList[i].box in this.currentBoxes)){
-                this.currentBoxes[currentPokemonList[i].box] = []
+            if (!(currentPokemonList[i].currentBox in this.currentBoxes)){
+                this.currentBoxes[currentPokemonList[i].currentBox] = []
             }
-            this.currentBoxes[currentPokemonList[i].box].push(currentPokemonList[i])
+            this.currentBoxes[currentPokemonList[i].currentBox].push(currentPokemonList[i])
         }
 
         for (let id in this.unguessedDictionary){
@@ -393,10 +380,12 @@ class Quiz {
             if (box in this.currentBoxes)
             {
                 this.boxDict[box].style.display = "block";
+                console.log('showing', this.boxDict[box])
             }
             else
             {
                 this.boxDict[box].style.display = "none";
+                console.log('hidingh', this.boxDict[box])
             }
         }
 
@@ -460,7 +449,7 @@ class Quiz {
         }
 
 
-        if ("types" in filters){
+        if ("types" in filters || "legendary" in filters){
 
             document.getElementById("body").classList.add(this.getStyleName());
             if(darkMode){
@@ -513,13 +502,38 @@ class Quiz {
         }
 
         this.moveBoxes()
+        this.setupMissedContent();
+        this.setLanguage("ENG");
         this.resetCurrentSprites()
         this.reset();
+        
 
     }
 
+    emptyBoxes(){
+        for (let i = 0; i < this.boxConstruction.length; i++){
+            let box = this.boxConstruction[i][0]
+            let children = this.boxConstruction[i][1]
+            let pokemon = this.boxConstruction[i][2]
+            for (let j = 0; j < children.length; j++){
+                this.boxDict[pokemon.currentBox].removeChild(children[j])
+            }
+        }   
+    }
+
     moveBoxes(){
-        
+
+
+        for (let i = 0; i < this.boxConstruction.length; i++){
+            let box = this.boxConstruction[i][0]
+            let children = this.boxConstruction[i][1]
+            let pokemon = this.boxConstruction[i][2]
+            for (let j = 0; j < children.length; j++){
+                boxDict[pokemon.currentBox].appendChild(children[j])
+            }
+        }
+
+        /*
         let isCurrentlyBig = document.getElementById("pokemon-box-big").children.length > 2
         
         let neededBig = this.orderMode || this.chaosMode// && ("boxes" in this.filters && this.filters["boxes"].length > 5)
@@ -555,13 +569,13 @@ class Quiz {
                 document.getElementById("gen-boxes").style.display = "block"
             }
         }
-
-        document.getElementById("regionall").innerText = ""
+        */
+        document.getElementById("regionbig").innerText = ""
 
         /*if (this.orderMode){
             if ("boxes" in this.filters && neededBig){
                 if (this.filters["boxes"].length > 5){
-                    document.getElementById("regionall").innerText = ""
+                    document.getElementById("regionbig").innerText = ""
                 }else{
                     let fullText = ''
                     for (let i =0; i < this.filters["boxes"].length; i++){
@@ -569,7 +583,7 @@ class Quiz {
                         regionName = regionName.charAt(0).toUpperCase() + regionName.slice(1)
                         fullText += regionName+ ", "
                     }
-                    document.getElementById("regionall").innerText = fullText.substring(0, fullText.length-2)
+                    document.getElementById("regionbig").innerText = fullText.substring(0, fullText.length-2)
 
                 }
             }
@@ -585,7 +599,7 @@ class Quiz {
             }
             return this.filters["types"][0]
         }else if ("legendary" in this.filters){
-            return "legendary"
+            return "special"
         }
         return "";
     }
@@ -1142,12 +1156,18 @@ class Quiz {
             box.appendChild(unguessed);
             this.hideSprite(pokemon.id);
             
-            this.boxConstruction.push([box, [this.spriteDictionary[pokemon.id], unguessed]])
+            this.boxConstruction.push([box, [this.spriteDictionary[pokemon.id], unguessed], pokemon])
         }
     }
 
     setupMissedContent(){
         let contentDict = {}
+        let panel = document.getElementById("panel")
+        panel.innerHTML = ""
+        //while (panel.firstChild) {
+        //    panel.firstChild.remove()
+        //}
+
         for (let key in this.boxDict){
             let unnamedList = document.createElement("div");
             let unnamedContent = document.createElement("div");
@@ -1176,10 +1196,9 @@ class Quiz {
 
             this.unguessedDict[pokemon.id] = _elem;
             this.unguessedDictTexts[pokemon.id] = _name
-            contentDict[pokemon.box].appendChild(_elem)
-            
+            contentDict[pokemon.currentBox].appendChild(_elem)
         }
-
+    
     }
 
     getLeaderboardData(){
@@ -1189,7 +1208,7 @@ class Quiz {
     showSprite(id){
         this.spriteDictionary[id].style.display = "inline";
         this.unguessedDictionary[id].style.display = "none";
-        let currentBox = this.pokemonIdDict[id].box;
+        let currentBox = this.pokemonIdDict[id].currentBox;
         let pkmn = this.pokemonIdDict[id]
 
         if (this.chaosMode){
