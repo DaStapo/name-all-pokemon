@@ -296,6 +296,12 @@
 	border-radius: 0px 3px 6px 0px !important;
 	padding-left: 4px !important;
 	}
+	.atchcent {
+	margin-left: -4px !important;
+	border-radius: 0px 0px 0px 0px !important;
+	padding-right: 4px !important;
+    padding-left: 4px !important;
+	}
 	.attentionshake {
 	animation: shake 0.5s;
 	animation-iteration-count: 2;
