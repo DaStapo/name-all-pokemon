@@ -2328,15 +2328,25 @@ async function loadData() {
         state["named"] = new Set(state["named"])
 
         if (("orderMode" in state) && state["orderMode"]){
-            quiz.orderMode = state["orderMode"]
+            quiz.orderMode = true
+            quiz.chaosMode = false;
             visualizeButtonClick(orderButton)
             visualizeButtonUnclick(regularButton)
+            visualizeButtonUnclick(chaosButton)
         }else{
             quiz.orderMode = false;
+            quiz.chaosMode = false;
             visualizeButtonClick(regularButton)
             visualizeButtonUnclick(orderButton)
+            visualizeButtonUnclick(chaosButton)
         }
-
+        if (("chaosMode" in state) && state["chaosMode"]){
+            quiz.chaosMode = true;
+            quiz.orderMode = false;
+            visualizeButtonClick(chaosButton)
+            visualizeButtonUnclick(orderButton)
+            visualizeButtonUnclick(regularButton)
+        }
         quiz.setQuiz(state["quizName"], state["filters"])
         if (state["silhouettes"]) {
             quiz.setSilhouettes();
