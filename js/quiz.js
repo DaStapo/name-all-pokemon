@@ -380,12 +380,10 @@ class Quiz {
             if (box in this.currentBoxes)
             {
                 this.boxDict[box].style.display = "block";
-                console.log('showing', this.boxDict[box])
             }
             else
             {
                 this.boxDict[box].style.display = "none";
-                console.log('hidingh', this.boxDict[box])
             }
         }
 
@@ -1219,7 +1217,7 @@ class Quiz {
 
             for (let i = 1; i< children.length; i++){
                 if (spotIndex === -1 && children[i].tagName.toUpperCase() === "DIV"){
-                    if( children[i].children[1].style.display === "inline"){
+                    if( children[i].children[1].style.display === "inline" ||children[i].children[0].style.display === "inline"  ){
                         spotIndex = i
                         if (targetIndex !== -1){
                             break

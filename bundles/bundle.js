@@ -1259,7 +1259,7 @@ class Quiz {
 
             for (let i = 1; i< children.length; i++){
                 if (spotIndex === -1 && children[i].tagName.toUpperCase() === "DIV"){
-                    if( children[i].children[1].style.display === "inline"){
+                    if( children[i].children[1].style.display === "inline" ||children[i].children[0].style.display === "inline"  ){
                         spotIndex = i
                         if (targetIndex !== -1){
                             break
@@ -2333,7 +2333,7 @@ async function loadData() {
         changeQuiz();
     }
     let changeToSpecialQuiz = function (type) {
-        quiz.setQuiz("legendary", {"legendary":true})
+        quiz.setQuiz("special", {"legendary":true})
         changeQuiz();
     }
     for (let genKey in genQuizBoxes) {
