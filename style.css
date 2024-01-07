@@ -785,6 +785,7 @@
 	}
 	.tmarg2 {
 		margin-top: 50px;
+		padding: 15px 30px;
 	}
 	.rank {
 	padding: 0px 4px;
@@ -1071,7 +1072,10 @@
 	}
 	.scrollbox {
 		overflow: auto;
-		height: 185px;
+		height: calc(100% - 205px);
+	}
+	.suppbox {
+		height: calc(100% - 350px);
 	}
 	.popuptext::after {
 		content: "";
