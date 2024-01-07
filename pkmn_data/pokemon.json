@@ -9528,7 +9528,7 @@
         "legendary": "paradox"
     },
     {
-        "id": "terapagos",
+        "id": "terapagosnormal",
         "baseName": "terapagos",
         "primaryType": "normal",
         "secondaryType": "null",
@@ -9536,7 +9536,7 @@
         "legendary": "legendary"
     },
     {
-        "id": "terapagosnormal",
+        "id": "terapagos",
         "baseName": "terapagos",
         "primaryType": "normal",
         "secondaryType": "null",
