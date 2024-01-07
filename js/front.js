@@ -2194,6 +2194,7 @@ async function loadData() {
         state["paused"] = quiz.paused
         state["silhouettes"] = quiz.isSilhouettesEnabled()
         state["orderMode"] = quiz.orderMode
+        state["chaosMode"] = quiz.chaosrMode
         state["revealedShadows"] =  [...quiz.revealedShadows]
         state["giveup"] = quiz.giveUpState
         state["timer"] = timerObj
