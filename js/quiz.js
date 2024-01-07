@@ -298,7 +298,7 @@ class Quiz {
             currentPokemonList.splice(indexesToRemove[i] , 1);
         }
 
-        if (this.orderMode){
+        if (this.orderMode || "legendary" in this.filters){
             let tempList = []
             for (let i = 0; i< currentPokemonList.length; i++ ){
                 if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega" ){
@@ -502,8 +502,8 @@ class Quiz {
         }
 
         this.moveBoxes()
-        this.setupMissedContent();
-        this.setLanguage("ENG");
+        //this.setupMissedContent();
+        //this.setLanguage("ENG");
         this.resetCurrentSprites()
         this.reset();
         

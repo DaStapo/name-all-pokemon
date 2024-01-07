@@ -338,7 +338,7 @@ class Quiz {
             currentPokemonList.splice(indexesToRemove[i] , 1);
         }
 
-        if (this.orderMode){
+        if (this.orderMode || "legendary" in this.filters){
             let tempList = []
             for (let i = 0; i< currentPokemonList.length; i++ ){
                 if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega" ){
@@ -542,8 +542,8 @@ class Quiz {
         }
 
         this.moveBoxes()
-        this.setupMissedContent();
-        this.setLanguage("ENG");
+        //this.setupMissedContent();
+        //this.setLanguage("ENG");
         this.resetCurrentSprites()
         this.reset();
         
@@ -1508,6 +1508,7 @@ let boxDict = {}
 for (let i = 0; i < boxIds.length; i++) {
     let boxId = boxIds[i]
     boxDict[boxId] = document.getElementById("pokemon-box-" + boxId)
+    boxDict[boxId].style.display = "none";
 }
 
 let randomIntFromInterval = function (min, max) { // min and max included 
@@ -1654,6 +1655,8 @@ if (roomId.length > 1) {
     pauseBtn.style.display = "none"
     hostGame.style.display = "none"
     document.getElementById("genselect").style.display = "none"
+    document.getElementById("specialButton").style.display = "none"
+    document.getElementById("specialselect").style.display = "none"
     document.getElementById("typeselect").style.display = "none"
     document.getElementById("timers").style.display = "none"
     document.getElementById("twitchbox").style.display = "none"
@@ -2325,7 +2328,10 @@ async function loadData() {
         quiz.setTypeQuiz(type);
         changeQuiz();
     }
-
+    let changeToSpecialQuiz = function (type) {
+        quiz.setQuiz("legendary", {"legendary":true})
+        changeQuiz();
+    }
     for (let genKey in genQuizBoxes) {
         //calling functions, popup and changing button CSS
         document.getElementById("gen" + genKey).onclick = function () {
@@ -2348,6 +2354,28 @@ async function loadData() {
                 swapGen();
                 off2();
             }
+        }
+    }
+
+    document.getElementById("specialButton").onclick = function () {
+        let swapGen = function () {
+            document.getElementById("genselection").onclick = off2;
+            document.getElementById("typeselection").onclick = off2;
+            promptGen.style.display = "none";
+            changeToSpecialQuiz()
+        }
+        promptGenYes.onclick = function () {
+            swapGen();
+            off2();
+        }
+        promptGenNo.onclick = function () {
+            promptGen.style.display = "none";
+        }
+        if (quiz.getScore() !== 0) {
+            promptGen.style.display = 'inline';
+        } else {
+            swapGen();
+            off2();
         }
     }
 
