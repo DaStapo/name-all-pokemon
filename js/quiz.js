@@ -168,10 +168,10 @@ class Quiz {
     }
     
     setChaosMode(val){
-        if (!(this.orderMode)){
-            this.chaosMode = val
-            this.moveBoxes()
-        }
+        
+        this.chaosMode = val
+        this.setQuiz(this.name, this.filters)
+        
     }
     checkHighestLang(){
         let highestKey = "ENG";

@@ -208,10 +208,10 @@ class Quiz {
     }
     
     setChaosMode(val){
-        if (!(this.orderMode)){
-            this.chaosMode = val
-            this.moveBoxes()
-        }
+        
+        this.chaosMode = val
+        this.setQuiz(this.name, this.filters)
+        
     }
     checkHighestLang(){
         let highestKey = "ENG";
@@ -1457,8 +1457,9 @@ let spellingHint = document.getElementById("hint");
 let radioPokeball = document.getElementById("pokeball");
 let radioSilhouette = document.getElementById("silhouette");
 let orderModeMenu = document.getElementById("orderbox");
-let enableOrderBtn =  document.getElementById("order-on");
-let disableOrderBtn =  document.getElementById("order-off");
+let orderButton =  document.getElementById("order-on");
+let regularButton =  document.getElementById("order-off");
+let chaosButton =  document.getElementById("chaos-on");
 let shadowNextBtn =  document.getElementById("shadownext");
 let shadowHelpRadio =  document.getElementById("shadowhelp");
 
@@ -1471,14 +1472,17 @@ let resetBtn = document.getElementById("resetButton");
 
 let promptSilh = document.getElementById("promptsilhouette");
 let promptOrderEnable = document.getElementById("promptorder-enable");
+let promptChaosEnable = document.getElementById("promptchaos-enable");
 let promptOrderDisable = document.getElementById("promptorder-disable");
 let promptGen = document.getElementById("promptswitch");
 
 let promptSilhYes = document.getElementById("sil-yes");
 let promptSilhNo = document.getElementById("sil-no");
 let promptOrderEnableYes = document.getElementById("order-enable-yes");
+let promptChaosEnableYes = document.getElementById("chaos-enable-yes");
 let promptOrderDisableYes = document.getElementById("order-disable-yes");
 let promptOrderEnableNo = document.getElementById("order-enable-no");
+let promptChaosEnableNo = document.getElementById("chaos-enable-no");
 let promptOrderDisableNo = document.getElementById("order-disable-no");
 let promptGenYes = document.getElementById("gen-yes");
 let promptGenNo = document.getElementById("gen-no");
@@ -2652,26 +2656,31 @@ async function loadData() {
     }
 
 
-    enableOrderBtn.onclick = function () {
+    orderButton.onclick = function () {
         if (!quiz.orderMode){
-            if("types" in quiz.filters){
-                showUserMessage("Order mode does not work with type quizzes")
-                
+            if("types" in quiz.filters || "legendary" in quiz.filters){
+                showUserMessage("Order mode does not work with the current quiz")
             }else{
                 promptOrderEnable.style.display = "inline";
             }
         }
     };
-    disableOrderBtn.onclick = function () {
-        if (quiz.orderMode){
+    regularButton.onclick = function () {
+        if (quiz.orderMode || quiz.chaosMode){
             promptOrderDisable.style.display = "inline";
         }
     };
-
+    chaosButton.onclick = function () {
+        if (!quiz.chaosMode){
+            promptChaosEnable.style.display = "inline";
+        }
+    };
     promptOrderEnableYes.onclick = function () {
-        visualizeButtonUnclick(disableOrderBtn)
-        visualizeButtonClick(enableOrderBtn)
+        visualizeButtonUnclick(regularButton)
+        visualizeButtonUnclick(chaosButton)
+        visualizeButtonClick(orderButton)
         quiz.setOrderMode(true)
+        quiz.setChaosMode(false)
         //socketSetOrderMode(true)
         changeQuiz()
         promptOrderEnable.style.display = "none";
@@ -2681,9 +2690,11 @@ async function loadData() {
     }
 
     promptOrderDisableYes.onclick = function () {
-        visualizeButtonUnclick(enableOrderBtn)
-        visualizeButtonClick(disableOrderBtn)
+        visualizeButtonUnclick(orderButton)
+        visualizeButtonUnclick(chaosButton)
+        visualizeButtonClick(regularButton)
         quiz.setOrderMode(false)
+        quiz.setChaosMode(false)
         changeQuiz()
         //socketSetOrderMode(false)
         promptOrderDisable.style.display = "none";
@@ -2692,6 +2703,22 @@ async function loadData() {
     promptOrderDisableNo.onclick = function () {
         promptOrderDisable.style.display = "none";
     }
+
+    promptChaosEnableYes.onclick = function () {
+        visualizeButtonUnclick(regularButton)
+        visualizeButtonClick(chaosButton)
+        visualizeButtonUnclick(orderButton)
+        quiz.setOrderMode(false)
+        quiz.setChaosMode(true)
+        //socketSetOrderMode(true)
+        changeQuiz()
+        promptChaosEnable.style.display = "none";
+    }
+    promptChaosEnableNo.onclick = function () {
+        promptChaosEnable.style.display = "none";
+    }
+
+
 
     shadowNextBtn.onclick = function(){
         
@@ -3686,12 +3713,12 @@ async function loadData() {
 
         if (("orderMode" in state) && state["orderMode"]){
             quiz.orderMode = state["orderMode"]
-            visualizeButtonClick(enableOrderBtn)
-            visualizeButtonUnclick(disableOrderBtn)
+            visualizeButtonClick(orderButton)
+            visualizeButtonUnclick(regularButton)
         }else{
             quiz.orderMode = false;
-            visualizeButtonClick(disableOrderBtn)
-            visualizeButtonUnclick(enableOrderBtn)
+            visualizeButtonClick(regularButton)
+            visualizeButtonUnclick(orderButton)
         }
 
         quiz.setQuiz(state["quizName"], state["filters"])
@@ -4089,6 +4116,7 @@ function off3() {
     document.getElementById("promptsilhouette").style.display = "none";
     document.getElementById("promptorder-enable").style.display = "none";
     document.getElementById("promptorder-disable").style.display = "none";
+    document.getElementById("promptchaos-enable").style.display = "none";
 }
 
 function genselectmenu() {
