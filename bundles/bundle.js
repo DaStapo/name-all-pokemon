@@ -420,12 +420,10 @@ class Quiz {
             if (box in this.currentBoxes)
             {
                 this.boxDict[box].style.display = "block";
-                console.log('showing', this.boxDict[box])
             }
             else
             {
                 this.boxDict[box].style.display = "none";
-                console.log('hidingh', this.boxDict[box])
             }
         }
 
@@ -3579,9 +3577,11 @@ async function loadData() {
         state["paused"] = quiz.paused
         state["silhouettes"] = quiz.isSilhouettesEnabled()
         state["orderMode"] = quiz.orderMode
+        state["chaosMode"] = quiz.chaosMode
         state["revealedShadows"] =  [...quiz.revealedShadows]
         state["giveup"] = quiz.giveUpState
         state["timer"] = timerObj
+        console.log(state)
         return state;
     }
 
@@ -3712,15 +3712,25 @@ async function loadData() {
         state["named"] = new Set(state["named"])
 
         if (("orderMode" in state) && state["orderMode"]){
-            quiz.orderMode = state["orderMode"]
+            quiz.orderMode = true
+            quiz.chaosMode = false;
             visualizeButtonClick(orderButton)
             visualizeButtonUnclick(regularButton)
+            visualizeButtonUnclick(chaosButton)
         }else{
             quiz.orderMode = false;
+            quiz.chaosMode = false;
             visualizeButtonClick(regularButton)
             visualizeButtonUnclick(orderButton)
+            visualizeButtonUnclick(chaosButton)
         }
-
+        if (("chaosMode" in state) && state["chaosMode"]){
+            quiz.chaosMode = true;
+            quiz.orderMode = false;
+            visualizeButtonClick(chaosButton)
+            visualizeButtonUnclick(orderButton)
+            visualizeButtonUnclick(regularButton)
+        }
         quiz.setQuiz(state["quizName"], state["filters"])
         if (state["silhouettes"]) {
             quiz.setSilhouettes();

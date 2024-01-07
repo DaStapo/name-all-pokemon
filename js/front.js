@@ -2194,10 +2194,11 @@ async function loadData() {
         state["paused"] = quiz.paused
         state["silhouettes"] = quiz.isSilhouettesEnabled()
         state["orderMode"] = quiz.orderMode
-        state["chaosMode"] = quiz.chaosrMode
+        state["chaosMode"] = quiz.chaosMode
         state["revealedShadows"] =  [...quiz.revealedShadows]
         state["giveup"] = quiz.giveUpState
         state["timer"] = timerObj
+        console.log(state)
         return state;
     }
 
