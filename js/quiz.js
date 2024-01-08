@@ -300,6 +300,8 @@ class Quiz {
 
         if (this.orderMode || "legendary" in this.filters || this.chaosMode){
             let tempList = []
+            let currentPokemonListIds = currentPokemonList.map(pokemon => pokemon.id);
+
             let baseSet = new Set()
             for (let i = 0; i< currentPokemonList.length; i++ ){
                 if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega" ){
@@ -330,8 +332,12 @@ class Quiz {
                 }else{
                     let id = currentPokemonList[i].id;
                     let basePkmnId = this.baseNameIdDict[currentPokemonList[i].baseName]
-
-                    if (this.orderModeSet.has(id) || !(this.currentPokemonList.includes(basePkmnId))){
+                    if (basePkmnId === "zapdos"){
+                        let b = currentPokemonListIds.includes(basePkmnId)
+                        let c = this.orderModeSet.has(id)
+                        let g = 0
+                    }
+                    if (this.orderModeSet.has(id) || !(currentPokemonListIds.includes(basePkmnId))){
                         tempList.push(currentPokemonList[i])
                     }else{
                         if (!(basePkmnId in currentCycles)){
