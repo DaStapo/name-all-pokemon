@@ -300,27 +300,54 @@ class Quiz {
 
         if (this.orderMode || "legendary" in this.filters || this.chaosMode){
             let tempList = []
+            let baseSet = new Set()
             for (let i = 0; i< currentPokemonList.length; i++ ){
                 if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega" ){
                     continue
                 }
-                let id = currentPokemonList[i].id;
-                if (this.orderModeSet.has(id)){
-                    tempList.push(currentPokemonList[i])
-                }else{
-                    let basePkmnId = this.baseNameIdDict[currentPokemonList[i].baseName]
-                    if (!(basePkmnId in currentCycles)){
-                        currentCycles[basePkmnId] = [basePkmnId]
+                if (this.orderMode){
+                    let id = currentPokemonList[i].id;
+                    if (this.orderModeSet.has(id)){
+                        tempList.push(currentPokemonList[i])
+                    }else{
+
+
+
+                        let basePkmnId = this.baseNameIdDict[currentPokemonList[i].baseName]
+                        if (!(basePkmnId in currentCycles)){
+                            currentCycles[basePkmnId] = [basePkmnId]
+                        }
+    
+                        if(id in currentCycles){
+                            for (let j = 0; j < currentCycles[id].length; j++){
+                                currentCycles[basePkmnId].push(currentCycles[id][j])
+                            }
+                        }else{
+                            currentCycles[basePkmnId].push(id)
+                        }
                     }
 
-                    if(id in currentCycles){
-                        for (let j = 0; j < currentCycles[id].length; j++){
-                            currentCycles[basePkmnId].push(currentCycles[id][j])
-                        }
+                }else{
+                    let id = currentPokemonList[i].id;
+                    let basePkmnId = this.baseNameIdDict[currentPokemonList[i].baseName]
+
+                    if (this.orderModeSet.has(id) || !(this.currentPokemonList.includes(basePkmnId))){
+                        tempList.push(currentPokemonList[i])
                     }else{
-                        currentCycles[basePkmnId].push(id)
+                        if (!(basePkmnId in currentCycles)){
+                            currentCycles[basePkmnId] = [basePkmnId]
+                        }
+                        if(id in currentCycles){
+                            for (let j = 0; j < currentCycles[id].length; j++){
+                                currentCycles[basePkmnId].push(currentCycles[id][j])
+                            }
+                        }else{
+                            currentCycles[basePkmnId].push(id)
+                        }
                     }
+                    
                 }
+
             }
             currentPokemonList = tempList
 
