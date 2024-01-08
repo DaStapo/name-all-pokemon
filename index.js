@@ -67,19 +67,43 @@ app.post('/ko-fi-log', async (req, res) => {
         if (data["verification_token"] === "2817015b-a667-4f32-8028-2196b716bcc7"){
             const fromName = data["from_name"];
             const amount = parseFloat(data["amount"]);
-        
+            const timestamp = Date.parse(data["timestamp"]);
+
             writeQueue = writeQueue
                 .then(async () => {
                     try {
                         const fileData = await fsPromises.readFile('donations.json', 'utf-8');
                         let donations = JSON.parse(fileData);
-                        donations.push([fromName, amount]);
-                        donations.sort((a, b) => b[1] - a[1]);
+                    
+                        // Check if the donation from the same donor already exists
+                        const existingDonationIndex = donations.findIndex(donation => donation[0] === fromName);
+
+                        if (existingDonationIndex >= 0) {
+                            // Merge with existing donation
+                            donations[existingDonationIndex][1] += amount; // Add the amount
+                            donations[existingDonationIndex][2] = timestamp; // Update timestamp to the latest
+                        } else {
+                            // Add new donation
+                            donations.push([fromName, amount, timestamp]);
+                        }
+                    
+                        // Sort the donations
+                        donations.sort((a, b) => {
+                            // First, compare by amount
+                            if (b[1] !== a[1]) {
+                                return b[1] - a[1];
+                            }
+                        
+                            // If amounts are equal, then sort by timestamp (earliest first)
+                            return b[2] - a[2] ;
+                        });
+                    
                         await fsPromises.writeFile('donations.json', JSON.stringify(donations, null, 2));
                     } catch (error) {
                         console.error('Error:', error);
                     }
                 });
+
         }
     }catch(e){
 

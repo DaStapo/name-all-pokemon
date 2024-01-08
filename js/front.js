@@ -275,7 +275,6 @@ if (roomId.length > 1) {
     hostGame.style.display = "none"
     document.getElementById("genselect").style.display = "none"
     document.getElementById("specialButton").style.display = "none"
-    document.getElementById("specialselect").style.display = "none"
     document.getElementById("typeselect").style.display = "none"
     document.getElementById("timers").style.display = "none"
     document.getElementById("twitchbox").style.display = "none"
@@ -1192,7 +1191,11 @@ async function loadData() {
         document.getElementById("shadow-count").innerHTML = quiz.revealedShadows.size
         if (quiz.orderMode){
             document.getElementById("order-congrats").innerHTML = " in Pokédex order!"
-        }else{
+        }
+        else if(quiz.chaosMode){
+            document.getElementById("order-congrats").innerHTML = " in Chaos mode!"
+        }
+        else{
             document.getElementById("order-congrats").innerHTML = "!"
         }
         if (quiz.revealedShadows.size > 0) {

@@ -298,7 +298,7 @@ class Quiz {
             currentPokemonList.splice(indexesToRemove[i] , 1);
         }
 
-        if (this.orderMode || "legendary" in this.filters){
+        if (this.orderMode || "legendary" in this.filters || this.chaosMode){
             let tempList = []
             for (let i = 0; i< currentPokemonList.length; i++ ){
                 if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega" ){
@@ -1242,13 +1242,7 @@ class Quiz {
 
         }
 
-        if (this.spriteDictionary[id].parentElement.id === "pokemon-box-big"){
-            if (id === this.currentPokemonList[this.currentPokemonList.length-1].id){
-                this.spriteDictionary[id].parentElement.classList.add('outline')
-                this.spriteDictionary[id].parentElement.classList.add('outline'+this.getStyleName())
-            }
-        }
-        else{
+
             if(!(this.boxCounters[currentBox].includes(pkmn))){
                 this.boxCounters[currentBox].push(pkmn)
                 if (this.boxCounters[currentBox].length === this.currentBoxes[currentBox].length){
@@ -1257,7 +1251,7 @@ class Quiz {
                     boxElem.classList.add('outline'+this.getStyleName())
                 }
             }
-        }
+        
 
     }
 
