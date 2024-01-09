@@ -304,10 +304,11 @@ class Quiz {
 
             let baseSet = new Set()
             for (let i = 0; i< currentPokemonList.length; i++ ){
-                if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega" ){
-                    continue
-                }
+
                 if (this.orderMode){
+                    if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega" ){
+                        continue
+                    }
                     let id = currentPokemonList[i].id;
                     if (this.orderModeSet.has(id)){
                         tempList.push(currentPokemonList[i])
