@@ -9556,7 +9556,15 @@
         "baseName": "pecharunt",
         "primaryType": "poison",
         "secondaryType": "ghost",
-        "box": "unreleased",
+        "box": "paldeadlc",
+        "legendary": "mythical"
+    },
+    {
+        "id": "pecharuntshell",
+        "baseName": "pecharunt",
+        "primaryType": "poison",
+        "secondaryType": "ghost",
+        "box": "paldeadlc",
         "legendary": "mythical"
     },
     {
