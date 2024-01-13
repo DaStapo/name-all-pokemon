@@ -9256,6 +9256,14 @@
         "legendary": "no"
     },
     {
+        "id": "gimmighoulroaming",
+        "baseName": "gimmighoul",
+        "primaryType": "ghost",
+        "secondaryType": null,
+        "box": "paldea",
+        "legendary": "no"
+    },
+    {
         "id": "gholdengo",
         "baseName": "gholdengo",
         "primaryType": "steel",
