@@ -1211,6 +1211,10 @@ async function loadData() {
         document.getElementById("ranking").style.display = "none";
 
         quiz.animateCongrats()
+        quiz.giveUp();
+
+        document.getElementById("missednames").style.display = "block";
+        document.getElementById("accordion").click();
     }
 
     function giveUp() {
