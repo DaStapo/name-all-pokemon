@@ -9256,6 +9256,14 @@
         "legendary": "no"
     },
     {
+        "id": "gimmighoulroaming",
+        "baseName": "gimmighoul",
+        "primaryType": "ghost",
+        "secondaryType": null,
+        "box": "paldea",
+        "legendary": "no"
+    },
+    {
         "id": "gholdengo",
         "baseName": "gholdengo",
         "primaryType": "steel",
@@ -9556,7 +9564,15 @@
         "baseName": "pecharunt",
         "primaryType": "poison",
         "secondaryType": "ghost",
-        "box": "unreleased",
+        "box": "paldeadlc",
+        "legendary": "mythical"
+    },
+    {
+        "id": "pecharuntshell",
+        "baseName": "pecharunt",
+        "primaryType": "poison",
+        "secondaryType": "ghost",
+        "box": "paldeadlc",
         "legendary": "mythical"
     },
     {
