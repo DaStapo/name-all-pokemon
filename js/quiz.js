@@ -65,6 +65,8 @@ class Quiz {
 
     name = "none"
 
+    forcedStyle = null;
+
     boxConstruction = []
 
 
@@ -117,6 +119,7 @@ class Quiz {
         this.useSilhouettes = false;
         this.revealedShadows = new Set()
         this.boxCounters = {}
+        this.forcedStyle = null;
         for (let box in this.currentBoxes){
             this.boxCounters[box] = []
         }
@@ -236,6 +239,7 @@ class Quiz {
                 bbuttonElements[i].classList.remove("button"+this.getStyleName())
             }        
         }
+
 
 
         this.filters = filters;
@@ -544,6 +548,86 @@ class Quiz {
 
     }
 
+    changeTypeStyle (toType){
+
+        if (this.getStyleName() !== ""){
+            document.getElementById("body").classList.remove( this.getStyleName());
+
+            for (let i = 0; i< typeClasses.length; i++){
+                let currentClass = typeClasses[i];
+                let typeName = this.getStyleName();
+                let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
+                let val  = "." + currentClass.replace("type", "")
+                for (let j = 0; j<allElements.length; j++){
+                    allElements[j].classList.remove(currentClass.replace("type", typeName))
+                }
+        
+            }
+    
+            let bbuttonElements = document.getElementsByClassName("button");
+            for (let i = 0; i < bbuttonElements.length; i++){
+                bbuttonElements[i].classList.remove("button"+this.getStyleName())
+            }        
+        }
+
+
+
+        if (toType !== null){
+
+            document.getElementById("body").classList.add(toType);
+            if(darkMode){
+                document.getElementById("body").classList.add("blenddark")
+            }
+            else{
+                document.getElementById("body").classList.add("blend")
+            }
+
+            for (let i = 0; i< typeClasses.length; i++){
+                let currentClass = typeClasses[i];
+                if(currentClass.includes('dark') && !darkMode){
+                    continue;
+                }
+        
+                let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
+                for (let j = 0; j<allElements.length; j++){
+                    allElements[j].classList.add(currentClass.replace("type", toType))
+                }
+        
+            }
+        
+        
+            let bbuttonElements = document.getElementsByClassName("button");
+            for (let i = 0; i < bbuttonElements.length; i++){
+                bbuttonElements[i].classList.add("button"+toType)
+            }
+
+            let imgName = toType.toUpperCase();
+            if (imgName === "EVIL"){
+                imgName = "DARK"
+            }
+
+            document.getElementById("bgpattern").style.display = 'block';
+            document.getElementById("bgpattern2").style.display = 'block';
+            document.getElementById("bgpattern2").src = "/images/types/"+ imgName +".svg";
+            document.getElementById("bgpattern2").src = "/images/types/"+ imgName +".svg";
+
+            document.getElementById("bgpattern").style.opacity = 0;
+            setTimeout(()=>{
+                document.getElementById("bgpattern").src = "/images/types/"+ imgName+".svg";
+
+                document.getElementById("bgpattern").style.opacity = 1;
+            },250)
+        }else{
+            document.getElementById("body").classList.remove("blend")
+            document.getElementById("body").classList.remove("blenddark")
+            document.getElementById("bgpattern").style.display = 'none';
+            document.getElementById("bgpattern2").style.display = 'none';
+        }
+        this.forcedStyle = toType.toLowerCase();
+    }
+
+
+
     emptyBoxes(){
         for (let i = 0; i < this.boxConstruction.length; i++){
             let box = this.boxConstruction[i][0]
@@ -627,7 +711,10 @@ class Quiz {
     }
 
     getStyleName(){
-        if ("types" in this.filters){
+        if (this.forcedStyle !== null){
+            return this.forcedStyle;
+        }
+        else if ("types" in this.filters){
             if (this.filters["types"][0] === "dark"){
                 return "evil"
             }
@@ -973,6 +1060,7 @@ class Quiz {
                         }
                         continue;
                     }
+                    this.changeTypeStyle(this.currentPokemonList[highestNamed+1].primaryType)
                 }
 
                 let recentPkmn = this.addNamed(baseName)
