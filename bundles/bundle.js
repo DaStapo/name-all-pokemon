@@ -1100,10 +1100,10 @@ class Quiz {
                         }
                         continue;
                     }
-                    this.changeTypeStyle(this.currentPokemonList[highestNamed+1].primaryType)
                 }
-
                 let recentPkmn = this.addNamed(baseName)
+                this.changeTypeStyle(recentPkmn.primaryType)
+
                 this.addUserPoint(user)
                 if (!(this.langDict[input] in this.langCounts)){
                     this.langCounts[this.langDict[input]] = 0
