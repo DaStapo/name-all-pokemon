@@ -357,14 +357,16 @@ class Quiz {
 
             }
             currentPokemonList = tempList
-
+            
             if ("darumaka" in currentCycles){
+                console.log(currentCycles["darumaka"])
                 currentCycles["darumaka"] = ["darumaka", "darumaka", "darumakagalar", "darumakagalar"]
             }
-            if ("meowth" in currentCycles){
+            if ("meowth" in currentCycles && currentCycles["meowth"].includes("meowthalola")&& currentCycles["meowth"].includes("meowthgalar")){
                 currentCycles["meowth"] = ["meowth", "meowthalola", "meowthgalar"]
             }
-            if ("persian" in currentCycles){
+            if ("persian" in currentCycles && currentCycles["persian"].includes("persianalola")){
+                console.log(currentCycles["persian"])
                 currentCycles["persian"] = ["persian", "persianalola", "persian"]
             }
         }
