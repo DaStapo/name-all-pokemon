@@ -1120,9 +1120,10 @@ async function loadData() {
                 showHint();
                 return;
             }else if (quiz.name !== "none" && inputField.value[inputField.value.length - 1] === ',') {
+                
+                shadowNextFunc();
                 inputField.value = inputField.value.substring(0, inputField.value.length - 1);
-                shadowNextBtn.click();
-                return;
+                return;  
             }
 
             res = parseInput(inputField.value, myUsername);
@@ -1341,9 +1342,14 @@ async function loadData() {
     }
 
 
+    let shadowNextEnabled = false;
+    let shadowNextFunc = function () {
 
-    shadowNextBtn.onclick = function(){
-        
+        if (!shadowNextEnabled){
+            showUserMessage("Shadow hotkey is not enabled")
+            return
+        }
+
         if (quiz.name !== "none" && !(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore())){
             if ((socket === null || isSocketHost) ){
             
@@ -1360,6 +1366,20 @@ async function loadData() {
                 }
             }
         }
+    }
+
+    shadowNextBtn.onclick = function(){
+        if (shadowNextEnabled){
+            shadowNextEnabled = false;
+            visualizeButtonUnclick(shadowNextBtn)
+            showUserMessage("Shadow hotkey disabled")
+        }else{
+            shadowNextEnabled = true;
+            visualizeButtonClick(shadowNextBtn)
+            showUserMessage("Shadow hotkey enabled")
+
+        }
+
     }
 
     function resetShadowHelp(){
