@@ -1282,6 +1282,11 @@ class Quiz {
             if (randomType!== this.currentType){
                 this.changeTypeStyle(randomType)
             }
+            let formattedType = this.currentType
+            if (formattedType.toLowerCase() === "dark"){
+                formattedType = "EVIL"
+            }
+            showUserMessage('<img src="/images/types/'+formattedType.toUpperCase()+'.svg">')
         }
 
         return relevantPokemon[relevantPokemon.length-1];
