@@ -669,6 +669,9 @@ class Quiz {
             document.getElementById("bgpattern").style.display = 'none';
             document.getElementById("bgpattern2").style.display = 'none';
         }
+        if (toType.toLowerCase() === "evil"){
+            toType = "dark"
+        }
         this.currentType = toType.toLowerCase();
     }
 
@@ -758,6 +761,9 @@ class Quiz {
 
     getStyleName(){
         if (this.currentType !== null){
+            if (this.currentType === "dark"){
+                return "evil"
+            }
             return this.currentType;
         }
         else if ("types" in this.filters){
@@ -1125,7 +1131,9 @@ class Quiz {
                             }
                         }
                         if (!overlap){
-                            message = baseName + " is not " + this.currentType
+                            let formattedType = this.currentType.toLowerCase()
+                            formattedType = formattedType.charAt(0).toUpperCase() + formattedType.slice(1);
+                            message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " is not " + formattedType
                             continue;
                         }
                     }
