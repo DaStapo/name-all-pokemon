@@ -68,6 +68,7 @@ class Quiz {
 
     currentType = null;
     seed = 0
+    typeChaosIds = new Set()
 
     boxConstruction = []
 
@@ -274,7 +275,8 @@ class Quiz {
         this.currentType = null;
         this.name = name;
         let currentPokemonList = [];
-    
+        this.typeChaosIds = new Set()
+
         if ("boxes" in filters) {
             currentPokemonList = this.pokemon.filter(pokemon => filters.boxes.includes(pokemon.box));
         } else {
@@ -310,7 +312,9 @@ class Quiz {
             }
         }
 
-
+        for (let i = 0; i < currentPokemonList.length; i++){
+            this.typeChaosIds.add(currentPokemonList[i].id)
+        }
 
 
         let currentCycles = {}
@@ -1116,9 +1120,12 @@ class Quiz {
                     
                     let matched = false;
                     for (let i = 0; i<this.pokemonBaseNameDict[baseName].length; i++){
-                        if (this.pokemonBaseNameDict[baseName][i].primaryType === this.currentType || this.pokemonBaseNameDict[baseName][i].secondaryType === this.currentType){
-                            matched = true;
-                            break
+                        if ((this.pokemonBaseNameDict[baseName][i].primaryType === this.currentType || this.pokemonBaseNameDict[baseName][i].secondaryType === this.currentType)){
+                            if(this.typeChaosIds.has(this.pokemonBaseNameDict[baseName][i].id)){
+                                matched = true;
+                                break
+                            }
+
                         }
                     }
                     if (!matched){
@@ -1243,8 +1250,8 @@ class Quiz {
                 this.changeTypeStyle(randomType)
             }
             let formattedType = this.currentType
-            if (formattedType.toLowerCase() === "dark"){
-                formattedType = "EVIL"
+            if (formattedType.toLowerCase() === "evil"){
+                formattedType = "DARK"
             }
             showUserMessage('<img src="/images/types/'+formattedType.toUpperCase()+'.svg">')
         }
