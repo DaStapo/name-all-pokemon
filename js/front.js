@@ -74,6 +74,7 @@ let radioSilhouette = document.getElementById("silhouette");
 let orderModeMenu = document.getElementById("orderbox");
 let orderButton =  document.getElementById("order-on");
 let regularButton =  document.getElementById("order-off");
+let typeDisorderButton =  document.getElementById("type-on");
 let chaosButton =  document.getElementById("chaos-on");
 let shadowNextBtn =  document.getElementById("shadownext");
 let shadowHelpRadio =  document.getElementById("shadowhelp");
@@ -89,6 +90,7 @@ let promptSilh = document.getElementById("promptsilhouette");
 let promptOrderEnable = document.getElementById("promptorder-enable");
 let promptChaosEnable = document.getElementById("promptchaos-enable");
 let promptOrderDisable = document.getElementById("promptorder-disable");
+let promptTypeDisorderEnable = document.getElementById("prompttype-enable");
 let promptGen = document.getElementById("promptswitch");
 
 let promptSilhYes = document.getElementById("sil-yes");
@@ -99,6 +101,11 @@ let promptOrderDisableYes = document.getElementById("order-disable-yes");
 let promptOrderEnableNo = document.getElementById("order-enable-no");
 let promptChaosEnableNo = document.getElementById("chaos-enable-no");
 let promptOrderDisableNo = document.getElementById("order-disable-no");
+
+
+let promptTypeDisorderYes = document.getElementById("type-enable-yes");
+let promptTypeDisorderNo = document.getElementById("type-enable-no");
+
 let promptGenYes = document.getElementById("gen-yes");
 let promptGenNo = document.getElementById("gen-no");
 
@@ -1297,12 +1304,25 @@ async function loadData() {
             promptChaosEnable.style.display = "inline";
         }
     };
+
+    typeDisorderButton.onclick = function () {
+        if (!quiz.typeDisorder){
+            if("types" in quiz.filters){
+                showUserMessage("Type disorder mode does not work with type quizzes")
+            }else{
+                promptTypeDisorderEnable.style.display = "inline";
+            }
+        }
+    };
+
+
+
     promptOrderEnableYes.onclick = function () {
         visualizeButtonUnclick(regularButton)
         visualizeButtonUnclick(chaosButton)
+        visualizeButtonUnclick(typeDisorderButton)
         visualizeButtonClick(orderButton)
         quiz.setOrderMode(true)
-        quiz.setChaosMode(false)
         //socketSetOrderMode(true)
         changeQuiz()
         promptOrderEnable.style.display = "none";
@@ -1314,9 +1334,10 @@ async function loadData() {
     promptOrderDisableYes.onclick = function () {
         visualizeButtonUnclick(orderButton)
         visualizeButtonUnclick(chaosButton)
+        visualizeButtonUnclick(typeDisorderButton)
         visualizeButtonClick(regularButton)
         quiz.setOrderMode(false)
-        quiz.setChaosMode(false)
+
         changeQuiz()
         //socketSetOrderMode(false)
         promptOrderDisable.style.display = "none";
@@ -1330,8 +1351,10 @@ async function loadData() {
         visualizeButtonUnclick(regularButton)
         visualizeButtonClick(chaosButton)
         visualizeButtonUnclick(orderButton)
-        quiz.setOrderMode(false)
+        visualizeButtonUnclick(typeDisorderButton)
+
         quiz.setChaosMode(true)
+
         //socketSetOrderMode(true)
         changeQuiz()
         promptChaosEnable.style.display = "none";
@@ -1340,7 +1363,19 @@ async function loadData() {
         promptChaosEnable.style.display = "none";
     }
 
-
+    promptTypeDisorderYes.onclick = function () {
+        visualizeButtonUnclick(regularButton)
+        visualizeButtonUnclick(chaosButton)
+        visualizeButtonUnclick(orderButton)
+        visualizeButtonClick(typeDisorderButton)
+        quiz.setTypeMode(true)
+        //socketSetOrderMode(true)
+        changeQuiz()
+        promptTypeDisorderEnable.style.display = "none";
+    }
+    promptTypeDisorderNo.onclick = function () {
+        promptTypeDisorderEnable.style.display = "none";
+    }
 
     shadowNextBtn.onclick = function(){
         
@@ -2202,10 +2237,11 @@ async function loadData() {
         state["silhouettes"] = quiz.isSilhouettesEnabled()
         state["orderMode"] = quiz.orderMode
         state["chaosMode"] = quiz.chaosMode
+        state["typeDisorder"] = quiz.typeDisorder
+        state["typeSeed"] = quiz.seed
         state["revealedShadows"] =  [...quiz.revealedShadows]
         state["giveup"] = quiz.giveUpState
         state["timer"] = timerObj
-        console.log(state)
         return state;
     }
 
@@ -2338,23 +2374,45 @@ async function loadData() {
         if (("orderMode" in state) && state["orderMode"]){
             quiz.orderMode = true
             quiz.chaosMode = false;
+            quiz.typeDisorder = false;
             visualizeButtonClick(orderButton)
             visualizeButtonUnclick(regularButton)
             visualizeButtonUnclick(chaosButton)
+            visualizeButtonUnclick(typeDisorderButton)
         }else{
             quiz.orderMode = false;
             quiz.chaosMode = false;
+            quiz.typeDisorder = false;
+
             visualizeButtonClick(regularButton)
             visualizeButtonUnclick(orderButton)
             visualizeButtonUnclick(chaosButton)
+            visualizeButtonUnclick(typeDisorderButton)
+
         }
         if (("chaosMode" in state) && state["chaosMode"]){
             quiz.chaosMode = true;
             quiz.orderMode = false;
+            quiz.typeDisorder = false;
+
             visualizeButtonClick(chaosButton)
             visualizeButtonUnclick(orderButton)
             visualizeButtonUnclick(regularButton)
+            visualizeButtonUnclick(typeDisorderButton)
+        }else if(("typeDisorder" in state) && state["typeDisorder"]){
+            quiz.chaosMode = false;
+            quiz.orderMode = false;
+            quiz.typeDisorder = true;
+
+            visualizeButtonClick(typeDisorderButton)
+            visualizeButtonUnclick(orderButton)
+            visualizeButtonUnclick(regularButton)
+            visualizeButtonUnclick(chaosButton)
+            quiz.typeDisorder = state["typeDisorder"]
+            quiz.seed = state["typeSeed"]
         }
+
+
         quiz.setQuiz(state["quizName"], state["filters"])
         if (state["silhouettes"]) {
             quiz.setSilhouettes();

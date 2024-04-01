@@ -57,6 +57,7 @@ class Quiz {
     baseNameIdDict = {}
     orderMode = false;
     chaosMode = false;
+    typeDisorder = false;
 
     revealedShadows = new Set()
 
@@ -65,7 +66,8 @@ class Quiz {
 
     name = "none"
 
-    forcedStyle = null;
+    currentType = null;
+    seed = 0
 
     boxConstruction = []
 
@@ -76,6 +78,7 @@ class Quiz {
         this.allLanguages = allLanguages;
         this.useSilhouettes = false;
         this.startSpooky()
+        this.seed = Math.floor(Math.random()*1000)
     }
 
 
@@ -119,7 +122,7 @@ class Quiz {
         this.useSilhouettes = false;
         this.revealedShadows = new Set()
         this.boxCounters = {}
-        this.forcedStyle = null;
+
         for (let box in this.currentBoxes){
             this.boxCounters[box] = []
         }
@@ -160,22 +163,45 @@ class Quiz {
             this.spriteDictionary["ditto"].src = this.encodedImages["sprite"]["ditto"]
             this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages["sprite"]["ditto"]      
         }
-        
+
+        //if (this.typeDisorder){
+        //    this.currentType = this.getCurrentRandomType()
+        //}else{
+        //    this.currentType = null;
+        //}
+
+
         this.onReset();
     }
 
 
     setOrderMode(val){
         this.orderMode = val
+        this.chaosMode = false;
+        this.typeDisorder = false;
         this.setQuiz(this.name, this.filters)
     }
     
     setChaosMode(val){
         
         this.chaosMode = val
+        this.typeDisorder = false; 
+        this.orderMode = false;
+
         this.setQuiz(this.name, this.filters)
         
     }
+
+    setTypeMode(val){
+        
+        this.typeDisorder = val
+        this.orderMode = false
+        this.chaosMode = false;
+        this.seed = Date.now()
+        this.setQuiz(this.name, this.filters)
+
+    }
+
     checkHighestLang(){
         let highestKey = "ENG";
         let highestCount =0;
@@ -221,6 +247,7 @@ class Quiz {
         this.emptyBoxes()
         //before we change the style name
         if (this.getStyleName() !== ""){
+            
             document.getElementById("body").classList.remove( this.getStyleName());
 
             for (let i = 0; i< typeClasses.length; i++){
@@ -243,6 +270,8 @@ class Quiz {
 
 
         this.filters = filters;
+        //this was messy to figure out, but yeah, otherwise it adds type visualizations to buttons, it's all intertvined
+        this.currentType = null;
         this.name = name;
         let currentPokemonList = [];
     
@@ -261,6 +290,12 @@ class Quiz {
                 visualizeButtonUnclick(document.getElementById("order-on"))
                 this.orderMode = false;
                 showUserMessage("Order mode disabled")
+            }
+            else if (this.typeDisorder){
+                visualizeButtonClick(document.getElementById("order-off"))
+                visualizeButtonUnclick(document.getElementById("type-on"))
+                this.typeDisorder = false;
+                showUserMessage("Type disorder mode disabled")
             }
         }
         if ("legendary" in filters) {
@@ -302,7 +337,7 @@ class Quiz {
             currentPokemonList.splice(indexesToRemove[i] , 1);
         }
 
-        if (this.orderMode || "legendary" in this.filters || this.chaosMode){
+        if (this.orderMode || "legendary" in this.filters || this.chaosMode || this.typeDisorder){
             let tempList = []
             let currentPokemonListIds = currentPokemonList.map(pokemon => pokemon.id);
 
@@ -337,11 +372,7 @@ class Quiz {
                 }else{
                     let id = currentPokemonList[i].id;
                     let basePkmnId = this.baseNameIdDict[currentPokemonList[i].baseName]
-                    if (basePkmnId === "zapdos"){
-                        let b = currentPokemonListIds.includes(basePkmnId)
-                        let c = this.orderModeSet.has(id)
-                        let g = 0
-                    }
+
                     if (this.orderModeSet.has(id) || !(currentPokemonListIds.includes(basePkmnId))){
                         tempList.push(currentPokemonList[i])
                     }else{
@@ -363,14 +394,12 @@ class Quiz {
             currentPokemonList = tempList
             
             if ("darumaka" in currentCycles){
-                console.log(currentCycles["darumaka"])
                 currentCycles["darumaka"] = ["darumaka", "darumaka", "darumakagalar", "darumakagalar"]
             }
             if ("meowth" in currentCycles && currentCycles["meowth"].includes("meowthalola")&& currentCycles["meowth"].includes("meowthgalar")){
                 currentCycles["meowth"] = ["meowth", "meowthalola", "meowthgalar"]
             }
             if ("persian" in currentCycles && currentCycles["persian"].includes("persianalola")){
-                console.log(currentCycles["persian"])
                 currentCycles["persian"] = ["persian", "persianalola", "persian"]
             }
         }
@@ -382,7 +411,14 @@ class Quiz {
         this.currentBoxes = {}
         this.currentPokemonList = currentPokemonList
 
-        if (this.chaosMode || this.orderMode){
+        if (this.typeDisorder){
+            this.currentType = this.getCurrentRandomType()
+        }else{
+            this.currentType = null
+        }
+
+
+        if (this.chaosMode || this.orderMode || this.typeDisorder){
             for (let i = 0; i<currentPokemonList.length; i++){
                 currentPokemonList[i].currentBox = "big"
             }
@@ -407,6 +443,13 @@ class Quiz {
             this.currentBoxes[currentPokemonList[i].currentBox].push(currentPokemonList[i])
         }
 
+        if ("types" in this.filters){
+            if (this.filters["types"][0] === "dark"){
+                this.currentType =  "evil"
+            }else{
+                this.currentType = this.filters["types"][0]
+            }
+        }
         for (let id in this.unguessedDictionary){
             if (id in this.currentIds){
                 this.unguessedDictionary[id].style.display = "inline"
@@ -487,7 +530,7 @@ class Quiz {
         }
 
 
-        if ("types" in filters || "legendary" in filters){
+        if ("types" in filters || "legendary" in filters || this.typeDisorder){
 
             document.getElementById("body").classList.add(this.getStyleName());
             if(darkMode){
@@ -549,6 +592,9 @@ class Quiz {
     }
 
     changeTypeStyle (toType){
+        if (toType == "dark") {
+            toType = "evil"
+        }
 
         if (this.getStyleName() !== ""){
             document.getElementById("body").classList.remove( this.getStyleName());
@@ -623,7 +669,7 @@ class Quiz {
             document.getElementById("bgpattern").style.display = 'none';
             document.getElementById("bgpattern2").style.display = 'none';
         }
-        this.forcedStyle = toType.toLowerCase();
+        this.currentType = toType.toLowerCase();
     }
 
 
@@ -711,8 +757,8 @@ class Quiz {
     }
 
     getStyleName(){
-        if (this.forcedStyle !== null){
-            return this.forcedStyle;
+        if (this.currentType !== null){
+            return this.currentType;
         }
         else if ("types" in this.filters){
             if (this.filters["types"][0] === "dark"){
@@ -1060,9 +1106,32 @@ class Quiz {
                         }
                         continue;
                     }
+                }else if (this.typeDisorder){
+                    
+                    let matched = false;
+                    for (let i = 0; i<this.pokemonBaseNameDict[baseName].length; i++){
+                        if (this.pokemonBaseNameDict[baseName][i].primaryType === this.currentType || this.pokemonBaseNameDict[baseName][i].secondaryType === this.currentType){
+                            matched = true;
+                            break
+                        }
+                    }
+                    if (!matched){
+
+                        let overlap = false;
+                        for (let key in this.nameDict){
+                            if (key.startsWith(input) && key !== input){
+                                overlap = true;
+                                break
+                            }
+                        }
+                        if (!overlap){
+                            message = baseName + " is not " + this.currentType
+                            continue;
+                        }
+                    }
+
                 }
                 let recentPkmn = this.addNamed(baseName)
-                this.changeTypeStyle(recentPkmn.primaryType)
 
                 this.addUserPoint(user)
                 if (!(this.langDict[input] in this.langCounts)){
@@ -1083,6 +1152,38 @@ class Quiz {
         }
         return [correct, message];
 
+    }
+
+    getCurrentRandomType(){
+        let x = Math.sin(this.named.size + this.seed) * 10000;
+        
+        x = x - Math.floor(x)
+        x = Math.floor(x * this.currentPokemonList.length)
+        let startingX = x
+
+        while (this.named.has(this.currentPokemonList[x].baseName)) {
+            x+=1
+            if (x >= this.currentPokemonList.length){
+                x = 0
+            }
+            if (x === startingX ){
+                break
+            }
+        }
+        let randomPokemon = this.currentPokemonList[x]
+        
+        let randomType;
+        if (randomPokemon.secondaryType !== null){
+            if (x % 2 === 0){
+                randomType = randomPokemon.primaryType
+            }else{
+                randomType = randomPokemon.secondaryType
+            }
+        }   
+        else{
+           randomType = randomPokemon.primaryType 
+        }
+        return randomType
     }
 
     addUserPoint(user){
@@ -1126,6 +1227,14 @@ class Quiz {
         }
 
         this.named.add(baseName)
+
+        if (this.typeDisorder){
+            let randomType = this.getCurrentRandomType()
+
+            if (randomType!== this.currentType){
+                this.changeTypeStyle(randomType)
+            }
+        }
 
         return relevantPokemon[relevantPokemon.length-1];
     }
@@ -1333,7 +1442,7 @@ class Quiz {
         let currentBox = this.pokemonIdDict[id].currentBox;
         let pkmn = this.pokemonIdDict[id]
 
-        if (this.chaosMode){
+        if (this.chaosMode || this.typeDisorder){
             let children = document.getElementById("pokemon-box-big").children
 
             let spotIndex = -1;
