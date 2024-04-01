@@ -335,7 +335,7 @@ class Quiz {
                 visualizeButtonClick(document.getElementById("order-off"))
                 visualizeButtonUnclick(document.getElementById("type-on"))
                 this.typeDisorder = false;
-                showUserMessage("Type disorder mode disabled")
+                showUserMessage("Type chaos mode disabled")
             }
         }
         if ("legendary" in filters) {
@@ -2926,7 +2926,7 @@ async function loadData() {
     typeDisorderButton.onclick = function () {
         if (!quiz.typeDisorder){
             if("types" in quiz.filters){
-                showUserMessage("Type disorder mode does not work with type quizzes")
+                showUserMessage("Type chaos mode does not work with type quizzes")
             }else{
                 promptTypeDisorderEnable.style.display = "inline";
             }

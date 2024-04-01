@@ -295,7 +295,7 @@ class Quiz {
                 visualizeButtonClick(document.getElementById("order-off"))
                 visualizeButtonUnclick(document.getElementById("type-on"))
                 this.typeDisorder = false;
-                showUserMessage("Type disorder mode disabled")
+                showUserMessage("Type chaos mode disabled")
             }
         }
         if ("legendary" in filters) {

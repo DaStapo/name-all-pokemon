@@ -1308,7 +1308,7 @@ async function loadData() {
     typeDisorderButton.onclick = function () {
         if (!quiz.typeDisorder){
             if("types" in quiz.filters){
-                showUserMessage("Type disorder mode does not work with type quizzes")
+                showUserMessage("Type chaos mode does not work with type quizzes")
             }else{
                 promptTypeDisorderEnable.style.display = "inline";
             }
