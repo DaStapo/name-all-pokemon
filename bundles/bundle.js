@@ -4275,7 +4275,7 @@ function showImage(imageName) {
             elem.style.opacity = 0
 
         }, 250);
-    }, 10);
+    }, 250);
 }
 
 
