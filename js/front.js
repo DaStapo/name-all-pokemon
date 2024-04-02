@@ -2612,6 +2612,44 @@ function showUserMessage(message) {
     }, 3000);
 }
 
+let currentImageFadeIn = null
+let currentImageFadeOut = null
+function showImage(imageName) {
+
+
+    let elem = document.getElementById("imagemessage");
+    let imageElem = document.getElementById("message-img")
+    elem.style.visibility = "visible"
+    elem.classList.remove("slow-transition-element")
+    elem.classList.remove("transition-element")
+    elem.style.opacity = 0
+    imageElem.src = "/images/types/"+imageName+".svg"
+
+    if (currentImageFadeIn !== null) {
+        clearTimeout(currentImageFadeIn)
+    }
+    if (currentImageFadeOut !== null) {
+        clearTimeout(currentImageFadeOut)
+    }
+
+
+    currentImageFadeIn = setTimeout(function () {
+        elem.classList.remove("slow-transition-element")
+        elem.classList.add("transition-element")
+        elem.style.opacity = 0.8
+
+        currentImageFadeOut = setTimeout(function () {
+            elem.classList.add("slow-transition-element")
+            elem.classList.remove("transition-element")
+            elem.style.opacity = 0
+
+        }, 250);
+    }, 250);
+}
+
+
+
+
 
 //https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
 function remove_duplicates_safe(arr) {

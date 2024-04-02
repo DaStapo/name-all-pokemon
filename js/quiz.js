@@ -1253,7 +1253,8 @@ class Quiz {
             if (formattedType.toLowerCase() === "evil"){
                 formattedType = "DARK"
             }
-            showUserMessage('<img src="/images/types/'+formattedType.toUpperCase()+'.svg">')
+            showImage(formattedType.toUpperCase())
+            //showUserMessage('<img src="/images/types/'+formattedType.toUpperCase()+'.svg">')
         }
 
         return relevantPokemon[relevantPokemon.length-1];
