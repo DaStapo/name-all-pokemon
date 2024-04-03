@@ -1356,7 +1356,7 @@ class Quiz {
 
 
     revealSingleShadow(id){
-        if (!this.revealedShadows.has(id)){
+        if (!this.revealedShadows.has(id) ){
             this.revealedShadows.add(id)
             this.silhouetteDictionary[id] .style.display = "inline";
             this.pokeballDictionary[id] .style.display = "none";
@@ -1368,7 +1368,9 @@ class Quiz {
     setSilhouettes() {
         
         for (let id of this.currentIds){
-            this.revealSingleShadow(id)
+            if (this.spriteDictionary[id].style.display !== "inline"){
+                this.revealSingleShadow(id)
+            }
         }
         /*
         for (let i = 0; i < this.silhouetteArray.length; i++) {
