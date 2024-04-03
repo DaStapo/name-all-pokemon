@@ -4272,6 +4272,7 @@ function showUserMessage(message) {
 
 let currentImageFadeIn = null
 let currentImageFadeOut = null
+let currentImageEnd = null
 function showImage(imageName) {
 
 
@@ -4281,6 +4282,7 @@ function showImage(imageName) {
     elem.classList.remove("slow-transition-element")
     elem.classList.remove("transition-element")
     elem.style.opacity = 0
+    elem.style.display = "block"
     imageElem.src = "/images/types/"+imageName+".svg"
 
     if (currentImageFadeIn !== null) {
@@ -4289,7 +4291,9 @@ function showImage(imageName) {
     if (currentImageFadeOut !== null) {
         clearTimeout(currentImageFadeOut)
     }
-
+    if (currentImageEnd !== null) {
+        clearTimeout(currentImageEnd)
+    }
 
     currentImageFadeIn = setTimeout(function () {
         elem.classList.remove("slow-transition-element")
@@ -4300,7 +4304,9 @@ function showImage(imageName) {
             elem.classList.add("slow-transition-element")
             elem.classList.remove("transition-element")
             elem.style.opacity = 0
-
+            currentImageEnd = setTimeout(function () {
+                elem.style.display = "none"
+            }, 1600);
         }, 250);
     }, 250);
 }
