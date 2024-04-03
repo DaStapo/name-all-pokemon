@@ -1372,6 +1372,28 @@ class Quiz {
         return null;
     }
 
+    revealRandomTypeShadow(){
+        if (this.typeDisorder){
+            let possibleIds = []
+            for (let k = 0; k < this.currentPokemonList.length; k++){
+                let pkmn = this.currentPokemonList[k]
+                if ((!(this.named.has(pkmn.baseName)) && !(this.revealedShadows.has(pkmn.id))) && (pkmn.primaryType === this.currentType || pkmn.secondaryType === this.currentType)){
+                    possibleIds.push(this.currentPokemonList[k].id)
+                }
+            }
+            if (possibleIds.length > 0){
+                let index = Math.floor(Math.random() * possibleIds.length);
+                let id = possibleIds[index]
+                this.silhouetteDictionary[id] .style.display = "inline";
+                this.pokeballDictionary[id] .style.display = "none";
+                this.revealedShadows.add(id)
+                return id
+            }
+        }
+        return null;
+    }
+
+
 
     revealSingleShadow(id){
         if (!this.revealedShadows.has(id)){
@@ -3015,6 +3037,11 @@ async function loadData() {
             
                 if (quiz.orderMode){
                     let id = quiz.revealNextShadow()
+                    if (id !== null){
+                        socketRevealSingleShadow(id);
+                    }
+                }else if(quiz.typeDisorder){
+                    let id = quiz.revealRandomTypeShadow()
                     if (id !== null){
                         socketRevealSingleShadow(id);
                     }

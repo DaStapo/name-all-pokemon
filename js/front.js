@@ -1387,6 +1387,11 @@ async function loadData() {
                     if (id !== null){
                         socketRevealSingleShadow(id);
                     }
+                }else if(quiz.typeDisorder){
+                    let id = quiz.revealRandomTypeShadow()
+                    if (id !== null){
+                        socketRevealSingleShadow(id);
+                    }
                 }else{
                     let id = quiz.revealRandomShadow()
                     if (id !== null){
