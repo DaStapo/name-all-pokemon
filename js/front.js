@@ -74,7 +74,8 @@ let radioSilhouette = document.getElementById("silhouette");
 let orderModeMenu = document.getElementById("orderbox");
 let orderButton =  document.getElementById("order-on");
 let regularButton =  document.getElementById("order-off");
-let typeDisorderButton =  document.getElementById("type-on");
+let typeDisorderButtonOn =  document.getElementById("type-on");
+let typeDisorderButtonOff =  document.getElementById("type-off");
 let chaosButton =  document.getElementById("chaos-on");
 let shadowNextBtn =  document.getElementById("shadownext");
 let shadowHelpRadio =  document.getElementById("shadowhelp");
@@ -371,6 +372,13 @@ async function loadData() {
             socket.emit('stateChange', { "state": getQuizState() })
         }
     }
+
+    function socketChangeTypeShuffle(val) {
+        if (socket !== null && isSocketHost) {
+            socket.emit('stateChange', { "typeDisorder": val})
+        }
+    }
+
     function socketResetQuiz() {
         if (socket !== null && isSocketHost) {
             socket.emit('reset', { "state": getQuizState() })
@@ -538,6 +546,12 @@ async function loadData() {
                             updateFullLeaderboard()
                         } else if (key === "timer") {
                             roomUpdateTimer(data["timer"])
+                        }else if(key === "typeDisorder"){
+                            if (data["typeDisorder"]){
+                                typeDisorderButtonOn.click()
+                            }else{
+                                typeDisorderButtonOff.click()
+                            }
                         }
                     }
                 });
@@ -950,6 +964,7 @@ async function loadData() {
         changeQuiz();
     }
     let changeToTypeQuiz = function (type) {
+        typeDisorderButtonOff.click()
         quiz.setTypeQuiz(type);
         changeQuiz();
     }
@@ -1305,23 +1320,39 @@ async function loadData() {
         }
     };
 
-    typeDisorderButton.onclick = function () {
+    typeDisorderButtonOn.onclick = function () {
         if (!quiz.typeDisorder){
             if("types" in quiz.filters){
-                showUserMessage("Type chaos mode does not work with type quizzes")
+                showUserMessage("Type shuffle mode does not work with type quizzes")
+            }else if(quiz.orderMode){
+                showUserMessage("Type shuffle mode does not work with dex order mode")
             }else{
-                promptTypeDisorderEnable.style.display = "inline";
+                visualizeButtonClick(typeDisorderButtonOn)
+                visualizeButtonUnclick(typeDisorderButtonOff)
+                quiz.setTypeMode(true)
+                socketChangeTypeShuffle(true)
+                showUserMessage("Enabled type shuffle mode.")
+
             }
         }
     };
 
+    typeDisorderButtonOff.onclick = function () {
+        if (quiz.typeDisorder){
+            visualizeButtonUnclick(typeDisorderButtonOn)
+            visualizeButtonClick(typeDisorderButtonOff)
+            quiz.setTypeMode(false)
+            socketChangeTypeShuffle(false)
 
+            showUserMessage("Disabled type shuffle mode.")
+        }
+    };
 
     promptOrderEnableYes.onclick = function () {
         visualizeButtonUnclick(regularButton)
         visualizeButtonUnclick(chaosButton)
-        visualizeButtonUnclick(typeDisorderButton)
         visualizeButtonClick(orderButton)
+        typeDisorderButtonOff.click()
         quiz.setOrderMode(true)
         //socketSetOrderMode(true)
         changeQuiz()
@@ -1334,7 +1365,6 @@ async function loadData() {
     promptOrderDisableYes.onclick = function () {
         visualizeButtonUnclick(orderButton)
         visualizeButtonUnclick(chaosButton)
-        visualizeButtonUnclick(typeDisorderButton)
         visualizeButtonClick(regularButton)
         quiz.setOrderMode(false)
 
@@ -1351,7 +1381,6 @@ async function loadData() {
         visualizeButtonUnclick(regularButton)
         visualizeButtonClick(chaosButton)
         visualizeButtonUnclick(orderButton)
-        visualizeButtonUnclick(typeDisorderButton)
 
         quiz.setChaosMode(true)
 
@@ -1361,20 +1390,6 @@ async function loadData() {
     }
     promptChaosEnableNo.onclick = function () {
         promptChaosEnable.style.display = "none";
-    }
-
-    promptTypeDisorderYes.onclick = function () {
-        visualizeButtonUnclick(regularButton)
-        visualizeButtonUnclick(chaosButton)
-        visualizeButtonUnclick(orderButton)
-        visualizeButtonClick(typeDisorderButton)
-        quiz.setTypeMode(true)
-        //socketSetOrderMode(true)
-        changeQuiz()
-        promptTypeDisorderEnable.style.display = "none";
-    }
-    promptTypeDisorderNo.onclick = function () {
-        promptTypeDisorderEnable.style.display = "none";
     }
 
     shadowNextBtn.onclick = function(){
@@ -2383,42 +2398,35 @@ async function loadData() {
             visualizeButtonClick(orderButton)
             visualizeButtonUnclick(regularButton)
             visualizeButtonUnclick(chaosButton)
-            visualizeButtonUnclick(typeDisorderButton)
         }else{
             quiz.orderMode = false;
             quiz.chaosMode = false;
-            quiz.typeDisorder = false;
 
             visualizeButtonClick(regularButton)
             visualizeButtonUnclick(orderButton)
             visualizeButtonUnclick(chaosButton)
-            visualizeButtonUnclick(typeDisorderButton)
-
         }
         if (("chaosMode" in state) && state["chaosMode"]){
             quiz.chaosMode = true;
             quiz.orderMode = false;
-            quiz.typeDisorder = false;
 
             visualizeButtonClick(chaosButton)
             visualizeButtonUnclick(orderButton)
             visualizeButtonUnclick(regularButton)
-            visualizeButtonUnclick(typeDisorderButton)
-        }else if(("typeDisorder" in state) && state["typeDisorder"]){
-            quiz.chaosMode = false;
-            quiz.orderMode = false;
-            quiz.typeDisorder = true;
-
-            visualizeButtonClick(typeDisorderButton)
-            visualizeButtonUnclick(orderButton)
-            visualizeButtonUnclick(regularButton)
-            visualizeButtonUnclick(chaosButton)
-            quiz.typeDisorder = state["typeDisorder"]
-            quiz.seed = state["typeSeed"]
         }
-
+        
 
         quiz.setQuiz(state["quizName"], state["filters"])
+        if ("typeSeed" in state){
+            quiz.seed = state["typeSeed"]
+        }
+        if(("typeDisorder" in state) && state["typeDisorder"]){
+            quiz.orderMode = false;
+            typeDisorderButtonOn.click()
+        }else{
+            typeDisorderButtonOff.click()
+        }
+
         if (state["silhouettes"]) {
             quiz.setSilhouettes();
         }
