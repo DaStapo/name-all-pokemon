@@ -1122,7 +1122,7 @@ class Quiz {
                         }
                         continue;
                     }
-                }else if (this.typeDisorder){
+                }else if (this.typeDisorder && this.currentType !== null){
                     
                     let matched = false;
                     for (let i = 0; i<this.pokemonBaseNameDict[baseName].length; i++){

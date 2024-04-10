@@ -1162,7 +1162,7 @@ class Quiz {
                         }
                         continue;
                     }
-                }else if (this.typeDisorder){
+                }else if (this.typeDisorder && this.currentType !== null){
                     
                     let matched = false;
                     for (let i = 0; i<this.pokemonBaseNameDict[baseName].length; i++){
@@ -1232,6 +1232,8 @@ class Quiz {
             }
         }
         let randomPokemon = this.currentPokemonList[x]
+        console.log(randomPokemon, randomPokemon.id)
+        console.log(randomPokemon.primaryType, randomPokemon.secondaryType)
         
         let randomType;
         if (randomPokemon.secondaryType !== null){
@@ -1943,6 +1945,7 @@ if (roomId.length > 1) {
     pauseBtn.style.display = "none"
     hostGame.style.display = "none"
     document.getElementById("genselect").style.display = "none"
+    document.getElementById("typeshufflebox").style.display = "none"
     document.getElementById("specialButton").style.display = "none"
     document.getElementById("typeselect").style.display = "none"
     document.getElementById("timers").style.display = "none"
@@ -2792,6 +2795,9 @@ async function loadData() {
             //if (id === "sandslash"){
             //    break
             //}
+            if (id.includes("terapagos")){
+                continue
+            }
             parseInput(quiz.pokemonIdDict[id].baseName, myUsername)
         }
     }
