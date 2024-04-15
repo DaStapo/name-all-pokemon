@@ -282,6 +282,7 @@ if (roomId.length > 1) {
     pauseBtn.style.display = "none"
     hostGame.style.display = "none"
     document.getElementById("genselect").style.display = "none"
+    document.getElementById("typeshufflebox").style.display = "none"
     document.getElementById("specialButton").style.display = "none"
     document.getElementById("typeselect").style.display = "none"
     document.getElementById("timers").style.display = "none"
