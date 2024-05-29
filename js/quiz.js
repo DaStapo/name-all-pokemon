@@ -1146,9 +1146,9 @@ class Quiz {
                         if (!overlap){
                             let formattedType = this.currentType.toLowerCase()
                             formattedType = formattedType.charAt(0).toUpperCase() + formattedType.slice(1);
-                            message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " is not " + formattedType
-                            continue;
+                            message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " is not " + formattedType                        
                         }
+                        continue
                     }
 
                 }
