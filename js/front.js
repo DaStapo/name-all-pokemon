@@ -1147,7 +1147,6 @@ async function loadData() {
                 
                 if (!shadowNextEnabled){
                     showUserMessage("Shadow hotkey is not enabled")
-                    return
                 }else{
                     shadowNextFunc();
                 }
