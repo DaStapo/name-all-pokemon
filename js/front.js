@@ -1144,7 +1144,13 @@ async function loadData() {
                 return;
             }else if (quiz.name !== "none" && inputField.value[inputField.value.length - 1] === ',') {
                 
-                shadowNextFunc();
+                
+                if (!shadowNextEnabled){
+                    showUserMessage("Shadow hotkey is not enabled")
+                    return
+                }else{
+                    shadowNextFunc();
+                }
                 inputField.value = inputField.value.substring(0, inputField.value.length - 1);
                 return;  
             }
@@ -1398,11 +1404,6 @@ async function loadData() {
     let shadowNextEnabled = false;
     let shadowNextFunc = function () {
 
-        if (!shadowNextEnabled){
-            showUserMessage("Shadow hotkey is not enabled")
-            return
-        }
-
         if (quiz.name !== "none" && !(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore())){
             if ((socket === null || isSocketHost) ){
             
@@ -1455,7 +1456,7 @@ async function loadData() {
     
             shadowHelpInterval = setTimeout(()=>{
                 if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed()  && !quiz.giveUpState)){
-                    shadowNextBtn.click();
+                    shadowNextFunc();
                 }
                 resetShadowHelp();
             }, 20000)
@@ -1470,7 +1471,9 @@ async function loadData() {
             clearTimeout(shadowHelpIntervalMessage)
             showUserMessage("Disabled auto-reveal of shadows")    
             shadowHelpInterval = null
+
         }else{
+
             visualizeButtonClick(shadowHelpRadio)
             if (quiz.orderMode){
                 showUserMessage("Activated auto-reveal of next shadow every 20 seconds")    
@@ -1487,7 +1490,7 @@ async function loadData() {
     
             shadowHelpInterval = setTimeout(()=>{
                 if (!(quiz.paused) && (quiz.getMaxScore() !== quiz.getScore() && quiz.getScore() > 0 && !quiz.isAllShadowsRevealed() && !quiz.giveUpState)){
-                    shadowNextBtn.click();
+                    shadowNextFunc();
                 }
                 resetShadowHelp();
             }, 20000)

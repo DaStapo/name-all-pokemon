@@ -5,7 +5,7 @@ const JavaScriptObfuscator = require('javascript-obfuscator');
 
 async function start() {
   await bundleFiles();
-  await minifyAndObfuscateBundle();
+  //await minifyAndObfuscateBundle();
 }
 
 async function bundleFiles() {
