@@ -431,7 +431,9 @@ async function loadData() {
     function enableSocket(onSuccess, onFail) {
         loadSocketIO().then(() => {
             try{
-                socket = io(multiplayerUrl);
+                socket = io(multiplayerUrl, {
+                    transports: ['polling']
+                  });
 
                 socket.on('userJoined', (username) => {
                     if (soundEnabled){

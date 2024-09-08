@@ -232,12 +232,12 @@ let startMultiplayerServer = function (){
         // Handle disconnections
         socket.on('disconnect', () => {
             try {
-                if (socket.isHost) {
+                /*if (socket.isHost) {
                     socket.broadcast.to(socket.roomId).emit('end', {});
                     delete existingRooms[socket.roomId]
-                } else {
-                    socket.broadcast.to(socket.roomId).emit('userLeft', socket.username);
-                }
+                } else {*/
+                socket.broadcast.to(socket.roomId).emit('userLeft', socket.username);
+                //}
             } catch (error) {
                 log('at disconnect', error)
             }
