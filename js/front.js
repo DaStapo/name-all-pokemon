@@ -2082,81 +2082,51 @@ async function loadData() {
 
                 }
 
-                if (channelName.toLowerCase() == 'littlelemonbun' && twitchUsername == 'littlelemonbun') {
-                    if (message === "besttype".toLowerCase()) {
-                        twitchInput(twitchUsername, 'bulbasaur', true)
-                        twitchInput(twitchUsername, 'oddish', true)
-                        twitchInput(twitchUsername, 'paras', true)
-                        twitchInput(twitchUsername, 'bellsprout', true)
-                        twitchInput(twitchUsername, 'exeggcute', true)
-                        twitchInput(twitchUsername, 'tangela', true)
-                        twitchInput(twitchUsername, 'chikorita', true)
-                        twitchInput(twitchUsername, 'hoppip', true)
-                        twitchInput(twitchUsername, 'sunkern', true)
-                        twitchInput(twitchUsername, 'treecko', true)
-                        twitchInput(twitchUsername, 'lotad', true)
-                        twitchInput(twitchUsername, 'seedot', true)
-                        twitchInput(twitchUsername, 'shroomish', true)
-                        twitchInput(twitchUsername, 'cacnea', true)
-                        twitchInput(twitchUsername, 'lileep', true)
-                        twitchInput(twitchUsername, 'tropius', true)
-                        twitchInput(twitchUsername, 'turtwig', true)
-                        twitchInput(twitchUsername, 'budew', true)
-                        twitchInput(twitchUsername, 'cherubi', true)
-                        twitchInput(twitchUsername, 'carnivine', true)
-                        twitchInput(twitchUsername, 'snover', true)
-                        twitchInput(twitchUsername, 'leafeon', true)
-                        twitchInput(twitchUsername, 'snivy', true)
-                        twitchInput(twitchUsername, 'pansage', true)
-                        twitchInput(twitchUsername, 'sewaddle', true)
-                        twitchInput(twitchUsername, 'cottonee', true)
-                        twitchInput(twitchUsername, 'petilil', true)
-                        twitchInput(twitchUsername, 'maractus', true)
-                        twitchInput(twitchUsername, 'deerling', true)
-                        twitchInput(twitchUsername, 'foongus', true)
-                        twitchInput(twitchUsername, 'ferroseed', true)
-                        twitchInput(twitchUsername, 'chespin', true)
-                        twitchInput(twitchUsername, 'phantump', true)
-                        twitchInput(twitchUsername, 'pumpkaboo', true)
-                        twitchInput(twitchUsername, 'rowlet', true)
-                        twitchInput(twitchUsername, 'fomantis', true)
-                        twitchInput(twitchUsername, 'morelull', true)
-                        twitchInput(twitchUsername, 'bounsweet', true)
-                        twitchInput(twitchUsername, 'dhelmise', true)
-                        twitchInput(twitchUsername, 'grookey', true)
-                        twitchInput(twitchUsername, 'gossifleur', true)
-                        twitchInput(twitchUsername, 'applin', true)
+                if (twitchUsername == 'absoltastic' || twitchUsername == 'adeptcharon' || (channelName.toLowerCase() == 'absoltastic' && isVip)) {
+                    if (message === "matt".toLowerCase()) {
+						twitchInput(twitchUsername, 'absol', true)
+
+                        image = new Image();
+                        image.src = '/images/absol.png';
+                        image.addEventListener("load", function () {
+                            imageRain(image, 50, 300);
+                        }, false);
                     }
                 }
-                if (twitchUsername == 'littlelemonbun' || twitchUsername == 'adeptcharon' || (channelName.toLowerCase() == 'littlelemonbun' && isVip)) {
-                    if (message === "lemonbun".toLowerCase()) {
+
+                if (twitchUsername == 'aistrainer' || twitchUsername == 'adeptcharon' || (channelName.toLowerCase() == 'aistrainer' && isVip)) {
+                    if (message === "ais".toLowerCase()) {
+						twitchInput(twitchUsername, 'sinistea', true)
+						twitchInput(twitchUsername, 'polteageist', true)
+						twitchInput(twitchUsername, 'poltchageist', true)
+						twitchInput(twitchUsername, 'sinistcha', true)
 
                         image = new Image();
-                        image.src = '/images/chikorita.png';
+                        image.src = '/images/poltchageist.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);
                     }
-                    if (message === "lemonmonke".toLowerCase()) {
+                }
+				
+				if (twitchUsername == 'durmoo' || twitchUsername == 'adeptcharon' || (channelName.toLowerCase() == 'durmoo' && isVip)) {
+                    if (message === "durmoo".toLowerCase()) {
+						twitchInput(twitchUsername, 'hitmontop', true)
 
                         image = new Image();
-                        image.src = '/images/grookey.png';
+                        image.src = '/images/hitmontop.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);
                     }
-                    if (message === "lemonbulb".toLowerCase()) {
+                }
+				
+				if (twitchUsername == 'yarnity' || twitchUsername == 'adeptcharon' || (channelName.toLowerCase() == 'yarnity' && isVip)) {
+                    if (message === "yarnie".toLowerCase()) {
+						twitchInput(twitchUsername, 'mareep', true)
 
                         image = new Image();
-                        image.src = '/images/bulbasaur.png';
-                        image.addEventListener("load", function () {
-                            imageRain(image, 50, 200);
-                        }, false);
-                    }
-                    if (message === "lemonowl".toLowerCase()) {
-
-                        image = new Image();
-                        image.src = '/images/rowlet.png';
+                        image.src = '/images/mareep.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);
