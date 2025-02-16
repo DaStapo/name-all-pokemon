@@ -217,7 +217,9 @@ let jsonDataFiles = ["pokemon", "suffix_namings", "translations", "encoded_image
 
 let pkmnDataCache = null;
 
+
 app.get('/pkmnData.json', async (req, res) => {
+
     try {
         const jsonData = {};
 
@@ -290,7 +292,7 @@ server.listen(port, () => {
 });
 
 
-if (true) {
+if (false) {
     let startMultiplayerServer = require('./multiplayer')
     startMultiplayerServer();
 }

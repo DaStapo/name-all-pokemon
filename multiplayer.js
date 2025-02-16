@@ -279,7 +279,7 @@ let startMultiplayerServer = function (){
             }
     
             for (let i = 0; i < roomsToRemove.length; i++) {
-                delete existingRooms[roomsToRemove[roomId]]
+                delete existingRooms[roomsToRemove[i]]
             }
         } catch (error) {
             log('err emptying rooms', error)

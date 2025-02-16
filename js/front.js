@@ -343,12 +343,19 @@ async function loadData() {
     }
 
 
+    let allData = null
+    let encodedImages = null
+    try{
+        allData = await fetchData("pkmnData.json?v=2.0")
+        encodedImages = allData["encoded_images"]
 
-    let allData = await fetchData("pkmnData.json")
-    let encodedImages = allData["encoded_images"]
+        quiz.loadData(allData, enabledLanguages, onReset)
 
-    quiz.loadData(allData, enabledLanguages, onReset)
-
+    }catch(error){
+        setTimeout(()=>{
+            showUserMessage('Error loading data. Please try to hard refresh (CTRL + F5) or clear cache')
+        }, 500)
+    }
 
 
     function host(username) {
@@ -1065,6 +1072,7 @@ async function loadData() {
 
 
     function logMisspelling(val, suggestion) {
+        return true;
         try {
             let xhttp = new XMLHttpRequest();
             xhttp.open("POST", '/misspelling', true);
@@ -2547,7 +2555,7 @@ async function loadData() {
         document.getElementById("username-area").style.display = "block"
         document.getElementById("missing-ENG").click()
 
-        /*halloween
+        /*halloween duskull
         if (roomId === null ){
             quiz.setTypeQuiz('ghost');
             changeQuiz();
@@ -2562,11 +2570,14 @@ async function loadData() {
         addTransitionCss();
         preloadSmallerImages();
     }
+    /*
     document.getElementById('spooky').onclick = () =>{
         quiz.spooky = false;
         document.getElementById('spooky').style.display="none"
-    }
+    }*/
     onLoadingComplete()
+    
+
 }
 let visualizeButtonClick = function (elem) {
     elem.classList.add("smolbuttonx")
