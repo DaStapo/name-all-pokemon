@@ -1,4 +1,11 @@
 
+function seededRandom(n) {
+    // Very simple deterministic "random" in [0, 1).
+    // You could replace this with any seeded RNG you like.
+    let x = Math.sin(n) * 10000;
+    return x - Math.floor(x);
+}
+
 class Quiz {
 
     //all Pokemon objects
@@ -27,7 +34,7 @@ class Quiz {
 
     currentBaseNames = new Set()
     //essentially sprites
-    currentIds  = new Set()
+    currentIds = new Set()
 
     //all names all current languages
     currentLangsNames = new Set()
@@ -73,30 +80,30 @@ class Quiz {
     boxConstruction = []
 
 
-    constructor(boxDict, genQuizBoxes, allLanguages){
+    constructor(boxDict, genQuizBoxes, allLanguages) {
         this.boxDict = boxDict;
         this.genQuizBoxes = genQuizBoxes;
         this.allLanguages = allLanguages;
         this.useSilhouettes = false;
         this.startSpooky()
-        this.seed = Math.floor(Math.random()*1000)
+        this.seed = Math.floor(Math.random() * 1000)
     }
 
 
-    loadData(allData, enabledLanguages, onReset){
+    loadData(allData, enabledLanguages, onReset) {
         this.encodedImages = allData["encoded_images"]
         this.translations = allData["translations"]
         this.suffixes = allData["suffix_namings"]
         this.namings = allData["namings"]
         let pkmnData = allData["pokemon"]
-        for (let i = 0; i < pkmnData.length; i++){
+        for (let i = 0; i < pkmnData.length; i++) {
             let pkmn = new Pokemon(pkmnData[i])
-            if (pkmn.box === "unreleased"){
+            if (pkmn.box === "unreleased") {
                 continue
             }
             this.pokemon.push(pkmn)
             this.pokemonIdDict[pkmn.id] = pkmn
-            if (!(pkmn.baseName in this.pokemonBaseNameDict)){
+            if (!(pkmn.baseName in this.pokemonBaseNameDict)) {
                 this.pokemonBaseNameDict[pkmn.baseName] = []
                 this.orderModeSet.add(pkmn.id)
                 this.baseNameIdDict[pkmn.baseName] = pkmn.id
@@ -110,10 +117,10 @@ class Quiz {
         this.updateLanguages(enabledLanguages)
         this.onReset = onReset
         this.usePokeball();
-        
+
     }
 
-    reset(){
+    reset() {
         this.giveUpState = false
         this.stopReveal()
         this.named = new Set()
@@ -124,45 +131,45 @@ class Quiz {
         this.revealedShadows = new Set()
         this.boxCounters = {}
 
-        for (let box in this.currentBoxes){
+        for (let box in this.currentBoxes) {
             this.boxCounters[box] = []
         }
-        
+
         this.usePokeball();
 
-        for (let id in this.spriteDictionary){
+        for (let id in this.spriteDictionary) {
             this.hideSprite(id)
             this.spriteDictionary[id].classList.add("zoom");
             this.spriteDictionary[id].classList.remove("revealed");
         }
 
-        for (let key in this.unguessedDict){
+        for (let key in this.unguessedDict) {
             this.unguessedDict[key].style.display = 'none';
         }
 
-        for (let box in this.boxDict){
+        for (let box in this.boxDict) {
             this.boxDict[box].classList.remove("outline")
-            this.boxDict[box].classList.remove("outline"+this.getStyleName())
+            this.boxDict[box].classList.remove("outline" + this.getStyleName())
         }
         document.getElementById("pokemon-box-big").classList.remove("outline")
-        document.getElementById("pokemon-box-big").classList.remove("outline"+this.getStyleName())
-        
+        document.getElementById("pokemon-box-big").classList.remove("outline" + this.getStyleName())
 
-        for (let id in this.unguessedDictionary){
-            if (this.currentIds.has(id)){
+
+        for (let id in this.unguessedDictionary) {
+            if (this.currentIds.has(id)) {
                 this.unguessedDictionary[id].style.display = "inline"
-            }else{
+            } else {
                 this.unguessedDictionary[id].style.display = "none"
 
             }
         }
-        
-        if (this.shinyEnabled){
+
+        if (this.shinyEnabled) {
             this.spriteDictionary["ditto"].src = this.encodedImages['shiny']["ditto"]
             this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages['shiny']["ditto"]
-        }else{
+        } else {
             this.spriteDictionary["ditto"].src = this.encodedImages["sprite"]["ditto"]
-            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages["sprite"]["ditto"]      
+            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages["sprite"]["ditto"]
         }
 
         //if (this.typeDisorder){
@@ -176,102 +183,102 @@ class Quiz {
     }
 
 
-    setOrderMode(val){
+    setOrderMode(val) {
         this.orderMode = val
         this.chaosMode = false;
-        if (val){
+        if (val) {
             this.typeDisorder = false;
 
         }
         this.setQuiz(this.name, this.filters)
     }
-    
-    setChaosMode(val){
-        
+
+    setChaosMode(val) {
+
         this.chaosMode = val
         this.orderMode = false;
 
         this.setQuiz(this.name, this.filters)
-        
+
     }
 
-    setTypeMode(val){
+    setTypeMode(val) {
         this.typeDisorder = val
-        if (val){
+        if (val) {
             //has to be called first I believe
             this.changeTypeStyle(this.currentType)
             this.currentType = this.getCurrentRandomType()
             this.changeTypeStyle(this.currentType)
-        }else{
+        } else {
             this.changeTypeStyle(null)
             this.currentType = null;
 
         }
     }
 
-    checkHighestLang(){
+    checkHighestLang() {
         let highestKey = "ENG";
-        let highestCount =0;
-        for (let key in this.langCounts){
-            if (this.langCounts[key] > highestCount ){
+        let highestCount = 0;
+        for (let key in this.langCounts) {
+            if (this.langCounts[key] > highestCount) {
                 highestCount = this.langCounts[key]
                 highestKey = key
             }
         }
 
-        if (this.currentLang !== highestKey){
+        if (this.currentLang !== highestKey) {
             //this.setLanguage(highestKey)
-            document.getElementById("missing-"+ highestKey).click();
+            document.getElementById("missing-" + highestKey).click();
             this.currentLang = highestKey
         }
     }
 
-    getScore(){
+    getScore() {
         return this.named.size
     }
 
-    getMaxScore(){
+    getMaxScore() {
         return this.currentBaseNames.size;
     }
 
-    setGenQuiz(genNum){
-        let filters = {"boxes":this.genQuizBoxes[genNum.toString()]}
+    setGenQuiz(genNum) {
+        let filters = { "boxes": this.genQuizBoxes[genNum.toString()] }
         let name;
-        if (genNum === "0"){
+        if (genNum === "0") {
             name = "Full"
-        }else{
-            name = "Generation " + genNum 
+        } else {
+            name = "Generation " + genNum
         }
         this.setQuiz(name, filters);
     }
 
-    setTypeQuiz(type){
-        let filters = {"types":[type]}
+    setTypeQuiz(type) {
+        let filters = { "types": [type] }
         this.setQuiz(type + " type ", filters);
     }
 
     setQuiz(name, filters) {
         this.emptyBoxes()
         //before we change the style name
-        if (this.getStyleName() !== ""){
-            
-            document.getElementById("body").classList.remove( this.getStyleName());
+        if (this.getStyleName() !== "") {
 
-            for (let i = 0; i< typeClasses.length; i++){
+            document.getElementById("body").classList.remove(this.getStyleName());
+
+            for (let i = 0; i < typeClasses.length; i++) {
                 let currentClass = typeClasses[i];
                 let typeName = this.getStyleName();
                 let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
-                let val  = "." + currentClass.replace("type", "")
-                for (let j = 0; j<allElements.length; j++){
+                let val = "." + currentClass.replace("type", "")
+                for (let j = 0; j < allElements.length; j++) {
                     allElements[j].classList.remove(currentClass.replace("type", typeName))
                 }
-        
+
             }
-    
+
             let bbuttonElements = document.getElementsByClassName("button");
-            for (let i = 0; i < bbuttonElements.length; i++){
-                bbuttonElements[i].classList.remove("button"+this.getStyleName())
-            }        
+            for (let i = 0; i < bbuttonElements.length; i++) {
+                bbuttonElements[i].classList.remove("button" + this.getStyleName())
+            }
         }
 
 
@@ -288,24 +295,23 @@ class Quiz {
         } else {
             currentPokemonList = [...this.pokemon]; // Clone the pokemon list
         }
-    
+
         if ("types" in filters) {
             currentPokemonList = currentPokemonList.filter(pokemon =>
                 filters.types.some(type => pokemon.isType(type))
             );
-            if (this.orderMode){
+            if (this.orderMode) {
                 visualizeButtonClick(document.getElementById("order-off"))
                 visualizeButtonUnclick(document.getElementById("order-on"))
                 this.orderMode = false;
                 showUserMessage("Order mode disabled")
             }
-         
+
         }
         if ("legendary" in filters) {
-            currentPokemonList = currentPokemonList.filter(pokemon =>
-                {return pokemon.isLegendary()}
+            currentPokemonList = currentPokemonList.filter(pokemon => { return pokemon.isLegendary() }
             );
-            if (this.orderMode){
+            if (this.orderMode) {
                 visualizeButtonClick(document.getElementById("order-off"))
                 visualizeButtonUnclick(document.getElementById("order-on"))
                 this.orderMode = false;
@@ -313,7 +319,7 @@ class Quiz {
             }
         }
 
-        for (let i = 0; i < currentPokemonList.length; i++){
+        for (let i = 0; i < currentPokemonList.length; i++) {
             this.typeChaosIds.add(currentPokemonList[i].id)
         }
 
@@ -321,90 +327,90 @@ class Quiz {
         let currentCycles = {}
         let indexesToRemove = []
         let i = 0
-        while (i < currentPokemonList.length-1){
+        while (i < currentPokemonList.length - 1) {
 
-            if(currentPokemonList[i].baseName === currentPokemonList[i+1].baseName){
+            if (currentPokemonList[i].baseName === currentPokemonList[i + 1].baseName) {
                 currentCycles[currentPokemonList[i].id] = [currentPokemonList[i].id]
                 let j = 1
-                while ((i+j)  < currentPokemonList.length && currentPokemonList[i].baseName === currentPokemonList[i+j].baseName){
-                    indexesToRemove.push(i+j)
-                    currentCycles[currentPokemonList[i].id].push(currentPokemonList[i+j].id)
-                    j+=1;
+                while ((i + j) < currentPokemonList.length && currentPokemonList[i].baseName === currentPokemonList[i + j].baseName) {
+                    indexesToRemove.push(i + j)
+                    currentCycles[currentPokemonList[i].id].push(currentPokemonList[i + j].id)
+                    j += 1;
                 }
-                j-=1
-                i+=j
+                j -= 1
+                i += j
             }
-            i+=1
+            i += 1
         }
 
 
         for (let i = indexesToRemove.length - 1; i >= 0; i--) {
-            currentPokemonList.splice(indexesToRemove[i] , 1);
+            currentPokemonList.splice(indexesToRemove[i], 1);
         }
 
-        if (this.orderMode || "legendary" in this.filters || this.chaosMode){
+        if (this.orderMode || "legendary" in this.filters || this.chaosMode) {
             let tempList = []
             let currentPokemonListIds = currentPokemonList.map(pokemon => pokemon.id);
 
             let baseSet = new Set()
-            for (let i = 0; i< currentPokemonList.length; i++ ){
+            for (let i = 0; i < currentPokemonList.length; i++) {
 
-                if (this.orderMode){
-                    if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega" ){
+                if (this.orderMode) {
+                    if (currentPokemonList[i].box === "gmax" || currentPokemonList[i].box === "mega") {
                         continue
                     }
                     let id = currentPokemonList[i].id;
-                    if (this.orderModeSet.has(id)){
+                    if (this.orderModeSet.has(id)) {
                         tempList.push(currentPokemonList[i])
-                    }else{
+                    } else {
 
 
 
                         let basePkmnId = this.baseNameIdDict[currentPokemonList[i].baseName]
-                        if (!(basePkmnId in currentCycles)){
+                        if (!(basePkmnId in currentCycles)) {
                             currentCycles[basePkmnId] = [basePkmnId]
                         }
-    
-                        if(id in currentCycles){
-                            for (let j = 0; j < currentCycles[id].length; j++){
+
+                        if (id in currentCycles) {
+                            for (let j = 0; j < currentCycles[id].length; j++) {
                                 currentCycles[basePkmnId].push(currentCycles[id][j])
                             }
-                        }else{
+                        } else {
                             currentCycles[basePkmnId].push(id)
                         }
                     }
 
-                }else{
+                } else {
                     let id = currentPokemonList[i].id;
                     let basePkmnId = this.baseNameIdDict[currentPokemonList[i].baseName]
 
-                    if (this.orderModeSet.has(id) || !(currentPokemonListIds.includes(basePkmnId))){
+                    if (this.orderModeSet.has(id) || !(currentPokemonListIds.includes(basePkmnId))) {
                         tempList.push(currentPokemonList[i])
-                    }else{
-                        if (!(basePkmnId in currentCycles)){
+                    } else {
+                        if (!(basePkmnId in currentCycles)) {
                             currentCycles[basePkmnId] = [basePkmnId]
                         }
-                        if(id in currentCycles){
-                            for (let j = 0; j < currentCycles[id].length; j++){
+                        if (id in currentCycles) {
+                            for (let j = 0; j < currentCycles[id].length; j++) {
                                 currentCycles[basePkmnId].push(currentCycles[id][j])
                             }
-                        }else{
+                        } else {
                             currentCycles[basePkmnId].push(id)
                         }
                     }
-                    
+
                 }
 
             }
             currentPokemonList = tempList
-            
-            if ("darumaka" in currentCycles){
+
+            if ("darumaka" in currentCycles) {
                 currentCycles["darumaka"] = ["darumaka", "darumaka", "darumakagalar", "darumakagalar"]
             }
-            if ("meowth" in currentCycles && currentCycles["meowth"].includes("meowthalola")&& currentCycles["meowth"].includes("meowthgalar")){
+            if ("meowth" in currentCycles && currentCycles["meowth"].includes("meowthalola") && currentCycles["meowth"].includes("meowthgalar")) {
                 currentCycles["meowth"] = ["meowth", "meowthalola", "meowthgalar"]
             }
-            if ("persian" in currentCycles && currentCycles["persian"].includes("persianalola")){
+            if ("persian" in currentCycles && currentCycles["persian"].includes("persianalola")) {
                 currentCycles["persian"] = ["persian", "persianalola", "persian"]
             }
         }
@@ -416,96 +422,93 @@ class Quiz {
         this.currentBoxes = {}
         this.currentPokemonList = currentPokemonList
 
-        if (this.typeDisorder){
+        if (this.typeDisorder) {
             this.currentType = this.getCurrentRandomType()
-        }else{
+        } else {
             this.currentType = null
         }
 
 
-        if (this.chaosMode || this.orderMode){
-            for (let i = 0; i<currentPokemonList.length; i++){
+        if (this.chaosMode || this.orderMode) {
+            for (let i = 0; i < currentPokemonList.length; i++) {
                 currentPokemonList[i].currentBox = "big"
             }
-        }else if ("legendary" in filters){
-            for (let i = 0; i<currentPokemonList.length; i++){
+        } else if ("legendary" in filters) {
+            for (let i = 0; i < currentPokemonList.length; i++) {
                 currentPokemonList[i].currentBox = currentPokemonList[i].legendary
             }
-        }else{
-            for (let i = 0; i<currentPokemonList.length; i++){
+        } else {
+            for (let i = 0; i < currentPokemonList.length; i++) {
                 currentPokemonList[i].currentBox = currentPokemonList[i].box
             }
         }
 
 
-        for (let i = 0; i<currentPokemonList.length; i++){
+        for (let i = 0; i < currentPokemonList.length; i++) {
             this.currentBaseNames.add(currentPokemonList[i].baseName)
             //essentially sprites
             this.currentIds.add(currentPokemonList[i].id)
-            if (!(currentPokemonList[i].currentBox in this.currentBoxes)){
+            if (!(currentPokemonList[i].currentBox in this.currentBoxes)) {
                 this.currentBoxes[currentPokemonList[i].currentBox] = []
             }
             this.currentBoxes[currentPokemonList[i].currentBox].push(currentPokemonList[i])
         }
 
-        if ("types" in this.filters){
-            if (this.filters["types"][0] === "dark"){
-                this.currentType =  "evil"
-            }else{
+        if ("types" in this.filters) {
+            if (this.filters["types"][0] === "dark") {
+                this.currentType = "evil"
+            } else {
                 this.currentType = this.filters["types"][0]
             }
         }
-        for (let id in this.unguessedDictionary){
-            if (id in this.currentIds){
+        for (let id in this.unguessedDictionary) {
+            if (id in this.currentIds) {
                 this.unguessedDictionary[id].style.display = "inline"
-            }else{
+            } else {
                 this.unguessedDictionary[id].style.display = "none"
 
             }
         }
-    
-        for (let box in this.boxDict){
-            if (box in this.currentBoxes)
-            {
+
+        for (let box in this.boxDict) {
+            if (box in this.currentBoxes) {
                 this.boxDict[box].style.display = "block";
             }
-            else
-            {
+            else {
                 this.boxDict[box].style.display = "none";
             }
         }
 
-        for (let box in this.currentBoxes){
-            if (this.name === "Full"){
-                regionToAll(document.getElementById("region"+box));
-            }else{
-                regionToSingle(document.getElementById("region"+box));
+        for (let box in this.currentBoxes) {
+            if (this.name === "Full") {
+                regionToAll(document.getElementById("region" + box));
+            } else {
+                regionToSingle(document.getElementById("region" + box));
             }
-
         }
 
         this.updateLanguages(this.enabledLanguages);
 
 
-        if (this.name === "Full"){
-            for (let box in this.currentBoxes){
-                regionToAll(document.getElementById("region"+box));
+        if (this.name === "Full") {
+            for (let box in this.currentBoxes) {
+                regionToAll(document.getElementById("region" + box));
             }
-            document.getElementById("pokemon-box-unknown").classList.remove('unknownbox');   
+            document.getElementById("pokemon-box-unknown").classList.remove('unknownbox');
 
             for (let i = 0; i < this.allSprites.length; i++) {
                 this.allSprites[i].classList.add('sprite');
                 this.allSprites[i].classList.remove('spritew');
                 this.allSprites[i].classList.remove('spritet');
-            }    
+            }
             for (let i = 0; i < pokecolumns.length; i++) {
                 pokecolumns[i].classList.add('fifth');
                 pokecolumns[i].classList.remove('twothirds');
-            } 
-        }else if(this.name.includes("eneration")){
-            for (let box in this.currentBoxes){
-                regionToSingle(document.getElementById("region"+box));
-            } 
+            }
+        } else if (this.name.includes("eneration")) {
+            for (let box in this.currentBoxes) {
+                regionToSingle(document.getElementById("region" + box));
+            }
             document.getElementById("pokemon-box-unknown").classList.add('unknownbox');
             for (let i = 0; i < this.allSprites.length; i++) {
                 this.allSprites[i].classList.add('spritew');
@@ -516,11 +519,11 @@ class Quiz {
                 pokecolumns[i].classList.remove('fifth');
                 pokecolumns[i].classList.add('twothirds');
             }
-        }else{
+        } else {
             //TYPE TODO ALL OF THIS BETTER
-            document.getElementById("pokemon-box-unknown").classList.remove('unknownbox');   
-            for (let box in this.currentBoxes){
-                regionToSingle(document.getElementById("region"+box));
+            document.getElementById("pokemon-box-unknown").classList.remove('unknownbox');
+            for (let box in this.currentBoxes) {
+                regionToSingle(document.getElementById("region" + box));
             }
 
             for (let i = 0; i < pokecolumns.length; i++) {
@@ -535,52 +538,52 @@ class Quiz {
         }
 
 
-        if ("types" in filters || "legendary" in filters || this.typeDisorder){
+        if ("types" in filters || "legendary" in filters || this.typeDisorder) {
 
             document.getElementById("body").classList.add(this.getStyleName());
-            if(darkMode){
+            if (darkMode) {
                 document.getElementById("body").classList.add("blenddark")
             }
-            else{
+            else {
                 document.getElementById("body").classList.add("blend")
             }
 
-            for (let i = 0; i< typeClasses.length; i++){
+            for (let i = 0; i < typeClasses.length; i++) {
                 let currentClass = typeClasses[i];
-                if(currentClass.includes('dark') && !darkMode){
+                if (currentClass.includes('dark') && !darkMode) {
                     continue;
                 }
-        
+
                 let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
-                for (let j = 0; j<allElements.length; j++){
+                for (let j = 0; j < allElements.length; j++) {
                     allElements[j].classList.add(currentClass.replace("type", this.getStyleName()))
                 }
-        
+
             }
-        
-        
+
+
             let bbuttonElements = document.getElementsByClassName("button");
-            for (let i = 0; i < bbuttonElements.length; i++){
-                bbuttonElements[i].classList.add("button"+this.getStyleName())
+            for (let i = 0; i < bbuttonElements.length; i++) {
+                bbuttonElements[i].classList.add("button" + this.getStyleName())
             }
 
             let imgName = this.getStyleName().toUpperCase();
-            if (imgName === "EVIL"){
+            if (imgName === "EVIL") {
                 imgName = "DARK"
             }
 
             document.getElementById("bgpattern").style.display = 'block';
             document.getElementById("bgpattern2").style.display = 'block';
-            document.getElementById("bgpattern2").src = "/images/types/"+ imgName +".svg";
-            document.getElementById("bgpattern2").src = "/images/types/"+ imgName +".svg";
+            document.getElementById("bgpattern2").src = "/images/types/" + imgName + ".svg";
+            document.getElementById("bgpattern2").src = "/images/types/" + imgName + ".svg";
 
             document.getElementById("bgpattern").style.opacity = 0;
-            setTimeout(()=>{
-                document.getElementById("bgpattern").src = "/images/types/"+ imgName+".svg";
+            setTimeout(() => {
+                document.getElementById("bgpattern").src = "/images/types/" + imgName + ".svg";
 
                 document.getElementById("bgpattern").style.opacity = 1;
-            },250)
-        }else{
+            }, 250)
+        } else {
             document.getElementById("body").classList.remove("blend")
             document.getElementById("body").classList.remove("blenddark")
             document.getElementById("bgpattern").style.display = 'none';
@@ -592,90 +595,90 @@ class Quiz {
         //this.setLanguage("ENG");
         this.resetCurrentSprites()
         this.reset();
-        
+
 
     }
 
-    changeTypeStyle (toType){
-        if (toType !== null){
+    changeTypeStyle(toType) {
+        if (toType !== null) {
             toType = toType.toLowerCase();
         }
         if (toType === "dark") {
             toType = "evil"
         }
 
-        if (this.getStyleName() !== ""){
-            document.getElementById("body").classList.remove( this.getStyleName());
+        if (this.getStyleName() !== "") {
+            document.getElementById("body").classList.remove(this.getStyleName());
 
-            for (let i = 0; i< typeClasses.length; i++){
+            for (let i = 0; i < typeClasses.length; i++) {
                 let currentClass = typeClasses[i];
                 let typeName = this.getStyleName();
                 let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
-                let val  = "." + currentClass.replace("type", "")
-                for (let j = 0; j<allElements.length; j++){
+                let val = "." + currentClass.replace("type", "")
+                for (let j = 0; j < allElements.length; j++) {
                     allElements[j].classList.remove(currentClass.replace("type", typeName))
                 }
-        
+
             }
-    
+
             let bbuttonElements = document.getElementsByClassName("button");
-            for (let i = 0; i < bbuttonElements.length; i++){
-                bbuttonElements[i].classList.remove("button"+this.getStyleName())
-            }        
+            for (let i = 0; i < bbuttonElements.length; i++) {
+                bbuttonElements[i].classList.remove("button" + this.getStyleName())
+            }
         }
 
 
 
-        if (toType !== null){
+        if (toType !== null) {
 
             document.getElementById("body").classList.add(toType);
-            if(darkMode){
+            if (darkMode) {
                 document.getElementById("body").classList.add("blenddark")
             }
-            else{
+            else {
                 document.getElementById("body").classList.add("blend")
             }
 
-            for (let i = 0; i< typeClasses.length; i++){
+            for (let i = 0; i < typeClasses.length; i++) {
                 let currentClass = typeClasses[i];
-                if(currentClass.includes('dark') && !darkMode){
+                if (currentClass.includes('dark') && !darkMode) {
                     continue;
                 }
-        
+
                 let allElements = document.getElementsByClassName(currentClass.replace("type", ""));
-                for (let j = 0; j<allElements.length; j++){
+                for (let j = 0; j < allElements.length; j++) {
                     allElements[j].classList.add(currentClass.replace("type", toType))
                 }
-        
+
             }
-        
-        
+
+
             let bbuttonElements = document.getElementsByClassName("button");
-            for (let i = 0; i < bbuttonElements.length; i++){
-                bbuttonElements[i].classList.add("button"+toType)
+            for (let i = 0; i < bbuttonElements.length; i++) {
+                bbuttonElements[i].classList.add("button" + toType)
             }
 
             let imgName = toType.toUpperCase();
-            if (imgName === "EVIL"){
+            if (imgName === "EVIL") {
                 imgName = "DARK"
             }
 
             document.getElementById("bgpattern").style.display = 'block';
             document.getElementById("bgpattern2").style.display = 'block';
-            document.getElementById("bgpattern2").src = "/images/types/"+ imgName +".svg";
-            document.getElementById("bgpattern2").src = "/images/types/"+ imgName +".svg";
+            document.getElementById("bgpattern2").src = "/images/types/" + imgName + ".svg";
+            document.getElementById("bgpattern2").src = "/images/types/" + imgName + ".svg";
 
             document.getElementById("bgpattern").style.opacity = 0;
-            setTimeout(()=>{
-                document.getElementById("bgpattern").src = "/images/types/"+ imgName+".svg";
+            setTimeout(() => {
+                document.getElementById("bgpattern").src = "/images/types/" + imgName + ".svg";
 
                 document.getElementById("bgpattern").style.opacity = 1;
-            },250)
-            if (toType.toLowerCase() === "evil"){
+            }, 250)
+            if (toType.toLowerCase() === "evil") {
                 toType = "dark"
             }
 
-        }else{
+        } else {
             document.getElementById("body").classList.remove("blend")
             document.getElementById("body").classList.remove("blenddark")
             document.getElementById("bgpattern").style.display = 'none';
@@ -687,25 +690,25 @@ class Quiz {
 
 
 
-    emptyBoxes(){
-        for (let i = 0; i < this.boxConstruction.length; i++){
+    emptyBoxes() {
+        for (let i = 0; i < this.boxConstruction.length; i++) {
             let box = this.boxConstruction[i][0]
             let children = this.boxConstruction[i][1]
             let pokemon = this.boxConstruction[i][2]
-            for (let j = 0; j < children.length; j++){
+            for (let j = 0; j < children.length; j++) {
                 this.boxDict[pokemon.currentBox].removeChild(children[j])
             }
-        }   
+        }
     }
 
-    moveBoxes(){
+    moveBoxes() {
 
 
-        for (let i = 0; i < this.boxConstruction.length; i++){
+        for (let i = 0; i < this.boxConstruction.length; i++) {
             let box = this.boxConstruction[i][0]
             let children = this.boxConstruction[i][1]
             let pokemon = this.boxConstruction[i][2]
-            for (let j = 0; j < children.length; j++){
+            for (let j = 0; j < children.length; j++) {
                 boxDict[pokemon.currentBox].appendChild(children[j])
             }
         }
@@ -769,43 +772,43 @@ class Quiz {
 
     }
 
-    getStyleName(){
-        if (this.currentType !== null){
-            if (this.currentType === "dark"){
+    getStyleName() {
+        if (this.currentType !== null) {
+            if (this.currentType === "dark") {
                 return "evil"
             }
             return this.currentType;
         }
-        else if ("types" in this.filters){
-            if (this.filters["types"][0] === "dark"){
+        else if ("types" in this.filters) {
+            if (this.filters["types"][0] === "dark") {
                 return "evil"
             }
             return this.filters["types"][0]
-        }else if ("legendary" in this.filters){
+        } else if ("legendary" in this.filters) {
             return "special"
         }
         return "";
     }
 
-    setFormattedNames(){
+    setFormattedNames() {
 
-        for (let id in this.pokemonIdDict){
+        for (let id in this.pokemonIdDict) {
             let pkmn = this.pokemonIdDict[id]
             let translation = this.translations[pkmn.baseName]
-    
+
             let formattedDict = null
-            if (pkmn.id in this.namings){
+            if (pkmn.id in this.namings) {
                 formattedDict = {}
-                for (let key in translation){
+                for (let key in translation) {
                     formattedDict[key] = translation[key] + this.namings[pkmn.id]
                 }
-            }else{
-                for (let suffix in this.suffixes){
-                    if (pkmn.id.endsWith(suffix)){
+            } else {
+                for (let suffix in this.suffixes) {
+                    if (pkmn.id.endsWith(suffix)) {
                         let without = pkmn.id.substring(0, pkmn.id.length - suffix.length);
-                        if (without in this.pokemonBaseNameDict){
+                        if (without in this.pokemonBaseNameDict) {
                             formattedDict = {}
-                            for (let key in translation){
+                            for (let key in translation) {
                                 formattedDict[key] = translation[key] + this.suffixes[suffix]
                             }
                             break;
@@ -813,16 +816,16 @@ class Quiz {
                     }
                 }
             }
-            if (formattedDict === null){
+            if (formattedDict === null) {
                 formattedDict = {}
-                for (let key in translation){
+                for (let key in translation) {
                     formattedDict[key] = translation[key]
                 }
             }
-            if (pkmn.baseName === "nidoranm" || pkmn.baseName === "nidoranf"){
-                for (let key in formattedDict){
-                    if (formattedDict[key].endsWith("m") || formattedDict[key].endsWith("f") ){
-                        formattedDict[key] = formattedDict[key].substring(0, formattedDict[key].length-1)
+            if (pkmn.baseName === "nidoranm" || pkmn.baseName === "nidoranf") {
+                for (let key in formattedDict) {
+                    if (formattedDict[key].endsWith("m") || formattedDict[key].endsWith("f")) {
+                        formattedDict[key] = formattedDict[key].substring(0, formattedDict[key].length - 1)
                     }
                 }
             }
@@ -830,27 +833,27 @@ class Quiz {
         }
     }
 
-    setLanguage(lang){
-        for (let id in this.unguessedDictTexts){
-            this.unguessedDictTexts[id].nodeValue  = this.pokemonIdDict[id].getFormattedName(lang)
+    setLanguage(lang) {
+        for (let id in this.unguessedDictTexts) {
+            this.unguessedDictTexts[id].nodeValue = this.pokemonIdDict[id].getFormattedName(lang)
         }
         this.currentLang = lang
     }
 
 
-    updateLanguages(enabledLanguages){
+    updateLanguages(enabledLanguages) {
         this.enabledLanguages = enabledLanguages;
-        this.currentLangsNames= new Set()
+        this.currentLangsNames = new Set()
         this.nameDict = {}
         this.nameArr = []
-        for (let id of this.currentIds){
-            for (let j = 0; j < enabledLanguages.length; j++){
+        for (let id of this.currentIds) {
+            for (let j = 0; j < enabledLanguages.length; j++) {
                 let key = enabledLanguages[j];
                 this.currentLangsNames.add(standardizeName(this.translations[this.pokemonIdDict[id].baseName][key]))
             }
         }
-        for (let i = 0; i < this.pokemon.length; i++ ){
-            for (let j = 0; j < this.enabledLanguages.length; j++){
+        for (let i = 0; i < this.pokemon.length; i++) {
+            for (let j = 0; j < this.enabledLanguages.length; j++) {
                 let key = this.enabledLanguages[j];
                 /*if (this.translations[id][key] in this.nameDict && standardizeName(this.translations[id][key]) !== id){
                     console.log('alert, same names for' + this.translations[id]["ENG"] + " and " + id)
@@ -861,15 +864,15 @@ class Quiz {
             }
         }
 
-        
+
     }
-    setupNames(){
-        for (let i = 0; i < this.pokemon.length; i++ ){
-            for (let j = 0; j < this.allLanguages.length; j++){
+    setupNames() {
+        for (let i = 0; i < this.pokemon.length; i++) {
+            for (let j = 0; j < this.allLanguages.length; j++) {
                 let key = this.allLanguages[j];
-                if (standardizeName(this.translations[this.pokemon[i].baseName]["ENG"]) === standardizeName(this.translations[this.pokemon[i].baseName][key])){
+                if (standardizeName(this.translations[this.pokemon[i].baseName]["ENG"]) === standardizeName(this.translations[this.pokemon[i].baseName][key])) {
                     this.langDict[standardizeName(this.translations[this.pokemon[i].baseName][key])] = "ENG"
-                }else{
+                } else {
                     this.langDict[standardizeName(this.translations[this.pokemon[i].baseName][key])] = key
                 }
 
@@ -877,82 +880,82 @@ class Quiz {
         }
     }
 
-    startMissingno(){
+    startMissingno() {
 
-        if (!this.missingnoEnabled){
+        if (!this.missingnoEnabled) {
             return
         }
-        
-    
+
+
         let visibleSprites = []
-        for (let i = 0; i< this.allSprites.length; i++){
-            if (this.allSprites[i].style.display != "none" && this.allSprites[i].parentElement.style.display != "none" && this.allSprites[i].parentElement.parentElement.style.display != "none"){
+        for (let i = 0; i < this.allSprites.length; i++) {
+            if (this.allSprites[i].style.display != "none" && this.allSprites[i].parentElement.style.display != "none" && this.allSprites[i].parentElement.parentElement.style.display != "none") {
                 visibleSprites.push(this.allSprites[i])
             }
         }
-        
-    
-        let randomIndex = randomIntFromInterval(0, visibleSprites.length-1)
-    
+
+
+        let randomIndex = randomIntFromInterval(0, visibleSprites.length - 1)
+
         let originalSrc = visibleSprites[randomIndex].src
         let missingnoPath;
         let randNr = randomIntFromInterval(0, 100);
-        if (randNr < 70){
+        if (randNr < 70) {
             missingnoPath = '/images/missingno.png';
         }
-        else if (randNr < 90){
+        else if (randNr < 90) {
             missingnoPath = '/images/missingno2.png';
         }
-        else{
+        else {
             missingnoPath = '/images/missingno3.png';
         }
         visibleSprites[randomIndex].src = missingnoPath;
         let that = this
-        setTimeout(()=>{
-            if ((originalSrc.indexOf('/unknown') !== -1)){
-                if (darkMode){
+        setTimeout(() => {
+            if ((originalSrc.indexOf('/unknown') !== -1)) {
+                if (darkMode) {
                     originalSrc = '/sprites/unknown-2.png';
-                }else{
+                } else {
                     originalSrc = '/sprites/unknown.png';
                 }
             }
-            visibleSprites[randomIndex].src  = originalSrc
+            visibleSprites[randomIndex].src = originalSrc
             that.startMissingno();
         }, randomIntFromInterval(300, 3000))
     }
 
 
-    startSpooky(){
+    startSpooky() {
 
-        if (!this.spooky){
+        if (!this.spooky) {
             return
         }
         let that = this
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
-            if (that.spooky){
+            if (that.spooky) {
                 let visibleSprites = []
-                for (let i = 0; i< this.allSprites.length; i++){
-                    if (this.allSprites[i].style.display != "none" && this.allSprites[i].parentElement.style.display != "none" && this.allSprites[i].parentElement.parentElement.style.display != "none"){
+                for (let i = 0; i < this.allSprites.length; i++) {
+                    if (this.allSprites[i].style.display != "none" && this.allSprites[i].parentElement.style.display != "none" && this.allSprites[i].parentElement.parentElement.style.display != "none") {
                         visibleSprites.push(this.allSprites[i])
                     }
                 }
-                if (visibleSprites.length < 1){
-                    setTimeout(()=>{
+                if (visibleSprites.length < 1) {
+                    setTimeout(() => {
                         that.startSpooky();
                     }, 1000)
-        
-                }else{
+
+                } else {
                     let playedSound = false;
-                    if(soundEnabled){
+                    if (soundEnabled) {
                         let soundEffectF4 = new Audio('/sound-effects/ruby_00F4.wav');
                         soundEffectF4.volume = 0.2;
                         soundEffectF4.play().then(() => {
                             playedSound = true;
                         })
                     }
-                    let randomIndex = randomIntFromInterval(0, visibleSprites.length-1)
+                    let randomIndex = randomIntFromInterval(0, visibleSprites.length - 1)
 
                     let originalSrc = visibleSprites[randomIndex].src
                     let duskullPath = "/images/duskull.gif";
@@ -961,124 +964,124 @@ class Quiz {
 
 
 
-                    setTimeout(()=>{
+                    setTimeout(() => {
 
 
 
-                        if ((originalSrc.indexOf('/unknown') !== -1)){
-                            if (darkMode){
+                        if ((originalSrc.indexOf('/unknown') !== -1)) {
+                            if (darkMode) {
                                 originalSrc = '/sprites/unknown-2.png';
-                            }else{
+                            } else {
                                 originalSrc = '/sprites/unknown.png';
                             }
                         }
-                        visibleSprites[randomIndex].src  = originalSrc
-                        if (that.spooky){
-                            if (soundEnabled && playedSound){
+                        visibleSprites[randomIndex].src = originalSrc
+                        if (that.spooky) {
+                            if (soundEnabled && playedSound) {
                                 let soundEffectED = new Audio('/sound-effects/ruby_00ED.wav');
                                 soundEffectED.volume = 0.2;
                                 soundEffectED.play()
-                                document.getElementById('spooky').style.display="block"
+                                document.getElementById('spooky').style.display = "block"
                             }
-                            if (!soundEnabled){
-                                document.getElementById('spooky').style.display="block"
+                            if (!soundEnabled) {
+                                document.getElementById('spooky').style.display = "block"
                             }
 
                             that.startSpooky()
                         }
                     }, randomIntFromInterval(3500, 4500));
                 }
-                
+
             }
         }, randomIntFromInterval(10000, 25000))
-    
+
     }
 
 
 
-    parseInput(inputText, user, onCorrect = null){
-        if(paused){
+    parseInput(inputText, user, onCorrect = null) {
+        if (paused) {
             return [false, null]
         }
         inputText = inputText.toLowerCase()
-        
+
         let inputs = []
-        
-        if (inputText === 'nidoran' || inputText === 'ニドラン'.toLowerCase() ||inputText === '니드런'.toLowerCase() ) {
-            if(!this.orderMode){
+
+        if (inputText === 'nidoran' || inputText === 'ニドラン'.toLowerCase() || inputText === '니드런'.toLowerCase()) {
+            if (!this.orderMode) {
                 inputs.push('nidoranf')
                 inputs.push('nidoranm')
-            }else{
-                if (!this.named.has("nidoranf")){
+            } else {
+                if (!this.named.has("nidoranf")) {
                     inputs.push('nidoranf')
-                }else{
+                } else {
                     inputs.push('nidoranm')
-                    
+
                 }
             }
 
         }
-        
-        
-        if (inputText == "missingno" || inputText == "けつばん"){
 
-            if (!this.missingnoEnabled){
+
+        if (inputText == "missingno" || inputText == "けつばん") {
+
+            if (!this.missingnoEnabled) {
                 this.missingnoEnabled = true;
-                if (soundEnabled){
+                if (soundEnabled) {
                     soundEffectMissingno.play();
                 }
-                
+
                 this.startMissingno()
                 return [true, "missingno"];
             }
-        
+
         }
-        
+
         inputText = standardizeName(inputText)
         let originalInput = inputText;
-        
+
 
         let subGerman = originalInput
         subGerman = subGerman.replace("ae", "ä")
         subGerman = subGerman.replace("oe", "ö")
         subGerman = subGerman.replace("ue", "ü")
-        subGerman = subGerman.replace( "ss", "ß")
+        subGerman = subGerman.replace("ss", "ß")
         subGerman = standardizeName(subGerman);
-        if (originalInput !== subGerman){
+        if (originalInput !== subGerman) {
             inputs.push(subGerman);
         }
-        
+
         inputs.push(inputText);
-        
+
         let correct = false;
         let message = null
         let pkmn = null
 
-        for (let i = 0; i < inputs.length; i++){
+        for (let i = 0; i < inputs.length; i++) {
             inputs[i] = standardizeName(inputs[i]);
             let input = inputs[i]
 
-            if (input in this.nameDict){
+            if (input in this.nameDict) {
 
                 let id = this.nameDict[input]
                 let baseName = this.pokemonIdDict[id].baseName
 
-                if (this.named.has(baseName)){
+                if (this.named.has(baseName)) {
 
                     let overlap = false;
-                    for (let key in this.nameDict){
-                        if (key.startsWith(input) && key !== input){
+                    for (let key in this.nameDict) {
+                        if (key.startsWith(input) && key !== input) {
                             overlap = true;
                             break
                         }
                     }
-                    if (!overlap){
-                        message =  this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang)+ " already named"
+                    if (!overlap) {
+                        message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " already named"
                     }
                     continue;
                 }
 
-                if (!(this.currentBaseNames.has(baseName))){
+                if (!(this.currentBaseNames.has(baseName))) {
 
                     let found = false
                     for (const langName of this.currentLangsNames) {
@@ -1087,66 +1090,66 @@ class Quiz {
                             break;
                         }
                     }
-                    if (!found){
+                    if (!found) {
                         message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " is not part of this quiz"
                     }
                     continue;
-                    
+
                 }
-                if (!(this.currentLangsNames.has(input))){
+                if (!(this.currentLangsNames.has(input))) {
                     continue
                 }
 
-                if (this.orderMode){
+                if (this.orderMode) {
 
                     //safe from latency
                     let highestNamed = -1
-                    for (let k = 0; k < this.currentPokemonList.length; k++){
-                        if (this.named.has(this.currentPokemonList[k].baseName)){
-                            if (k > highestNamed){
+                    for (let k = 0; k < this.currentPokemonList.length; k++) {
+                        if (this.named.has(this.currentPokemonList[k].baseName)) {
+                            if (k > highestNamed) {
                                 highestNamed = k
                             }
                         }
                     }
 
-                    if (baseName !== this.currentPokemonList[highestNamed+1].baseName){
+                    if (baseName !== this.currentPokemonList[highestNamed + 1].baseName) {
                         let overlap = false;
-                        for (let key in this.nameDict){
-                            if (key.startsWith(input) && key !== input){
+                        for (let key in this.nameDict) {
+                            if (key.startsWith(input) && key !== input) {
                                 overlap = true;
                                 break
                             }
                         }
-                        if (!overlap){
-                            message =  this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang)+ " is not the next Pokémon"
+                        if (!overlap) {
+                            message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " is not the next Pokémon"
                         }
                         continue;
                     }
-                }else if (this.typeDisorder && this.currentType !== null){
-                    
+                } else if (this.typeDisorder && this.currentType !== null) {
+
                     let matched = false;
-                    for (let i = 0; i<this.pokemonBaseNameDict[baseName].length; i++){
-                        if ((this.pokemonBaseNameDict[baseName][i].primaryType === this.currentType || this.pokemonBaseNameDict[baseName][i].secondaryType === this.currentType)){
-                            if(this.typeChaosIds.has(this.pokemonBaseNameDict[baseName][i].id)){
+                    for (let i = 0; i < this.pokemonBaseNameDict[baseName].length; i++) {
+                        if ((this.pokemonBaseNameDict[baseName][i].primaryType === this.currentType || this.pokemonBaseNameDict[baseName][i].secondaryType === this.currentType)) {
+                            if (this.typeChaosIds.has(this.pokemonBaseNameDict[baseName][i].id)) {
                                 matched = true;
                                 break
                             }
 
                         }
                     }
-                    if (!matched){
+                    if (!matched) {
 
                         let overlap = false;
-                        for (let key in this.nameDict){
-                            if (key.startsWith(input) && key !== input){
+                        for (let key in this.nameDict) {
+                            if (key.startsWith(input) && key !== input) {
                                 overlap = true;
                                 break
                             }
                         }
-                        if (!overlap){
+                        if (!overlap) {
                             let formattedType = this.currentType.toLowerCase()
                             formattedType = formattedType.charAt(0).toUpperCase() + formattedType.slice(1);
-                            message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " is not " + formattedType                        
+                            message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " is not " + formattedType
                         }
                         continue
                     }
@@ -1155,16 +1158,15 @@ class Quiz {
                 let recentPkmn = this.addNamed(baseName)
 
                 this.addUserPoint(user)
-                if (!(this.langDict[input] in this.langCounts)){
+                if (!(this.langDict[input] in this.langCounts)) {
                     this.langCounts[this.langDict[input]] = 0
                 }
-                this.langCounts[this.langDict[input]]+=1
+                this.langCounts[this.langDict[input]] += 1
                 this.checkHighestLang()
                 recentSprite.src = this.spriteDictionary[recentPkmn.id].src;
 
-
                 correct = true;
-                if (onCorrect !== null){
+                if (onCorrect !== null) {
                     onCorrect(baseName)
                 }
 
@@ -1175,98 +1177,97 @@ class Quiz {
 
     }
 
-    getCurrentRandomType(){
-        let x = Math.sin(this.named.size + this.seed) * 10000;
-        
-        x = x - Math.floor(x)
-        x = Math.floor(x * this.currentPokemonList.length)
-        let startingX = x
 
-        while (this.named.has(this.currentPokemonList[x].baseName)) {
-            x+=1
-            if (x >= this.currentPokemonList.length){
-                x = 0
-            }
-            if (x === startingX ){
-                break
-            }
+    getCurrentRandomType() {
+        // 1) Gather the unpicked Pokémon up front
+        const unpicked = this.currentPokemonList.filter(
+            p => !this.named.has(p.baseName)
+        );
+
+        // If somehow everything is named already, bail out gracefully.
+        if (unpicked.length === 0) {
+            return null;
         }
-        let randomPokemon = this.currentPokemonList[x]
-        
-        let randomType;
-        if (randomPokemon.secondaryType !== null){
-            if (x % 2 === 0){
-                randomType = randomPokemon.primaryType
-            }else{
-                randomType = randomPokemon.secondaryType
-            }
-        }   
-        else{
-           randomType = randomPokemon.primaryType 
+
+        // 2) Pick a random Pokémon from among the unpicked, deterministically
+        //    For instance, incorporate (this.seed + numberNamedSoFar) into the RNG.
+        const randVal = seededRandom(this.seed + this.named.size);
+        const randIndex = Math.floor(randVal * unpicked.length);
+        const randomPokemon = unpicked[randIndex];
+
+        // 3) Choose whether to return the primary or secondary type.
+        //    If the Pokémon has a secondary type, pick 50/50 in a deterministic way.
+        if (randomPokemon.secondaryType) {
+            const typeRand = seededRandom(this.seed + this.named.size + 0.5);
+            // 50/50 chance for primary vs secondary
+            return (typeRand < 0.5)
+                ? randomPokemon.primaryType
+                : randomPokemon.secondaryType;
+        } else {
+            return randomPokemon.primaryType;
         }
-        return randomType
     }
 
-    addUserPoint(user){
-        if (!(user in this.users)){
+    addUserPoint(user) {
+        if (!(user in this.users)) {
             this.users[user] = 0
         }
-        this.users[user]+=1
+        this.users[user] += 1
     }
 
-    resetDitto(){
-        if (this.shinyEnabled){
+    resetDitto() {
+        if (this.shinyEnabled) {
             this.spriteDictionary["ditto"].src = this.encodedImages['shiny']["ditto"]
             this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages['shiny']["ditto"]
-        }else{
+        } else {
             this.spriteDictionary["ditto"].src = this.encodedImages["sprite"]["ditto"]
-            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages["sprite"]["ditto"]      
+            this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.encodedImages["sprite"]["ditto"]
         }
     }
 
-    addNamed(baseName){
+    addNamed(baseName) {
 
         let relatedPokemon = this.pokemonBaseNameDict[baseName]
 
         let relevantPokemon = []
-        for (let i = 0; i< relatedPokemon.length; i++){
-            if (this.currentIds.has(relatedPokemon[i].id)){
+        for (let i = 0; i < relatedPokemon.length; i++) {
+            if (this.currentIds.has(relatedPokemon[i].id)) {
                 relevantPokemon.push(relatedPokemon[i])
             }
         }
-        if (this.cyclingEnabled){
-            if (this.named.has("ditto")){
+        if (this.cyclingEnabled) {
+            if (this.named.has("ditto")) {
                 this.spriteDictionary["ditto"].src = this.spriteDictionary[relevantPokemon[0].id].src
                 this.unguessedDict["ditto"].getElementsByTagName('img')[0].src = this.spriteDictionary[relevantPokemon[0].id].src
             }
-        }else{
+        } else {
             this.resetDitto();
         }
 
-        for (let i = 0; i< relevantPokemon.length; i++){
+        for (let i = 0; i < relevantPokemon.length; i++) {
             this.showSprite(relevantPokemon[i].id)
         }
 
         this.named.add(baseName)
 
-        if (this.typeDisorder){
+        if (this.typeDisorder) {
             let randomType = this.getCurrentRandomType()
 
-            if (randomType!== this.currentType){
+            if (randomType !== this.currentType) {
                 this.changeTypeStyle(randomType)
             }
             let formattedType = this.currentType
-            if (formattedType.toLowerCase() === "evil"){
+            if (formattedType.toLowerCase() === "evil") {
                 formattedType = "DARK"
             }
             showImage(formattedType.toUpperCase())
             //showUserMessage('<img src="/images/types/'+formattedType.toUpperCase()+'.svg">')
         }
 
-        return relevantPokemon[relevantPokemon.length-1];
+        return relevantPokemon[relevantPokemon.length - 1];
     }
 
-    getEndText(){
+    getEndText() {
         let genText = ' ';
         if (this.name !== "Full") {
             genText = " " + this.name.charAt(0).toUpperCase() + this.name.slice(1) + " "
@@ -1274,27 +1275,27 @@ class Quiz {
         return genText
     }
 
-    isSilhouettesEnabled(){
+    isSilhouettesEnabled() {
         return this.useSilhouettes
     }
 
-    animateCongrats(){
-        for (let id of this.currentIds){
-            if (this.named.has(this.pokemonIdDict[id].baseName)){
+    animateCongrats() {
+        for (let id of this.currentIds) {
+            if (this.named.has(this.pokemonIdDict[id].baseName)) {
                 animateInput(id)
             }
-            
-        }
-        
-    }
-    
 
-    isAllShadowsRevealed(){
+        }
+
+    }
+
+
+    isAllShadowsRevealed() {
 
         let all = true;
-        for (let k = 0; k < this.currentPokemonList.length; k++){
+        for (let k = 0; k < this.currentPokemonList.length; k++) {
             let pkmn = this.currentPokemonList[k]
-            if (!(this.revealedShadows.has(pkmn.id) || this.named.has(pkmn.baseName))){
+            if (!(this.revealedShadows.has(pkmn.id) || this.named.has(pkmn.baseName))) {
                 all = false;
                 break
             }
@@ -1304,12 +1305,12 @@ class Quiz {
     }
 
 
-    revealNextShadow(){
+    revealNextShadow() {
 
-        for (let k = 0; k < this.currentPokemonList.length; k++){
-            if (!(this.named.has(this.currentPokemonList[k].baseName))){
-                this.silhouetteDictionary[this.currentPokemonList[k].id] .style.display = "inline";
-                this.pokeballDictionary[this.currentPokemonList[k].id] .style.display = "none";
+        for (let k = 0; k < this.currentPokemonList.length; k++) {
+            if (!(this.named.has(this.currentPokemonList[k].baseName))) {
+                this.silhouetteDictionary[this.currentPokemonList[k].id].style.display = "inline";
+                this.pokeballDictionary[this.currentPokemonList[k].id].style.display = "none";
                 this.revealedShadows.add(this.currentPokemonList[k].id)
                 return this.currentPokemonList[k].id
             }
@@ -1317,20 +1318,20 @@ class Quiz {
         return null;
 
     }
-    revealRandomShadow(){
-        if (!this.orderMode){
+    revealRandomShadow() {
+        if (!this.orderMode) {
             let possibleIds = []
-            for (let k = 0; k < this.currentPokemonList.length; k++){
+            for (let k = 0; k < this.currentPokemonList.length; k++) {
                 let pkmn = this.currentPokemonList[k]
-                if (!(this.named.has(pkmn.baseName)) && !(this.revealedShadows.has(pkmn.id))){
+                if (!(this.named.has(pkmn.baseName)) && !(this.revealedShadows.has(pkmn.id))) {
                     possibleIds.push(this.currentPokemonList[k].id)
                 }
             }
-            if (possibleIds.length > 0){
+            if (possibleIds.length > 0) {
                 let index = Math.floor(Math.random() * possibleIds.length);
                 let id = possibleIds[index]
-                this.silhouetteDictionary[id] .style.display = "inline";
-                this.pokeballDictionary[id] .style.display = "none";
+                this.silhouetteDictionary[id].style.display = "inline";
+                this.pokeballDictionary[id].style.display = "none";
                 this.revealedShadows.add(id)
                 return id
             }
@@ -1338,20 +1339,20 @@ class Quiz {
         return null;
     }
 
-    revealRandomTypeShadow(){
-        if (this.typeDisorder){
+    revealRandomTypeShadow() {
+        if (this.typeDisorder) {
             let possibleIds = []
-            for (let k = 0; k < this.currentPokemonList.length; k++){
+            for (let k = 0; k < this.currentPokemonList.length; k++) {
                 let pkmn = this.currentPokemonList[k]
-                if ((!(this.named.has(pkmn.baseName)) && !(this.revealedShadows.has(pkmn.id))) && (pkmn.primaryType === this.currentType || pkmn.secondaryType === this.currentType)){
+                if ((!(this.named.has(pkmn.baseName)) && !(this.revealedShadows.has(pkmn.id))) && (pkmn.primaryType === this.currentType || pkmn.secondaryType === this.currentType)) {
                     possibleIds.push(this.currentPokemonList[k].id)
                 }
             }
-            if (possibleIds.length > 0){
+            if (possibleIds.length > 0) {
                 let index = Math.floor(Math.random() * possibleIds.length);
                 let id = possibleIds[index]
-                this.silhouetteDictionary[id] .style.display = "inline";
-                this.pokeballDictionary[id] .style.display = "none";
+                this.silhouetteDictionary[id].style.display = "inline";
+                this.pokeballDictionary[id].style.display = "none";
                 this.revealedShadows.add(id)
                 return id
             }
@@ -1361,20 +1362,20 @@ class Quiz {
 
 
 
-    revealSingleShadow(id){
-        if (!this.revealedShadows.has(id) ){
+    revealSingleShadow(id) {
+        if (!this.revealedShadows.has(id)) {
             this.revealedShadows.add(id)
-            this.silhouetteDictionary[id] .style.display = "inline";
-            this.pokeballDictionary[id] .style.display = "none";
+            this.silhouetteDictionary[id].style.display = "inline";
+            this.pokeballDictionary[id].style.display = "none";
         }
     }
 
 
 
     setSilhouettes() {
-        
-        for (let id of this.currentIds){
-            if (this.spriteDictionary[id].style.display !== "inline"){
+
+        for (let id of this.currentIds) {
+            if (this.spriteDictionary[id].style.display !== "inline") {
                 this.revealSingleShadow(id)
             }
         }
@@ -1385,9 +1386,9 @@ class Quiz {
                 this.pokeballArray[i].style.display = "none";
             }
         }*/
-        this.useSilhouettes=true
+        this.useSilhouettes = true
     }
-    
+
     usePokeball() {
         for (let i = 0; i < this.silhouetteArray.length; i++) {
             this.silhouetteArray[i].style.display = "none";
@@ -1396,13 +1397,13 @@ class Quiz {
     }
 
 
-    hideSprite(id){
+    hideSprite(id) {
         this.spriteDictionary[id].style.display = "none";
         this.unguessedDictionary[id].style.display = "inline";
     }
 
-    setupSprites(){
-        for (let i = 0; i< this.pokemon.length; i++){
+    setupSprites() {
+        for (let i = 0; i < this.pokemon.length; i++) {
             let pokemon = this.pokemon[i];
 
             let sprite = document.createElement("img");
@@ -1437,12 +1438,12 @@ class Quiz {
             box.appendChild(this.spriteDictionary[pokemon.id]);
             box.appendChild(unguessed);
             this.hideSprite(pokemon.id);
-            
+
             this.boxConstruction.push([box, [this.spriteDictionary[pokemon.id], unguessed], pokemon])
         }
     }
 
-    setupMissedContent(){
+    setupMissedContent() {
         let contentDict = {}
         let panel = document.getElementById("panel")
         panel.innerHTML = ""
@@ -1450,7 +1451,7 @@ class Quiz {
         //    panel.firstChild.remove()
         //}
 
-        for (let key in this.boxDict){
+        for (let key in this.boxDict) {
             let unnamedList = document.createElement("div");
             let unnamedContent = document.createElement("div");
             unnamedContent.classList.add('box');
@@ -1462,7 +1463,7 @@ class Quiz {
             contentDict[key] = unnamedContent;
         }
 
-        for (let i = 0; i< this.pokemon.length; i++){
+        for (let i = 0; i < this.pokemon.length; i++) {
 
             let pokemon = this.pokemon[i];
 
@@ -1480,37 +1481,37 @@ class Quiz {
             this.unguessedDictTexts[pokemon.id] = _name
             contentDict[pokemon.currentBox].appendChild(_elem)
         }
-    
-    }
-
-    getLeaderboardData(){
 
     }
 
-    showSprite(id){
+    getLeaderboardData() {
+
+    }
+
+    showSprite(id) {
         this.spriteDictionary[id].style.display = "inline";
         this.unguessedDictionary[id].style.display = "none";
         let currentBox = this.pokemonIdDict[id].currentBox;
         let pkmn = this.pokemonIdDict[id]
 
-        if (this.chaosMode){
+        if (this.chaosMode) {
             let children = document.getElementById("pokemon-box-big").children
 
             let spotIndex = -1;
             let targetIndex = -1;
 
-            for (let i = 1; i< children.length; i++){
-                if (spotIndex === -1 && children[i].tagName.toUpperCase() === "DIV"){
-                    if( children[i].children[1].style.display === "inline" ||children[i].children[0].style.display === "inline"  ){
+            for (let i = 1; i < children.length; i++) {
+                if (spotIndex === -1 && children[i].tagName.toUpperCase() === "DIV") {
+                    if (children[i].children[1].style.display === "inline" || children[i].children[0].style.display === "inline") {
                         spotIndex = i
-                        if (targetIndex !== -1){
+                        if (targetIndex !== -1) {
                             break
                         }
                     }
                 }
-                else if (targetIndex === -1 && children[i] === this.spriteDictionary[id]){
+                else if (targetIndex === -1 && children[i] === this.spriteDictionary[id]) {
                     targetIndex = i
-                    if (spotIndex !== -1){
+                    if (spotIndex !== -1) {
                         break
                     }
                 }
@@ -1518,8 +1519,8 @@ class Quiz {
             }
 
             swapChildren(document.getElementById("pokemon-box-big"), spotIndex, targetIndex);
-            if (spotIndex > targetIndex){
-                document.getElementById("pokemon-box-big").insertBefore(children[targetIndex+1], children[spotIndex+1]);
+            if (spotIndex > targetIndex) {
+                document.getElementById("pokemon-box-big").insertBefore(children[targetIndex + 1], children[spotIndex + 1]);
 
             }
 
@@ -1527,15 +1528,15 @@ class Quiz {
         }
 
 
-            if(!(this.boxCounters[currentBox].includes(pkmn))){
-                this.boxCounters[currentBox].push(pkmn)
-                if (this.boxCounters[currentBox].length === this.currentBoxes[currentBox].length){
-                    let boxElem = this.spriteDictionary[id].parentElement;
-                    boxElem.classList.add('outline')
-                    boxElem.classList.add('outline'+this.getStyleName())
-                }
+        if (!(this.boxCounters[currentBox].includes(pkmn))) {
+            this.boxCounters[currentBox].push(pkmn)
+            if (this.boxCounters[currentBox].length === this.currentBoxes[currentBox].length) {
+                let boxElem = this.spriteDictionary[id].parentElement;
+                boxElem.classList.add('outline')
+                boxElem.classList.add('outline' + this.getStyleName())
             }
-        
+        }
+
 
     }
 
@@ -1545,16 +1546,16 @@ class Quiz {
         }
         this.revealTimeouts = [];
     }
-    giveUp(){
+    giveUp() {
         this.giveUpState = true
         let delay = 0;
         let revealList = []
         for (const id of this.currentIds) {
-            if (!(this.named.has(this.pokemonIdDict[id].baseName))){
+            if (!(this.named.has(this.pokemonIdDict[id].baseName))) {
                 revealList.push(id)
             }
         }
-    
+
         for (let i = 0; i < revealList.length; i++) {
             let id = revealList[i];
             delay = delay + 35;
@@ -1567,7 +1568,7 @@ class Quiz {
             }, delay);
             this.revealTimeouts.push(timeout);
         }
-        
+
         //loop without delay
         for (let i = 0; i < revealList.length; i++) {
             let id = revealList[i];
@@ -1577,30 +1578,30 @@ class Quiz {
 
         this.resetDitto()
 
-        
+
     }
 
 
-    resetCurrentSprites(){
-        if (this.shinyEnabled){
-            for (let id of this.currentIds){
+    resetCurrentSprites() {
+        if (this.shinyEnabled) {
+            for (let id of this.currentIds) {
                 this.spriteDictionary[id].src = this.encodedImages['shiny'][id]
                 this.unguessedDict[id].getElementsByTagName('img')[0].src = this.encodedImages['shiny'][id]
             }
-        }else{
-            for (let id of this.currentIds){
+        } else {
+            for (let id of this.currentIds) {
                 this.spriteDictionary[id].src = this.encodedImages['sprite'][id]
                 this.unguessedDict[id].getElementsByTagName('img')[0].src = this.encodedImages['sprite'][id]
-            }         
+            }
         }
     }
 
-    shinyOn(){
+    shinyOn() {
         this.shinyEnabled = true;
         this.resetCurrentSprites();
     }
 
-    shinyOff(){
+    shinyOff() {
         this.shinyEnabled = false;
         this.resetCurrentSprites();
     }
