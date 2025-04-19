@@ -2027,10 +2027,10 @@ async function loadData() {
 
                 if (twitchUsername == 'norainthefuture' || twitchUsername == 'adeptcharon') {
                     if (message === "nora".toLowerCase()) {
-                        twitchInput(twitchUsername, 'mew', true)
+                        twitchInput(twitchUsername, 'pawmi', true)
 
                         image = new Image();
-                        image.src = '/images/mew.png';
+                        image.src = '/images/pawmi.png';
                         image.addEventListener("load", function () {
                             imageRain(image, 50, 300);
                         }, false);
