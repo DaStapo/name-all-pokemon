@@ -1256,11 +1256,15 @@ class Quiz {
             if (randomType !== this.currentType) {
                 this.changeTypeStyle(randomType)
             }
+            
             let formattedType = this.currentType
-            if (formattedType.toLowerCase() === "evil") {
+            if (formattedType !== null && formattedType.toLowerCase() === "evil") {
                 formattedType = "DARK"
             }
-            showImage(formattedType.toUpperCase())
+            if (formattedType !== null ){
+                showImage(formattedType.toUpperCase())
+
+            }
             //showUserMessage('<img src="/images/types/'+formattedType.toUpperCase()+'.svg">')
         }
 
