@@ -261,6 +261,62 @@ app.post('/misspelling', async (req, res) => {
 });
 
 
+
+// Helper function to get week-based filename
+function getWeeklyLogFile() {
+    const now = new Date();
+    const year = now.getFullYear();
+    
+    // Get week number (ISO week)
+    const startOfYear = new Date(year, 0, 1);
+    const dayOfYear = Math.floor((now - startOfYear) / (24 * 60 * 60 * 1000));
+    const weekNumber = Math.ceil((dayOfYear + startOfYear.getDay() + 1) / 7);
+    
+    const logsDir = 'logs';
+    const filename = `results_${year}_week${weekNumber.toString().padStart(2, '0')}.txt`;
+    
+    // Create logs directory if it doesn't exist
+    if (!fs.existsSync(logsDir)) {
+        fs.mkdirSync(logsDir, { recursive: true });
+    }
+    
+    return path.join(logsDir, filename);
+}
+
+
+app.post('/result', async (req, res) => {
+    try {
+        const result = req.body
+        
+        // Validate input
+        if (!result || typeof result !== 'object') {
+            return res.status(400).json({ error: 'Invalid result format' });
+        }
+        
+        // Limit size
+        const resultStr = JSON.stringify(result);
+        if (resultStr.length > 10000*75) { // 750KB limit
+            return res.status(400).json({ error: 'Result too large' });
+        }
+        
+        res.status(200).json({ message: 'Ok' });
+        
+        const logFile = getWeeklyLogFile();
+        const logMsg = resultStr + "\n";
+        
+        fs.appendFile(logFile, logMsg, (err) => {
+            if (err) {
+                console.error('Failed to log result:', err);
+                // Consider using a proper logging service here
+            }
+        });
+    } catch (err) {
+        console.error('Error processing result:', err);
+        if (!res.headersSent) {
+            res.status(500).json({ error: 'Internal server error' });
+        }
+    }
+});
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');

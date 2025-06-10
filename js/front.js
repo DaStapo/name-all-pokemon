@@ -242,6 +242,33 @@ async function postMultiplayerServer(endpoint, body) {
     }
 
 }
+
+
+var lastResult = {}
+async function postResult(payload) {
+    if (payload === lastResult){
+        return;
+    }
+    lastResult = payload
+    try {
+        let response = await fetch("/result", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+        let data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+        return false;
+    }
+
+}
+
+
+
 async function getMultiplayerServer(endpoint) {
 
     try {
@@ -1254,6 +1281,21 @@ async function loadData() {
 
         document.getElementById("missednames").style.display = "block";
         document.getElementById("accordion").click();
+
+
+        result_data = {
+            "langCounts":quiz.langCounts,
+            "chaosMode":quiz.chaosMode,
+            "giveUpState":quiz.giveUpState,
+            "filters":quiz.filters,
+            "revealedShadows":quiz.revealedShadows,
+            "typeDisorder":quiz.typeDisorder,
+            "orderMode":quiz.orderMode,
+            "named":[...quiz.named ],
+            "allShadows":quiz.useSilhouettes,
+            "timerScore":timerText.innerHTML,
+        }
+        postResult(result_data)
     }
 
     function giveUp() {
@@ -1275,6 +1317,20 @@ async function loadData() {
 
         document.getElementById("missednames").style.display = "block";
         document.getElementById("accordion").click();
+        result_data = {
+            "langCounts":quiz.langCounts,
+            "chaosMode":quiz.chaosMode,
+            "giveUpState":quiz.giveUpState,
+            "filters":quiz.filters,
+            "revealedShadows":quiz.revealedShadows,
+            "typeDisorder":quiz.typeDisorder,
+            "orderMode":quiz.orderMode,
+            "named":[...quiz.named ],
+            "allShadows":quiz.useSilhouettes,
+            "timerScore":timerText.innerHTML, 
+        }
+        postResult(result_data)
+
 
     }
 
