@@ -14,6 +14,7 @@ let genQuizBoxes = {
     "7": ["alola", "unknown"],
     "8": ["galar", "gmax", "hisui"],
     "9": ["paldea", "paldeadlc", "megalumiose"],
+//    "m": ["megakalos", "megahoenn", "megalumiose", "gmax"],
 }
 
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
