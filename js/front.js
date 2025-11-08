@@ -2596,6 +2596,10 @@ async function loadData() {
     
         addTransitionCss();
         preloadSmallerImages();
+
+        setTimeout(()=>{
+            showUserMessage('Z-A DLC Megas will be added end of December')
+        }, 500)
     }
     /*
     document.getElementById('spooky').onclick = () =>{
