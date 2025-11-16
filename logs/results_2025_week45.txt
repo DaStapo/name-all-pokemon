@@ -1,0 +1,2 @@
+{"langCounts":{},"chaosMode":false,"giveUpState":true,"filters":{"boxes":["megakalos","megahoenn","megalumiose","gmax"]},"revealedShadows":{},"typeDisorder":false,"orderMode":false,"named":[],"allShadows":false,"timerScore":"00:00:00"}
+{"langCounts":{},"chaosMode":false,"giveUpState":true,"filters":{"boxes":["megakalos","megahoenn","megalumiose","gmax"]},"revealedShadows":{},"typeDisorder":false,"orderMode":false,"named":[],"allShadows":false,"timerScore":"00:00:00"}

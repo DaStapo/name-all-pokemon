@@ -2,18 +2,19 @@ let allLanguages = ['ENG', 'FRE', 'GER', 'ESP', 'ITA', 'KOR', 'JPN', 'CHT', 'CHS
 
 
 let typeList = ["normal", "fire", "water", "grass", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy"]
-let boxIds = ["big", "kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "mega", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "sub-legendary", "legendary", "mythical", "ultrabeast", "paradox"]
+let boxIds = ["big", "kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "megakalos", "megahoenn", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose", "sub-legendary", "legendary", "mythical", "ultrabeast", "paradox"]
 let genQuizBoxes = {
-    "0": ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "mega", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc"],
+    "0": ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "megakalos", "megahoenn", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose"],
     "1": ["kanto"],
     "2": ["johto"],
     "3": ["hoenn"],
     "4": ["sinnoh"],
     "5": ["unova"],
-    "6": ["kalos", "mega"],
+    "6": ["kalos", "megakalos", "megahoenn"],
     "7": ["alola", "unknown"],
     "8": ["galar", "gmax", "hisui"],
-    "9": ["paldea", "paldeadlc"],
+    "9": ["paldea", "paldeadlc", "megalumiose"],
+//    "m": ["megakalos", "megahoenn", "megalumiose", "gmax"],
 }
 
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
@@ -2597,10 +2598,9 @@ async function loadData() {
         addTransitionCss();
         preloadSmallerImages();
 
-
-        //setTimeout(()=>{
-        //    showUserMessage("Apologies for the recent downtime. The issue has now been resolved.")
-        //}, 2000)
+        setTimeout(()=>{
+            showUserMessage('Z-A DLC Megas will be added end of December')
+        }, 500)
     }
     /*
     document.getElementById('spooky').onclick = () =>{
