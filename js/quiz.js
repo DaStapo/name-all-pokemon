@@ -1010,13 +1010,20 @@ class Quiz {
         if (inputText === 'nidoran' || inputText === 'ニドラン'.toLowerCase() || inputText === '니드런'.toLowerCase()) {
             if (!this.orderMode) {
                 inputs.push('nidoranf')
+                inputs.push('ニドランf')
+                inputs.push('니드런f')
                 inputs.push('nidoranm')
+                inputs.push('ニドランm')
+                inputs.push('니드런m')
             } else {
                 if (!this.named.has("nidoranf")) {
                     inputs.push('nidoranf')
+                    inputs.push('ニドランf')
+                    inputs.push('니드런f')
                 } else {
                     inputs.push('nidoranm')
-
+                    inputs.push('ニドランm')
+                    inputs.push('니드런m')
                 }
             }
 

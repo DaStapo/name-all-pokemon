@@ -249,6 +249,7 @@ async function postResult(payload) {
     if (payload === lastResult){
         return;
     }
+    return;
     lastResult = payload
     try {
         let response = await fetch("/result", {
@@ -2595,6 +2596,11 @@ async function loadData() {
     
         addTransitionCss();
         preloadSmallerImages();
+
+
+        //setTimeout(()=>{
+        //    showUserMessage("Apologies for the recent downtime. The issue has now been resolved.")
+        //}, 2000)
     }
     /*
     document.getElementById('spooky').onclick = () =>{
