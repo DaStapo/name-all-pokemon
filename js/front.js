@@ -2599,7 +2599,7 @@ async function loadData() {
         preloadSmallerImages();
 
         setTimeout(()=>{
-            showUserMessage('Z-A DLC Megas will be added end of December')
+            showUserMessage('Z-A DLC Megas will be added soon')
         }, 500)
     }
     /*
