@@ -2,9 +2,9 @@ let allLanguages = ['ENG', 'FRE', 'GER', 'ESP', 'ITA', 'KOR', 'JPN', 'CHT', 'CHS
 
 
 let typeList = ["normal", "fire", "water", "grass", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy"]
-let boxIds = ["big", "kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "megakalos", "megahoenn", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose", "sub-legendary", "legendary", "mythical", "ultrabeast", "paradox"]
+let boxIds = ["big", "kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "megakalos", "megahoenn", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose", "megahyperspace", "sub-legendary", "legendary", "mythical", "ultrabeast", "paradox"]
 let genQuizBoxes = {
-    "0": ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "megakalos", "megahoenn", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose"],
+    "0": ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "megakalos", "megahoenn", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose", "megahyperspace"],
     "1": ["kanto"],
     "2": ["johto"],
     "3": ["hoenn"],
@@ -13,8 +13,8 @@ let genQuizBoxes = {
     "6": ["kalos", "megakalos", "megahoenn"],
     "7": ["alola", "unknown"],
     "8": ["galar", "gmax", "hisui"],
-    "9": ["paldea", "paldeadlc", "megalumiose"],
-//    "m": ["megakalos", "megahoenn", "megalumiose", "gmax"],
+    "9": ["paldea", "paldeadlc", "megalumiose", "megahyperspace"],
+//    "m": ["megakalos", "megahoenn", "megalumiose", "megahyperspace", "gmax"],
 }
 
 let soundEffect = new Audio('/sound-effects/gen3-click2.wav');
@@ -2598,9 +2598,10 @@ async function loadData() {
         addTransitionCss();
         preloadSmallerImages();
 
+        /*loaded pop-up message
         setTimeout(()=>{
             showUserMessage('Z-A DLC Megas will be added soon')
-        }, 500)
+        }, 500)*/
     }
     /*
     document.getElementById('spooky').onclick = () =>{

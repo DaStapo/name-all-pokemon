@@ -10454,5 +10454,149 @@
         "secondaryType": null,
         "box": "megalumiose",
         "legendary": "no"
+    },
+    {
+        "id": "raichumegax",
+        "baseName": "raichu",
+        "primaryType": "electric",
+        "secondaryType": null,
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "raichumegay",
+        "baseName": "raichu",
+        "primaryType": "electric",
+        "secondaryType": null,
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "chimechomega",
+        "baseName": "chimecho",
+        "primaryType": "psychic",
+        "secondaryType": "steel",
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "absolmegaz",
+        "baseName": "absol",
+        "primaryType": "dark",
+        "secondaryType": "ghost",
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "staraptormega",
+        "baseName": "staraptor",
+        "primaryType": "fighting",
+        "secondaryType": "flying",
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "lucariomegaz",
+        "baseName": "lucario",
+        "primaryType": "fighting",
+        "secondaryType": "steel",
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "heatranmega",
+        "baseName": "heatran",
+        "primaryType": "fire",
+        "secondaryType": "steel",
+        "box": "megahyperspace",
+        "legendary": "sub-legendary"
+    },
+    {
+        "id": "darkraimega",
+        "baseName": "darkrai",
+        "primaryType": "dark",
+        "secondaryType": null,
+        "box": "megahyperspace",
+        "legendary": "mythical"
+    },
+    {
+        "id": "golurkmega",
+        "baseName": "golurk",
+        "primaryType": "ground",
+        "secondaryType": "ghost",
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "meowsticmega",
+        "baseName": "meowstic",
+        "primaryType": "psychic",
+        "secondaryType": null,
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "crabominablemega",
+        "baseName": "crabominable",
+        "primaryType": "fighting",
+        "secondaryType": "ice",
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "golisopodmega",
+        "baseName": "golisopod",
+        "primaryType": "bug",
+        "secondaryType": "steel",
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "magearnamega",
+        "baseName": "magearna",
+        "primaryType": "steel",
+        "secondaryType": "fairy",
+        "box": "megahyperspace",
+        "legendary": "mythical"
+    },
+    {
+        "id": "zeraoramega",
+        "baseName": "zeraora",
+        "primaryType": "electric",
+        "secondaryType": null,
+        "box": "megahyperspace",
+        "legendary": "mythical"
+    },
+    {
+        "id": "scovillainmega",
+        "baseName": "scovillain",
+        "primaryType": "grass",
+        "secondaryType": "fire",
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "glimmoramega",
+        "baseName": "glimmora",
+        "primaryType": "rock",
+        "secondaryType": "poison",
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "tatsugirimega",
+        "baseName": "tatsugiri",
+        "primaryType": "dragon",
+        "secondaryType": "water",
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
+        "id": "baxcaliburmega",
+        "baseName": "baxcalibur",
+        "primaryType": "dragon",
+        "secondaryType": "ice",
+        "box": "megahyperspace",
+        "legendary": "no"
     }
 ]
