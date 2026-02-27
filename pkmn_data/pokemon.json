@@ -10496,6 +10496,14 @@
         "legendary": "no"
     },
     {
+        "id": "garchompmegaz",
+        "baseName": "garchomp",
+        "primaryType": "dragon",
+        "secondaryType": null,
+        "box": "megahyperspace",
+        "legendary": "no"
+    },
+    {
         "id": "lucariomegaz",
         "baseName": "lucario",
         "primaryType": "fighting",
