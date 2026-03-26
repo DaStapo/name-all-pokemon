@@ -10606,5 +10606,13 @@
         "secondaryType": "ice",
         "box": "megahyperspace",
         "legendary": "no"
+    },
+    {
+        "id": "rotomstereo",
+        "baseName": "rotom",
+        "primaryType": "electric",
+        "secondaryType": "normal",
+        "box": "sinnoh",
+        "legendary": "no"
     }
 ]
