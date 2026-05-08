@@ -2477,8 +2477,23 @@ async function loadData() {
             visualizeButtonUnclick(orderButton)
             visualizeButtonUnclick(regularButton)
         }
+        if ("boxes" in state.filters) {
+    
+            // 2. Correctly check if the "boxes" array INCLUDES the value "mega"
+            if (state.filters.boxes.includes("mega")) {
+                
+                console.log("'mega' filter found. Replacing it now...");
         
-
+                // 3. Create a new array without "mega"
+                const boxesWithoutMega = state.filters.boxes.filter(box => box !== "mega");
+                
+                // 4. Add the new mega regions to the filtered array
+                const updatedBoxes = [...boxesWithoutMega, "megakalos", "megahoenn", "megalumiose"];
+                
+                // 5. Update the state
+                state.filters.boxes = updatedBoxes;
+            }
+        }
         quiz.setQuiz(state["quizName"], state["filters"])
         if ("typeSeed" in state){
             quiz.seed = state["typeSeed"]
