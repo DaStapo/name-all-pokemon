@@ -46,5 +46,7 @@
     "ogerpon-wellspring":["ogerpon-wellspring","ogerpon-wellspring-mask"],
     "ogerpon-hearthflame":["ogerpon-hearthflame","ogerpon-hearthflame-mask"],
     "ogerpon-cornerstone":["ogerpon-cornerstone","ogerpon-cornerstone-mask"],
-    "terapagos":["terapagos","terapagos-stellar","terapagos-normal"]
+    "terapagos":["terapagos","terapagos-stellar","terapagos-normal"],
+    "magearna-mega":["magearna-mega","magearna-original-mega"],
+    "tatsugiri-mega":["tatsugiri-mega","tatsugiri-droopy-mega","tatsugiri-stretchy-mega"]
 }
