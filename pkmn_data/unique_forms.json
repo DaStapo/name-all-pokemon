@@ -1,8 +1,8 @@
 {
-    "pikachu":["peakychu"],
-    "snorlax":["mosslax"],
-    "greedent":["chefdente"],
-    "smeargle":["smearguru"],
-    "tangrowth":["professor"],
-    "tinkaton":["tinkmaster"]
+    "peakychu": "pikachu",
+    "mosslax": "snorlax",
+    "chefdente": "greedent",
+    "smearguru": "smeargle",
+    "professor": "tangrowth",
+    "tinkmaster": "tinkaton"
 }
