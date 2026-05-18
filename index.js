@@ -213,7 +213,7 @@ app.get('/artists', async (req, res) => {
     res.sendFile(artistsLocation);
 });
 
-let jsonDataFiles = ["pokemon", "suffix_namings", "translations", "encoded_images", "namings", "sprite_cycles"]
+let jsonDataFiles = ["pokemon", "suffix_namings", "translations", "encoded_images", "namings", "sprite_cycles", "unique_forms"]
 
 let pkmnDataCache = null;
 
@@ -261,7 +261,7 @@ app.post('/misspelling', async (req, res) => {
 });
 
 
-
+/*
 // Helper function to get week-based filename
 function getWeeklyLogFile() {
     const now = new Date();
@@ -283,10 +283,72 @@ function getWeeklyLogFile() {
     return path.join(logsDir, filename);
 }
 
+// Rate limiting constants
+const RATE_LIMIT_MS = 2500; // 2.5 seconds
+const LOCK_FILE = path.join(__dirname, '.rate_limit_lock');
+const TIMESTAMP_FILE = path.join(__dirname, '.last_processed_time');
+
+// Helper function to check and update rate limit with file locking
+async function checkRateLimit() {
+    return new Promise((resolve, reject) => {
+        const now = Date.now();
+        
+        // Try to acquire lock
+        fs.open(LOCK_FILE, 'wx', (err, fd) => {
+            if (err) {
+                // Lock exists, another instance is processing
+                if (err.code === 'EEXIST') {
+                    return resolve(false); // Rate limited
+                }
+                return reject(err);
+            }
+            
+            // We have the lock, check timestamp
+            fs.readFile(TIMESTAMP_FILE, 'utf8', (readErr, data) => {
+                let lastProcessedTime = 0;
+                if (!readErr && data) {
+                    lastProcessedTime = parseInt(data) || 0;
+                }
+                
+                const timeDiff = now - lastProcessedTime;
+                
+                if (timeDiff < RATE_LIMIT_MS) {
+                    // Still rate limited, release lock and reject
+                    fs.close(fd, () => {
+                        fs.unlink(LOCK_FILE, () => {
+                            resolve(false);
+                        });
+                    });
+                } else {
+                    // Update timestamp and release lock
+                    fs.writeFile(TIMESTAMP_FILE, now.toString(), (writeErr) => {
+                        fs.close(fd, () => {
+                            fs.unlink(LOCK_FILE, () => {
+                                if (writeErr) {
+                                    reject(writeErr);
+                                } else {
+                                    resolve(true);
+                                }
+                            });
+                        });
+                    });
+                }
+            });
+        });
+    });
+}
 
 app.post('/result', async (req, res) => {
     try {
-        const result = req.body
+        // Check global rate limit with file locking
+        const canProcess = await checkRateLimit();
+        
+        if (!canProcess) {
+            // Silently ignore the request (rate limited)
+            return res.status(200).json({ message: 'Ok' });
+        }
+        
+        const result = req.body;
         
         // Validate input
         if (!result || typeof result !== 'object') {
@@ -295,27 +357,34 @@ app.post('/result', async (req, res) => {
         
         // Limit size
         const resultStr = JSON.stringify(result);
-        if (resultStr.length > 10000*75) { // 750KB limit
+        if (resultStr.length > 10000 * 75) { // 750KB limit
             return res.status(400).json({ error: 'Result too large' });
         }
         
+        // Send response first
         res.status(200).json({ message: 'Ok' });
         
+        // Log asynchronously
         const logFile = getWeeklyLogFile();
         const logMsg = resultStr + "\n";
         
         fs.appendFile(logFile, logMsg, (err) => {
             if (err) {
                 console.error('Failed to log result:', err);
-                // Consider using a proper logging service here
             }
         });
+        
     } catch (err) {
         console.error('Error processing result:', err);
         if (!res.headersSent) {
             res.status(500).json({ error: 'Internal server error' });
         }
     }
+});
+*/
+
+app.post('/result', (req, res) => {
+    res.status(200).json({ message: 'Ok' });
 });
 app.use((err, req, res, next) => {
     console.error(err.stack);

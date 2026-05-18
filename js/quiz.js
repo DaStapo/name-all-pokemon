@@ -91,11 +91,14 @@ class Quiz {
 
 
     loadData(allData, enabledLanguages, onReset) {
+        console.log('unique_forms', allData["unique_forms"] )
         this.encodedImages = allData["encoded_images"]
         this.translations = allData["translations"]
+        this.unique_forms = allData["unique_forms"]
         this.suffixes = allData["suffix_namings"]
         this.namings = allData["namings"]
         let pkmnData = allData["pokemon"]
+
         for (let i = 0; i < pkmnData.length; i++) {
             let pkmn = new Pokemon(pkmnData[i])
             if (pkmn.box === "unreleased") {
@@ -117,6 +120,9 @@ class Quiz {
         this.updateLanguages(enabledLanguages)
         this.onReset = onReset
         this.usePokeball();
+
+        this.setupUinqueForms(pkmnData, enabledLanguages)
+
 
     }
 
@@ -866,6 +872,50 @@ class Quiz {
 
 
     }
+
+    //does all the loadData setps, but only for the extra unique form data
+    setupUinqueForms(pkmnData, enabledLanguages){
+        //we add the unique forms as duplicates of the original pokemon that they are pointing to, just with a different id
+        this.uniqueFormEntries = []
+        let currentCurrentIds = new Set()
+        this.currentUniqueFormNameDict = new Set()
+        for (let uniqueFormName in this.unique_forms){
+            let basePkmn = this.unique_forms[uniqueFormName]
+            for (let i = 0; i < pkmnData.length; i++) {
+                console.log(pkmnData[i]["id"], basePkmn)
+                if (pkmnData[i]["id"]=== basePkmn){
+
+                    //copy by value, not by reference
+                    let editedPkmn  = { ...pkmnData[i] }
+                    editedPkmn["id"] = uniqueFormName
+                    currentCurrentIds.add(editedPkmn["id"])
+                    this.uniqueFormEntries.push(editedPkmn)
+                }
+            }
+        }
+
+        for (let id of currentCurrentIds) {
+            for (let j = 0; j < enabledLanguages.length; j++) {
+                let key = enabledLanguages[j];
+                this.currentLangsNames.add(standardizeName(this.translations[id][key]))
+            }
+        }
+
+        for (let i = 0; i < this.uniqueFormEntries.length; i++) {
+            for (let j = 0; j < this.enabledLanguages.length; j++) {
+                let key = this.enabledLanguages[j];
+                /*if (this.translations[id][key] in this.nameDict && standardizeName(this.translations[id][key]) !== id){
+                    console.log('alert, same names for' + this.translations[id]["ENG"] + " and " + id)
+                }*/
+                let daName = standardizeName(this.translations[this.uniqueFormEntries[i].id][key])
+                this.nameDict[daName] = this.uniqueFormEntries[i].id
+                this.currentUniqueFormNameDict[daName] = this.uniqueFormEntries[i].baseName
+                this.nameArr.push(daName)
+            }
+        }
+
+    }
+
     setupNames() {
         for (let i = 0; i < this.pokemon.length; i++) {
             for (let j = 0; j < this.allLanguages.length; j++) {
@@ -1060,13 +1110,41 @@ class Quiz {
 
         inputs.push(inputText);
 
+        let toPush = []
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i] = standardizeName(inputs[i]);
+            let input = inputs[i]
+            
+            if (input in this.currentUniqueFormNameDict){
+                let id = this.currentUniqueFormNameDict[input]
+                let baseName = this.pokemonIdDict[id].baseName
+                toPush.push(baseName)
+
+                if(!(baseName in this.spriteCycles)){
+                    this.spriteCycles[baseName] = [baseName]
+
+                }
+                this.spriteCycles[baseName].push(baseName + input)
+            }
+        }
+        for (let i = 0; i < toPush.length; i++) {
+            
+            inputs.push(toPush[i]);
+
+        }
+
         let correct = false;
         let message = null
         let pkmn = null
 
+
+
         for (let i = 0; i < inputs.length; i++) {
-            inputs[i] = standardizeName(inputs[i]);
+            //we akready do it in the unique forms loop
+            //inputs[i] = standardizeName(inputs[i]);
             let input = inputs[i]
+            
+
 
             if (input in this.nameDict) {
 
