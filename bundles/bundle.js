@@ -155,6 +155,7 @@ class Quiz {
         }
         this.setupNames();
         this.setFormattedNames();
+
         this.setupSprites();
         this.setupMissedContent();
         this.updateLanguages(enabledLanguages)
@@ -224,6 +225,11 @@ class Quiz {
         //    this.currentType = null;
         //}
 
+            
+        this.spriteCycles = {};
+        for (const key in this.originalSpriteCycles) {
+            this.spriteCycles[key] = [...this.originalSpriteCycles[key]]; // This creates a new array for every key
+        }
 
         this.onReset();
     }
@@ -462,6 +468,11 @@ class Quiz {
         }
 
         this.spriteCycles = currentCycles;
+        this.originalSpriteCycles  = {}
+        for (const key in this.spriteCycles) {
+            this.originalSpriteCycles[key] = [...this.spriteCycles[key]]; // This creates a new array for every key
+        }
+
 
         this.currentBaseNames = new Set()
         this.currentIds = new Set()
@@ -919,17 +930,33 @@ class Quiz {
         this.uniqueFormEntries = []
         let currentCurrentIds = new Set()
         this.currentUniqueFormNameDict = new Set()
+        this.uniqueNamed = new Set()
+
+
+
+
+
         for (let uniqueFormName in this.unique_forms){
             let basePkmn = this.unique_forms[uniqueFormName]
             for (let i = 0; i < pkmnData.length; i++) {
-                console.log(pkmnData[i]["id"], basePkmn)
                 if (pkmnData[i]["id"]=== basePkmn){
+                    /*
+                    console.log('startadd')
 
-                    //copy by value, not by reference
+                    let sprite = document.createElement("img");
+                    sprite.classList.add('sprite');
+                    sprite.classList.add('zoom');
+                    sprite.src = this.encodedImages['sprite'][basePkmn + pkmnData[i]["id"]];
+                    
+                    this.spriteDictionary[basePkmn + pkmnData[i]["id"]] = sprite;
+                    this.allSprites.push(sprite)
+                    console.log('addded', basePkmn + pkmnData[i]["id"])*/
                     let editedPkmn  = { ...pkmnData[i] }
                     editedPkmn["id"] = uniqueFormName
                     currentCurrentIds.add(editedPkmn["id"])
                     this.uniqueFormEntries.push(editedPkmn)
+                    let pkmn = new Pokemon(editedPkmn)
+                    this.pokemonIdDict[pkmn.id] = pkmn
                 }
             }
         }
@@ -949,9 +976,50 @@ class Quiz {
                 }*/
                 let daName = standardizeName(this.translations[this.uniqueFormEntries[i].id][key])
                 this.nameDict[daName] = this.uniqueFormEntries[i].id
-                this.currentUniqueFormNameDict[daName] = this.uniqueFormEntries[i].baseName
+                this.currentUniqueFormNameDict[daName] = this.uniqueFormEntries[i].id
                 this.nameArr.push(daName)
             }
+        }
+
+
+        for (let id of  currentCurrentIds) {
+            let pkmn = this.pokemonIdDict[id]
+            let translation = this.translations[id]
+
+            let formattedDict = null
+            if (pkmn.id in this.namings) {
+                formattedDict = {}
+                for (let key in translation) {
+                    formattedDict[key] = translation[key] + this.namings[pkmn.id]
+                }
+            } else {
+                for (let suffix in this.suffixes) {
+                    if (pkmn.id.endsWith(suffix)) {
+                        let without = pkmn.id.substring(0, pkmn.id.length - suffix.length);
+                        if (without in this.pokemonBaseNameDict) {
+                            formattedDict = {}
+                            for (let key in translation) {
+                                formattedDict[key] = translation[key] + this.suffixes[suffix]
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            if (formattedDict === null) {
+                formattedDict = {}
+                for (let key in translation) {
+                    formattedDict[key] = translation[key]
+                }
+            }
+            if (pkmn.baseName === "nidoranm" || pkmn.baseName === "nidoranf") {
+                for (let key in formattedDict) {
+                    if (formattedDict[key].endsWith("m") || formattedDict[key].endsWith("f")) {
+                        formattedDict[key] = formattedDict[key].substring(0, formattedDict[key].length - 1)
+                    }
+                }
+            }
+            pkmn.setFormattedNames(formattedDict);
         }
 
     }
@@ -1150,32 +1218,77 @@ class Quiz {
 
         inputs.push(inputText);
 
+        let correct = false;
+        let message = null
+        let pkmn = null
+        let uniquePkmnId = null
+
         let toPush = []
         for (let i = 0; i < inputs.length; i++) {
             inputs[i] = standardizeName(inputs[i]);
             let input = inputs[i]
             
+
             if (input in this.currentUniqueFormNameDict){
                 let id = this.currentUniqueFormNameDict[input]
                 let baseName = this.pokemonIdDict[id].baseName
-                toPush.push(baseName)
 
-                if(!(baseName in this.spriteCycles)){
-                    this.spriteCycles[baseName] = [baseName]
+                if (id in this.uniqueNamed){
+                    let overlap = false;
+                    for (let key in this.nameDict) {
+                        if (key.startsWith(input) && key !== input) {
+                            overlap = true;
+                            break
+                        }
+                    }
+                    if (!overlap) {
+                        message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " already named"
+                    }
+                    continue;
+                }
+
+                if (!(this.currentBaseNames.has(baseName))) {
+
+                    let found = false
+                    for (const langName of this.currentLangsNames) {
+                        if (langName.startsWith(input)) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " is not part of this quiz"
+                    }
+                    continue;
 
                 }
-                this.spriteCycles[baseName].push(baseName + input)
+
+
+                this.uniqueNamed.add(id)
+                uniquePkmnId = baseName + id
+
+                if (this.named.has(baseName)){
+                    message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " revealed!"
+                }else{
+                    toPush.push(baseName)
+
+                }
+                if(!(baseName in this.spriteCycles)){
+                    this.spriteCycles[baseName] = [baseName]
+                }
+                this.spriteCycles[baseName].push(uniquePkmnId)
+                break
             }
         }
-        for (let i = 0; i < toPush.length; i++) {
+        if (message === null){
+            for (let i = 0; i < toPush.length; i++) {
             
-            inputs.push(toPush[i]);
-
+                inputs.push(toPush[i]);
+    
+            }
+    
+    
         }
-
-        let correct = false;
-        let message = null
-        let pkmn = null
 
 
 
@@ -1288,8 +1401,12 @@ class Quiz {
                 }
                 this.langCounts[this.langDict[input]] += 1
                 this.checkHighestLang()
-                recentSprite.src = this.spriteDictionary[recentPkmn.id].src;
-
+                if (uniquePkmnId !== null){
+                    recentSprite.src = this.encodedImages['sprite'][uniquePkmnId];
+                }
+                else{
+                    recentSprite.src = this.spriteDictionary[recentPkmn.id].src;
+                }
                 correct = true;
                 if (onCorrect !== null) {
                     onCorrect(baseName)
