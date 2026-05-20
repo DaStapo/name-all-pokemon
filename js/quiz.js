@@ -118,11 +118,11 @@ class Quiz {
 
         this.setupSprites();
         this.setupMissedContent();
+        this.setupUinqueForms(pkmnData, enabledLanguages)
         this.updateLanguages(enabledLanguages)
         this.onReset = onReset
         this.usePokeball();
 
-        this.setupUinqueForms(pkmnData, enabledLanguages)
 
 
     }
@@ -131,6 +131,7 @@ class Quiz {
         this.giveUpState = false
         this.stopReveal()
         this.named = new Set()
+        this.uniqueNamed = new Set()
         this.users = {}
         this.langCounts = {}
         this.missingnoEnabled = false;
@@ -881,47 +882,10 @@ class Quiz {
             }
         }
 
-
-    }
-
-    //does all the loadData setps, but only for the extra unique form data
-    setupUinqueForms(pkmnData, enabledLanguages){
-        //we add the unique forms as duplicates of the original pokemon that they are pointing to, just with a different id
-        this.uniqueFormEntries = []
-        let currentCurrentIds = new Set()
+    
         this.currentUniqueFormNameDict = new Set()
-        this.uniqueNamed = new Set()
 
-
-
-
-
-        for (let uniqueFormName in this.unique_forms){
-            let basePkmn = this.unique_forms[uniqueFormName]
-            for (let i = 0; i < pkmnData.length; i++) {
-                if (pkmnData[i]["id"]=== basePkmn){
-                    /*
-                    console.log('startadd')
-
-                    let sprite = document.createElement("img");
-                    sprite.classList.add('sprite');
-                    sprite.classList.add('zoom');
-                    sprite.src = this.encodedImages['sprite'][basePkmn + pkmnData[i]["id"]];
-                    
-                    this.spriteDictionary[basePkmn + pkmnData[i]["id"]] = sprite;
-                    this.allSprites.push(sprite)
-                    console.log('addded', basePkmn + pkmnData[i]["id"])*/
-                    let editedPkmn  = { ...pkmnData[i] }
-                    editedPkmn["id"] = uniqueFormName
-                    currentCurrentIds.add(editedPkmn["id"])
-                    this.uniqueFormEntries.push(editedPkmn)
-                    let pkmn = new Pokemon(editedPkmn)
-                    this.pokemonIdDict[pkmn.id] = pkmn
-                }
-            }
-        }
-
-        for (let id of currentCurrentIds) {
+        for (let id of this.currentUniqueFormIds) {
             for (let j = 0; j < enabledLanguages.length; j++) {
                 let key = enabledLanguages[j];
                 this.currentLangsNames.add(standardizeName(this.translations[id][key]))
@@ -942,7 +906,57 @@ class Quiz {
         }
 
 
-        for (let id of  currentCurrentIds) {
+    }
+
+    //does all the loadData setps, but only for the extra unique form data
+    setupUinqueForms(pkmnData, enabledLanguages){
+        //we add the unique forms as duplicates of the original pokemon that they are pointing to, just with a different id
+        this.uniqueFormEntries = []
+        this.currentUniqueFormIds = new Set()
+
+        this.uniqueNamed = new Set()
+
+
+
+        for (let uniqueFormName in this.unique_forms){
+            let basePkmn = this.unique_forms[uniqueFormName]
+            for (let i = 0; i < pkmnData.length; i++) {
+                if (pkmnData[i]["id"]=== basePkmn){
+                    /*
+                    console.log('startadd')
+
+                    let sprite = document.createElement("img");
+                    sprite.classList.add('sprite');
+                    sprite.classList.add('zoom');
+                    sprite.src = this.encodedImages['sprite'][basePkmn + pkmnData[i]["id"]];
+                    
+                    this.spriteDictionary[basePkmn + pkmnData[i]["id"]] = sprite;
+                    this.allSprites.push(sprite)
+                    console.log('addded', basePkmn + pkmnData[i]["id"])*/
+                    let editedPkmn  = { ...pkmnData[i] }
+                    editedPkmn["id"] = uniqueFormName
+                    this.currentUniqueFormIds.add(editedPkmn["id"])
+                    this.uniqueFormEntries.push(editedPkmn)
+                    let pkmn = new Pokemon(editedPkmn)
+                    this.pokemonIdDict[pkmn.id] = pkmn
+
+                    for (let j = 0; j < this.allLanguages.length; j++) {
+                        let key = this.allLanguages[j];
+                        if (standardizeName(this.translations[editedPkmn["id"]]["ENG"]) === standardizeName(this.translations[editedPkmn["id"]][key])) {
+                            this.langDict[standardizeName(this.translations[editedPkmn["id"]][key])] = "ENG"
+                        } else {
+                            this.langDict[standardizeName(this.translations[editedPkmn["id"]][key])] = key
+                        }
+        
+                    }
+
+
+                }
+            }
+        }
+
+
+        for (let id of  this.currentUniqueFormIds) {
             let pkmn = this.pokemonIdDict[id]
             let translation = this.translations[id]
 
@@ -1184,6 +1198,7 @@ class Quiz {
         let uniquePkmnId = null
 
         let toPush = []
+        let toDelete = []
         for (let i = 0; i < inputs.length; i++) {
             inputs[i] = standardizeName(inputs[i]);
             let input = inputs[i]
@@ -1192,8 +1207,9 @@ class Quiz {
             if (input in this.currentUniqueFormNameDict){
                 let id = this.currentUniqueFormNameDict[input]
                 let baseName = this.pokemonIdDict[id].baseName
+                toDelete.push(i)
 
-                if (id in this.uniqueNamed){
+                if (this.uniqueNamed.has(id)){
                     let overlap = false;
                     for (let key in this.nameDict) {
                         if (key.startsWith(input) && key !== input) {
@@ -1229,6 +1245,8 @@ class Quiz {
 
                 if (this.named.has(baseName)){
                     message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " revealed!"
+                    recentSprite.src = this.encodedImages['sprite'][uniquePkmnId];
+
                 }else{
                     toPush.push(baseName)
 
@@ -1240,14 +1258,18 @@ class Quiz {
                 break
             }
         }
+
+        toDelete.sort((a, b) => b - a);
+
+        for (const ind of toDelete) {
+          inputs.splice(ind, 1);
+        }
+
+
         if (message === null){
             for (let i = 0; i < toPush.length; i++) {
-            
                 inputs.push(toPush[i]);
-    
             }
-    
-    
         }
 
 
