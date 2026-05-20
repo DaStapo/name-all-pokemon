@@ -362,6 +362,11 @@
 	padding-right: 2px;
 	float: right;
 	}
+	.bonus-clear {
+		display: none;
+		height: 28px;
+		bottom-margin: -5px;
+	}
 	@keyframes zoomExample {
 		from {transform: matrix(2,0,0,2,0,-10);}
 		to {transform:matrix(1,0,0,1,0,0);}
