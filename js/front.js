@@ -2636,7 +2636,7 @@ async function loadData() {
 
         /*loaded pop-up message*/
         setTimeout(()=>{
-            showUserMessage('06-2026 - Pokopia easter eggs added! <br>There might be bugs we missed')
+            showUserMessage('06-2026 - Pokopia easter eggs added! <br>There might be bugs we missed', 6000)
         }, 500)
     }
     /*
@@ -2717,19 +2717,43 @@ function preloadSmallerImages() {
 
 
 let currentMessageTimeout = null;
-function showUserMessage(message) {
 
-    if (currentMessageTimeout !== null) {
-        clearTimeout(currentMessageTimeout)
-    }
+function showUserMessage(message, durationMs = 3000) {
     let snackbar = document.getElementById("wrongquiz");
-    snackbar.innerHTML = message
+
+    // 1. Clear any existing timeout
+    if (currentMessageTimeout !== null) {
+        clearTimeout(currentMessageTimeout);
+    }
+
+    // 2. Set the message text
+    snackbar.innerHTML = message;
+
+    // 3. Remove the class AND explicitly clear the animation to halt it
     snackbar.classList.remove("snackbarshow");
+    snackbar.style.animation = 'none';
+    snackbar.style.webkitAnimation = 'none';
+
+    // 4. Force a browser reflow to reset everything
+    void snackbar.offsetWidth;
+
+    // 5. Calculate the delay and inject the animation directly via JS
+    let delayInSeconds = (durationMs - 500) / 1000;
+    let animString = `fadein 0.5s, fadeout 0.5s ${delayInSeconds}s forwards`;
+    
+    snackbar.style.animation = animString;
+    snackbar.style.webkitAnimation = animString;
+
+    // 6. Add the class back to trigger it
     snackbar.classList.add("snackbarshow");
+
+    // 7. Clean up after it finishes
     currentMessageTimeout = setTimeout(function () {
         snackbar.classList.remove("snackbarshow");
-        snackbar.classList.add("snackbar");
-    }, 3000);
+        // Clear the inline animations so the next call starts fresh
+        snackbar.style.animation = 'none';
+        snackbar.style.webkitAnimation = 'none';
+    }, durationMs);
 }
 
 let currentImageFadeIn = null
