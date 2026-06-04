@@ -91,7 +91,7 @@ class Quiz {
 
 
     loadData(allData, enabledLanguages, onReset) {
-        console.log('unique_forms', allData["unique_forms"] )
+        /*console.log('unique_forms', allData["unique_forms"] )*/
         this.encodedImages = allData["encoded_images"]
         this.translations = allData["translations"]
         this.unique_forms = allData["unique_forms"]
@@ -861,51 +861,54 @@ class Quiz {
 
     updateLanguages(enabledLanguages) {
         this.enabledLanguages = enabledLanguages;
-        this.currentLangsNames = new Set()
-        this.nameDict = {}
-        this.nameArr = []
+        this.currentLangsNames = new Set();
+        this.nameDict = {};
+        this.nameArr = [];
+
+        // 1. Standard Pokemon Loop
         for (let id of this.currentIds) {
             for (let j = 0; j < enabledLanguages.length; j++) {
                 let key = enabledLanguages[j];
-                this.currentLangsNames.add(standardizeName(this.translations[this.pokemonIdDict[id].baseName][key]))
+                this.currentLangsNames.add(standardizeName(this.translations[this.pokemonIdDict[id].baseName][key]));
             }
         }
+
         for (let i = 0; i < this.pokemon.length; i++) {
             for (let j = 0; j < this.enabledLanguages.length; j++) {
                 let key = this.enabledLanguages[j];
-                /*if (this.translations[id][key] in this.nameDict && standardizeName(this.translations[id][key]) !== id){
-                    console.log('alert, same names for' + this.translations[id]["ENG"] + " and " + id)
-                }*/
-                let daName = standardizeName(this.translations[this.pokemon[i].baseName][key])
-                this.nameDict[daName] = this.pokemon[i].id
-                this.nameArr.push(daName)
+                let daName = standardizeName(this.translations[this.pokemon[i].baseName][key]);
+                this.nameDict[daName] = this.pokemon[i].id;
+                this.nameArr.push(daName);
             }
         }
 
-    
-        this.currentUniqueFormNameDict = new Set()
+        // --- FIXED: Initialize as an Object, not a Set ---
+        this.currentUniqueFormNameDict = {};
 
-        for (let id of this.currentUniqueFormIds) {
+        // --- FIXED: Get the keys of the object safely before looping ---
+        let uniqueIds = this.currentUniqueFormIds ? Object.keys(this.currentUniqueFormIds) : [];
+        
+        for (let id of uniqueIds) {
             for (let j = 0; j < enabledLanguages.length; j++) {
                 let key = enabledLanguages[j];
-                this.currentLangsNames.add(standardizeName(this.translations[id][key]))
+                this.currentLangsNames.add(standardizeName(this.translations[id][key]));
             }
         }
 
-        for (let i = 0; i < this.uniqueFormEntries.length; i++) {
-            for (let j = 0; j < this.enabledLanguages.length; j++) {
-                let key = this.enabledLanguages[j];
-                /*if (this.translations[id][key] in this.nameDict && standardizeName(this.translations[id][key]) !== id){
-                    console.log('alert, same names for' + this.translations[id]["ENG"] + " and " + id)
-                }*/
-                let daName = standardizeName(this.translations[this.uniqueFormEntries[i].id][key])
-                this.nameDict[daName] = this.uniqueFormEntries[i].id
-                this.currentUniqueFormNameDict[daName] = this.uniqueFormEntries[i].id
-                this.nameArr.push(daName)
+        // 2. Unique Form Entries Loop
+        // Ensure uniqueFormEntries exists before looping to prevent crashes on load
+        if (this.uniqueFormEntries) {
+            for (let i = 0; i < this.uniqueFormEntries.length; i++) {
+                for (let j = 0; j < this.enabledLanguages.length; j++) {
+                    let key = this.enabledLanguages[j];
+                    let daName = standardizeName(this.translations[this.uniqueFormEntries[i].id][key]);
+                    
+                    this.nameDict[daName] = this.uniqueFormEntries[i].id;
+                    this.currentUniqueFormNameDict[daName] = this.uniqueFormEntries[i].id; // This now works safely!
+                    this.nameArr.push(daName);
+                }
             }
         }
-
-
     }
 
     //does all the loadData setps, but only for the extra unique form data
