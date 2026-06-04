@@ -2729,7 +2729,7 @@ function showUserMessage(message) {
     currentMessageTimeout = setTimeout(function () {
         snackbar.classList.remove("snackbarshow");
         snackbar.classList.add("snackbar");
-    }, 5000);
+    }, 3000);
 }
 
 let currentImageFadeIn = null
