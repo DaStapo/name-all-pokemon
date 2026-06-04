@@ -3162,6 +3162,16 @@ async function loadData() {
             document.getElementById("trychallenge").style.display = "none";
         }
 
+        // --- unique form check ---
+        let bonusImage = document.querySelector('.bonus-clear');
+        if (bonusImage) {
+            if (quiz.uniqueNamed.size === 6) {
+                bonusImage.style.display = 'inline';
+            } else {
+                bonusImage.style.display = 'none';
+            }
+        }
+
         if (Object.keys(quiz.users).length > 1) {
             document.getElementById("ranking2").style.display = "block";
             //document.getElementById("accordion2").click();
@@ -3209,6 +3219,17 @@ async function loadData() {
 
         document.getElementById("missednames").style.display = "block";
         document.getElementById("accordion").click();
+
+        // --- unique form check ---
+        let bonusImage = document.querySelector('.bonus-clear');
+        if (bonusImage) {
+            if (quiz.uniqueNamed.size === 6) {
+                bonusImage.style.display = 'inline';
+            } else {
+                bonusImage.style.display = 'none';
+            }
+        }
+
         result_data = {
             "langCounts":quiz.langCounts,
             "chaosMode":quiz.chaosMode,
@@ -4503,10 +4524,10 @@ async function loadData() {
         addTransitionCss();
         preloadSmallerImages();
 
-        /*loaded pop-up message
+        /*loaded pop-up message*/
         setTimeout(()=>{
-            showUserMessage('Z-A DLC Megas will be added soon')
-        }, 500)*/
+            showUserMessage('06-2026 - Pokopia easter eggs added! <br>There might be bugs we missed')
+        }, 500)
     }
     /*
     document.getElementById('spooky').onclick = () =>{
@@ -4598,7 +4619,7 @@ function showUserMessage(message) {
     currentMessageTimeout = setTimeout(function () {
         snackbar.classList.remove("snackbarshow");
         snackbar.classList.add("snackbar");
-    }, 3000);
+    }, 5000);
 }
 
 let currentImageFadeIn = null
