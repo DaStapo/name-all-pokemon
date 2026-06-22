@@ -230,13 +230,20 @@ class Quiz {
     }
 
     checkHighestLang() {
-        let highestKey = "ENG";
+        let highestKey = this.enabledLanguages[0];
+        if (this.enabledLanguages.includes("ENG")){
+            highestKey = "ENG";
+            this.currentLang = "ENG"
+        }
         let highestCount = 0;
         for (let key in this.langCounts) {
-            if (this.langCounts[key] > highestCount) {
-                highestCount = this.langCounts[key]
-                highestKey = key
+            if (this.enabledLanguages.includes(key)){
+                if (this.langCounts[key] > highestCount) {
+                    highestCount = this.langCounts[key]
+                    highestKey = key
+                }
             }
+
         }
 
         if (this.currentLang !== highestKey) {
@@ -864,7 +871,6 @@ class Quiz {
         this.currentLangsNames = new Set();
         this.nameDict = {};
         this.nameArr = [];
-        this.currentLang = enabledLanguages[0]
         // 1. Standard Pokemon Loop
         for (let id of this.currentIds) {
             for (let j = 0; j < enabledLanguages.length; j++) {
@@ -909,6 +915,14 @@ class Quiz {
                 }
             }
         }
+        for (let j = 0; j < this.enabledLanguages.length; j++) {
+            let key = this.enabledLanguages[j];
+            if (!(key in this.langCounts)) {
+                this.langCounts[key] = 0
+            }
+        }
+
+        this.checkHighestLang()
     }
 
     //does all the loadData setps, but only for the extra unique form data
@@ -1210,6 +1224,7 @@ class Quiz {
             if (input in this.currentUniqueFormNameDict){
                 let id = this.currentUniqueFormNameDict[input]
                 let baseName = this.pokemonIdDict[id].baseName
+                let namedLanguage = this.langDict[input]
                 toDelete.push(i)
 
                 if (this.uniqueNamed.has(id)){
@@ -1249,10 +1264,14 @@ class Quiz {
                 if (this.named.has(baseName)){
                     message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " revealed!"
                     recentSprite.src = this.encodedImages['sprite'][uniquePkmnId];
-
+                    
                 }else{
-                    toPush.push(standardizeName(this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) ))
-
+                    if (this.enabledLanguages.includes(namedLanguage)){
+                        toPush.push(standardizeName(this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(namedLanguage)))
+                    }
+                    else{
+                        toPush.push(standardizeName(this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang)))
+                    }
                 }
                 if(!(baseName in this.spriteCycles)){
                     this.spriteCycles[baseName] = [baseName]
