@@ -2,7 +2,7 @@ let allLanguages = ['ENG', 'FRE', 'GER', 'ESP', 'ITA', 'KOR', 'JPN', 'CHT', 'CHS
 
 
 let typeList = ["normal", "fire", "water", "grass", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy"]
-let boxIds = ["big", "kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "megakalos", "megahoenn", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose", "megahyperspace", "sub-legendary", "legendary", "mythical", "ultrabeast", "paradox"]
+let boxIds = ["big", "kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "megakalos", "megahoenn", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose", "megahyperspace", "sub-legendary", "legendary", "mythical", "ultrabeast", "paradox"]
 let genQuizBoxes = {
     "0": ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "megakalos", "megahoenn", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose", "megahyperspace"],
     "1": ["kanto"],
