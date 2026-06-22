@@ -864,7 +864,7 @@ class Quiz {
         this.currentLangsNames = new Set();
         this.nameDict = {};
         this.nameArr = [];
-
+        this.currentLang = enabledLanguages[0]
         // 1. Standard Pokemon Loop
         for (let id of this.currentIds) {
             for (let j = 0; j < enabledLanguages.length; j++) {
@@ -1251,7 +1251,7 @@ class Quiz {
                     recentSprite.src = this.encodedImages['sprite'][uniquePkmnId];
 
                 }else{
-                    toPush.push(baseName)
+                    toPush.push(standardizeName(this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) ))
 
                 }
                 if(!(baseName in this.spriteCycles)){
