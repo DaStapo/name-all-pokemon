@@ -2648,7 +2648,7 @@ async function loadData() {
 
         /*loaded pop-up message*/
         setTimeout(()=>{
-            showUserMessage('08-2026 <br>• Pokopia easter eggs added! <br>• Applied Safari-Crash Fix <br>• Fixed Asian writing system input bug <br>There might be bugs we missed', 6000)
+            showUserMessage('08-2026 <br>• Pokopia easter eggs added!', 6000)
         }, 500)
     }
     /*

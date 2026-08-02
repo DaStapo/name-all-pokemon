@@ -4563,7 +4563,7 @@ async function loadData() {
 
         /*loaded pop-up message*/
         setTimeout(()=>{
-            showUserMessage('06-2026 - Pokopia easter eggs added! <br>There might be bugs we missed', 6000)
+            showUserMessage('08-2026 <br>• Pokopia easter eggs added!', 6000)
         }, 500)
     }
     /*
