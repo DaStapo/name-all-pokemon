@@ -1227,16 +1227,18 @@ class Quiz {
                 let namedLanguage = this.langDict[input]
                 toDelete.push(i)
 
+                {/* Reason: Updates the unique form overlap logic to normalize strings into base characters before comparing them. */}
                 if (this.uniqueNamed.has(id)){
                     let overlap = false;
+                    let nfdInput = input.normalize('NFD');
                     for (let key in this.nameDict) {
-                        if (key.startsWith(input) && key !== input) {
+                        if (key.normalize('NFD').startsWith(nfdInput) && key !== input) {
                             overlap = true;
-                            break
+                            break;
                         }
                     }
                     if (!overlap) {
-                        message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " already named"
+                        message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " already named";
                     }
                     continue;
                 }
@@ -1308,17 +1310,18 @@ class Quiz {
                 let id = this.nameDict[input]
                 let baseName = this.pokemonIdDict[id].baseName
 
+                {/* Reason: Updates the base Pokémon overlap logic to normalize strings into base characters before comparing them. */}
                 if (this.named.has(baseName)) {
-
                     let overlap = false;
+                    let nfdInput = input.normalize('NFD');
                     for (let key in this.nameDict) {
-                        if (key.startsWith(input) && key !== input) {
+                        if (key.normalize('NFD').startsWith(nfdInput) && key !== input) {
                             overlap = true;
-                            break
+                            break;
                         }
                     }
                     if (!overlap) {
-                        message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " already named"
+                        message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " already named";
                     }
                     continue;
                 }

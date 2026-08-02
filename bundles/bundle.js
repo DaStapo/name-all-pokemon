@@ -1267,16 +1267,18 @@ class Quiz {
                 let namedLanguage = this.langDict[input]
                 toDelete.push(i)
 
+                {/* Reason: Updates the unique form overlap logic to normalize strings into base characters before comparing them. */}
                 if (this.uniqueNamed.has(id)){
                     let overlap = false;
+                    let nfdInput = input.normalize('NFD');
                     for (let key in this.nameDict) {
-                        if (key.startsWith(input) && key !== input) {
+                        if (key.normalize('NFD').startsWith(nfdInput) && key !== input) {
                             overlap = true;
-                            break
+                            break;
                         }
                     }
                     if (!overlap) {
-                        message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " already named"
+                        message = this.pokemonIdDict[id].getFormattedName(this.currentLang) + " already named";
                     }
                     continue;
                 }
@@ -1348,17 +1350,18 @@ class Quiz {
                 let id = this.nameDict[input]
                 let baseName = this.pokemonIdDict[id].baseName
 
+                {/* Reason: Updates the base Pokémon overlap logic to normalize strings into base characters before comparing them. */}
                 if (this.named.has(baseName)) {
-
                     let overlap = false;
+                    let nfdInput = input.normalize('NFD');
                     for (let key in this.nameDict) {
-                        if (key.startsWith(input) && key !== input) {
+                        if (key.normalize('NFD').startsWith(nfdInput) && key !== input) {
                             overlap = true;
-                            break
+                            break;
                         }
                     }
                     if (!overlap) {
-                        message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " already named"
+                        message = this.pokemonIdDict[this.baseNameIdDict[baseName]].getFormattedName(this.currentLang) + " already named";
                     }
                     continue;
                 }
@@ -1914,7 +1917,7 @@ let allLanguages = ['ENG', 'FRE', 'GER', 'ESP', 'ITA', 'KOR', 'JPN', 'CHT', 'CHS
 
 
 let typeList = ["normal", "fire", "water", "grass", "electric", "ice", "ground", "flying", "poison", "fighting", "psychic", "dark", "bug", "rock", "ghost", "dragon", "steel", "fairy"]
-let boxIds = ["big", "kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "megakalos", "megahoenn", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose", "megahyperspace", "sub-legendary", "legendary", "mythical", "ultrabeast", "paradox"]
+let boxIds = ["big", "kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "megakalos", "megahoenn", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose", "megahyperspace", "sub-legendary", "legendary", "mythical", "ultrabeast", "paradox"]
 let genQuizBoxes = {
     "0": ["kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "megakalos", "megahoenn", "alola", "unknown", "galar", "gmax", "hisui", "paldea", "paldeadlc", "megalumiose", "megahyperspace"],
     "1": ["kanto"],
@@ -3740,22 +3743,34 @@ async function loadData() {
             }
 
             let currentIndex = updateCounter % data[pkmn].length;
-
             currentIndex = spriteCycling ? currentIndex : 0;
             
             let currentSprite = standardizeName(data[pkmn][currentIndex]);
 
-            quiz.spriteDictionary[standardizeName(key)].src = encodedImages[pathName][currentSprite];
-            if (!(currentSprite in encodedImages[pathName])){
-                console.log(currentSprite, "SPRITE NOT FOUND!")
-                return
-            }
-            quiz.unguessedDict[standardizeName(key)].getElementsByTagName('img')[0].src = encodedImages[pathName][currentSprite]
+            let targetImg = quiz.spriteDictionary[standardizeName(key)];
+            let targetShadow = quiz.unguessedDict[standardizeName(key)].getElementsByTagName('img')[0];
 
-            if (currentSprite in quiz.pokemonIdDict) {
-                quiz.unguessedDictTexts[standardizeName(key)].nodeValue = quiz.pokemonIdDict[standardizeName(data[pkmn][currentIndex])].getFormattedName(quiz.currentLang)
-            } else {
-                quiz.unguessedDictTexts[standardizeName(key)].nodeValue = quiz.pokemonIdDict[standardizeName(pkmn)].getFormattedName(quiz.currentLang)
+            // --- NEW LOGIC: Only update if the sprite is actually changing! ---
+            if (targetImg.dataset.currentSprite !== currentSprite || targetImg.dataset.pathName !== pathName) {
+                
+                targetImg.dataset.currentSprite = currentSprite;
+                targetImg.dataset.pathName = pathName;
+
+                let newSrc = encodedImages[pathName][currentSprite];
+
+                if (!newSrc) {
+                    console.log(currentSprite, "SPRITE NOT FOUND!")
+                    return
+                }
+
+                targetImg.src = newSrc;
+                targetShadow.src = newSrc;
+
+                if (currentSprite in quiz.pokemonIdDict) {
+                    quiz.unguessedDictTexts[standardizeName(key)].nodeValue = quiz.pokemonIdDict[currentSprite].getFormattedName(quiz.currentLang)
+                } else {
+                    quiz.unguessedDictTexts[standardizeName(key)].nodeValue = quiz.pokemonIdDict[standardizeName(pkmn)].getFormattedName(quiz.currentLang)
+                }
             }
         }
 
@@ -3812,19 +3827,19 @@ async function loadData() {
     let rotateFunc = function () {
 
         for (let i = 0; i < images.length; i++) {
-
-            //select specific <img>
             let imgElement = document.getElementById("gen" + [i + 1] + "img");
-            //its src path gets changed to the current image index
-            imgElement.src = images[i][currentImageIndex % images[0].length];
+            let newSrc = images[i][currentImageIndex % images[0].length];
+            
+            // Only re-assign if it's actually a new image
+            if (imgElement.src !== newSrc) {
+                imgElement.src = newSrc;
+            }
         }
 
         cycleTypes(currentImageIndex)
         cycleSprites(currentImageIndex)
 
-        //move to the next image index
         currentImageIndex += 1
-
     }
 
     //starts a repeating function 
