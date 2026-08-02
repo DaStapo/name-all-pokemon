@@ -191,7 +191,7 @@ class Quiz {
         for (const key in this.originalSpriteCycles) {
             this.spriteCycles[key] = [...this.originalSpriteCycles[key]]; // This creates a new array for every key
         }
-
+        this.resetCurrentSprites()
         this.onReset();
     }
 
