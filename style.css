@@ -362,6 +362,17 @@
 	padding-right: 2px;
 	float: right;
 	}
+	.sprite,
+	.spritew,
+	.spritet,
+	.spritel,
+	.spriteb,
+	.spritec,
+	.recentsprite,
+	.icon2,
+	.iconq {
+	image-rendering: crisp-edges;
+	}
 	.bonus-clear {
 		display: none;
 		height: 28px;
