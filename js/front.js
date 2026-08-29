@@ -2647,9 +2647,9 @@ async function loadData() {
         preloadSmallerImages();
 
         /*loaded pop-up message*/
-        setTimeout(()=>{
-            showUserMessage('08-2026 • Pokopia easter eggs added! <br><br>There might be bugs: <br>Link to a report form is in the footer', 6000)
-        }, 500)
+        //setTimeout(()=>{
+        //    showUserMessage('08-2026 • Pokopia easter eggs added! <br><br>There might be bugs: <br>Link to a report form is in the footer', 6000)
+        //}, 500)
     }
     /*
     document.getElementById('spooky').onclick = () =>{
