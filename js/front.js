@@ -375,7 +375,7 @@ async function loadData() {
     let allData = null
     let encodedImages = null
     try{
-        allData = await fetchData("pkmnData.json?v=2.0")
+        allData = await fetchData("pkmnData.json?v=2.1")
         encodedImages = allData["encoded_images"]
 
         quiz.loadData(allData, enabledLanguages, onReset)
